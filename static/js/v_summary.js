@@ -267,19 +267,23 @@ window.vSummary = {
       return res;
     },
 
+    getAuthorProfileLink(userName) {
+      return `https://github.com/${userName}`;
+    },
+
     getRepoLink(repo) {
       const { REPOS } = window;
       const { location, branch } = REPOS[repo.repoId];
 
       if (Object.prototype.hasOwnProperty.call(location, 'organization')) {
-        return `https://github.com/${location.organization}/${location.repoName}/tree/${branch}`;
+        return `${window.BASE_URL}/${location.organization}/${location.repoName}/tree/${branch}`;
       }
 
       return repo.location;
     },
 
     getReportIssueGitHubLink(stackTrace) {
-      return `https://github.com/reposense/RepoSense/issues/new?title=${this.getReportIssueTitle()
+      return `${window.BASE_URL}/reposense/RepoSense/issues/new?title=${this.getReportIssueTitle()
       }&body=${this.getReportIssueMessage(stackTrace)}`;
     },
 
@@ -301,6 +305,10 @@ window.vSummary = {
     },
 
     // model functions //
+    resetFilterSearch() {
+      this.filterSearch = '';
+      this.getFiltered();
+    },
     updateFilterSearch(evt) {
       this.filterSearch = evt.target.value;
       this.getFiltered();
@@ -346,10 +354,10 @@ window.vSummary = {
       if (hash.mergegroup) {
         this.isMergeGroup = convertBool(hash.mergegroup);
       }
-      if (hash.since) {
+      if (hash.since && dateFormatRegex.test(hash.since)) {
         this.tmpFilterSinceDate = hash.since;
       }
-      if (hash.until) {
+      if (hash.until && dateFormatRegex.test(hash.until)) {
         this.tmpFilterUntilDate = hash.until;
       }
 
@@ -406,9 +414,8 @@ window.vSummary = {
         // filtering
         repo.users.forEach((user) => {
           const toDisplay = this.filterSearch.toLowerCase()
-              .split(' ').filter((param) => param)
-              .map((param) => user.searchPath.search(param) > -1)
-              .reduce((curr, bool) => curr || bool, false);
+              .split(' ').filter(Boolean)
+              .some((param) => user.searchPath.includes(param));
 
           if (!this.filterSearch || toDisplay) {
             this.getUserCommits(user);
@@ -442,7 +449,6 @@ window.vSummary = {
 
         group.forEach((user) => {
           this.mergeCommits(user, mergedCommits, dateToIndexMap);
-          mergedCommits.sort(window.comparator((ele) => ele.date));
 
           this.mergeFileTypeContribution(user, mergedFileTypeContribution);
 
@@ -450,6 +456,7 @@ window.vSummary = {
           mergedVariance += user.variance;
         });
 
+        mergedCommits.sort(window.comparator((ele) => ele.date));
         group[0].commits = mergedCommits;
         group[0].fileTypeContribution = mergedFileTypeContribution;
         group[0].totalCommits = totalMergedCommits;
@@ -554,7 +561,9 @@ window.vSummary = {
         };
 
         this.addLineContributionWeek(endOfWeekMsWithinUntilMs, week, commits);
-        res.push(week);
+        if (week.commitResults.length > 0) {
+          res.push(week);
+        }
       }
     },
     addLineContributionWeek(endOfWeekMs, week, commits) {
@@ -618,8 +627,12 @@ window.vSummary = {
 
     // updating filters programically //
     resetDateRange() {
+      this.hasModifiedSinceDate = false;
+      this.hasModifiedUntilDate = false;
       this.tmpFilterSinceDate = '';
       this.tmpFilterUntilDate = '';
+      window.removeHash('since');
+      window.removeHash('until');
     },
 
     updateDateRange(since, until) {
@@ -680,27 +693,25 @@ window.vSummary = {
         totalCommits: user.totalCommits,
       });
     },
-
-    openTabZoomSubrange(userOrig) {
+    openTabZoomSubrange(user, repo, index) {
       // skip if accidentally clicked on ramp chart
       if (drags.length === 2 && drags[1] - drags[0]) {
         const tdiff = new Date(this.filterUntilDate) - new Date(this.filterSinceDate);
         const idxs = drags.map((x) => x * tdiff / 100);
         const tsince = getDateStr(new Date(this.filterSinceDate).getTime() + idxs[0]);
         const tuntil = getDateStr(new Date(this.filterSinceDate).getTime() + idxs[1]);
-
-        this.openTabZoom(userOrig, tsince, tuntil);
+        this.openTabZoom(user, tsince, tuntil, repo, index);
       }
     },
 
-    openTabZoom(userOrig, since, until) {
+    openTabZoom(user, since, until, repo, index) {
       const { avgCommitSize } = this;
-      const user = Object.assign({}, userOrig);
 
       this.$emit('view-zoom', {
         filterGroupSelection: this.filterGroupSelection,
         avgCommitSize,
         user,
+        location: this.getRepoLink(repo[index]),
         sinceDate: since,
         untilDate: until,
         isMergeGroup: this.isMergeGroup,
@@ -781,6 +792,13 @@ window.vSummary = {
         filtered.reverse();
       }
       return filtered;
+    },
+
+    getPercentile(index) {
+      if (this.filterGroupSelection === 'groupByNone') {
+        return (Math.round((index + 1) * 1000 / this.filtered[0].length) / 10).toFixed(1);
+      }
+      return (Math.round((index + 1) * 1000 / this.filtered.length) / 10).toFixed(1);
     },
 
     getGroupCommitsVariance(total, group) {

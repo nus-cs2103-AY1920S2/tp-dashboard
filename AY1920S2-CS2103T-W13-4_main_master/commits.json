@@ -42,6 +42,27 @@
             "deletions": 159
           }
         ]
+      },
+      {
+        "insertions": 654,
+        "deletions": 36,
+        "date": "2020-03-17",
+        "commitResults": [
+          {
+            "hash": "dfe2c6d0b6dfe111974c042be0f80671d1e616e0",
+            "messageTitle": "Updated and created new commands and logic",
+            "messageBody": "",
+            "insertions": 300,
+            "deletions": 2
+          },
+          {
+            "hash": "ef252534564506a15bc216034b25dee0b400d219",
+            "messageTitle": "Updated ModuleDataImporter to import Semester Data",
+            "messageBody": "",
+            "insertions": 354,
+            "deletions": 34
+          }
+        ]
       }
     ],
     "thetruevincentchow": [
@@ -114,9 +135,122 @@
             "deletions": 2
           }
         ]
+      },
+      {
+        "insertions": 1415,
+        "deletions": 112,
+        "date": "2020-03-10",
+        "commitResults": [
+          {
+            "hash": "1fcddd8cffaac9a47cad68bfe7fae3f110be6c6e",
+            "messageTitle": "Add serialization of `TimeTableMap` and related classes",
+            "messageBody": "`TimeTableMap`, `StudentSemester` and `Enrollment` can now be\nserialized and saved to file.\n\nEach `Student` now stores a `TimeTableMap`, allowing switching between\ntimetables to be implemented.\n",
+            "insertions": 355,
+            "deletions": 13
+          },
+          {
+            "hash": "3e6eb4d22a6dbd59a85c3137b710c958fedbef79",
+            "messageTitle": "Fix serialization of `TimeTableMap`",
+            "messageBody": "`TimeTableMap` is now serialized correctly (including component classes\nsuch as `Enrollment`)\n",
+            "insertions": 303,
+            "deletions": 15
+          },
+          {
+            "hash": "7e35f99bbea57fba9c1f93090de67b8db39068c6",
+            "messageTitle": "Implement `timetable active, list`",
+            "messageBody": "Switching between timetables is now possible with `timetable active year/YEAR sem/SEM`.\nA list of available years for the active student can be displayed with `timetable list`.\n",
+            "insertions": 398,
+            "deletions": 52
+          },
+          {
+            "hash": "273a6936a80455cbbf5b521699096323cae9692d",
+            "messageTitle": "Add `timetable add, remove`, checks to `module`",
+            "messageBody": "Timetables can be added and removed with the\n`timetable add/remove year/[YEAR] sem/[SEM]` sub-commands respectively.\nValidation has also been added to `module` sub-commands to reject the\ncommand if no student or timetable is active.\n\nA known bug is that the timetables of a `Student` instance isn\u0027t saved\nin the `students` list in JSON. This is due to `UniqueStudentList#get`\n(implemented by `ObservableList\u003cStudent\u003e`) returning a copy of the `Student` retrieved.\nThis will be fixed in a future commit.\n",
+            "insertions": 359,
+            "deletions": 32
+          }
+        ]
+      },
+      {
+        "insertions": 74,
+        "deletions": 195,
+        "date": "2020-03-14",
+        "commitResults": [
+          {
+            "hash": "c1269940707fe4bfe867774f33987c187952ac82",
+            "messageTitle": "Remove `PlannerModelManager`",
+            "messageBody": "`PlannerModelManager` has been removed. Its methods have been moved to\n`ModelManager`.\n\nFixed minor bug where the student name was used instead of the major name in\n`Student#toString`.\n",
+            "insertions": 40,
+            "deletions": 161
+          },
+          {
+            "hash": "fddb1548825cec687a86348e0226eda370653f07",
+            "messageTitle": "Refactor sample model methods into `SampleDataUtil`",
+            "messageBody": "Sample data methods for `Planenr`, `TimeTable`, `TimeTableMap` and\n`Student` are now in `SampleDataUtil`.\n",
+            "insertions": 34,
+            "deletions": 34
+          }
+        ]
+      },
+      {
+        "insertions": 582,
+        "deletions": 75,
+        "date": "2020-03-17",
+        "commitResults": [
+          {
+            "hash": "066fc06081ecda9bc38f9860ac26126156402d60",
+            "messageTitle": "Add `CumulativeGrade` and `student grade` command",
+            "messageBody": "Logic has been added to accumulate and calculate the student\u0027s overall\ngrade.\n\nThe `student grade` command now displays the student\u0027s overall grade and\nMCs taken. A further command to declare grades will be added in a later\ncommit.\n",
+            "insertions": 223,
+            "deletions": 40
+          },
+          {
+            "hash": "7d5f59993f51dfc586d919180ceeecb97af54e02",
+            "messageTitle": "Add `module grade` command",
+            "messageBody": "The `module grade` command can now be used to declare grades in the\nenrolled modules contained in the active semester\u0027s timetable.\n",
+            "insertions": 279,
+            "deletions": 26
+          },
+          {
+            "hash": "027c618406ea385983c08367b3d669ad96c67967",
+            "messageTitle": "Add display of individual module grades",
+            "messageBody": "The grade of each module is now displayed with the `student grade` command.\n\nAdditionally, `module grade MODULE_CODE` now shows the grade of the module in the active semester\u0027s timetable.\n",
+            "insertions": 80,
+            "deletions": 9
+          }
+        ]
       }
     ],
-    "DANamic": [],
+    "DANamic": [
+      {
+        "insertions": 246,
+        "deletions": 25,
+        "date": "2020-03-10",
+        "commitResults": [
+          {
+            "hash": "2c45d815f807fc288ced21d9d898794fd0ca23d5",
+            "messageTitle": "Implemented “major set” and “major status”, improved graduation requirements and fixed a bug that required \"Major\" to already be declared even if no initial data existed",
+            "messageBody": "",
+            "insertions": 246,
+            "deletions": 25
+          }
+        ]
+      },
+      {
+        "insertions": 319,
+        "deletions": 32,
+        "date": "2020-03-17",
+        "commitResults": [
+          {
+            "hash": "634eb17ceade1209666d1818f53cb40d950f2ac7",
+            "messageTitle": "Partially implemented FocusAreaGraduationRequirements, and improved handling of the rest of the Graduation Requirements needed",
+            "messageBody": "",
+            "insertions": 319,
+            "deletions": 32
+          }
+        ]
+      }
+    ],
     "gruntultra": [
       {
         "insertions": 220,
@@ -135,14 +269,14 @@
     ]
   },
   "authorFinalContributionMap": {
-    "capeguy": 1805,
-    "thetruevincentchow": 1712,
-    "DANamic": 0,
-    "gruntultra": 169
+    "capeguy": 2325,
+    "thetruevincentchow": 3489,
+    "DANamic": 532,
+    "gruntultra": 158
   },
   "authorFileTypeContributionMap": {
     "capeguy": {
-      "java": 1805,
+      "java": 2325,
       "md": 0,
       "fxml": 0,
       "sh": 0,
@@ -151,7 +285,7 @@
       "txt": 0
     },
     "thetruevincentchow": {
-      "java": 1711,
+      "java": 3488,
       "md": 0,
       "fxml": 1,
       "sh": 0,
@@ -160,7 +294,7 @@
       "txt": 0
     },
     "DANamic": {
-      "java": 0,
+      "java": 532,
       "md": 0,
       "fxml": 0,
       "sh": 0,
@@ -169,7 +303,7 @@
       "txt": 0
     },
     "gruntultra": {
-      "java": 169,
+      "java": 158,
       "md": 0,
       "fxml": 0,
       "sh": 0,
@@ -179,10 +313,10 @@
     }
   },
   "authorContributionVariance": {
-    "capeguy": 219547.19,
-    "thetruevincentchow": 75086.836,
-    "DANamic": 0.0,
-    "gruntultra": 1932.6385
+    "capeguy": 173190.19,
+    "thetruevincentchow": 127593.05,
+    "DANamic": 5603.5835,
+    "gruntultra": 1422.2227
   },
   "authorDisplayNameMap": {
     "capeguy": "CS2103T-W13-4 LAU ..AMIN",

@@ -2558,175 +2558,175 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "import static seedu.address.logic.commands.CommandWords.ADD_MODEL;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "import static seedu.address.logic.commands.CommandWords.MODULE;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;"
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "import seedu.address.model.Model;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+        "content": "import seedu.address.model.module.Module;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "import seedu.address.model.Model;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "import seedu.address.model.module.Module;"
+        "content": "/**"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": " * Adds a module to the TA-Tracker."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "/**"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": " * Adds a module to the TA-Tracker."
+        "content": "public class AddModuleCommand extends Command {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "PotatoCombat"
         },
-        "content": "public class AddModuleCommand extends Command {"
+        "content": "    public static final String COMMAND_WORD \u003d CommandWords.MODULE + \" \" + CommandWords.ADD_MODEL;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \" : Adds a module to the TA-Tracker. \""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public static final String COMMAND_WORD \u003d MODULE;"
+        "content": "            + \"Parameters: \""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \" \" + ADD_MODEL + \": Adds a module to the TA-Tracker. \""
+        "content": "            + PREFIX_NAME + \"MODULE NAME \""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            + \"Parameters: \""
+        "content": "            + PREFIX_MODULE + \"MODULE CODE \""
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "PotatoCombat"
         },
-        "content": "            + PREFIX_NAME + \"MODULE NAME \""
+        "content": "            + \"Example: \" + COMMAND_WORD + \" \""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            + PREFIX_MODULE + \"MODULE CODE \""
+        "content": "            + PREFIX_NAME + \"Introduction to AI \""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            + \"Example: \" + COMMAND_WORD + \" \" + ADD_MODEL + \" \""
+        "content": "            + PREFIX_MODULE + \"CS3243 \";"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            + PREFIX_NAME + \"Introduction to AI \""
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            + PREFIX_MODULE + \"CS3243 \";"
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New Module added: %s\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_DUPLICATE_SESSION \u003d \"This module already exists in the TATracker\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New Module added: %s\";"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public static final String MESSAGE_DUPLICATE_SESSION \u003d \"This module already exists in the TATracker\";"
+        "content": "    private final Module toAdd;"
       },
       {
         "lineNumber": 29,
@@ -2740,199 +2740,185 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    private final Module toAdd;"
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "     * Creates an AddCommand to add the specified {@code Module}"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Creates an AddCommand to add the specified {@code Module}"
+        "content": "    public AddModuleCommand(Module module) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "        requireNonNull(module);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public AddModuleCommand(Module module) {"
+        "content": "        toAdd \u003d module;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        requireNonNull(module);"
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        toAdd \u003d module;"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        requireNonNull(model);"
+        "content": "        if (model.hasModule(toAdd)) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "            throw new CommandException(MESSAGE_DUPLICATE_SESSION);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        if (model.hasModule(toAdd)) {"
+        "content": "        }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            throw new CommandException(MESSAGE_DUPLICATE_SESSION);"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        }"
+        "content": "        model.addModule(toAdd);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        model.addModule(toAdd);"
+        "content": "    }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "                || (other instanceof AddModuleCommand // instanceof handles nulls"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "                \u0026\u0026 toAdd.equals(((AddModuleCommand) other).toAdd));"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                || (other instanceof AddModuleCommand // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": "                \u0026\u0026 toAdd.equals(((AddModuleCommand) other).toAdd));"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 56,
         "author": {
           "gitId": "aakanksha-rai"
         },
@@ -2940,7 +2926,8 @@
       }
     ],
     "authorContributionMap": {
-      "aakanksha-rai": 58
+      "aakanksha-rai": 53,
+      "PotatoCombat": 3
     }
   },
   {
@@ -4387,6 +4374,386 @@
     "authorContributionMap": {
       "fatin99": 9,
       "-": 44
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/logic/commands/DeleteModuleCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "package seedu.address.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import static seedu.address.logic.commands.CommandWords.DELETE_MODEL;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import static seedu.address.logic.commands.CommandWords.MODULE;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import seedu.address.model.Model;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import seedu.address.model.module.Module;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": " * Deletes a module identified using it\u0027s module code."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "public class DeleteModuleCommand extends Command {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d MODULE + \" \" + DELETE_MODEL;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            + \": Deletes the module identified by the module code.\\n\""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            + \"Parameters: \" + PREFIX_MODULE + \" MODULE_CODE\\n\""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            + \"Example: \" + COMMAND_WORD + \" CS2013T\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public static final String MESSAGE_DELETE_MODULE_SUCCESS \u003d \"Deleted Module: %1$s\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public static final String MESSAGE_INVALID_MODULE_CODE \u003d \"There is no module with this module code.\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    private final Module module;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public DeleteModuleCommand(Module module) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        this.module \u003d module;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        if (!model.hasModule(module)) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            throw new CommandException(MESSAGE_INVALID_MODULE_CODE);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        Module moduleToDelete \u003d model.getModule(module);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        model.deleteModule(moduleToDelete);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        return new CommandResult(String.format(MESSAGE_DELETE_MODULE_SUCCESS, moduleToDelete));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "                || (other instanceof DeleteModuleCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "                \u0026\u0026 module.equals(((DeleteModuleCommand) other).module)); // state check"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "aakanksha-rai": 53
     }
   },
   {
@@ -9601,6 +9968,337 @@
     }
   },
   {
+    "path": "src/main/java/seedu/address/logic/parser/DeleteModuleCommandParser.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "package seedu.address.logic.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import java.util.stream.Stream;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import seedu.address.logic.commands.DeleteModuleCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "import seedu.address.model.module.Module;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": " * Parses input arguments and creates a new DeleteModuleCommand object"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "public class DeleteModuleCommandParser implements Parser\u003cDeleteModuleCommand\u003e {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * Parses the given {@code String} of arguments in the context of the DeleteModuleCommand"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * and returns an DeleteModuleCommand object for execution."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public DeleteModuleCommand parse(String args) throws ParseException {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        ArgumentMultimap argMultimap \u003d"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_MODULE);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        if (!arePrefixesPresent(argMultimap, PREFIX_MODULE)"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteModuleCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        String moduleCode \u003d ParserUtil.parseValue(argMultimap.getValue(PREFIX_MODULE).get());"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        Module module \u003d new Module(moduleCode, null);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        return new DeleteModuleCommand(module);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * Returns true if none of the prefixes contains empty {@code Optional} values in the given"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * {@code ArgumentMultimap}."
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        return Stream.of(prefixes).allMatch(prefix -\u003e argumentMultimap.getValue(prefix).isPresent());"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "aakanksha-rai": 46
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/logic/parser/DeleteStudentCommandParser.java",
     "fileType": "java",
     "lines": [
@@ -11390,80 +12088,73 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            // return new DeleteGroupCommandParser().parse(arguments);"
+        "content": "            return new DeleteModuleCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Delete group commands\"));"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        case CommandWords.EDIT_MODEL:"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        case CommandWords.EDIT_MODEL:"
+        "content": "            // return new EditGroupCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            // return new EditGroupCommandParser().parse(arguments);"
+        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Edit group commands\"));"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Edit group commands\"));"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        default:"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        default:"
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "aakanksha-rai"
         },
@@ -11471,7 +12162,7 @@
       }
     ],
     "authorContributionMap": {
-      "aakanksha-rai": 58
+      "aakanksha-rai": 57
     }
   },
   {
@@ -12825,325 +13516,332 @@
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "import seedu.address.logic.parser.session.EditSessionCommandParser;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": " * Parses user input into commands that interact with Session models."
+        "content": "/**"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": " */"
+        "content": " * Parses user input into commands that interact with Session models."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "public class SessionCommandParser {"
+        "content": " */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "public class SessionCommandParser {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "     * Used for initial separation of command word and args."
+        "content": "    /**"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "     */"
+        "content": "     * Used for initial separation of command word and args."
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
+        "content": "     */"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "    private static final String UNIMPLEMENTED_CODE_FORMAT \u003d \"%s not yet implemented!\";"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "    private static final String UNIMPLEMENTED_CODE_FORMAT \u003d \"%s not yet implemented!\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "     * Parses user input into command for execution."
+        "content": "    /**"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "     *"
+        "content": "     * Parses user input into command for execution."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "     * @param userInput full user input string"
+        "content": "     *"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "     * @return the command based on the user input"
+        "content": "     * @param userInput full user input string"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "     * @return the command based on the user input"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "     */"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "    public Command parseCommand(String userInput) throws ParseException {"
+        "content": "     */"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
+        "content": "    public Command parseCommand(String userInput) throws ParseException {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        if (!matcher.matches()) {"
+        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
+        "content": "        if (!matcher.matches()) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        }"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
+        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        switch (commandWord) {"
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        case CommandWords.ADD_MODEL:"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            // return new AddSessionCommandParser().parse(arguments);"
+        "content": "        case CommandWords.ADD_MODEL:"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Add session commands\"));"
+        "content": "            // return new AddSessionCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Add session commands\"));"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        case CommandWords.DELETE_MODEL:"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            // return new DeleteSessionCommandParser().parse(arguments);"
+        "content": "        case CommandWords.DELETE_MODEL:"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Delete session commands\"));"
+        "content": "            // return new DeleteSessionCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Delete session commands\"));"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        case CommandWords.EDIT_MODEL:"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            // return new EditSessionCommandParser().parse(arguments);"
+        "content": "        case CommandWords.EDIT_MODEL:"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Edit session commands\"));"
+        "content": "            return new EditSessionCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "            // throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Edit session commands\"));"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        default:"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        default:"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        }"
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 59,
+        "author": {
+          "gitId": "PotatoCombat"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
         "author": {
           "gitId": "PotatoCombat"
         },
@@ -13151,7 +13849,7 @@
       }
     ],
     "authorContributionMap": {
-      "PotatoCombat": 59
+      "PotatoCombat": 60
     }
   },
   {
@@ -13485,80 +14183,73 @@
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            // return new DeleteStudentCommandParser().parse(arguments);"
+        "content": "            return new DeleteStudentCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Delete student commands\"));"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "        case CommandWords.EDIT_MODEL:"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        case CommandWords.EDIT_MODEL:"
+        "content": "            // return new EditStudentCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            // return new EditStudentCommandParser().parse(arguments);"
+        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Edit student commands\"));"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            throw new ParseException(String.format(UNIMPLEMENTED_CODE_FORMAT, \"Edit student commands\"));"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": ""
+        "content": "        default:"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        default:"
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "PotatoCombat"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "PotatoCombat"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "PotatoCombat"
         },
@@ -13566,7 +14257,7 @@
       }
     ],
     "authorContributionMap": {
-      "PotatoCombat": 58
+      "PotatoCombat": 57
     }
   },
   {
@@ -16413,374 +17104,472 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Replaces the given module {@code target} in the list with {@code editedModule}."
+        "content": "     * Removes a module from TATracker."
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * {@code target} must exist in the address book."
+        "content": "     */"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * The module identity of {@code editedModule} must not be the same as another existing module in the address"
+        "content": "    public void deleteModule(Module module) {"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * book."
+        "content": "        modules.remove(module);"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public void setModule(Module target, Module editedModule) {"
+        "content": ""
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        requireNonNull(editedModule);"
+        "content": "    /**"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "     * Returns module from TATracker."
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        modules.setModule(target, editedModule);"
+        "content": "     */"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "    public Module getModule(Module module) {"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        return modules.getModule(module);"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Removes {@code key} from this {@code AddressBook}."
+        "content": ""
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * {@code key} must exist in the address book."
+        "content": "    /**"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "     * Replaces the given module {@code target} in the list with {@code editedModule}."
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public void removeModule(Module key) {"
+        "content": "     * {@code target} must exist in the address book."
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        modules.remove(key);"
+        "content": "     * The module identity of {@code editedModule} must not be the same as another existing module in the address"
       },
       {
         "lineNumber": 187,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "     * book."
       },
       {
         "lineNumber": 188,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 189,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    //// util methods"
+        "content": "    public void setModule(Module target, Module editedModule) {"
       },
       {
         "lineNumber": 190,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        requireNonNull(editedModule);"
       },
       {
         "lineNumber": 191,
         "author": {
-          "gitId": "-"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "        return students.asUnmodifiableObservableList().size() + \" students\";"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // TODO: refine later"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
         "content": ""
       },
       {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        modules.setModule(target, editedModule);"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * Removes {@code key} from this {@code AddressBook}."
+      },
+      {
         "lineNumber": 197,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": "     * {@code key} must exist in the address book."
       },
       {
         "lineNumber": 198,
         "author": {
-          "gitId": "fatin99"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    public ObservableList\u003cStudent\u003e getStudentList() {"
+        "content": "     */"
       },
       {
         "lineNumber": 199,
         "author": {
-          "gitId": "fatin99"
+          "gitId": "aakanksha-rai"
         },
-        "content": "        return students.asUnmodifiableObservableList();"
+        "content": "    public void removeModule(Module key) {"
       },
       {
         "lineNumber": 200,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        modules.remove(key);"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 202,
         "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "    public ObservableList\u003cSession\u003e getSessionList() {"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "        return sessions.asUnmodifiableObservableList();"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "chuayijing"
+          "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 207,
+        "lineNumber": 203,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "-"
+        },
+        "content": "    //// util methods"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "-"
         },
         "content": "    @Override"
       },
       {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "        return students.asUnmodifiableObservableList().size() + \" students\";"
+      },
+      {
         "lineNumber": 208,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "-"
         },
-        "content": "    public ObservableList\u003cModule\u003e getModuleList() {"
+        "content": "        // TODO: refine later"
       },
       {
         "lineNumber": 209,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "-"
         },
-        "content": "        return modules.asUnmodifiableObservableList();"
+        "content": "    }"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 212,
         "author": {
-          "gitId": "-"
+          "gitId": "fatin99"
         },
-        "content": "    @Override"
+        "content": "    public ObservableList\u003cStudent\u003e getStudentList() {"
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "-"
+          "gitId": "fatin99"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return students.asUnmodifiableObservableList();"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "-"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "    }"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "-"
         },
-        "content": "                || (other instanceof AddressBook // instanceof handles nulls"
+        "content": ""
       },
       {
         "lineNumber": 216,
         "author": {
-          "gitId": "fatin99"
+          "gitId": "chuayijing"
         },
-        "content": "                \u0026\u0026 students.equals(((AddressBook) other).students));"
+        "content": "    @Override"
       },
       {
         "lineNumber": 217,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    public ObservableList\u003cSession\u003e getSessionList() {"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        return sessions.asUnmodifiableObservableList();"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public ObservableList\u003cModule\u003e getModuleList() {"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        return modules.asUnmodifiableObservableList();"
+      },
+      {
+        "lineNumber": 224,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 218,
+        "lineNumber": 225,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 219,
+        "lineNumber": 226,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 220,
+        "lineNumber": 227,
         "author": {
           "gitId": "-"
         },
-        "content": "    public int hashCode() {"
+        "content": "    public boolean equals(Object other) {"
       },
       {
-        "lineNumber": 221,
+        "lineNumber": 228,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 229,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                || (other instanceof AddressBook // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 230,
         "author": {
           "gitId": "fatin99"
         },
-        "content": "        return students.hashCode();"
+        "content": "                \u0026\u0026 students.equals(((AddressBook) other).students));"
       },
       {
-        "lineNumber": 222,
+        "lineNumber": 231,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 223,
+        "lineNumber": 232,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 233,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "        return students.hashCode();"
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 237,
         "author": {
           "gitId": "-"
         },
@@ -16788,7 +17577,7 @@
       }
     ],
     "authorContributionMap": {
-      "aakanksha-rai": 40,
+      "aakanksha-rai": 54,
       "chuayijing": 41,
       "fatin99": 33,
       "-": 109
@@ -17487,7 +18276,7 @@
       {
         "lineNumber": 99,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": "     */"
       },
@@ -17501,14 +18290,14 @@
       {
         "lineNumber": 101,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": ""
       },
       {
         "lineNumber": 102,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": "    /**"
       },
@@ -17529,7 +18318,7 @@
       {
         "lineNumber": 105,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": "     */"
       },
@@ -17543,14 +18332,14 @@
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": ""
       },
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": "    /**"
       },
@@ -17571,7 +18360,7 @@
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": "     */"
       },
@@ -17585,14 +18374,14 @@
       {
         "lineNumber": 113,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": "    /**"
       },
@@ -17606,7 +18395,7 @@
       {
         "lineNumber": 116,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": "     * {@code target} must exist in the address book."
       },
@@ -17690,7 +18479,7 @@
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": "     */"
       },
@@ -17704,7 +18493,7 @@
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
         "content": ""
       },
@@ -17832,70 +18621,70 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Deletes the given module."
+        "content": "     * Replaces the given module {@code target} with {@code editedModule}."
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * The module must exist in the address book."
+        "content": "     * {@code target} must exist in the address book."
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "     * The module identity of {@code editedModule} must not be the same as another existing module in the address"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    void deleteModule(Module target);"
+        "content": "     * book."
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "    void setModule(Module target, Module editedModule);"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Replaces the given module {@code target} with {@code editedModule}."
+        "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * {@code target} must exist in the address book."
+        "content": "    /**"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * The module identity of {@code editedModule} must not be the same as another existing module in the address"
+        "content": "     * Updates the filter of the filtered module list to filter by the given {@code predicate}."
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * book."
+        "content": "     * @throws NullPointerException if {@code predicate} is null."
       },
       {
         "lineNumber": 158,
@@ -17909,52 +18698,80 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    void setModule(Module target, Module editedModule);"
+        "content": "    void updateFilteredModuleList(Predicate\u003cModule\u003e predicate);"
       },
       {
         "lineNumber": 160,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 161,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "     * Deletes a module."
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Updates the filter of the filtered module list to filter by the given {@code predicate}."
+        "content": "     */"
       },
       {
         "lineNumber": 163,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": "     * @throws NullPointerException if {@code predicate} is null."
+        "content": "    void deleteModule(Module module);"
       },
       {
         "lineNumber": 164,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    void updateFilteredModuleList(Predicate\u003cModule\u003e predicate);"
+        "content": "    /**"
       },
       {
         "lineNumber": 166,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * Returns a module with same module code."
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    Module getModule(Module module);"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 170,
         "author": {
           "gitId": "-"
         },
@@ -17962,10 +18779,10 @@
       }
     ],
     "authorContributionMap": {
-      "aakanksha-rai": 37,
-      "chuayijing": 24,
+      "aakanksha-rai": 45,
+      "chuayijing": 36,
       "fatin99": 18,
-      "-": 87
+      "-": 71
     }
   },
   {
@@ -18899,7 +19716,7 @@
       {
         "lineNumber": 133,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
         "content": "    }"
       },
@@ -18913,7 +19730,7 @@
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
         "content": "    @Override"
       },
@@ -18922,182 +19739,182 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public void deleteModule(Module target) {"
+        "content": "    public void setModule(Module target, Module editedModule) {"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        addressBook.removeModule(target);"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": "    public void setModule(Module target, Module editedModule) {"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
         "content": "        requireAllNonNull(target, editedModule);"
       },
       {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 144,
+        "lineNumber": 138,
         "author": {
           "gitId": "aakanksha-rai"
         },
         "content": "        addressBook.setModule(target, editedModule);"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 139,
         "author": {
           "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public void deleteModule(Module module) {"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        requireNonNull(module);"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        addressBook.deleteModule(module);"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "aakanksha-rai"
         },
         "content": "    }"
       },
       {
         "lineNumber": 146,
         "author": {
-          "gitId": "-"
+          "gitId": "aakanksha-rai"
         },
         "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public Module getModule(Module module) {"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        requireNonNull(module);"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        return addressBook.getModule(module);"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 153,
+        "author": {
           "gitId": "fatin99"
         },
         "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Student List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 154,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 155,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 156,
         "author": {
           "gitId": "fatin99"
         },
         "content": "     * Returns an unmodifiable view of the list of {@code Student} backed by the internal list of"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
         "content": "     * {@code versionedAddressBook}"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 160,
         "author": {
           "gitId": "fatin99"
         },
         "content": "    public ObservableList\u003cStudent\u003e getFilteredStudentList() {"
       },
       {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "        return filteredStudents;"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "    public void updateFilteredStudentList(Predicate\u003cStudent\u003e predicate) {"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        requireNonNull(predicate);"
-      },
-      {
         "lineNumber": 161,
         "author": {
           "gitId": "fatin99"
         },
-        "content": "        filteredStudents.setPredicate(predicate);"
+        "content": "        return filteredStudents;"
       },
       {
         "lineNumber": 162,
@@ -19116,51 +19933,51 @@
       {
         "lineNumber": 164,
         "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Session List Methods \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "chuayijing"
+          "gitId": "-"
         },
         "content": "    @Override"
       },
       {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "    public void updateFilteredStudentList(Predicate\u003cStudent\u003e predicate) {"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        requireNonNull(predicate);"
+      },
+      {
         "lineNumber": 167,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "fatin99"
         },
-        "content": "    public boolean hasSession(Session session) {"
+        "content": "        filteredStudents.setPredicate(predicate);"
       },
       {
         "lineNumber": 168,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "-"
         },
-        "content": "        requireNonNull(session);"
+        "content": "    }"
       },
       {
         "lineNumber": 169,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "-"
         },
-        "content": "        return addressBook.hasSession(session);"
+        "content": ""
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Session List Methods \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 171,
@@ -19181,21 +19998,21 @@
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public void addSession(Session session) {"
+        "content": "    public boolean hasSession(Session session) {"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        addressBook.addSession(session);"
+        "content": "        requireNonNull(session);"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);"
+        "content": "        return addressBook.hasSession(session);"
       },
       {
         "lineNumber": 176,
@@ -19223,182 +20040,182 @@
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public void deleteSession(Session target) {"
+        "content": "    public void addSession(Session session) {"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        addressBook.removeSession(target);"
+        "content": "        addressBook.addSession(session);"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "        updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public void setSession(Session target, Session editedSession) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        requireAllNonNull(target, editedSession);"
+        "content": "    public void deleteSession(Session target) {"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "        addressBook.removeSession(target);"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        addressBook.setSession(target, editedSession);"
+        "content": "    }"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Session List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "    public void setSession(Session target, Session editedSession) {"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "        requireAllNonNull(target, editedSession);"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * Returns an unmodifiable view of the list of {@code Session} backed by the internal list of"
+        "content": "        addressBook.setSession(target, editedSession);"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * {@code versionedAddressBook}"
+        "content": "    }"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    @Override"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Session List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public ObservableList\u003cSession\u003e getFilteredSessionList() {"
+        "content": ""
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        return filteredSessions;"
+        "content": "    /**"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "     * Returns an unmodifiable view of the list of {@code Session} backed by the internal list of"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "     * {@code versionedAddressBook}"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public void updateFilteredSessionList(Predicate\u003cSession\u003e predicate) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        requireNonNull(predicate);"
+        "content": "    public ObservableList\u003cSession\u003e getFilteredSessionList() {"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        filteredSessions.setPredicate(predicate);"
+        "content": "        return filteredSessions;"
       },
       {
         "lineNumber": 205,
@@ -19419,259 +20236,259 @@
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Others \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "    @Override"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    public void updateFilteredSessionList(Predicate\u003cSession\u003e predicate) {"
       },
       {
         "lineNumber": 209,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
-        "content": "    @Override"
+        "content": "        requireNonNull(predicate);"
       },
       {
         "lineNumber": 210,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": "        filteredSessions.setPredicate(predicate);"
       },
       {
         "lineNumber": 211,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
-        "content": "        // short circuit if same object"
+        "content": "    }"
       },
       {
         "lineNumber": 212,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": ""
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
-        "content": "            return true;"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Others \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 214,
         "author": {
-          "gitId": "-"
+          "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "-"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "    public boolean equals(Object obj) {"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!(obj instanceof ModelManager)) {"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "-"
         },
-        "content": "            return false;"
+        "content": "        if (obj \u003d\u003d this) {"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "-"
         },
-        "content": "        // state check"
+        "content": ""
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelManager other \u003d (ModelManager) obj;"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "-"
         },
-        "content": "        return addressBook.equals(other.addressBook)"
+        "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "-"
         },
-        "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
+        "content": "            return false;"
       },
       {
         "lineNumber": 225,
         "author": {
-          "gitId": "fatin99"
+          "gitId": "-"
         },
-        "content": "                \u0026\u0026 filteredStudents.equals(other.filteredStudents);"
+        "content": "        }"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // state check"
       },
       {
         "lineNumber": 228,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "-"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Module List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "        ModelManager other \u003d (ModelManager) obj;"
       },
       {
         "lineNumber": 229,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "        return addressBook.equals(other.addressBook)"
       },
       {
         "lineNumber": 230,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "-"
         },
-        "content": "    /**"
+        "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
       },
       {
         "lineNumber": 231,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "fatin99"
         },
-        "content": "     * Returns an unmodifiable view of the list of {@code Module} backed by the internal list of"
+        "content": "                \u0026\u0026 filteredStudents.equals(other.filteredStudents);"
       },
       {
         "lineNumber": 232,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": "     * {@code versionedAddressBook}"
-      },
-      {
-        "lineNumber": 233,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 234,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 235,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": "    public ObservableList\u003cModule\u003e getFilteredModuleList() {"
-      },
-      {
-        "lineNumber": 237,
-        "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": "        return filteredModules;"
-      },
-      {
-        "lineNumber": 238,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 239,
+        "lineNumber": 233,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Module List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 237,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * Returns an unmodifiable view of the list of {@code Module} backed by the internal list of"
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     * {@code versionedAddressBook}"
+      },
+      {
+        "lineNumber": 239,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "     */"
+      },
+      {
         "lineNumber": 240,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public void updateFilteredModuleList(Predicate\u003cModule\u003e predicate) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        requireNonNull(predicate);"
+        "content": "    public ObservableList\u003cModule\u003e getFilteredModuleList() {"
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        filteredModules.setPredicate(predicate);"
+        "content": "        return filteredModules;"
       },
       {
         "lineNumber": 244,
@@ -19683,16 +20500,58 @@
       {
         "lineNumber": 245,
         "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    public void updateFilteredModuleList(Predicate\u003cModule\u003e predicate) {"
+      },
+      {
+        "lineNumber": 248,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        requireNonNull(predicate);"
+      },
+      {
+        "lineNumber": 249,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        filteredModules.setPredicate(predicate);"
+      },
+      {
+        "lineNumber": 250,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 251,
+        "author": {
           "gitId": "-"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "aakanksha-rai": 30,
+      "aakanksha-rai": 44,
       "chuayijing": 50,
       "fatin99": 21,
-      "-": 144
+      "-": 136
     }
   },
   {
@@ -22548,255 +23407,262 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return str.toString();"
+        "content": "        str.append(\"]\");"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        return str.toString();"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Returns true if both modules have the same identifiers."
+        "content": "    /**"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "     * Returns true if both modules have the same identifiers."
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            return true;"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        if (!(other instanceof Module)) {"
+        "content": ""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            return false;"
+        "content": "        if (!(other instanceof Module)) {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        }"
+        "content": "            return false;"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        Module otherModule \u003d (Module) other;"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return otherModule.getIdentifier().equals(this.getIdentifier());"
+        "content": "        Module otherModule \u003d (Module) other;"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        return otherModule.getIdentifier().equals(this.getIdentifier());"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public int hashCode() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        // use this method for custom fields hashing instead of implementing your own"
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return Objects.hash(identifier);"
+        "content": "        // use this method for custom fields hashing instead of implementing your own"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        return Objects.hash(identifier);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public String toString() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        builder.append(getName())"
+        "content": "        final StringBuilder builder \u003d new StringBuilder();"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                .append(\" (\")"
+        "content": "        builder.append(getName())"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                .append(getIdentifier())"
+        "content": "                .append(\" (\")"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                .append(\") \")"
+        "content": "                .append(getIdentifier())"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                .append(groupsString());"
+        "content": "                .append(\") \")"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return builder.toString();"
+        "content": "                .append(groupsString());"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        return builder.toString();"
       },
       {
         "lineNumber": 124,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 125,
         "author": {
           "gitId": "aakanksha-rai"
         },
@@ -22804,7 +23670,7 @@
       }
     ],
     "authorContributionMap": {
-      "aakanksha-rai": 124
+      "aakanksha-rai": 125
     }
   },
   {
@@ -23392,465 +24258,528 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "    public Module getModule(Module module) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Removes the equivalent module from the list."
+        "content": "        for (int i \u003d 0; i \u003c internalList.size(); i++) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * The module must exist in the list."
+        "content": "            if (module.getIdentifier().equals(internalList.get(i).getIdentifier())) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "                return internalList.get(i);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public void remove(Module toRemove) {"
+        "content": "            }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        requireNonNull(toRemove);"
+        "content": "        }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        if (!internalList.remove(toRemove)) {"
+        "content": "        return null;"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            throw new ModuleNotFoundException();"
+        "content": "    }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "     * Removes the equivalent module from the list."
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public void setModules(UniqueModuleList replacement) {"
+        "content": "     * The module must exist in the list."
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        requireNonNull(replacement);"
+        "content": "     */"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        internalList.setAll(replacement.internalList);"
+        "content": "    public void remove(Module toRemove) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        requireNonNull(toRemove);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        if (!internalList.remove(toRemove)) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "            throw new ModuleNotFoundException();"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Replaces the contents of this list with {@code modules}."
+        "content": "        }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * {@code modules} must not contain duplicate modules."
+        "content": "    }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public void setModules(List\u003cModule\u003e modules) {"
+        "content": "    public void setModules(UniqueModuleList replacement) {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        requireAllNonNull(modules);"
+        "content": "        requireNonNull(replacement);"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        if (!modulesAreUnique(modules)) {"
+        "content": "        internalList.setAll(replacement.internalList);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            throw new DuplicateModuleException();"
+        "content": "    }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        internalList.setAll(modules);"
+        "content": "     * Replaces the contents of this list with {@code modules}."
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "     * {@code modules} must not contain duplicate modules."
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "    public void setModules(List\u003cModule\u003e modules) {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Returns the backing list as an unmodifiable {@code ObservableList}."
+        "content": "        requireAllNonNull(modules);"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "        if (!modulesAreUnique(modules)) {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public ObservableList\u003cModule\u003e asUnmodifiableObservableList() {"
+        "content": "            throw new DuplicateModuleException();"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return internalUnmodifiableList;"
+        "content": "        }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        internalList.setAll(modules);"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public Iterator\u003cModule\u003e iterator() {"
+        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return internalList.iterator();"
+        "content": "    /**"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "     * Returns the backing list as an unmodifiable {@code ObservableList}."
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": "    public ObservableList\u003cModule\u003e asUnmodifiableObservableList() {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return internalUnmodifiableList;"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "    }"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                || (other instanceof UniqueModuleList // instanceof handles nulls"
+        "content": ""
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                \u0026\u0026 internalList.equals(((UniqueModuleList) other).internalList));"
+        "content": "    @Override"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "    public Iterator\u003cModule\u003e iterator() {"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        return internalList.iterator();"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public int hashCode() {"
+        "content": ""
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return internalList.hashCode();"
+        "content": "    @Override"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "                || (other instanceof UniqueModuleList // instanceof handles nulls"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Returns true if {@code persons} contains only unique persons."
+        "content": "                \u0026\u0026 internalList.equals(((UniqueModuleList) other).internalList));"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    private boolean modulesAreUnique(List\u003cModule\u003e modules) {"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        for (int i \u003d 0; i \u003c modules.size() - 1; i++) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            for (int j \u003d i + 1; j \u003c modules.size(); j++) {"
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                if (modules.get(i).equals(modules.get(j))) {"
+        "content": "        return internalList.hashCode();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                    return false;"
+        "content": "    }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "                }"
+        "content": ""
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            }"
+        "content": "    /**"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        }"
+        "content": "     * Returns true if {@code persons} contains only unique persons."
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return true;"
+        "content": "     */"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "    private boolean modulesAreUnique(List\u003cModule\u003e modules) {"
       },
       {
         "lineNumber": 142,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        for (int i \u003d 0; i \u003c modules.size() - 1; i++) {"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            for (int j \u003d i + 1; j \u003c modules.size(); j++) {"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "                if (modules.get(i).equals(modules.get(j))) {"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "                    return false;"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 151,
         "author": {
           "gitId": "aakanksha-rai"
         },
@@ -23858,7 +24787,7 @@
       }
     ],
     "authorContributionMap": {
-      "aakanksha-rai": 142
+      "aakanksha-rai": 151
     }
   },
   {
@@ -37858,7 +38787,7 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        public ObservableList\u003cModule\u003e getFilteredModuleList() {"
+        "content": "        public Module getModule(Module module) {"
       },
       {
         "lineNumber": 206,
@@ -37893,7 +38822,7 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        public void updateFilteredModuleList(Predicate\u003cModule\u003e predicate) {"
+        "content": "        public ObservableList\u003cModule\u003e getFilteredModuleList() {"
       },
       {
         "lineNumber": 211,
@@ -37912,86 +38841,86 @@
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "chuayijing"
+          "gitId": "aakanksha-rai"
         },
         "content": ""
       },
       {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        @Override"
+      },
+      {
         "lineNumber": 215,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": "        public void updateFilteredModuleList(Predicate\u003cModule\u003e predicate) {"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * A Model stub that contains a single module."
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 217,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "        }"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    private class ModelStubWithSession extends ModelStub {"
+        "content": "    }"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        private final Session session;"
+        "content": ""
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 221,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "aakanksha-rai"
         },
-        "content": "        ModelStubWithSession(Session session) {"
+        "content": "     * A Model stub that contains a single module."
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            requireNonNull(session);"
+        "content": "     */"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            this.session \u003d session;"
+        "content": "    private class ModelStubWithSession extends ModelStub {"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": "        private final Session session;"
       },
       {
         "lineNumber": 225,
@@ -38005,68 +38934,68 @@
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        @Override"
+        "content": "        ModelStubWithSession(Session session) {"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        public boolean hasSession(Session session) {"
+        "content": "            requireNonNull(session);"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            requireNonNull(session);"
+        "content": "            this.session \u003d session;"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            return this.session.isSameSession(session);"
+        "content": "        }"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 231,
         "author": {
-          "gitId": "aakanksha-rai"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 232,
-        "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "chuayijing"
         },
         "content": "        @Override"
       },
       {
+        "lineNumber": 232,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        public boolean hasSession(Session session) {"
+      },
+      {
         "lineNumber": 233,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "chuayijing"
         },
-        "content": "        public ObservableList\u003cModule\u003e getFilteredModuleList() {"
+        "content": "            requireNonNull(session);"
       },
       {
         "lineNumber": 234,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "chuayijing"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "            return this.session.isSameSession(session);"
       },
       {
         "lineNumber": 235,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "chuayijing"
         },
         "content": "        }"
       },
@@ -38089,7 +39018,7 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        public void updateFilteredModuleList(Predicate\u003cModule\u003e predicate) {"
+        "content": "        public ObservableList\u003cModule\u003e getFilteredModuleList() {"
       },
       {
         "lineNumber": 239,
@@ -38124,7 +39053,7 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        public boolean hasModule(Module module) {"
+        "content": "        public void updateFilteredModuleList(Predicate\u003cModule\u003e predicate) {"
       },
       {
         "lineNumber": 244,
@@ -38159,7 +39088,7 @@
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        public void addModule(Module module) {"
+        "content": "        public boolean hasModule(Module module) {"
       },
       {
         "lineNumber": 249,
@@ -38178,474 +39107,579 @@
       {
         "lineNumber": 251,
         "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 253,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        public void addModule(Module module) {"
+      },
+      {
+        "lineNumber": 254,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 255,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 256,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 257,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 258,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        public void deleteModule(Module module) {"
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 262,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 263,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        public Module getModule(Module module) {"
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "aakanksha-rai"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 266,
+        "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 252,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 253,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 254,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "     * A Model stub that contains a single student."
-      },
-      {
-        "lineNumber": 255,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 256,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "    private class ModelStubWithStudent extends ModelStub {"
-      },
-      {
-        "lineNumber": 257,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "        private final Student student;"
-      },
-      {
-        "lineNumber": 258,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 259,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "        ModelStubWithStudent(Student student) {"
-      },
-      {
-        "lineNumber": 260,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "            requireNonNull(student);"
-      },
-      {
-        "lineNumber": 261,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "            this.student \u003d student;"
-      },
-      {
-        "lineNumber": 262,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 263,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 264,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 265,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "        public boolean hasStudent(Student student) {"
-      },
-      {
-        "lineNumber": 266,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "            requireNonNull(student);"
-      },
-      {
         "lineNumber": 267,
         "author": {
-          "gitId": "fatin99"
+          "gitId": "-"
         },
-        "content": "            return this.student.isSameStudent(student);"
+        "content": ""
       },
       {
         "lineNumber": 268,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 269,
         "author": {
-          "gitId": "-"
+          "gitId": "fatin99"
         },
-        "content": "    }"
+        "content": "     * A Model stub that contains a single student."
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 271,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "fatin99"
         },
-        "content": "    /**"
+        "content": "    private class ModelStubWithStudent extends ModelStub {"
       },
       {
         "lineNumber": 272,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "fatin99"
         },
-        "content": "     * A Model stub that always accept the session being added."
+        "content": "        private final Student student;"
       },
       {
         "lineNumber": 273,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "-"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 274,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "fatin99"
         },
-        "content": "    private class ModelStubAcceptingSessionAdded extends ModelStub {"
+        "content": "        ModelStubWithStudent(Student student) {"
       },
       {
         "lineNumber": 275,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "fatin99"
         },
-        "content": "        final ArrayList\u003cSession\u003e sessionsAdded \u003d new ArrayList\u003c\u003e();"
+        "content": "            requireNonNull(student);"
       },
       {
         "lineNumber": 276,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "fatin99"
         },
-        "content": ""
+        "content": "            this.student \u003d student;"
       },
       {
         "lineNumber": 277,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "-"
         },
-        "content": "        @Override"
+        "content": "        }"
       },
       {
         "lineNumber": 278,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "-"
         },
-        "content": "        public boolean hasSession(Session session) {"
+        "content": ""
       },
       {
         "lineNumber": 279,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "-"
         },
-        "content": "            requireNonNull(session);"
+        "content": "        @Override"
       },
       {
         "lineNumber": 280,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "            return sessionsAdded.stream().anyMatch(session::isSameSession);"
-      },
-      {
-        "lineNumber": 281,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 282,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 283,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 284,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "        public void addSession(Session session) {"
-      },
-      {
-        "lineNumber": 285,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "            requireNonNull(session);"
-      },
-      {
-        "lineNumber": 286,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "            sessionsAdded.add(session);"
-      },
-      {
-        "lineNumber": 287,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 288,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 289,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 290,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "        public ReadOnlyAddressBook getAddressBook() {"
-      },
-      {
-        "lineNumber": 291,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "            return new AddressBook();"
-      },
-      {
-        "lineNumber": 292,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 293,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 294,
-        "author": {
-          "gitId": "chuayijing"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 295,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 296,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "     * A Model stub that always accept the student being added."
-      },
-      {
-        "lineNumber": 297,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 298,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "    private class ModelStubAcceptingStudentAdded extends ModelStub {"
-      },
-      {
-        "lineNumber": 299,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "        final ArrayList\u003cStudent\u003e studentsAdded \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 300,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 301,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 302,
         "author": {
           "gitId": "fatin99"
         },
         "content": "        public boolean hasStudent(Student student) {"
       },
       {
-        "lineNumber": 303,
+        "lineNumber": 281,
         "author": {
           "gitId": "fatin99"
         },
         "content": "            requireNonNull(student);"
       },
       {
-        "lineNumber": 304,
+        "lineNumber": 282,
         "author": {
           "gitId": "fatin99"
         },
-        "content": "            return studentsAdded.stream().anyMatch(student::isSameStudent);"
+        "content": "            return this.student.isSameStudent(student);"
       },
       {
-        "lineNumber": 305,
+        "lineNumber": 283,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 306,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 307,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 308,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "        public void addStudent(Student student) {"
-      },
-      {
-        "lineNumber": 309,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "            requireNonNull(student);"
-      },
-      {
-        "lineNumber": 310,
-        "author": {
-          "gitId": "fatin99"
-        },
-        "content": "            studentsAdded.add(student);"
-      },
-      {
-        "lineNumber": 311,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 312,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 313,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 314,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public ReadOnlyAddressBook getAddressBook() {"
-      },
-      {
-        "lineNumber": 315,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            return new AddressBook();"
-      },
-      {
-        "lineNumber": 316,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 317,
+        "lineNumber": 284,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 285,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 286,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 287,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "     * A Model stub that always accept the session being added."
+      },
+      {
+        "lineNumber": 288,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 289,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    private class ModelStubAcceptingSessionAdded extends ModelStub {"
+      },
+      {
+        "lineNumber": 290,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        final ArrayList\u003cSession\u003e sessionsAdded \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 291,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 292,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 293,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        public boolean hasSession(Session session) {"
+      },
+      {
+        "lineNumber": 294,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "            requireNonNull(session);"
+      },
+      {
+        "lineNumber": 295,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "            return sessionsAdded.stream().anyMatch(session::isSameSession);"
+      },
+      {
+        "lineNumber": 296,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 297,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 298,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 299,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        public void addSession(Session session) {"
+      },
+      {
+        "lineNumber": 300,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "            requireNonNull(session);"
+      },
+      {
+        "lineNumber": 301,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "            sessionsAdded.add(session);"
+      },
+      {
+        "lineNumber": 302,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 303,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 304,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 305,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        public ReadOnlyAddressBook getAddressBook() {"
+      },
+      {
+        "lineNumber": 306,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "            return new AddressBook();"
+      },
+      {
+        "lineNumber": 307,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 308,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 309,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 310,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 311,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "     * A Model stub that always accept the student being added."
+      },
+      {
+        "lineNumber": 312,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 313,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "    private class ModelStubAcceptingStudentAdded extends ModelStub {"
+      },
+      {
+        "lineNumber": 314,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "        final ArrayList\u003cStudent\u003e studentsAdded \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 315,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 316,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 317,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "        public boolean hasStudent(Student student) {"
+      },
+      {
         "lineNumber": 318,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "            requireNonNull(student);"
+      },
+      {
+        "lineNumber": 319,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "            return studentsAdded.stream().anyMatch(student::isSameStudent);"
+      },
+      {
+        "lineNumber": 320,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 321,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 322,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 323,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "        public void addStudent(Student student) {"
+      },
+      {
+        "lineNumber": 324,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "            requireNonNull(student);"
+      },
+      {
+        "lineNumber": 325,
+        "author": {
+          "gitId": "fatin99"
+        },
+        "content": "            studentsAdded.add(student);"
+      },
+      {
+        "lineNumber": 326,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 327,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 328,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 329,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        public ReadOnlyAddressBook getAddressBook() {"
+      },
+      {
+        "lineNumber": 330,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return new AddressBook();"
+      },
+      {
+        "lineNumber": 331,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 332,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 333,
         "author": {
           "gitId": "-"
         },
@@ -38653,7 +39687,7 @@
       }
     ],
     "authorContributionMap": {
-      "aakanksha-rai": 53,
+      "aakanksha-rai": 68,
       "chuayijing": 71,
       "PotatoCombat": 10,
       "fatin99": 37,

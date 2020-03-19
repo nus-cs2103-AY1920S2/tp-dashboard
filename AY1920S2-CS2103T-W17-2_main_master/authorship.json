@@ -26036,213 +26036,262 @@
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public final String blockBody;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    /*"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "    * The string can be empty (initialization of an empty body) but"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Constructs a {@code Body}."
+        "content": "    * the body cannot contain only whitespace characters, e.g. \"  \" is invalid."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     *"
+        "content": "    */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param body A valid body."
+        "content": "    public static final String VALIDATION_REGEX \u003d \"(?!^ +$)^.+$\";"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public Body(String body) {"
+        "content": "    public final String blockBody;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        requireNonNull(body);"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        checkArgument(isValidBody(body), MESSAGE_CONSTRAINTS);"
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        blockBody \u003d body;"
+        "content": "     * Constructs a {@code Body}."
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    }"
+        "content": "     *"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "     * @param body A valid body."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Returns true if a given string is a valid body."
+        "content": "    public Body(String body) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     *"
+        "content": "        requireNonNull(body);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param test The body string to test."
+        "content": "        checkArgument(isValidBody(body), MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "        blockBody \u003d body;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public static boolean isValidBody(String test) {"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        return !test.isBlank();"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "     * Returns true if a given string is a valid body."
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "     *"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Returns a String of the Body contents."
+        "content": "     * @param test The body string to test."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     *"
+        "content": "     */"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @return Body text string."
+        "content": "    public static boolean isValidBody(String test) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "        return test.equals(\"\") || test.matches(VALIDATION_REGEX);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public String getText() {"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        return this.blockBody;"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 43,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * Returns a String of the Body contents."
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @return Body text string."
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public String getText() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return this.blockBody;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
         "author": {
           "gitId": "firzanarmani"
         },
@@ -26250,7 +26299,7 @@
       }
     ],
     "authorContributionMap": {
-      "firzanarmani": 43
+      "firzanarmani": 50
     }
   },
   {
@@ -26332,374 +26381,367 @@
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d"
+        "content": "            \"Titles should only contain alphanumeric characters and spaces, and it should not be blank\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "            \"Titles should only contain alphanumeric characters and spaces, and it should not be blank\";"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    /*"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /*"
+        "content": "     * The first character of the title must not be a whitespace,"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * The first character of the title must not be a whitespace,"
+        "content": "     * otherwise \" \" (a blank string) becomes a valid input."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * otherwise \" \" (a blank string) becomes a valid input."
+        "content": "     */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "    public static final String VALIDATION_REGEX \u003d \"\\\\p{Alnum}[\\\\p{Alnum} ]*\";"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public static final String VALIDATION_REGEX \u003d \"\\\\p{Alnum}[\\\\p{Alnum} ]*\";"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    public final String blockTitle;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public final String blockTitle;"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "     * Constructs a {@code Title}."
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Constructs a {@code Title}."
+        "content": "     *"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     *"
+        "content": "     * @param title A valid title."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param title A valid title."
+        "content": "     */"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "    public Title(String title) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public Title(String title) {"
+        "content": "        requireNonNull(title);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        requireNonNull(title);"
+        "content": "        checkArgument(isValidTitle(title), MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        checkArgument(isValidTitle(title), MESSAGE_CONSTRAINTS);"
+        "content": "        blockTitle \u003d title;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        blockTitle \u003d title;"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "     * Returns true if a given string is a valid title."
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Returns true if a given string is a valid title."
+        "content": "     *"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     *"
+        "content": "     * @param test The title string to test."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param test The title string to test."
+        "content": "     */"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "    public static boolean isValidTitle(String test) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public static boolean isValidTitle(String test) {"
+        "content": "        return test.matches(VALIDATION_REGEX);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        return test.matches(VALIDATION_REGEX);"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "     * Returns a String of the Title content."
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Returns a String of the Title content."
+        "content": "     *"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     *"
+        "content": "     * @return Title text string."
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @return Title text string."
+        "content": "     */"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "    public String getText() {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public String getText() {"
+        "content": "        return this.blockTitle;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        return this.blockTitle;"
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    @Override"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "                || (other instanceof Title // instanceof handles nulls"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "                || (other instanceof Title // instanceof handles nulls"
+        "content": "                \u0026\u0026 blockTitle.equals(((Title) other).blockTitle)); // state check"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "                \u0026\u0026 blockTitle.equals(((Title) other).blockTitle)); // state check"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    @Override"
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    public int hashCode() {"
+        "content": "        return blockTitle.hashCode();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "        return blockTitle.hashCode();"
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "firzanarmani"
-        },
         "content": ""
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 63,
         "author": {
           "gitId": "firzanarmani"
         },
@@ -26707,7 +26749,7 @@
       }
     ],
     "authorContributionMap": {
-      "firzanarmani": 64
+      "firzanarmani": 63
     }
   },
   {
@@ -51933,6 +51975,549 @@
     "authorContributionMap": {
       "kevinputera": 2,
       "-": 19
+    }
+  },
+  {
+    "path": "src/test/java/com/notably/model/block/BodyTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "package com.notably.model.block;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static com.notably.testutil.Assert.assertThrows;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "public class BodyTest {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void constructor_null_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new Body(null));"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void isValidBody() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        // Null body"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e Body.isValidBody(null));"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        // Invalid body"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertFalse(Body.isValidBody(\" \")); //Single whitespace character"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertFalse(Body.isValidBody(\"     \")); //Multiple whitespace character"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        // TODO: By v1.3, identify any narrowing scopes for Body content, if body is to contain markdown"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        // Valid body"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Body.isValidBody(\"\")); // Empty body (for Body initialization without content)"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Body.isValidBody(\"01032020\")); // Numbers only"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Body.isValidBody(\"This is \")); // Letters only (Upper and lower case)"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Body.isValidBody(\"lecture 2 begins with 4 examples\")); // Alphanumeric characters"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Body.isValidBody(\"  Today is another day\")); // Leading whitespace"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Body.isValidBody(\"Lorem ipsum dolor sit amet, consectetur 44 adipiscing elit, sed do \""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            + \"eiusmod! Tempor \u0026 incididunt ut labore et aliqua.\")); // Long body with non-alphanumeric characters"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "firzanarmani": 35
+    }
+  },
+  {
+    "path": "src/test/java/com/notably/model/block/TitleTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "package com.notably.model.block;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static com.notably.testutil.Assert.assertThrows;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "public class TitleTest {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void constructor_null_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new Title(null));"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void constructor_invalidTitle_throwsIllegalArgumentException() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        String invalidTitle \u003d \"\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(IllegalArgumentException.class, () -\u003e new Title(invalidTitle));"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void isValidTitle() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        // Null title"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e Title.isValidTitle(null));"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        // Invalid title"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertFalse(Title.isValidTitle(\"\")); // Empty string"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertFalse(Title.isValidTitle(\" \")); // Spaces only"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertFalse(Title.isValidTitle(\" Week 2 Lecture\")); // Leading whitespace"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertFalse(Title.isValidTitle(\"Week 2: Lecture\")); // Contains non-alphanumeric characters"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        // Valid title"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Title.isValidTitle(\"25\")); // Numbers only"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Title.isValidTitle(\"weekly notes\")); // Letters only (and non-leading whitespace)"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Title.isValidTitle(\"lecture 2\")); // Alphanumeric characters"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Title.isValidTitle(\"Lecture Week 2\")); // With uppercase characters"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(Title.isValidTitle(\"2018 Year 1 Semester 1 CS2103 Week 2 Lecture Notes\")); // Long title"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "firzanarmani": 40
     }
   },
   {

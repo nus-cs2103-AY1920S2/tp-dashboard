@@ -5893,7 +5893,7 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public static final String VALIDATION_REGEX \u003d \"(\\\\/\\\\p{Alnum}+)+\\\\/?\";"
+        "content": "    public static final String VALIDATION_REGEX \u003d \"\\\\/||(\\\\/\\\\p{Alnum}+)+\\\\/?\";"
       },
       {
         "lineNumber": 15,
@@ -38628,255 +38628,318 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void fromString_invalidInputString1_exceptionThrown() {"
+        "content": "    public void fromString_validEmptyString_generateAbsolutePath() throws InvalidPathException {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertThrows(InvalidPathException.class, () -\u003e AbsolutePath.fromString(\"CS2103/notes\"));"
+        "content": "        final AbsolutePath testInput \u003d AbsolutePath.fromString(\"/\");"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        List\u003cString\u003e paths \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void fromString_invalidInputString2_exceptionThrown() {"
+        "content": "        assertEquals(paths, testInput.getComponents());"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertThrows(InvalidPathException.class, () -\u003e AbsolutePath.fromString(\"/../CS2103/notes\"));"
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "    public void fromString_invalidInputString1_exceptionThrown() {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void toRelativePath_validInput_correctedPath() throws InvalidPathException {"
+        "content": "        assertThrows(InvalidPathException.class, () -\u003e AbsolutePath.fromString(\"CS2103/notes\"));"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final AbsolutePath inputAbsolutePath \u003d AbsolutePath.fromString(\"/CS2103/notes/hello\");"
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final AbsolutePath inputCurrPath \u003d AbsolutePath.fromString(\"/CS2103\");"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final RelativePath expectedOutput \u003d RelativePath.fromString(\"notes/hello\");"
+        "content": "    public void fromString_invalidInputString2_exceptionThrown() {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        assertThrows(InvalidPathException.class, () -\u003e AbsolutePath.fromString(\"/../CS2103/notes\"));"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertEquals(expectedOutput, inputAbsolutePath.toRelativePath(inputCurrPath));"
+        "content": "    }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "    public void toRelativePath_validInput_correctedPath() throws InvalidPathException {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void fromRelativePath_validInput_convertedAbsolutePath() throws InvalidPathException {"
+        "content": "        final AbsolutePath inputAbsolutePath \u003d AbsolutePath.fromString(\"/CS2103/notes/hello\");"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final RelativePath inputRelPath \u003d RelativePath.fromString(\"../../hello\");"
+        "content": "        final AbsolutePath inputCurrPath \u003d AbsolutePath.fromString(\"/CS2103\");"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final AbsolutePath inputCurrPath \u003d AbsolutePath.fromString(\"/CS2103/filler\");"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        final RelativePath expectedOutput \u003d RelativePath.fromString(\"notes/hello\");"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        List\u003cString\u003e expectedPaths \u003d new ArrayList\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        expectedPaths.add(\"hello\");"
+        "content": "        assertEquals(expectedOutput, inputAbsolutePath.toRelativePath(inputCurrPath));"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertEquals(expectedPaths, AbsolutePath.fromRelativePath(inputRelPath, inputCurrPath).getComponents());"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    public void fromRelativePath_validInput_convertedAbsolutePath() throws InvalidPathException {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "        final RelativePath inputRelPath \u003d RelativePath.fromString(\"../../hello\");"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void fromRelativePath_invalidInput_exceptionThrown() throws InvalidPathException {"
+        "content": "        final AbsolutePath inputCurrPath \u003d AbsolutePath.fromString(\"/CS2103/filler\");"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final RelativePath inputRelPath \u003d RelativePath.fromString(\"../../hello\");"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final AbsolutePath inputCurrPath \u003d AbsolutePath.fromString(\"/CS2103\");"
+        "content": "        List\u003cString\u003e expectedPaths \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertThrows(InvalidPathException.class, () -\u003e AbsolutePath.fromRelativePath(inputRelPath, inputCurrPath));"
+        "content": "        expectedPaths.add(\"hello\");"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 64,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertEquals(expectedPaths, AbsolutePath.fromRelativePath(inputRelPath, inputCurrPath).getComponents());"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    public void fromRelativePath_invalidInput_exceptionThrown() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        final RelativePath inputRelPath \u003d RelativePath.fromString(\"../../hello\");"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        final AbsolutePath inputCurrPath \u003d AbsolutePath.fromString(\"/CS2103\");"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertThrows(InvalidPathException.class, () -\u003e AbsolutePath.fromRelativePath(inputRelPath, inputCurrPath));"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
         "author": {
           "gitId": "ljiazh3ng"
         },
@@ -38884,7 +38947,7 @@
       }
     ],
     "authorContributionMap": {
-      "ljiazh3ng": 64
+      "ljiazh3ng": 73
     }
   },
   {

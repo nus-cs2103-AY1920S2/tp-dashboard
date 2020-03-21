@@ -5653,307 +5653,530 @@
     }
   },
   {
-    "path": "src/main/java/seedu/address/logic/commands/FindCommand.java",
+    "path": "src/main/java/seedu/address/logic/commands/FindGuestCommand.java",
     "fileType": "java",
     "lines": [
       {
         "lineNumber": 1,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "package seedu.address.logic.commands;"
       },
       {
         "lineNumber": 2,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "import static java.util.Objects.requireNonNull;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.commons.core.Messages;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.model.Model;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.model.hotel.person.NameContainsKeywordsPredicate;"
+        "content": "import java.util.HashSet;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": " * Finds and lists all persons in address book whose name contains any of the argument keywords."
+        "content": "import seedu.address.commons.core.Messages;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": " * Keyword matching is case insensitive."
+        "content": "import seedu.address.model.Model;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": " */"
+        "content": "import seedu.address.model.hotel.person.MatchNamePredicate;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "public class FindCommand extends Command {"
+        "content": "import seedu.address.model.hotel.person.MatchPersonIdPredicate;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import seedu.address.model.hotel.person.Name;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
+        "content": "import seedu.address.model.hotel.person.Person;"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import seedu.address.model.ids.PersonId;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all persons whose names contain any of \""
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
+        "content": "/**"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "            + \"Parameters: KEYWORD [MORE_KEYWORDS]...\\n\""
+        "content": " * Finds and lists all persons in address book whose match specified names of ids."
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "            + \"Example: \" + COMMAND_WORD + \" alice bob charlie\";"
+        "content": " */"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "public class FindGuestCommand extends Command {"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    private final NameContainsKeywordsPredicate predicate;"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"findguest\";"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public FindCommand(NameContainsKeywordsPredicate predicate) {"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        this.predicate \u003d predicate;"
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": return all people with matching id or matching name\""
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    }"
+        "content": "            + \"Parameters: [i/ID] ... [i/ID] [n/KEYWORD] ... [n/KEYWORD] \\n\""
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "            + \"Example: \" + COMMAND_WORD + \" \""
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    @Override"
+        "content": "            + PREFIX_ID + \"A0000000\" + \" \""
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "            + PREFIX_ID + \"B0000000\" + \" \""
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        requireNonNull(model);"
+        "content": "            + PREFIX_NAME + \"Alice\";"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
-        },
-        "content": "        model.updateFilteredPersonList(predicate);"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        return new CommandResult("
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    private final HashSet\u003cName\u003e nameList;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    private final HashSet\u003cPersonId\u003e personIdList;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    /**"
+      },
+      {
         "lineNumber": 36,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    @Override"
+        "content": "     * Constructor for findguestcommand."
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "     * @param nameList"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "     * @param personIdList"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "                || (other instanceof FindCommand // instanceof handles nulls"
+        "content": "     */"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "                \u0026\u0026 predicate.equals(((FindCommand) other).predicate)); // state check"
+        "content": "    public FindGuestCommand(HashSet\u003cName\u003e nameList, HashSet\u003cPersonId\u003e personIdList) {"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    }"
+        "content": "        this.nameList \u003d nameList;"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
+        },
+        "content": "        this.personIdList \u003d personIdList;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public CommandResult execute(Model model) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        Predicate\u003cPerson\u003e predicate \u003d new MatchNamePredicate(nameList).or("
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            new MatchPersonIdPredicate(personIdList)"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        model.updateFilteredPersonList(predicate);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return new CommandResult("
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        if (other \u003d\u003d this) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        if (!(other instanceof FindGuestCommand)) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        FindGuestCommand othCommand \u003d (FindGuestCommand) other;"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return othCommand.nameList.equals(nameList)"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            \u0026\u0026 othCommand.personIdList.equals(personIdList);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return nameList.toString() + \" \" + personIdList.toString();"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "tanphatls987"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 1,
-      "-": 41
+      "tanphatls987": 74
     }
   },
   {
@@ -8137,9 +8360,9 @@
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.logic.commands.FindCommand;"
+        "content": "import seedu.address.logic.commands.FindGuestCommand;"
       },
       {
         "lineNumber": 19,
@@ -8522,16 +8745,16 @@
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        case FindCommand.COMMAND_WORD:"
+        "content": "        case FindGuestCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "            return new FindCommandParser().parse(arguments);"
+        "content": "            return new FindGuestCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 75,
@@ -8578,7 +8801,7 @@
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "sancharib-git"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -8689,11 +8912,11 @@
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 4,
-      "sancharib-git": 8,
+      "tanphatls987": 7,
+      "sancharib-git": 7,
       "dawidjaja": 3,
       "youaremysky99": 3,
-      "-": 74,
+      "-": 72,
       "hmtey": 4
     }
   },
@@ -10019,244 +10242,460 @@
     }
   },
   {
-    "path": "src/main/java/seedu/address/logic/parser/FindCommandParser.java",
+    "path": "src/main/java/seedu/address/logic/parser/FindGuestCommandParser.java",
     "fileType": "java",
     "lines": [
       {
         "lineNumber": 1,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "package seedu.address.logic.parser;"
       },
       {
         "lineNumber": 2,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.logic.commands.FindCommand;"
+        "content": "import java.util.HashSet;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import java.util.stream.Collectors;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.model.hotel.person.NameContainsKeywordsPredicate;"
+        "content": "import java.util.stream.Stream;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "/**"
+        "content": "import seedu.address.logic.commands.FindGuestCommand;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": " * Parses input arguments and creates a new FindCommand object"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": " */"
+        "content": "import seedu.address.model.hotel.person.Name;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "public class FindCommandParser implements Parser\u003cFindCommand\u003e {"
+        "content": "import seedu.address.model.ids.PersonId;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    /**"
+        "content": "/**"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the FindCommand"
+        "content": " * Parses input arguments and creates a new FindGuestCommand object"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "     * and returns a FindCommand object for execution."
+        "content": " */"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "public class FindGuestCommandParser implements Parser\u003cFindGuestCommand\u003e {"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public FindCommand parse(String args) throws ParseException {"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        String trimmedArgs \u003d args.trim();"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        if (trimmedArgs.isEmpty()) {"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new ParseException("
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * Parses the given {@code String} of arguments in the context of the FindGuestCommand"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * and returns a FindGuestCommand object for execution."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public FindGuestCommand parse(String args) throws ParseException {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        ArgumentMultimap argMultimap \u003d"
+      },
+      {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        String[] nameKeywords \u003d trimmedArgs.split(\"\\\\s+\");"
+        "content": "            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ID);"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));"
+        "content": "        if (!isAnyPrefixPresent(argMultimap, PREFIX_NAME, PREFIX_ID)) {"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    }"
+        "content": "            throw new ParseException("
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "                String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
+        },
+        "content": "                    FindGuestCommand.MESSAGE_USAGE)"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            );"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        HashSet\u003cPersonId\u003e personIdList \u003d getPersonIdList(argMultimap);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        HashSet\u003cName\u003e nameList \u003d getNameList(argMultimap);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return new FindGuestCommand(nameList, personIdList);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    private HashSet\u003cPersonId\u003e getPersonIdList(ArgumentMultimap argMultimap) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return new HashSet\u003c\u003e(argMultimap"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            .getAllValues(PREFIX_ID)"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            .stream()"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            .map(PersonId::new)"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            .collect(Collectors.toList())"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    private HashSet\u003cName\u003e getNameList(ArgumentMultimap argMultimap) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return new HashSet\u003c\u003e(argMultimap"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            .getAllValues(PREFIX_NAME)"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            .stream()"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            .map(Name::new)"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            .collect(Collectors.toList())"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    private boolean isAnyPrefixPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return Stream.of(prefixes).anyMatch(prefix -\u003e argumentMultimap.getValue(prefix).isPresent());"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    };"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "tanphatls987"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 1,
-      "-": 32
+      "tanphatls987": 64
     }
   },
   {
@@ -19065,6 +19504,724 @@
     }
   },
   {
+    "path": "src/main/java/seedu/address/model/hotel/person/MatchNamePredicate.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "package seedu.address.model.hotel.person;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.HashSet;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.function.Predicate;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": " * Check if the person name is in a predetermine list."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "public class MatchNamePredicate implements Predicate\u003cPerson\u003e {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    private final HashSet\u003cName\u003e nameList;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * Create predicate with nameList"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * @param nameList"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public MatchNamePredicate(HashSet\u003cName\u003e nameList) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        ///nameList may change later on"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        this.nameList \u003d nameList;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * Altenative constructor."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * @param nameList"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public MatchNamePredicate(List\u003cName\u003e nameList) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        this.nameList \u003d new HashSet\u003c\u003e(nameList);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * Evaluates this predicate on the given argument."
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * @param person the input argument"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * @return {@code true} if the input argument matches the predicate,"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * otherwise {@code false}"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public boolean test(Person person) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return nameList.contains(person.getName());"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public boolean equals(Object oth) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        if (this \u003d\u003d oth) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        if (!(oth instanceof MatchNamePredicate)) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        MatchNamePredicate othPred \u003d (MatchNamePredicate) oth;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return othPred.nameList.equals(nameList);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tanphatls987": 53
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/model/hotel/person/MatchPersonIdPredicate.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "package seedu.address.model.hotel.person;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.HashSet;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.function.Predicate;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import seedu.address.model.ids.PersonId;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": " * Check if person have personId in a predetermine list."
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "public class MatchPersonIdPredicate implements Predicate\u003cPerson\u003e {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    private final HashSet\u003cPersonId\u003e personIdList;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * Create predicate."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * @param personIdList"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public MatchPersonIdPredicate(HashSet\u003cPersonId\u003e personIdList) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        ///personIdList may change later"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        this.personIdList \u003d personIdList;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * Altenative constructor."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     * @param personIdList"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public MatchPersonIdPredicate(List\u003cPersonId\u003e personIdList) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        this.personIdList \u003d new HashSet\u003c\u003e(personIdList);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public boolean test(Person person) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return personIdList.contains(person.getPersonId());"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public boolean equals(Object oth) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        if (this \u003d\u003d oth) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        if (!(oth instanceof MatchPersonIdPredicate)) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        MatchPersonIdPredicate othPred \u003d (MatchPersonIdPredicate) oth;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return othPred.personIdList.equals(personIdList);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tanphatls987": 47
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/model/hotel/person/Name.java",
     "fileType": "java",
     "lines": [
@@ -19485,233 +20642,6 @@
     "authorContributionMap": {
       "tanphatls987": 1,
       "-": 58
-    }
-  },
-  {
-    "path": "src/main/java/seedu/address/model/hotel/person/NameContainsKeywordsPredicate.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "tanphatls987"
-        },
-        "content": "package seedu.address.model.hotel.person;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.util.List;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.util.function.Predicate;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.commons.util.StringUtil;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " * Tests that a {@code Person}\u0027s {@code Name} matches any of the keywords given."
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "public class NameContainsKeywordsPredicate implements Predicate\u003cPerson\u003e {"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private final List\u003cString\u003e keywords;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public NameContainsKeywordsPredicate(List\u003cString\u003e keywords) {"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        this.keywords \u003d keywords;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public boolean test(Person person) {"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        return keywords.stream()"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                .anyMatch(keyword -\u003e StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public boolean equals(Object other) {"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                || (other instanceof NameContainsKeywordsPredicate // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                \u0026\u0026 keywords.equals(((NameContainsKeywordsPredicate) other).keywords)); // state check"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "tanphatls987": 1,
-      "-": 30
     }
   },
   {
@@ -20736,82 +21666,96 @@
       {
         "lineNumber": 146,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "                .append(\" Phone: \")"
+        "content": "                .append(\" PersonId \")"
       },
       {
         "lineNumber": 147,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "                .append(getPhone())"
+        "content": "                .append(getPersonId())"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "-"
         },
-        "content": "                .append(\" Email: \")"
+        "content": "                .append(\" Phone: \")"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "-"
         },
-        "content": "                .append(getEmail())"
+        "content": "                .append(getPhone())"
       },
       {
         "lineNumber": 150,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                .append(\" Email: \")"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                .append(getEmail())"
+      },
+      {
+        "lineNumber": 152,
         "author": {
           "gitId": "sancharib-git"
         },
         "content": "                .append(\" Remark: \")"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 153,
         "author": {
           "gitId": "sancharib-git"
         },
         "content": "                .append(getRemark())"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 154,
         "author": {
           "gitId": "-"
         },
         "content": "                .append(\" Tags: \");"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 155,
         "author": {
           "gitId": "-"
         },
         "content": "        getTags().forEach(builder::append);"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 156,
         "author": {
           "gitId": "-"
         },
         "content": "        return builder.toString();"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
@@ -20819,7 +21763,7 @@
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 31,
+      "tanphatls987": 33,
       "sancharib-git": 12,
       "-": 114
     }
@@ -22785,13 +23729,48 @@
       {
         "lineNumber": 33,
         "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return serializedId.hashCode();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
           "gitId": "youaremysky99"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 21,
+      "tanphatls987": 26,
       "youaremysky99": 12
     }
   },
@@ -22956,13 +23935,48 @@
       {
         "lineNumber": 23,
         "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return super.hashCode();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
           "gitId": "youaremysky99"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 17,
+      "tanphatls987": 22,
       "youaremysky99": 6
     }
   },
@@ -31304,9 +32318,9 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import java.util.HashSet;"
       },
       {
         "lineNumber": 14,
@@ -31355,7 +32369,7 @@
         "author": {
           "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.model.hotel.person.NameContainsKeywordsPredicate;"
+        "content": "import seedu.address.model.hotel.person.MatchPersonIdPredicate;"
       },
       {
         "lineNumber": 21,
@@ -32088,47 +33102,54 @@
       {
         "lineNumber": 125,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        final String[] splitName \u003d person.getName().fullName.split(\"\\\\s+\");"
+        "content": "        model.updateFilteredPersonList(new MatchPersonIdPredicate("
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));"
+        "content": "            new HashSet\u003c\u003e(List.of(person.getPersonId())))"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "        );"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(1, model.getFilteredPersonList().size());"
+        "content": ""
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        assertEquals(1, model.getFilteredPersonList().size());"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 131,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 132,
         "author": {
           "gitId": "-"
         },
@@ -32136,9 +33157,9 @@
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 7,
+      "tanphatls987": 11,
       "sancharib-git": 6,
-      "-": 118
+      "-": 115
     }
   },
   {
@@ -34136,7 +35157,7 @@
     }
   },
   {
-    "path": "src/test/java/seedu/address/logic/commands/FindCommandTest.java",
+    "path": "src/test/java/seedu/address/logic/commands/FindGuestCommandTest.java",
     "fileType": "java",
     "lines": [
       {
@@ -34191,23 +35212,23 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.CARL;"
+        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.ELLE;"
+        "content": "import static seedu.address.testutil.TypicalPersons.BENSON;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.FIONA;"
+        "content": "import static seedu.address.testutil.TypicalPersons.CARL;"
       },
       {
         "lineNumber": 11,
@@ -34233,23 +35254,23 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import java.util.Collections;"
+        "content": "import java.util.HashSet;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 17,
@@ -34263,399 +35284,399 @@
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.model.Model;"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.model.ModelManager;"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.model.UserPrefs;"
+        "content": "import seedu.address.model.Model;"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "tanphatls987"
+          "gitId": "-"
         },
-        "content": "import seedu.address.model.hotel.person.NameContainsKeywordsPredicate;"
+        "content": "import seedu.address.model.ModelManager;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import seedu.address.model.UserPrefs;"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "/**"
+        "content": "import seedu.address.model.hotel.person.Name;"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": " * Contains integration tests (interaction with the Model) for {@code FindCommand}."
+        "content": "import seedu.address.model.hotel.person.Person;"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": " */"
+        "content": "import seedu.address.model.ids.PersonId;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "public class FindCommandTest {"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "    private Model model \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
+        "content": "/**"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    private Model expectedModel \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
+        "content": " * Contains integration tests (interaction with the Model) for {@code FindGuestCommand}."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    @Test"
+        "content": "public class FindGuestCommandTest {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void equals() {"
+        "content": "    private Model model \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate firstPredicate \u003d"
+        "content": "    private Model expectedModel \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"first\"));"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate secondPredicate \u003d"
+        "content": "    @Test"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"second\"));"
+        "content": "    public void equals() {"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "        HashSet\u003cName\u003e nameList \u003d new HashSet\u003c\u003e(List.of(new Name(\"Alice\")));"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        FindCommand findFirstCommand \u003d new FindCommand(firstPredicate);"
+        "content": "        HashSet\u003cPersonId\u003e personIdList \u003d new HashSet\u003c\u003e(List.of(new PersonId(\"A0\")));"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": "        FindCommand findSecondCommand \u003d new FindCommand(secondPredicate);"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "        FindGuestCommand findFirstCommand \u003d new FindGuestCommand(nameList, new HashSet\u003c\u003e());"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        // same object -\u003e returns true"
+        "content": "        FindGuestCommand findSecondCommand \u003d new FindGuestCommand(new HashSet\u003c\u003e(), personIdList);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(findFirstCommand.equals(findFirstCommand));"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // same object -\u003e returns true"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "        // same values -\u003e returns true"
+        "content": "        assertTrue(findFirstCommand.equals(findFirstCommand));"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "        FindCommand findFirstCommandCopy \u003d new FindCommand(firstPredicate);"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(findFirstCommand.equals(findFirstCommandCopy));"
+        "content": "        // same values -\u003e returns true"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "        FindGuestCommand findFirstCommandCopy \u003d new FindGuestCommand(nameList, new HashSet\u003c\u003e());"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "        // different types -\u003e returns false"
+        "content": "        assertTrue(findFirstCommand.equals(findFirstCommandCopy));"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(findFirstCommand.equals(1));"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // different types -\u003e returns false"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "        // null -\u003e returns false"
+        "content": "        assertFalse(findFirstCommand.equals(1));"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(findFirstCommand.equals(null));"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // null -\u003e returns false"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "        // different person -\u003e returns false"
+        "content": "        assertFalse(findFirstCommand.equals(null));"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(findFirstCommand.equals(findSecondCommand));"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        // different person -\u003e returns false"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertFalse(findFirstCommand.equals(findSecondCommand));"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void execute_zeroKeywords_noPersonFound() {"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
-        "content": "        String expectedMessage \u003d String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate predicate \u003d preparePredicate(\" \");"
+        "content": "    @Test"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": "        FindCommand command \u003d new FindCommand(predicate);"
+        "content": "    public void execute_multipleKeywords_multiplePersonsFound() {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "        expectedModel.updateFilteredPersonList(predicate);"
+        "content": "        String expectedMessage \u003d String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertEquals(Collections.emptyList(), model.getFilteredPersonList());"
+        "content": "        List\u003cName\u003e nameList \u003d List.of(ALICE.getName(), BENSON.getName());"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    }"
+        "content": "        List\u003cPersonId\u003e personIdList \u003d List.of(CARL.getPersonId());"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public void execute_multipleKeywords_multiplePersonsFound() {"
+        "content": "        Predicate\u003cPerson\u003e predicate \u003d preparePredicate(nameList, personIdList);"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        String expectedMessage \u003d String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);"
+        "content": "        FindGuestCommand command \u003d prepareCommand(nameList, personIdList);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate predicate \u003d preparePredicate(\"Kurz Elle Kunz\");"
+        "content": "        expectedModel.updateFilteredPersonList(predicate);"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        FindCommand command \u003d new FindCommand(predicate);"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "        expectedModel.updateFilteredPersonList(predicate);"
+        "content": "        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
+        "content": "        assertEquals(Arrays.asList(ALICE, BENSON, CARL), model.getFilteredPersonList());"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());"
+        "content": ""
       },
       {
         "lineNumber": 75,
@@ -34674,47 +35695,54 @@
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    /**"
+        "content": "    private Predicate\u003cPerson\u003e preparePredicate(List\u003cName\u003e nameList, List\u003cPersonId\u003e personIdList) {"
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}."
+        "content": "        return u -\u003e nameList.contains(u.getName())"
       },
       {
         "lineNumber": 79,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "     */"
+        "content": "            || personIdList.contains(u.getPersonId());"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    private NameContainsKeywordsPredicate preparePredicate(String userInput) {"
+        "content": "    }"
       },
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split(\"\\\\s+\")));"
+        "content": "    private FindGuestCommand prepareCommand(List\u003cName\u003e nameList, List\u003cPersonId\u003e personIdList) {"
       },
       {
         "lineNumber": 82,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        return new FindGuestCommand(new HashSet\u003c\u003e(nameList), new HashSet\u003c\u003e(personIdList));"
+      },
+      {
+        "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
@@ -34722,8 +35750,8 @@
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 1,
-      "-": 82
+      "tanphatls987": 31,
+      "-": 53
     }
   },
   {
@@ -37101,65 +38129,65 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "dawidjaja"
+          "gitId": "tanphatls987"
         },
-        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import static seedu.address.testutil.Assert.assertThrows;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "dawidjaja"
         },
-        "content": "import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import static seedu.address.testutil.Assert.assertThrows;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": "import java.util.List;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import java.util.stream.Collectors;"
+        "content": "import java.util.HashSet;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": "import java.util.stream.Collectors;"
       },
       {
         "lineNumber": 16,
@@ -37171,670 +38199,761 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "tanphatls987"
+          "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.AddGuestCommand;"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.ClearCommand;"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.logic.commands.DeleteCommand;"
+        "content": "import seedu.address.logic.commands.AddGuestCommand;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.EditCommand;"
+        "content": "import seedu.address.logic.commands.ClearCommand;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;"
+        "content": "import seedu.address.logic.commands.DeleteCommand;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.ExitCommand;"
+        "content": "import seedu.address.logic.commands.EditCommand;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.FindCommand;"
+        "content": "import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.HelpCommand;"
+        "content": "import seedu.address.logic.commands.ExitCommand;"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.logic.commands.ListCommand;"
+        "content": "import seedu.address.logic.commands.FindGuestCommand;"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "dawidjaja"
+          "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.RemarkCommand;"
+        "content": "import seedu.address.logic.commands.HelpCommand;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.address.logic.commands.ListCommand;"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "tanphatls987"
+          "gitId": "dawidjaja"
         },
-        "content": "import seedu.address.model.hotel.person.NameContainsKeywordsPredicate;"
+        "content": "import seedu.address.logic.commands.RemarkCommand;"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "tanphatls987"
+          "gitId": "-"
         },
-        "content": "import seedu.address.model.hotel.person.Person;"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.model.hotel.person.Remark;"
+        "content": "import seedu.address.model.hotel.person.Name;"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
+        "content": "import seedu.address.model.hotel.person.Person;"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.model.hotel.person.Remark;"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.testutil.PersonUtil;"
+        "content": "import seedu.address.model.ids.PersonId;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "public class AddressBookParserTest {"
+        "content": "import seedu.address.testutil.PersonBuilder;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import seedu.address.testutil.PersonUtil;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "    private final AddressBookParser parser \u003d new AddressBookParser();"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "public class AddressBookParserTest {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "tanphatls987"
+          "gitId": "-"
         },
-        "content": "    public void parseCommand_addGuest() throws Exception {"
+        "content": "    private final AddressBookParser parser \u003d new AddressBookParser();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "        Person person \u003d new PersonBuilder().build();"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "tanphatls987"
+          "gitId": "-"
         },
-        "content": "        AddGuestCommand command \u003d (AddGuestCommand) parser.parseCommand(PersonUtil.getAddGuestCommand(person));"
+        "content": "    @Test"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "tanphatls987"
         },
-        "content": "        assertEquals(new AddGuestCommand(person), command);"
+        "content": "    public void parseCommand_addGuest() throws Exception {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        Person person \u003d new PersonBuilder().build();"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "        AddGuestCommand command \u003d (AddGuestCommand) parser.parseCommand(PersonUtil.getAddGuestCommand(person));"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    @Test"
+        "content": "        assertEquals(new AddGuestCommand(person), command);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_clear() throws Exception {"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + \" 3\") instanceof ClearCommand);"
+        "content": "    @Test"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    public void parseCommand_clear() throws Exception {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + \" 3\") instanceof ClearCommand);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_delete() throws Exception {"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "        DeleteCommand command \u003d (DeleteCommand) parser.parseCommand("
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": "                DeleteCommand.COMMAND_WORD + \" \" + INDEX_FIRST_PERSON.getOneBased());"
+        "content": "    @Test"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);"
+        "content": "    public void parseCommand_delete() throws Exception {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        DeleteCommand command \u003d (DeleteCommand) parser.parseCommand("
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "                DeleteCommand.COMMAND_WORD + \" \" + INDEX_FIRST_PERSON.getOneBased());"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_edit() throws Exception {"
+        "content": "    }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": "        Person person \u003d new PersonBuilder().build();"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "        EditPersonDescriptor descriptor \u003d new EditPersonDescriptorBuilder(person).build();"
+        "content": "    @Test"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "        EditCommand command \u003d (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + \" \""
+        "content": "    public void parseCommand_edit() throws Exception {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": "                + INDEX_FIRST_PERSON.getOneBased() + \" \" + PersonUtil.getEditPersonDescriptorDetails(descriptor));"
+        "content": "        Person person \u003d new PersonBuilder().build();"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);"
+        "content": "        EditPersonDescriptor descriptor \u003d new EditPersonDescriptorBuilder(person).build();"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        EditCommand command \u003d (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + \" \""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "                + INDEX_FIRST_PERSON.getOneBased() + \" \" + PersonUtil.getEditPersonDescriptorDetails(descriptor));"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_exit() throws Exception {"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + \" 3\") instanceof ExitCommand);"
+        "content": "    @Test"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    public void parseCommand_exit() throws Exception {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + \" 3\") instanceof ExitCommand);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_find() throws Exception {"
+        "content": "    }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "        List\u003cString\u003e keywords \u003d Arrays.asList(\"foo\", \"bar\", \"baz\");"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "        FindCommand command \u003d (FindCommand) parser.parseCommand("
+        "content": "    @Test"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": "                FindCommand.COMMAND_WORD + \" \" + keywords.stream().collect(Collectors.joining(\" \")));"
+        "content": "    public void parseCommand_find() throws Exception {"
       },
       {
         "lineNumber": 79,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);"
+        "content": "        List\u003cString\u003e nameList \u003d List.of(\"John\", \"Alex\");"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    }"
+        "content": "        List\u003cString\u003e personIdList \u003d List.of(\"B13\", \"C28\");"
       },
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "        FindGuestCommand command \u003d (FindGuestCommand) parser.parseCommand("
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    @Test"
+        "content": "                FindGuestCommand.COMMAND_WORD + \" \""
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public void parseCommand_help() throws Exception {"
+        "content": "                    + nameList.stream().map(p -\u003e PREFIX_NAME + p)"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);"
+        "content": "                        .collect(Collectors.joining(\" \")) + \" \""
       },
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + \" 3\") instanceof HelpCommand);"
+        "content": "                    + personIdList.stream().map(p -\u003e PREFIX_ID + p)"
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    }"
+        "content": "                        .collect(Collectors.joining(\" \"))"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "        );"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    @Test"
+        "content": "        HashSet\u003cName\u003e nameHashSet \u003d new HashSet\u003c\u003e();"
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public void parseCommand_list() throws Exception {"
+        "content": "        nameList.forEach(u -\u003e nameHashSet.add(new Name(u)));"
       },
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);"
+        "content": "        HashSet\u003cPersonId\u003e personIdHashSet \u003d new HashSet\u003c\u003e();"
       },
       {
         "lineNumber": 91,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + \" 3\") instanceof ListCommand);"
+        "content": "        personIdList.forEach(u -\u003e personIdHashSet.add(new PersonId(u)));"
       },
       {
         "lineNumber": 92,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    }"
+        "content": "        assertEquals(new FindGuestCommand(nameHashSet, personIdHashSet), command);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 94,
         "author": {
-          "gitId": "dawidjaja"
+          "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
-          "gitId": "dawidjaja"
+          "gitId": "-"
         },
-        "content": "    public void parseCommand_remark() throws Exception {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 96,
         "author": {
-          "gitId": "dawidjaja"
+          "gitId": "-"
         },
-        "content": "        final Remark remark \u003d new Remark(\"Some remark.\");"
+        "content": "    public void parseCommand_help() throws Exception {"
       },
       {
         "lineNumber": 97,
         "author": {
-          "gitId": "dawidjaja"
+          "gitId": "-"
         },
-        "content": "        RemarkCommand command \u003d (RemarkCommand) parser.parseCommand(RemarkCommand.COMMAND_WORD + \" \""
+        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);"
       },
       {
         "lineNumber": 98,
         "author": {
-          "gitId": "dawidjaja"
+          "gitId": "-"
         },
-        "content": "            + INDEX_FIRST_PERSON.getOneBased() + \" \" + PREFIX_REMARK + remark.value);"
+        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + \" 3\") instanceof HelpCommand);"
       },
       {
         "lineNumber": 99,
         "author": {
-          "gitId": "dawidjaja"
-        },
-        "content": "        assertEquals(new RemarkCommand(INDEX_FIRST_PERSON, remark), command);"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "dawidjaja"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 100,
         "author": {
-          "gitId": "dawidjaja"
+          "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_list() throws Exception {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_unrecognisedInput_throwsParseException() {"
+        "content": "        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()"
+        "content": "        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + \" 3\") instanceof ListCommand);"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
-        "content": "            -\u003e parser.parseCommand(\"\"));"
+        "content": "    }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "-"
+          "gitId": "dawidjaja"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "    public void parseCommand_remark() throws Exception {"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "        final Remark remark \u003d new Remark(\"Some remark.\");"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "        RemarkCommand command \u003d (RemarkCommand) parser.parseCommand(RemarkCommand.COMMAND_WORD + \" \""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "            + INDEX_FIRST_PERSON.getOneBased() + \" \" + PREFIX_REMARK + remark.value);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "        assertEquals(new RemarkCommand(INDEX_FIRST_PERSON, remark), command);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "dawidjaja"
         },
         "content": ""
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 115,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 116,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_unknownCommand_throwsParseException() {"
+        "content": "    public void parseCommand_unrecognisedInput_throwsParseException() {"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 117,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -\u003e parser.parseCommand(\"unknownCommand\"));"
+        "content": "        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 118,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            -\u003e parser.parseCommand(\"\"));"
+      },
+      {
+        "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 120,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void parseCommand_unknownCommand_throwsParseException() {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -\u003e parser.parseCommand(\"unknownCommand\"));"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 125,
         "author": {
           "gitId": "-"
         },
@@ -37842,9 +38961,9 @@
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 7,
+      "tanphatls987": 26,
       "dawidjaja": 10,
-      "-": 95
+      "-": 89
     }
   },
   {
@@ -39252,251 +40371,369 @@
     }
   },
   {
-    "path": "src/test/java/seedu/address/logic/parser/FindCommandParserTest.java",
+    "path": "src/test/java/seedu/address/logic/parser/FindGuestCommandParserTest.java",
     "fileType": "java",
     "lines": [
       {
         "lineNumber": 1,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "package seedu.address.logic.parser;"
       },
       {
         "lineNumber": 2,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;"
+        "content": "import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
-        },
-        "content": "import org.junit.jupiter.api.Test;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.HashSet;"
+      },
+      {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.logic.commands.FindCommand;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.model.hotel.person.NameContainsKeywordsPredicate;"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "public class FindCommandParserTest {"
+        "content": "import seedu.address.logic.commands.FindGuestCommand;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import seedu.address.model.hotel.person.Name;"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    private FindCommandParser parser \u003d new FindCommandParser();"
+        "content": "import seedu.address.model.ids.PersonId;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    @Test"
+        "content": "public class FindGuestCommandParserTest {"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
-        },
-        "content": "    public void parse_emptyArg_throwsParseException() {"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertParseFailure(parser, \"     \", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 20,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
+        },
+        "content": "    private FindGuestCommandParser parser \u003d new FindGuestCommandParser();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "tanphatls987"
         },
         "content": "    @Test"
       },
       {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    public void parse_emptyArg_throwsParseException() {"
+      },
+      {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    public void parse_validArgs_returnsFindCommand() {"
+        "content": "        assertParseFailure(parser, \"     \","
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        // no leading and trailing whitespaces"
+        "content": "            String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        FindCommand expectedFindCommand \u003d"
+        "content": "                FindGuestCommand.MESSAGE_USAGE)"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "                new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(\"Alice\", \"Bob\")));"
+        "content": "        );"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertParseSuccess(parser, \"Alice Bob\", expectedFindCommand);"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        // multiple whitespaces between keywords"
+        "content": "    @Test"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertParseSuccess(parser, \" \\n Alice \\n \\t Bob  \\t\", expectedFindCommand);"
+        "content": "    public void parse_validArgs_returnsFindCommand() {"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "    }"
+        "content": "        // no leading and trailing whitespaces"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "        HashSet\u003cName\u003e nameUse \u003d new HashSet\u003c\u003e();"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
+        },
+        "content": "        nameUse.add(new Name(\"Alice\"));"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        nameUse.add(new Name(\"Bob\"));"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        HashSet\u003cPersonId\u003e personIdUse \u003d new HashSet\u003c\u003e();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        personIdUse.add(new PersonId(\"B000000\"));"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        personIdUse.add(new PersonId(\"D000000\"));"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        StringBuilder userInput \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        nameUse.forEach(u -\u003e userInput.append(PREFIX_NAME + u.fullName + \" \"));"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        personIdUse.forEach(u -\u003e userInput.append(PREFIX_ID + u.toString() + \" \"));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        assertEquals(userInput.toString(), \"n/Bob n/Alice i/B000000 i/D000000 \");"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        FindGuestCommand expectedFindGuestCommand \u003d new FindGuestCommand(nameUse, personIdUse);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        assertParseSuccess(parser, \" \" + userInput.toString(), expectedFindGuestCommand);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "tanphatls987"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 1,
-      "-": 33
+      "tanphatls987": 51
     }
   },
   {
@@ -39711,990 +40948,983 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String VALID_ADDRESS \u003d \"123 Main Street #0505\";"
+        "content": "    private static final String VALID_EMAIL \u003d \"rachel@example.com\";"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String VALID_EMAIL \u003d \"rachel@example.com\";"
+        "content": "    private static final String VALID_TAG_1 \u003d \"friend\";"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String VALID_TAG_1 \u003d \"friend\";"
+        "content": "    private static final String VALID_TAG_2 \u003d \"neighbour\";"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String VALID_TAG_2 \u003d \"neighbour\";"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private static final String WHITESPACE \u003d \" \\t\\r\\n\";"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String WHITESPACE \u003d \" \\t\\r\\n\";"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseIndex_invalidInput_throwsParseException() {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseIndex_invalidInput_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseIndex(\"10 a\"));"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseIndex(\"10 a\"));"
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseIndex_outOfRangeInput_throwsParseException() {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseIndex_outOfRangeInput_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()"
+        "content": "            -\u003e ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": "            -\u003e ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));"
+        "content": "    }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseIndex_validInput_success() throws Exception {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseIndex_validInput_success() throws Exception {"
+        "content": "        // No whitespaces"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "        // No whitespaces"
+        "content": "        assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex(\"1\"));"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex(\"1\"));"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // Leading and trailing whitespaces"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "        // Leading and trailing whitespaces"
+        "content": "        assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex(\"  1  \"));"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex(\"  1  \"));"
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseName_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseName_null_throwsNullPointerException() {"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parseName((String) null));"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parseName((String) null));"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseName_invalidValue_throwsParseException() {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseName_invalidValue_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseName(INVALID_NAME));"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseName(INVALID_NAME));"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {"
+        "content": "        Name expectedName \u003d new Name(VALID_NAME);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "        Name expectedName \u003d new Name(VALID_NAME);"
+        "content": "        assertEquals(expectedName, ParserUtil.parseName(VALID_NAME));"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedName, ParserUtil.parseName(VALID_NAME));"
+        "content": "    }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {"
+        "content": "        String nameWithWhitespace \u003d WHITESPACE + VALID_NAME + WHITESPACE;"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": "        String nameWithWhitespace \u003d WHITESPACE + VALID_NAME + WHITESPACE;"
+        "content": "        Name expectedName \u003d new Name(VALID_NAME);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "        Name expectedName \u003d new Name(VALID_NAME);"
+        "content": "        assertEquals(expectedName, ParserUtil.parseName(nameWithWhitespace));"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedName, ParserUtil.parseName(nameWithWhitespace));"
+        "content": "    }"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parsePhone_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parsePhone_null_throwsNullPointerException() {"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parsePhone((String) null));"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parsePhone((String) null));"
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parsePhone_invalidValue_throwsParseException() {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parsePhone_invalidValue_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parsePhone(INVALID_PHONE));"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parsePhone(INVALID_PHONE));"
+        "content": "    }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parsePhone_validValueWithoutWhitespace_returnsPhone() throws Exception {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parsePhone_validValueWithoutWhitespace_returnsPhone() throws Exception {"
+        "content": "        Phone expectedPhone \u003d new Phone(VALID_PHONE);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "        Phone expectedPhone \u003d new Phone(VALID_PHONE);"
+        "content": "        assertEquals(expectedPhone, ParserUtil.parsePhone(VALID_PHONE));"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedPhone, ParserUtil.parsePhone(VALID_PHONE));"
+        "content": "    }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parsePhone_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parsePhone_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {"
+        "content": "        String phoneWithWhitespace \u003d WHITESPACE + VALID_PHONE + WHITESPACE;"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
-        "content": "        String phoneWithWhitespace \u003d WHITESPACE + VALID_PHONE + WHITESPACE;"
+        "content": "        Phone expectedPhone \u003d new Phone(VALID_PHONE);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
-        "content": "        Phone expectedPhone \u003d new Phone(VALID_PHONE);"
+        "content": "        assertEquals(expectedPhone, ParserUtil.parsePhone(phoneWithWhitespace));"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedPhone, ParserUtil.parsePhone(phoneWithWhitespace));"
+        "content": "    }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseEmail_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseEmail_null_throwsNullPointerException() {"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parseEmail((String) null));"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parseEmail((String) null));"
+        "content": "    }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseEmail_invalidValue_throwsParseException() {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseEmail_invalidValue_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseEmail(INVALID_EMAIL));"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseEmail(INVALID_EMAIL));"
+        "content": "    }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseEmail_validValueWithoutWhitespace_returnsEmail() throws Exception {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseEmail_validValueWithoutWhitespace_returnsEmail() throws Exception {"
+        "content": "        Email expectedEmail \u003d new Email(VALID_EMAIL);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "-"
         },
-        "content": "        Email expectedEmail \u003d new Email(VALID_EMAIL);"
+        "content": "        assertEquals(expectedEmail, ParserUtil.parseEmail(VALID_EMAIL));"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedEmail, ParserUtil.parseEmail(VALID_EMAIL));"
+        "content": "    }"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseEmail_validValueWithWhitespace_returnsTrimmedEmail() throws Exception {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseEmail_validValueWithWhitespace_returnsTrimmedEmail() throws Exception {"
+        "content": "        String emailWithWhitespace \u003d WHITESPACE + VALID_EMAIL + WHITESPACE;"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "-"
         },
-        "content": "        String emailWithWhitespace \u003d WHITESPACE + VALID_EMAIL + WHITESPACE;"
+        "content": "        Email expectedEmail \u003d new Email(VALID_EMAIL);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "-"
         },
-        "content": "        Email expectedEmail \u003d new Email(VALID_EMAIL);"
+        "content": "        assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));"
+        "content": "    }"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseTag_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseTag_null_throwsNullPointerException() {"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parseTag(null));"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parseTag(null));"
+        "content": "    }"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseTag_invalidValue_throwsParseException() {"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseTag_invalidValue_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseTag(INVALID_TAG));"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseTag(INVALID_TAG));"
+        "content": "    }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseTag_validValueWithoutWhitespace_returnsTag() throws Exception {"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseTag_validValueWithoutWhitespace_returnsTag() throws Exception {"
+        "content": "        Tag expectedTag \u003d new Tag(VALID_TAG_1);"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "-"
         },
-        "content": "        Tag expectedTag \u003d new Tag(VALID_TAG_1);"
+        "content": "        assertEquals(expectedTag, ParserUtil.parseTag(VALID_TAG_1));"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedTag, ParserUtil.parseTag(VALID_TAG_1));"
+        "content": "    }"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseTag_validValueWithWhitespace_returnsTrimmedTag() throws Exception {"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseTag_validValueWithWhitespace_returnsTrimmedTag() throws Exception {"
+        "content": "        String tagWithWhitespace \u003d WHITESPACE + VALID_TAG_1 + WHITESPACE;"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "-"
         },
-        "content": "        String tagWithWhitespace \u003d WHITESPACE + VALID_TAG_1 + WHITESPACE;"
+        "content": "        Tag expectedTag \u003d new Tag(VALID_TAG_1);"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "-"
         },
-        "content": "        Tag expectedTag \u003d new Tag(VALID_TAG_1);"
+        "content": "        assertEquals(expectedTag, ParserUtil.parseTag(tagWithWhitespace));"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedTag, ParserUtil.parseTag(tagWithWhitespace));"
+        "content": "    }"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseTags_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseTags_null_throwsNullPointerException() {"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parseTags(null));"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e ParserUtil.parseTags(null));"
+        "content": "    }"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseTags_collectionWithInvalidTags_throwsParseException() {"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseTags_collectionWithInvalidTags_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, INVALID_TAG)));"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, () -\u003e ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, INVALID_TAG)));"
+        "content": "    }"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseTags_emptyCollection_returnsEmptySet() throws Exception {"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseTags_emptyCollection_returnsEmptySet() throws Exception {"
+        "content": "        assertTrue(ParserUtil.parseTags(Collections.emptyList()).isEmpty());"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(ParserUtil.parseTags(Collections.emptyList()).isEmpty());"
+        "content": "    }"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseTags_collectionWithValidTags_returnsTagSet() throws Exception {"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseTags_collectionWithValidTags_returnsTagSet() throws Exception {"
+        "content": "        Set\u003cTag\u003e actualTagSet \u003d ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, VALID_TAG_2));"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "-"
         },
-        "content": "        Set\u003cTag\u003e actualTagSet \u003d ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, VALID_TAG_2));"
+        "content": "        Set\u003cTag\u003e expectedTagSet \u003d new HashSet\u003cTag\u003e(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "-"
         },
-        "content": "        Set\u003cTag\u003e expectedTagSet \u003d new HashSet\u003cTag\u003e(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));"
+        "content": ""
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertEquals(expectedTagSet, actualTagSet);"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(expectedTagSet, actualTagSet);"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 170,
         "author": {
           "gitId": "-"
         },
@@ -40703,7 +41933,7 @@
     ],
     "authorContributionMap": {
       "tanphatls987": 3,
-      "-": 168
+      "-": 167
     }
   },
   {
@@ -42433,9 +43663,9 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 16,
@@ -42470,7 +43700,7 @@
         "author": {
           "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.model.hotel.person.NameContainsKeywordsPredicate;"
+        "content": "import seedu.address.model.hotel.person.MatchPersonIdPredicate;"
       },
       {
         "lineNumber": 21,
@@ -43308,89 +44538,82 @@
       {
         "lineNumber": 140,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        String[] keywords \u003d ALICE.getName().fullName.split(\"\\\\s+\");"
+        "content": "        modelManager.updateFilteredPersonList(new MatchPersonIdPredicate(List.of(ALICE.getPersonId())));"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "-"
         },
-        "content": "        modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));"
+        "content": "        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));"
+        "content": ""
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // resets modelManager to initial state for upcoming tests"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "-"
         },
-        "content": "        // resets modelManager to initial state for upcoming tests"
+        "content": "        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "-"
         },
-        "content": "        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);"
+        "content": ""
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // different userPrefs -\u003e returns false"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "-"
         },
-        "content": "        // different userPrefs -\u003e returns false"
+        "content": "        UserPrefs differentUserPrefs \u003d new UserPrefs();"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "-"
         },
-        "content": "        UserPrefs differentUserPrefs \u003d new UserPrefs();"
+        "content": "        differentUserPrefs.setAddressBookFilePath(Paths.get(\"differentFilePath\"));"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "-"
         },
-        "content": "        differentUserPrefs.setAddressBookFilePath(Paths.get(\"differentFilePath\"));"
+        "content": "        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 151,
         "author": {
           "gitId": "-"
         },
@@ -43398,9 +44621,9 @@
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 1,
+      "tanphatls987": 3,
       "youaremysky99": 20,
-      "-": 131
+      "-": 128
     }
   },
   {
@@ -43841,7 +45064,7 @@
     }
   },
   {
-    "path": "src/test/java/seedu/address/model/hotel/person/NameContainsKeywordsPredicateTest.java",
+    "path": "src/test/java/seedu/address/model/hotel/person/MatchNamePredicateTest.java",
     "fileType": "java",
     "lines": [
       {
@@ -43854,526 +45077,444 @@
       {
         "lineNumber": 2,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "dawidjaja"
         },
-        "content": ""
+        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "dawidjaja"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import static seedu.address.testutil.TypicalPersons.BENSON;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import java.util.Collections;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "class MatchNamePredicateTest {"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "public class NameContainsKeywordsPredicateTest {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "    @Test"
       },
       {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    void test() {"
+      },
+      {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
+          "gitId": "dawidjaja"
         },
-        "content": "    public void equals() {"
+        "content": "        Person alice \u003d ALICE;"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        List\u003cString\u003e firstPredicateKeywordList \u003d Collections.singletonList(\"first\");"
+        "content": "        List\u003cName\u003e nameList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        List\u003cString\u003e secondPredicateKeywordList \u003d Arrays.asList(\"first\", \"second\");"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "-"
+          "gitId": "dawidjaja"
         },
-        "content": ""
+        "content": "        nameList.add(BENSON.getName());"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        NameContainsKeywordsPredicate firstPredicate \u003d new NameContainsKeywordsPredicate(firstPredicateKeywordList);"
+        "content": "        MatchNamePredicate pred1 \u003d new MatchNamePredicate(nameList);"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
-        },
-        "content": "        NameContainsKeywordsPredicate secondPredicate \u003d new NameContainsKeywordsPredicate(secondPredicateKeywordList);"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        nameList.add(alice.getName());"
+      },
+      {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        // same object -\u003e returns true"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertTrue(firstPredicate.equals(firstPredicate));"
+        "content": "        MatchNamePredicate pred2 \u003d new MatchNamePredicate(nameList);"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        // same values -\u003e returns true"
+        "content": "        assertFalse(pred1.test(alice));"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "dawidjaja"
         },
-        "content": "        NameContainsKeywordsPredicate firstPredicateCopy \u003d new NameContainsKeywordsPredicate(firstPredicateKeywordList);"
+        "content": "        assertTrue(pred1.test(BENSON));"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": "        assertTrue(firstPredicate.equals(firstPredicateCopy));"
+        "content": "        assertTrue(pred2.test(alice));"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
-        },
-        "content": "        // different types -\u003e returns false"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertFalse(firstPredicate.equals(1));"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // null -\u003e returns false"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertFalse(firstPredicate.equals(null));"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // different person -\u003e returns false"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertFalse(firstPredicate.equals(secondPredicate));"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public void test_nameContainsKeywords_returnsTrue() {"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // One keyword"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        NameContainsKeywordsPredicate predicate \u003d new NameContainsKeywordsPredicate(Collections.singletonList(\"Alice\"));"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertTrue(predicate.test(new PersonBuilder().withName(\"Alice Bob\").build()));"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // Multiple keywords"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        predicate \u003d new NameContainsKeywordsPredicate(Arrays.asList(\"Alice\", \"Bob\"));"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertTrue(predicate.test(new PersonBuilder().withName(\"Alice Bob\").build()));"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // Only one matching keyword"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        predicate \u003d new NameContainsKeywordsPredicate(Arrays.asList(\"Bob\", \"Carol\"));"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertTrue(predicate.test(new PersonBuilder().withName(\"Alice Carol\").build()));"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // Mixed-case keywords"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        predicate \u003d new NameContainsKeywordsPredicate(Arrays.asList(\"aLIce\", \"bOB\"));"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertTrue(predicate.test(new PersonBuilder().withName(\"Alice Bob\").build()));"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public void test_nameDoesNotContainKeywords_returnsFalse() {"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // Zero keywords"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        NameContainsKeywordsPredicate predicate \u003d new NameContainsKeywordsPredicate(Collections.emptyList());"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertFalse(predicate.test(new PersonBuilder().withName(\"Alice\").build()));"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // Non-matching keyword"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        predicate \u003d new NameContainsKeywordsPredicate(Arrays.asList(\"Carol\"));"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertFalse(predicate.test(new PersonBuilder().withName(\"Alice Bob\").build()));"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // Keywords match phone, email and address, but does not match name"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        predicate \u003d new NameContainsKeywordsPredicate(Arrays.asList(\"12345\", \"alice@email.com\", \"Main\", \"Street\"));"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertFalse(predicate.test(new PersonBuilder().withName(\"Alice\").withPhone(\"12345\")"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "sancharib-git"
-        },
-        "content": "                .withEmail(\"alice@email.com\").build()));"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "-"
+          "gitId": "tanphatls987"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "tanphatls987": 1,
-      "sancharib-git": 1,
-      "-": 73
+      "tanphatls987": 26,
+      "dawidjaja": 5
+    }
+  },
+  {
+    "path": "src/test/java/seedu/address/model/hotel/person/MatchPersonIdPredicateTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "package seedu.address.model.hotel.person;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "import static seedu.address.testutil.TypicalPersons.BENSON;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "import seedu.address.model.ids.PersonId;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "class MatchPersonIdPredicateTest {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    void test() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "        Person alice \u003d ALICE;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        List\u003cPersonId\u003e personIdList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "dawidjaja"
+        },
+        "content": "        personIdList.add(BENSON.getPersonId());"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        MatchPersonIdPredicate pred1 \u003d new MatchPersonIdPredicate(personIdList);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        personIdList.add(alice.getPersonId());"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        MatchPersonIdPredicate pred2 \u003d new MatchPersonIdPredicate(personIdList);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        assertFalse(pred1.test(alice));"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "        assertTrue(pred2.test(alice));"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "tanphatls987"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "tanphatls987": 27,
+      "dawidjaja": 4
     }
   },
   {

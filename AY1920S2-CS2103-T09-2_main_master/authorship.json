@@ -6363,147 +6363,147 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.AddressContainsKeywordsPredicate;"
+        "content": "import seedu.address.model.customer.Customer;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.Customer;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.EmailContainsKeywordsPredicate;"
+        "content": "/**"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.NameContainsKeywordsPredicate;"
+        "content": " * Finds and lists all persons in address book whose name contains any of the argument keywords."
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.PhoneContainsKeywordsPredicate;"
+        "content": " * Keyword matching is case insensitive."
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "/**"
+        "content": "public class FindCustomerCommand extends Command {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": " * Finds and lists all persons in address book whose name contains any of the argument keywords."
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": " * Keyword matching is case insensitive."
+        "content": "    public static final String COMMAND_WORD \u003d \"findc\";"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "public class FindCustomerCommand extends Command {"
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all persons whose attributes (n/ for name, \""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "            + \"a/ for address, p/ for phone number, e/ for email address) contain any of \""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"findc\";"
+        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "            + \"Parameters: n/ KEYWORD [MORE_KEYWORDS]...\\n\""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all persons whose attributes (n/ for name, \""
+        "content": "            + \"Example: \" + COMMAND_WORD + \" n/alice bob charlie, \" + COMMAND_WORD + \" a/serangoon yishun\";"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + \"a/ for address, p/ for phone number, e/ for email address) contain any of \""
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
+        "content": "    private final Predicate\u003cCustomer\u003e predicate;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + \"Parameters: n/ KEYWORD [MORE_KEYWORDS]...\\n\""
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + \"Example: \" + COMMAND_WORD + \" n/ alice bob charlie, \" + COMMAND_WORD + \" a/ serangoon yishun\";"
+        "content": "    public FindCustomerCommand(Predicate\u003cCustomer\u003e predicate) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "        this.predicate \u003d predicate;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    private final Predicate\u003cCustomer\u003e predicate;"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
@@ -6517,227 +6517,122 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public FindCustomerCommand(Predicate\u003cCustomer\u003e predicate) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        this.predicate \u003d predicate;"
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    }"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "        model.updateFilteredCustomerList(predicate);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    @Override"
+        "content": "        if (model.getFilteredCustomerList().size() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "            return new CommandResult(predicate.toString());"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        requireNonNull(model);"
+        "content": "        }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        model.updateFilteredCustomerList(predicate);"
+        "content": "        return new CommandResult("
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        if (model.getFilteredCustomerList().size() \u003d\u003d 0 \u0026\u0026 predicate instanceof NameContainsKeywordsPredicate) {"
+        "content": "                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredCustomerList().size()));"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            if (predicate.toString().trim().isEmpty()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "                return new CommandResult(\"Please enter at least one keyword!\");"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            return new CommandResult(String.format(\"No customer named %s found!\", predicate.toString()));"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        } else if (model.getFilteredCustomerList().size() \u003d\u003d 0"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "                \u0026\u0026 predicate instanceof AddressContainsKeywordsPredicate) {"
+        "content": "                || (other instanceof FindCustomerCommand // instanceof handles nulls"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            return new CommandResult(String.format(\"No customer staying in the area %s found!\", predicate.toString()));"
+        "content": "                \u0026\u0026 predicate.equals(((FindCustomerCommand) other).predicate)); // state check"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        } else if (model.getFilteredCustomerList().size() \u003d\u003d 0 \u0026\u0026 predicate instanceof EmailContainsKeywordsPredicate) {"
+        "content": "    }"
       },
       {
         "lineNumber": 50,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "            return new CommandResult(String.format(\"No customer with email %s found!\", predicate.toString()));"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        } else if (model.getFilteredCustomerList().size() \u003d\u003d 0 \u0026\u0026 predicate instanceof PhoneContainsKeywordsPredicate) {"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "            return new CommandResult(String.format(\"No customer with phone number %s found!\", predicate.toString()));"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        return new CommandResult("
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredCustomerList().size()));"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public boolean equals(Object other) {"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "                || (other instanceof FindCustomerCommand // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "                \u0026\u0026 predicate.equals(((FindCustomerCommand) other).predicate)); // state check"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 65,
         "author": {
           "gitId": "junhaotan"
         },
@@ -6745,7 +6640,7 @@
       }
     ],
     "authorContributionMap": {
-      "junhaotan": 65
+      "junhaotan": 50
     }
   },
   {
@@ -17875,231 +17770,231 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "import java.util.Arrays;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.logic.commands.customer.FindCustomerCommand;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.logic.parser.ArgumentMultimap;"
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.logic.parser.ArgumentTokenizer;"
+        "content": "import java.util.stream.Stream;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.logic.parser.Parser;"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.address.logic.commands.customer.FindCustomerCommand;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.AddressContainsKeywordsPredicate;"
+        "content": "import seedu.address.logic.parser.ArgumentMultimap;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.EmailContainsKeywordsPredicate;"
+        "content": "import seedu.address.logic.parser.ArgumentTokenizer;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.NameContainsKeywordsPredicate;"
+        "content": "import seedu.address.logic.parser.Parser;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.PhoneContainsKeywordsPredicate;"
+        "content": "import seedu.address.logic.parser.ParserUtil;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "import seedu.address.logic.parser.Prefix;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "/**"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": " * Parses input arguments and creates a new FindCustomerCommand object"
+        "content": "import seedu.address.model.customer.AddressContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": " */"
+        "content": "import seedu.address.model.customer.Customer;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "public class FindCustomerCommandParser implements Parser\u003cFindCustomerCommand\u003e {"
+        "content": "import seedu.address.model.customer.EmailContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "import seedu.address.model.customer.JointCustomerPredicate;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    /**"
+        "content": "import seedu.address.model.customer.NameContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the FindCustomerCommand"
+        "content": "import seedu.address.model.customer.PhoneContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "     * and returns a FindCustomerCommand object for execution."
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "/**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "     */"
+        "content": " * Parses input arguments and creates a new FindCustomerCommand object"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public FindCustomerCommand parse(String args) throws ParseException {"
+        "content": " */"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        String trimmedArgs \u003d args.trim();"
+        "content": "public class FindCustomerCommandParser implements Parser\u003cFindCustomerCommand\u003e {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        if (trimmedArgs.isEmpty()) {"
+        "content": "    private final List\u003cPredicate\u003cCustomer\u003e\u003e predicates \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            throw new ParseException("
+        "content": "    /**"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCustomerCommand.MESSAGE_USAGE));"
+        "content": "     * Parses the given {@code String} of arguments in the context of the FindCustomerCommand"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        }"
+        "content": "     * and returns a FindCustomerCommand object for execution."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        ArgumentMultimap argMultimap \u003d"
+        "content": "     */"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);"
+        "content": "    public FindCustomerCommand parse(String args) throws ParseException {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "        ArgumentMultimap argMultimap \u003d"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        String[] nameKeywords \u003d trimmedArgs.split(\"\\\\s+\");"
+        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);"
       },
       {
         "lineNumber": 43,
@@ -18113,94 +18008,262 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        if (!argMultimap.getAllValues(PREFIX_NAME).isEmpty()) {"
+        "content": "        if (!anyPrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG)"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            return new FindCustomerCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));"
+        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        } else if (!argMultimap.getAllValues(PREFIX_ADDRESS).isEmpty()) {"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            return new FindCustomerCommand(new AddressContainsKeywordsPredicate(Arrays.asList(nameKeywords)));"
+        "content": "                    FindCustomerCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        } else if (!argMultimap.getAllValues(PREFIX_EMAIL).isEmpty()) {"
+        "content": "        }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            return new FindCustomerCommand(new EmailContainsKeywordsPredicate(Arrays.asList(nameKeywords)));"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        } else if (!argMultimap.getAllValues(PREFIX_PHONE).isEmpty()) {"
+        "content": "        if (anyPrefixesPresent(argMultimap, PREFIX_NAME)) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            return new FindCustomerCommand(new PhoneContainsKeywordsPredicate(Arrays.asList(nameKeywords)));"
+        "content": "            String customerArgs \u003d ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()).toString();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        }"
+        "content": "            String[] customerKeywords \u003d customerArgs.split(\"\\\\s+\");"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "            predicates.add(new NameContainsKeywordsPredicate(Arrays.asList(customerKeywords)));"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        return new FindCustomerCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));"
+        "content": "        }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    }"
+        "content": "        if (anyPrefixesPresent(argMultimap, PREFIX_ADDRESS)) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "            String addressArgs \u003d ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()).toString();"
       },
       {
         "lineNumber": 57,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            String[] addressKeywords \u003d addressArgs.split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            predicates.add(new AddressContainsKeywordsPredicate(Arrays.asList(addressKeywords)));"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        if (anyPrefixesPresent(argMultimap, PREFIX_EMAIL)) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            String emailArgs \u003d ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()).toString();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            String[] emailKeywords \u003d emailArgs.split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            predicates.add(new EmailContainsKeywordsPredicate(Arrays.asList(emailKeywords)));"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        if (anyPrefixesPresent(argMultimap, PREFIX_PHONE)) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            String phoneArgs \u003d ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()).toString();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            String[] phoneKeywords \u003d phoneArgs.split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            predicates.add(new PhoneContainsKeywordsPredicate(Arrays.asList(phoneKeywords)));"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return new FindCustomerCommand(new JointCustomerPredicate(predicates));"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * Returns true if any of the prefixes contains empty {@code Optional} values in the given"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * {@code ArgumentMultimap}."
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    private static boolean anyPrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return Stream.of(prefixes).anyMatch(prefix -\u003e argumentMultimap.getValue(prefix).isPresent());"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
         "author": {
           "gitId": "junhaotan"
         },
@@ -18208,7 +18271,7 @@
       }
     ],
     "authorContributionMap": {
-      "junhaotan": 57
+      "junhaotan": 81
     }
   },
   {
@@ -27308,7 +27371,7 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        for (int i \u003d 1; i \u003c keywords.size(); i++) {"
+        "content": "        for (int i \u003d 0; i \u003c keywords.size(); i++) {"
       },
       {
         "lineNumber": 35,
@@ -28947,7 +29010,7 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        for (int i \u003d 1; i \u003c keywords.size(); i++) {"
+        "content": "        for (int i \u003d 0; i \u003c keywords.size(); i++) {"
       },
       {
         "lineNumber": 35,
@@ -29015,6 +29078,358 @@
     ],
     "authorContributionMap": {
       "junhaotan": 43
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/model/customer/JointCustomerPredicate.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "package seedu.address.model.customer;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "import java.util.function.Predicate;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": " * Tests whether a {@code Transaction}\u0027s attributes fulfill the given properties."
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "public class JointCustomerPredicate implements Predicate\u003cCustomer\u003e {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    private final List\u003cPredicate\u003cCustomer\u003e\u003e predicates;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public JointCustomerPredicate(List\u003cPredicate\u003cCustomer\u003e\u003e predicates) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        this.predicates \u003d predicates;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public boolean test(Customer customer) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return predicates.stream()"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                .allMatch(predicate -\u003e predicate.test(customer));"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                || (other instanceof JointCustomerPredicate // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                \u0026\u0026 predicates.equals(((JointCustomerPredicate) other).predicates)); // state check"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        String msg \u003d \"No customer found!\";"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        for (Predicate predicate : predicates) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            if (predicate instanceof NameContainsKeywordsPredicate) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                msg \u003d String.format(\"No customers named %s found!\", predicate.toString());"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            } else if (predicate instanceof AddressContainsKeywordsPredicate) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                msg \u003d String.format(\"No customers staying in the area %s found!\", predicate.toString());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            } else if (predicate instanceof EmailContainsKeywordsPredicate) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                msg \u003d String.format(\"No customers with email %s found!\", predicate.toString());"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            } else if (predicate instanceof PhoneContainsKeywordsPredicate) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                msg \u003d String.format(\"No customers with phone number %s found!\", predicate.toString());"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return msg;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "junhaotan": 49
     }
   },
   {
@@ -29680,7 +30095,7 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        for (int i \u003d 1; i \u003c keywords.size(); i++) {"
+        "content": "        for (int i \u003d 0; i \u003c keywords.size(); i++) {"
       },
       {
         "lineNumber": 35,
@@ -30372,7 +30787,7 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        for (int i \u003d 1; i \u003c keywords.size(); i++) {"
+        "content": "        for (int i \u003d 0; i \u003c keywords.size(); i++) {"
       },
       {
         "lineNumber": 35,
@@ -44407,6 +44822,898 @@
     }
   },
   {
+    "path": "src/main/java/seedu/address/ui/CommandBox.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.address.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "import java.util.LinkedList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "import java.util.ListIterator;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.collections.ObservableList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.fxml.FXML;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.scene.control.TextField;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "import javafx.scene.input.KeyEvent;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.scene.layout.Region;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.logic.commands.CommandResult;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * The UI component that is responsible for receiving user command inputs."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class CommandBox extends UiPart\u003cRegion\u003e {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final String ERROR_STYLE_CLASS \u003d \"error\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private static final String FXML \u003d \"CommandBox.fxml\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    private static final int MAX_BUFFER_SIZE \u003d 100;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private final CommandExecutor commandExecutor;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    private LinkedList\u003cString\u003e commandHistory \u003d new LinkedList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    private ListIterator\u003cString\u003e historyIterator \u003d commandHistory.listIterator(0);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private TextField commandTextField;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public CommandBox(CommandExecutor commandExecutor) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        super(FXML);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        this.commandExecutor \u003d commandExecutor;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        // calls #setStyleToDefault() whenever there is a change to the text of the command box."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        commandTextField.textProperty().addListener((unused1, unused2, unused3) -\u003e setStyleToDefault());"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        commandTextField.setOnKeyPressed(event -\u003e keyPressedEvent(event));"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * Event handler for text field when an key is pressed."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * @param event KeyEvent to process."
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    private void keyPressedEvent(KeyEvent event) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        switch (event.getCode()) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        case UP:"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            traverseHistory(-1);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        case DOWN:"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            traverseHistory(1);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * Goes through the text field history."
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * @param index positive to traverse down, negative to traverse up."
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    private void traverseHistory(int index) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        String command \u003d \"\";"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        if (index \u003e 0 \u0026\u0026 historyIterator.hasNext()) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            command \u003d historyIterator.next();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        } else if (index \u003c 0 \u0026\u0026 historyIterator.hasPrevious()) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            command \u003d historyIterator.previous();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            command \u003d commandTextField.getText();"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        commandTextField.setText(command);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        commandTextField.positionCaret(command.length()); // position the text cursor at the end of the command"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Handles the Enter button pressed event."
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private void handleCommandEntered() {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            String command \u003d commandTextField.getText();"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            if (commandHistory.size() \u003e\u003d MAX_BUFFER_SIZE) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                commandHistory.pop();"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            commandHistory.offer(command);"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            historyIterator \u003d commandHistory.listIterator(commandHistory.size());"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            commandExecutor.execute(command);"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            commandTextField.setText(\"\");"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (CommandException | ParseException e) {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            setStyleToIndicateCommandFailure();"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Sets the command box style to use the default style."
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private void setStyleToDefault() {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        commandTextField.getStyleClass().remove(ERROR_STYLE_CLASS);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Sets the command box style to indicate a failed command."
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private void setStyleToIndicateCommandFailure() {"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        ObservableList\u003cString\u003e styleClass \u003d commandTextField.getStyleClass();"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        if (styleClass.contains(ERROR_STYLE_CLASS)) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        styleClass.add(ERROR_STYLE_CLASS);"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Represents a function that can execute commands."
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @FunctionalInterface"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public interface CommandExecutor {"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        /**"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "         * Executes the command and returns the result."
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "         *"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "         * @see seedu.address.logic.Logic#execute(String)"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "         */"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        CommandResult execute(String commandText) throws CommandException, ParseException;"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "-": 76,
+      "junhaotan": 50
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/ui/HelpWindow.java",
     "fileType": "java",
     "lines": [
@@ -57943,437 +59250,444 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.customer.NameContainsKeywordsPredicate;"
+        "content": "import seedu.address.model.customer.Name;"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
+          "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "import seedu.address.model.customer.NameContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 25,
         "author": {
           "gitId": "junhaotan"
         },
         "content": " * Contains integration tests (interaction with the Model) for {@code FindCustomerCommand}."
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
         "content": " */"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 27,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "public class FindCustomerCommandTest {"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
         "content": "    private Model model \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
         "content": "    private Model expectedModel \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
       {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void equals() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate firstPredicate \u003d"
+        "content": "    public void equals() {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"first\"));"
+        "content": "        NameContainsKeywordsPredicate firstPredicate \u003d"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate secondPredicate \u003d"
+        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"first\"));"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"second\"));"
+        "content": "        NameContainsKeywordsPredicate secondPredicate \u003d"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"second\"));"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "-"
         },
-        "content": "        FindCustomerCommand findFirstCommand \u003d new FindCustomerCommand(firstPredicate);"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        FindCustomerCommand findSecondCommand \u003d new FindCustomerCommand(secondPredicate);"
+        "content": "        FindCustomerCommand findFirstCommand \u003d new FindCustomerCommand(firstPredicate);"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "-"
+          "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "        FindCustomerCommand findSecondCommand \u003d new FindCustomerCommand(secondPredicate);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": "        // same object -\u003e returns true"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(findFirstCommand.equals(findFirstCommand));"
+        "content": "        // same object -\u003e returns true"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertTrue(findFirstCommand.equals(findFirstCommand));"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "        // same values -\u003e returns true"
+        "content": ""
       },
       {
         "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        // same values -\u003e returns true"
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        FindCustomerCommand findFirstCommandCopy \u003d new FindCustomerCommand(firstPredicate);"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
         "content": "        assertTrue(findFirstCommand.equals(findFirstCommandCopy));"
       },
       {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "        // different types -\u003e returns false"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(findFirstCommand.equals(1));"
+        "content": "        // different types -\u003e returns false"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertFalse(findFirstCommand.equals(1));"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "        // null -\u003e returns false"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(findFirstCommand.equals(null));"
+        "content": "        // null -\u003e returns false"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertFalse(findFirstCommand.equals(null));"
       },
       {
         "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        // different customer -\u003e returns false"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
         "content": "        assertFalse(findFirstCommand.equals(findSecondCommand));"
       },
       {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void execute_zeroKeywords_noPersonFound() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "-"
         },
-        "content": "        String expectedMessage \u003d \"Please enter at least one keyword!\";"
+        "content": "    public void execute_zeroKeywords_noPersonFound() {"
       },
       {
         "lineNumber": 60,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        String expectedMessage \u003d Name.MESSAGE_CONSTRAINTS;"
+      },
+      {
+        "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
         "content": "        NameContainsKeywordsPredicate predicate \u003d preparePredicate(\" \");"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 62,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        FindCustomerCommand command \u003d new FindCustomerCommand(predicate);"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 63,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        expectedModel.updateFilteredCustomerList(predicate);"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        assertEquals(Collections.emptyList(), model.getFilteredCustomerList());"
+        "content": "        //        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "-"
+          "gitId": "junhaotan"
         },
-        "content": "    }"
+        "content": "        //        assertEquals(Collections.emptyList(), model.getFilteredCustomerList());"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void execute_multipleKeywords_multiplePersonsFound() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "        String expectedMessage \u003d String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);"
+        "content": "    public void execute_multipleKeywords_multiplePersonsFound() {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate predicate \u003d preparePredicate(\"Kurz Elle Kunz\");"
+        "content": "        String expectedMessage \u003d String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "-"
         },
-        "content": "        FindCustomerCommand command \u003d new FindCustomerCommand(predicate);"
+        "content": "        NameContainsKeywordsPredicate predicate \u003d preparePredicate(\"Kurz Elle Kunz\");"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        expectedModel.updateFilteredCustomerList(predicate);"
+        "content": "        FindCustomerCommand command \u003d new FindCustomerCommand(predicate);"
       },
       {
         "lineNumber": 73,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        expectedModel.updateFilteredCustomerList(predicate);"
+      },
+      {
+        "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
         "content": "        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 75,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredCustomerList());"
       },
       {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}."
+        "content": "    /**"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}."
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "    private NameContainsKeywordsPredicate preparePredicate(String userInput) {"
+        "content": "     */"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "        return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split(\"\\\\s+\")));"
+        "content": "    private NameContainsKeywordsPredicate preparePredicate(String userInput) {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split(\"\\\\s+\")));"
       },
       {
         "lineNumber": 83,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
@@ -58382,8 +59696,8 @@
     ],
     "authorContributionMap": {
       "aliciatxl": 1,
-      "-": 68,
-      "junhaotan": 14
+      "-": 67,
+      "junhaotan": 16
     }
   },
   {
@@ -64514,523 +65828,516 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "-"
         },
-        "content": "import seedu.address.model.customer.NameContainsKeywordsPredicate;"
+        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
+        "content": "import seedu.address.testutil.PersonBuilder;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.PersonUtil;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.testutil.PersonUtil;"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "public class AddressBookParserTest {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "public class AddressBookParserTest {"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    private final InventorySystemParser parser \u003d new InventorySystemParser();"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_add() throws Exception {"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "-"
+          "gitId": "junhaotan"
         },
-        "content": "    public void parseCommand_add() throws Exception {"
+        "content": "        Customer customer \u003d new PersonBuilder().build();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        Customer customer \u003d new PersonBuilder().build();"
+        "content": "        AddCustomerCommand command \u003d (AddCustomerCommand) parser.parseCommand(PersonUtil.getAddCommand(customer));"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        AddCustomerCommand command \u003d (AddCustomerCommand) parser.parseCommand(PersonUtil.getAddCommand(customer));"
+        "content": "        assertEquals(new AddCustomerCommand(customer), command);"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "-"
         },
-        "content": "        assertEquals(new AddCustomerCommand(customer), command);"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public void parseCommand_clear() throws Exception {"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 44,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        assertTrue(parser.parseCommand(ClearCustomerCommand.COMMAND_WORD) instanceof ClearCustomerCommand);"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 45,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        assertTrue(parser.parseCommand(ClearCustomerCommand.COMMAND_WORD + \" 3\") instanceof ClearCustomerCommand);"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public void parseCommand_delete() throws Exception {"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 50,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        DeleteCustomerCommand command \u003d (DeleteCustomerCommand) parser.parseCommand("
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 51,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "                DeleteCustomerCommand.COMMAND_WORD + \" \" + INDEX_FIRST_PERSON.getOneBased());"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 52,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        assertEquals(new DeleteCustomerCommand(INDEX_FIRST_PERSON), command);"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public void parseCommand_edit() throws Exception {"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        Customer customer \u003d new PersonBuilder().build();"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        EditPersonDescriptor descriptor \u003d new EditPersonDescriptorBuilder(customer).build();"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        EditCustomerCommand command \u003d (EditCustomerCommand) parser.parseCommand(EditCustomerCommand.COMMAND_WORD + \" \""
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
         "content": "                + INDEX_FIRST_PERSON.getOneBased() + \" \" + PersonUtil.getEditPersonDescriptorDetails(descriptor));"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        assertEquals(new EditCustomerCommand(INDEX_FIRST_PERSON, descriptor), command);"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_exit() throws Exception {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_exit() throws Exception {"
+        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);"
+        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + \" 3\") instanceof ExitCommand);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + \" 3\") instanceof ExitCommand);"
+        "content": "    }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_find() throws Exception {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_find() throws Exception {"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        List\u003cString\u003e keywords \u003d Arrays.asList(\"foo\", \"bar\", \"baz\");"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 73,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        FindCustomerCommand command \u003d (FindCustomerCommand) parser.parseCommand("
       },
       {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "                FindCustomerCommand.COMMAND_WORD + \" n/\" + keywords.stream().collect(Collectors.joining(\" \")));"
+      },
+      {
         "lineNumber": 75,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "                FindCustomerCommand.COMMAND_WORD + \" \" + keywords.stream().collect(Collectors.joining(\" \")));"
+        "content": "        //        assertEquals(new FindCustomerCommand(new NameContainsKeywordsPredicate(keywords)), command);"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "-"
         },
-        "content": "        assertEquals(new FindCustomerCommand(new NameContainsKeywordsPredicate(keywords)), command);"
+        "content": "    }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_help() throws Exception {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_help() throws Exception {"
+        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);"
+        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + \" 3\") instanceof HelpCommand);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + \" 3\") instanceof HelpCommand);"
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public void parseCommand_list() throws Exception {"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 86,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        assertTrue(parser.parseCommand(ListCustomerCommand.COMMAND_WORD) instanceof ListCustomerCommand);"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 87,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        assertTrue(parser.parseCommand(ListCustomerCommand.COMMAND_WORD + \" 3\") instanceof ListCustomerCommand);"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_unrecognisedInput_throwsParseException() {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_unrecognisedInput_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()"
+        "content": "            -\u003e parser.parseCommand(\"\"));"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
-        "content": "            -\u003e parser.parseCommand(\"\"));"
+        "content": "    }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_unknownCommand_throwsParseException() {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_unknownCommand_throwsParseException() {"
+        "content": "        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -\u003e parser.parseCommand(\"unknownCommand\"));"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -\u003e parser.parseCommand(\"unknownCommand\"));"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
@@ -65040,7 +66347,7 @@
     "authorContributionMap": {
       "aliciatxl": 1,
       "-": 74,
-      "junhaotan": 26
+      "junhaotan": 25
     }
   },
   {
@@ -69190,213 +70497,206 @@
         "author": {
           "gitId": "-"
         },
-        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import java.util.Arrays;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
-        "content": "import java.util.Arrays;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": "import org.junit.jupiter.api.Test;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 10,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "import seedu.address.logic.commands.customer.FindCustomerCommand;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 11,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "import seedu.address.model.customer.NameContainsKeywordsPredicate;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "public class FindCustomerCommandParserTest {"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "    private FindCustomerCommandParser parser \u003d new FindCustomerCommandParser();"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public void parse_emptyArg_throwsParseException() {"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        assertParseFailure(parser, \"     \", String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "                FindCustomerCommand.MESSAGE_USAGE));"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void parse_validArgs_returnsFindCommand() {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parse_validArgs_returnsFindCommand() {"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        // no leading and trailing whitespaces"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        FindCustomerCommand expectedFindCustomerCommand \u003d"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "                new FindCustomerCommand(new NameContainsKeywordsPredicate(Arrays.asList(\"Alice\", \"Bob\")));"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        assertParseSuccess(parser, \"Alice Bob\", expectedFindCustomerCommand);"
+        "content": "        //        assertParseSuccess(parser, \"Alice Bob\", expectedFindCustomerCommand);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // multiple whitespaces between keywords"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
+          "gitId": "junhaotan"
         },
-        "content": "        // multiple whitespaces between keywords"
+        "content": "        //        assertParseSuccess(parser, \" \\n Alice \\n \\t Bob  \\t\", expectedFindCustomerCommand);"
       },
       {
         "lineNumber": 32,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        assertParseSuccess(parser, \" \\n Alice \\n \\t Bob  \\t\", expectedFindCustomerCommand);"
-      },
-      {
-        "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
@@ -69405,7 +70705,7 @@
     ],
     "authorContributionMap": {
       "aliciatxl": 1,
-      "-": 24,
+      "-": 23,
       "junhaotan": 10
     }
   },

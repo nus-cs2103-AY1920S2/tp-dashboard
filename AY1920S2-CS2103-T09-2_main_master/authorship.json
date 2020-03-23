@@ -2545,6 +2545,499 @@
     }
   },
   {
+    "path": "src/main/java/seedu/address/commons/util/StringUtil.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.address.commons.util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.commons.util.AppUtil.checkArgument;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.io.PrintWriter;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.io.StringWriter;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * Helper functions for handling strings."
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class StringUtil {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Returns true if the {@code sentence} contains the {@code word}."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *   Ignores case, but a full word match is required."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *   \u003cbr\u003eexamples:\u003cpre\u003e"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"abc\") \u003d\u003d true"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"DEF\") \u003d\u003d true"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"AB\") \u003d\u003d false //not a full word match"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *       \u003c/pre\u003e"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @param sentence cannot be null"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @param word cannot be null, cannot be empty, must be a single word"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static boolean containsWordIgnoreCase(String sentence, String word) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        requireNonNull(sentence);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        requireNonNull(word);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        String preppedWord \u003d word.trim();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        System.out.println(sentence + \" \" + word);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        checkArgument(!preppedWord.isEmpty(), \"Word parameter cannot be empty\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        checkArgument(preppedWord.split(\"\\\\s+\").length \u003d\u003d 1, \"Word parameter should be a single word\");"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        String preppedSentence \u003d sentence;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        String[] wordsInPreppedSentence \u003d preppedSentence.split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return Arrays.stream(wordsInPreppedSentence)"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                .anyMatch(preppedWord::equalsIgnoreCase);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Returns a detailed message of the t, including the stack trace."
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static String getDetails(Throwable t) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        requireNonNull(t);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        StringWriter sw \u003d new StringWriter();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        t.printStackTrace(new PrintWriter(sw));"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return t.getMessage() + \"\\n\" + sw.toString();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Returns true if {@code s} represents a non-zero unsigned integer"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * e.g. 1, 2, 3, ..., {@code Integer.MAX_VALUE} \u003cbr\u003e"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Will return false for any other non-null string input"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * e.g. empty string, \"-1\", \"0\", \"+1\", and \" 2 \" (untrimmed), \"3 0\" (contains whitespace), \"1 a\" (contains letters)"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @throws NullPointerException if {@code s} is null."
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static boolean isNonZeroUnsignedInteger(String s) {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        requireNonNull(s);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            int value \u003d Integer.parseInt(s);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return value \u003e 0 \u0026\u0026 !s.startsWith(\"+\"); // \"+1\" is successfully parsed by Integer#parseInt(String)"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (NumberFormatException nfe) {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "aliciatxl": 1,
+      "-": 68
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/logic/Logic.java",
     "fileType": "java",
     "lines": [
@@ -29129,9 +29622,9 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "aliciatxl"
         },
-        "content": " * Tests whether a {@code Transaction}\u0027s attributes fulfill the given properties."
+        "content": " * Tests whether a {@code Customer}\u0027s attributes fulfill the given properties."
       },
       {
         "lineNumber": 8,
@@ -29429,7 +29922,8 @@
       }
     ],
     "authorContributionMap": {
-      "junhaotan": 49
+      "aliciatxl": 1,
+      "junhaotan": 48
     }
   },
   {
@@ -46486,198 +46980,198 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import javafx.scene.control.MenuItem;"
+        "content": "import javafx.geometry.Pos;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import javafx.scene.control.TextInputControl;"
+        "content": "import javafx.scene.control.Label;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.input.KeyCombination;"
+        "content": "import javafx.scene.control.MenuItem;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.input.KeyEvent;"
+        "content": "import javafx.scene.control.TextInputControl;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.layout.StackPane;"
+        "content": "import javafx.scene.input.KeyCombination;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.stage.Stage;"
+        "content": "import javafx.scene.input.KeyEvent;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.commons.core.GuiSettings;"
+        "content": "import javafx.scene.layout.HBox;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.commons.core.LogsCenter;"
+        "content": "import javafx.scene.layout.Priority;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.Logic;"
+        "content": "import javafx.scene.layout.StackPane;"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.logic.commands.CommandResult;"
+        "content": "import javafx.scene.paint.Color;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+        "content": "import javafx.stage.Stage;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.address.commons.core.GuiSettings;"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "import seedu.address.ui.customer.PersonListPanel;"
+        "content": "import seedu.address.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "import seedu.address.ui.product.ProductListPanel;"
+        "content": "import seedu.address.logic.Logic;"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "import seedu.address.ui.transaction.TransactionListPanel;"
+        "content": "import seedu.address.logic.commands.CommandResult;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": " * The Main Window. Provides the basic application layout containing"
+        "content": "import seedu.address.ui.customer.PersonListPanel;"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": " * a menu bar and space where other JavaFX elements can be placed."
+        "content": "import seedu.address.ui.product.ProductListPanel;"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": " */"
+        "content": "import seedu.address.ui.transaction.TransactionListPanel;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "public class MainWindow extends UiPart\u003cStage\u003e {"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String FXML \u003d \"MainWindow.fxml\";"
+        "content": " * The Main Window. Provides the basic application layout containing"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " * a menu bar and space where other JavaFX elements can be placed."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
+        "content": " */"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "public class MainWindow extends UiPart\u003cStage\u003e {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    private Stage primaryStage;"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    private Logic logic;"
+        "content": "    private static final String FXML \u003d \"MainWindow.fxml\";"
       },
       {
         "lineNumber": 35,
@@ -46691,33 +47185,33 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    // Independent Ui parts residing in this Ui container"
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "    private PersonListPanel personListPanel;"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "    private ProductListPanel productListPanel;"
+        "content": "    private Stage primaryStage;"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "    private TransactionListPanel transactionListPanel;"
+        "content": "    private Logic logic;"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -46726,245 +47220,245 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private ResultDisplay resultDisplay;"
+        "content": "    // Independent Ui parts residing in this Ui container"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    private HelpWindow helpWindow;"
+        "content": "    private PersonListPanel personListPanel;"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "    private ProductListPanel productListPanel;"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": "    @FXML"
+        "content": "    private TransactionListPanel transactionListPanel;"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": "    private StackPane commandBoxPlaceholder;"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private ResultDisplay resultDisplay;"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "    private HelpWindow helpWindow;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "    private MenuItem helpMenuItem;"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "    private StackPane commandBoxPlaceholder;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "    private StackPane personListPanelPlaceholder;"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "    private MenuItem helpMenuItem;"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "YingxuH"
-        },
-        "content": "    private StackPane productListPanelPlaceholder;"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
         "content": "    @FXML"
       },
       {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private StackPane personListPanelPlaceholder;"
+      },
+      {
         "lineNumber": 57,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "    private StackPane transactionListPanelPlaceholder;"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": "    @FXML"
+        "content": "    private StackPane productListPanelPlaceholder;"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "-"
-        },
-        "content": "    private StackPane resultDisplayPlaceholder;"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
         "content": ""
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
         "content": "    @FXML"
       },
       {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "    private StackPane transactionListPanelPlaceholder;"
+      },
+      {
         "lineNumber": 63,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": "    private StackPane statusbarPlaceholder;"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": "    public MainWindow(Stage primaryStage, Logic logic) {"
+        "content": "    private StackPane resultDisplayPlaceholder;"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": "        super(FXML, primaryStage);"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": "        // Set dependencies"
+        "content": "    private StackPane statusbarPlaceholder;"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "        this.primaryStage \u003d primaryStage;"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": "        this.logic \u003d logic;"
+        "content": "    public MainWindow(Stage primaryStage, Logic logic) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        super(FXML, primaryStage);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "        // Configure the UI"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": "        setWindowDefaultSize(logic.getGuiSettings());"
+        "content": "        // Set dependencies"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        this.primaryStage \u003d primaryStage;"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": "        setAccelerators();"
+        "content": "        this.logic \u003d logic;"
       },
       {
         "lineNumber": 76,
@@ -46978,14 +47472,14 @@
         "author": {
           "gitId": "-"
         },
-        "content": "        helpWindow \u003d new HelpWindow();"
+        "content": "        // Configure the UI"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        setWindowDefaultSize(logic.getGuiSettings());"
       },
       {
         "lineNumber": 79,
@@ -46999,609 +47493,609 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public Stage getPrimaryStage() {"
+        "content": "        setAccelerators();"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "        return primaryStage;"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        helpWindow \u003d new HelpWindow();"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void setAccelerators() {"
+        "content": ""
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": "        setAccelerator(helpMenuItem, KeyCombination.valueOf(\"F1\"));"
+        "content": "    public Stage getPrimaryStage() {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        return primaryStage;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Sets the accelerator of a MenuItem."
+        "content": "    private void setAccelerators() {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param keyCombination the KeyCombination value of the accelerator"
+        "content": "        setAccelerator(helpMenuItem, KeyCombination.valueOf(\"F1\"));"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {"
+        "content": ""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": "        menuItem.setAccelerator(keyCombination);"
+        "content": "    /**"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Sets the accelerator of a MenuItem."
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
-        "content": "        /*"
+        "content": "     * @param keyCombination the KeyCombination value of the accelerator"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "-"
         },
-        "content": "         * TODO: the code below can be removed once the bug reported here"
+        "content": "     */"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
-        "content": "         * https://bugs.openjdk.java.net/browse/JDK-8131666"
+        "content": "    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
-        "content": "         * is fixed in later version of SDK."
+        "content": "        menuItem.setAccelerator(keyCombination);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
-        "content": "         *"
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
-        "content": "         * According to the bug report, TextInputControl (TextField, TextArea) will"
+        "content": "        /*"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "-"
         },
-        "content": "         * consume function-key events. Because CommandBox contains a TextField, and"
+        "content": "         * TODO: the code below can be removed once the bug reported here"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
-        "content": "         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will"
+        "content": "         * https://bugs.openjdk.java.net/browse/JDK-8131666"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "-"
         },
-        "content": "         * not work when the focus is in them because the key event is consumed by"
+        "content": "         * is fixed in later version of SDK."
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
-        "content": "         * the TextInputControl(s)."
+        "content": "         *"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
-        "content": "         *"
+        "content": "         * According to the bug report, TextInputControl (TextField, TextArea) will"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
-        "content": "         * For now, we add following event filter to capture such key events and open"
+        "content": "         * consume function-key events. Because CommandBox contains a TextField, and"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
-        "content": "         * help window purposely so to support accelerators even when focus is"
+        "content": "         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
-        "content": "         * in CommandBox or ResultDisplay."
+        "content": "         * not work when the focus is in them because the key event is consumed by"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "-"
         },
-        "content": "         */"
+        "content": "         * the TextInputControl(s)."
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
-        "content": "        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -\u003e {"
+        "content": "         *"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "-"
         },
-        "content": "            if (event.getTarget() instanceof TextInputControl \u0026\u0026 keyCombination.match(event)) {"
+        "content": "         * For now, we add following event filter to capture such key events and open"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "-"
         },
-        "content": "                menuItem.getOnAction().handle(new ActionEvent());"
+        "content": "         * help window purposely so to support accelerators even when focus is"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "-"
         },
-        "content": "                event.consume();"
+        "content": "         * in CommandBox or ResultDisplay."
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "-"
         },
-        "content": "            }"
+        "content": "         */"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "-"
         },
-        "content": "        });"
+        "content": "        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -\u003e {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "            if (event.getTarget() instanceof TextInputControl \u0026\u0026 keyCombination.match(event)) {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "                menuItem.getOnAction().handle(new ActionEvent());"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "                event.consume();"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Fills up all the placeholders of this window."
+        "content": "            }"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "        });"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "-"
         },
-        "content": "    void fillInnerParts() {"
+        "content": "    }"
       },
       {
         "lineNumber": 122,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "-"
         },
-        "content": "        personListPanel \u003d new PersonListPanel(logic.getFilteredCustomerList());"
+        "content": ""
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "-"
         },
-        "content": "        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());"
+        "content": "    /**"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Fills up all the placeholders of this window."
       },
       {
         "lineNumber": 125,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "        productListPanel \u003d new ProductListPanel(logic.getFilteredProductList());"
+        "content": "     */"
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "        productListPanelPlaceholder.getChildren().add(productListPanel.getRoot());"
+        "content": "    void fillInnerParts() {"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "        personListPanel \u003d new PersonListPanel(logic.getFilteredCustomerList());"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "        transactionListPanel \u003d new TransactionListPanel(logic.getFilteredTransactionList());"
+        "content": "        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "-"
         },
-        "content": "        transactionListPanelPlaceholder.getChildren().add(transactionListPanel.getRoot());"
+        "content": ""
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "        productListPanel \u003d new ProductListPanel(logic.getFilteredProductList());"
       },
       {
         "lineNumber": 131,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": "        resultDisplay \u003d new ResultDisplay();"
+        "content": "        productListPanelPlaceholder.getChildren().add(productListPanel.getRoot());"
       },
       {
         "lineNumber": 132,
         "author": {
-          "gitId": "-"
-        },
-        "content": "        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
         "content": ""
       },
       {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "        transactionListPanel \u003d new TransactionListPanel(logic.getFilteredTransactionList());"
+      },
+      {
         "lineNumber": 134,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getAddressBookFilePath());"
+        "content": "        transactionListPanelPlaceholder.getChildren().add(transactionListPanel.getRoot());"
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "-"
+          "gitId": "YingxuH"
         },
-        "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
+        "content": ""
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        resultDisplay \u003d new ResultDisplay();"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "-"
         },
-        "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
+        "content": "        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "-"
         },
-        "content": "        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
+        "content": ""
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getAddressBookFilePath());"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Sets the default size based on {@code guiSettings}."
+        "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
       },
       {
         "lineNumber": 143,
         "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private void setWindowDefaultSize(GuiSettings guiSettings) {"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        primaryStage.setHeight(guiSettings.getWindowHeight());"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        primaryStage.setWidth(guiSettings.getWindowWidth());"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        if (guiSettings.getWindowCoordinates() !\u003d null) {"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            primaryStage.setX(guiSettings.getWindowCoordinates().getX());"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            primaryStage.setY(guiSettings.getWindowCoordinates().getY());"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
         "content": ""
       },
       {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        Label commandBoxLabel \u003d new Label(\"Enter command\");"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        commandBoxLabel.setTextFill(Color.web(\"#ffffff\"));"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        HBox commandHBox \u003d new HBox();"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        HBox.setHgrow(commandBoxLabel, Priority.ALWAYS);"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        HBox.setHgrow(commandBox.getRoot(), Priority.ALWAYS);"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        commandHBox.setAlignment(Pos.BASELINE_CENTER);"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        commandHBox.setSpacing(10);"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        commandHBox.getChildren().addAll(commandBoxLabel, commandBox.getRoot());"
+      },
+      {
         "lineNumber": 153,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 154,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
+        "content": "        commandBoxPlaceholder.getChildren().add(commandHBox);"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": ""
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void handleHelp() {"
+        "content": "    /**"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!helpWindow.isShowing()) {"
+        "content": "     * Sets the default size based on {@code guiSettings}."
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
-        "content": "            helpWindow.show();"
+        "content": "     */"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "-"
         },
-        "content": "        } else {"
+        "content": "    private void setWindowDefaultSize(GuiSettings guiSettings) {"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "-"
         },
-        "content": "            helpWindow.focus();"
+        "content": "        primaryStage.setHeight(guiSettings.getWindowHeight());"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "        primaryStage.setWidth(guiSettings.getWindowWidth());"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        if (guiSettings.getWindowCoordinates() !\u003d null) {"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            primaryStage.setX(guiSettings.getWindowCoordinates().getX());"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "-"
         },
-        "content": "    void show() {"
+        "content": "            primaryStage.setY(guiSettings.getWindowCoordinates().getY());"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "-"
         },
-        "content": "        primaryStage.show();"
+        "content": "        }"
       },
       {
         "lineNumber": 167,
@@ -47629,7 +48123,7 @@
         "author": {
           "gitId": "-"
         },
-        "content": "     * Closes the application."
+        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
       },
       {
         "lineNumber": 171,
@@ -47650,42 +48144,42 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private void handleExit() {"
+        "content": "    public void handleHelp() {"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "-"
         },
-        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
+        "content": "        if (!helpWindow.isShowing()) {"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "-"
         },
-        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
+        "content": "            helpWindow.show();"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "-"
         },
-        "content": "        logic.setGuiSettings(guiSettings);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "-"
         },
-        "content": "        helpWindow.hide();"
+        "content": "            helpWindow.focus();"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "-"
         },
-        "content": "        primaryStage.hide();"
+        "content": "        }"
       },
       {
         "lineNumber": 179,
@@ -47706,14 +48200,14 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public PersonListPanel getPersonListPanel() {"
+        "content": "    void show() {"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "-"
         },
-        "content": "        return personListPanel;"
+        "content": "        primaryStage.show();"
       },
       {
         "lineNumber": 183,
@@ -47741,178 +48235,290 @@
         "author": {
           "gitId": "-"
         },
-        "content": "     * Executes the command and returns the result."
+        "content": "     * Closes the application."
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "-"
         },
-        "content": "     *"
+        "content": "     */"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @see seedu.address.logic.Logic#execute(String)"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    private void handleExit() {"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "-"
         },
-        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
+        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "-"
         },
-        "content": "        try {"
+        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "-"
         },
-        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
+        "content": "        logic.setGuiSettings(guiSettings);"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "-"
         },
-        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
+        "content": "        helpWindow.hide();"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "-"
         },
-        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
+        "content": "        primaryStage.hide();"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
-        "content": "            if (commandResult.isShowHelp()) {"
+        "content": ""
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "-"
         },
-        "content": "                handleHelp();"
+        "content": "    public PersonListPanel getPersonListPanel() {"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "-"
         },
-        "content": "            }"
+        "content": "        return personListPanel;"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "-"
         },
-        "content": "            if (commandResult.isExit()) {"
+        "content": ""
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "-"
         },
-        "content": "                handleExit();"
+        "content": "    /**"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "-"
         },
-        "content": "            }"
+        "content": "     * Executes the command and returns the result."
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     *"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "-"
         },
-        "content": "            return commandResult;"
+        "content": "     * @see seedu.address.logic.Logic#execute(String)"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "-"
         },
-        "content": "        } catch (CommandException | ParseException e) {"
+        "content": "     */"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "-"
         },
-        "content": "            logger.info(\"Invalid command: \" + commandText);"
+        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "-"
         },
-        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
+        "content": "        try {"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw e;"
+        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 211,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            if (commandResult.isShowHelp()) {"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                handleHelp();"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            if (commandResult.isExit()) {"
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                handleExit();"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return commandResult;"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (CommandException | ParseException e) {"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            logger.info(\"Invalid command: \" + commandText);"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw e;"
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 226,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 227,
         "author": {
           "gitId": "-"
         },
@@ -47920,7 +48526,8 @@
       }
     ],
     "authorContributionMap": {
-      "-": 192,
+      "aliciatxl": 17,
+      "-": 191,
       "junhaotan": 1,
       "YingxuH": 18
     }
@@ -48275,23 +48882,23 @@
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "aliciatxl"
         },
-        "content": "        phone.setText(customer.getPhone().value);"
+        "content": "        phone.setText(\"Phone: \" + customer.getPhone().value);"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "aliciatxl"
         },
-        "content": "        address.setText(customer.getAddress().value);"
+        "content": "        address.setText(\"Address: \" + customer.getAddress().value);"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "aliciatxl"
         },
-        "content": "        email.setText(customer.getEmail().value);"
+        "content": "        email.setText(\"Email: \" + customer.getEmail().value);"
       },
       {
         "lineNumber": 53,
@@ -48456,9 +49063,9 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
+      "aliciatxl": 4,
       "-": 61,
-      "junhaotan": 11,
+      "junhaotan": 8,
       "YingxuH": 2
     }
   },
@@ -49117,23 +49724,23 @@
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        price.setText(product.getPrice().value);"
+        "content": "        price.setText(\"Price: $\" + product.getPrice().value);"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        quantity.setText(product.getQuantity().value);"
+        "content": "        quantity.setText(\"Quantity: \" + product.getQuantity().value);"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        sales.setText(product.getSales().value);"
+        "content": "        sales.setText(\"Sales: $\" + product.getSales().value);"
       },
       {
         "lineNumber": 48,
@@ -49284,8 +49891,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "YingxuH": 67
+      "aliciatxl": 4,
+      "YingxuH": 64
     }
   },
   {
@@ -49955,194 +50562,222 @@
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        id.setText(displayedIndex + \". \");"
+        "content": "        id.setText(displayedIndex"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        customer.setText(transaction.getCustomer().getName().toString());"
+        "content": "                + \". \""
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        product.setText(transaction.getProduct().getDescription().toString());"
+        "content": "                + transaction.getCustomer().getName().toString()"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        dateTime.setText(transaction.getDateTime().toString());"
+        "content": "                + \" bought \""
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        quantity.setText(transaction.getQuantity().value);"
+        "content": "                + transaction.getProduct().getDescription().toString());"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        money.setText(transaction.getMoney().value);"
+        "content": "        customer.setText(\"Customer: \" + transaction.getCustomer().getName().toString());"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        description.setText(transaction.getDescription().value);"
+        "content": "        product.setText(\"Product: \" + transaction.getProduct().getDescription().toString());"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "    }"
+        "content": "        dateTime.setText(\"Date/ time: \" + transaction.getDateTime().toString());"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "        quantity.setText(\"Quantity: \" + transaction.getQuantity().value);"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "    @Override"
+        "content": "        money.setText(\"Amount: $\" + transaction.getMoney().value);"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        description.setText(\"Description: \" + transaction.getDescription().value);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        // short circuit if same object"
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            return true;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        }"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        if (!(other instanceof TransactionCard)) {"
+        "content": "            return true;"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            return false;"
+        "content": "        }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        // state check"
+        "content": "        if (!(other instanceof TransactionCard)) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        TransactionCard card \u003d (TransactionCard) other;"
+        "content": "            return false;"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        return id.getText().equals(card.id.getText())"
+        "content": "        }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "                \u0026\u0026 transaction.equals(card.transaction);"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    }"
+        "content": "        // state check"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "}"
+        "content": "        TransactionCard card \u003d (TransactionCard) other;"
       },
       {
         "lineNumber": 74,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "        return id.getText().equals(card.id.getText())"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "                \u0026\u0026 transaction.equals(card.transaction);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 78,
         "author": {
           "gitId": "YingxuH"
         },
@@ -50150,8 +50785,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "YingxuH": 73
+      "aliciatxl": 12,
+      "YingxuH": 66
     }
   },
   {
@@ -50497,6 +51132,79 @@
     ],
     "authorContributionMap": {
       "YingxuH": 48
+    }
+  },
+  {
+    "path": "src/main/resources/view/CommandBox.fxml",
+    "fileType": "fxml",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.control.TextField?\u003e"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.StackPane?\u003e"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003cStackPane styleClass\u003d\"stack-pane\" xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "  \u003cTextField fx:id\u003d\"commandTextField\" onAction\u003d\"#handleCommandEntered\"/\u003e"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c/StackPane\u003e"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "aliciatxl": 1,
+      "-": 8
     }
   },
   {
@@ -51054,6 +51762,268 @@
       "aliciatxl": 1,
       "-": 49,
       "YingxuH": 28
+    }
+  },
+  {
+    "path": "src/main/resources/view/PersonListCard.fxml",
+    "fileType": "fxml",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.geometry.Insets?\u003e"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.control.Label?\u003e"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.ColumnConstraints?\u003e"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.FlowPane?\u003e"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.GridPane?\u003e"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.HBox?\u003e"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.Region?\u003e"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003cHBox id\u003d\"cardPane\" fx:id\u003d\"cardPane\" xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "  \u003cGridPane HBox.hgrow\u003d\"ALWAYS\"\u003e"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    \u003ccolumnConstraints\u003e"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "      \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10\" prefWidth\u003d\"150\" /\u003e"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    \u003c/columnConstraints\u003e"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    \u003cVBox alignment\u003d\"CENTER_LEFT\" minHeight\u003d\"105\" GridPane.columnIndex\u003d\"0\"\u003e"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "      \u003cpadding\u003e"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        \u003cInsets top\u003d\"5\" right\u003d\"5\" bottom\u003d\"5\" left\u003d\"15\" /\u003e"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "      \u003c/padding\u003e"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "      \u003cHBox spacing\u003d\"5\" alignment\u003d\"CENTER_LEFT\"\u003e"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        \u003cLabel fx:id\u003d\"id\" styleClass\u003d\"cell_big_label\"\u003e"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "          \u003cminWidth\u003e"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            \u003c!-- Ensures that the label text is never truncated --\u003e"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            \u003cRegion fx:constant\u003d\"USE_PREF_SIZE\" /\u003e"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "          \u003c/minWidth\u003e"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        \u003c/Label\u003e"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        \u003cLabel fx:id\u003d\"name\" text\u003d\"\\$first\" styleClass\u003d\"cell_big_label\" /\u003e"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "      \u003c/HBox\u003e"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "      \u003cFlowPane fx:id\u003d\"tags\" /\u003e"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "      \u003cLabel fx:id\u003d\"phone\" styleClass\u003d\"cell_small_label\" text\u003d\"\\$phone\" /\u003e"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "      \u003cLabel fx:id\u003d\"address\" styleClass\u003d\"cell_small_label\" text\u003d\"Address: \\$address\" /\u003e"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "      \u003cLabel fx:id\u003d\"email\" styleClass\u003d\"cell_small_label\" text\u003d\"Email: \\$email\" /\u003e"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    \u003c/VBox\u003e"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "  \u003c/GridPane\u003e"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c/HBox\u003e"
+      }
+    ],
+    "authorContributionMap": {
+      "aliciatxl": 2,
+      "-": 34
     }
   },
   {
@@ -51935,9 +52905,9 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.AMY;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.AMY;"
       },
       {
         "lineNumber": 12,
@@ -52089,9 +53059,9 @@
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 34,
@@ -52998,8 +53968,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 7,
-      "-": 145,
+      "aliciatxl": 9,
+      "-": 143,
       "junhaotan": 10
     }
   },
@@ -53213,16 +54183,16 @@
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
+        "content": "import seedu.address.testutil.customer.EditPersonDescriptorBuilder;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditProductDescriptorBuilder;"
+        "content": "import seedu.address.testutil.product.EditProductDescriptorBuilder;"
       },
       {
         "lineNumber": 32,
@@ -54276,8 +55246,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 49,
-      "-": 118,
+      "aliciatxl": 50,
+      "-": 117,
       "junhaotan": 14
     }
   },
@@ -54316,9 +55286,9 @@
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 6,
@@ -54379,9 +55349,9 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 15,
@@ -54609,8 +55579,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "-": 35,
+      "aliciatxl": 3,
+      "-": 33,
       "junhaotan": 10
     }
   },
@@ -54803,9 +55773,9 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 28,
@@ -56433,8 +57403,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 38,
-      "-": 148,
+      "aliciatxl": 39,
+      "-": 147,
       "junhaotan": 42,
       "YingxuH": 31
     }
@@ -56467,9 +57437,9 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 5,
@@ -56669,8 +57639,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 2,
-      "-": 26,
+      "aliciatxl": 3,
+      "-": 25,
       "junhaotan": 4
     }
   },
@@ -56744,9 +57714,9 @@
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 11,
@@ -57443,8 +58413,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "-": 84,
+      "aliciatxl": 2,
+      "-": 83,
       "junhaotan": 24
     }
   },
@@ -57553,9 +58523,9 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 16,
@@ -57637,16 +58607,16 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
+        "content": "import seedu.address.testutil.customer.EditPersonDescriptorBuilder;"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 29,
@@ -58679,8 +59649,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 6,
-      "-": 120,
+      "aliciatxl": 9,
+      "-": 117,
       "junhaotan": 49
     }
   },
@@ -58796,9 +59766,9 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
+        "content": "import seedu.address.testutil.customer.EditPersonDescriptorBuilder;"
       },
       {
         "lineNumber": 17,
@@ -59096,8 +60066,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "-": 55,
+      "aliciatxl": 2,
+      "-": 54,
       "junhaotan": 2
     }
   },
@@ -59157,30 +60127,30 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.CARL;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.CARL;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.ELLE;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.ELLE;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.FIONA;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.FIONA;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 12,
@@ -59695,8 +60665,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "-": 67,
+      "aliciatxl": 5,
+      "-": 63,
       "junhaotan": 16
     }
   },
@@ -59742,9 +60712,9 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 7,
@@ -59979,8 +60949,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "-": 34,
+      "aliciatxl": 2,
+      "-": 33,
       "junhaotan": 4
     }
   },
@@ -60021,7 +60991,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.getTypicalAddressBook;"
       },
       {
         "lineNumber": 6,
@@ -60084,7 +61054,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.ProductBuilder;"
+        "content": "import seedu.address.testutil.product.ProductBuilder;"
       },
       {
         "lineNumber": 15,
@@ -60506,7 +61476,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.ProductBuilder;"
+        "content": "import seedu.address.testutil.product.ProductBuilder;"
       },
       {
         "lineNumber": 28,
@@ -62160,14 +63130,14 @@
       {
         "lineNumber": 2,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;"
       },
@@ -62176,26 +63146,26 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.getTypicalAddressBook;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -62209,28 +63179,28 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "import seedu.address.model.Model;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "import seedu.address.model.ModelManager;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "import seedu.address.model.UserPrefs;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -62244,42 +63214,42 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "    @Test"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "    public void execute_emptyAddressBook_success() {"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "        Model model \u003d new ModelManager();"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "        Model expectedModel \u003d new ModelManager();"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -62293,42 +63263,42 @@
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "    @Test"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "    public void execute_nonEmptyAddressBook_success() {"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "        Model model \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "        Model expectedModel \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
@@ -62342,7 +63312,7 @@
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -62356,27 +63326,28 @@
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "aliciatxl"
+          "gitId": "-"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 31,
+      "aliciatxl": 6,
+      "-": 25,
       "junhaotan": 1
     }
   },
@@ -62452,7 +63423,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.getTypicalAddressBook;"
       },
       {
         "lineNumber": 11,
@@ -63253,7 +64224,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.getTypicalAddressBook;"
       },
       {
         "lineNumber": 15,
@@ -63337,14 +64308,14 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditProductDescriptorBuilder;"
+        "content": "import seedu.address.testutil.product.EditProductDescriptorBuilder;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.ProductBuilder;"
+        "content": "import seedu.address.testutil.product.ProductBuilder;"
       },
       {
         "lineNumber": 28,
@@ -64522,7 +65493,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditProductDescriptorBuilder;"
+        "content": "import seedu.address.testutil.product.EditProductDescriptorBuilder;"
       },
       {
         "lineNumber": 16,
@@ -64846,7 +65817,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.getTypicalAddressBook;"
       },
       {
         "lineNumber": 7,
@@ -65401,7 +66372,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.getTypicalAddressBook;"
       },
       {
         "lineNumber": 7,
@@ -65828,23 +66799,23 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
+        "content": "import seedu.address.testutil.customer.EditPersonDescriptorBuilder;"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonUtil;"
+        "content": "import seedu.address.testutil.customer.PersonUtil;"
       },
       {
         "lineNumber": 30,
@@ -66345,8 +67316,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "-": 74,
+      "aliciatxl": 4,
+      "-": 71,
       "junhaotan": 25
     }
   },
@@ -67935,16 +68906,16 @@
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.AMY;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.AMY;"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.BOB;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.BOB;"
       },
       {
         "lineNumber": 31,
@@ -68019,9 +68990,9 @@
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 42,
@@ -68725,8 +69696,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "-": 120,
+      "aliciatxl": 4,
+      "-": 117,
       "junhaotan": 20
     }
   },
@@ -69280,9 +70251,9 @@
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
+        "content": "import seedu.address.testutil.customer.EditPersonDescriptorBuilder;"
       },
       {
         "lineNumber": 45,
@@ -70455,8 +71426,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 1,
-      "-": 188,
+      "aliciatxl": 2,
+      "-": 187,
       "junhaotan": 22
     }
   },
@@ -70879,14 +71850,14 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.BAG;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.BAG;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.WATCH;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.WATCH;"
       },
       {
         "lineNumber": 26,
@@ -70956,7 +71927,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.ProductBuilder;"
+        "content": "import seedu.address.testutil.product.ProductBuilder;"
       },
       {
         "lineNumber": 36,
@@ -72097,7 +73068,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.EditProductDescriptorBuilder;"
+        "content": "import seedu.address.testutil.product.EditProductDescriptorBuilder;"
       },
       {
         "lineNumber": 38,
@@ -73432,16 +74403,16 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.ALICE;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 11,
@@ -73558,9 +74529,9 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 28,
@@ -74208,8 +75179,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 11,
-      "-": 84,
+      "aliciatxl": 14,
+      "-": 81,
       "junhaotan": 19,
       "YingxuH": 5
     }
@@ -74270,16 +75241,16 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.ALICE;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.BENSON;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.BENSON;"
       },
       {
         "lineNumber": 10,
@@ -75144,8 +76115,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 3,
-      "-": 125,
+      "aliciatxl": 5,
+      "-": 123,
       "junhaotan": 4
     }
   },
@@ -75488,16 +76459,16 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.ALICE;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.BOB;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.BOB;"
       },
       {
         "lineNumber": 13,
@@ -75523,9 +76494,9 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 17,
@@ -76082,7 +77053,8 @@
       }
     ],
     "authorContributionMap": {
-      "-": 87,
+      "aliciatxl": 3,
+      "-": 84,
       "junhaotan": 8
     }
   },
@@ -76607,9 +77579,9 @@
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 13,
@@ -77054,7 +78026,8 @@
       }
     ],
     "authorContributionMap": {
-      "-": 73,
+      "aliciatxl": 1,
+      "-": 72,
       "junhaotan": 2
     }
   },
@@ -77701,16 +78674,16 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.ALICE;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.BOB;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.BOB;"
       },
       {
         "lineNumber": 11,
@@ -77778,9 +78751,9 @@
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "junhaotan"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.PersonBuilder;"
+        "content": "import seedu.address.testutil.customer.PersonBuilder;"
       },
       {
         "lineNumber": 21,
@@ -78834,7 +79807,8 @@
       }
     ],
     "authorContributionMap": {
-      "junhaotan": 170
+      "aliciatxl": 3,
+      "junhaotan": 167
     }
   },
   {
@@ -78923,7 +79897,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.ProductBuilder;"
+        "content": "import seedu.address.testutil.product.ProductBuilder;"
       },
       {
         "lineNumber": 13,
@@ -80591,9 +81565,9 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.BENSON;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.BENSON;"
       },
       {
         "lineNumber": 7,
@@ -81332,8 +82306,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 2,
-      "-": 89,
+      "aliciatxl": 3,
+      "-": 88,
       "junhaotan": 20
     }
   },
@@ -81381,7 +82355,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalProducts.BAG;"
+        "content": "import static seedu.address.testutil.product.TypicalProducts.BAG;"
       },
       {
         "lineNumber": 7,
@@ -81977,30 +82951,30 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.ALICE;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.HOON;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.HOON;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.IDA;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.IDA;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 10,
@@ -82718,8 +83692,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 14,
-      "-": 97
+      "aliciatxl": 18,
+      "-": 93
     }
   },
   {
@@ -82820,9 +83794,9 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import seedu.address.testutil.TypicalPersons;"
+        "content": "import seedu.address.testutil.customer.TypicalPersons;"
       },
       {
         "lineNumber": 15,
@@ -83057,8 +84031,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 10,
-      "-": 37
+      "aliciatxl": 11,
+      "-": 36
     }
   },
   {
@@ -83096,9 +84070,9 @@
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;"
+        "content": "import static seedu.address.testutil.customer.TypicalPersons.getTypicalAddressBook;"
       },
       {
         "lineNumber": 6,
@@ -83543,8 +84517,8 @@
       }
     ],
     "authorContributionMap": {
-      "aliciatxl": 7,
-      "-": 61
+      "aliciatxl": 8,
+      "-": 60
     }
   },
   {
@@ -83797,7 +84771,7 @@
     }
   },
   {
-    "path": "src/test/java/seedu/address/testutil/EditPersonDescriptorBuilder.java",
+    "path": "src/test/java/seedu/address/testutil/TestUtil.java",
     "fileType": "java",
     "lines": [
       {
@@ -83806,6 +84780,516 @@
           "gitId": "-"
         },
         "content": "package seedu.address.testutil;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.nio.file.Files;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.nio.file.Paths;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.model.Model;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "import seedu.address.model.customer.Customer;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * A utility class for test cases."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class TestUtil {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Folder used for temp files created during testing. Ignored by Git."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private static final Path SANDBOX_FOLDER \u003d Paths.get(\"src\", \"test\", \"data\", \"sandbox\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Appends {@code fileName} to the sandbox folder path and returns the resulting path."
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Creates the sandbox folder if it doesn\u0027t exist."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static Path getFilePathInSandboxFolder(String fileName) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            Files.createDirectories(SANDBOX_FOLDER);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw new RuntimeException(e);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return SANDBOX_FOLDER.resolve(fileName);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * Returns the middle index of the customer in the {@code model}\u0027s customer list."
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static Index getMidIndex(Model model) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return Index.fromOneBased(model.getFilteredCustomerList().size() / 2);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * Returns the last index of the customer in the {@code model}\u0027s customer list."
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static Index getLastIndex(Model model) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return Index.fromOneBased(model.getFilteredCustomerList().size());"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "     * Returns the customer in the {@code model}\u0027s customer list at {@code index}."
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static Customer getPerson(Model model, Index index) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return model.getFilteredCustomerList().get(index.getZeroBased());"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "-": 47,
+      "junhaotan": 8
+    }
+  },
+  {
+    "path": "src/test/java/seedu/address/testutil/TypicalIndexes.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.address.testutil;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * A utility class containing a list of {@code Index} objects to be used in tests."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class TypicalIndexes {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final Index INDEX_FIRST_PERSON \u003d Index.fromOneBased(1);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final Index INDEX_SECOND_PERSON \u003d Index.fromOneBased(2);"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final Index INDEX_THIRD_PERSON \u003d Index.fromOneBased(3);"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public static final Index INDEX_FIRST_PRODUCT \u003d Index.fromOneBased(1);"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public static final Index INDEX_SECOND_PRODUCT \u003d Index.fromOneBased(2);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public static final Index INDEX_THIRD_PRODUCT \u003d Index.fromOneBased(3);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "aliciatxl": 3,
+      "-": 12
+    }
+  },
+  {
+    "path": "src/test/java/seedu/address/testutil/customer/EditPersonDescriptorBuilder.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "package seedu.address.testutil.customer;"
       },
       {
         "lineNumber": 2,
@@ -84411,12 +85895,13 @@
       }
     ],
     "authorContributionMap": {
-      "-": 74,
+      "aliciatxl": 1,
+      "-": 73,
       "junhaotan": 13
     }
   },
   {
-    "path": "src/test/java/seedu/address/testutil/EditProductDescriptorBuilder.java",
+    "path": "src/test/java/seedu/address/testutil/customer/PersonBuilder.java",
     "fileType": "java",
     "lines": [
       {
@@ -84424,514 +85909,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "package seedu.address.testutil;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "import seedu.address.logic.commands.product.EditProductCommand.EditProductDescriptor;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "import seedu.address.model.product.Price;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "import seedu.address.model.product.Product;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "import seedu.address.model.product.Sales;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "YingxuH"
-        },
-        "content": "import seedu.address.model.util.Description;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "import seedu.address.model.util.Quantity;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": " * A utility class to help with building EditProductDescriptor objects."
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "public class EditProductDescriptorBuilder {"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    private EditProductDescriptor descriptor;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public EditProductDescriptorBuilder() {"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor \u003d new EditProductDescriptor();"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public EditProductDescriptorBuilder(EditProductDescriptor descriptor) {"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        this.descriptor \u003d new EditProductDescriptor(descriptor);"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     * Returns an {@code EditProductDescriptor} with fields containing {@code product}\u0027s details"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public EditProductDescriptorBuilder(Product product) {"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor \u003d new EditProductDescriptor();"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor.setDescription(product.getDescription());"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor.setPrice(product.getPrice());"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor.setQuantity(product.getQuantity());"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor.setSales(product.getSales());"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     * Sets the {@code Description} of the {@code EditProductDescriptor} that we are building."
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public EditProductDescriptorBuilder withDescription(String name) {"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor.setDescription(new Description(name));"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        return this;"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     * Sets the {@code Price} of the {@code EditProductDescriptor} that we are building."
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public EditProductDescriptorBuilder withPrice(String phone) {"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor.setPrice(new Price(phone));"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        return this;"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     * Sets the {@code Quantity} of the {@code EditProductDescriptor} that we are building."
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public EditProductDescriptorBuilder withQuantity(String email) {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor.setQuantity(new Quantity(email));"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        return this;"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     * Sets the {@code Sales} of the {@code EditProductDescriptor} that we are building."
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public EditProductDescriptorBuilder withSales(String address) {"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        descriptor.setSales(new Sales(address));"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        return this;"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public EditProductDescriptor build() {"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        return descriptor;"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "aliciatxl": 70,
-      "YingxuH": 1
-    }
-  },
-  {
-    "path": "src/test/java/seedu/address/testutil/PersonBuilder.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "package seedu.address.testutil;"
+        "content": "package seedu.address.testutil.customer;"
       },
       {
         "lineNumber": 2,
@@ -85579,20 +86557,21 @@
       }
     ],
     "authorContributionMap": {
-      "-": 73,
+      "aliciatxl": 1,
+      "-": 72,
       "junhaotan": 20
     }
   },
   {
-    "path": "src/test/java/seedu/address/testutil/PersonUtil.java",
+    "path": "src/test/java/seedu/address/testutil/customer/PersonUtil.java",
     "fileType": "java",
     "lines": [
       {
         "lineNumber": 1,
         "author": {
-          "gitId": "-"
+          "gitId": "aliciatxl"
         },
-        "content": "package seedu.address.testutil;"
+        "content": "package seedu.address.testutil.customer;"
       },
       {
         "lineNumber": 2,
@@ -86023,12 +87002,13 @@
       }
     ],
     "authorContributionMap": {
-      "-": 48,
+      "aliciatxl": 1,
+      "-": 47,
       "junhaotan": 14
     }
   },
   {
-    "path": "src/test/java/seedu/address/testutil/ProductBuilder.java",
+    "path": "src/test/java/seedu/address/testutil/customer/TypicalPersons.java",
     "fileType": "java",
     "lines": [
       {
@@ -86036,7 +87016,1057 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "package seedu.address.testutil;"
+        "content": "package seedu.address.testutil.customer;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "import seedu.address.model.InventorySystem;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "import seedu.address.model.customer.Customer;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": " * A utility class containing a list of {@code Customer} objects to be used in tests."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class TypicalPersons {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer ALICE \u003d new PersonBuilder().withName(\"Alice Pauline\")"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withAddress(\"123, Jurong West Ave 6, #08-111\").withEmail(\"alice@example.com\")"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withPhone(\"94351253\")"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withTags(\"friends\").build();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer BENSON \u003d new PersonBuilder().withName(\"Benson Meier\")"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withAddress(\"311, Clementi Ave 2, #02-25\")"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(\"johnd@example.com\").withPhone(\"98765432\")"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withTags(\"owesMoney\", \"friends\").build();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer CARL \u003d new PersonBuilder().withName(\"Carl Kurz\").withPhone(\"95352563\")"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(\"heinz@example.com\").withAddress(\"wall street\").build();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer DANIEL \u003d new PersonBuilder().withName(\"Daniel Meier\").withPhone(\"87652533\")"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(\"cornelia@example.com\").withAddress(\"10th street\").withTags(\"friends\").build();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer ELLE \u003d new PersonBuilder().withName(\"Elle Meyer\").withPhone(\"9482224\")"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(\"werner@example.com\").withAddress(\"michegan ave\").build();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer FIONA \u003d new PersonBuilder().withName(\"Fiona Kunz\").withPhone(\"9482427\")"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(\"lydia@example.com\").withAddress(\"little tokyo\").build();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer GEORGE \u003d new PersonBuilder().withName(\"George Best\").withPhone(\"9482442\")"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(\"anna@example.com\").withAddress(\"4th street\").build();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    // Manually added"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer HOON \u003d new PersonBuilder().withName(\"Hoon Meier\").withPhone(\"8482424\")"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(\"stefan@example.com\").withAddress(\"little india\").build();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer IDA \u003d new PersonBuilder().withName(\"Ida Mueller\").withPhone(\"8482131\")"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(\"hans@example.com\").withAddress(\"chicago ave\").build();"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    // Manually added - Customer\u0027s details found in {@code CommandTestUtil}"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer AMY \u003d new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final Customer BOB \u003d new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            .build();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final String KEYWORD_MATCHING_MEIER \u003d \"Meier\"; // A keyword that matches MEIER"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private TypicalPersons() {} // prevents instantiation"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     * Returns an {@code InventorySystem} with all the typical persons."
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public static InventorySystem getTypicalAddressBook() {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        InventorySystem ab \u003d new InventorySystem();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        for (Customer customer : getTypicalPersons()) {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            ab.addPerson(customer);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return ab;"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static List\u003cCustomer\u003e getTypicalPersons() {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return new ArrayList\u003c\u003e(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "aliciatxl": 5,
+      "-": 54,
+      "junhaotan": 17
+    }
+  },
+  {
+    "path": "src/test/java/seedu/address/testutil/product/EditProductDescriptorBuilder.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "package seedu.address.testutil.product;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "import seedu.address.logic.commands.product.EditProductCommand.EditProductDescriptor;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "import seedu.address.model.product.Price;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "import seedu.address.model.product.Product;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "import seedu.address.model.product.Sales;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "import seedu.address.model.util.Description;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "import seedu.address.model.util.Quantity;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": " * A utility class to help with building EditProductDescriptor objects."
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "public class EditProductDescriptorBuilder {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    private EditProductDescriptor descriptor;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public EditProductDescriptorBuilder() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor \u003d new EditProductDescriptor();"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public EditProductDescriptorBuilder(EditProductDescriptor descriptor) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        this.descriptor \u003d new EditProductDescriptor(descriptor);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     * Returns an {@code EditProductDescriptor} with fields containing {@code product}\u0027s details"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public EditProductDescriptorBuilder(Product product) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor \u003d new EditProductDescriptor();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor.setDescription(product.getDescription());"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor.setPrice(product.getPrice());"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor.setQuantity(product.getQuantity());"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor.setSales(product.getSales());"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     * Sets the {@code Description} of the {@code EditProductDescriptor} that we are building."
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public EditProductDescriptorBuilder withDescription(String name) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor.setDescription(new Description(name));"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        return this;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     * Sets the {@code Price} of the {@code EditProductDescriptor} that we are building."
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public EditProductDescriptorBuilder withPrice(String phone) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor.setPrice(new Price(phone));"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        return this;"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     * Sets the {@code Quantity} of the {@code EditProductDescriptor} that we are building."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public EditProductDescriptorBuilder withQuantity(String email) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor.setQuantity(new Quantity(email));"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        return this;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     * Sets the {@code Sales} of the {@code EditProductDescriptor} that we are building."
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public EditProductDescriptorBuilder withSales(String address) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        descriptor.setSales(new Sales(address));"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        return this;"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    public EditProductDescriptor build() {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        return descriptor;"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "aliciatxl": 70,
+      "YingxuH": 1
+    }
+  },
+  {
+    "path": "src/test/java/seedu/address/testutil/product/ProductBuilder.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "package seedu.address.testutil.product;"
       },
       {
         "lineNumber": 2,
@@ -86584,1060 +88614,7 @@
     }
   },
   {
-    "path": "src/test/java/seedu/address/testutil/TestUtil.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "package seedu.address.testutil;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.io.IOException;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.nio.file.Files;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.nio.file.Path;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.nio.file.Paths;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.commons.core.index.Index;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.model.Model;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "import seedu.address.model.customer.Customer;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " * A utility class for test cases."
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "public class TestUtil {"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Folder used for temp files created during testing. Ignored by Git."
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private static final Path SANDBOX_FOLDER \u003d Paths.get(\"src\", \"test\", \"data\", \"sandbox\");"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Appends {@code fileName} to the sandbox folder path and returns the resulting path."
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Creates the sandbox folder if it doesn\u0027t exist."
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static Path getFilePathInSandboxFolder(String fileName) {"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            Files.createDirectories(SANDBOX_FOLDER);"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        } catch (IOException e) {"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new RuntimeException(e);"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        return SANDBOX_FOLDER.resolve(fileName);"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "     * Returns the middle index of the customer in the {@code model}\u0027s customer list."
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static Index getMidIndex(Model model) {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        return Index.fromOneBased(model.getFilteredCustomerList().size() / 2);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "     * Returns the last index of the customer in the {@code model}\u0027s customer list."
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static Index getLastIndex(Model model) {"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        return Index.fromOneBased(model.getFilteredCustomerList().size());"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "     * Returns the customer in the {@code model}\u0027s customer list at {@code index}."
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static Customer getPerson(Model model, Index index) {"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        return model.getFilteredCustomerList().get(index.getZeroBased());"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "-": 47,
-      "junhaotan": 8
-    }
-  },
-  {
-    "path": "src/test/java/seedu/address/testutil/TypicalIndexes.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "package seedu.address.testutil;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.commons.core.index.Index;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " * A utility class containing a list of {@code Index} objects to be used in tests."
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "public class TypicalIndexes {"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static final Index INDEX_FIRST_PERSON \u003d Index.fromOneBased(1);"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static final Index INDEX_SECOND_PERSON \u003d Index.fromOneBased(2);"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static final Index INDEX_THIRD_PERSON \u003d Index.fromOneBased(3);"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public static final Index INDEX_FIRST_PRODUCT \u003d Index.fromOneBased(1);"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public static final Index INDEX_SECOND_PRODUCT \u003d Index.fromOneBased(2);"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public static final Index INDEX_THIRD_PRODUCT \u003d Index.fromOneBased(3);"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "aliciatxl": 3,
-      "-": 12
-    }
-  },
-  {
-    "path": "src/test/java/seedu/address/testutil/TypicalPersons.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "package seedu.address.testutil;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.util.ArrayList;"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.util.Arrays;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.util.List;"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "import seedu.address.model.InventorySystem;"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "import seedu.address.model.customer.Customer;"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": " * A utility class containing a list of {@code Customer} objects to be used in tests."
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "public class TypicalPersons {"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer ALICE \u003d new PersonBuilder().withName(\"Alice Pauline\")"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withAddress(\"123, Jurong West Ave 6, #08-111\").withEmail(\"alice@example.com\")"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withPhone(\"94351253\")"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withTags(\"friends\").build();"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer BENSON \u003d new PersonBuilder().withName(\"Benson Meier\")"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withAddress(\"311, Clementi Ave 2, #02-25\")"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(\"johnd@example.com\").withPhone(\"98765432\")"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withTags(\"owesMoney\", \"friends\").build();"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer CARL \u003d new PersonBuilder().withName(\"Carl Kurz\").withPhone(\"95352563\")"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(\"heinz@example.com\").withAddress(\"wall street\").build();"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer DANIEL \u003d new PersonBuilder().withName(\"Daniel Meier\").withPhone(\"87652533\")"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(\"cornelia@example.com\").withAddress(\"10th street\").withTags(\"friends\").build();"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer ELLE \u003d new PersonBuilder().withName(\"Elle Meyer\").withPhone(\"9482224\")"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(\"werner@example.com\").withAddress(\"michegan ave\").build();"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer FIONA \u003d new PersonBuilder().withName(\"Fiona Kunz\").withPhone(\"9482427\")"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(\"lydia@example.com\").withAddress(\"little tokyo\").build();"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer GEORGE \u003d new PersonBuilder().withName(\"George Best\").withPhone(\"9482442\")"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(\"anna@example.com\").withAddress(\"4th street\").build();"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    // Manually added"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer HOON \u003d new PersonBuilder().withName(\"Hoon Meier\").withPhone(\"8482424\")"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(\"stefan@example.com\").withAddress(\"little india\").build();"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer IDA \u003d new PersonBuilder().withName(\"Ida Mueller\").withPhone(\"8482131\")"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(\"hans@example.com\").withAddress(\"chicago ave\").build();"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    // Manually added - Customer\u0027s details found in {@code CommandTestUtil}"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer AMY \u003d new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static final Customer BOB \u003d new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            .build();"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static final String KEYWORD_MATCHING_MEIER \u003d \"Meier\"; // A keyword that matches MEIER"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private TypicalPersons() {} // prevents instantiation"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "     * Returns an {@code InventorySystem} with all the typical persons."
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "    public static InventorySystem getTypicalAddressBook() {"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        InventorySystem ab \u003d new InventorySystem();"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        for (Customer customer : getTypicalPersons()) {"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "            ab.addPerson(customer);"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        return ab;"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    public static List\u003cCustomer\u003e getTypicalPersons() {"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        return new ArrayList\u003c\u003e(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "aliciatxl": 4,
-      "-": 55,
-      "junhaotan": 17
-    }
-  },
-  {
-    "path": "src/test/java/seedu/address/testutil/TypicalProducts.java",
+    "path": "src/test/java/seedu/address/testutil/product/TypicalProducts.java",
     "fileType": "java",
     "lines": [
       {
@@ -87645,7 +88622,7 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "package seedu.address.testutil;"
+        "content": "package seedu.address.testutil.product;"
       },
       {
         "lineNumber": 2,

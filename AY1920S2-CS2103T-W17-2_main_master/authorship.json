@@ -14765,6 +14765,1051 @@
     }
   },
   {
+    "path": "src/main/java/com/notably/logic/correction/AbsolutePathCorrectionEngine.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "package com.notably.logic.correction;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import java.util.LinkedList;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import java.util.Objects;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import java.util.Queue;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import java.util.stream.Collectors;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.commons.core.path.exceptions.InvalidPathException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.logic.correction.distance.EditDistanceCalculator;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.logic.correction.distance.LevenshteinDistanceCalculator;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.model.Model;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.model.block.BlockTree;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.model.block.BlockTreeItem;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": " * Represents a correction engine that works on {@link AbsolutePath}s"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "public class AbsolutePathCorrectionEngine implements CorrectionEngine\u003cAbsolutePath\u003e {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    private final EditDistanceCalculator editDistanceCalculator;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    private final Model model;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    private final int distanceThreshold;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    public AbsolutePathCorrectionEngine(Model model, int distanceThreshold) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        this(new LevenshteinDistanceCalculator(), model, distanceThreshold);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    public AbsolutePathCorrectionEngine(EditDistanceCalculator editDistanceCalculator,"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            Model model, int distanceThreshold) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        Objects.requireNonNull(editDistanceCalculator);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        Objects.requireNonNull(model);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        if (distanceThreshold \u003c 0) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            throw new IllegalArgumentException(\"\\\"distanceThreshold\\\" must be greater than 0\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        this.editDistanceCalculator \u003d editDistanceCalculator;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        this.model \u003d model;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        this.distanceThreshold \u003d distanceThreshold;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * Corrects a given path."
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * @param uncorrected An uncorrected path"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * @return Result of the correction"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    public CorrectionResult\u003cAbsolutePath\u003e correct(AbsolutePath uncorrected) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        Objects.requireNonNull(uncorrected);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        List\u003cAbsolutePath\u003e possiblePaths \u003d getPossiblePaths();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        AbsolutePath closestPath \u003d null;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        int closestDistance \u003d Integer.MAX_VALUE;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        for (AbsolutePath possiblePath : possiblePaths) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            int distance \u003d calculatePathDistance(uncorrected, possiblePath);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            if (distance \u003c closestDistance) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                closestPath \u003d possiblePath;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                closestDistance \u003d distance;"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        if (closestDistance \u003e distanceThreshold) {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            return new CorrectionResult\u003c\u003e(CorrectionStatus.FAILED);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        if (closestPath.equals(uncorrected)) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            return new CorrectionResult\u003c\u003e(CorrectionStatus.UNCHANGED, uncorrected);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        return new CorrectionResult\u003c\u003e(CorrectionStatus.CORRECTED, closestPath);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * Generates all possible paths from the app\u0027s {@link BlockTree}"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * @return List of all possible paths"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    private List\u003cAbsolutePath\u003e getPossiblePaths() {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        List\u003cAbsolutePath\u003e possiblePaths \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        Queue\u003cAbsolutePath\u003e pathQueue \u003d new LinkedList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            pathQueue.offer(AbsolutePath.fromString(\"/\"));"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        } catch (InvalidPathException exception) {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            throw new AssertionError(exception);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        while (!pathQueue.isEmpty()) {"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            AbsolutePath currentPath \u003d pathQueue.poll();"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            List\u003cBlockTreeItem\u003e childrenBlocks \u003d model.getBlockTree().get(currentPath).getBlockChildren();"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            List\u003cAbsolutePath\u003e childrenPaths \u003d childrenBlocks"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                    .stream()"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                    .map(item -\u003e {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                        List\u003cString\u003e combinedComponents \u003d new ArrayList\u003c\u003e(currentPath.getComponents());"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                        combinedComponents.add(item.getTitle().getText());"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                        return AbsolutePath.fromComponents(combinedComponents);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                    })"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                    .collect(Collectors.toList());"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            pathQueue.addAll(childrenPaths);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            possiblePaths.add(currentPath);"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        return possiblePaths;"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * Calculate the edit distance between two {@link AbsolutePath}s."
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * @param firstPath First {@link AbsolutePath}"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * @param secondPath Second {@link AbsolutePath}"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     * @return Edit distance between {@code firstPath} and {@code secondPath}"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    private int calculatePathDistance(AbsolutePath firstPath, AbsolutePath secondPath) {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        Objects.requireNonNull(firstPath);"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        Objects.requireNonNull(secondPath);"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        List\u003cString\u003e firstComponents \u003d firstPath.getComponents();"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        List\u003cString\u003e secondComponents \u003d secondPath.getComponents();"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        // Calculate the cumulative distance between the two paths component-by-component."
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        int i \u003d 0;"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        int distance \u003d 0;"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        while (i \u003c firstComponents.size() \u0026\u0026 i \u003c secondComponents.size()) {"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            distance +\u003d editDistanceCalculator.calculateDistance(firstComponents.get(i), secondComponents.get(i));"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            i++;"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        // If one path is longer than another, increase cumulative distance by the size of"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        // each extra component\u0027s length."
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        while (i \u003c firstComponents.size()) {"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            distance +\u003d firstComponents.get(i).length();"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            i++;"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        while (i \u003c secondComponents.size()) {"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            distance +\u003d secondComponents.get(i).length();"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            i++;"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        return distance;"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "kevinputera": 148
+    }
+  },
+  {
     "path": "src/main/java/com/notably/logic/correction/CorrectionEngine.java",
     "fileType": "java",
     "lines": [
@@ -25865,6 +26910,330 @@
         "author": {
           "gitId": "firzanarmani"
         },
+        "content": "import com.notably.model.block.exceptions.CannotModifyRootException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import com.notably.model.block.exceptions.NoSuchBlockException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": " * Custom tree-like data structure that uses the AbsolutePath object"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": " * to obtain the BlockTreeItem needed for manipulation."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "public interface BlockTree {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * Gets the root BlockTreeItem of the block tree."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @return The root BlockTreeItem."
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    BlockTreeItem getRootBlock();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * Gets the BlockTreeItem at the path specified."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @param path Full path of the block."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @return"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    BlockTreeItem get(AbsolutePath path) throws NoSuchBlockException;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * Adds a new Block to the block at the path specified."
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @param path Full path of the parent block."
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @param newBlock The block to be added."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    void add(AbsolutePath path, Block newBlock);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * Sets the block at the specified path to a new block."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @param path Full path of the block."
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @param newBlock The new block to be set."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    void set(AbsolutePath path, Block newBlock) throws CannotModifyRootException;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * Remove the block at the specified path."
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     * @param path Full path of the block to be removed."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    void remove(AbsolutePath path) throws CannotModifyRootException;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "firzanarmani": 45
+    }
+  },
+  {
+    "path": "src/main/java/com/notably/model/block/BlockTreeImpl.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "package com.notably.model.block;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "firzanarmani"
+        },
         "content": ""
       },
       {
@@ -25872,70 +27241,70 @@
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "/**"
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": " * Custom tree-like data structure that uses the AbsolutePath object"
+        "content": "import com.notably.model.block.exceptions.CannotModifyRootException;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": " * to obtain the BlockTreeItem needed for manipulation."
+        "content": "import com.notably.model.block.exceptions.NoSuchBlockException;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "public interface BlockTree {"
+        "content": "/**"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": " * Custom tree-like data structure that uses the AbsolutePath object"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Gets the root BlockTreeItem of the block tree."
+        "content": " * to obtain the Block needed for manipulation."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @return The root BlockTreeItem."
+        "content": " */"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "public class BlockTreeImpl implements BlockTree {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    BlockTreeItem getRootBlock();"
+        "content": "    private BlockTreeItem root;"
       },
       {
         "lineNumber": 15,
@@ -25949,182 +27318,182 @@
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "    public BlockTreeImpl() {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Gets the BlockTreeItem at the path specified."
+        "content": "        this.root \u003d BlockTreeItemImpl.createRootBlockTreeItem();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param path Full path of the block."
+        "content": "    }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @return"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "    @Override"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    BlockTreeItem get(AbsolutePath path);"
+        "content": "    public BlockTreeItem getRootBlock() {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "        return this.root;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Adds a new Block to the block at the path specified."
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param path Full path of the parent block."
+        "content": "    @Override"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param newBlock The block to be added."
+        "content": "    public BlockTreeItem get(AbsolutePath path) throws NoSuchBlockException {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "        requireNonNull(path);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    void add(AbsolutePath path, Block newBlock);"
+        "content": "        BlockTreeItem currentBlock \u003d root;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "        for (String component : path.getComponents()) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "            currentBlock \u003d currentBlock.getBlockChild(new Title(component));"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Sets the block at the specified path to a new block."
+        "content": "        }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param path Full path of the block."
+        "content": "        return currentBlock;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param newBlock The new block to be set."
+        "content": "    }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    void set(AbsolutePath path, Block newBlock);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": ""
+        "content": "    public void add(AbsolutePath path, Block newBlock) {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    /**"
+        "content": "        requireNonNull(path);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * Remove the block at the specified path."
+        "content": "        requireNonNull(newBlock);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     * @param path Full path of the block to be removed."
+        "content": "        BlockTreeItem currentBlock \u003d get(path);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "     */"
+        "content": "        currentBlock.addBlockChild(newBlock);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "firzanarmani"
         },
-        "content": "    void remove(AbsolutePath path);"
+        "content": "    }"
       },
       {
         "lineNumber": 42,
@@ -26138,11 +27507,179 @@
         "author": {
           "gitId": "firzanarmani"
         },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void set(AbsolutePath path, Block newBlock) throws CannotModifyRootException {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(path);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(newBlock);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        BlockTreeItem currentBlock \u003d get(path);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        BlockTreeItem parentBlock;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        if (currentBlock.isRootBlock()) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            throw new CannotModifyRootException();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        parentBlock \u003d currentBlock.getBlockParent();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        parentBlock.setBlockChild(currentBlock.getTitle(), newBlock);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void remove(AbsolutePath path) throws CannotModifyRootException {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(path);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        BlockTreeItem currentBlock \u003d get(path);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        BlockTreeItem parentBlock;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        if (currentBlock.isRootBlock()) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            throw new CannotModifyRootException();"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        parentBlock \u003d currentBlock.getBlockParent();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        parentBlock.removeBlockChild(currentBlock);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "firzanarmani"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "firzanarmani": 43
+      "firzanarmani": 67
     }
   },
   {
@@ -26586,6 +28123,1016 @@
     ],
     "authorContributionMap": {
       "firzanarmani": 62
+    }
+  },
+  {
+    "path": "src/main/java/com/notably/model/block/BlockTreeItemImpl.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "package com.notably.model.block;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static java.util.Objects.hash;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import java.util.stream.Collectors;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import com.notably.model.block.exceptions.DuplicateBlockException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import com.notably.model.block.exceptions.NoSuchBlockException;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import javafx.scene.control.TreeItem;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": " * Represents a BlockTreeItem in the Notably data structure."
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "public class BlockTreeItemImpl implements BlockTreeItem {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    private TreeItem\u003cBlock\u003e blockTreeItem;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public BlockTreeItemImpl(Block block) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(block);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTreeItem \u003d new TreeItem\u003cBlock\u003e(block);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public BlockTreeItemImpl(TreeItem\u003cBlock\u003e treeItem) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(treeItem);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTreeItem \u003d treeItem;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public static BlockTreeItem createRootBlockTreeItem() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return new BlockTreeItemImpl(BlockImpl.createRootBlock());"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public Title getTitle() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return blockTreeItem.getValue().getTitle();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public Body getBody() {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return blockTreeItem.getValue().getBody();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public TreeItem\u003cBlock\u003e getTreeItem() {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return this.blockTreeItem;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public Block getBlock() {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return blockTreeItem.getValue();"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public BlockTreeItem getBlockParent() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return new BlockTreeItemImpl(blockTreeItem.getParent());"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public List\u003cBlockTreeItem\u003e getBlockChildren() {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return blockTreeItem.getChildren().stream()"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .map(child -\u003e new BlockTreeItemImpl(child)).collect(Collectors.toList());"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void setBlockChildren(List\u003cBlockTreeItem\u003e newChildren) {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(newChildren);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        List\u003cTreeItem\u003cBlock\u003e\u003e convertedNewChildren \u003d newChildren.stream()"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .map(newChild -\u003e newChild.getTreeItem())"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .collect(Collectors.toList());"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTreeItem.getChildren().setAll(convertedNewChildren);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public BlockTreeItem getBlockChild(Title title) throws NoSuchBlockException {"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(title);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        BlockTreeItem child \u003d getBlockChildren()"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .stream()"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .filter(blockTreeItem -\u003e blockTreeItem"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "                .getTitle()"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "                .equals(title))"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .findFirst()"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .orElseThrow(() -\u003e new NoSuchBlockException(title.getText()));"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return child;"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void setBlockChild(Title title, Block newBlock) {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(title);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(newBlock);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        BlockTreeItem child \u003d getBlockChild(title);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        child.getTreeItem().setValue(newBlock);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void addBlockChild(Block block) throws DuplicateBlockException {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(block);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        boolean hasMatchingChild \u003d getBlockChildren()"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .stream()"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .anyMatch(child -\u003e child"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "                .getTitle()"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "                .equals(block.getTitle()));"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        if (hasMatchingChild) {"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            throw new DuplicateBlockException();"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTreeItem.getChildren().add(new TreeItem\u003cBlock\u003e(block));"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void removeBlockChild(Block toRemove) {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        requireNonNull(toRemove);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        TreeItem\u003cBlock\u003e itemToRemove \u003d getBlockChild(toRemove.getTitle()).getTreeItem();"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTreeItem.getChildren().remove(itemToRemove);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public boolean isRootBlock() {"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return getTitle()"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .getText()"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            .equals(\"Root\")"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            \u0026\u0026 getTreeItem().getParent() \u003d\u003d null;"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public boolean equals(Object obj) {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        if (blockTreeItem \u003d\u003d obj) {"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        if (!(obj instanceof BlockTreeItem)) {"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        BlockTreeItem otherBlock \u003d (BlockTreeItem) obj;"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return otherBlock.getTitle().equals(this.getTitle());"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        return hash(this.getTitle(), this.getTreeItem().getParent());"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "firzanarmani": 143
     }
   },
   {
@@ -27395,6 +29942,92 @@
     ],
     "authorContributionMap": {
       "firzanarmani": 63
+    }
+  },
+  {
+    "path": "src/main/java/com/notably/model/block/exceptions/CannotModifyRootException.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "package com.notably.model.block.exceptions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": " * Signals that the operation will result in duplicate Block(Blocks are considered duplicates if they have the same"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": " * parent and title)."
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "public class CannotModifyRootException extends Exception {"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public CannotModifyRootException() {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        super(\"Root item cannot be modified\");"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "firzanarmani": 11
     }
   },
   {
@@ -48446,6 +51079,652 @@
     }
   },
   {
+    "path": "src/test/java/com/notably/logic/correction/AbsolutePathCorrectionEngineTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "package com.notably.logic.correction;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.commons.core.path.exceptions.InvalidPathException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.model.Model;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.model.block.BlockImpl;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.model.block.BlockTree;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.model.block.BlockTreeImpl;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.model.block.Title;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.testutil.ModelStubBase;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "public class AbsolutePathCorrectionEngineTest {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    private static class ModelStub extends ModelStubBase {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        public BlockTree getBlockTree() {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            BlockTree stubTree \u003d new BlockTreeImpl();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                stubTree.add(AbsolutePath.fromString(\"/\"), new BlockImpl(new Title(\"block\")));"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                stubTree.add(AbsolutePath.fromString(\"/\"), new BlockImpl(new Title(\"another\")));"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                stubTree.add(AbsolutePath.fromString(\"/another\"), new BlockImpl(new Title(\"block\")));"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            } catch (InvalidPathException exception) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                throw new AssertionError(exception);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "            return stubTree;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    private static final Model modelStub \u003d new ModelStub();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    public void constructor_constructWithNegativeDistanceThreshold_exceptionThrown() {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final int negativeDistanceThreshold \u003d -1;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        assertThrows(IllegalArgumentException.class, () -\u003e"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                new AbsolutePathCorrectionEngine(modelStub, negativeDistanceThreshold));"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    public void correct_withinDistanceThreshold_correctionDone() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final int distanceThreshold \u003d 2;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final AbsolutePathCorrectionEngine correctionEngine \u003d new AbsolutePathCorrectionEngine("
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                modelStub, distanceThreshold);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final AbsolutePath uncorrectedInput \u003d AbsolutePath.fromString(\"/blcok\");"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final AbsolutePath expectedCorrectedItem \u003d AbsolutePath.fromString(\"/block\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final CorrectionStatus expectedCorrectedStatus \u003d CorrectionStatus.CORRECTED;"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final CorrectionResult\u003cAbsolutePath\u003e expectedCorrectionResult \u003d new CorrectionResult\u003c\u003e("
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                expectedCorrectedStatus, expectedCorrectedItem);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        CorrectionResult\u003cAbsolutePath\u003e correctionResult \u003d correctionEngine.correct(uncorrectedInput);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        assertEquals(expectedCorrectionResult, correctionResult);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    public void correct_exceedDistanceThreshold_correctionFailed() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final int distanceThreshold \u003d 1;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final AbsolutePathCorrectionEngine correctionEngine \u003d new AbsolutePathCorrectionEngine("
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                modelStub, distanceThreshold);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final AbsolutePath uncorrectedInput \u003d AbsolutePath.fromString(\"/anoth\");"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final CorrectionStatus expectedCorrectedStatus \u003d CorrectionStatus.FAILED;"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final CorrectionResult\u003cAbsolutePath\u003e expectedCorrectionResult \u003d new CorrectionResult\u003c\u003e(expectedCorrectedStatus);"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        CorrectionResult\u003cAbsolutePath\u003e correctionResult \u003d correctionEngine.correct(uncorrectedInput);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        assertEquals(expectedCorrectionResult, correctionResult);"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    public void correct_exactMatch_noCorrection() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final int distanceThreshold \u003d 1;"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final AbsolutePathCorrectionEngine correctionEngine \u003d new AbsolutePathCorrectionEngine("
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                modelStub, distanceThreshold);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final AbsolutePath uncorrectedInput \u003d AbsolutePath.fromString(\"/another/block\");"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final AbsolutePath expectedCorrectedItem \u003d AbsolutePath.fromString(\"/another/block\");"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final CorrectionStatus expectedCorrectionStatus \u003d CorrectionStatus.UNCHANGED;"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        final CorrectionResult\u003cAbsolutePath\u003e expectedCorrectionResult \u003d new CorrectionResult\u003c\u003e("
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "                expectedCorrectionStatus, expectedCorrectedItem);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        CorrectionResult\u003cAbsolutePath\u003e correctionResult \u003d correctionEngine.correct(uncorrectedInput);"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "        assertEquals(expectedCorrectionResult, correctionResult);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "kevinputera": 91
+    }
+  },
+  {
     "path": "src/test/java/com/notably/logic/correction/StringCorrectionEngineTest.java",
     "fileType": "java",
     "lines": [
@@ -52683,6 +55962,955 @@
     "authorContributionMap": {
       "kevinputera": 2,
       "-": 19
+    }
+  },
+  {
+    "path": "src/test/java/com/notably/model/block/BlockTreeItemTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "package com.notably.model.block;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static com.notably.testutil.Assert.assertThrows;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import javafx.scene.control.TreeItem;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "public class BlockTreeItemTest {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void constructor_null_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new BlockTreeItemImpl((Block) null));"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new BlockTreeItemImpl((TreeItem\u003cBlock\u003e) null));"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void isRootBlock_rootBlock_returnsTrue() {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        BlockTreeItem rootBlock \u003d BlockTreeItemImpl.createRootBlockTreeItem();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(rootBlock.isRootBlock());"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "firzanarmani": 23
+    }
+  },
+  {
+    "path": "src/test/java/com/notably/model/block/BlockTreeTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "package com.notably.model.block;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static com.notably.testutil.Assert.assertThrows;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import org.junit.jupiter.api.AfterEach;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import org.junit.jupiter.api.BeforeAll;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import org.junit.jupiter.api.BeforeEach;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import com.notably.commons.core.path.exceptions.InvalidPathException;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import com.notably.model.block.exceptions.CannotModifyRootException;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import com.notably.model.block.exceptions.DuplicateBlockException;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "import com.notably.model.block.exceptions.NoSuchBlockException;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "public class BlockTreeTest {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    private static AbsolutePath toRoot;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    private static AbsolutePath toCs2103;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    private static AbsolutePath toCs2103Week1;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    private static AbsolutePath toCs2103Week1Lecture;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    private BlockTree blockTree \u003d new BlockTreeImpl();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @BeforeAll"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public static void setUp() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        toRoot \u003d AbsolutePath.fromString(\"/\");"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        toCs2103 \u003d AbsolutePath.fromString(\"/CS2103\");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        toCs2103Week1 \u003d AbsolutePath.fromString(\"/CS2103/Week1\");"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        toCs2103Week1Lecture \u003d AbsolutePath.fromString(\"/CS2103/Week1/Lecture\");"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @BeforeEach"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    private void setUpTestTree() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        Block newBlock1 \u003d new BlockImpl(new Title(\"CS2103\"));"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        Block newBlock2 \u003d new BlockImpl(new Title(\"CS3230\"));"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        Block newBlock3 \u003d new BlockImpl(new Title(\"Week1\"));"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTree.add(toRoot, newBlock1);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTree.add(toRoot, newBlock2);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTree.add(toCs2103, newBlock3);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @AfterEach"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    private void tearDownTestTree() {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTree \u003d new BlockTreeImpl();"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void constructor() {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertTrue(blockTree.getRootBlock().isRootBlock());"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void get_root() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertEquals(blockTree.get(toRoot), blockTree.getRootBlock());"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void get_pathDoesNotExist_throwsNoSuchBlockException() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        AbsolutePath nonExistentPath \u003d AbsolutePath.fromString(\"/SomeNonExistentPath\");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(NoSuchBlockException.class, () -\u003e blockTree.get(nonExistentPath));"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void add_block() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        Block newBlock \u003d new BlockImpl(new Title(\"Week2\"));"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        AbsolutePath toCs2103Week2 \u003d AbsolutePath.fromString(\"/CS2103/Week2\");"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTree.add(toCs2103, newBlock);"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertEquals(blockTree.get(toCs2103Week2).getBlock(), newBlock);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void add_block_throwsDuplicateBlockException() {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        Block newBlock \u003d new BlockImpl(new Title(\"CS2103\"));"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(DuplicateBlockException.class, () -\u003e blockTree.add(toRoot, newBlock));"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void add_block_deeperNestedBlock() {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        Block newBlock \u003d new BlockImpl(new Title(\"Lecture\"));"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTree.add(toCs2103Week1, newBlock);"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertEquals(blockTree.get(toCs2103Week1Lecture).getBlock(), newBlock);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void remove_block() throws CannotModifyRootException {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTree.remove(toCs2103Week1);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(NoSuchBlockException.class, () -\u003e blockTree.get(toCs2103Week1));"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void remove_root_throwsCannotModifyRootException() {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(CannotModifyRootException.class, () -\u003e blockTree.remove(toRoot));"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void set_root_throwsCannotModifyRootException() {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        Block newBlock \u003d new BlockImpl(new Title(\"CS2107\"));"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertThrows(CannotModifyRootException.class, () -\u003e blockTree.set(toRoot, newBlock));"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    public void set_block_editBlock() throws CannotModifyRootException, InvalidPathException {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        Block editedBlock \u003d new BlockImpl(new Title(\"Week2\"));"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        AbsolutePath editedPath \u003d AbsolutePath.fromString(\"/CS2103/Week2\");"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        blockTree.set(toCs2103Week1, editedBlock);"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "        assertEquals(blockTree.get(editedPath).getBlock(), editedBlock);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "firzanarmani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "firzanarmani": 110
     }
   },
   {

@@ -26565,25 +26565,11 @@
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "    String getCorrectAnswer();"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "sigmund-c"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "sigmund-c": 10,
+      "sigmund-c": 8,
       "haveaqiupill": 3,
       "phaebaez": 8
     }
@@ -27430,70 +27416,70 @@
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "import java.util.List;"
+        "content": "import static cardibuddy.commons.util.AppUtil.checkArgument;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "import static java.util.Objects.requireNonNull;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "sigmund-c"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": " * McqAnswer class."
+        "content": "/**"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": " */"
+        "content": " * McqAnswer class."
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "sigmund-c"
+          "gitId": "haveaqiupill"
         },
-        "content": "public class McqAnswer implements Answer {"
+        "content": " */"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d \"MCQ answers should be a single letter corresponding to answer.\";"
+        "content": "public class McqAnswer implements Answer {"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d \"MCQ answers should be a single letter corresponding to answer.\";"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    private String correctAnswer; // should be \"a\" or \"b\" or \"c\" or ...."
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    private List\u003cString\u003e answers;"
+        "content": "    private String correctAnswer; // should be \"a\" or \"b\" or \"c\" or ...."
       },
       {
         "lineNumber": 13,
@@ -27507,493 +27493,479 @@
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public McqAnswer(int correctIndex, List\u003cString\u003e answers) {"
+        "content": "    public McqAnswer(String correctAnswer) {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        this.answers \u003d answers;"
+        "content": "        requireNonNull(correctAnswer);"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        if (!isValid(correctAnswer)) {"
+        "content": "        checkArgument(isValid(correctAnswer), MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
+        "content": "        this.correctAnswer \u003d correctAnswer;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        this.correctAnswer \u003d correctAnswer;"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "sigmund-c"
-        },
         "content": ""
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 20,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 21,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * Checks if test length is valid."
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 22,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * @param test"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 23,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * @return true if ..."
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 24,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 25,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "    public boolean isValid(String test) {"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 26,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "        if (test.length() !\u003d 1) {"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 27,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "            return false;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "        if (getNumberForChar(test.charAt(0)) \u003d\u003d -1) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        }"
+        "content": "            return false;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return getNumberForChar(test.charAt(0)) \u003c\u003d answers.size(); // makes sure test is within number of given answers"
+        "content": "        }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "        return true;"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "sigmund-c"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "sigmund-c"
         },
-        "content": "     * Javadocs to pass checkstyle."
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @param toCheck"
+        "content": "    /**"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @return true if answer is valid."
+        "content": "     * Javadocs to pass checkstyle."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "     * @param toCheck"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "sigmund-c"
+          "gitId": "haveaqiupill"
         },
-        "content": "    public boolean checkAnswer(String toCheck) {"
+        "content": "     * @return true if answer is valid."
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "sigmund-c"
+          "gitId": "haveaqiupill"
         },
-        "content": "        if (!isValid(toCheck)) {"
+        "content": "     */"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
+        "content": "    public boolean checkAnswer(String toCheck) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        }"
+        "content": "        requireNonNull(toCheck);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return toCheck.equals(correctAnswer);"
+        "content": "        if (!isValid(toCheck)) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public String getCorrectAnswer() {"
+        "content": "        return toCheck.equals(correctAnswer);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return correctAnswer;"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    /**"
+        "content": "     * Shows the list of possible answers"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "     * Shows the list of possible answers"
+        "content": "     * @return a string of all possible answers"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "     * @return a string of all possible answers"
+        "content": "     */"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "     */"
+        "content": "    @Override"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    @Override"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public String toString() {"
+        "content": "        return correctAnswer;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        StringBuilder ans \u003d new StringBuilder(\"Answer one of the following:\\n\");"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        for (int i \u003d 0; i \u003c answers.size(); i++) {"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "            ans.append(getCharForNumber(i) + \". \" + answers.get(i) + \"\\n\");"
+        "content": "    // returns the corresponding number for alphabetical letters, eg. a -\u003e 1; b -\u003e 2; c -\u003e 3; ..."
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        }"
+        "content": "    private int getNumberForChar(char c) {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return ans.toString();"
+        "content": "        int num \u003d ((int) c) - 64;"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": "        return num \u003e 0 \u0026\u0026 num \u003c 27 ? num : -1;"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    private int getNumberForChar(char c) { // a -\u003e 1; b -\u003e 2; c -\u003e 3; ..."
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return ((int) c) - 64;"
+        "content": "    // returns the corresponding alphabetical letter for numbers"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": "    private char getCharForNumber(int i) { // 1 -\u003e a; 2 -\u003e b; 3 -\u003e c, ..."
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "        return i \u003e 0 \u0026\u0026 i \u003c 27 ? (char) (i + 64) : null;"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    private char getCharForNumber(int i) { // 1 -\u003e a; 2 -\u003e b; 3 -\u003e c, ..."
+        "content": "    }"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return i \u003e 0 \u0026\u0026 i \u003c 27 ? (char) (i + 64) : null;"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    @Override"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "            return true;"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "        }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "            return true;"
+        "content": "        if (!(other instanceof McqAnswer)) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        }"
+        "content": "            return false;"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        if (!(other instanceof McqAnswer)) {"
+        "content": "        }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "            return false;"
+        "content": "        McqAnswer o \u003d (McqAnswer) other;"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        McqAnswer o \u003d (McqAnswer) other;"
+        "content": "        return correctAnswer.equals(o.correctAnswer);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return answers.equals(o.answers) \u0026\u0026 correctAnswer.equals(o.correctAnswer);"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "sigmund-c"
-        },
         "content": "}"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 82,
         "author": {
           "gitId": "sigmund-c"
         },
@@ -28001,7 +27973,7 @@
       }
     ],
     "authorContributionMap": {
-      "sigmund-c": 71,
+      "sigmund-c": 69,
       "haveaqiupill": 13
     }
   },
@@ -28352,275 +28324,275 @@
       {
         "lineNumber": 3,
         "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "import static cardibuddy.commons.util.AppUtil.checkArgument;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
           "gitId": "haveaqiupill"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 4,
+        "lineNumber": 7,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": " * Short Answer class for Flashcard."
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 8,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": " */"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 9,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "public class ShortAnswer implements Answer {"
       },
       {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d \"Short answers should be strings.\";"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 10,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    private String correctAnswer;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d \"Short Answer should not be left blank\";"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public ShortAnswer(String correctAnswer) {"
+        "content": "    public static final String VALIDATION_REGEX \u003d \"[^\\\\s].*\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        if (!isValid(correctAnswer)) {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
+        "content": "    private String correctAnswer;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        this.correctAnswer \u003d correctAnswer;"
+        "content": "    public ShortAnswer(String correctAnswer) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": "        requireNonNull(correctAnswer);"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "        checkArgument(isValid(correctAnswer), MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "sigmund-c"
         },
-        "content": "    /**"
+        "content": "        this.correctAnswer \u003d correctAnswer;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "sigmund-c"
         },
-        "content": "     * Checks if given answer is a string and is valid."
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "sigmund-c"
         },
-        "content": "     * @param test"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @return true if it is a string."
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "     * Checks if given answer is a string and is valid."
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "sigmund-c"
+          "gitId": "haveaqiupill"
         },
-        "content": "    public boolean isValid(String test) {"
+        "content": "     * @param test"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return true; // as long as its a string its true"
+        "content": "     * @return true if it is not blank"
       },
       {
         "lineNumber": 26,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * Checks if answer matches stored answer."
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * @param toCheck"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * @return true if the string is equal."
-      },
-      {
-        "lineNumber": 32,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 27,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public boolean checkAnswer(String toCheck) {"
+        "content": "    public boolean isValid(String test) {"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 28,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        if (!isValid(toCheck)) {"
+        "content": "        return test.matches(VALIDATION_REGEX); // as long as its a string its true"
       },
       {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "        return toCheck.equals(correctAnswer);"
-      },
-      {
-        "lineNumber": 38,
+        "lineNumber": 29,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 30,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": ""
       },
       {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Checks if answer matches stored answer."
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @param toCheck"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @return true if the string is equal."
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "    public boolean checkAnswer(String toCheck) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "        requireNonNull(toCheck);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "        if (!isValid(toCheck)) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
+      },
+      {
         "lineNumber": 40,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public String getCorrectAnswer() {"
+        "content": "        }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return correctAnswer;"
+        "content": "        return toCheck.equals(correctAnswer);"
       },
       {
         "lineNumber": 42,
@@ -28736,8 +28708,8 @@
       }
     ],
     "authorContributionMap": {
-      "sigmund-c": 40,
-      "haveaqiupill": 16,
+      "sigmund-c": 41,
+      "haveaqiupill": 15,
       "phaebaez": 1
     }
   },
@@ -28762,44 +28734,44 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "sigmund-c"
         },
-        "content": "/**"
+        "content": "import static java.util.Objects.requireNonNull;"
       },
       {
         "lineNumber": 4,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": " * True False answer class."
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "public class TfAnswer implements Answer {"
-      },
-      {
-        "lineNumber": 7,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": ""
       },
       {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " * True False answer class."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " */"
+      },
+      {
         "lineNumber": 8,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d \"True / False answers should either be \\\"T\\\" or \\\"F\\\"\";"
+        "content": "public class TfAnswer implements Answer {"
       },
       {
         "lineNumber": 9,
@@ -28813,7 +28785,7 @@
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    private String correctAnswer; // should be \"T\" or \"F\""
+        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d \"True / False answers should either be \\\"T\\\" or \\\"F\\\"\";"
       },
       {
         "lineNumber": 11,
@@ -28827,175 +28799,175 @@
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public TfAnswer(String correctAnswer) {"
+        "content": "    private String correctAnswer; // should be \"T\" or \"F\""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        if (!isValid(correctAnswer)) {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
+        "content": "    public TfAnswer(String correctAnswer) {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        }"
+        "content": "        requireNonNull(correctAnswer);"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        this.correctAnswer \u003d correctAnswer;"
+        "content": "        if (!isValid(correctAnswer)) {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public boolean isValid(String test) {"
+        "content": "        this.correctAnswer \u003d correctAnswer;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return test.equals(\"T\") || test.equals(\"F\");"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": ""
+        "content": "    public boolean isValid(String test) {"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "sigmund-c"
         },
-        "content": "    /**"
+        "content": "        return test.equals(\"T\") || test.equals(\"F\");"
       },
       {
         "lineNumber": 24,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * Checks if answer is equals to stored answer."
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * @param toCheck"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * @return true if answer is equals."
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "    public boolean checkAnswer(String toCheck) {"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "        if (!isValid(toCheck)) {"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "sigmund-c"
-        },
-        "content": "        return toCheck.equals(correctAnswer);"
-      },
-      {
-        "lineNumber": 33,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 25,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": ""
       },
       {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Checks if answer is equals to stored answer."
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @param toCheck"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @return true if answer is equals."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "    public boolean checkAnswer(String toCheck) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "        requireNonNull(toCheck);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "        if (!isValid(toCheck)) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "sigmund-c"
+        },
+        "content": "            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);"
+      },
+      {
         "lineNumber": 35,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "    public String getCorrectAnswer() {"
+        "content": "        }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return correctAnswer;"
+        "content": "        return toCheck.equals(correctAnswer);"
       },
       {
         "lineNumber": 37,
@@ -29030,7 +29002,7 @@
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        return \"Answer \\\"T\\\" for True or \\\"F\\\" for False.\";"
+        "content": "        return correctAnswer;"
       },
       {
         "lineNumber": 42,

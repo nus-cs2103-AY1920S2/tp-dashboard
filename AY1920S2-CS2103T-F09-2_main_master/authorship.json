@@ -6330,17 +6330,66 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public static final String MESSAGE_CANNOT_DELETE \u003d \"Unable to delete task while a timer is running.\";"
+        "content": "    public static final String MESSAGE_DELETE_TIMING_TASK_FAILURE \u003d \"Task: %s %s, DateTime: %s cannot be deleted\\n\""
       },
       {
         "lineNumber": 18,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                                                                        + \"while timer is running.\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public static final String MESSAGE_COMPLIMENT \u003d \"Good work! (:\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public static final String MESSAGE_ENCOURAGEMENT \u003d \"You can do better than this!\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public static final String MESSAGE_CRITICISM \u003d \"Do better! You have many unfinished tasks that are past their\""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                                                       + \" due date!\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public static final String MESSAGE_CURRENT_TIMERS \u003d \"Timer is currently running for Task: %s %s, DateTime: %s\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public static final String MESSAGE_NO_TIMERS \u003d \"There are no tasks being timed at the moment.\";"
+      },
+      {
+        "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
@@ -6349,7 +6398,7 @@
     ],
     "authorContributionMap": {
       "yaojiethng": 1,
-      "Clouddoggo": 4,
+      "Clouddoggo": 11,
       "-": 10,
       "alam8064": 4
     }
@@ -14362,7 +14411,7 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "import static seedu.jelphabot.commons.core.Messages.MESSAGE_CANNOT_DELETE;"
+        "content": "import static seedu.jelphabot.commons.core.Messages.MESSAGE_DELETE_TIMING_TASK_FAILURE;"
       },
       {
         "lineNumber": 5,
@@ -14521,222 +14570,243 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": "    private final Index targetIndex;"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private final Index targetIndex;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "    public DeleteCommand(Index targetIndex) {"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "        this.targetIndex \u003d targetIndex;"
+        "content": "    public DeleteCommand(Index targetIndex) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        this.targetIndex \u003d targetIndex;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "Clouddoggo"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (model.hasTimingTask()) {"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            throw new CommandException(MESSAGE_CANNOT_DELETE);"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
         "content": "        List\u003cTask\u003e lastShownList \u003d model.getFilteredTaskList();"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
         "content": "        if (targetIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 41,
         "author": {
           "gitId": "Clouddoggo"
         },
         "content": "            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 44,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "        Task taskToDelete \u003d lastShownList.get(targetIndex.getZeroBased());"
       },
       {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        if (taskToDelete.isBeingTimed()) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            throw new CommandException(String.format(MESSAGE_DELETE_TIMING_TASK_FAILURE, taskToDelete.getModuleCode(),"
+      },
+      {
         "lineNumber": 48,
         "author": {
-          "gitId": "yaojiethng"
+          "gitId": "Clouddoggo"
         },
-        "content": "        model.deleteTask(taskToDelete);"
+        "content": "                taskToDelete.getDescription(), taskToDelete.getDateTime()));"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));"
+        "content": "        }"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
         "content": ""
       },
       {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "        model.deleteTask(taskToDelete);"
+      },
+      {
         "lineNumber": 52,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": "    @Override"
+        "content": "        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": "                || (other instanceof DeleteCommand // instanceof handles nulls"
+        "content": "    @Override"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": "                        \u0026\u0026 targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                || (other instanceof DeleteCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                        \u0026\u0026 targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
@@ -14746,7 +14816,7 @@
     "authorContributionMap": {
       "yaojiethng": 11,
       "yapdianhao": 1,
-      "Clouddoggo": 13,
+      "Clouddoggo": 16,
       "-": 33
     }
   },
@@ -18829,339 +18899,346 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_TIMER_ALREADY_STARTED \u003d \"Timer for this task has already been started.\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private Index targetIndex;"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    private Index targetIndex;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public StartTimerCommand(Index targetIndex) {"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        requireNonNull(targetIndex);"
+        "content": "    public StartTimerCommand(Index targetIndex) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        this.targetIndex \u003d targetIndex;"
+        "content": "        requireNonNull(targetIndex);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    }"
+        "content": "        this.targetIndex \u003d targetIndex;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        List\u003cTask\u003e lastShownList \u003d model.getFilteredTaskList();"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        List\u003cTask\u003e lastShownList \u003d model.getFilteredTaskList();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (targetIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);"
+        "content": "        if (targetIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        }"
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (model.hasTimingTask()) {"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            throw new CommandException(MESSAGE_CANNOT_START_MORE_TIMERS);"
+        "content": "        Task taskToTime \u003d lastShownList.get(targetIndex.getZeroBased());"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        if (taskToTime.getStatus() \u003d\u003d Status.COMPLETE) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        Task taskToTime \u003d lastShownList.get(targetIndex.getZeroBased());"
+        "content": "            throw new CommandException(MESSAGE_TASK_ALREADY_TIMED);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        } else if (taskToTime.isBeingTimed()) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (taskToTime.getStatus() \u003d\u003d Status.COMPLETE) {"
+        "content": "            throw new CommandException(MESSAGE_TIMER_ALREADY_STARTED);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            throw new CommandException(MESSAGE_TASK_ALREADY_TIMED);"
+        "content": "        } else if (model.hasTimingTask()) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        }"
+        "content": "            throw new CommandException(MESSAGE_CANNOT_START_MORE_TIMERS);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        taskToTime.startTimer();"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        taskToTime.startTimer();"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, taskToTime));"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    }"
+        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, taskToTime));"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // short circuit if same object"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            return true;"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // instanceof handles nulls"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (!(other instanceof StartTimerCommand)) {"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            return false;"
+        "content": "        if (!(other instanceof StartTimerCommand)) {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        }"
+        "content": "            return false;"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // state check"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        StartTimerCommand d \u003d (StartTimerCommand) other;"
+        "content": "        // state check"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        return targetIndex.equals(d.targetIndex);"
+        "content": "        StartTimerCommand d \u003d (StartTimerCommand) other;"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    }"
+        "content": "        return targetIndex.equals(d.targetIndex);"
       },
       {
         "lineNumber": 74,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 75,
         "author": {
           "gitId": "Clouddoggo"
         },
@@ -19169,7 +19246,7 @@
       }
     ],
     "authorContributionMap": {
-      "Clouddoggo": 74
+      "Clouddoggo": 75
     }
   },
   {
@@ -31018,161 +31095,161 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "/**"
+        "content": "import static seedu.jelphabot.commons.core.Messages.MESSAGE_COMPLIMENT;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": " * Represents the overall productivity of the user in a day."
+        "content": "import static seedu.jelphabot.commons.core.Messages.MESSAGE_CRITICISM;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": " */"
+        "content": "import static seedu.jelphabot.commons.core.Messages.MESSAGE_CURRENT_TIMERS;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "public class Productivity {"
+        "content": "import static seedu.jelphabot.commons.core.Messages.MESSAGE_ENCOURAGEMENT;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "import static seedu.jelphabot.commons.core.Messages.MESSAGE_NO_TIMERS;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    // TODO: productivity will list out time taken per task + overall productivity that day."
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    //  i.e. how many hours spent on tasks so far -\u003e need some way to know what time it is and calculated fast."
+        "content": "import java.util.Optional;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    //  List total time taken for all tasks at the top. e.g. \u0027You spent ___ hours and ___ minutes on work today!\""
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    //  List avg time spent per task (divide by incomplete tasks only)"
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "import seedu.jelphabot.model.task.SortedTaskList;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private static final String MESSAGE_COMPLIMENT \u003d \"Good work!\";"
+        "content": "import seedu.jelphabot.model.task.Task;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private static final String MESSAGE_ENCOURAGEMENT \u003d \"You can do better!\";"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private static final String MESSAGE_CRITICISM \u003d \"Really? That\u0027s all you\u0027re going to do today? Nub\";"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public Productivity() {"
+        "content": " * Represents the overall productivity of the user in a day."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    }"
+        "content": "public class Productivity {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    private final SortedTaskList sortedTaskList;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    /**"
+        "content": "    private final ObservableList\u003cTask\u003e taskList;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "     * Format state as text for viewing."
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "     */"
+        "content": "    public Productivity(SortedTaskList sortedTaskList, ObservableList\u003cTask\u003e taskList) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public String toString() {"
+        "content": "        this.sortedTaskList \u003d sortedTaskList;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        return \"noob\";"
+        "content": "        this.taskList \u003d taskList;"
       },
       {
         "lineNumber": 26,
@@ -31183,6 +31260,384 @@
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "     * Gets overall productivity of overdue tasks."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public String getProductivityForOverdueTasks() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        System.out.println(\"overdue\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        int n \u003d sortedTaskList.getOverdueTaskList().size();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        StringBuilder response \u003d new StringBuilder(\"There are \");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        response.append(n).append(\" overdue tasks.\");"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        if (n \u003e 3) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            response.append(\" \").append(MESSAGE_CRITICISM);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        } else if (n \u003e 0) {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            response.append(\" \").append(MESSAGE_ENCOURAGEMENT);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            response.append(\" \").append(MESSAGE_COMPLIMENT);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        return response.toString();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "     * Gets the status of running timers if any."
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public String getTimerStatus() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        System.out.println(\"timer\");"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        Optional\u003cTask\u003e taskBeingTimed \u003d Optional.empty();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        for (Task task : taskList) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            if (task.isBeingTimed()) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                taskBeingTimed \u003d Optional.of(task);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        if (taskBeingTimed.isEmpty()) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            return MESSAGE_NO_TIMERS;"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            Task tmp \u003d taskBeingTimed.get();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            return String.format(MESSAGE_CURRENT_TIMERS, tmp.getModuleCode(), tmp.getDescription(), tmp.getDateTime());"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public String getTodayStatus() {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        // TODO: list out time taken per task + overall productivity that day."
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        //  i.e. how many hours spent on tasks so far -\u003e need some way to know what time it is and calculated fast."
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        //  List total time taken for all tasks at the top. e.g. \u0027You spent ___ hours and ___ minutes on work today!\""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        //  List avg time spent per task (divide by incomplete tasks only)"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        return \"placeholder1\";"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    public String getRemainingTaskStatus() {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        // TODO: show total remaining tasks and show only the task with earliest deadline in full"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        return \"placeholder2\";"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
         "author": {
           "gitId": "Clouddoggo"
         },
@@ -31190,310 +31645,7 @@
       }
     ],
     "authorContributionMap": {
-      "Clouddoggo": 27
-    }
-  },
-  {
-    "path": "src/main/java/seedu/jelphabot/model/productivity/ProductivityList.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "// package seedu.jelphabot.model.productivity;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "// import java.util.Iterator;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "// import javafx.collections.FXCollections;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "// import javafx.collections.ObservableList;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "// import seedu.jelphabot.model.task.UniqueTaskList;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "// /**"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//  * A list of productivity that highlights time spent on each task in the task list."
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//  */"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "// public class ProductivityList implements Iterable\u003cProductivity\u003e {"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     private final ObservableList\u003cProductivity\u003e internalList \u003d FXCollections.observableArrayList();"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     private final ObservableList\u003cProductivity\u003e internalUnmodifiableList \u003d"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//         FXCollections.unmodifiableObservableList(internalList);"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     /**"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//      * Returns the backing list as an unmodifiable {@code ObservableList}."
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//      */"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     public ObservableList\u003cProductivity\u003e asUnmodifiableObservableList() {"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//         return internalUnmodifiableList;"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     }"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     @Override"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     public Iterator\u003cProductivity\u003e iterator() {"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//         return internalList.iterator();"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     }"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     @Override"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     public boolean equals(Object other) {"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//         return other \u003d\u003d this // short circuit if same object"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//                    || (other instanceof UniqueTaskList // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//                            \u0026\u0026 internalList.equals(((ProductivityList) other).internalList));"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     }"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     @Override"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     public int hashCode() {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//         return internalList.hashCode();"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//     }"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "//"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "// }"
-      }
-    ],
-    "authorContributionMap": {
-      "Clouddoggo": 42
+      "Clouddoggo": 81
     }
   },
   {
@@ -45968,7 +46120,7 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private StackPane productivityListPanelPlaceholder;"
+        "content": "    private StackPane productivityPanelPlaceholder;"
       },
       {
         "lineNumber": 65,
@@ -46570,7 +46722,7 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        productivityListPanelPlaceholder.getChildren().add(productivityPanel.getRoot());"
+        "content": "        productivityPanelPlaceholder.getChildren().add(productivityPanel.getRoot());"
       },
       {
         "lineNumber": 151,
@@ -47032,91 +47184,91 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @FXML"
+        "content": "    /**"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private void handleProductivity() {"
+        "content": "     * Switches view to productivity panel."
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (!productivityPanel.isShowing()) {"
+        "content": "     */"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            productivityPanel.show();"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        }"
+        "content": "    private void handleProductivity() {"
       },
       {
         "lineNumber": 221,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": "    }"
+        "content": "        if (!productivityPanel.isShowing()) {"
       },
       {
         "lineNumber": 222,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "            productivityPanel.show();"
       },
       {
         "lineNumber": 223,
         "author": {
-          "gitId": "alam8064"
+          "gitId": "Clouddoggo"
         },
-        "content": "    public SortedTaskListPanel getTaskListPanel() {"
+        "content": "        }"
       },
       {
         "lineNumber": 224,
         "author": {
-          "gitId": "yaojiethng"
+          "gitId": "Clouddoggo"
         },
-        "content": "        return taskListPanel;"
+        "content": "        // TODO: add case when alr on panel."
       },
       {
         "lineNumber": 225,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
         "content": "    }"
       },
       {
         "lineNumber": 226,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
         "content": ""
       },
       {
         "lineNumber": 227,
         "author": {
-          "gitId": "Clouddoggo"
+          "gitId": "alam8064"
         },
-        "content": "    public ProductivityPanel getProductivityPanel() {"
+        "content": "    public SortedTaskListPanel getTaskListPanel() {"
       },
       {
         "lineNumber": 228,
         "author": {
-          "gitId": "Clouddoggo"
+          "gitId": "yaojiethng"
         },
-        "content": "        return productivityPanel;"
+        "content": "        return taskListPanel;"
       },
       {
         "lineNumber": 229,
@@ -47135,201 +47287,229 @@
       {
         "lineNumber": 231,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": "    /**"
+        "content": "    public ProductivityPanel getProductivityPanel() {"
       },
       {
         "lineNumber": 232,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": "     * Executes the command and returns the result."
+        "content": "        return productivityPanel;"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "-"
         },
-        "content": "     *"
+        "content": "    }"
       },
       {
         "lineNumber": 234,
         "author": {
-          "gitId": "yaojiethng"
+          "gitId": "-"
         },
-        "content": "     * @see seedu.jelphabot.logic.Logic#execute(String)"
+        "content": ""
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "-"
         },
-        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
+        "content": "     * Executes the command and returns the result."
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "-"
         },
-        "content": "        try {"
+        "content": "     *"
       },
       {
         "lineNumber": 238,
         "author": {
-          "gitId": "-"
+          "gitId": "yaojiethng"
         },
-        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
+        "content": "     * @see seedu.jelphabot.logic.Logic#execute(String)"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "-"
         },
-        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
+        "content": "     */"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "-"
         },
-        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
+        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        try {"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "-"
         },
-        "content": "            if (commandResult.isShowHelp()) {"
+        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "-"
         },
-        "content": "                handleHelp();"
+        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 244,
         "author": {
-          "gitId": "Clouddoggo"
+          "gitId": "-"
         },
-        "content": "            } else if (commandResult.isExit()) {"
+        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "-"
         },
-        "content": "                handleExit();"
+        "content": ""
       },
       {
         "lineNumber": 246,
         "author": {
-          "gitId": "Clouddoggo"
+          "gitId": "-"
         },
-        "content": "            } else if (commandResult.isProductivity()) {"
+        "content": "            if (commandResult.isShowHelp()) {"
       },
       {
         "lineNumber": 247,
         "author": {
-          "gitId": "Clouddoggo"
+          "gitId": "-"
         },
-        "content": "                handleProductivity();"
+        "content": "                handleHelp();"
       },
       {
         "lineNumber": 248,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": "            }"
+        "content": "            } else if (commandResult.isExit()) {"
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "                handleExit();"
       },
       {
         "lineNumber": 250,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": "            return commandResult;"
+        "content": "            } else if (commandResult.isProductivity()) {"
       },
       {
         "lineNumber": 251,
         "author": {
-          "gitId": "-"
+          "gitId": "Clouddoggo"
         },
-        "content": "        } catch (CommandException | ParseException e) {"
+        "content": "                handleProductivity();"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "-"
         },
-        "content": "            logger.info(\"Invalid command: \" + commandText);"
+        "content": "            }"
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "-"
         },
-        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
+        "content": ""
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw e;"
+        "content": "            return commandResult;"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "        } catch (CommandException | ParseException e) {"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "            logger.info(\"Invalid command: \" + commandText);"
       },
       {
         "lineNumber": 257,
         "author": {
-          "gitId": "eedenong"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
       },
       {
         "lineNumber": 258,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw e;"
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 261,
         "author": {
           "gitId": "eedenong"
         },
         "content": ""
       },
       {
-        "lineNumber": 259,
+        "lineNumber": 262,
+        "author": {
+          "gitId": "eedenong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 263,
         "author": {
           "gitId": "-"
         },
@@ -47338,9 +47518,9 @@
     ],
     "authorContributionMap": {
       "yaojiethng": 21,
-      "Clouddoggo": 30,
+      "Clouddoggo": 36,
       "eedenong": 15,
-      "-": 171,
+      "-": 169,
       "alam8064": 22
     }
   },
@@ -48778,479 +48958,423 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "import javafx.scene.layout.FlowPane;"
+        "content": "import javafx.scene.layout.HBox;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "import javafx.scene.layout.HBox;"
+        "content": "import javafx.scene.layout.Region;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "import javafx.scene.layout.Region;"
+        "content": "import seedu.jelphabot.model.productivity.Productivity;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "import seedu.jelphabot.model.productivity.Productivity;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "/**"
+        "content": " * An UI component that displays information of {@code Productivity}."
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": " * An UI component that displays information of {@code Productivity}."
+        "content": " */"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": " */"
+        "content": "// TODO use piechart for visualisation (or progress bar)"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "// TODO use piechart for visualisation (or progress bar)"
+        "content": "public class ProductivityCard extends UiPart\u003cRegion\u003e {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "public class ProductivityCard extends UiPart\u003cRegion\u003e {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    private static final String FXML \u003d \"ProductivityCard.fxml\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private static final String FXML \u003d \"ProductivityListCard.fxml\";"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    /**"
+        "content": "     * Note: Certain keywords such as \"location\" and \"resources\" are reserved keywords in JavaFX."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "     * Note: Certain keywords such as \"location\" and \"resources\" are reserved keywords in JavaFX."
+        "content": "     * As a consequence, UI elements\u0027 variable names cannot be set to such keywords"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "     * As a consequence, UI elements\u0027 variable names cannot be set to such keywords"
+        "content": "     * or an exception will be thrown by JavaFX during runtime."
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "     * or an exception will be thrown by JavaFX during runtime."
+        "content": "     *"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "     *"
+        "content": "     * @see \u003ca href\u003d\"https://github.com/se-edu/addressbook-level4/issues/336\"\u003eThe issue on JelphaBot level 4\u003c/a\u003e"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "     * @see \u003ca href\u003d\"https://github.com/se-edu/addressbook-level4/issues/336\"\u003eThe issue on JelphaBot level 4\u003c/a\u003e"
+        "content": "     */"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    public final Productivity productivity;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public final Productivity productivity;"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @FXML"
+        "content": "    private HBox cardPane;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private HBox cardPane;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @FXML"
+        "content": "    private Label productivityToday;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private Label description;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @FXML"
+        "content": "    private Label runningTimers;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private Label id;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @FXML"
+        "content": "    private Label overdueTasks;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private Label moduleCode;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @FXML"
+        "content": "    private Label remainingTasks;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private Label status;"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @FXML"
+        "content": "    public ProductivityCard(Productivity productivity) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private FlowPane tags;"
+        "content": "        super(FXML);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @FXML"
+        "content": "        this.productivity \u003d productivity;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private Label dateTime;"
+        "content": "        productivityToday.setText(productivity.getTodayStatus());"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        runningTimers.setText(productivity.getTimerStatus());"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public ProductivityCard(Productivity productivity, int displayedIndex) {"
+        "content": "        overdueTasks.setText(productivity.getProductivityForOverdueTasks());"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        super(FXML);"
+        "content": "        remainingTasks.setText(productivity.getRemainingTaskStatus());"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        this.productivity \u003d productivity;"
+        "content": "    }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        id.setText(displayedIndex + \". \");"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // description.setText(productivity.getDescription().fullDescription);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // moduleCode.setText(productivity.getModuleCode().value);"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // status.setText(productivity.getStatus().name());"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // dateTime.setText(productivity.getDateTime().getDisplayValue());"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // productivity.getTags().stream()"
+        "content": "            return true;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        //     .sorted(Comparator.comparing(tag -\u003e tag.tagName))"
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        //     .forEach(tag -\u003e tags.getChildren().add(new Label(tag.tagName)));"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    }"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        if (!(other instanceof ProductivityCard)) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    @Override"
+        "content": "            return false;"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // short circuit if same object"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "        // state check"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            return true;"
+        "content": "        ProductivityCard card \u003d (ProductivityCard) other;"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        }"
+        "content": "        // TODO: update the test check"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        return productivityToday.getText().equals(card.productivityToday.getText())"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "                   \u0026\u0026 productivity.equals(card.productivity);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        if (!(other instanceof ProductivityCard)) {"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "        // state check"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "        ProductivityCard card \u003d (ProductivityCard) other;"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "        return id.getText().equals(card.id.getText())"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "                   \u0026\u0026 productivity.equals(card.productivity);"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 65,
         "author": {
           "gitId": "Clouddoggo"
         },
@@ -49258,7 +49382,7 @@
       }
     ],
     "authorContributionMap": {
-      "Clouddoggo": 73
+      "Clouddoggo": 65
     }
   },
   {
@@ -49431,7 +49555,7 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "    private TabPane tabPane;"
+        "content": "    private TabPane mainWindowTabPane;"
       },
       {
         "lineNumber": 25,
@@ -49473,21 +49597,21 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        // productivityListView.setItems(productivityList);"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        productivityListView.setCellFactory(productivityView -\u003e new ProductivityListViewCell());"
+        "content": "        this.mainWindowTabPane \u003d tabPane;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        this.tabPane \u003d tabPane;"
+        "content": "        productivityListView.setCellFactory(listView -\u003e new ProductivityListViewCell());"
       },
       {
         "lineNumber": 33,
@@ -49648,7 +49772,7 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        tabPane.getSelectionModel().select(2);"
+        "content": "        mainWindowTabPane.getSelectionModel().select(2);"
       },
       {
         "lineNumber": 56,
@@ -49697,7 +49821,7 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "        return tabPane.isPressed();"
+        "content": "        return mainWindowTabPane.isPressed();"
       },
       {
         "lineNumber": 63,
@@ -49802,7 +49926,7 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "                setGraphic(new ProductivityCard(productivity, getIndex() + 1).getRoot());"
+        "content": "                setGraphic(new ProductivityCard(productivity).getRoot());"
       },
       {
         "lineNumber": 78,
@@ -50911,7 +51035,7 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "// TODO add back fields for neaw model elements"
+        "content": "// TODO add back fields for new model elements"
       },
       {
         "lineNumber": 16,
@@ -54696,269 +54820,241 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "                                \u003cAnchorPane minHeight\u003d\"0.0\" minWidth\u003d\"0.0\" prefHeight\u003d\"180.0\" prefWidth\u003d\"200.0\"\u003e"
+        "content": "                                \u003cVBox fx:id\u003d\"productivityPanel\" minWidth\u003d\"340\" prefWidth\u003d\"340.0\" styleClass\u003d\"pane-with-border\"\u003e"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "                                    \u003cchildren\u003e"
+        "content": "                                    \u003cpadding\u003e"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "alam8064"
+          "gitId": "Clouddoggo"
         },
-        "content": "                                        \u003cVBox fx:id\u003d\"productivityList\" minWidth\u003d\"340\" prefWidth\u003d\"340.0\" styleClass\u003d\"pane-with-border\" AnchorPane.bottomAnchor\u003d\"0.0\" AnchorPane.leftAnchor\u003d\"0.0\" AnchorPane.rightAnchor\u003d\"0.0\" AnchorPane.topAnchor\u003d\"0.0\"\u003e"
+        "content": "                                        \u003cInsets bottom\u003d\"10\" left\u003d\"10\" right\u003d\"10\" top\u003d\"10\"/\u003e"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "                                            \u003cpadding\u003e"
+        "content": "                                    \u003c/padding\u003e"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "                                                \u003cInsets bottom\u003d\"10\" left\u003d\"10\" right\u003d\"10\" top\u003d\"10\"/\u003e"
+        "content": "                                    \u003cStackPane fx:id\u003d\"productivityPanelPlaceholder\" VBox.vgrow\u003d\"ALWAYS\"/\u003e"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "                                            \u003c/padding\u003e"
+        "content": "                                \u003c/VBox\u003e"
       },
       {
         "lineNumber": 80,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "                                            \u003cStackPane fx:id\u003d\"productivityListPanelPlaceholder\" VBox.vgrow\u003d\"ALWAYS\"/\u003e"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "                                        \u003c/VBox\u003e"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "                                    \u003c/children\u003e"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "Clouddoggo"
-        },
-        "content": "                                \u003c/AnchorPane\u003e"
-      },
-      {
-        "lineNumber": 84,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                            \u003c/content\u003e"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 81,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                        \u003c/Tab\u003e"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 82,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                  \u003cTab text\u003d\"Notes\"\u003e"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 83,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                    \u003ccontent\u003e"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 84,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                      \u003cAnchorPane minHeight\u003d\"0.0\" minWidth\u003d\"0.0\" prefHeight\u003d\"180.0\" prefWidth\u003d\"200.0\" /\u003e"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 85,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                    \u003c/content\u003e"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 86,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                  \u003c/Tab\u003e"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 87,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                    \u003c/tabs\u003e"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 88,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                \u003c/TabPane\u003e"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 90,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                \u003c!--        \u003cStackPane fx:id\u003d\"statusbarPlaceholder\" VBox.vgrow\u003d\"NEVER\" /\u003e--\u003e"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 92,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "                \u003cStackPane fx:id\u003d\"resultDisplayPlaceholder\" maxHeight\u003d\"1.7976931348623157E308\" minHeight\u003d\"100\""
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 93,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "                           styleClass\u003d\"pane-with-border\" VBox.vgrow\u003d\"NEVER\"\u003e"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
         "content": "                    \u003cpadding\u003e"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 95,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                        \u003cInsets bottom\u003d\"5\" left\u003d\"10\" right\u003d\"10\" top\u003d\"5\"/\u003e"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 96,
         "author": {
           "gitId": "-"
         },
         "content": "                    \u003c/padding\u003e"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
         "content": "                \u003c/StackPane\u003e"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 99,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                \u003cStackPane fx:id\u003d\"commandBoxPlaceholder\" styleClass\u003d\"stack-pane\" VBox.vgrow\u003d\"NEVER\"\u003e"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
         "content": "                    \u003cpadding\u003e"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 101,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                        \u003cInsets bottom\u003d\"5\" left\u003d\"10\" right\u003d\"10\" top\u003d\"5\" /\u003e"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
         "content": "                    \u003c/padding\u003e"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 103,
         "author": {
           "gitId": "alam8064"
         },
         "content": "                \u003c/StackPane\u003e"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
         "content": "            \u003c/VBox\u003e"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
         "content": "        \u003c/Scene\u003e"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
         "content": "    \u003c/scene\u003e"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
@@ -54967,9 +55063,9 @@
     ],
     "authorContributionMap": {
       "yaojiethng": 15,
-      "Clouddoggo": 10,
+      "Clouddoggo": 7,
       "-": 36,
-      "alam8064": 51
+      "alam8064": 50
     }
   },
   {
@@ -55663,7 +55759,7 @@
     }
   },
   {
-    "path": "src/main/resources/view/ProductivityListCard.fxml",
+    "path": "src/main/resources/view/ProductivityCard.fxml",
     "fileType": "fxml",
     "lines": [
       {
@@ -55685,88 +55781,214 @@
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "\u003c?import java.lang.*?\u003e"
+        "content": "\u003c?import javafx.geometry.Insets?\u003e"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "\u003c?import java.util.*?\u003e"
+        "content": "\u003c?import javafx.scene.control.Label?\u003e"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "\u003c?import javafx.scene.*?\u003e"
+        "content": "\u003c?import javafx.scene.layout.*?\u003e"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "\u003c?import javafx.scene.control.*?\u003e"
+        "content": "\u003cHBox xmlns:fx\u003d\"http://javafx.com/fxml/1\" id\u003d\"cardPane\" fx:id\u003d\"cardPane\" xmlns\u003d\"http://javafx.com/javafx/11\"\u003e"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "\u003c?import javafx.scene.layout.*?\u003e"
+        "content": "    \u003cGridPane HBox.hgrow\u003d\"ALWAYS\"\u003e"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "        \u003ccolumnConstraints\u003e"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "\u003cAnchorPane xmlns\u003d\"http://javafx.com/javafx\""
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10\" prefWidth\u003d\"150\" /\u003e"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            xmlns:fx\u003d\"http://javafx.com/fxml\""
+        "content": "        \u003c/columnConstraints\u003e"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            fx:controller\u003d\"view.ProductivityListCard\""
+        "content": "        \u003cVBox alignment\u003d\"CENTER_LEFT\" minHeight\u003d\"105\" prefHeight\u003d\"105.0\" prefWidth\u003d\"195.0\" GridPane.columnIndex\u003d\"0\"\u003e"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "            prefHeight\u003d\"400.0\" prefWidth\u003d\"600.0\"\u003e"
+        "content": "            \u003cpadding\u003e"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": ""
+        "content": "                \u003cInsets bottom\u003d\"5\" left\u003d\"15\" right\u003d\"5\" top\u003d\"5\" /\u003e"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "\u003c/AnchorPane\u003e"
+        "content": "            \u003c/padding\u003e"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            \u003cHBox alignment\u003d\"CENTER_LEFT\" spacing\u003d\"5\"\u003e"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                \u003cLabel fx:id\u003d\"id\" styleClass\u003d\"cell_big_label\"\u003e"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                    \u003cminWidth\u003e"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                        \u003c!-- Ensures that the label text is never truncated --\u003e"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                        \u003cRegion fx:constant\u003d\"USE_PREF_SIZE\" /\u003e"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                    \u003c/minWidth\u003e"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                \u003c/Label\u003e"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                \u003cLabel fx:id\u003d\"productivityToday\" styleClass\u003d\"cell_medium_label\" text\u003d\"\\productivityToday\" /\u003e"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "                \u003cLabel fx:id\u003d\"runningTimers\" styleClass\u003d\"cell_medium_label\" text\u003d\"\\runningTimers\" /\u003e"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            \u003c/HBox\u003e"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            \u003cLabel fx:id\u003d\"overdueTasks\" styleClass\u003d\"cell_medium_label\" text\u003d\"\\overdueTasks\" /\u003e"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            \u003cLabel fx:id\u003d\"remainingTasks\" styleClass\u003d\"cell_medium_label\" text\u003d\"\\remainingTasks\" /\u003e"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        \u003c/VBox\u003e"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        \u003crowConstraints\u003e"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "            \u003cRowConstraints /\u003e"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "        \u003c/rowConstraints\u003e"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "    \u003c/GridPane\u003e"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "Clouddoggo"
+        },
+        "content": "\u003c/HBox\u003e"
       }
     ],
     "authorContributionMap": {
-      "Clouddoggo": 14
+      "Clouddoggo": 32
     }
   },
   {

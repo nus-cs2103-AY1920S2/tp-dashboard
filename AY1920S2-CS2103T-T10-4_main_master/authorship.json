@@ -6702,14 +6702,14 @@
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX \u003d \"The person index provided is invalid\";"
+        "content": "    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX \u003d \"The activity index provided is invalid\";"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW \u003d \"%1$d persons listed!\";"
+        "content": "    public static final String MESSAGE_ACTIVITY_LISTED_OVERVIEW \u003d \"%1$d activities listed!\";"
       },
       {
         "lineNumber": 12,
@@ -14313,21 +14313,21 @@
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "import static nasa.commons.core.Messages.MESSAGE_ACTIVITY_LISTED_OVERVIEW;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "import nasa.logic.commands.exceptions.CommandException;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "import nasa.model.Model;"
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 7,
@@ -14339,131 +14339,341 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "kester-ng"
+          "gitId": "EdmondOng"
         },
-        "content": "/**"
+        "content": "import nasa.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": " * Represents the command for finding specific activities."
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "kester-ng"
+          "gitId": "EdmondOng"
         },
-        "content": " */"
+        "content": "import nasa.model.Model;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "public class FindCommand extends Command {"
+        "content": "import nasa.model.activity.ActivityContainsKeyWordsPredicate;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "import nasa.model.module.Module;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all activities whose names contain any of \""
+        "content": " * Represents the command for finding specific activities."
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
+        "content": " */"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "            + \"Parameters: KEYWORD [MORE_KEYWORDS]...\\n\""
+        "content": "public class FindCommand extends Command {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "            + \"Example: \" + COMMAND_WORD + \" assignment lab tutorial\";"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all activities whose names contain any of \""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        requireNonNull(model);"
+        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        // TODO add the necessary implementation once model is done"
+        "content": "            + \"Parameters: KEYWORD [MORE_KEYWORDS]...\\n\""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        return new CommandResult(\"\");"
+        "content": "            + \"Example: \" + COMMAND_WORD + \" assignment lab tutorial\";"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 26,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    private final ActivityContainsKeyWordsPredicate predicate;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public FindCommand(ActivityContainsKeyWordsPredicate predicate) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        this.predicate \u003d predicate;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // TODO add the necessary implementation once model is done"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        model.updateFilteredActivityList(predicate);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        return new CommandResult(String.format(MESSAGE_ACTIVITY_LISTED_OVERVIEW,"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "            getNumberOfFilteredActivities(model.getFilteredModuleList())));"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    private int getNumberOfFilteredActivities(ObservableList\u003cModule\u003e moduleList) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        int numberOfActivities \u003d 0;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        for (Module module : moduleList) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "            numberOfActivities +\u003d module.getFilteredActivityList().size();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        return numberOfActivities;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "            || (other instanceof FindCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "            \u0026\u0026 predicate.equals(((FindCommand) other).predicate)); // state check"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
         "author": {
           "gitId": "kester-ng"
         },
@@ -14473,7 +14683,7 @@
     "authorContributionMap": {
       "CharmaineKoh": 1,
       "EdmondOng": 3,
-      "kester-ng": 22
+      "kester-ng": 52
     }
   },
   {
@@ -14663,136 +14873,150 @@
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "import static nasa.model.Model.PREDICATE_SHOW_ALL_MODULES;"
+        "content": "import static nasa.model.Model.PREDICATE_SHOW_ALL_ACTIVITIES;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "import static nasa.model.Model.PREDICATE_SHOW_ALL_MODULES;"
       },
       {
         "lineNumber": 6,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
         "author": {
           "gitId": "CharmaineKoh"
         },
         "content": "import nasa.model.Model;"
       },
       {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "kester-ng"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 8,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": " * Lists the modules and their activity lists."
+        "content": "/**"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": " */"
+        "content": " * Lists the modules and their activity lists."
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "public class ListCommand extends Command {"
+        "content": " */"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "public class ListCommand extends Command {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"list\";"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"list\";"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"Listed all persons\";"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"Listed all persons\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
+        "content": "        model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    }"
+        "content": "        model.updateFilteredActivityList(PREDICATE_SHOW_ALL_ACTIVITIES);"
       },
       {
         "lineNumber": 23,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
         "author": {
           "gitId": "kester-ng"
         },
@@ -14801,7 +15025,7 @@
     ],
     "authorContributionMap": {
       "CharmaineKoh": 2,
-      "kester-ng": 21
+      "kester-ng": 23
     }
   },
   {
@@ -19380,173 +19604,194 @@
       {
         "lineNumber": 5,
         "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
           "gitId": "CharmaineKoh"
         },
         "content": "import nasa.logic.commands.FindCommand;"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 8,
         "author": {
           "gitId": "CharmaineKoh"
         },
         "content": "import nasa.logic.parser.exceptions.ParseException;"
       },
       {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "kester-ng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "kester-ng"
-        },
-        "content": "/**"
-      },
-      {
         "lineNumber": 9,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": " * Parses input arguments and creates a new FindCommand object."
+        "content": "import nasa.model.activity.ActivityContainsKeyWordsPredicate;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "public class FindCommandParser implements Parser\u003cFindCommand\u003e {"
+        "content": "/**"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": " * Parses input arguments and creates a new FindCommand object."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    /**"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the FindCommand"
+        "content": "public class FindCommandParser implements Parser\u003cFindCommand\u003e {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "     * and returns a FindCommand object for execution."
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "    /**"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "     */"
+        "content": "     * Parses the given {@code String} of arguments in the context of the FindCommand"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    public FindCommand parse(String args) throws ParseException {"
+        "content": "     * and returns a FindCommand object for execution."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        String trimmedArgs \u003d args.trim();"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        if (trimmedArgs.isEmpty()) {"
+        "content": "     */"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "            throw new ParseException("
+        "content": "    public FindCommand parse(String args) throws ParseException {"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "CharmaineKoh"
+          "gitId": "kester-ng"
         },
-        "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));"
+        "content": "        String trimmedArgs \u003d args.trim();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        }"
+        "content": "        if (trimmedArgs.isEmpty()) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "            throw new ParseException("
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "kester-ng"
+          "gitId": "CharmaineKoh"
         },
-        "content": "        String[] nameKeywords \u003d trimmedArgs.split(\"\\\\s+\");"
+        "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "        return new FindCommand(); //TODO add the necessary changes when model is complete"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "kester-ng"
         },
-        "content": "    }"
+        "content": "        String[] nameKeywords \u003d trimmedArgs.split(\"\\\\s+\");"
       },
       {
         "lineNumber": 29,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        return new FindCommand(new ActivityContainsKeyWordsPredicate(Arrays.asList(nameKeywords)));"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
         "author": {
           "gitId": "kester-ng"
         },
@@ -19555,7 +19800,7 @@
     ],
     "authorContributionMap": {
       "CharmaineKoh": 6,
-      "kester-ng": 23
+      "kester-ng": 26
     }
   },
   {
@@ -23467,9 +23712,9 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "    /** {@code Predicate} that always evaluate to true */"
+        "content": "    /** {@code Predicate} for modules that always evaluate to true */"
       },
       {
         "lineNumber": 20,
@@ -23488,978 +23733,999 @@
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "    /**"
+        "content": "    /** {@code Predicate} for activities that always evaluate to true */"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "     * Replaces user prefs data with the data in {@code userPrefs}."
+        "content": "    Predicate\u003cActivity\u003e PREDICATE_SHOW_ALL_ACTIVITIES \u003d unused -\u003e true;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void setUserPrefs(ReadOnlyUserPrefs userPrefs);"
+        "content": "     * Replaces user prefs data with the data in {@code userPrefs}."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void setUserPrefs(ReadOnlyUserPrefs userPrefs);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Returns the user prefs."
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "CharmaineKoh"
+          "gitId": "EdmondOng"
         },
-        "content": "    ReadOnlyUserPrefs getUserPrefs();"
+        "content": "     * Returns the user prefs."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "CharmaineKoh"
         },
-        "content": "    /**"
+        "content": "    ReadOnlyUserPrefs getUserPrefs();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Returns the user prefs\u0027 GUI settings."
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    GuiSettings getGuiSettings();"
+        "content": "     * Returns the user prefs\u0027 GUI settings."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    GuiSettings getGuiSettings();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Sets the user prefs\u0027 GUI settings."
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void setGuiSettings(GuiSettings guiSettings);"
+        "content": "     * Sets the user prefs\u0027 GUI settings."
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void setGuiSettings(GuiSettings guiSettings);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Returns the user prefs\u0027 address book file path."
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    Path getNasaBookFilePath();"
+        "content": "     * Returns the user prefs\u0027 address book file path."
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    Path getNasaBookFilePath();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Sets the user prefs\u0027 address book file path."
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void setNasaBookFilePath(Path nasaBookFilePath);"
+        "content": "     * Sets the user prefs\u0027 address book file path."
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void setNasaBookFilePath(Path nasaBookFilePath);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Replaces address book data with the data in {@code nasaBook}."
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void setNasaBook(ReadOnlyNasaBook nasaBook);"
+        "content": "     * Replaces address book data with the data in {@code nasaBook}."
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /** Returns the NasaBook */"
+        "content": "    void setNasaBook(ReadOnlyNasaBook nasaBook);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    ReadOnlyNasaBook getNasaBook();"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "    /** Returns the NasaBook */"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    ReadOnlyNasaBook getNasaBook();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Returns true if a module with the same identity as {@code module} exists in the address book."
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    boolean hasModule(Module module);"
+        "content": "     * Returns true if a module with the same identity as {@code module} exists in the address book."
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    boolean hasModule(Module module);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Returns true if a module with the same identity as {@code module} exists in the address book."
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    boolean hasModule(ModuleCode moduleCode);"
+        "content": "     * Returns true if a module with the same identity as {@code module} exists in the address book."
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    boolean hasModule(ModuleCode moduleCode);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Deletes the given module."
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * The module must exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Deletes the given module."
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void deleteModule(Module target);"
+        "content": "     * The module must exist in the nasa book."
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void deleteModule(Module target);"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Deletes the given module."
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * The module must exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Deletes the given module."
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void deleteModule(ModuleCode target);"
+        "content": "     * The module must exist in the nasa book."
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void deleteModule(ModuleCode target);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Adds the given module."
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * {@code module} must not already exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Adds the given module."
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void addModule(Module module);"
+        "content": "     * {@code module} must not already exist in the nasa book."
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void addModule(Module module);"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Adds the given module."
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * {@code module} must not already exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Adds the given module."
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void addModule(ModuleCode moduleCode, ModuleName moduleName);"
+        "content": "     * {@code module} must not already exist in the nasa book."
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void addModule(ModuleCode moduleCode, ModuleName moduleName);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Replaces the given module {@code target} with {@code editedModule}."
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * {@code target} must exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * The module identity of {@code editedModule} must not be the same as another existing module in the address book."
+        "content": "     * Replaces the given module {@code target} with {@code editedModule}."
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * {@code target} must exist in the nasa book."
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void setModule(Module target, Module editedModule);"
+        "content": "     * The module identity of {@code editedModule} must not be the same as another existing module in the address book."
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void setModule(Module target, Module editedModule);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Replaces the given module {@code target} with {@code editedModule}."
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * {@code target} must exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * The module identity of {@code editedModule} must not be the same as another existing module in the address book."
+        "content": "     * Replaces the given module {@code target} with {@code editedModule}."
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * {@code target} must exist in the nasa book."
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void setModule(ModuleCode target, Module editedModule);"
+        "content": "     * The module identity of {@code editedModule} must not be the same as another existing module in the address book."
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void setModule(ModuleCode target, Module editedModule);"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Adds the given activity."
+        "content": ""
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * {@code activity} must not already exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Adds the given activity."
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void addActivity(Module target, Activity activity);"
+        "content": "     * {@code activity} must not already exist in the nasa book."
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void addActivity(Module target, Activity activity);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Adds the given activity."
+        "content": ""
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * {@code activity} must not already exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Adds the given activity."
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void addActivity(ModuleCode target, Activity activity);"
+        "content": "     * {@code activity} must not already exist in the nasa book."
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void addActivity(ModuleCode target, Activity activity);"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Remove the given activity."
+        "content": ""
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * {@code activity} must not already exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Remove the given activity."
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void removeActivity(Module target, Activity activity);"
+        "content": "     * {@code activity} must not already exist in the nasa book."
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void removeActivity(Module target, Activity activity);"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Remove the given activity."
+        "content": ""
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * {@code activity} must not already exist in the nasa book."
+        "content": "    /**"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Remove the given activity."
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void removeActivity(ModuleCode target, Activity activity);"
+        "content": "     * {@code activity} must not already exist in the nasa book."
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    void removeActivity(ModuleCode target, Activity activity);"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Returns true if a module {@code target} has {@code activity} exists in the nasa book."
+        "content": ""
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    boolean hasActivity(Module target, Activity activity);"
+        "content": "     * Returns true if a module {@code target} has {@code activity} exists in the nasa book."
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    boolean hasActivity(Module target, Activity activity);"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Returns true if a module {@code target} has {@code activity} exists in the nasa book."
+        "content": ""
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    boolean hasActivity(ModuleCode target, Activity activity);"
+        "content": "     * Returns true if a module {@code target} has {@code activity} exists in the nasa book."
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /** Returns an unmodifiable view of the filtered module list */"
+        "content": "    boolean hasActivity(ModuleCode target, Activity activity);"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    ObservableList\u003cModule\u003e getFilteredModuleList();"
+        "content": ""
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "    /** Returns an unmodifiable view of the filtered module list */"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    /**"
+        "content": "    ObservableList\u003cModule\u003e getFilteredModuleList();"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * Updates the filter of the filtered module list to filter by the given {@code predicate}."
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     * @throws NullPointerException if {@code predicate} is null."
+        "content": "    /**"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "     */"
+        "content": "     * Updates the filter of the filtered module list to filter by the given {@code predicate}."
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void updateFilteredModuleList(Predicate\u003cModule\u003e predicate);"
+        "content": "     * @throws NullPointerException if {@code predicate} is null."
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void setActivityByIndex(Module module, Index index, Activity activity);"
+        "content": "    void updateFilteredModuleList(Predicate\u003cModule\u003e predicate);"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void setActivityByIndex(ModuleCode moduleCode, Index index, Activity activity);"
+        "content": ""
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void editActivityByIndex(Module module, Index index, Object... args);"
+        "content": "    void setActivityByIndex(Module module, Index index, Activity activity);"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void editActivityByIndex(ModuleCode moduleCode, Index index, Object... args);"
+        "content": "    void setActivityByIndex(ModuleCode moduleCode, Index index, Activity activity);"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    ObservableList\u003cActivity\u003e getFilteredActivityList(Index index);"
+        "content": "    void editActivityByIndex(Module module, Index index, Object... args);"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void updateFilteredActivityList(Index index, Predicate\u003cActivity\u003e predicate);"
+        "content": "    void editActivityByIndex(ModuleCode moduleCode, Index index, Object... args);"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void removeModuleByIndex(Index index);"
+        "content": "    ObservableList\u003cActivity\u003e getFilteredActivityList(Index index);"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    void removeActivityByIndex(Module module, Index index);"
+        "content": "    void updateFilteredActivityList(Index index, Predicate\u003cActivity\u003e predicate);"
       },
       {
         "lineNumber": 159,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "    void removeActivityByIndex(ModuleCode moduleCode, Index index);"
+        "content": "    void updateFilteredActivityList(Predicate\u003cActivity\u003e predicate);"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "    void removeModuleByIndex(Index index);"
       },
       {
         "lineNumber": 161,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": "    void removeActivityByIndex(Module module, Index index);"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": "    void removeActivityByIndex(ModuleCode moduleCode, Index index);"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 164,
         "author": {
           "gitId": "EdmondOng"
         },
@@ -24468,7 +24734,8 @@
     ],
     "authorContributionMap": {
       "CharmaineKoh": 7,
-      "EdmondOng": 154
+      "EdmondOng": 153,
+      "kester-ng": 4
     }
   },
   {
@@ -26200,49 +26467,49 @@
       {
         "lineNumber": 247,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
         "content": "    @Override"
       },
       {
         "lineNumber": 248,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": "    public void updateFilteredActivityList(Predicate\u003cActivity\u003e predicate) {"
       },
       {
         "lineNumber": 249,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "        // short circuit if same object"
+        "content": "        for (Module module : filteredModules) {"
       },
       {
         "lineNumber": 250,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": "            module.updateFilteredActivityList(predicate);"
       },
       {
         "lineNumber": 251,
         "author": {
-          "gitId": "EdmondOng"
-        },
-        "content": "            return true;"
-      },
-      {
-        "lineNumber": 252,
-        "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
         "content": "        }"
       },
       {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
         "lineNumber": 253,
         "author": {
-          "gitId": "EdmondOng"
+          "gitId": "kester-ng"
         },
         "content": ""
       },
@@ -26251,77 +26518,77 @@
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "    @Override"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "        if (!(obj instanceof ModelManager)) {"
+        "content": "    public boolean equals(Object obj) {"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "            return false;"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "        }"
+        "content": "        if (obj \u003d\u003d this) {"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": ""
+        "content": "            return true;"
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "        // state check"
+        "content": "        }"
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "        ModelManager other \u003d (ModelManager) obj;"
+        "content": ""
       },
       {
         "lineNumber": 261,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "        return nasaBook.equals(other.nasaBook)"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 262,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
+        "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
         "lineNumber": 263,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "                \u0026\u0026 filteredModules.equals(other.filteredModules);"
+        "content": "            return false;"
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "EdmondOng"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 265,
@@ -26335,12 +26602,61 @@
         "author": {
           "gitId": "EdmondOng"
         },
+        "content": "        // state check"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": "        ModelManager other \u003d (ModelManager) obj;"
+      },
+      {
+        "lineNumber": 268,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": "        return nasaBook.equals(other.nasaBook)"
+      },
+      {
+        "lineNumber": 269,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
+      },
+      {
+        "lineNumber": 270,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": "                \u0026\u0026 filteredModules.equals(other.filteredModules);"
+      },
+      {
+        "lineNumber": 271,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 272,
+        "author": {
+          "gitId": "EdmondOng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 273,
+        "author": {
+          "gitId": "EdmondOng"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
       "EdmondOng": 265,
-      "kester-ng": 1
+      "kester-ng": 8
     }
   },
   {
@@ -67092,6 +67408,435 @@
     }
   },
   {
+    "path": "src/test/java/nasa/logic/commands/DeleteActivityCommandTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "package nasa.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.logic.commands.CommandTestUtil.assertCommandFailure;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.logic.commands.CommandTestUtil.assertCommandSuccess;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.testutil.TypicalIndexes.INDEX_FIRST_ACTIVITY;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.testutil.TypicalIndexes.INDEX_SECOND_ACTIVITY;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.Model;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.ModelManager;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.UserPrefs;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.module.Module;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.module.ModuleCode;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.testutil.NasaBookBuilder;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "public class DeleteActivityCommandTest {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    private Model model \u003d new ModelManager(new NasaBookBuilder().build(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public void execute_validActivityUnfilteredList_success() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        Module module \u003d model.getFilteredModuleList().get(INDEX_FIRST_ACTIVITY.getZeroBased());"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        ModuleCode moduleCode \u003d module.getModuleCode();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        DeleteActivityCommand deleteActivityCommand \u003d new DeleteActivityCommand(INDEX_FIRST_ACTIVITY, moduleCode);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        String expectedMessage \u003d String.format(INDEX_FIRST_ACTIVITY.toString()"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "            + DeleteActivityCommand.MESSAGE_SUCCESS);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        ModelManager expectedModel \u003d new ModelManager(new NasaBookBuilder().build(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        expectedModel.removeActivityByIndex(moduleCode, INDEX_FIRST_ACTIVITY);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertCommandSuccess(deleteActivityCommand, model, expectedMessage, expectedModel);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public void execute_invalidIndexUnfilteredList_failure() {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // an index that is invalid (\u003e list.size())"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        Module module \u003d model.getFilteredModuleList().get(INDEX_SECOND_ACTIVITY.getZeroBased());"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        ModuleCode moduleCode \u003d module.getModuleCode();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        DeleteActivityCommand deleteActivityCommand \u003d new DeleteActivityCommand(Index.fromOneBased(6), moduleCode);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertCommandFailure(deleteActivityCommand, model, DeleteActivityCommand.MESSAGE_FAILURE);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public void execute_invalidModuleUnfilteredList_failure() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // a module that does not exist"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        ModuleCode moduleCode \u003d new ModuleCode(\"UTW1001K\");"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        DeleteActivityCommand deleteActivityCommand \u003d new DeleteActivityCommand(INDEX_FIRST_ACTIVITY, moduleCode);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertCommandFailure(deleteActivityCommand, model, DeleteActivityCommand.MESSAGE_FAILURE);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // a null module"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        deleteActivityCommand \u003d new DeleteActivityCommand(INDEX_FIRST_ACTIVITY, null);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertCommandFailure(deleteActivityCommand, model, DeleteActivityCommand.MESSAGE_FAILURE);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kester-ng": 60
+    }
+  },
+  {
     "path": "src/test/java/nasa/logic/commands/DeleteModuleCommandTest.java",
     "fileType": "java",
     "lines": [
@@ -67535,6 +68280,547 @@
     "authorContributionMap": {
       "kester-ng": 5,
       "-": 15
+    }
+  },
+  {
+    "path": "src/test/java/nasa/logic/commands/FindCommandTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "package nasa.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.commons.core.Messages.MESSAGE_ACTIVITY_LISTED_OVERVIEW;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.logic.commands.CommandTestUtil.assertCommandSuccess;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import java.util.Collections;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.Model;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.ModelManager;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.UserPrefs;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.activity.ActivityContainsKeyWordsPredicate;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.testutil.NasaBookBuilder;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "public class FindCommandTest {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    private Model model \u003d new ModelManager(new NasaBookBuilder().build(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    private Model expectedModel \u003d new ModelManager(new NasaBookBuilder().build(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public void equals() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        ActivityContainsKeyWordsPredicate firstPredicate \u003d"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "            new ActivityContainsKeyWordsPredicate(Collections.singletonList(\"first\"));"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        ActivityContainsKeyWordsPredicate secondPredicate \u003d"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "            new ActivityContainsKeyWordsPredicate(Collections.singletonList(\"second\"));"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        FindCommand findFirstCommand \u003d new FindCommand(firstPredicate);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        FindCommand findSecondCommand \u003d new FindCommand(secondPredicate);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // same object -\u003e returns true"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertTrue(findFirstCommand.equals(findFirstCommand));"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // same values -\u003e returns true"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        FindCommand findFirstCommandCopy \u003d new FindCommand(firstPredicate);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertTrue(findFirstCommand.equals(findFirstCommandCopy));"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // different types -\u003e returns false"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertFalse(findFirstCommand.equals(1));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // null -\u003e returns false"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertFalse(findFirstCommand.equals(null));"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // different person -\u003e returns false"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertFalse(findFirstCommand.equals(findSecondCommand));"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public void execute_zeroKeywords_noPersonFound() {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        String expectedMessage \u003d String.format(MESSAGE_ACTIVITY_LISTED_OVERVIEW, 0);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        ActivityContainsKeyWordsPredicate predicate \u003d preparePredicate(\" \");"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        FindCommand command \u003d new FindCommand(predicate);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        expectedModel.updateFilteredActivityList(predicate);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public void execute_multipleKeywords_multipleActivitiesFound() {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        String expectedMessage \u003d String.format(MESSAGE_ACTIVITY_LISTED_OVERVIEW, 3);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        ActivityContainsKeyWordsPredicate predicate \u003d preparePredicate(\"Lab\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        FindCommand findCommand \u003d new FindCommand(predicate);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        expectedModel.updateFilteredActivityList(predicate);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertCommandSuccess(findCommand, model, expectedMessage, expectedModel);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "     * Parses {@code userInput} into a {@code ActivityContainsKeywordsPredicate}."
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    private ActivityContainsKeyWordsPredicate preparePredicate(String userInput) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        return new ActivityContainsKeyWordsPredicate(Arrays.asList(userInput.split(\"\\\\s+\")));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kester-ng": 76
     }
   },
   {
@@ -70448,6 +71734,253 @@
     "authorContributionMap": {
       "kester-ng": 27,
       "don-tay": 8
+    }
+  },
+  {
+    "path": "src/test/java/nasa/logic/parser/FindCommandParserTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "package nasa.logic.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.logic.parser.CommandParserTestUtil.assertParseFailure;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import static nasa.logic.parser.CommandParserTestUtil.assertParseSuccess;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.logic.commands.FindCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "import nasa.model.activity.ActivityContainsKeyWordsPredicate;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "public class FindCommandParserTest {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    private FindCommandParser parser \u003d new FindCommandParser();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public void parse_emptyArg_throwsParseException() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertParseFailure(parser, \"     \", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    public void parse_validArgs_returnsFindCommand() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        // no leading and trailing whitespaces"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        FindCommand findCommand \u003d"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "            new FindCommand(new ActivityContainsKeyWordsPredicate(Arrays.asList(\"Tutorial\", \"Exam\")));"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertParseSuccess(parser, \"Tutorial Exam\", findCommand);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        //multiple whitespaces in-between words"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "        assertParseSuccess(parser, \"\\n Tutorial \\n \\t Exam \\t\", findCommand);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "kester-ng"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kester-ng": 34
     }
   },
   {

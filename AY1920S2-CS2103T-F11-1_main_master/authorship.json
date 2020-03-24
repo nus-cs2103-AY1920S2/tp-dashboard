@@ -3281,9 +3281,9 @@
       {
         "lineNumber": 177,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "            logger.warning(\"Problem while reading from the file. Will be starting with an empty AddressBook\");"
+        "content": "            logger.warning(\"Problem while reading from the file. Will be starting with an empty FoodRecord\");"
       },
       {
         "lineNumber": 178,
@@ -3492,8 +3492,8 @@
     "authorContributionMap": {
       "J-Dan23": 3,
       "buddhavineeth": 49,
-      "eugenetyc": 14,
-      "-": 140
+      "eugenetyc": 15,
+      "-": 139
     }
   },
   {
@@ -9206,383 +9206,537 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "    /**"
+        "content": "    // Used in find command"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Returns true if the {@code sentence} contains the {@code word}."
+        "content": "    /**"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": "     *   Ignores case, but a full word match is required."
+        "content": "     * Returns true if the {@code sentence} contains the {@code word}."
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "     *   \u003cbr\u003eexamples:\u003cpre\u003e"
+        "content": "     *   Ignores case, and a non-full word match also returns true."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"abc\") \u003d\u003d true"
+        "content": "     *   \u003cbr\u003eexamples:\u003cpre\u003e"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
-        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"DEF\") \u003d\u003d true"
+        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"abc\") \u003d\u003d true"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"AB\") \u003d\u003d false //not a full word match"
+        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"DEF\") \u003d\u003d true"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "     *       \u003c/pre\u003e"
+        "content": "     *       containsWordIgnoreCase(\"ABc def\", \"AB\") \u003d\u003d true //not a full word match"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param sentence cannot be null"
+        "content": "     *       \u003c/pre\u003e"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param word cannot be null, cannot be empty, must be a single word"
+        "content": "     * @param sentence cannot be null"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * @param word cannot be null, cannot be empty, must be a single word"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static boolean containsWordIgnoreCase(String sentence, String word) {"
+        "content": "     */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(sentence);"
+        "content": "    public static boolean containsWordIgnoreCase(String sentence, String word) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(word);"
+        "content": "        requireNonNull(sentence);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        requireNonNull(word);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "        String preppedWord \u003d word.trim();"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        AppUtil.checkArgument(!preppedWord.isEmpty(), \"Word parameter cannot be empty\");"
+        "content": "        // we want to compare this processed word"
       },
       {
         "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        String preppedWord \u003d word.trim();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        AppUtil.checkArgument(!preppedWord.isEmpty(), \"Word parameter cannot be empty\");"
+      },
+      {
+        "lineNumber": 33,
         "author": {
           "gitId": "buddhavineeth"
         },
         "content": "        AppUtil.checkArgument(preppedWord.split(\"\\\\s+\").length \u003d\u003d 1,"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 34,
         "author": {
           "gitId": "buddhavineeth"
         },
         "content": "                \"Word parameter should be a single word\");"
       },
       {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        String preppedSentence \u003d sentence;"
-      },
-      {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "        String[] wordsInPreppedSentence \u003d preppedSentence.split(\"\\\\s+\");"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "        // we want to compare with the words in this sentence"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "        return Arrays.stream(wordsInPreppedSentence)"
+        "content": "        String preppedSentence \u003d sentence;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": "                .anyMatch(preppedWord::equalsIgnoreCase);"
+        "content": "        String[] wordsInPreppedSentence \u003d preppedSentence.split(\"\\\\s+\");"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "        // only return true if either they are the exact equivalent ignoring casing,"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "    /**"
+        "content": "        // or the word is contained as a substring in any of the sentence\u0027s words"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Returns a detailed message of the t, including the stack trace."
+        "content": "        return Arrays.stream(wordsInPreppedSentence)"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "     */"
+        "content": "                .anyMatch(preppedWord::equalsIgnoreCase)"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "    public static String getDetails(Throwable t) {"
+        "content": "                || containsSubstringWord(wordsInPreppedSentence, preppedWord);"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "-"
-        },
-        "content": "        requireNonNull(t);"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        StringWriter sw \u003d new StringWriter();"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        t.printStackTrace(new PrintWriter(sw));"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        return t.getMessage() + \"\\n\" + sw.toString();"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 46,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
         "content": ""
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 47,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
         "content": "    /**"
       },
       {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Returns true if the String array contains at least one String containing the substring."
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @param words the String array to search in."
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @param substringWord the substring to find in the Strings from the String array."
+      },
+      {
         "lineNumber": 52,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "     * Returns true if {@code s} represents a non-zero unsigned integer"
+        "content": "     * @return whether the String array contains at least one String containing the substring."
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "-"
-        },
-        "content": "     * e.g. 1, 2, 3, ..., {@code Integer.MAX_VALUE} \u003cbr\u003e"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Will return false for any other non-null string input"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * e.g. empty string, \"-1\", \"0\", \"+1\", and \" 2 \" (untrimmed), \"3 0\" (contains whitespace), \"1 a\" (contains letters)"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * @throws NullPointerException if {@code s} is null."
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
         "content": "     */"
       },
       {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private static boolean containsSubstringWord(String[] words, String substringWord) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        for (String word: words) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            if (word.toLowerCase().contains(substringWord.toLowerCase())) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                return true;"
+      },
+      {
         "lineNumber": 58,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "    public static boolean isNonZeroUnsignedInteger(String s) {"
+        "content": "            }"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "        requireNonNull(s);"
+        "content": "        }"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "        return false;"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": "        try {"
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "            int value \u003d Integer.parseInt(s);"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "            return value \u003e 0 \u0026\u0026 !s.startsWith(\"+\"); // \"+1\" is successfully parsed by Integer#parseInt(String)"
+        "content": "    /**"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": "        } catch (NumberFormatException nfe) {"
+        "content": "     * Returns a detailed message of the t, including the stack trace."
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": "            return false;"
+        "content": "     */"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    public static String getDetails(Throwable t) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        requireNonNull(t);"
       },
       {
         "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        StringWriter sw \u003d new StringWriter();"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        t.printStackTrace(new PrintWriter(sw));"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return t.getMessage() + \"\\n\" + sw.toString();"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Returns true if {@code s} represents a non-zero unsigned integer"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * e.g. 1, 2, 3, ..., {@code Integer.MAX_VALUE} \u003cbr\u003e"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Will return false for any other non-null string input"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * e.g. empty string, \"-1\", \"0\", \"+1\", and \" 2 \" (untrimmed), \"3 0\" (contains whitespace), \"1 a\" (contains letters)"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @throws NullPointerException if {@code s} is null."
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static boolean isNonZeroUnsignedInteger(String s) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        requireNonNull(s);"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            int value \u003d Integer.parseInt(s);"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return value \u003e 0 \u0026\u0026 !s.startsWith(\"+\"); // \"+1\" is successfully parsed by Integer#parseInt(String)"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (NumberFormatException nfe) {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
@@ -9591,8 +9745,8 @@
     ],
     "authorContributionMap": {
       "buddhavineeth": 3,
-      "eugenetyc": 1,
-      "-": 64
+      "eugenetyc": 26,
+      "-": 61
     }
   },
   {
@@ -11970,6 +12124,253 @@
     }
   },
   {
+    "path": "src/main/java/life/calgo/logic/commands/ExportCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "package life.calgo.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.Model;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.ReadOnlyFoodRecord;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.storage.ExportGenerator;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": " * Generates a FoodRecord.txt file in the documents folder showing Food Record entries."
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": " * Name, Nutritional Values and Tags are all shown, with Food items in alphabetical order."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "public class ExportCommand extends Command {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"export\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"Successfully generated FoodRecord.txt\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public static final String MESSAGE_FAILURE \u003d \"Did not manage to generate FoodRecord.txt.\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        ReadOnlyFoodRecord foodRecord \u003d model.getFoodRecord();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        ExportGenerator exportGenerator \u003d new ExportGenerator(foodRecord);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        boolean isSuccessfullyExported \u003d exportGenerator.generateExport();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        if (!isSuccessfullyExported) {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            throw new CommandException(MESSAGE_FAILURE);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "eugenetyc": 34
+    }
+  },
+  {
     "path": "src/main/java/life/calgo/logic/commands/FindCommand.java",
     "fileType": "java",
     "lines": [
@@ -12095,16 +12496,16 @@
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
+        "content": "            + \"the specified keywords (case-insensitive) or with a lower nutritional value than the one stated.\\n\""
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "            + \"Parameters: KEYWORD [MORE_KEYWORDS]...\\n\""
+        "content": "            + \"Parameters (at least 1): [n/NAME] [cal/CALORIES] [p/PROTEIN] [c/CARBOHYDRATES] [f/FATS]\\n\""
       },
       {
         "lineNumber": 20,
@@ -12270,8 +12671,8 @@
     ],
     "authorContributionMap": {
       "buddhavineeth": 4,
-      "eugenetyc": 5,
-      "-": 33
+      "eugenetyc": 7,
+      "-": 31
     }
   },
   {
@@ -17465,565 +17866,593 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "buddhavineeth"
+          "gitId": "eugenetyc"
         },
-        "content": "import life.calgo.logic.commands.FindCommand;"
+        "content": "import life.calgo.logic.commands.ExportCommand;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.commands.GoalCommand;"
+        "content": "import life.calgo.logic.commands.FindCommand;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.commands.HelpCommand;"
+        "content": "import life.calgo.logic.commands.GoalCommand;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.commands.ListCommand;"
+        "content": "import life.calgo.logic.commands.HelpCommand;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.commands.NomCommand;"
+        "content": "import life.calgo.logic.commands.ListCommand;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.commands.ReportCommand;"
+        "content": "import life.calgo.logic.commands.NomCommand;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.commands.StomachCommand;"
+        "content": "import life.calgo.logic.commands.ReportCommand;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.commands.UpdateCommand;"
+        "content": "import life.calgo.logic.commands.StomachCommand;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.commands.VomitCommand;"
+        "content": "import life.calgo.logic.commands.UpdateCommand;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.logic.parser.exceptions.ParseException;"
+        "content": "import life.calgo.logic.commands.VomitCommand;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "import life.calgo.model.Model;"
+        "content": "import life.calgo.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
+          "gitId": "buddhavineeth"
         },
-        "content": ""
+        "content": "import life.calgo.model.Model;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": " * Parses user input."
+        "content": "/**"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": " * Parses user input."
       },
       {
         "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "public class FoodRecordParser {"
       },
       {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Used for initial separation of command word and args."
+        "content": "    /**"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Used for initial separation of command word and args."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
+        "content": "     */"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Parses user input into command for execution."
+        "content": "    /**"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "     *"
+        "content": "     * Parses user input into command for execution."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param userInput full user input string"
+        "content": "     *"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @return the command based on the user input"
+        "content": "     * @param userInput full user input string"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "     * @return the command based on the user input"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 40,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 41,
         "author": {
           "gitId": "ray-97"
         },
         "content": "    public Command parseCommand(String userInput, Model model) throws ParseException {"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
         "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
         "content": "        if (!matcher.matches()) {"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 44,
         "author": {
           "gitId": "buddhavineeth"
         },
         "content": "            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
       },
       {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
+        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "        switch (commandWord) {"
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "jeremylow97"
+          "gitId": "-"
         },
-        "content": "        case UpdateCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "            return new UpdateCommandParser().parse(arguments);"
+        "content": "        case UpdateCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "-"
+          "gitId": "jeremylow97"
         },
-        "content": ""
+        "content": "            return new UpdateCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "        case DeleteCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new DeleteCommandParser().parse(arguments);"
+        "content": "        case DeleteCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new DeleteCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "-"
         },
-        "content": "        case StomachCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "            return new StomachCommandParser().parse(arguments);"
+        "content": "        case StomachCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "            return new StomachCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        case NomCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "            return new NomCommandParser(model).parse(arguments);"
+        "content": "        case NomCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "            return new NomCommandParser(model).parse(arguments);"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        case VomitCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "            return new VomitCommandParser(model).parse(arguments);"
+        "content": "        case VomitCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "            return new VomitCommandParser(model).parse(arguments);"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "buddhavineeth"
+          "gitId": "ray-97"
         },
-        "content": "        case ReportCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "            return new ReportCommandParser().parse(arguments);"
+        "content": "        case ReportCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": ""
+        "content": "            return new ReportCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "-"
+          "gitId": "buddhavineeth"
         },
-        "content": "        case ClearCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new ClearCommand();"
+        "content": "        case ClearCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new ClearCommand();"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": "        case FindCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new FindCommandParser().parse(arguments);"
+        "content": "        case FindCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new FindCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": "        case ListCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 75,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        case ExportCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            return new ExportCommand();"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        case ListCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
         "content": "            return new ListCommand();"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 81,
         "author": {
           "gitId": "buddhavineeth"
         },
         "content": "        case GoalCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 82,
         "author": {
           "gitId": "buddhavineeth"
         },
         "content": "            return new GoalCommandParser().parse(arguments);"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 83,
         "author": {
           "gitId": "buddhavineeth"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        case ExitCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            return new ExitCommand();"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new HelpCommand();"
+        "content": "        case ExitCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "        default:"
+        "content": ""
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "buddhavineeth"
+          "gitId": "-"
         },
-        "content": "            throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return new HelpCommand();"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        default:"
       },
       {
         "lineNumber": 91,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "            throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
@@ -18033,7 +18462,7 @@
     "authorContributionMap": {
       "buddhavineeth": 25,
       "ray-97": 10,
-      "eugenetyc": 1,
+      "eugenetyc": 5,
       "jeremylow97": 2,
       "-": 53
     }
@@ -19173,9 +19602,9 @@
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
-        "content": "    private static final String MESSAGE_INVALID_PORTION \u003d \"Portion is either a number or nothing\";"
+        "content": "    private static final String MESSAGE_INVALID_PORTION \u003d \"Portion is either a number or left empty\";"
       },
       {
         "lineNumber": 35,
@@ -20517,8 +20946,8 @@
     ],
     "authorContributionMap": {
       "buddhavineeth": 35,
-      "ray-97": 62,
-      "eugenetyc": 39,
+      "ray-97": 61,
+      "eugenetyc": 40,
       "-": 89
     }
   },
@@ -23018,217 +23447,217 @@
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "        setFoodList(newData.getFoodList());"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        setFoodList(newData.getFoodList());"
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "    //// food-level operations"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    //// food-level operations"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    /**"
+        "content": "     * Returns true if a food with the same identity as {@code food} exists in the food record."
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * Returns true if a food with the same identity as {@code food} exists in the food record."
+        "content": "     */"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     */"
+        "content": "    public boolean hasFood(Food food) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    public boolean hasFood(Food food) {"
+        "content": "        requireNonNull(food);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        requireNonNull(food);"
+        "content": "        return foodList.contains(food);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        return foodList.contains(food);"
+        "content": "    }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    /**"
+        "content": "     * Adds a food to the food record."
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * Adds a food to the food record."
+        "content": "     * The food must not already exist in the food record."
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * The food must not already exist in the food record."
+        "content": "     */"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     */"
+        "content": "    public void addFood(Food p) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    public void addFood(Food p) {"
+        "content": "        foodList.add(p);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        foodList.add(p);"
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    /**"
+        "content": "     * Replaces the given food {@code target} in the FoodRecord\u0027s foodList with {@code editedFood}."
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * Replaces the given food {@code target} in the FoodRecord\u0027s foodList with {@code editedFood}."
+        "content": "     * {@code target} must exist in the food record."
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * {@code target} must exist in the food record."
+        "content": "     * The food identity of {@code editedFood} must not be the same as another existing food in the food record."
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * The food identity of {@code editedFood} must not be the same as another existing food in the food record."
+        "content": "     */"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     */"
+        "content": "    public void setFood(Food target, Food editedFood) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    public void setFood(Food target, Food editedFood) {"
+        "content": "        requireNonNull(editedFood);"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        requireNonNull(editedFood);"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "        foodList.setFood(target, editedFood);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        foodList.setFood(target, editedFood);"
+        "content": ""
       },
       {
         "lineNumber": 93,
@@ -23310,9 +23739,9 @@
       {
         "lineNumber": 104,
         "author": {
-          "gitId": "jeremylow97"
+          "gitId": "eugenetyc"
         },
-        "content": "     * Returns the existing Food object in Food Record"
+        "content": "     * Returns the existing Food object in Food Record."
       },
       {
         "lineNumber": 105,
@@ -23515,227 +23944,283 @@
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    @Override"
+        "content": "    /**"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    public String toString() {"
+        "content": "     * Returns a line-by-line representation of the FoodRecord, displaying all its details."
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        return foodList.asUnmodifiableObservableList().size() + \" foods\";"
+        "content": "     *"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        // TODO: refine later"
+        "content": "     * @return the line-by-line representation of the FoodRecord."
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    @Override"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    public ObservableList\u003cFood\u003e getFoodList() {"
+        "content": "        String result \u003d \"\";"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        return foodList.asUnmodifiableObservableList();"
+        "content": "        for (Food f: foodList.asUnmodifiableObservableList()) {"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    }"
+        "content": "            result +\u003d f + \"\\n\";"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 144,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
-        "content": "    @Override"
+        "content": "        return result;"
       },
       {
         "lineNumber": 145,
         "author": {
-          "gitId": "ray-97"
-        },
-        "content": "    public ObservableList\u003cConsumedFood\u003e getDailyList() {"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "ray-97"
-        },
-        "content": "        return dateToLogMap.asUnmodifiableDailyList();"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 146,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
         "content": ""
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 147,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
         "content": "    @Override"
       },
       {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public ObservableList\u003cFood\u003e getFoodList() {"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return foodList.asUnmodifiableObservableList();"
+      },
+      {
         "lineNumber": 150,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
-        "content": "    public void setDailyList(LocalDate date) {"
+        "content": "    }"
       },
       {
         "lineNumber": 151,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
-        "content": "        dateToLogMap.setDailyList(date);"
+        "content": ""
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    public ObservableList\u003cConsumedFood\u003e getDailyList() {"
       },
       {
         "lineNumber": 154,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "ray-97"
         },
-        "content": "    @Override"
+        "content": "        return dateToLogMap.asUnmodifiableDailyList();"
       },
       {
         "lineNumber": 155,
         "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    public boolean equals(Object other) {"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                || (other instanceof FoodRecord // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                \u0026\u0026 foodList.equals(((FoodRecord) other).foodList));"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "eugenetyc"
+          "gitId": "ray-97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 156,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "ray-97"
         },
         "content": ""
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 157,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "ray-97"
         },
         "content": "    @Override"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "ray-97"
+        },
+        "content": "    public void setDailyList(LocalDate date) {"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "ray-97"
+        },
+        "content": "        dateToLogMap.setDailyList(date);"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "ray-97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "ray-97"
+        },
+        "content": ""
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    public int hashCode() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        return foodList.hashCode();"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    }"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 165,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                || (other instanceof FoodRecord // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                \u0026\u0026 foodList.equals(((FoodRecord) other).foodList));"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return foodList.hashCode();"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 173,
         "author": {
           "gitId": "eugenetyc"
         },
@@ -23745,8 +24230,8 @@
     "authorContributionMap": {
       "buddhavineeth": 5,
       "ray-97": 36,
-      "eugenetyc": 116,
-      "jeremylow97": 8
+      "eugenetyc": 125,
+      "jeremylow97": 7
     }
   },
   {
@@ -24804,37 +25289,37 @@
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "buddhavineeth"
-        },
-        "content": "    private DailyGoal targetDailyCalories;"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
           "gitId": "eugenetyc"
         },
         "content": "    private final FoodRecord foodRecord;"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
         "content": "    private final UserPrefs userPrefs;"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "    private final FilteredList\u003cFood\u003e filteredFoods;"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
           "gitId": "ray-97"
         },
         "content": "    private final FilteredList\u003cConsumedFood\u003e currentFilteredDailyList;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private DailyGoal targetDailyCalories;"
       },
       {
         "lineNumber": 34,
@@ -25532,733 +26017,740 @@
       {
         "lineNumber": 133,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    public Optional\u003cFood\u003e getFoodByName(Name name) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        return foodRecord.getFoodByName(name);"
+        "content": "    public Optional\u003cFood\u003e getFoodByName(Name name) {"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "        return foodRecord.getFoodByName(name);"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    public boolean hasLogWithSameDate(DailyFoodLog foodLog) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        return foodRecord.hasLogWithSameDate(foodLog);"
+        "content": "    public boolean hasLogWithSameDate(DailyFoodLog foodLog) {"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "        return foodRecord.hasLogWithSameDate(foodLog);"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    public boolean hasLogWithSameDate(LocalDate date) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        return foodRecord.hasLogWithSameDate(new DailyFoodLog().setDate(date));"
+        "content": "    public boolean hasLogWithSameDate(LocalDate date) {"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "        return foodRecord.hasLogWithSameDate(new DailyFoodLog().setDate(date));"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    public void addLog(DailyFoodLog foodLog) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        foodRecord.addLog(foodLog);"
+        "content": "    public void addLog(DailyFoodLog foodLog) {"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "        foodRecord.addLog(foodLog);"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    public void updateLog(DailyFoodLog logToUpdate) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        foodRecord.updateLog(logToUpdate);"
+        "content": "    public void updateLog(DailyFoodLog logToUpdate) {"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "        foodRecord.updateLog(logToUpdate);"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    public DailyFoodLog getLogByDate(LocalDate localDate) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        return foodRecord.getLogByDate(localDate);"
+        "content": "    public DailyFoodLog getLogByDate(LocalDate localDate) {"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "        return foodRecord.getLogByDate(localDate);"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 163,
         "author": {
-          "gitId": "buddhavineeth"
+          "gitId": "ray-97"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * Updates ModelManager\u0027s DailyGoal to the new targetDailyCalories"
+        "content": "    /**"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * @param targetDailyCalories the new targetted number of calories to consume each day by user"
+        "content": "     * Updates ModelManager\u0027s DailyGoal to the new targetDailyCalories"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * @return the updated DailyGoal object"
+        "content": "     * @param targetDailyCalories the new targetted number of calories to consume each day by user"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     */"
+        "content": "     * @return the updated DailyGoal object"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    public DailyGoal updateDailyGoal(int targetDailyCalories) {"
+        "content": "     */"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        if (isGoalMade()) {"
+        "content": "    public DailyGoal updateDailyGoal(int targetDailyCalories) {"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "            this.targetDailyCalories \u003d this.targetDailyCalories.updateDailyGoal(targetDailyCalories);"
+        "content": "        if (isGoalMade()) {"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        } else {"
+        "content": "            this.targetDailyCalories \u003d this.targetDailyCalories.updateDailyGoal(targetDailyCalories);"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "            this.targetDailyCalories \u003d new DailyGoal(targetDailyCalories);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        }"
+        "content": "            this.targetDailyCalories \u003d new DailyGoal(targetDailyCalories);"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        return this.targetDailyCalories;"
+        "content": "        }"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    }"
+        "content": "        return this.targetDailyCalories;"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * Checks if goal already exists"
+        "content": "    /**"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * @return true if there is already some goal"
+        "content": "     * Checks if goal already exists"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     */"
+        "content": "     * @return true if there is already some goal"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    public boolean isGoalMade() {"
+        "content": "     */"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        return this.targetDailyCalories !\u003d null;"
+        "content": "    public boolean isGoalMade() {"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    }"
+        "content": "        return this.targetDailyCalories !\u003d null;"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    public DailyGoal getDailyGoal() {"
+        "content": ""
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        return this.targetDailyCalories;"
+        "content": "    public DailyGoal getDailyGoal() {"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    }"
+        "content": "        return this.targetDailyCalories;"
       },
       {
         "lineNumber": 188,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 189,
         "author": {
           "gitId": "ray-97"
         },
         "content": ""
       },
       {
-        "lineNumber": 189,
+        "lineNumber": 190,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Food Record Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 191,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 191,
+        "lineNumber": 192,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 192,
+        "lineNumber": 193,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "     * Returns an unmodifiable view of the list of {@code Food} backed by the internal list of"
       },
       {
-        "lineNumber": 193,
+        "lineNumber": 194,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "     * {@code versionedFoodRecord}"
       },
       {
-        "lineNumber": 194,
+        "lineNumber": 195,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 195,
+        "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    public ObservableList\u003cFood\u003e getFilteredFoodRecord() {"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        return filteredFoods;"
+        "content": "    public ObservableList\u003cFood\u003e getFilteredFoodRecord() {"
       },
       {
         "lineNumber": 198,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "    }"
+        "content": "        return filteredFoods;"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 201,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 202,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "    public void updateFilteredFoodRecord(Predicate\u003cFood\u003e predicate) {"
       },
       {
-        "lineNumber": 202,
+        "lineNumber": 203,
         "author": {
           "gitId": "-"
         },
         "content": "        requireNonNull(predicate);"
       },
       {
-        "lineNumber": 203,
+        "lineNumber": 204,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "        filteredFoods.setPredicate(predicate);"
       },
       {
-        "lineNumber": 204,
+        "lineNumber": 205,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 205,
+        "lineNumber": 206,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "ray-97"
-        },
-        "content": "    @Override"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    public ObservableList\u003cConsumedFood\u003e getCurrentFilteredDailyList() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        return currentFilteredDailyList;"
+        "content": "    public ObservableList\u003cConsumedFood\u003e getCurrentFilteredDailyList() {"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "        return currentFilteredDailyList;"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    public void updateCurrentFilteredDailyList(Predicate\u003cConsumedFood\u003e predicate, LocalDate date) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        requireNonNull(predicate);"
+        "content": "    public void updateCurrentFilteredDailyList(Predicate\u003cConsumedFood\u003e predicate, LocalDate date) {"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        foodRecord.setDailyList(date);"
+        "content": "        requireNonNull(predicate);"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        currentFilteredDailyList.setPredicate(predicate);"
+        "content": "        foodRecord.setDailyList(date);"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "        currentFilteredDailyList.setPredicate(predicate);"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 218,
         "author": {
-          "gitId": "-"
+          "gitId": "ray-97"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "-"
         },
-        "content": "        // short circuit if same object"
+        "content": "    public boolean equals(Object obj) {"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "-"
         },
-        "content": "            return true;"
+        "content": "        if (obj \u003d\u003d this) {"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "-"
         },
-        "content": "        // instanceof handles nulls"
+        "content": ""
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!(obj instanceof ModelManager)) {"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "-"
         },
-        "content": "            return false;"
+        "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return false;"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "-"
         },
-        "content": "        // state check"
+        "content": ""
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelManager other \u003d (ModelManager) obj;"
+        "content": "        // state check"
       },
       {
         "lineNumber": 232,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        ModelManager other \u003d (ModelManager) obj;"
+      },
+      {
+        "lineNumber": 233,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "        return foodRecord.equals(other.foodRecord)"
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 234,
         "author": {
           "gitId": "-"
         },
         "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 235,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "                \u0026\u0026 filteredFoods.equals(other.filteredFoods);"
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 236,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 237,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 238,
         "author": {
           "gitId": "-"
         },
@@ -26266,9 +26758,9 @@
       }
     ],
     "authorContributionMap": {
-      "buddhavineeth": 42,
+      "buddhavineeth": 41,
       "ray-97": 48,
-      "eugenetyc": 41,
+      "eugenetyc": 43,
       "jeremylow97": 5,
       "-": 101
     }
@@ -31383,502 +31875,558 @@
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
-        "content": "    // for zx"
+        "content": "    /**"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
-        "content": "    public boolean hasName(Name name) {"
+        "content": "     * Returns true if the current Food object has the same Name as the argument."
       },
       {
         "lineNumber": 89,
-        "author": {
-          "gitId": "ray-97"
-        },
-        "content": "        return name.equals(getName());"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "ray-97"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "ray-97"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "     * Returns true if both foods have the same name and data fields."
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "     * This defines a stronger notion of equality between two foods."
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    public boolean equals(Object other) {"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        if (other \u003d\u003d this) {"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "            return true;"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        if (!(other instanceof Food)) {"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        Food otherFood \u003d (Food) other;"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        return otherFood.getName().equals(getName())"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                \u0026\u0026 otherFood.getCalorie().equals(getCalorie())"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                \u0026\u0026 otherFood.getProtein().equals(getProtein())"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                \u0026\u0026 otherFood.getCarbohydrate().equals(getCarbohydrate())"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                \u0026\u0026 otherFood.getFat().equals(getFat())"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                \u0026\u0026 otherFood.getTags().equals(getTags());"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    public int hashCode() {"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        // use this method for custom fields hashing instead of implementing your own"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        return Objects.hash(name, calorie, protein, carbohydrate, fat, tags);"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        final StringBuilder builder \u003d new StringBuilder();"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        builder.append(getName())"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(\" Calories: \")"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(getCalorie())"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(\" Proteins (g): \")"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(getProtein())"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(\" Carbohydrates (g): \")"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(getCarbohydrate())"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(\" Fats (g): \")"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(getFat())"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                .append(\" Tags: \");"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        getTags().forEach(builder::append);"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        return builder.toString();"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "buddhavineeth"
-        },
-        "content": "    /*"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "buddhavineeth"
-        },
-        "content": "     * Overloaded toString method for report purposes"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "buddhavineeth"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "buddhavineeth"
-        },
-        "content": "    public String toString(boolean isCalledforReport) {"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "buddhavineeth"
-        },
-        "content": "        return this.getName().toString();"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "buddhavineeth"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "     * Compares names of Food objects for lexicographic order."
-      },
-      {
-        "lineNumber": 147,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 90,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * @param other the other Food."
+        "content": "     * @param name the name we want to check against the current Food object."
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 91,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * @return a value representing the lexicopgraphic order."
+        "content": "     * @return whether or not the current Food object has the same Name as the given."
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 92,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 93,
+        "author": {
+          "gitId": "ray-97"
+        },
+        "content": "    public boolean hasName(Name name) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "ray-97"
+        },
+        "content": "        return name.equals(getName());"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "ray-97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "ray-97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Returns true if both foods have the same name and data fields."
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * This defines a stronger notion of equality between two foods."
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 101,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 102,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "    public int compareTo(Food other) {"
+        "content": "    public boolean equals(Object other) {"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 103,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        String currentName \u003d this.getName().toString();"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 104,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        String otherName \u003d other.getName().toString();"
+        "content": "            return true;"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 105,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        return currentName.compareTo(otherName);"
+        "content": "        }"
       },
       {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 157,
+        "lineNumber": 106,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": ""
       },
       {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        if (!(other instanceof Food)) {"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        Food otherFood \u003d (Food) other;"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return otherFood.getName().equals(getName())"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                \u0026\u0026 otherFood.getCalorie().equals(getCalorie())"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                \u0026\u0026 otherFood.getProtein().equals(getProtein())"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                \u0026\u0026 otherFood.getCarbohydrate().equals(getCarbohydrate())"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                \u0026\u0026 otherFood.getFat().equals(getFat())"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                \u0026\u0026 otherFood.getTags().equals(getTags());"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        // use this method for custom fields hashing instead of implementing your own"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return Objects.hash(name, calorie, protein, carbohydrate, fat, tags);"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        builder.append(getName())"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(\" Calories: \")"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(getCalorie())"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(\" Proteins (g): \")"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(getProtein())"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(\" Carbohydrates (g): \")"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(getCarbohydrate())"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(\" Fats (g): \")"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(getFat())"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                .append(\" Tags: \");"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        getTags().forEach(builder::append);"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return builder.toString();"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Overloaded toString method for report purposes."
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @param isCalledforReport whether or not current Food is involved in a Report."
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @return String representation of the Food\u0027s Name."
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "    public String toString(boolean isCalledforReport) {"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "        return this.getName().toString();"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Compares names of Food objects for lexicographic order."
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @param other the other Food."
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @return a value representing the lexicopgraphic order."
+      },
+      {
         "lineNumber": 158,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public int compareTo(Food other) {"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        String currentName \u003d this.getName().toString();"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        String otherName \u003d other.getName().toString();"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return currentName.compareTo(otherName);"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 166,
         "author": {
           "gitId": "eugenetyc"
         },
@@ -31886,9 +32434,9 @@
       }
     ],
     "authorContributionMap": {
-      "buddhavineeth": 10,
-      "ray-97": 9,
-      "eugenetyc": 138,
+      "buddhavineeth": 8,
+      "ray-97": 8,
+      "eugenetyc": 149,
       "jeremylow97": 1
     }
   },
@@ -32449,96 +32997,103 @@
       {
         "lineNumber": 18,
         "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    // Used in find command: edit StringUtil.containsWordIgnoreCase to change find behavior"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 20,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "    public boolean test(Food food) {"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": "        return keywords.stream()"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 22,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "                .anyMatch(keyword -\u003e StringUtil.containsWordIgnoreCase(food.getName().fullName, keyword));"
       },
       {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "                || (other instanceof NameContainsKeywordsPredicate // instanceof handles nulls"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "                \u0026\u0026 keywords.equals(((NameContainsKeywordsPredicate) other).keywords)); // state check"
+        "content": "                || (other instanceof NameContainsKeywordsPredicate // instanceof handles nulls"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "                \u0026\u0026 keywords.equals(((NameContainsKeywordsPredicate) other).keywords)); // state check"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
@@ -32547,7 +33102,7 @@
     ],
     "authorContributionMap": {
       "buddhavineeth": 2,
-      "eugenetyc": 4,
+      "eugenetyc": 5,
       "-": 25
     }
   },
@@ -33492,607 +34047,628 @@
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "    }"
+        "content": "        Collections.sort(internalList);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "-"
         },
-        "content": "     * Removes the equivalent food from the list."
+        "content": "    /**"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "     * The food must currently exist in the list."
+        "content": "     * Removes the equivalent food from the list."
       },
       {
         "lineNumber": 79,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * The food must currently exist in the list."
+      },
+      {
+        "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 81,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "    public void remove(Food toRemove) {"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
         "content": "        requireNonNull(toRemove);"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
         "content": "        if (!internalList.remove(toRemove)) {"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 84,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "            throw new FoodNotFoundException();"
       },
       {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 87,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 88,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "    public void setFoods(UniqueFoodList replacement) {"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
         "content": "        requireNonNull(replacement);"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
         "content": "        internalList.setAll(replacement.internalList);"
       },
       {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 91,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "        Collections.sort(internalList);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 93,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 95,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "     * Replaces the contents of this list with {@code foods}."
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 96,
         "author": {
           "gitId": "eugenetyc"
         },
         "content": "     * {@code foods} must not contain duplicate persons."
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "    public void setFoods(List\u003cFood\u003e foods) {"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "        CollectionUtil.requireAllNonNull(foods);"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "        if (!foodsAreUnique(foods)) {"
+        "content": "    public void setFoods(List\u003cFood\u003e foods) {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "            throw new DuplicateFoodException();"
+        "content": "        CollectionUtil.requireAllNonNull(foods);"
       },
       {
         "lineNumber": 100,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "        }"
+        "content": "        if (!foodsAreUnique(foods)) {"
       },
       {
         "lineNumber": 101,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "            throw new DuplicateFoodException();"
       },
       {
         "lineNumber": 102,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "-"
         },
-        "content": "        internalList.setAll(foods);"
+        "content": "        }"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 104,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        internalList.setAll(foods);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        Collections.sort(internalList);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "ray-97"
-        },
-        "content": "    // for zx"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "ray-97"
-        },
-        "content": "    public Optional\u003cFood\u003e getFoodByName(Name name) {"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "ray-97"
-        },
-        "content": "        for (Food food:internalList) {"
-      },
-      {
         "lineNumber": 108,
         "author": {
-          "gitId": "ray-97"
+          "gitId": "eugenetyc"
         },
-        "content": "            if (food.hasName(name)) {"
+        "content": "    // used in Update command"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "                return Optional.of(food);"
+        "content": "    public Optional\u003cFood\u003e getFoodByName(Name name) {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "            }"
+        "content": "        for (Food food:internalList) {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        }"
+        "content": "            if (food.hasName(name)) {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "        return Optional.empty();"
+        "content": "                return Optional.of(food);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "ray-97"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 115,
         "author": {
-          "gitId": "jeremylow97"
+          "gitId": "ray-97"
         },
-        "content": "    /**"
+        "content": "        return Optional.empty();"
       },
       {
         "lineNumber": 116,
         "author": {
-          "gitId": "jeremylow97"
+          "gitId": "ray-97"
         },
-        "content": "     * Returns the existing Food in the list"
+        "content": "    }"
       },
       {
         "lineNumber": 117,
         "author": {
-          "gitId": "jeremylow97"
+          "gitId": "ray-97"
         },
-        "content": "     * The food must currently exist in the list."
+        "content": ""
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 119,
         "author": {
-          "gitId": "jeremylow97"
+          "gitId": "eugenetyc"
         },
-        "content": "    public Food getExistingFood(Food toGet) {"
+        "content": "     * Returns the existing Food in the list."
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "        return internalList.stream().filter(toGet::isSameFood).findFirst().get();"
+        "content": "     * The food must currently exist in the list."
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": ""
+        "content": "    public Food getExistingFood(Food toGet) {"
       },
       {
         "lineNumber": 123,
         "author": {
-          "gitId": "-"
+          "gitId": "jeremylow97"
         },
-        "content": "    /**"
+        "content": "        return internalList.stream().filter(toGet::isSameFood).findFirst().get();"
       },
       {
         "lineNumber": 124,
         "author": {
-          "gitId": "-"
+          "gitId": "jeremylow97"
         },
-        "content": "     * Returns the backing list as an unmodifiable {@code ObservableList}."
+        "content": "    }"
       },
       {
         "lineNumber": 125,
         "author": {
-          "gitId": "-"
+          "gitId": "jeremylow97"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "-"
         },
-        "content": "    public ObservableList\u003cFood\u003e asUnmodifiableObservableList() {"
+        "content": "    /**"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "-"
         },
-        "content": "        return internalUnmodifiableList;"
+        "content": "     * Returns the backing list as an unmodifiable {@code ObservableList}."
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "    public ObservableList\u003cFood\u003e asUnmodifiableObservableList() {"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "        return internalUnmodifiableList;"
       },
       {
         "lineNumber": 131,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "-"
         },
-        "content": "    public Iterator\u003cFood\u003e iterator() {"
+        "content": "    }"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "-"
         },
-        "content": "        return internalList.iterator();"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": ""
+        "content": "    public Iterator\u003cFood\u003e iterator() {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "        return internalList.iterator();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "-"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                || (other instanceof UniqueFoodList // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "eugenetyc"
-        },
-        "content": "                        \u0026\u0026 internalList.equals(((UniqueFoodList) other).internalList));"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 138,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                || (other instanceof UniqueFoodList // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                        \u0026\u0026 internalList.equals(((UniqueFoodList) other).internalList));"
+      },
+      {
         "lineNumber": 143,
         "author": {
           "gitId": "-"
         },
-        "content": "    public int hashCode() {"
+        "content": "    }"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "-"
         },
-        "content": "        return internalList.hashCode();"
+        "content": ""
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "        return internalList.hashCode();"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Returns true if {@code persons} contains only unique persons."
+        "content": "    }"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 150,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "-"
         },
-        "content": "    private boolean foodsAreUnique(List\u003cFood\u003e foods) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 151,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "-"
         },
-        "content": "        for (int i \u003d 0; i \u003c foods.size() - 1; i++) {"
+        "content": "     * Returns true if {@code persons} contains only unique persons."
       },
       {
         "lineNumber": 152,
         "author": {
-          "gitId": "eugenetyc"
+          "gitId": "-"
         },
-        "content": "            for (int j \u003d i + 1; j \u003c foods.size(); j++) {"
+        "content": "     */"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "eugenetyc"
         },
-        "content": "                if (foods.get(i).isSameFood(foods.get(j))) {"
+        "content": "    private boolean foodsAreUnique(List\u003cFood\u003e foods) {"
       },
       {
         "lineNumber": 154,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "                    return false;"
+        "content": "        for (int i \u003d 0; i \u003c foods.size() - 1; i++) {"
       },
       {
         "lineNumber": 155,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "                }"
+        "content": "            for (int j \u003d i + 1; j \u003c foods.size(); j++) {"
       },
       {
         "lineNumber": 156,
         "author": {
-          "gitId": "-"
+          "gitId": "eugenetyc"
         },
-        "content": "            }"
+        "content": "                if (foods.get(i).isSameFood(foods.get(j))) {"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "                    return false;"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
-        "content": "        return true;"
+        "content": "                }"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 160,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 163,
         "author": {
           "gitId": "-"
         },
@@ -34101,9 +34677,9 @@
     ],
     "authorContributionMap": {
       "buddhavineeth": 7,
-      "ray-97": 11,
-      "eugenetyc": 45,
-      "jeremylow97": 9,
+      "ray-97": 10,
+      "eugenetyc": 50,
+      "jeremylow97": 8,
       "-": 88
     }
   },
@@ -35079,6 +35655,848 @@
       "eugenetyc": 8,
       "jeremylow97": 17,
       "-": 26
+    }
+  },
+  {
+    "path": "src/main/java/life/calgo/storage/ExportGenerator.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "package life.calgo.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import java.io.FileNotFoundException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import java.io.PrintWriter;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import java.util.Set;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import java.util.logging.Logger;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import javafx.collections.ObservableList;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.commons.core.LogsCenter;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.ReadOnlyFoodRecord;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.food.Calorie;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.food.Carbohydrate;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.food.Fat;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.food.Food;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.food.Name;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.food.Protein;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "import life.calgo.model.tag.Tag;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": " * Responsible for generating a user-friendly copy of the current FoodRecord."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": " * All Food entries will have all their details written into the file."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "public class ExportGenerator {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(ExportGenerator.class);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private File file;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private PrintWriter printWriter;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private ReadOnlyFoodRecord foodRecord;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public ExportGenerator(ReadOnlyFoodRecord foodRecord) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        this.foodRecord \u003d foodRecord;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        this.file \u003d new File(\"exports/FoodRecord.txt\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            this.file.getParentFile().mkdirs();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            this.file.createNewFile();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            this.printWriter \u003d new PrintWriter(file);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        } catch (FileNotFoundException e) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            // happens when there is an error in opening or creating the file"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            logger.warning(\"Not able to generate Food Record export because file was unable to be created.\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            logger.warning(\"Check your system security settings and enable rights to create a new file.\");"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Driver method for generation of the Food Record."
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @return a boolean value that is true only if FoodRecord.txt is successfully generated."
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public boolean generateExport() {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printSeparator();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printSeparator();"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printHeader();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printSeparator();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printSeparator();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printFoodRecordEntirely();"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printSeparator();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printWriter.close();"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return file.exists() \u0026\u0026 (file.length() !\u003d 0); // success check"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Writes the header of the document."
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public void printHeader() {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        String title \u003d \"Your Food Record: A Collection of Your Past Entries\";"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printWriter.println(title);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Writes the entire current Food Record into the FoodRecord.txt."
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    public void printFoodRecordEntirely() {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printCategories();"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printSeparator();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        ObservableList\u003cFood\u003e sourceFoodRecord \u003d foodRecord.getFoodList();"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        for (Food food : sourceFoodRecord) {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            Name name \u003d food.getName();"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            Calorie calories \u003d food.getCalorie();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            Protein protein \u003d food.getProtein();"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            Carbohydrate carbohydrate \u003d food.getCarbohydrate();"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            Fat fat \u003d food.getFat();"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            Set\u003cTag\u003e tags \u003d food.getTags();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            printWriter.println(String.format(\"%-45s %-20s %-20s %-20s %-20s %-20s\","
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                    name, calories, protein, carbohydrate, fat, accumulatedTagsString(tags)));"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Accumulates all the Tags into a space-separated String and returns this String."
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @param tags the tags to be converted into String representation."
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * @return the space-separated String of all the tags given."
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private String accumulatedTagsString(Set\u003cTag\u003e tags) {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        String result \u003d \"\";"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        for (Tag tag: tags) {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "            result +\u003d tag + \" \";"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        return result;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Writes a line for neatness in formatting."
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private void printSeparator() {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printWriter.println(\"--------------------------------------------------------------------------------\""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                + \"------------------------------------------------------------------\");"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     * Writes the categories of details of each Food in the Food Record."
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    private void printCategories() {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "        printWriter.println(String.format(\"%-45s %-20s %-20s %-20s %-20s %-20s\", \"Name\", \"Calories\","
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "                \"Protein(g)\", \"Carbohydrates(g)\", \"Fat(g)\", \"Tags: \"));"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "eugenetyc"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "eugenetyc": 119
     }
   },
   {
@@ -39632,7 +41050,7 @@
         "author": {
           "gitId": "ray-97"
         },
-        "content": "    private DailyFoodLog queryLog; //changes here"
+        "content": "    private DailyFoodLog queryLog; // changes here"
       },
       {
         "lineNumber": 19,
@@ -40367,234 +41785,297 @@
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "            printWriter.println(\"You have consumed \" + String.format(\"%.0f\", calculateRemainingCalories())"
+        "content": "            printEmptyLine();"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "                    + \" fewer calories than your target. Great job!\");"
+        "content": "            printWriter.println(\"You have consumed \" + String.format(\"%.0f\", calculateRemainingCalories())"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        } else {"
+        "content": "                    + \" fewer calories than your target. Great job!\");"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "            printWriter.println(\"You did not manage to achieve your goal today. You may want to re-design\""
+        "content": "        } else {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "                    + \" your diet plan so that\\n\""
+        "content": "            printWriter.println(\"You did not manage to achieve your goal today. You may want to re-design\""
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "                    + \"you can make improvements in your health and fitness!\");"
+        "content": "                    + \" your diet plan so that\\n\""
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "            printWriter.println(\"You have exceeded \" + String.format(\"%.0f\", Math.abs(calculateRemainingCalories()))"
+        "content": "                    + \"you can make improvements in your health and fitness!\");"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "                    + \" calories more than your target. Time to hit the gym!\");"
+        "content": "            printEmptyLine();"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        }"
+        "content": "            printWriter.println(\"You have exceeded \" + String.format(\"%.0f\", Math.abs(calculateRemainingCalories()))"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    }"
+        "content": "                    + \" calories more than your target. Time to hit the gym!\");"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * Writes the concluding remarks in the report"
+        "content": ""
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    public void printFooter() {"
+        "content": "     * Writes the concluding remarks in the report"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        printWriter.println(\"This marks the end of your report. Actionable insights coming up in v1.3.\");"
+        "content": "     */"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    }"
+        "content": "    public void printFooter() {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": ""
+        "content": "        printWriter.println(\"This marks the end of your report. Actionable insights coming up in v1.3.\");"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * Writes a line break"
+        "content": ""
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    public void printSeparator() {"
+        "content": "     * Writes a line break"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        printWriter.println(\"--------------------------------------------------------------------------------\""
+        "content": "     */"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "                + \"-----------------------------\");"
+        "content": "    public void printSeparator() {"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    }"
+        "content": "        printWriter.println(\"--------------------------------------------------------------------------------\""
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": ""
+        "content": "                + \"-----------------------------\");"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * Calculates number of calories remaining for user to meet goal"
+        "content": ""
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     * @return the number of calories remaining for user to meet goal"
+        "content": "    /**"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "     */"
+        "content": "     * Calculates number of calories remaining for user to meet goal"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    public double calculateRemainingCalories() {"
+        "content": "     * @return the number of calories remaining for user to meet goal"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "        return userGoal.getTargetDailyCalories() - totalCalories;"
+        "content": "     */"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "buddhavineeth"
         },
-        "content": "    }"
+        "content": "    public double calculateRemainingCalories() {"
       },
       {
         "lineNumber": 156,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "        return userGoal.getTargetDailyCalories() - totalCalories;"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "     * Writes an empty line"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "    public void printEmptyLine() {"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "        printWriter.println(\"\");"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "buddhavineeth"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 165,
         "author": {
           "gitId": "buddhavineeth"
         },
@@ -40602,7 +42083,7 @@
       }
     ],
     "authorContributionMap": {
-      "buddhavineeth": 151,
+      "buddhavineeth": 160,
       "ray-97": 5
     }
   },

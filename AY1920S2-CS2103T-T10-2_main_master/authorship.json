@@ -12394,6 +12394,365 @@
     }
   },
   {
+    "path": "src/main/java/cardibuddy/logic/commands/FilterCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "package cardibuddy.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.commons.core.Messages;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.model.Model;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.model.deck.FilterDeckKeywordsPredicate;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " * Finds and lists all decks and cards in cardi buddy whose tags contains any of the argument keywords."
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " * Keyword matching is case insensitive."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "public class FilterCommand extends Command {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"filter\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            + \": Finds all decks whose titles contain any of \""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            + \"Parameters: KEYWORD [MORE_KEYWORDS]...\\n\""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            + \"Example: \" + COMMAND_WORD + \" java\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    private final FilterDeckKeywordsPredicate predicate;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public FilterCommand(FilterDeckKeywordsPredicate predicate) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        this.predicate \u003d predicate;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public FilterDeckKeywordsPredicate getPredicate() {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return predicate;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public CommandResult execute(Model model) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        model.updateFilteredDeckList(predicate);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return new CommandResult("
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                String.format(Messages.MESSAGE_DECKS_LISTED_OVERVIEW, model.getFilteredDeckList().size()));"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                || (other instanceof FilterCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                \u0026\u0026 predicate.equals(((FilterCommand) other).predicate)); // state check"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "haveaqiupill": 50
+    }
+  },
+  {
     "path": "src/main/java/cardibuddy/logic/commands/HelpCommand.java",
     "fileType": "java",
     "lines": [
@@ -12772,7 +13131,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.model.deck.DeckContainsKeywordsPredicate;"
+        "content": "import cardibuddy.model.deck.SearchDeckKeywordsPredicate;"
       },
       {
         "lineNumber": 8,
@@ -12800,7 +13159,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": " * Finds and lists all decks in cardi buddy whose title contains any of the argument keywords."
+        "content": " * Finds and lists all decks and cards in cardi buddy whose title contains any of the argument keywords."
       },
       {
         "lineNumber": 12,
@@ -12891,7 +13250,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    private final DeckContainsKeywordsPredicate predicate;"
+        "content": "    private final SearchDeckKeywordsPredicate predicate;"
       },
       {
         "lineNumber": 25,
@@ -12905,7 +13264,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public SearchCommand(DeckContainsKeywordsPredicate predicate) {"
+        "content": "    public SearchCommand(SearchDeckKeywordsPredicate predicate) {"
       },
       {
         "lineNumber": 27,
@@ -15862,458 +16221,486 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.logic.commands.HelpCommand;"
+        "content": "import cardibuddy.logic.commands.FilterCommand;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.logic.commands.ListCommand;"
+        "content": "import cardibuddy.logic.commands.HelpCommand;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.logic.commands.SearchCommand;"
+        "content": "import cardibuddy.logic.commands.ListCommand;"
       },
       {
         "lineNumber": 18,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.logic.commands.SearchCommand;"
+      },
+      {
+        "lineNumber": 19,
         "author": {
           "gitId": "airshhlay"
         },
         "content": "import cardibuddy.logic.commands.TestCommand;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 20,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "import cardibuddy.logic.parser.exceptions.ParseException;"
       },
       {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": " * Parses user input."
+        "content": "/**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": " * Parses user input."
       },
       {
         "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 25,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "public class CardiBuddyParser {"
       },
       {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Used for initial separation of command word and args."
+        "content": "    /**"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Used for initial separation of command word and args."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
+        "content": "     */"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Parses user input into command for execution."
+        "content": "    /**"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "     *"
+        "content": "     * Parses user input into command for execution."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param userInput full user input string"
+        "content": "     *"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @return the command based on the user input"
+        "content": "     * @param userInput full user input string"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "     * @return the command based on the user input"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": "    public Command parseCommand(String userInput) throws ParseException {"
+        "content": "     */"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
+        "content": "    public Command parseCommand(String userInput) throws ParseException {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!matcher.matches()) {"
+        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
+        "content": "        if (!matcher.matches()) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
+        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": "        switch (commandWord) {"
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "        case AddCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new AddCommandParser().parse(arguments);"
+        "content": "        case AddCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new AddCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "        case EditCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new EditCommandParser().parse(arguments);"
+        "content": "        case EditCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new EditCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "        case DeleteCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new DeleteCommandParser().parse(arguments);"
+        "content": "        case DeleteCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new DeleteCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "airshhlay"
+          "gitId": "-"
         },
-        "content": "        case TestCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "airshhlay"
         },
-        "content": "            return new TestCommandParser().parse(arguments);"
+        "content": "        case TestCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "airshhlay"
         },
-        "content": ""
+        "content": "            return new TestCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "-"
+          "gitId": "airshhlay"
         },
-        "content": "        case ClearCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new ClearCommand();"
+        "content": "        case ClearCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new ClearCommand();"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "-"
         },
-        "content": "        case SearchCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            return new SearchCommandParser().parse(arguments);"
+        "content": "        case FilterCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "-"
+          "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "            return new FilterCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "-"
+          "gitId": "haveaqiupill"
         },
-        "content": "        case ListCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "-"
+          "gitId": "haveaqiupill"
         },
-        "content": "            return new ListCommand();"
+        "content": "        case SearchCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "-"
+          "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "            return new SearchCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "        case ExitCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new ExitCommand();"
+        "content": "        case ListCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new ListCommand();"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "        case HelpCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new HelpCommand();"
+        "content": "        case ExitCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": "        default:"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return new HelpCommand();"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        default:"
       },
       {
         "lineNumber": 80,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
@@ -16321,7 +16708,7 @@
       }
     ],
     "authorContributionMap": {
-      "haveaqiupill": 16,
+      "haveaqiupill": 20,
       "airshhlay": 4,
       "-": 60
     }
@@ -16940,6 +17327,253 @@
     ],
     "authorContributionMap": {
       "haveaqiupill": 41
+    }
+  },
+  {
+    "path": "src/main/java/cardibuddy/logic/parser/FilterCommandParser.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "package cardibuddy.logic.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import static cardibuddy.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.logic.commands.FilterCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.model.deck.FilterDeckKeywordsPredicate;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " * Parses input arguments and creates a new FilterCommand object"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "public class FilterCommandParser implements Parser\u003cFilterCommand\u003e {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Parses the given {@code String} of arguments in the context of the FilterCommand"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * and returns a FilterCommand object for execution."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public FilterCommand parse(String args) throws ParseException {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        String trimmedArgs \u003d args.trim();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        if (trimmedArgs.isEmpty()) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            throw new ParseException("
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        String[] nameKeywords \u003d trimmedArgs.split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return new FilterCommand(new FilterDeckKeywordsPredicate(Arrays.asList(nameKeywords)));"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "haveaqiupill": 34
     }
   },
   {
@@ -18185,7 +18819,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.model.deck.DeckContainsKeywordsPredicate;"
+        "content": "import cardibuddy.model.deck.SearchDeckKeywordsPredicate;"
       },
       {
         "lineNumber": 10,
@@ -18211,9 +18845,9 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "haveaqiupill"
         },
-        "content": " * Parses input arguments and creates a new FindCommand object"
+        "content": " * Parses input arguments and creates a new SearchCommand object"
       },
       {
         "lineNumber": 14,
@@ -18339,7 +18973,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return new SearchCommand(new DeckContainsKeywordsPredicate(Arrays.asList(nameKeywords)));"
+        "content": "        return new SearchCommand(new SearchDeckKeywordsPredicate(Arrays.asList(nameKeywords)));"
       },
       {
         "lineNumber": 32,
@@ -18364,8 +18998,8 @@
       }
     ],
     "authorContributionMap": {
-      "haveaqiupill": 13,
-      "-": 21
+      "haveaqiupill": 14,
+      "-": 20
     }
   },
   {
@@ -23946,7 +24580,7 @@
     }
   },
   {
-    "path": "src/main/java/cardibuddy/model/deck/DeckContainsKeywordsPredicate.java",
+    "path": "src/main/java/cardibuddy/model/deck/FilterDeckKeywordsPredicate.java",
     "fileType": "java",
     "lines": [
       {
@@ -24031,7 +24665,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": " * Tests that a {@code Deck}\u0027s {@code Keyword} matches any of the keywords given."
+        "content": " * Tests that a {@code Deck or Card}\u0027s {@code Tags} matches any of the keywords given."
       },
       {
         "lineNumber": 13,
@@ -24045,7 +24679,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "public class DeckContainsKeywordsPredicate implements Predicate\u003cDeck\u003e {"
+        "content": "public class FilterDeckKeywordsPredicate implements Predicate\u003cDeck\u003e {"
       },
       {
         "lineNumber": 15,
@@ -24066,7 +24700,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public DeckContainsKeywordsPredicate(List\u003cString\u003e keywords) {"
+        "content": "    public FilterDeckKeywordsPredicate(List\u003cString\u003e keywords) {"
       },
       {
         "lineNumber": 18,
@@ -24094,224 +24728,224 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    @Override"
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public boolean test(Deck deck) {"
+        "content": "     * Evaluates this predicate on the given argument."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        boolean anyMatch \u003d false;"
+        "content": "     *"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        if (checkAnd(keywords)) {"
+        "content": "     * @param deck the input argument"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            anyMatch \u003d testAnd(deck, keywords);"
+        "content": "     * @return {@code true} if the input argument matches the predicate,"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        } else {"
+        "content": "     * otherwise {@code false}"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            anyMatch \u003d testOr(deck, keywords);"
+        "content": "     */"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return anyMatch;"
+        "content": "    public boolean test(Deck deck) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "        boolean anyMatch \u003d false;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "        if (checkAnd(keywords)) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": "            anyMatch \u003d searchAnd(deck, keywords);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * Checks if deck contains either of the keywords."
+        "content": "        } else {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @param keywords list of keywords from SearchCommand."
+        "content": "            anyMatch \u003d searchOr(deck, keywords);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @return true if deck\u0027s title or tag contains any of the keywords."
+        "content": "        }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "        return anyMatch;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    private boolean testOr(Deck deck, List\u003cString\u003e keywords) {"
+        "content": "    }"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        boolean anyMatch \u003d false;"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        anyMatch \u003d new ArrayList\u003c\u003e(keywords).stream()"
+        "content": "    /**"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                .anyMatch(keyword -\u003e StringUtil.containsWordIgnoreCase(deck.getTitle().toString(), keyword));"
+        "content": "     * Checks if deck contains either of the keywords."
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        if (anyMatch) {"
+        "content": "     * @param keywords list of keywords from FilterCommand."
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            return anyMatch;"
+        "content": "     * @return true if deck\u0027s title or tag contains any of the keywords."
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        } else {"
+        "content": "     */"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            for (Tag t : deck.getTags()) {"
+        "content": "    private boolean searchOr(Deck deck, List\u003cString\u003e keywords) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                if (!anyMatch) {"
+        "content": "        boolean anyMatch \u003d false;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                    anyMatch \u003d new ArrayList\u003c\u003e(keywords).stream()"
+        "content": "        for (Tag t : deck.getTags()) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                            .anyMatch(keyword -\u003e StringUtil.containsWordIgnoreCase(t.toString(), \"[\" + keyword + \"]\"));"
+        "content": "            if (!anyMatch) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                } else {"
+        "content": "                anyMatch \u003d new ArrayList\u003c\u003e(keywords).stream()"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                    break;"
+        "content": "                        .anyMatch(keyword -\u003e StringUtil.containsWordIgnoreCase(t.toString(), \"[\" + keyword + \"]\"));"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                }"
+        "content": "            } else {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            }"
+        "content": "                break;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            return anyMatch;"
+        "content": "            }"
       },
       {
         "lineNumber": 53,
@@ -24325,500 +24959,507 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "        return anyMatch;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * Checks if deck contains all of the keywords with \u0026."
+        "content": "    /**"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @param keywords list of keywords from SearchCommand."
+        "content": "     * Checks if deck contains all of the keywords with \u0026."
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @return true if deck\u0027s title or tag contains all of the keywords with \u0026."
+        "content": "     * @param keywords list of keywords from FilterCommand."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "     * @return true if deck\u0027s title or tag contains all of the keywords with \u0026."
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    private boolean testAnd(Deck deck, List\u003cString\u003e keywords) {"
+        "content": "     */"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        boolean anyMatch \u003d false;"
+        "content": "    private boolean searchAnd(Deck deck, List\u003cString\u003e keywords) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        List\u003cList\u003cString\u003e\u003e filteredKeywords \u003d filterKeywords(keywords);"
+        "content": "        boolean anyMatch \u003d false;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "        List\u003cList\u003cString\u003e\u003e filteredKeywords \u003d filterKeywords(keywords);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        for (List\u003cString\u003e keywordList : filteredKeywords) {"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            boolean prevMatch \u003d true;"
+        "content": "        for (List\u003cString\u003e keywordList : filteredKeywords) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            for (String keyword : keywordList) {"
+        "content": "            boolean prevMatch \u003d true;"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                if (!anyMatch \u0026\u0026 prevMatch) {"
+        "content": "            for (String keyword : keywordList) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                    prevMatch \u003d new ArrayList\u003c\u003e(deck.getTags()).stream()"
+        "content": "                if (!anyMatch \u0026\u0026 prevMatch) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                            .anyMatch(tag -\u003e StringUtil.containsWordIgnoreCase(tag.toString(), \"[\" + keyword + \"]\"));"
+        "content": "                    prevMatch \u003d new ArrayList\u003c\u003e(deck.getTags()).stream()"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                } else {"
+        "content": "                            .anyMatch(tag -\u003e StringUtil.containsWordIgnoreCase(tag.toString(), \"[\" + keyword + \"]\"));"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                    break;"
+        "content": "                } else {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                }"
+        "content": "                    break;"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            }"
+        "content": "                }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            if (prevMatch) {"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                anyMatch \u003d true;"
+        "content": "            if (prevMatch) {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            }"
+        "content": "                anyMatch \u003d true;"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return anyMatch;"
+        "content": "        }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "        return anyMatch;"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * Filters keywords to remove \u0026 symbol and to group keywords together as List objects."
+        "content": "    /**"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @param keywords list of keywords from SearchCommand."
+        "content": "     * Filters keywords to remove \u0026 symbol and to group keywords together as List objects."
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @return a List of Lists of keywords that are grouped accordingly."
+        "content": "     * @param keywords list of keywords from FilterCommand."
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "     * @return a List of Lists of keywords that are grouped accordingly."
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    private List\u003cList\u003cString\u003e\u003e filterKeywords(List\u003cString\u003e keywords) {"
+        "content": "     */"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        List\u003cList\u003cString\u003e\u003e newList \u003d new ArrayList\u003c\u003e();"
+        "content": "    private List\u003cList\u003cString\u003e\u003e filterKeywords(List\u003cString\u003e keywords) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        for (int i \u003d 0; i \u003c keywords.size(); i++) {"
+        "content": "        List\u003cList\u003cString\u003e\u003e newList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            if (keywords.get(i).equals(\"\u0026\")) {"
+        "content": "        for (int i \u003d 0; i \u003c keywords.size(); i++) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                List\u003cString\u003e prev \u003d newList.get(i - 1);"
+        "content": "            if (keywords.get(i).equals(\"\u0026\")) {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                prev.add(keywords.get(i + 1));"
+        "content": "                List\u003cString\u003e prev \u003d newList.get(newList.size() - 1);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                i++;"
+        "content": "                prev.add(keywords.get(i + 1));"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            } else {"
+        "content": "                i++;"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                List\u003cString\u003e temp \u003d new ArrayList\u003c\u003e();"
+        "content": "            } else {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                temp.add(keywords.get(i));"
+        "content": "                List\u003cString\u003e temp \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                newList.add(temp);"
+        "content": "                temp.add(keywords.get(i));"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            }"
+        "content": "                newList.add(temp);"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return newList;"
+        "content": "        }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "        return newList;"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * Checks if the symbol \u0026 is present in the SearchCommand keywords."
+        "content": "    /**"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @param keywords list of keywords to be searched"
+        "content": "     * Checks if the symbol \u0026 is present in the FilterCommand keywords."
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @return true if \u0026 is present"
+        "content": "     * @param keywords list of keywords to be searched"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "     * @return true if \u0026 is present"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    private boolean checkAnd(List\u003cString\u003e keywords) {"
+        "content": "     */"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        for (String keyword : keywords) {"
+        "content": "    private boolean checkAnd(List\u003cString\u003e keywords) {"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            if (keyword.equals(\"\u0026\")) {"
+        "content": "        for (String keyword : keywords) {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                return true;"
+        "content": "            if (keyword.equals(\"\u0026\")) {"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            }"
+        "content": "                return true;"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return false;"
+        "content": "        }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "        return false;"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                || (other instanceof DeckContainsKeywordsPredicate // instanceof handles nulls"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                \u0026\u0026 keywords.equals(((DeckContainsKeywordsPredicate) other).keywords)); // state check"
+        "content": "                || (other instanceof FilterDeckKeywordsPredicate // instanceof handles nulls"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "                \u0026\u0026 keywords.equals(((FilterDeckKeywordsPredicate) other).keywords)); // state check"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 125,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 126,
         "author": {
           "gitId": "haveaqiupill"
         },
@@ -24826,7 +25467,856 @@
       }
     ],
     "authorContributionMap": {
-      "haveaqiupill": 125
+      "haveaqiupill": 126
+    }
+  },
+  {
+    "path": "src/main/java/cardibuddy/model/deck/SearchDeckKeywordsPredicate.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "package cardibuddy.model.deck;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import java.util.function.Predicate;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.commons.util.StringUtil;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " * Tests that a {@code Deck or Card}\u0027s {@code Title} matches any of the keywords given."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "public class SearchDeckKeywordsPredicate implements Predicate\u003cDeck\u003e {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    private final List\u003cString\u003e keywords;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public SearchDeckKeywordsPredicate(List\u003cString\u003e keywords) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        this.keywords \u003d keywords;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Evaluates this predicate on the given argument."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @param deck the input argument"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @return {@code true} if the input argument matches the predicate,"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * otherwise {@code false}"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public boolean test(Deck deck) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        boolean anyMatch \u003d false;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        if (checkAnd(keywords)) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            anyMatch \u003d searchAnd(deck, keywords);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            anyMatch \u003d searchOr(deck, keywords);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return anyMatch;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Checks if deck contains either of the keywords."
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @param keywords list of keywords from SearchCommand."
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @return true if deck\u0027s title or tag contains any of the keywords."
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    private boolean searchOr(Deck deck, List\u003cString\u003e keywords) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        boolean anyMatch \u003d false;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        anyMatch \u003d new ArrayList\u003c\u003e(keywords).stream()"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                .anyMatch(keyword -\u003e StringUtil.containsWordIgnoreCase(deck.getTitle().toString(), keyword));"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return anyMatch;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Checks if deck contains all of the keywords with \u0026."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @param keywords list of keywords from SearchCommand."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @return true if deck\u0027s title or tag contains all of the keywords with \u0026."
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    private boolean searchAnd(Deck deck, List\u003cString\u003e keywords) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        boolean anyMatch \u003d false;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        List\u003cList\u003cString\u003e\u003e filteredKeywords \u003d filterKeywords(keywords);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        for (List\u003cString\u003e keywordList : filteredKeywords) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            boolean prevMatch \u003d true;"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            for (String keyword : keywordList) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                if (!anyMatch \u0026\u0026 prevMatch) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                    prevMatch \u003d Arrays.stream(deck.getTitle().toString().split(\" \"))"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                            .anyMatch(titleWord -\u003e StringUtil.containsWordIgnoreCase(titleWord, keyword));"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            if (prevMatch) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                anyMatch \u003d true;"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return anyMatch;"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Filters keywords to remove \u0026 symbol and to group keywords together as List objects."
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @param keywords list of keywords from SearchCommand."
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @return a List of Lists of keywords that are grouped accordingly."
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    private List\u003cList\u003cString\u003e\u003e filterKeywords(List\u003cString\u003e keywords) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        List\u003cList\u003cString\u003e\u003e newList \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        for (int i \u003d 0; i \u003c keywords.size(); i++) {"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            if (keywords.get(i).equals(\"\u0026\")) {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                List\u003cString\u003e prev \u003d newList.get(newList.size() - 1);"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                prev.add(keywords.get(i + 1));"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                i++;"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                List\u003cString\u003e temp \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                temp.add(keywords.get(i));"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                newList.add(temp);"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return newList;"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Checks if the symbol \u0026 is present in the SearchCommand keywords."
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @param keywords list of keywords to be searched"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @return true if \u0026 is present"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    private boolean checkAnd(List\u003cString\u003e keywords) {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        for (String keyword : keywords) {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            if (keyword.equals(\"\u0026\")) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                return true;"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                || (other instanceof SearchDeckKeywordsPredicate // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                \u0026\u0026 keywords.equals(((SearchDeckKeywordsPredicate) other).keywords)); // state check"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "haveaqiupill": 120
     }
   },
   {

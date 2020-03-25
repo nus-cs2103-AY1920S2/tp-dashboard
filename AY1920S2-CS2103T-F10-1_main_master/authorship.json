@@ -4572,213 +4572,206 @@
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    public static final String MESSAGE_DUPLICATE_PERSON \u003d \"This person already exists in resuMeme.\";"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": ""
+        "content": "    private EditUserDescriptor editUserDescriptor;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    private EditUserDescriptor editUserDescriptor;"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    /**"
+        "content": "     * @param editUserDescriptor details to edit the person with"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     * @param editUserDescriptor details to edit the person with"
+        "content": "     */"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     */"
+        "content": "    public EditUserCommand(EditUserDescriptor editUserDescriptor) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    public EditUserCommand(EditUserDescriptor editUserDescriptor) {"
+        "content": "        this.editUserDescriptor \u003d editUserDescriptor;"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        this.editUserDescriptor \u003d editUserDescriptor;"
+        "content": "    }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    @Override"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        requireNonNull(model);"
+        "content": "        Person userToEdit \u003d model.getUser();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        Person userToEdit \u003d model.getUser();"
+        "content": "        Name name \u003d editUserDescriptor.getName().orElse(userToEdit.getName());"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        Name name \u003d editUserDescriptor.getName().orElse(userToEdit.getName());"
+        "content": "        Phone phone \u003d editUserDescriptor.getPhone().orElse(userToEdit.getPhone());"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        Phone phone \u003d editUserDescriptor.getPhone().orElse(userToEdit.getPhone());"
+        "content": "        Email email \u003d editUserDescriptor.getEmail().orElse(userToEdit.getEmail());"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        Email email \u003d editUserDescriptor.getEmail().orElse(userToEdit.getEmail());"
+        "content": "        Github github \u003d editUserDescriptor.getGithub().orElse(userToEdit.getGithub());"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        Github github \u003d editUserDescriptor.getGithub().orElse(userToEdit.getGithub());"
+        "content": "        String university \u003d editUserDescriptor.getUniversity().orElse(userToEdit.getUniversity());"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        String university \u003d editUserDescriptor.getUniversity().orElse(userToEdit.getUniversity());"
+        "content": "        String major \u003d editUserDescriptor.getMajor().orElse(userToEdit.getMajor());"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        String major \u003d editUserDescriptor.getMajor().orElse(userToEdit.getMajor());"
+        "content": "        Time from \u003d editUserDescriptor.getFrom().orElse(userToEdit.getFrom());"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        Time from \u003d editUserDescriptor.getFrom().orElse(userToEdit.getFrom());"
+        "content": "        Time to \u003d editUserDescriptor.getTo().orElse(userToEdit.getTo());"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        Time to \u003d editUserDescriptor.getTo().orElse(userToEdit.getTo());"
+        "content": "        double cap \u003d editUserDescriptor.getCap().orElse(userToEdit.getCap());"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        double cap \u003d editUserDescriptor.getCap().orElse(userToEdit.getCap());"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": ""
+        "content": "        Person editedUser \u003d new Person(name, phone, email, github, university, major, from, to, cap);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        Person editedUser \u003d new Person(name, phone, email, github, university, major, from, to, cap);"
+        "content": "        model.setUser(editedUser);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        model.setUser(editedUser);"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": ""
+        "content": "        return new CommandResult(editedUser.toString(), String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedUser));"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        return new CommandResult(editedUser.toString(), String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedUser));"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "nhamhung"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 83,
         "author": {
           "gitId": "nhamhung"
         },
@@ -4786,7 +4779,7 @@
       }
     ],
     "authorContributionMap": {
-      "nhamhung": 84
+      "nhamhung": 83
     }
   },
   {
@@ -6218,9 +6211,9 @@
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " * Adds a Item to the address book."
+        "content": " * Adds an Item to the address book."
       },
       {
         "lineNumber": 11,
@@ -6357,7 +6350,8 @@
       }
     ],
     "authorContributionMap": {
-      "helloImHai": 15,
+      "helloImHai": 14,
+      "wardetu": 1,
       "-": 14
     }
   },
@@ -15579,44 +15573,44 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "wardetu"
         },
-        "content": " * Finds and lists all persons in address book whose name contains any of the argument keywords."
+        "content": " * Finds and lists all items in the storage whose name contains any of the argument keywords and whose type matches the"
       },
       {
         "lineNumber": 10,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": " * specified type."
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": " *"
+      },
+      {
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": " * Keyword matching is case insensitive."
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": " */"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 14,
         "author": {
           "gitId": "helloImHai"
         },
         "content": "public abstract class FindCommand extends Command {"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
       },
       {
         "lineNumber": 15,
@@ -15628,44 +15622,44 @@
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "-"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all items whose names contain any of \""
+        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
-        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
+        "content": ""
       },
       {
         "lineNumber": 18,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all items whose names contain any of \""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            + \"the specified keywords (case-insensitive) and displays them as a list with index numbers.\\n\""
+      },
+      {
+        "lineNumber": 20,
         "author": {
           "gitId": "chrisjwelly"
         },
         "content": "            + \"Parameters: KEYWORD [MORE_KEYWORDS]... \" + PREFIX_ITEM + \" TYPE\\n\""
       },
       {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "helloImHai"
-        },
-        "content": "            + \"Example: \" + COMMAND_WORD + \" Google \" + PREFIX_ITEM + \" int\";"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 21,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    protected final NameContainsKeywordsPredicate predicate;"
+        "content": "            + \"Example: \" + COMMAND_WORD + \" Google \" + PREFIX_ITEM + \" int\";"
       },
       {
         "lineNumber": 22,
@@ -15677,75 +15671,89 @@
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "-"
+          "gitId": "helloImHai"
         },
-        "content": "    public FindCommand(NameContainsKeywordsPredicate predicate) {"
+        "content": "    protected final NameContainsKeywordsPredicate predicate;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "        this.predicate \u003d predicate;"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    public FindCommand(NameContainsKeywordsPredicate predicate) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        this.predicate \u003d predicate;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "    @Override"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "                || (other instanceof FindCommand // instanceof handles nulls"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "                \u0026\u0026 predicate.equals(((FindCommand) other).predicate)); // state check"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "                || (other instanceof FindCommand // instanceof handles nulls"
       },
       {
         "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                \u0026\u0026 predicate.equals(((FindCommand) other).predicate)); // state check"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
@@ -15754,7 +15762,8 @@
     ],
     "authorContributionMap": {
       "helloImHai": 7,
-      "-": 24,
+      "wardetu": 3,
+      "-": 23,
       "duongphammmm": 1,
       "chrisjwelly": 1
     }
@@ -15836,117 +15845,124 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " * Finds Internship Items in the address book matching a keyword."
+        "content": " * Finds {@code Internship} items in the address book whose name contains the keyword."
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " */"
+        "content": " * Keyword matching is case-insensitive."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "public class FindInternshipCommand extends FindCommand {"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    public FindInternshipCommand(NameContainsKeywordsPredicate predicate) {"
+        "content": "public class FindInternshipCommand extends FindCommand {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        super(predicate);"
+        "content": "    public FindInternshipCommand(NameContainsKeywordsPredicate predicate) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "        super(predicate);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        model.setInternshipToDisplay();"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        model.updateFilteredItemList(predicate);"
+        "content": "        model.setInternshipToDisplay();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        return new CommandResult(\"\","
+        "content": "        model.updateFilteredItemList(predicate);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "                String.format(Messages.MESSAGE_ITEMS_LISTED, model.getFilteredItemList().size(), \"Internships\"));"
+        "content": "        return new CommandResult(\"\","
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "                String.format(Messages.MESSAGE_ITEMS_LISTED, model.getFilteredItemList().size(), \"Internships\"));"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
         "author": {
           "gitId": "helloImHai"
         },
@@ -15954,7 +15970,8 @@
       }
     ],
     "authorContributionMap": {
-      "helloImHai": 27
+      "helloImHai": 26,
+      "wardetu": 2
     }
   },
   {
@@ -16034,110 +16051,117 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " * Finds Project Items in the address book matching a keyword."
+        "content": " * Finds {@code Project} items in the address book whose name contains the keyword."
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " */"
+        "content": " * Keyword matching is case-insensitive."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "public class FindProjectCommand extends FindCommand {"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    public FindProjectCommand(NameContainsKeywordsPredicate predicate) {"
+        "content": "public class FindProjectCommand extends FindCommand {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        super(predicate);"
+        "content": "    public FindProjectCommand(NameContainsKeywordsPredicate predicate) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "        super(predicate);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        model.setProjectToDisplay();"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        model.updateFilteredItemList(predicate);"
+        "content": "        model.setProjectToDisplay();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        return new CommandResult(\"\","
+        "content": "        model.updateFilteredItemList(predicate);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "                String.format(Messages.MESSAGE_ITEMS_LISTED, model.getFilteredItemList().size(), \"Projects\"));"
+        "content": "        return new CommandResult(\"\","
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "                String.format(Messages.MESSAGE_ITEMS_LISTED, model.getFilteredItemList().size(), \"Projects\"));"
       },
       {
         "lineNumber": 26,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "helloImHai"
         },
@@ -16145,7 +16169,8 @@
       }
     ],
     "authorContributionMap": {
-      "helloImHai": 26
+      "helloImHai": 25,
+      "wardetu": 2
     }
   },
   {
@@ -16225,110 +16250,117 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " * Finds Resume Items in the address book matching a keyword."
+        "content": " * Finds {@code Resume} items in the address book whose name contains the keyword."
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " */"
+        "content": " * Keyword matching is case-insensitive."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "public class FindResumeCommand extends FindCommand {"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    public FindResumeCommand(NameContainsKeywordsPredicate predicate) {"
+        "content": "public class FindResumeCommand extends FindCommand {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        super(predicate);"
+        "content": "    public FindResumeCommand(NameContainsKeywordsPredicate predicate) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "        super(predicate);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        model.setResumeToDisplay();"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        model.updateFilteredItemList(predicate);"
+        "content": "        model.setResumeToDisplay();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        return new CommandResult(\"\","
+        "content": "        model.updateFilteredItemList(predicate);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "                String.format(Messages.MESSAGE_ITEMS_LISTED, model.getFilteredItemList().size(), \"Resumes\"));"
+        "content": "        return new CommandResult(\"\","
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "                String.format(Messages.MESSAGE_ITEMS_LISTED, model.getFilteredItemList().size(), \"Resumes\"));"
       },
       {
         "lineNumber": 26,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "helloImHai"
         },
@@ -16336,7 +16368,8 @@
       }
     ],
     "authorContributionMap": {
-      "helloImHai": 26
+      "helloImHai": 25,
+      "wardetu": 2
     }
   },
   {
@@ -16416,110 +16449,117 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " * Finds Skill Items in the address book matching a keyword."
+        "content": " * Finds {@code Resume} items in the address book whose name contains the keyword."
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": " */"
+        "content": " * Keyword matching is case-insensitive."
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "public class FindSkillCommand extends FindCommand {"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    public FindSkillCommand(NameContainsKeywordsPredicate predicate) {"
+        "content": "public class FindSkillCommand extends FindCommand {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        super(predicate);"
+        "content": "    public FindSkillCommand(NameContainsKeywordsPredicate predicate) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "        super(predicate);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        model.setSkillToDisplay();"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        model.updateFilteredItemList(predicate);"
+        "content": "        model.setSkillToDisplay();"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "        return new CommandResult(\"\","
+        "content": "        model.updateFilteredItemList(predicate);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "                String.format(Messages.MESSAGE_ITEMS_LISTED, model.getFilteredItemList().size(), \"Skills\"));"
+        "content": "        return new CommandResult(\"\","
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "                String.format(Messages.MESSAGE_ITEMS_LISTED, model.getFilteredItemList().size(), \"Skills\"));"
       },
       {
         "lineNumber": 26,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "helloImHai"
         },
@@ -16527,7 +16567,8 @@
       }
     ],
     "authorContributionMap": {
-      "helloImHai": 26
+      "helloImHai": 25,
+      "wardetu": 2
     }
   },
   {
@@ -20899,40 +20940,82 @@
       {
         "lineNumber": 35,
         "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    /* Prefixes for different item types */"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public static final Prefix PREFIX_INTERNSHIP \u003d new Prefix(\"int/\");"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public static final Prefix PREFIX_PROJECT \u003d new Prefix(\"proj/\");"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public static final Prefix PREFIX_RESUME \u003d new Prefix(\"res/\");"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public static final Prefix PREFIX_SKILL \u003d new Prefix(\"ski/\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
           "gitId": "nhamhung"
         },
         "content": "    /* User */"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 42,
         "author": {
           "gitId": "nhamhung"
         },
         "content": "    public static final Prefix PREFIX_GITHUB \u003d new Prefix(\"g/\");"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 43,
         "author": {
           "gitId": "nhamhung"
         },
         "content": "    public static final Prefix PREFIX_UNIVERSITY \u003d new Prefix(\"u/\");"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 44,
         "author": {
           "gitId": "nhamhung"
         },
         "content": "    public static final Prefix PREFIX_MAJOR \u003d new Prefix(\"m/\");"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 45,
         "author": {
           "gitId": "nhamhung"
         },
         "content": "    public static final Prefix PREFIX_CAP \u003d new Prefix(\"c/\");"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
@@ -20940,6 +21023,7 @@
       }
     ],
     "authorContributionMap": {
+      "wardetu": 6,
       "nhamhung": 5,
       "-": 14,
       "chrisjwelly": 21
@@ -22635,217 +22719,217 @@
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import java.util.Collection;"
+        "content": "import java.util.stream.Stream;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import java.util.Collections;"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import java.util.Optional;"
+        "content": "import seedu.address.logic.commands.EditUserCommand;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import java.util.Set;"
+        "content": "import seedu.address.logic.commands.EditUserDescriptor;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": ""
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.logic.commands.EditUserCommand;"
+        "content": "import seedu.address.model.item.field.Email;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.logic.commands.EditUserDescriptor;"
+        "content": "import seedu.address.model.item.field.Github;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.address.model.item.field.Name;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.model.item.field.Email;"
+        "content": "import seedu.address.model.item.field.Phone;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.model.item.field.Github;"
+        "content": "import seedu.address.model.item.field.Time;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.model.item.field.Name;"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.model.item.field.Phone;"
+        "content": "/**"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.model.item.field.Time;"
+        "content": " * Parser for EditUserCommand."
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "import seedu.address.model.tag.Tag;"
+        "content": " */"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": ""
+        "content": "public class EditUserParser implements Parser\u003cEditUserCommand\u003e {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": " * Parser for EditUserCommand."
+        "content": "    /**"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": " */"
+        "content": "     * Parses the given {@code String} of arguments in the context of the EditUserCommand"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "public class EditUserParser implements Parser\u003cEditUserCommand\u003e {"
+        "content": "     * and returns an EditUserCommand object for execution."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": ""
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the EditUserCommand"
+        "content": "    @Override"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     * and returns an EditUserCommand object for execution."
+        "content": "    public EditUserCommand parse(String args) throws ParseException {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "        requireNonNull(args);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     */"
+        "content": "        ArgumentMultimap argumentMultimap \u003d"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    @Override"
+        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_GITHUB,"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    public EditUserCommand parse(String args) throws ParseException {"
+        "content": "                        PREFIX_UNIVERSITY, PREFIX_MAJOR, PREFIX_FROM, PREFIX_TO, PREFIX_CAP, PREFIX_TAG);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        requireNonNull(args);"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        ArgumentMultimap argumentMultimap \u003d"
+        "content": "        if (!argumentMultimap.getPreamble().isEmpty()) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_GITHUB,"
+        "content": "            throw new ParseException(EditUserCommand.MESSAGE_USAGE);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "                        PREFIX_UNIVERSITY, PREFIX_MAJOR, PREFIX_FROM, PREFIX_TO, PREFIX_CAP, PREFIX_TAG);"
+        "content": "        }"
       },
       {
         "lineNumber": 46,
@@ -23090,94 +23174,45 @@
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     * Parses {@code Collection\u003cString\u003e tags} into a {@code Set\u003cTag\u003e} if {@code tags} is non-empty."
+        "content": "     * Returns true if none of the prefixes contains empty {@code Optional} values in the given"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     * If {@code tags} contain only one element which is an empty string, it will be parsed into a"
+        "content": "     * {@code ArgumentMultimap}."
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     * {@code Set\u003cTag\u003e} containing zero tags."
+        "content": "     */"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "     */"
+        "content": "    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "    private Optional\u003cSet\u003cTag\u003e\u003e parseTagsForEdit(Collection\u003cString\u003e tags) throws ParseException {"
+        "content": "        return Stream.of(prefixes).allMatch(prefix -\u003e argumentMultimap.getValue(prefix).isPresent());"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "        assert tags !\u003d null;"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "nhamhung"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "nhamhung"
-        },
-        "content": "        if (tags.isEmpty()) {"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "nhamhung"
-        },
-        "content": "            return Optional.empty();"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "nhamhung"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "nhamhung"
-        },
-        "content": "        Collection\u003cString\u003e tagSet \u003d tags.size() \u003d\u003d 1 \u0026\u0026 tags.contains(\"\") ? Collections.emptySet() : tags;"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "nhamhung"
-        },
-        "content": "        return Optional.of(ParserUtil.parseTags(tagSet));"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "nhamhung"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 86,
         "author": {
           "gitId": "nhamhung"
         },
@@ -23185,7 +23220,7 @@
       }
     ],
     "authorContributionMap": {
-      "nhamhung": 93
+      "nhamhung": 86
     }
   },
   {
@@ -27186,14 +27221,14 @@
       {
         "lineNumber": 123,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
         "lineNumber": 124,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "    /**"
       },
@@ -27214,7 +27249,7 @@
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "     */"
       },
@@ -27277,14 +27312,14 @@
       {
         "lineNumber": 136,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "    /**"
       },
@@ -27305,7 +27340,7 @@
       {
         "lineNumber": 140,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "     */"
       },
@@ -27319,14 +27354,14 @@
       {
         "lineNumber": 142,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
         "lineNumber": 143,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "    /**"
       },
@@ -27354,7 +27389,7 @@
       {
         "lineNumber": 147,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "     */"
       },
@@ -27375,7 +27410,7 @@
       {
         "lineNumber": 150,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    /**"
       },
@@ -27389,7 +27424,7 @@
       {
         "lineNumber": 152,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "     */"
       },
@@ -27403,14 +27438,14 @@
       {
         "lineNumber": 154,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    /**"
       },
@@ -27424,7 +27459,7 @@
       {
         "lineNumber": 157,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "     */"
       },
@@ -27529,14 +27564,14 @@
       {
         "lineNumber": 172,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
         "lineNumber": 173,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "    /**"
       },
@@ -27753,14 +27788,14 @@
       {
         "lineNumber": 204,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 205,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    /**"
       },
@@ -27774,7 +27809,7 @@
       {
         "lineNumber": 207,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "     */"
       },
@@ -27886,191 +27921,191 @@
       {
         "lineNumber": 223,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "    /**"
+        "content": "    Resume getResumeByIndex(int resumeIndex);"
       },
       {
         "lineNumber": 224,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "     * Deletes the given resume."
+        "content": "    boolean hasResumeId(int resumeIndex);"
       },
       {
         "lineNumber": 225,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "     * The resume must exist in the resume book."
+        "content": ""
       },
       {
         "lineNumber": 226,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    void deleteResume(Resume resume);"
+        "content": "     * Deletes the given resume."
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * The resume must exist in the resume book."
       },
       {
         "lineNumber": 229,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Return a Resume item at the specified index from the resume list."
+        "content": "    void deleteResume(Resume resume);"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * @param index"
+        "content": ""
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * @return Resume item at {@code index}"
+        "content": "    /**"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "     * Return a Resume item at the specified index from the resume list."
       },
       {
         "lineNumber": 234,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    Resume getResume(Index index);"
+        "content": "     * @param index"
       },
       {
         "lineNumber": 235,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * @return Resume item at {@code index}"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 237,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "    Resume getResume(Index index);"
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 239,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 240,
         "author": {
           "gitId": "duongphammmm"
         },
         "content": "     * Return the size of the resume list."
       },
       {
-        "lineNumber": 238,
+        "lineNumber": 241,
         "author": {
           "gitId": "duongphammmm"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 239,
+        "lineNumber": 242,
         "author": {
           "gitId": "helloImHai"
         },
         "content": "    int getResumeSize();"
       },
       {
-        "lineNumber": 240,
-        "author": {
-          "gitId": "helloImHai"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 241,
-        "author": {
-          "gitId": "duongphammmm"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 242,
-        "author": {
-          "gitId": "duongphammmm"
-        },
-        "content": "     * Updates the List as the resume list."
-      },
-      {
         "lineNumber": 243,
-        "author": {
-          "gitId": "duongphammmm"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 244,
-        "author": {
-          "gitId": "duongphammmm"
-        },
-        "content": "    void setResumeToDisplay();"
-      },
-      {
-        "lineNumber": 245,
-        "author": {
-          "gitId": "duongphammmm"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 246,
-        "author": {
-          "gitId": "duongphammmm"
-        },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Item Lists \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
-      },
-      {
-        "lineNumber": 247,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
+        "lineNumber": 244,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "     * Updates the List as the resume list."
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    void setResumeToDisplay();"
+      },
+      {
         "lineNumber": 248,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /** Returns an unmodifiable view of the filtered item list */"
+        "content": ""
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    ObservableList\u003cItem\u003e getFilteredItemList();"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Item Lists \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 250,
@@ -28082,124 +28117,166 @@
       {
         "lineNumber": 251,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "    /** Returns an unmodifiable view of the filtered item list */"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Updates the filter of the filtered item list to filter by the given {@code predicate}."
+        "content": "    ObservableList\u003cItem\u003e getFilteredItemList();"
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @throws NullPointerException if {@code predicate} is null."
+        "content": ""
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    void updateFilteredItemList(Predicate\u003cItem\u003e predicate);"
+        "content": "     * Updates the filter of the filtered item list to filter by the given {@code predicate}."
       },
       {
         "lineNumber": 256,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "     * @throws NullPointerException if {@code predicate} is null."
       },
       {
         "lineNumber": 257,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "    //// STUBS"
+        "content": "     */"
       },
       {
         "lineNumber": 258,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    boolean hasItem(Item item);"
+        "content": "    void updateFilteredItemList(Predicate\u003cItem\u003e predicate);"
       },
       {
         "lineNumber": 259,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
         "content": ""
       },
       {
         "lineNumber": 260,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    void addItem(Item item);"
+        "content": "    //// STUBS"
       },
       {
         "lineNumber": 261,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "    boolean hasItem(Item item);"
+      },
+      {
+        "lineNumber": 262,
         "author": {
           "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
-        "lineNumber": 262,
+        "lineNumber": 263,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "    void addItem(Item item);"
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 265,
         "author": {
           "gitId": "helloImHai"
         },
         "content": "    void deleteItem(Item item);"
       },
       {
-        "lineNumber": 263,
+        "lineNumber": 266,
         "author": {
           "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 267,
         "author": {
           "gitId": "helloImHai"
         },
         "content": "    void setItem(Item target, Item edit);"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 268,
         "author": {
           "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 269,
         "author": {
           "gitId": "helloImHai"
         },
         "content": "    void setItemsToDisplay(String type);"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 270,
         "author": {
-          "gitId": "nhamhung"
+          "gitId": "wardetu"
         },
         "content": ""
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 271,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    boolean hasInternshipId(int i);"
+      },
+      {
+        "lineNumber": 272,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    boolean hasProjectId(int i);"
+      },
+      {
+        "lineNumber": 273,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    boolean hasSkillId(int i);"
+      },
+      {
+        "lineNumber": 274,
         "author": {
           "gitId": "-"
         },
@@ -28207,10 +28284,11 @@
       }
     ],
     "authorContributionMap": {
-      "helloImHai": 12,
-      "nhamhung": 7,
-      "-": 74,
-      "duongphammmm": 175
+      "helloImHai": 11,
+      "wardetu": 7,
+      "nhamhung": 6,
+      "-": 73,
+      "duongphammmm": 177
     }
   },
   {
@@ -29102,21 +29180,21 @@
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "    }"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": "    @Override"
       },
@@ -29144,7 +29222,7 @@
       {
         "lineNumber": 133,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
         "content": ""
       },
@@ -29179,14 +29257,14 @@
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "-"
+          "gitId": "helloImHai"
         },
         "content": "    }"
       },
       {
         "lineNumber": 139,
         "author": {
-          "gitId": "-"
+          "gitId": "helloImHai"
         },
         "content": ""
       },
@@ -29550,7 +29628,7 @@
       {
         "lineNumber": 191,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    @Override"
       },
@@ -29578,21 +29656,21 @@
       {
         "lineNumber": 195,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 196,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 197,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    @Override"
       },
@@ -29620,21 +29698,21 @@
       {
         "lineNumber": 201,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 202,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 203,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    @Override"
       },
@@ -29662,21 +29740,21 @@
       {
         "lineNumber": 207,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 208,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 209,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
         "content": "    @Override"
       },
@@ -29963,488 +30041,663 @@
       {
         "lineNumber": 250,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
         "content": "    @Override"
       },
       {
         "lineNumber": 251,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "    public void deleteResume(Resume target) {"
+        "content": "    public Resume getResumeByIndex(int index) {"
       },
       {
         "lineNumber": 252,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        resumeBook.deleteResume(target);"
+        "content": "        return resumeBook.getResumeByIndex(index);"
       },
       {
         "lineNumber": 253,
         "author": {
-          "gitId": "-"
+          "gitId": "wardetu"
         },
         "content": "    }"
       },
       {
         "lineNumber": 254,
         "author": {
-          "gitId": "-"
+          "gitId": "wardetu"
         },
         "content": ""
       },
       {
         "lineNumber": 255,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
         "content": "    @Override"
       },
       {
         "lineNumber": 256,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": "    public Resume getResume(Index index) {"
+        "content": "    public boolean hasResumeId(int resumeIndex) {"
       },
       {
         "lineNumber": 257,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": "        return resumeBook.getResume(index);"
+        "content": "        return resumeBook.hasResumeId(resumeIndex);"
       },
       {
         "lineNumber": 258,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
         "content": "    }"
       },
       {
         "lineNumber": 259,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 260,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
         "content": "    @Override"
       },
       {
         "lineNumber": 261,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    public int getResumeSize() {"
+        "content": "    public void deleteResume(Resume target) {"
       },
       {
         "lineNumber": 262,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "        return resumeBook.getResumeSize();"
+        "content": "        resumeBook.deleteResume(target);"
       },
       {
         "lineNumber": 263,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 264,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 265,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
         "content": "    @Override"
       },
       {
         "lineNumber": 266,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    public void setResumeToDisplay() {"
+        "content": "    public Resume getResume(Index index) {"
       },
       {
         "lineNumber": 267,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "        resumeBook.setResumeToDisplay();"
+        "content": "        return resumeBook.getResume(index);"
       },
       {
         "lineNumber": 268,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
         "content": "    }"
       },
       {
         "lineNumber": 269,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
         "content": ""
       },
       {
         "lineNumber": 270,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Item List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "    @Override"
       },
       {
         "lineNumber": 271,
         "author": {
-          "gitId": "-"
+          "gitId": "helloImHai"
         },
-        "content": ""
+        "content": "    public int getResumeSize() {"
       },
       {
         "lineNumber": 272,
         "author": {
-          "gitId": "-"
+          "gitId": "helloImHai"
         },
-        "content": "    /**"
+        "content": "        return resumeBook.getResumeSize();"
       },
       {
         "lineNumber": 273,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "     * Returns an unmodifiable view of the list of {@code Item} backed by the internal list of"
+        "content": "    }"
       },
       {
         "lineNumber": 274,
         "author": {
-          "gitId": "-"
+          "gitId": "helloImHai"
         },
-        "content": "     * {@code versionedAddressBook}"
+        "content": ""
       },
       {
         "lineNumber": 275,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "    @Override"
       },
       {
         "lineNumber": 276,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "    public void setResumeToDisplay() {"
       },
       {
         "lineNumber": 277,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public ObservableList\u003cItem\u003e getFilteredItemList() {"
+        "content": "        resumeBook.setResumeToDisplay();"
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return filteredItems;"
+        "content": "    }"
       },
       {
         "lineNumber": 279,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 280,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Item List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 282,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "    public void updateFilteredItemList(Predicate\u003cItem\u003e predicate) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 283,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "        requireNonNull(predicate);"
+        "content": "     * Returns an unmodifiable view of the list of {@code Item} backed by the internal list of"
       },
       {
         "lineNumber": 284,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "        filteredItems.setPredicate(predicate);"
+        "content": "     * {@code versionedAddressBook}"
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 287,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "    public ObservableList\u003cItem\u003e getFilteredItemList() {"
       },
       {
         "lineNumber": 288,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": "        return filteredItems;"
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "-"
         },
-        "content": "        // short circuit if same object"
+        "content": "    }"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": ""
       },
       {
         "lineNumber": 291,
         "author": {
           "gitId": "-"
         },
-        "content": "            return true;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 292,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "        }"
+        "content": "    public void updateFilteredItemList(Predicate\u003cItem\u003e predicate) {"
       },
       {
         "lineNumber": 293,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        requireNonNull(predicate);"
       },
       {
         "lineNumber": 294,
         "author": {
-          "gitId": "-"
+          "gitId": "duongphammmm"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "        filteredItems.setPredicate(predicate);"
       },
       {
         "lineNumber": 295,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!(obj instanceof ModelManager)) {"
+        "content": "    }"
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "-"
         },
-        "content": "            return false;"
+        "content": ""
       },
       {
         "lineNumber": 297,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 298,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public boolean equals(Object obj) {"
       },
       {
         "lineNumber": 299,
         "author": {
           "gitId": "-"
         },
-        "content": "        // state check"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 300,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelManager other \u003d (ModelManager) obj;"
+        "content": "        if (obj \u003d\u003d this) {"
       },
       {
         "lineNumber": 301,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "        return resumeBook.equals(other.resumeBook)"
+        "content": "            return true;"
       },
       {
         "lineNumber": 302,
         "author": {
           "gitId": "-"
         },
-        "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
+        "content": "        }"
       },
       {
         "lineNumber": 303,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "                \u0026\u0026 filteredItems.equals(other.filteredItems);"
+        "content": ""
       },
       {
         "lineNumber": 304,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 305,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
         "lineNumber": 306,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "    //// STUBS"
+        "content": "            return false;"
       },
       {
         "lineNumber": 307,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "    public boolean hasItem(Item item) {"
+        "content": "        }"
       },
       {
         "lineNumber": 308,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "        return false;"
+        "content": ""
       },
       {
         "lineNumber": 309,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": "        // state check"
       },
       {
         "lineNumber": 310,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "        ModelManager other \u003d (ModelManager) obj;"
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void addItem(Item item) {}"
+        "content": "        return resumeBook.equals(other.resumeBook)"
       },
       {
         "lineNumber": 312,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
       },
       {
         "lineNumber": 313,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void deleteItem(Item item) {}"
+        "content": "                \u0026\u0026 filteredItems.equals(other.filteredItems);"
       },
       {
         "lineNumber": 314,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 315,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "-"
         },
-        "content": "    public void setItem(Item target, Item edit) {}"
+        "content": ""
       },
       {
         "lineNumber": 316,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    //// STUBS"
       },
       {
         "lineNumber": 317,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    public void setItemsToDisplay(String type) {}"
+        "content": "    public boolean hasItem(Item item) {"
       },
       {
         "lineNumber": 318,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "        return false;"
       },
       {
         "lineNumber": 319,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 320,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 321,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public void addItem(Item item) {}"
+      },
+      {
+        "lineNumber": 322,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 323,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public void deleteItem(Item item) {}"
+      },
+      {
+        "lineNumber": 324,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 325,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public void setItem(Item target, Item edit) {}"
+      },
+      {
+        "lineNumber": 326,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 327,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "    public void setItemsToDisplay(String type) {}"
+      },
+      {
+        "lineNumber": 328,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 329,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 330,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public boolean hasInternshipId(int i) {"
+      },
+      {
+        "lineNumber": 331,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return resumeBook.hasInternshipId(i);"
+      },
+      {
+        "lineNumber": 332,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 333,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 334,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 335,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public boolean hasProjectId(int i) {"
+      },
+      {
+        "lineNumber": 336,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return resumeBook.hasProjectId(i);"
+      },
+      {
+        "lineNumber": 337,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 338,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 339,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 340,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public boolean hasSkillId(int i) {"
+      },
+      {
+        "lineNumber": 341,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return resumeBook.hasSkillId(i);"
+      },
+      {
+        "lineNumber": 342,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 343,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 344,
         "author": {
           "gitId": "-"
         },
@@ -30452,10 +30705,11 @@
       }
     ],
     "authorContributionMap": {
-      "helloImHai": 19,
+      "helloImHai": 21,
+      "wardetu": 22,
       "nhamhung": 5,
-      "-": 115,
-      "duongphammmm": 179,
+      "-": 122,
+      "duongphammmm": 173,
       "chrisjwelly": 1
     }
   },
@@ -31215,6 +31469,62 @@
       {
         "lineNumber": 108,
         "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    boolean hasResumeId(int resumeIndex);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    boolean hasInternshipId(int i);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    boolean hasProjectId(int i);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    boolean hasSkillId(int i);"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
           "gitId": "duongphammmm"
         },
         "content": "}"
@@ -31222,6 +31532,7 @@
     ],
     "authorContributionMap": {
       "helloImHai": 6,
+      "wardetu": 8,
       "duongphammmm": 102
     }
   },
@@ -32712,44 +33023,44 @@
       {
         "lineNumber": 195,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        internships.remove(key);"
+        "content": "        int id \u003d key.getId();"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "        internships.remove(key);"
       },
       {
         "lineNumber": 197,
         "author": {
-          "gitId": "chrisjwelly"
+          "gitId": "wardetu"
         },
-        "content": ""
+        "content": "        for (Item item : resumes) {"
       },
       {
         "lineNumber": 198,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "    @Override"
+        "content": "            Resume resume \u003d (Resume) item;"
       },
       {
         "lineNumber": 199,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "    public Internship getInternship(Index index) {"
+        "content": "            resume.getInternships().remove(id);"
       },
       {
         "lineNumber": 200,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        return (Internship) internships.asUnmodifiableObservableList().get(index.getZeroBased());"
+        "content": "        }"
       },
       {
         "lineNumber": 201,
@@ -32761,7 +33072,7 @@
       {
         "lineNumber": 202,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "chrisjwelly"
         },
         "content": ""
       },
@@ -32777,14 +33088,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public int getInternshipSize() {"
+        "content": "    public Internship getInternship(Index index) {"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return internships.getSize();"
+        "content": "        return (Internship) internships.asUnmodifiableObservableList().get(index.getZeroBased());"
       },
       {
         "lineNumber": 206,
@@ -32805,308 +33116,308 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Projects \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "    @Override"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    public int getInternshipSize() {"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "        return internships.getSize();"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Returns true if a project with the same identity as {@code project} exists in the resume book."
+        "content": "    }"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public boolean hasProject(Project project) {"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Projects \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        requireNonNull(project);"
+        "content": ""
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return projects.contains(project);"
+        "content": "    /**"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "     * Returns true if a project with the same identity as {@code project} exists in the resume book."
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "    public boolean hasProject(Project project) {"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Adds a project to the resume book."
+        "content": "        requireNonNull(project);"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * The project must not already exist in the resume book."
+        "content": "        return projects.contains(project);"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void addProject(Project project) {"
+        "content": ""
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        requireNonNull(project);"
+        "content": "    /**"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        projects.add(project);"
+        "content": "     * Adds a project to the resume book."
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "     * The project must not already exist in the resume book."
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "    public void addProject(Project project) {"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Replaces the given project {@code target} in the list with {@code editedProject}."
+        "content": "        requireNonNull(project);"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * {@code target} must exist in the resume book."
+        "content": "        projects.add(project);"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * The identity of {@code editedProject} must not be the same as another existing project in the resume book."
+        "content": "    }"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void setProject(Project target, Project editedProject) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        projects.setItem(target, editedProject);"
+        "content": "     * Replaces the given project {@code target} in the list with {@code editedProject}."
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "     * {@code target} must exist in the resume book."
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * The identity of {@code editedProject} must not be the same as another existing project in the resume book."
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Removes {@code key} from this {@code ResumeBook}."
+        "content": "    public void setProject(Project target, Project editedProject) {"
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * {@code key} must exist in the resume book."
+        "content": "        projects.setItem(target, editedProject);"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void deleteProject(Project key) {"
+        "content": ""
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        projects.remove(key);"
+        "content": "    /**"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "     * Removes {@code key} from this {@code ResumeBook}."
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * {@code key} must exist in the resume book."
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public Project getProject(Index index) {"
+        "content": "    public void deleteProject(Project key) {"
       },
       {
         "lineNumber": 246,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        return (Project) projects.asUnmodifiableObservableList().get(index.getZeroBased());"
+        "content": "        int id \u003d key.getId();"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "        projects.remove(key);"
       },
       {
         "lineNumber": 248,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": ""
+        "content": "        for (Item item : resumes) {"
       },
       {
         "lineNumber": 249,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "    @Override"
+        "content": "            Resume resume \u003d (Resume) item;"
       },
       {
         "lineNumber": 250,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "    public int getProjectSize() {"
+        "content": "            resume.getProjects().remove(id);"
       },
       {
         "lineNumber": 251,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        return projects.getSize();"
+        "content": "        }"
       },
       {
         "lineNumber": 252,
@@ -33127,56 +33438,56 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Skills \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "    @Override"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    public Project getProject(Index index) {"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "        return (Project) projects.asUnmodifiableObservableList().get(index.getZeroBased());"
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Returns true if a skill with the same identity as {@code skill} exists in the resume book."
+        "content": "    }"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public boolean hasSkill(Skill skill) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        requireNonNull(skill);"
+        "content": "    public int getProjectSize() {"
       },
       {
         "lineNumber": 261,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return skills.contains(skill);"
+        "content": "        return projects.getSize();"
       },
       {
         "lineNumber": 262,
@@ -33197,91 +33508,91 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Skills \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Adds a skill to the resume book."
+        "content": ""
       },
       {
         "lineNumber": 266,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * The skill must not already exist in the resume book."
+        "content": "    /**"
       },
       {
         "lineNumber": 267,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "     * Returns true if a skill with the same identity as {@code skill} exists in the resume book."
       },
       {
         "lineNumber": 268,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void addSkill(Skill skill) {"
+        "content": "     */"
       },
       {
         "lineNumber": 269,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        requireNonNull(skill);"
+        "content": "    public boolean hasSkill(Skill skill) {"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        skills.add(skill);"
+        "content": "        requireNonNull(skill);"
       },
       {
         "lineNumber": 271,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "        return skills.contains(skill);"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 274,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Replaces the given skill {@code target} in the list with {@code editedSkill}."
+        "content": "    /**"
       },
       {
         "lineNumber": 275,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * {@code target} must exist in the resume book."
+        "content": "     * Adds a skill to the resume book."
       },
       {
         "lineNumber": 276,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * The identity of {@code editedSkill} must not be the same as another existing skill in the resume book."
+        "content": "     * The skill must not already exist in the resume book."
       },
       {
         "lineNumber": 277,
@@ -33295,210 +33606,210 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void setSkill(Skill target, Skill editedSkill) {"
+        "content": "    public void addSkill(Skill skill) {"
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        skills.setItem(target, editedSkill);"
+        "content": "        requireNonNull(skill);"
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "        skills.add(skill);"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Removes {@code key} from this {@code ResumeBook}."
+        "content": "    /**"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * {@code key} must exist in the resume book."
+        "content": "     * Replaces the given skill {@code target} in the list with {@code editedSkill}."
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "     * {@code target} must exist in the resume book."
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void deleteSkill(Skill key) {"
+        "content": "     * The identity of {@code editedSkill} must not be the same as another existing skill in the resume book."
       },
       {
         "lineNumber": 287,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        skills.remove(key);"
+        "content": "     */"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "    public void setSkill(Skill target, Skill editedSkill) {"
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "        skills.setItem(target, editedSkill);"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 291,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public Skill getSkill(Index index) {"
+        "content": ""
       },
       {
         "lineNumber": 292,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return (Skill) skills.asUnmodifiableObservableList().get(index.getZeroBased());"
+        "content": "    /**"
       },
       {
         "lineNumber": 293,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "     * Removes {@code key} from this {@code ResumeBook}."
       },
       {
         "lineNumber": 294,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * {@code key} must exist in the resume book."
       },
       {
         "lineNumber": 295,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public int getSkillSize() {"
+        "content": "    public void deleteSkill(Skill key) {"
       },
       {
         "lineNumber": 297,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        return skills.getSize();"
+        "content": "        int id \u003d key.getId();"
       },
       {
         "lineNumber": 298,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "        skills.remove(key);"
       },
       {
         "lineNumber": 299,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": ""
+        "content": "        for (Item item : resumes) {"
       },
       {
         "lineNumber": 300,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Resumes \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "            Resume resume \u003d (Resume) item;"
       },
       {
         "lineNumber": 301,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": ""
+        "content": "            resume.getSkills().remove(id);"
       },
       {
         "lineNumber": 302,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "    /**"
+        "content": "        }"
       },
       {
         "lineNumber": 303,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Returns true if a resume with the same identity as {@code resume} exists in the resume book."
+        "content": "    }"
       },
       {
         "lineNumber": 304,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 305,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public boolean hasResume(Resume resume) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 306,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        requireNonNull(resume);"
+        "content": "    public Skill getSkill(Index index) {"
       },
       {
         "lineNumber": 307,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return resumes.contains(resume);"
+        "content": "        return (Skill) skills.asUnmodifiableObservableList().get(index.getZeroBased());"
       },
       {
         "lineNumber": 308,
@@ -33519,399 +33830,399 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "    @Override"
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Adds a resume to the resume book."
+        "content": "    public int getSkillSize() {"
       },
       {
         "lineNumber": 312,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * The resume must not already exist in the resume book."
+        "content": "        return skills.getSize();"
       },
       {
         "lineNumber": 313,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 314,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void addResume(Resume resume) {"
+        "content": ""
       },
       {
         "lineNumber": 315,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        requireNonNull(resume);"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Resumes \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 316,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        resumes.add(resume);"
+        "content": ""
       },
       {
         "lineNumber": 317,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 318,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * Returns true if a resume with the same identity as {@code resume} exists in the resume book."
       },
       {
         "lineNumber": 319,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 320,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Replaces the given resume {@code target} in the list with {@code editedResume}."
+        "content": "    public boolean hasResume(Resume resume) {"
       },
       {
         "lineNumber": 321,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * {@code target} must exist in the resume book."
+        "content": "        requireNonNull(resume);"
       },
       {
         "lineNumber": 322,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * The identity of {@code editedResume} must not be the same as another existing resume in the resume book."
+        "content": "        return resumes.contains(resume);"
       },
       {
         "lineNumber": 323,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 324,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void setResume(Resume target, Resume editedResume) {"
+        "content": ""
       },
       {
         "lineNumber": 325,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        resumes.setItem(target, editedResume);"
+        "content": "    /**"
       },
       {
         "lineNumber": 326,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "     * Adds a resume to the resume book."
       },
       {
         "lineNumber": 327,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * The resume must not already exist in the resume book."
       },
       {
         "lineNumber": 328,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 329,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * Removes {@code key} from this {@code ResumeBook}."
+        "content": "    public void addResume(Resume resume) {"
       },
       {
         "lineNumber": 330,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     * {@code key} must exist in the resume book."
+        "content": "        requireNonNull(resume);"
       },
       {
         "lineNumber": 331,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "     */"
+        "content": "        resumes.add(resume);"
       },
       {
         "lineNumber": 332,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void deleteResume(Resume key) {"
+        "content": "    }"
       },
       {
         "lineNumber": 333,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "        resumes.remove(key);"
+        "content": ""
       },
       {
         "lineNumber": 334,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 335,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * Replaces the given resume {@code target} in the list with {@code editedResume}."
       },
       {
         "lineNumber": 336,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "     * {@code target} must exist in the resume book."
       },
       {
         "lineNumber": 337,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    public Resume getResume(Index index) {"
+        "content": "     * The identity of {@code editedResume} must not be the same as another existing resume in the resume book."
       },
       {
         "lineNumber": 338,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "        return (Resume) resumes.asUnmodifiableObservableList().get(index.getZeroBased());"
+        "content": "     */"
       },
       {
         "lineNumber": 339,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "    public void setResume(Resume target, Resume editedResume) {"
       },
       {
         "lineNumber": 340,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "        resumes.setItem(target, editedResume);"
       },
       {
         "lineNumber": 341,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 342,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    public int getResumeSize() {"
+        "content": ""
       },
       {
         "lineNumber": 343,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "        return resumes.getSize();"
+        "content": "    /**"
       },
       {
         "lineNumber": 344,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "     * Removes {@code key} from this {@code ResumeBook}."
       },
       {
         "lineNumber": 345,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "     * {@code key} must exist in the resume book."
       },
       {
         "lineNumber": 346,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Util methods \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "     */"
       },
       {
         "lineNumber": 347,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    public void deleteResume(Resume key) {"
       },
       {
         "lineNumber": 348,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    @Override"
+        "content": "        resumes.remove(key);"
       },
       {
         "lineNumber": 349,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public String toString() {"
+        "content": "    }"
       },
       {
         "lineNumber": 350,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return itemsToDisplay.asUnmodifiableObservableList().size() + \" items\";"
+        "content": ""
       },
       {
         "lineNumber": 351,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        // TODO: refine later"
+        "content": "    @Override"
       },
       {
         "lineNumber": 352,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "    public Resume getResume(Index index) {"
       },
       {
         "lineNumber": 353,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": ""
+        "content": "        return (Resume) resumes.asUnmodifiableObservableList().get(index.getZeroBased());"
       },
       {
         "lineNumber": 354,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 355,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    public Person getUser() {"
+        "content": ""
       },
       {
         "lineNumber": 356,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return this.user;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 357,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "    public int getResumeSize() {"
       },
       {
         "lineNumber": 358,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": ""
+        "content": "        return resumes.getSize();"
       },
       {
         "lineNumber": 359,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 360,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    public ObservableList\u003cItem\u003e getItemToDisplayList() {"
+        "content": ""
       },
       {
         "lineNumber": 361,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return itemsToDisplay.asUnmodifiableObservableList();"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Util methods \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 362,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 363,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 364,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 365,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public UniqueItemList getInternshipList() {"
+        "content": "        return itemsToDisplay.asUnmodifiableObservableList().size() + \" items\";"
       },
       {
         "lineNumber": 366,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return internships;"
+        "content": "        // TODO: refine later"
       },
       {
         "lineNumber": 367,
@@ -33939,14 +34250,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public UniqueItemList getProjectList() {"
+        "content": "    public Person getUser() {"
       },
       {
         "lineNumber": 371,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return projects;"
+        "content": "        return this.user;"
       },
       {
         "lineNumber": 372,
@@ -33974,14 +34285,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public UniqueItemList getSkillList() {"
+        "content": "    public ObservableList\u003cItem\u003e getItemToDisplayList() {"
       },
       {
         "lineNumber": 376,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return skills;"
+        "content": "        return itemsToDisplay.asUnmodifiableObservableList();"
       },
       {
         "lineNumber": 377,
@@ -34009,14 +34320,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public UniqueItemList getResumeList() {"
+        "content": "    public UniqueItemList getInternshipList() {"
       },
       {
         "lineNumber": 381,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return resumes;"
+        "content": "        return internships;"
       },
       {
         "lineNumber": 382,
@@ -34044,192 +34355,647 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    public UniqueItemList getProjectList() {"
       },
       {
         "lineNumber": 386,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "        return projects;"
       },
       {
         "lineNumber": 387,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "                || (other instanceof ResumeBook // instanceof handles nulls"
+        "content": "    }"
       },
       {
         "lineNumber": 388,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "                \u0026\u0026 user.equals(((ResumeBook) other).user)"
+        "content": ""
       },
       {
         "lineNumber": 389,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "                \u0026\u0026 itemsToDisplay.equals(((ResumeBook) other).itemsToDisplay))"
+        "content": "    @Override"
       },
       {
         "lineNumber": 390,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "                \u0026\u0026 internships.equals(((ResumeBook) other).internships)"
+        "content": "    public UniqueItemList getSkillList() {"
       },
       {
         "lineNumber": 391,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "                \u0026\u0026 projects.equals(((ResumeBook) other).projects)"
+        "content": "        return skills;"
       },
       {
         "lineNumber": 392,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "                \u0026\u0026 skills.equals(((ResumeBook) other).skills)"
+        "content": "    }"
       },
       {
         "lineNumber": 393,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "                \u0026\u0026 resumes.equals(((ResumeBook) other).resumes);"
+        "content": ""
       },
       {
         "lineNumber": 394,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 395,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    public UniqueItemList getResumeList() {"
       },
       {
         "lineNumber": 396,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    @Override"
+        "content": "        return resumes;"
       },
       {
         "lineNumber": 397,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public int hashCode() {"
+        "content": "    }"
       },
       {
         "lineNumber": 398,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return itemsToDisplay.hashCode();"
+        "content": ""
       },
       {
         "lineNumber": 399,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 400,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 401,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    //STUBS"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 402,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public UniqueItemList getPersonalDetailList() {"
+        "content": "                || (other instanceof ResumeBook // instanceof handles nulls"
       },
       {
         "lineNumber": 403,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return new UniqueItemList();"
+        "content": "                \u0026\u0026 user.equals(((ResumeBook) other).user)"
       },
       {
         "lineNumber": 404,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "                \u0026\u0026 itemsToDisplay.equals(((ResumeBook) other).itemsToDisplay))"
       },
       {
         "lineNumber": 405,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public boolean hasItem(Item item) {"
+        "content": "                \u0026\u0026 internships.equals(((ResumeBook) other).internships)"
       },
       {
         "lineNumber": 406,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        return false;"
+        "content": "                \u0026\u0026 projects.equals(((ResumeBook) other).projects)"
       },
       {
         "lineNumber": 407,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    }"
+        "content": "                \u0026\u0026 skills.equals(((ResumeBook) other).skills)"
       },
       {
         "lineNumber": 408,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void addItem(Item item) {}"
+        "content": "                \u0026\u0026 resumes.equals(((ResumeBook) other).resumes);"
       },
       {
         "lineNumber": 409,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void deleteItem(Item item) {}"
+        "content": "    }"
       },
       {
         "lineNumber": 410,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "    public void setItem(Item target, Item edit) {}"
+        "content": ""
       },
       {
         "lineNumber": 411,
         "author": {
-          "gitId": "nhamhung"
+          "gitId": "duongphammmm"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 412,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 413,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        return itemsToDisplay.hashCode();"
+      },
+      {
+        "lineNumber": 414,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 415,
+        "author": {
+          "gitId": "duongphammmm"
         },
         "content": ""
       },
       {
-        "lineNumber": 412,
+        "lineNumber": 416,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    //STUBS"
+      },
+      {
+        "lineNumber": 417,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public UniqueItemList getPersonalDetailList() {"
+      },
+      {
+        "lineNumber": 418,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        return new UniqueItemList();"
+      },
+      {
+        "lineNumber": 419,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 420,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 421,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public Resume getResumeByIndex(int index) {"
+      },
+      {
+        "lineNumber": 422,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (Item res : resumes) {"
+      },
+      {
+        "lineNumber": 423,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            if (res.getId() \u003d\u003d index) {"
+      },
+      {
+        "lineNumber": 424,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                return (Resume) res;"
+      },
+      {
+        "lineNumber": 425,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 426,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 427,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 428,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 429,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 430,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 431,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public boolean hasResumeId(int resumeIndex) {"
+      },
+      {
+        "lineNumber": 432,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (Item item : resumes) {"
+      },
+      {
+        "lineNumber": 433,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            if (item.getId() \u003d\u003d resumeIndex) {"
+      },
+      {
+        "lineNumber": 434,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                return true;"
+      },
+      {
+        "lineNumber": 435,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 436,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 437,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 438,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 439,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 440,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 441,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public boolean hasInternshipId(int i) {"
+      },
+      {
+        "lineNumber": 442,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (Item item : internships) {"
+      },
+      {
+        "lineNumber": 443,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            if (item.getId() \u003d\u003d i) {"
+      },
+      {
+        "lineNumber": 444,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                return true;"
+      },
+      {
+        "lineNumber": 445,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 446,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 447,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 448,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 449,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 450,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 451,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public boolean hasProjectId(int i) {"
+      },
+      {
+        "lineNumber": 452,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (Item item : projects) {"
+      },
+      {
+        "lineNumber": 453,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            if (item.getId() \u003d\u003d i) {"
+      },
+      {
+        "lineNumber": 454,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                return true;"
+      },
+      {
+        "lineNumber": 455,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 456,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 457,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 458,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 459,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 460,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 461,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public boolean hasSkillId(int i) {"
+      },
+      {
+        "lineNumber": 462,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (Item item : skills) {"
+      },
+      {
+        "lineNumber": 463,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            if (item.getId() \u003d\u003d i) {"
+      },
+      {
+        "lineNumber": 464,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                return true;"
+      },
+      {
+        "lineNumber": 465,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 466,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 467,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 468,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 469,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 470,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public boolean hasItem(Item item) {"
+      },
+      {
+        "lineNumber": 471,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 472,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 473,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public void addItem(Item item) {}"
+      },
+      {
+        "lineNumber": 474,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public void deleteItem(Item item) {}"
+      },
+      {
+        "lineNumber": 475,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    public void setItem(Item target, Item edit) {}"
+      },
+      {
+        "lineNumber": 476,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 477,
         "author": {
           "gitId": "duongphammmm"
         },
@@ -34238,7 +35004,8 @@
     ],
     "authorContributionMap": {
       "helloImHai": 19,
-      "nhamhung": 10,
+      "wardetu": 66,
+      "nhamhung": 9,
       "duongphammmm": 380,
       "chrisjwelly": 3
     }
@@ -37734,7 +38501,7 @@
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public void addInternships(int value) {"
+        "content": "    public void addInternship(int value) {"
       },
       {
         "lineNumber": 34,
@@ -37769,189 +38536,189 @@
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        for (int i : values) {"
+        "content": "        internships.clear();"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "            internships.add(i);"
+        "content": "        for (int i : values) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        }"
+        "content": "            internships.add(i);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public TreeSet\u003cInteger\u003e getInternships() {"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        return this.internships;"
+        "content": "    public TreeSet\u003cInteger\u003e getInternships() {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    }"
+        "content": "        return this.internships;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public TreeSet\u003cInteger\u003e getProjects() {"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        return this.projects;"
+        "content": "    public void addProject(int value) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    }"
+        "content": "        projects.add(value);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public TreeSet\u003cInteger\u003e getSkills() {"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        return this.skills;"
+        "content": "    public TreeSet\u003cInteger\u003e getProjects() {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    }"
+        "content": "        return this.projects;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public String getSummary() {"
+        "content": "    public void setProjects(int... values) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+        "content": "        projects.clear();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        builder.append(getInternships().size())"
+        "content": "        for (int i : values) {"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "                .append(\" internship(s), \")"
+        "content": "            projects.add(i);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "                .append(getProjects().size())"
+        "content": "        }"
       },
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "                .append(\" project(s), \")"
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "                .append(getSkills().size())"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "                .append(\" skill(s).\");"
+        "content": "    public void addSkill(int value) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        return builder.toString();"
+        "content": "        skills.add(value);"
       },
       {
         "lineNumber": 65,
@@ -37972,59 +38739,220 @@
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    @Override"
+        "content": "    public TreeSet\u003cInteger\u003e getSkills() {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public String toString() {"
+        "content": "        return this.skills;"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        builder.append(\"Resume: \")"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "                .append(super.toString()).append(\"\\n\")"
+        "content": "    public void setSkills(int... values) {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "                .append(getSummary());"
+        "content": "        skills.clear();"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        return builder.toString();"
+        "content": "        for (int i : values) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    }"
+        "content": "            skills.add(i);"
       },
       {
         "lineNumber": 75,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public String getSummary() {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        builder.append(getInternships().size())"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "                .append(\" internship(s), \")"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                .append(getProjects().size())"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "                .append(\" project(s), \")"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                .append(getSkills().size())"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                .append(\" skill(s).\");"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return builder.toString();"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        builder.append(\"Resume: \")"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "                .append(super.toString()).append(\"\\n\")"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                .append(getSummary());"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return builder.toString();"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
         "author": {
           "gitId": "wardetu"
         },
@@ -38032,7 +38960,7 @@
       }
     ],
     "authorContributionMap": {
-      "wardetu": 71,
+      "wardetu": 94,
       "duongphammmm": 4
     }
   },
@@ -46274,84 +47202,84 @@
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": " * Jackson-friendly version of {@link Resume}."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "/**"
+        "content": " */"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "wardetu"
         },
-        "content": " * Jackson-friendly version of {@link Resume}."
+        "content": "public class JsonAdaptedResume {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "wardetu"
         },
-        "content": " */"
+        "content": "    public static final String MISSING_FIELD_MESSAGE_FORMAT \u003d \"Person\u0027s %s field is missing!\";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "public class JsonAdaptedResume {"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public static final String MISSING_FIELD_MESSAGE_FORMAT \u003d \"Person\u0027s %s field is missing!\";"
+        "content": "    private final String name;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "    private final int id;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    private final String name;"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    private final int id;"
+        "content": "    private final List\u003cInteger\u003e internshipIndices \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "    private final List\u003cInteger\u003e projectIndices \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    private final List\u003cInteger\u003e internshipIndices \u003d new ArrayList\u003c\u003e();"
+        "content": "    private final List\u003cInteger\u003e skillIndices \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 28,
@@ -46414,255 +47342,381 @@
         "author": {
           "gitId": "wardetu"
         },
-        "content": "                             @JsonProperty(\"tags\") List\u003cJsonAdaptedTag\u003e tags) {"
+        "content": "                             @JsonProperty(\"projects\") List\u003cInteger\u003e projectIndices,"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        this.name \u003d name;"
+        "content": "                             @JsonProperty(\"skills\") List\u003cInteger\u003e skillIndices,"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        this.id \u003d id;"
+        "content": "                             @JsonProperty(\"tags\") List\u003cJsonAdaptedTag\u003e tags) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        if (tags !\u003d null) {"
+        "content": "        this.name \u003d name;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "            this.tagged.addAll(tags);"
+        "content": "        this.id \u003d id;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        }"
+        "content": "        if (tags !\u003d null) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        if (internshipIndices !\u003d null) {"
+        "content": "            this.tagged.addAll(tags);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "            this.internshipIndices.addAll(internshipIndices);"
+        "content": "        }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        }"
+        "content": "        if (internshipIndices !\u003d null) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    }"
+        "content": "            this.internshipIndices.addAll(internshipIndices);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    /**"
+        "content": "        if (projectIndices !\u003d null) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "     * Converts a given {@code Resume} into this class for Jackson use."
+        "content": "            this.internshipIndices.addAll(projectIndices);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "     */"
+        "content": "        }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public JsonAdaptedResume(Resume res) {"
+        "content": "        if (skillIndices !\u003d null) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        this.name \u003d res.getName().fullName;"
+        "content": "            this.internshipIndices.addAll(skillIndices);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        this.id \u003d res.getId();"
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        tagged.addAll(res.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList()));"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        internshipIndices.addAll(res.getInternships());"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    }"
+        "content": "     * Converts a given {@code Resume} into this class for Jackson use."
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "wardetu"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    /**"
+        "content": "    public JsonAdaptedResume(Resume res) {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "     * Converts this Jackson-friendly adapted person object into the model\u0027s {@code Resume} object."
+        "content": "        this.name \u003d res.getName().fullName;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "     */"
+        "content": "        this.id \u003d res.getId();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    public Resume toModelType() throws IllegalValueException {"
+        "content": "        tagged.addAll(res.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList()));"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        final List\u003cTag\u003e tags \u003d new ArrayList\u003c\u003e();"
+        "content": "        internshipIndices.addAll(res.getInternships());"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        for (JsonAdaptedTag tag : tagged) {"
+        "content": "        projectIndices.addAll(res.getProjects());"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "            tags.add(tag.toModelType());"
+        "content": "        skillIndices.addAll(res.getSkills());"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        Resume resume \u003d new Resume(new Name(name), id, Set.copyOf(tags));"
+        "content": "    }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        for (int internship : internshipIndices) {"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "            resume.addInternships(internship);"
+        "content": "    /**"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        }"
+        "content": "     * Converts this Jackson-friendly adapted person object into the model\u0027s {@code Resume} object."
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "        return resume;"
+        "content": "     */"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "    }"
+        "content": "    public Resume toModelType() throws IllegalValueException {"
       },
       {
         "lineNumber": 72,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        final List\u003cTag\u003e tags \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (JsonAdaptedTag tag : tagged) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            tags.add(tag.toModelType());"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        Resume resume \u003d new Resume(new Name(name), id, Set.copyOf(tags));"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (int internship : internshipIndices) {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            resume.addInternship(internship);"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (int project : projectIndices) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            resume.addProject(project);"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        for (int skill : skillIndices) {"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            resume.addSkill(skill);"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        return resume;"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 90,
         "author": {
           "gitId": "wardetu"
         },
@@ -46670,7 +47724,7 @@
       }
     ],
     "authorContributionMap": {
-      "wardetu": 72
+      "wardetu": 90
     }
   },
   {
@@ -54517,6 +55571,72 @@
     }
   },
   {
+    "path": "src/main/resources/view/PersonListPanel.fxml",
+    "fileType": "fxml",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.control.ListView?\u003e"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003cVBox xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "nhamhung"
+        },
+        "content": "  \u003cListView fx:id\u003d\"personListView\" VBox.vgrow\u003d\"ALWAYS\" styleClass\u003d\"pane-with-border\"/\u003e"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c/VBox\u003e"
+      }
+    ],
+    "authorContributionMap": {
+      "nhamhung": 1,
+      "-": 7
+    }
+  },
+  {
     "path": "src/main/resources/view/Profile.fxml",
     "fileType": "fxml",
     "lines": [
@@ -54609,7 +55729,7 @@
         "author": {
           "gitId": "nhamhung"
         },
-        "content": "      \u003cImageView fx:id\u003d\"profilePicture\" fitHeight\u003d\"100.0\" fitWidth\u003d\"100.0\" pickOnBounds\u003d\"true\" preserveRatio\u003d\"true\" /\u003e"
+        "content": "      \u003cImageView fx:id\u003d\"profilePicture\" fitHeight\u003d\"150.0\" fitWidth\u003d\"150.0\" pickOnBounds\u003d\"true\" preserveRatio\u003d\"true\" /\u003e"
       },
       {
         "lineNumber": 14,
@@ -70354,35 +71474,35 @@
       {
         "lineNumber": 123,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": ""
+        "content": "        // TODO: fix the stub methods"
       },
       {
         "lineNumber": 124,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
         "content": "        @Override"
       },
       {
         "lineNumber": 125,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        public Person getUser() {"
+        "content": "        public boolean hasSkillId(int i) {"
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "            return user;"
+        "content": "            return false;"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
         "content": "        }"
       },
@@ -70405,14 +71525,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public ObservableList\u003cItem\u003e getItemToDisplayList() {"
+        "content": "        public Person getUser() {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "            return itemsToDisplay;"
+        "content": "            return user;"
       },
       {
         "lineNumber": 132,
@@ -70440,14 +71560,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public UniqueItemList getInternshipList() {"
+        "content": "        public ObservableList\u003cItem\u003e getItemToDisplayList() {"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "            return internships;"
+        "content": "            return itemsToDisplay;"
       },
       {
         "lineNumber": 137,
@@ -70475,14 +71595,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public UniqueItemList getProjectList() {"
+        "content": "        public UniqueItemList getInternshipList() {"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "            return projects;"
+        "content": "            return internships;"
       },
       {
         "lineNumber": 142,
@@ -70510,14 +71630,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public UniqueItemList getSkillList() {"
+        "content": "        public UniqueItemList getProjectList() {"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "            return skills;"
+        "content": "            return projects;"
       },
       {
         "lineNumber": 147,
@@ -70545,14 +71665,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public UniqueItemList getResumeList() {"
+        "content": "        public UniqueItemList getSkillList() {"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "            return resumes;"
+        "content": "            return skills;"
       },
       {
         "lineNumber": 152,
@@ -70573,42 +71693,42 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        // STUB"
+        "content": "        @Override"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        @Override"
+        "content": "        public UniqueItemList getResumeList() {"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public UniqueItemList getPersonalDetailList() {"
+        "content": "            return resumes;"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "            return resumes;"
+        "content": "        }"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 159,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "        // STUB"
       },
       {
         "lineNumber": 160,
@@ -70622,203 +71742,203 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public Internship getInternship(Index index) {"
+        "content": "        public UniqueItemList getPersonalDetailList() {"
       },
       {
         "lineNumber": 162,
         "author": {
-          "gitId": "wardetu"
+          "gitId": "duongphammmm"
         },
-        "content": "            return new Internship(new Name(\"Company 1\"), \"Software Engineer\", new Time(\"02-2019\"),"
+        "content": "            return resumes;"
       },
       {
         "lineNumber": 163,
         "author": {
-          "gitId": "wardetu"
+          "gitId": "duongphammmm"
         },
-        "content": "                    new Time(\"05-2020\"), \"I did nothing\", new HashSet\u003c\u003e());"
+        "content": "        }"
       },
       {
         "lineNumber": 164,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 165,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": ""
+        "content": "        @Override"
       },
       {
         "lineNumber": 166,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        @Override"
+        "content": "        public boolean hasResumeId(int resumeIndex) {"
       },
       {
         "lineNumber": 167,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        public Project getProject(Index index) {"
+        "content": "            return false;"
       },
       {
         "lineNumber": 168,
         "author": {
-          "gitId": "duongphammmm"
-        },
-        "content": "            return new Project(new Name(\"Project 1\"), new Time(\"01-2020\"), new Website(\"www.website.com\"),"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "duongphammmm"
-        },
-        "content": "                    \"I did nothing\", new HashSet\u003c\u003e());"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 169,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
         "content": ""
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 170,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
         "content": "        @Override"
       },
       {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "        public boolean hasInternshipId(int i) {"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            return false;"
+      },
+      {
         "lineNumber": 173,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        public Skill getSkill(Index index) {"
+        "content": "        }"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "wardetu"
         },
-        "content": "            return new Skill(new Name(\"Useless skill 1\"), Level.ADVANCED, new HashSet\u003c\u003e(), -1);"
+        "content": ""
       },
       {
         "lineNumber": 175,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "        }"
+        "content": "        @Override"
       },
       {
         "lineNumber": 176,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": ""
+        "content": "        public boolean hasProjectId(int i) {"
       },
       {
         "lineNumber": 177,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
-        "content": "        @Override"
+        "content": "            return false;"
       },
       {
         "lineNumber": 178,
         "author": {
-          "gitId": "helloImHai"
-        },
-        "content": "        public Resume getResume(Index index) {"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "helloImHai"
-        },
-        "content": "            return new Resume(new Name(\"Resume 1\"), new HashSet\u003c\u003e());"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 179,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "wardetu"
         },
         "content": ""
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 180,
         "author": {
-          "gitId": "helloImHai"
+          "gitId": "duongphammmm"
         },
         "content": "        @Override"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 181,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public int getInternshipSize() {"
+        "content": "        public Internship getInternship(Index index) {"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "            return new Internship(new Name(\"Company 1\"), \"Software Engineer\", new Time(\"02-2019\"),"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "wardetu"
+        },
+        "content": "                    new Time(\"05-2020\"), \"I did nothing\", new HashSet\u003c\u003e());"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "            return 1;"
+        "content": "        }"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "        @Override"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        @Override"
+        "content": "        public Project getProject(Index index) {"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public int getProjectSize() {"
+        "content": "            return new Project(new Name(\"Project 1\"), new Time(\"01-2020\"), new Website(\"www.website.com\"),"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "            return 1;"
+        "content": "                    \"I did nothing\", new HashSet\u003c\u003e());"
       },
       {
         "lineNumber": 190,
@@ -70846,14 +71966,14 @@
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": "        public int getSkillSize() {"
+        "content": "        public Skill getSkill(Index index) {"
       },
       {
         "lineNumber": 194,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "wardetu"
         },
-        "content": "            return 1;"
+        "content": "            return new Skill(new Name(\"Useless skill 1\"), Level.ADVANCED, new HashSet\u003c\u003e(), -1);"
       },
       {
         "lineNumber": 195,
@@ -70872,23 +71992,23 @@
       {
         "lineNumber": 197,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
         "content": "        @Override"
       },
       {
         "lineNumber": 198,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "        public int getResumeSize() {"
+        "content": "        public Resume getResume(Index index) {"
       },
       {
         "lineNumber": 199,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "            return 1;"
+        "content": "            return new Resume(new Name(\"Resume 1\"), new HashSet\u003c\u003e());"
       },
       {
         "lineNumber": 200,
@@ -70907,19 +72027,159 @@
       {
         "lineNumber": 202,
         "author": {
-          "gitId": "duongphammmm"
+          "gitId": "helloImHai"
         },
-        "content": "    }"
+        "content": "        @Override"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "duongphammmm"
         },
-        "content": ""
+        "content": "        public int getInternshipSize() {"
       },
       {
         "lineNumber": 204,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "            return 1;"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        public int getProjectSize() {"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "            return 1;"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        public int getSkillSize() {"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "            return 1;"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "        public int getResumeSize() {"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "            return 1;"
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "helloImHai"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "duongphammmm"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 224,
         "author": {
           "gitId": "duongphammmm"
         },
@@ -70928,7 +72188,7 @@
     ],
     "authorContributionMap": {
       "helloImHai": 15,
-      "wardetu": 26,
+      "wardetu": 46,
       "duongphammmm": 163
     }
   },

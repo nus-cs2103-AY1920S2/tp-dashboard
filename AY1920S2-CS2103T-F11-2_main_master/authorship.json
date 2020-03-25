@@ -10646,9 +10646,9 @@
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "Yonggiee"
+          "gitId": "ziyingli"
         },
-        "content": "                : new Gender(\"male\");"
+        "content": "                : new Gender(\"\");"
       },
       {
         "lineNumber": 65,
@@ -10932,8 +10932,8 @@
       }
     ],
     "authorContributionMap": {
-      "Yonggiee": 19,
-      "ziyingli": 6,
+      "Yonggiee": 18,
+      "ziyingli": 7,
       "tohkerwei": 4,
       "Dban1": 12,
       "AaronCQL": 17,
@@ -14899,6 +14899,904 @@
     "authorContributionMap": {
       "Dban1": 32,
       "-": 88
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/model/CommandHistory.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "package seedu.address.model;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import seedu.address.storage.CommandHistoryStorage;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": " * This represents the model of the command history."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "public class CommandHistory {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final int START_INDEX \u003d 0;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final int MAX_HISTORY_SIZE \u003d 100;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final String EMPTY_STRING \u003d \"\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private ArrayList\u003cString\u003e history;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private int index;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private CommandHistoryStorage commandHistoryStorage;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Default constructor for this class."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public CommandHistory() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        this.commandHistoryStorage \u003d new CommandHistoryStorage();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        initialiseCommandHistory();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Initialises the history from the storage."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private void initialiseCommandHistory() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        history \u003d new ArrayList\u003cString\u003e(commandHistoryStorage.readCommandHistory());"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        index \u003d history.size();"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private boolean isAtStart() {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return index \u003d\u003d START_INDEX;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private boolean isAtEnd() {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return index \u003d\u003d history.size();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private boolean hasNoHistory() {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return history.size() \u003d\u003d START_INDEX;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private String getMostRecentCommand() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return history.get(history.size() - 1);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private boolean isEmptyString(String toTest) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return toTest.equals(EMPTY_STRING);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Returns true iff the parameter {@code toTest} is different from the most"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * recent command, or if no history exists."
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * @param toTest parameter to test."
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * @return true iff toTest is different from the most recent command."
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private boolean isSimilarToMostRecentCommand(String toTest) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        if (hasNoHistory()) {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            return false; // no history means toTest is unique"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return getMostRecentCommand().equals(toTest);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private boolean isAtMaxCapacity() {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return history.size() \u003e\u003d MAX_HISTORY_SIZE;"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Adds the user input {@code command} String to this model and to the"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * {@code commandHistoryStorage}."
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * @param command the user input command."
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void add(String command) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        if (isEmptyString(command)) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        if (isSimilarToMostRecentCommand(command)) {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        if (isAtMaxCapacity()) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            history.remove(0);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        history.add(command);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        index \u003d history.size();"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistoryStorage.saveCommandHistory(history);"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public String getPrevCommand() {"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        if (isAtStart()) {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            return hasNoHistory() ? EMPTY_STRING : history.get(index);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        index--;"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return history.get(index);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public String getNextCommand() {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        if (isAtEnd()) {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            return EMPTY_STRING;"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        index++;"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return isAtEnd() ? EMPTY_STRING : history.get(index);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Returns a copy of the history list. Any modifications done to this returned"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * list will not affect the list stored in this class."
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public ArrayList\u003cString\u003e getHistory() {"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return new ArrayList\u003cString\u003e(history);"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Clears and resets the history and the index."
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void clearHistory() {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        history.clear();"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        index \u003d 0;"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AaronCQL": 127
     }
   },
   {
@@ -24614,6 +25512,512 @@
     }
   },
   {
+    "path": "src/main/java/seedu/address/storage/CommandHistoryStorage.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "package seedu.address.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.io.BufferedReader;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.io.BufferedWriter;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.nio.file.Files;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.nio.file.Paths;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": " * This represents the storage for the command history."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "public class CommandHistoryStorage {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private Path commandHistoryPath \u003d Paths.get(\"data\", \"command.txt\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Creates an empty new file for use in this class later."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private void createNewFile() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        File file \u003d commandHistoryPath.toFile();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        file.getParentFile().mkdirs();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            file.createNewFile();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        } catch (IOException ex) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            System.out.println(ex.getStackTrace());"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Returns an ArrayList of each command string from storage."
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public ArrayList\u003cString\u003e readCommandHistory() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        ArrayList\u003cString\u003e commands \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            BufferedReader reader \u003d Files.newBufferedReader(commandHistoryPath);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            String line \u003d reader.readLine();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            while (line !\u003d null) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                commands.add(line);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                line \u003d reader.readLine();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            reader.close();"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        } catch (IOException ex) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            // create new file"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            createNewFile();"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return commands;"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Saves the given command history to the storage."
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * @param history cannot be null."
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void saveCommandHistory(ArrayList\u003cString\u003e history) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            BufferedWriter writer \u003d Files.newBufferedWriter(commandHistoryPath);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            for (String command : history) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                writer.write(command);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                writer.newLine();"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            writer.close();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        } catch (IOException ex) {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            System.out.println(ex.getStackTrace());"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AaronCQL": 71
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/storage/JsonAdaptedClient.java",
     "fileType": "java",
     "lines": [
@@ -28080,6 +29484,709 @@
     ],
     "authorContributionMap": {
       "Dban1": 46
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/ui/CommandBox.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.address.ui;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.collections.ObservableList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import javafx.event.EventHandler;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.fxml.FXML;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.scene.control.TextField;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import javafx.scene.input.KeyCode;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import javafx.scene.input.KeyEvent;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.scene.layout.Region;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.logic.commands.CommandResult;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import seedu.address.model.CommandHistory;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * The UI component that is responsible for receiving user command inputs."
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class CommandBox extends UiPart\u003cRegion\u003e {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final String ERROR_STYLE_CLASS \u003d \"error\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private static final String FXML \u003d \"CommandBox.fxml\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    // A generous estimate for the length of the user input string"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final int CARET_POSITION_INDEX \u003d Integer.MAX_VALUE;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private final CommandExecutor commandExecutor;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private final CommandHistory commandHistory \u003d new CommandHistory();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private TextField commandTextField;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public CommandBox(CommandExecutor commandExecutor) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        super(FXML);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        this.commandExecutor \u003d commandExecutor;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        // calls #setStyleToDefault() whenever there is a change to the text of the command box."
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        commandTextField.textProperty().addListener((unused1, unused2, unused3) -\u003e setStyleToDefault());"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandTextField.setOnKeyPressed(new EventHandler\u003cKeyEvent\u003e() {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            public void handle(KeyEvent ke) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                if (ke.getCode() \u003d\u003d KeyCode.UP) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                    String prevCommand \u003d commandHistory.getPrevCommand();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                    commandTextField.setText(prevCommand);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                    commandTextField.positionCaret(CARET_POSITION_INDEX);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                } else if (ke.getCode() \u003d\u003d KeyCode.DOWN) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                    String nextCommand \u003d commandHistory.getNextCommand();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                    commandTextField.setText(nextCommand);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                    commandTextField.positionCaret(CARET_POSITION_INDEX);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        });"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Handles the Enter button pressed event."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private void handleCommandEntered() {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String enteredCommand \u003d commandTextField.getText();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            commandTextField.setText(\"\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "            commandExecutor.execute(enteredCommand);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (CommandException | ParseException e) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            setStyleToIndicateCommandFailure();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(enteredCommand);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Sets the command box style to use the default style."
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private void setStyleToDefault() {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        commandTextField.getStyleClass().remove(ERROR_STYLE_CLASS);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Sets the command box style to indicate a failed command."
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private void setStyleToIndicateCommandFailure() {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        ObservableList\u003cString\u003e styleClass \u003d commandTextField.getStyleClass();"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        if (styleClass.contains(ERROR_STYLE_CLASS)) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return;"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        styleClass.add(ERROR_STYLE_CLASS);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Represents a function that can execute commands."
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @FunctionalInterface"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public interface CommandExecutor {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        /**"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "         * Executes the command and returns the result."
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "         *"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "         * @see seedu.address.logic.Logic#execute(String)"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "         */"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        CommandResult execute(String commandText) throws CommandException, ParseException;"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AaronCQL": 23,
+      "-": 76
     }
   },
   {
@@ -45910,6 +48017,841 @@
     "authorContributionMap": {
       "Dban1": 31,
       "-": 71
+    }
+  },
+  {
+    "path": "src/test/java/seedu/address/model/CommandHistoryTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "package seedu.address.model;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import java.util.Collections;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "public class CommandHistoryTest {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final String EMPTY_STRING \u003d \"\";"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final String VALID_COMMAND_1 \u003d \"edit-c 1 t/\";"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final String VALID_COMMAND_2 \u003d \"edit-c 2 n/Nimar\";"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final int LIST_SIZE_EMPTY \u003d 0;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final int LIST_SIZE_ONE \u003d 1;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private static final int LIST_SIZE_FIVE \u003d 5;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    private final CommandHistory commandHistory \u003d new CommandHistory();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void constructor() {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        // no matter what, history must be initialised"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(commandHistory.getHistory() !\u003d null);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void clearHistory() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(Collections.emptyList(), commandHistory.getHistory());"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void add_emptyString_nothingAdded() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(EMPTY_STRING);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(commandHistory.getHistory().size() \u003d\u003d LIST_SIZE_EMPTY);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void add_similarValidCommandMultipleTimes_onlyOneAdded() {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(commandHistory.getHistory().size() \u003d\u003d LIST_SIZE_ONE);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void add_validCommandMultipleTimes_allAdded() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_2);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_2);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(commandHistory.getHistory().size() \u003d\u003d LIST_SIZE_FIVE);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void getNextCommand_emptyHistory_emptyStringReturned() {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(commandHistory.getNextCommand() \u003d\u003d EMPTY_STRING);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void getPrevCommand_emptyHistory_emptyStringReturned() {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(commandHistory.getPrevCommand() \u003d\u003d EMPTY_STRING);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void getNextCommand_nonEmptyHistory_emptyStringReturned() {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_2);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(commandHistory.getNextCommand() \u003d\u003d EMPTY_STRING);"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void getPrevCommand_oneItemHistory_sameStringReturned() {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String command1 \u003d commandHistory.getPrevCommand();"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String command2 \u003d commandHistory.getPrevCommand();"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String command3 \u003d commandHistory.getPrevCommand();"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String command4 \u003d commandHistory.getPrevCommand();"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String command5 \u003d commandHistory.getPrevCommand();"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(command1 \u003d\u003d VALID_COMMAND_1"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                \u0026\u0026 command2 \u003d\u003d VALID_COMMAND_1"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                \u0026\u0026 command3 \u003d\u003d VALID_COMMAND_1"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                \u0026\u0026 command4 \u003d\u003d VALID_COMMAND_1"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                \u0026\u0026 command5 \u003d\u003d VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void getPrevCommand_twoItemsHistory_correctStringsReturned() {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_2);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String shouldBeValidCommand2 \u003d commandHistory.getPrevCommand();"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String shouldBeValidCommand1 \u003d commandHistory.getPrevCommand();"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(shouldBeValidCommand2 \u003d\u003d VALID_COMMAND_2"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                \u0026\u0026 shouldBeValidCommand1 \u003d\u003d VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void getNextCommand_twoItemsHistoryAfterGetPrevCommand_correctStringReturned() {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.clearHistory(); // sanity check that history is empty"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_1);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.add(VALID_COMMAND_2);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.getPrevCommand(); // returns VALID_COMMAND_2"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        commandHistory.getPrevCommand(); // returns VALID_COMMAND_1"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        String shouldBeValidCommand2 \u003d commandHistory.getNextCommand();"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(shouldBeValidCommand2 \u003d\u003d VALID_COMMAND_2);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AaronCQL": 118
     }
   },
   {

@@ -11186,6 +11186,745 @@
     }
   },
   {
+    "path": "src/main/java/seedu/zerotoone/logic/commands/StartCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "package seedu.zerotoone.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.time.LocalDateTime;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.time.format.DateTimeFormatter;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.time.format.FormatStyle;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.commons.core.Messages;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.model.Model;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.model.exercise.Exercise;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": " * Deletes a exercise identified using it\u0027s displayed index from the exercise list."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "public class StartCommand extends Command {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"start\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d \"Usage: start EXERCISE_ID\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public static final String MESSAGE_START_EXERCISE_SUCCESS \u003d \"Started Exercise: %1$s at \";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public static final String MESSAGE_IN_SESSION \u003d \"There is a workout session already in progress!\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    private final Index exerciseId;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    private final FormatStyle formatStyle \u003d FormatStyle.MEDIUM;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public StartCommand(Index targetIndex) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        requireNonNull(targetIndex);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        this.exerciseId \u003d targetIndex;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        List\u003cExercise\u003e lastShownList \u003d model.getFilteredExerciseList();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        if (exerciseId.getZeroBased() \u003e\u003d lastShownList.size()) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_INDEX);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        Exercise exerciseToStart \u003d lastShownList.get(exerciseId.getZeroBased());"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        if (model.isInSession()) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "            throw new CommandException((MESSAGE_IN_SESSION));"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        LocalDateTime currentDateTime \u003d LocalDateTime.now();"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        model.startSession(exerciseToStart, currentDateTime);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        String formatted \u003d currentDateTime.format(DateTimeFormatter.ofLocalizedDateTime(this.formatStyle));"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        String outputMessage \u003d String.format(MESSAGE_START_EXERCISE_SUCCESS,"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "                exerciseToStart.getExerciseName().toString()) + formatted;"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        return new CommandResult(outputMessage);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "                || (other instanceof StartCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "                \u0026\u0026 exerciseId.equals(((StartCommand) other).exerciseId)); // state check"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "gb3h": 63
+    }
+  },
+  {
+    "path": "src/main/java/seedu/zerotoone/logic/commands/StopCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "package seedu.zerotoone.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.time.LocalDateTime;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.time.format.FormatStyle;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.model.Model;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.model.exercise.Exercise;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": " * Deletes a exercise identified using it\u0027s displayed index from the exercise list."
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "public class StopCommand extends Command {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"stop\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d \"Usage: stop\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public static final String MESSAGE_STOP_SESSION_SUCCESS \u003d \"Successfully completed session\";"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public static final String MESSAGE_NOT_STARTED \u003d \"There is no session in progress!\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    private final FormatStyle formatStyle \u003d FormatStyle.MEDIUM;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public StopCommand() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        List\u003cExercise\u003e lastShownList \u003d model.getFilteredExerciseList();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        if (!model.isInSession()) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "            throw new CommandException((MESSAGE_NOT_STARTED));"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        LocalDateTime currentDateTime \u003d LocalDateTime.now();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        model.stopSession(currentDateTime);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        return new CommandResult(MESSAGE_STOP_SESSION_SUCCESS);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "gb3h": 40
+    }
+  },
+  {
     "path": "src/main/java/seedu/zerotoone/logic/commands/exceptions/CommandException.java",
     "fileType": "java",
     "lines": [
@@ -15377,292 +16116,341 @@
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "gb3h"
         },
-        "content": "import seedu.zerotoone.logic.commands.exercise.ExerciseCommand;"
+        "content": "import seedu.zerotoone.logic.commands.StartCommand;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "gb3h"
         },
-        "content": "import seedu.zerotoone.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.zerotoone.logic.commands.StopCommand;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.logic.parser.exercise.ExerciseCommandParser;"
+        "content": "import seedu.zerotoone.logic.commands.exercise.ExerciseCommand;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": ""
+        "content": "import seedu.zerotoone.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "/**"
+        "content": "import seedu.zerotoone.logic.parser.exercise.ExerciseCommandParser;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": " * Parses user input."
+        "content": "import seedu.zerotoone.logic.parser.session.StartCommandParser;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "public class ParserManager {"
+        "content": "/**"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " * Parses user input."
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": " */"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "     * Used for initial separation of command word and args."
+        "content": "public class ParserManager {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
+        "content": "    /**"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Used for initial separation of command word and args."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Parses user input into command for execution."
+        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "     * @param input full user input string"
+        "content": "    /**"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @return the command based on the user input"
+        "content": "     * Parses user input into command for execution."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "     *"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "     */"
+        "content": "     * @param input full user input string"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    public Command parse(String input) throws ParseException {"
+        "content": "     * @return the command based on the user input"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(input.trim());"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!matcher.matches()) {"
+        "content": "     */"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
+        "content": "    public Command parse(String input) throws ParseException {"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "        }"
+        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(input.trim());"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        if (!matcher.matches()) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
+        "content": "        }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "        switch (commandWord) {"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "        case ExitCommand.COMMAND_WORD:"
+        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new ExitCommand();"
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "        case HelpCommand.COMMAND_WORD:"
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": "            return new HelpCommand();"
+        "content": "        case StartCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "gb3h"
         },
-        "content": "        case ExerciseCommand.COMMAND_WORD:"
+        "content": "            return new StartCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "gb3h"
         },
-        "content": "            return new ExerciseCommandParser().parse(arguments);"
+        "content": "        case StopCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": "        default:"
+        "content": "            return new StopCommand();"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        case ExitCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new HelpCommand();"
       },
       {
         "lineNumber": 53,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "        case ExerciseCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "            return new ExerciseCommandParser().parse(arguments);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
@@ -15671,6 +16459,7 @@
     ],
     "authorContributionMap": {
       "alloystory": 15,
+      "gb3h": 7,
       "-": 38
     }
   },
@@ -19266,6 +20055,239 @@
     }
   },
   {
+    "path": "src/main/java/seedu/zerotoone/logic/parser/session/StartCommandParser.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "package seedu.zerotoone.logic.parser.session;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import static seedu.zerotoone.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.logic.commands.StartCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.logic.parser.Parser;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.logic.parser.exercise.ExerciseParserUtil;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": " * Parses input arguments and creates a new DeleteCommand object"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "public class StartCommandParser implements Parser\u003cStartCommand\u003e {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "     * Parses the given {@code String} of arguments in the context of the DeleteCommand"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "     * and returns a DeleteCommand object for execution."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public StartCommand parse(String args) throws ParseException {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        requireNonNull(args);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        if (args.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "            throw new ParseException("
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, StartCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        Index index \u003d ExerciseParserUtil.parseIndex(args);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        return new StartCommand(index);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "gb3h": 32
+    }
+  },
+  {
     "path": "src/main/java/seedu/zerotoone/logic/parser/util/ArgumentMultimap.java",
     "fileType": "java",
     "lines": [
@@ -21307,656 +22329,726 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": "import java.util.function.Predicate;"
+        "content": "import java.time.LocalDateTime;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "import seedu.zerotoone.commons.core.GuiSettings;"
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.Exercise;"
+        "content": "import seedu.zerotoone.commons.core.GuiSettings;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;"
+        "content": "import seedu.zerotoone.model.exercise.Exercise;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;"
+        "content": "import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": ""
+        "content": "import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
-        "content": " * The API of the Model component."
+        "content": "/**"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": " * The API of the Model component."
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": "public interface Model {"
+        "content": " */"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": "    /** {@code Predicate} that always evaluate to true */"
+        "content": "public interface Model {"
       },
       {
         "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /** {@code Predicate} that always evaluate to true */"
+      },
+      {
+        "lineNumber": 18,
         "author": {
           "gitId": "alloystory"
         },
         "content": "    Predicate\u003cExercise\u003e PREDICATE_SHOW_ALL_EXERCISES \u003d unused -\u003e true;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "alloystory"
-        },
-        "content": "    // -----------------------------------------------------------------------------------------"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    // Common - User Preferences"
+        "content": "    // -----------------------------------------------------------------------------------------"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "    /**"
+        "content": "    // Common - User Preferences"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Replaces user prefs data with the data in {@code userPrefs}."
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Replaces user prefs data with the data in {@code userPrefs}."
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "    void setUserPrefs(ReadOnlyUserPrefs userPrefs);"
+        "content": "     */"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    void setUserPrefs(ReadOnlyUserPrefs userPrefs);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Returns the user prefs."
+        "content": "    /**"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Returns the user prefs."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "    ReadOnlyUserPrefs getUserPrefs();"
+        "content": "     */"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    ReadOnlyUserPrefs getUserPrefs();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Returns the user prefs\u0027 GUI settings."
+        "content": "    /**"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Returns the user prefs\u0027 GUI settings."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    GuiSettings getGuiSettings();"
+        "content": "     */"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    GuiSettings getGuiSettings();"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Sets the user prefs\u0027 GUI settings."
+        "content": "    /**"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Sets the user prefs\u0027 GUI settings."
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "    void setGuiSettings(GuiSettings guiSettings);"
+        "content": "     */"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    void setGuiSettings(GuiSettings guiSettings);"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    // -----------------------------------------------------------------------------------------"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    // Exercise List"
+        "content": "    // -----------------------------------------------------------------------------------------"
       },
       {
         "lineNumber": 43,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "    // Exercise List"
+      },
+      {
+        "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 45,
         "author": {
           "gitId": "alloystory"
         },
         "content": "     * Returns the user prefs\u0027 exercise list file path."
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 47,
         "author": {
           "gitId": "jiachen247"
         },
         "content": "    Path getExerciseListFilePath();"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 50,
         "author": {
           "gitId": "alloystory"
         },
         "content": "     * Sets the user prefs\u0027 exercise list file path."
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 52,
         "author": {
           "gitId": "jiachen247"
         },
         "content": "    void setExerciseListFilePath(Path exerciseListFilePath);"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 55,
         "author": {
           "gitId": "alloystory"
         },
         "content": "     * Replaces exercise list data with the data in {@code exerciseList}."
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 57,
         "author": {
           "gitId": "jiachen247"
         },
         "content": "    void setExerciseList(ReadOnlyExerciseList exerciseList);"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "jiachen247"
-        },
-        "content": "    /** Returns the ExerciseList */"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "jiachen247"
         },
-        "content": "    ReadOnlyExerciseList getExerciseList();"
+        "content": "    /** Returns the ExerciseList */"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "-"
+          "gitId": "jiachen247"
         },
-        "content": ""
+        "content": "    ReadOnlyExerciseList getExerciseList();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 63,
         "author": {
           "gitId": "alloystory"
         },
         "content": "     * Returns true if a exercise with the same identity as {@code exercise} exists in the exercise list."
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 65,
         "author": {
           "gitId": "alloystory"
         },
         "content": "    boolean hasExercise(Exercise exercise);"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "alloystory"
-        },
-        "content": "     * Deletes the given exercise."
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "     * The exercise must exist in the exercise list."
+        "content": "     * Deletes the given exercise."
       },
       {
         "lineNumber": 69,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "     * The exercise must exist in the exercise list."
+      },
+      {
+        "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 71,
         "author": {
           "gitId": "alloystory"
         },
         "content": "    void deleteExercise(Exercise target);"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "alloystory"
-        },
-        "content": "     * Adds the given exercise."
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "     * {@code exercise} must not already exist in the exercise list."
+        "content": "     * Adds the given exercise."
       },
       {
         "lineNumber": 75,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "     * {@code exercise} must not already exist in the exercise list."
+      },
+      {
+        "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 77,
         "author": {
           "gitId": "alloystory"
         },
         "content": "    void addExercise(Exercise exercise);"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "alloystory"
-        },
-        "content": "     * Replaces the given exercise {@code target} with {@code editedExercise}."
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "     * {@code target} must exist in the exercise list."
+        "content": "     * Replaces the given exercise {@code target} with {@code editedExercise}."
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "     * The exercise identity of {@code editedExercise} must not be the same as another"
+        "content": "     * {@code target} must exist in the exercise list."
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "     * existing exercise in the exercise list."
+        "content": "     * The exercise identity of {@code editedExercise} must not be the same as another"
       },
       {
         "lineNumber": 83,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "     * existing exercise in the exercise list."
+      },
+      {
+        "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 85,
         "author": {
           "gitId": "alloystory"
         },
         "content": "    void setExercise(Exercise target, Exercise editedExercise);"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "alloystory"
-        },
-        "content": "    /**"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "     * Returns an unmodifiable view of the list of {@code Exercise} backed by the internal list of"
+        "content": "    /**"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "     * {@code versionedExerciseList}"
+        "content": "     * Returns an unmodifiable view of the list of {@code Exercise} backed by the internal list of"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "     */"
+        "content": "     * {@code versionedExerciseList}"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    ObservableList\u003cExercise\u003e getFilteredExerciseList();"
+        "content": "     */"
       },
       {
         "lineNumber": 91,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": ""
+        "content": "    ObservableList\u003cExercise\u003e getFilteredExerciseList();"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 93,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 94,
         "author": {
           "gitId": "alloystory"
         },
         "content": "     * Updates the filter of the filtered exercise list to filter by the given {@code predicate}."
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
         "content": "     * @throws NullPointerException if {@code predicate} is null."
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 96,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 97,
         "author": {
           "gitId": "alloystory"
         },
         "content": "    void updateFilteredExerciseList(Predicate\u003cExercise\u003e predicate);"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 98,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "     * Returns true if a workout has currently started."
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    boolean isInSession();"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    void startSession(Exercise exerciseToStart, LocalDateTime currentDateTime);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    void stopSession(LocalDateTime currentDateTime);"
+      },
+      {
+        "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
@@ -21965,6 +23057,7 @@
     ],
     "authorContributionMap": {
       "alloystory": 33,
+      "gb3h": 10,
       "jiachen247": 5,
       "-": 59
     }
@@ -22018,359 +23111,359 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": "import java.util.function.Predicate;"
+        "content": "import java.time.LocalDateTime;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": "import java.util.logging.Logger;"
+        "content": "import java.util.Optional;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.collections.transformation.FilteredList;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "import seedu.zerotoone.commons.core.GuiSettings;"
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "import seedu.zerotoone.commons.core.LogsCenter;"
+        "content": "import javafx.collections.transformation.FilteredList;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.Exercise;"
+        "content": "import seedu.zerotoone.commons.core.GuiSettings;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.ExerciseList;"
+        "content": "import seedu.zerotoone.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;"
+        "content": "import seedu.zerotoone.model.exercise.Exercise;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;"
+        "content": "import seedu.zerotoone.model.exercise.ExerciseList;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.userprefs.UserPrefs;"
+        "content": "import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": ""
+        "content": "import seedu.zerotoone.model.session.Session;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "/**"
+        "content": "import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "alloystory"
         },
-        "content": " * Represents the in-memory model of the exercise list data."
+        "content": "import seedu.zerotoone.model.userprefs.UserPrefs;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "public class ModelManager implements Model {"
+        "content": "/**"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(ModelManager.class);"
+        "content": " * Represents the in-memory model of the exercise list data."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "    private final UserPrefs userPrefs;"
+        "content": "public class ModelManager implements Model {"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    private final ExerciseList exerciseList;"
+        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(ModelManager.class);"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    private final FilteredList\u003cExercise\u003e filteredExercises;"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private final UserPrefs userPrefs;"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "    /**"
+        "content": "    private final ExerciseList exerciseList;"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "jiachen247"
+          "gitId": "alloystory"
         },
-        "content": "     * Initializes a ModelManager with the given exerciseList and userPrefs."
+        "content": "    private final FilteredList\u003cExercise\u003e filteredExercises;"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": "     */"
+        "content": "    private Optional\u003cSession\u003e currentSession;"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    public ModelManager(ReadOnlyUserPrefs userPrefs, ReadOnlyExerciseList exerciseList) {"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "        super();"
+        "content": "    /**"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "jiachen247"
         },
-        "content": "        requireAllNonNull(exerciseList, userPrefs);"
+        "content": "     * Initializes a ModelManager with the given exerciseList and userPrefs."
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "        logger.fine(\"Initializing with user prefs \" + userPrefs);"
+        "content": "     */"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": ""
+        "content": "    public ModelManager(ReadOnlyUserPrefs userPrefs, ReadOnlyExerciseList exerciseList) {"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "jiachen247"
+          "gitId": "-"
         },
-        "content": "        this.exerciseList \u003d new ExerciseList(exerciseList);"
+        "content": "        super();"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "-"
+          "gitId": "jiachen247"
         },
-        "content": "        this.userPrefs \u003d new UserPrefs(userPrefs);"
+        "content": "        requireAllNonNull(exerciseList, userPrefs);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        filteredExercises \u003d new FilteredList\u003c\u003e(this.exerciseList.getExerciseList());"
+        "content": "        logger.fine(\"Initializing with user prefs \" + userPrefs);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "-"
+          "gitId": "jiachen247"
         },
-        "content": ""
+        "content": "        this.exerciseList \u003d new ExerciseList(exerciseList);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "    public ModelManager() {"
+        "content": "        this.userPrefs \u003d new UserPrefs(userPrefs);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        this(new UserPrefs(), new ExerciseList());"
+        "content": "        filteredExercises \u003d new FilteredList\u003c\u003e(this.exerciseList.getExerciseList());"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "-"
+          "gitId": "gb3h"
         },
-        "content": "    }"
+        "content": "        this.currentSession \u003d Optional.empty();"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    // -----------------------------------------------------------------------------------------"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    // Common - User Preferences"
+        "content": "    public ModelManager() {"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "    @Override"
+        "content": "        this(new UserPrefs(), new ExerciseList());"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
+        "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(userPrefs);"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "        this.userPrefs.resetData(userPrefs);"
+        "content": "    // -----------------------------------------------------------------------------------------"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "    }"
+        "content": "    // Common - User Preferences"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": "    public ReadOnlyUserPrefs getUserPrefs() {"
+        "content": "        requireNonNull(userPrefs);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "        return userPrefs;"
+        "content": "        this.userPrefs.resetData(userPrefs);"
       },
       {
         "lineNumber": 58,
@@ -22398,14 +23491,14 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public GuiSettings getGuiSettings() {"
+        "content": "    public ReadOnlyUserPrefs getUserPrefs() {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "        return userPrefs.getGuiSettings();"
+        "content": "        return userPrefs;"
       },
       {
         "lineNumber": 63,
@@ -22433,84 +23526,84 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
+        "content": "    public GuiSettings getGuiSettings() {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(guiSettings);"
+        "content": "        return userPrefs.getGuiSettings();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": "        userPrefs.setGuiSettings(guiSettings);"
+        "content": "    }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    // -----------------------------------------------------------------------------------------"
+        "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "    // Exercise List"
+        "content": "        requireNonNull(guiSettings);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "        userPrefs.setGuiSettings(guiSettings);"
       },
       {
         "lineNumber": 74,
-        "author": {
-          "gitId": "jiachen247"
-        },
-        "content": "    public Path getExerciseListFilePath() {"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "jiachen247"
-        },
-        "content": "        return userPrefs.getExerciseListFilePath();"
-      },
-      {
-        "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "    // -----------------------------------------------------------------------------------------"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "    // Exercise List"
       },
       {
         "lineNumber": 78,
@@ -22524,56 +23617,56 @@
         "author": {
           "gitId": "jiachen247"
         },
-        "content": "    public void setExerciseListFilePath(Path exerciseListFilePath) {"
+        "content": "    public Path getExerciseListFilePath() {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "jiachen247"
         },
-        "content": "        requireNonNull(exerciseListFilePath);"
+        "content": "        return userPrefs.getExerciseListFilePath();"
       },
       {
         "lineNumber": 81,
-        "author": {
-          "gitId": "jiachen247"
-        },
-        "content": "        userPrefs.setExerciseListFilePath(exerciseListFilePath);"
-      },
-      {
-        "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "jiachen247"
+        },
+        "content": "    public void setExerciseListFilePath(Path exerciseListFilePath) {"
+      },
+      {
         "lineNumber": 85,
         "author": {
           "gitId": "jiachen247"
         },
-        "content": "    public void setExerciseList(ReadOnlyExerciseList exerciseList) {"
+        "content": "        requireNonNull(exerciseListFilePath);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "jiachen247"
         },
-        "content": "        this.exerciseList.resetData(exerciseList);"
+        "content": "        userPrefs.setExerciseListFilePath(exerciseListFilePath);"
       },
       {
         "lineNumber": 87,
@@ -22601,14 +23694,14 @@
         "author": {
           "gitId": "jiachen247"
         },
-        "content": "    public ReadOnlyExerciseList getExerciseList() {"
+        "content": "    public void setExerciseList(ReadOnlyExerciseList exerciseList) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "jiachen247"
         },
-        "content": "        return exerciseList;"
+        "content": "        this.exerciseList.resetData(exerciseList);"
       },
       {
         "lineNumber": 92,
@@ -22634,58 +23727,58 @@
       {
         "lineNumber": 95,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "jiachen247"
         },
-        "content": "    public boolean hasExercise(Exercise exercise) {"
+        "content": "    public ReadOnlyExerciseList getExerciseList() {"
       },
       {
         "lineNumber": 96,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "jiachen247"
         },
-        "content": "        requireNonNull(exercise);"
+        "content": "        return exerciseList;"
       },
       {
         "lineNumber": 97,
-        "author": {
-          "gitId": "alloystory"
-        },
-        "content": "        return exerciseList.hasExercise(exercise);"
-      },
-      {
-        "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "    public boolean hasExercise(Exercise exercise) {"
+      },
+      {
         "lineNumber": 101,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    public void deleteExercise(Exercise target) {"
+        "content": "        requireNonNull(exercise);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        exerciseList.removeExercise(target);"
+        "content": "        return exerciseList.hasExercise(exercise);"
       },
       {
         "lineNumber": 103,
@@ -22713,98 +23806,98 @@
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    public void addExercise(Exercise exercise) {"
+        "content": "    public void deleteExercise(Exercise target) {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        exerciseList.addExercise(exercise);"
+        "content": "        exerciseList.removeExercise(target);"
       },
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);"
+        "content": "    }"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "    @Override"
+        "content": "    public void addExercise(Exercise exercise) {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    public void setExercise(Exercise target, Exercise editedExercise) {"
+        "content": "        exerciseList.addExercise(exercise);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        requireAllNonNull(target, editedExercise);"
+        "content": "        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);"
       },
       {
         "lineNumber": 114,
-        "author": {
-          "gitId": "alloystory"
-        },
-        "content": "        exerciseList.setExercise(target, editedExercise);"
-      },
-      {
-        "lineNumber": 115,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 115,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 116,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "    public void setExercise(Exercise target, Exercise editedExercise) {"
+      },
+      {
         "lineNumber": 118,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    public ObservableList\u003cExercise\u003e getFilteredExerciseList() {"
+        "content": "        requireAllNonNull(target, editedExercise);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        return filteredExercises;"
+        "content": "        exerciseList.setExercise(target, editedExercise);"
       },
       {
         "lineNumber": 120,
@@ -22832,171 +23925,339 @@
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    public void updateFilteredExerciseList(Predicate\u003cExercise\u003e predicate) {"
+        "content": "    public ObservableList\u003cExercise\u003e getFilteredExerciseList() {"
       },
       {
         "lineNumber": 124,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "        requireNonNull(predicate);"
+        "content": "        return filteredExercises;"
       },
       {
         "lineNumber": 125,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "-"
         },
-        "content": "        filteredExercises.setPredicate(predicate);"
+        "content": "    }"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "    // -----------------------------------------------------------------------------------------"
+        "content": "    public void updateFilteredExerciseList(Predicate\u003cExercise\u003e predicate) {"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "        requireNonNull(predicate);"
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "-"
+          "gitId": "alloystory"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": "        filteredExercises.setPredicate(predicate);"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "-"
         },
-        "content": "        // short circuit if same object"
+        "content": "    }"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": ""
       },
       {
         "lineNumber": 133,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public boolean isInSession() {"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        return this.currentSession.isPresent();"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public void startSession(Exercise exerciseToStart, LocalDateTime currentDateTime) {"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        Session session \u003d new Session(exerciseToStart, currentDateTime);"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        this.currentSession \u003d Optional.of(session);"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public void stopSession(LocalDateTime currentDateTime) {"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        Session completedSession \u003d this.currentSession.get();"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        completedSession.finish(currentDateTime);"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        // do smth like save completed workout"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        this.currentSession \u003d Optional.empty();"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "alloystory"
+        },
+        "content": "    // -----------------------------------------------------------------------------------------"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public boolean equals(Object obj) {"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        // short circuit if same object"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        if (obj \u003d\u003d this) {"
+      },
+      {
+        "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
         "content": "            return true;"
       },
       {
-        "lineNumber": 134,
+        "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 135,
+        "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 136,
+        "lineNumber": 160,
         "author": {
           "gitId": "-"
         },
         "content": "        // instanceof handles nulls"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 161,
         "author": {
           "gitId": "-"
         },
         "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
         "content": "            return false;"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 163,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 164,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 165,
         "author": {
           "gitId": "-"
         },
         "content": "        // state check"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 166,
         "author": {
           "gitId": "-"
         },
         "content": "        ModelManager other \u003d (ModelManager) obj;"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 167,
         "author": {
           "gitId": "jiachen247"
         },
         "content": "        return exerciseList.equals(other.exerciseList)"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 168,
         "author": {
           "gitId": "-"
         },
         "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 169,
         "author": {
           "gitId": "alloystory"
         },
         "content": "                \u0026\u0026 filteredExercises.equals(other.filteredExercises);"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 170,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 171,
         "author": {
           "gitId": "-"
         },
@@ -23005,6 +24266,7 @@
     ],
     "authorContributionMap": {
       "alloystory": 37,
+      "gb3h": 24,
       "jiachen247": 13,
       "-": 97
     }
@@ -27625,6 +28887,316 @@
     }
   },
   {
+    "path": "src/main/java/seedu/zerotoone/model/session/Session.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "package seedu.zerotoone.model.session;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.time.LocalDateTime;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.util.LinkedList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.util.Optional;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import java.util.Queue;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.model.exercise.Exercise;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.model.exercise.ExerciseName;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "import seedu.zerotoone.model.exercise.ExerciseSet;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": " * Represents a single Session."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "public class Session {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    // Identity fields"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    private final LocalDateTime startTime;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    private Optional\u003cLocalDateTime\u003e endTime;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    private final ExerciseName exerciseName;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    private final Queue\u003cExerciseSet\u003e exerciseQueue \u003d new LinkedList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    private final List\u003cExerciseSet\u003e doneExercises \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "     * Every field must be present and not null."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public Session(Exercise exercise, LocalDateTime startTime) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        requireAllNonNull(exercise);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        this.exerciseName \u003d exercise.getExerciseName();"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        this.exerciseQueue.addAll(exercise.getExerciseSets());"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        this.startTime \u003d startTime;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        this.endTime \u003d Optional.empty();"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    public void finish(LocalDateTime endTime) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        this.endTime \u003d Optional.of(endTime);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "gb3h": 43
+    }
+  },
+  {
     "path": "src/main/java/seedu/zerotoone/model/userprefs/ReadOnlyUserPrefs.java",
     "fileType": "java",
     "lines": [
@@ -28545,9 +30117,9 @@
       {
         "lineNumber": 114,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "gb3h"
         },
-        "content": "        sb.append(\"\\nWorkout List file location : \" + workoutListFilePath);"
+        "content": "        sb.append(\"\\nSession List file location : \" + workoutListFilePath);"
       },
       {
         "lineNumber": 115,
@@ -28593,7 +30165,8 @@
       }
     ],
     "authorContributionMap": {
-      "alloystory": 36,
+      "alloystory": 35,
+      "gb3h": 1,
       "jiachen247": 9,
       "-": 75
     }
@@ -47966,1314 +49539,1426 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "gb3h"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.time.LocalDateTime;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import java.util.function.Predicate;"
+        "content": "import java.util.Arrays;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "alloystory"
         },
-        "content": ""
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "alloystory"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.commons.core.GuiSettings;"
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.logic.commands.CommandResult;"
+        "content": "import seedu.zerotoone.commons.core.GuiSettings;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.logic.commands.exceptions.CommandException;"
+        "content": "import seedu.zerotoone.logic.commands.CommandResult;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.Model;"
+        "content": "import seedu.zerotoone.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.Exercise;"
+        "content": "import seedu.zerotoone.model.Model;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.ExerciseList;"
+        "content": "import seedu.zerotoone.model.exercise.Exercise;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.ExerciseName;"
+        "content": "import seedu.zerotoone.model.exercise.ExerciseList;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;"
+        "content": "import seedu.zerotoone.model.exercise.ExerciseName;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;"
+        "content": "import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "import seedu.zerotoone.testutil.exercise.ExerciseBuilder;"
+        "content": "import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "alloystory"
         },
-        "content": ""
+        "content": "import seedu.zerotoone.testutil.exercise.ExerciseBuilder;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "public class CreateCommandTest {"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "alloystory"
         },
-        "content": ""
+        "content": "public class CreateCommandTest {"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "chishanw"
+          "gitId": "alloystory"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    public void constructor_nullExercise_throwsNullPointerException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e new CreateCommand(null));"
+        "content": "    public void constructor_nullExercise_throwsNullPointerException() {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    }"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new CreateCommand(null));"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    public void execute_exerciseAcceptedByModel_addSuccessful() throws Exception {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        ModelStubAcceptingExerciseAdded modelStub \u003d new ModelStubAcceptingExerciseAdded();"
+        "content": "    public void execute_exerciseAcceptedByModel_addSuccessful() throws Exception {"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "chishanw"
         },
-        "content": "        CommandResult commandResult \u003d new CreateCommand(new ExerciseName(VALID_EXERCISE_NAME_BENCH_PRESS))"
+        "content": "        ModelStubAcceptingExerciseAdded modelStub \u003d new ModelStubAcceptingExerciseAdded();"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "                .execute(modelStub);"
+        "content": "        CommandResult commandResult \u003d new CreateCommand(new ExerciseName(VALID_EXERCISE_NAME_BENCH_PRESS))"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        Exercise exerciseBenchPress \u003d new ExerciseBuilder().withExerciseName(VALID_EXERCISE_NAME_BENCH_PRESS).build();"
+        "content": "                .execute(modelStub);"
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "chishanw"
+          "gitId": "alloystory"
         },
-        "content": ""
+        "content": "        Exercise exerciseBenchPress \u003d new ExerciseBuilder().withExerciseName(VALID_EXERCISE_NAME_BENCH_PRESS).build();"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "chishanw"
         },
-        "content": "        assertEquals(String.format(CreateCommand.MESSAGE_SUCCESS,"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "                VALID_EXERCISE_NAME_BENCH_PRESS), commandResult.getFeedbackToUser());"
+        "content": "        assertEquals(String.format(CreateCommand.MESSAGE_SUCCESS,"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        assertEquals(Arrays.asList(exerciseBenchPress), modelStub.exercisesAdded);"
+        "content": "                VALID_EXERCISE_NAME_BENCH_PRESS), commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "chishanw"
+          "gitId": "alloystory"
         },
-        "content": "    }"
+        "content": "        assertEquals(Arrays.asList(exerciseBenchPress), modelStub.exercisesAdded);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    public void execute_duplicateExercise_throwsCommandException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        Exercise validExercise \u003d new ExerciseBuilder().build();"
+        "content": "    public void execute_duplicateExercise_throwsCommandException() {"
       },
       {
         "lineNumber": 53,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        Exercise validExercise \u003d new ExerciseBuilder().build();"
+      },
+      {
+        "lineNumber": 54,
         "author": {
           "gitId": "alloystory"
         },
         "content": "        CreateCommand createCommand \u003d new CreateCommand(BENCH_PRESS.getExerciseName());"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 55,
         "author": {
           "gitId": "chishanw"
         },
         "content": "        ModelStub modelStub \u003d new ModelStubWithExercise(validExercise);"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 56,
         "author": {
           "gitId": "chishanw"
         },
         "content": ""
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 57,
         "author": {
           "gitId": "chishanw"
         },
         "content": "        assertThrows("
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 58,
         "author": {
           "gitId": "alloystory"
         },
         "content": "                CommandException.class, CreateCommand.MESSAGE_DUPLICATE_EXERCISE, () -\u003e"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 59,
         "author": {
           "gitId": "alloystory"
         },
         "content": "                createCommand.execute(modelStub));"
       },
       {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 60,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    public void equals() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "alloystory"
+          "gitId": "chishanw"
         },
-        "content": "        CreateCommand addBenchPressCommand \u003d new CreateCommand(BENCH_PRESS.getExerciseName());"
+        "content": "    public void equals() {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "alloystory"
         },
-        "content": "        CreateCommand addDeadliftCommand \u003d new CreateCommand(DEADLIFT.getExerciseName());"
+        "content": "        CreateCommand addBenchPressCommand \u003d new CreateCommand(BENCH_PRESS.getExerciseName());"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "chishanw"
+          "gitId": "alloystory"
         },
-        "content": ""
+        "content": "        CreateCommand addDeadliftCommand \u003d new CreateCommand(DEADLIFT.getExerciseName());"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        // same object -\u003e returns true"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        assertTrue(addBenchPressCommand.equals(addBenchPressCommand));"
+        "content": "        // same object -\u003e returns true"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        assertTrue(addBenchPressCommand.equals(addBenchPressCommand));"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        // same values -\u003e returns true"
+        "content": ""
       },
       {
         "lineNumber": 70,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        // same values -\u003e returns true"
+      },
+      {
+        "lineNumber": 71,
         "author": {
           "gitId": "alloystory"
         },
         "content": "        CreateCommand addBenchPressCommandCopy \u003d new CreateCommand(BENCH_PRESS.getExerciseName());"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 72,
         "author": {
           "gitId": "chishanw"
         },
         "content": "        assertTrue(addBenchPressCommand.equals(addBenchPressCommandCopy));"
       },
       {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 73,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        // different types -\u003e returns false"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        assertFalse(addBenchPressCommand.equals(1));"
+        "content": "        // different types -\u003e returns false"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        assertFalse(addBenchPressCommand.equals(1));"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        // null -\u003e returns false"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        assertFalse(addBenchPressCommand.equals(null));"
+        "content": "        // null -\u003e returns false"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        assertFalse(addBenchPressCommand.equals(null));"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        // different exercise -\u003e returns false"
+        "content": ""
       },
       {
         "lineNumber": 80,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        // different exercise -\u003e returns false"
+      },
+      {
+        "lineNumber": 81,
         "author": {
           "gitId": "alloystory"
         },
         "content": "        assertFalse(addBenchPressCommand.equals(addDeadliftCommand));"
       },
       {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 82,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "     * A default model stub that have all of the methods failing."
+        "content": "    /**"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "     */"
+        "content": "     * A default model stub that have all of the methods failing."
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    private class ModelStub implements Model {"
+        "content": "     */"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": "    private class ModelStub implements Model {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public ReadOnlyUserPrefs getUserPrefs() {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public ReadOnlyUserPrefs getUserPrefs() {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public GuiSettings getGuiSettings() {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public GuiSettings getGuiSettings() {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void setGuiSettings(GuiSettings guiSettings) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public void setGuiSettings(GuiSettings guiSettings) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public Path getExerciseListFilePath() {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public Path getExerciseListFilePath() {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void setExerciseListFilePath(Path exerciseListFilePath) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public void setExerciseListFilePath(Path exerciseListFilePath) {"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void addExercise(Exercise exercise) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public void addExercise(Exercise exercise) {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void setExerciseList(ReadOnlyExerciseList newData) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public void setExerciseList(ReadOnlyExerciseList newData) {"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public ReadOnlyExerciseList getExerciseList() {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public ReadOnlyExerciseList getExerciseList() {"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public boolean hasExercise(Exercise exercise) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public boolean hasExercise(Exercise exercise) {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void deleteExercise(Exercise target) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public void deleteExercise(Exercise target) {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void setExercise(Exercise target, Exercise editedExercise) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public void setExercise(Exercise target, Exercise editedExercise) {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public ObservableList\u003cExercise\u003e getFilteredExerciseList() {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public ObservableList\u003cExercise\u003e getFilteredExerciseList() {"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void updateFilteredExerciseList(Predicate\u003cExercise\u003e predicate) {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        public void updateFilteredExerciseList(Predicate\u003cExercise\u003e predicate) {"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 157,
         "author": {
-          "gitId": "chishanw"
+          "gitId": "gb3h"
         },
         "content": ""
       },
       {
         "lineNumber": 158,
         "author": {
-          "gitId": "chishanw"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "     * A Model stub that contains a single exercise."
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "    private class ModelStubWithExercise extends ModelStub {"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "        private final Exercise exercise;"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "        ModelStubWithExercise(Exercise exercise) {"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "            requireNonNull(exercise);"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "            this.exercise \u003d exercise;"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "chishanw"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "chishanw"
+          "gitId": "gb3h"
         },
         "content": "        @Override"
       },
       {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        public boolean isInSession() {"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        public void startSession(Exercise exerciseToStart, LocalDateTime currentDateTime) {"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "gb3h"
+        },
+        "content": "        public void stopSession(LocalDateTime currentDateTime) {"
+      },
+      {
         "lineNumber": 170,
         "author": {
-          "gitId": "chishanw"
+          "gitId": "gb3h"
         },
-        "content": "        public boolean hasExercise(Exercise exercise) {"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 171,
         "author": {
-          "gitId": "chishanw"
+          "gitId": "gb3h"
         },
-        "content": "            requireNonNull(exercise);"
+        "content": "        }"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            return this.exercise.isSameExercise(exercise);"
+        "content": "    }"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "     * A Model stub that contains a single exercise."
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "     * A Model stub that always accept the exercise being added."
+        "content": "    private class ModelStubWithExercise extends ModelStub {"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "     */"
+        "content": "        private final Exercise exercise;"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    private class ModelStubAcceptingExerciseAdded extends ModelStub {"
+        "content": ""
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        final ArrayList\u003cExercise\u003e exercisesAdded \u003d new ArrayList\u003c\u003e();"
+        "content": "        ModelStubWithExercise(Exercise exercise) {"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "            requireNonNull(exercise);"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": "            this.exercise \u003d exercise;"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public boolean hasExercise(Exercise exercise) {"
+        "content": "        }"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            requireNonNull(exercise);"
+        "content": ""
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            return exercisesAdded.stream().anyMatch(exercise::isSameExercise);"
+        "content": "        @Override"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "        public boolean hasExercise(Exercise exercise) {"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "            requireNonNull(exercise);"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": "            return this.exercise.isSameExercise(exercise);"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public void addExercise(Exercise exercise) {"
+        "content": "        }"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            requireNonNull(exercise);"
+        "content": "    }"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            exercisesAdded.add(exercise);"
+        "content": ""
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "chishanw"
         },
-        "content": ""
+        "content": "     * A Model stub that always accept the exercise being added."
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        public ReadOnlyExerciseList getExerciseList() {"
+        "content": "    private class ModelStubAcceptingExerciseAdded extends ModelStub {"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "            return new ExerciseList();"
+        "content": "        final ArrayList\u003cExercise\u003e exercisesAdded \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "chishanw"
         },
-        "content": "    }"
+        "content": "        @Override"
       },
       {
         "lineNumber": 199,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        public boolean hasExercise(Exercise exercise) {"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "            requireNonNull(exercise);"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "            return exercisesAdded.stream().anyMatch(exercise::isSameExercise);"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        public void addExercise(Exercise exercise) {"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "            requireNonNull(exercise);"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "            exercisesAdded.add(exercise);"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        public ReadOnlyExerciseList getExerciseList() {"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "            return new ExerciseList();"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "chishanw"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 215,
         "author": {
           "gitId": "alloystory"
         },
         "content": ""
       },
       {
-        "lineNumber": 200,
+        "lineNumber": 216,
         "author": {
           "gitId": "alloystory"
         },
@@ -49282,6 +50967,7 @@
     ],
     "authorContributionMap": {
       "alloystory": 47,
+      "gb3h": 16,
       "chishanw": 153
     }
   },

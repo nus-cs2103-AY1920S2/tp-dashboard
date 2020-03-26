@@ -11401,7 +11401,7 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        notablyParser \u003d new NotablyParser();"
+        "content": "        notablyParser \u003d new NotablyParser(model);"
       },
       {
         "lineNumber": 32,
@@ -12590,262 +12590,220 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.commons.core.path.Path;"
+        "content": "import com.notably.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.commons.core.path.RelativePath;"
+        "content": "import com.notably.model.Model;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.exceptions.CommandException;"
+        "content": "import com.notably.model.block.Block;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.model.Model;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.model.block.Block;"
+        "content": "/**"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": " * Represent a command used to add a new block."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "/**"
+        "content": " */"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " * Represent a command used to add a new block."
+        "content": "public class NewCommand extends Command {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " */"
+        "content": "    public static final String COMMAND_WORD \u003d \"new\";"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "public class NewCommand extends Command {"
+        "content": "    private final Block toAdd;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"new\";"
+        "content": "    private AbsolutePath path;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    private final Block toAdd;"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    private Path path;"
+        "content": "    public NewCommand(Block block, AbsolutePath path) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        requireNonNull(block);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public NewCommand(Block block, Path path) {"
+        "content": "        this.toAdd \u003d block;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        requireNonNull(block);"
+        "content": "        this.path \u003d path;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        this.toAdd \u003d block;"
+        "content": "    }"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        this.path \u003d path;"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "     * Add a new block to the tree structure."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    /**"
+        "content": "     * @param notablyModel used to access the tree structure."
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * Add a new block to the tree structure."
+        "content": "     * @throws CommandException when block of the same Title is detected."
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @param notablyModel used to access the tree structure."
+        "content": "     */"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @throws CommandException when block of the same Title is detected."
+        "content": "    public void execute(Model notablyModel) throws CommandException {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     */"
+        "content": "        requireNonNull(notablyModel);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void execute(Model notablyModel) throws CommandException {"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        requireNonNull(notablyModel);"
+        "content": "        if (notablyModel.hasPath(this.path)) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        if (this.path instanceof RelativePath) {"
+        "content": "            throw new CommandException(\"Block with the same Title detected.\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            RelativePath toConvert \u003d (RelativePath) this.path;"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            this.path \u003d toConvert.toAbsolutePath(notablyModel.getCurrentlyOpenPath());"
+        "content": "        notablyModel.addBlockToCurrentPath(toAdd);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "        if (notablyModel.hasPath((AbsolutePath) this.path)) {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "            throw new CommandException(\"Block with the same Title detected.\");"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "        notablyModel.addBlockToCurrentPath(toAdd);"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 37,
         "author": {
           "gitId": "ljiazh3ng"
         },
@@ -12853,7 +12811,7 @@
       }
     ],
     "authorContributionMap": {
-      "ljiazh3ng": 43
+      "ljiazh3ng": 37
     }
   },
   {
@@ -12900,213 +12858,164 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.commons.core.path.Path;"
+        "content": "import com.notably.model.Model;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.commons.core.path.RelativePath;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.exceptions.CommandException;"
+        "content": "/**"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.model.Model;"
+        "content": " * Represents a command that opens a path."
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "/**"
+        "content": "public class OpenCommand extends Command {"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " * Represents a command that opens a path."
+        "content": "    public static final String COMMAND_WORD \u003d \"open\";"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " */"
+        "content": "    private AbsolutePath path;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "public class OpenCommand extends Command {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"open\";"
+        "content": "    public OpenCommand(AbsolutePath path) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    private Path path;"
+        "content": "        this.path \u003d path;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public OpenCommand(Path path) {"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        this.path \u003d path;"
+        "content": "    /**"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "     * Open block path."
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "     * @param notablyModel used to open path."
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * Open block path"
+        "content": "    @Override"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @param notablyModel used to open path."
+        "content": "    public void execute(Model notablyModel) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @throws CommandException if there is an invalid path error."
+        "content": "        requireNonNull(notablyModel);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     */"
+        "content": "        notablyModel.setCurrentlyOpenBlock(path);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void execute(Model notablyModel) throws CommandException {"
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        requireNonNull(notablyModel);"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "        if (this.path instanceof RelativePath) {"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "            RelativePath toConvert \u003d (RelativePath) this.path;"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "            this.path \u003d toConvert.toAbsolutePath(notablyModel.getCurrentlyOpenPath());"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "        notablyModel.setCurrentlyOpenBlock((AbsolutePath) path);"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "ljiazh3ng"
-        },
         "content": ""
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 29,
         "author": {
           "gitId": "ljiazh3ng"
         },
@@ -13114,7 +13023,7 @@
       }
     ],
     "authorContributionMap": {
-      "ljiazh3ng": 36
+      "ljiazh3ng": 29
     }
   },
   {
@@ -17750,14 +17659,14 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.Optional;"
       },
       {
         "lineNumber": 7,
@@ -17769,208 +17678,285 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "kevinputera"
+          "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.DeleteCommand;"
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "kevinputera"
         },
-        "content": "import com.notably.logic.parser.exceptions.ParseException;"
+        "content": "import com.notably.logic.commands.DeleteCommand;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.logic.correction.AbsolutePathCorrectionEngine;"
       },
       {
         "lineNumber": 11,
+        "author": {
+          "gitId": "kevinputera"
+        },
+        "content": "import com.notably.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "import com.notably.model.Model;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
         "content": " * Parses input arguments and creates a new DeleteCommand object"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
         "content": " */"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 17,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "public class DeleteCommandParser implements CommandParser\u003cDeleteCommand\u003e {"
       },
       {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 17,
+        "lineNumber": 18,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * TODO: integrate with CorrectionEngine."
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Parses the given {@code String} of arguments in the context of the DeleteCommand"
+        "content": "    private Model notablyModel;"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "ljiazh3ng"
         },
-        "content": "     * and returns a DeleteCommand object for execution."
+        "content": "    private AbsolutePathCorrectionEngine correctionEngine;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "-"
+          "gitId": "ljiazh3ng"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "    private final int distanceThreshold \u003d 2;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public List\u003cDeleteCommand\u003e parse(String args) throws ParseException {"
+        "content": "    public DeleteCommandParser(Model notablyModel) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        ArgumentMultimap argMultimap \u003d"
+        "content": "        this.notablyModel \u003d notablyModel;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_TITLE);"
+        "content": "        this.correctionEngine \u003d new AbsolutePathCorrectionEngine(notablyModel, distanceThreshold);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "ljiazh3ng"
+          "gitId": "-"
         },
-        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_TITLE)"
+        "content": "    /**"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "ljiazh3ng"
+          "gitId": "-"
         },
-        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
+        "content": "     * Parses the given {@code String} of arguments in the context of the DeleteCommand"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "ljiazh3ng"
+          "gitId": "-"
         },
-        "content": "            throw new ParseException(String.format(\"Invalid Command\"));"
+        "content": "     * and returns a DeleteCommand object for execution."
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "ljiazh3ng"
+          "gitId": "-"
         },
-        "content": "        }"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "ljiazh3ng"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        String title \u003d argMultimap.getValue(PREFIX_TITLE).get();"
+        "content": "    public List\u003cDeleteCommand\u003e parse(String args) throws ParseException {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        List\u003cDeleteCommand\u003e deleteCommand \u003d new ArrayList\u003c\u003e();"
+        "content": "        ArgumentMultimap argMultimap \u003d"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_TITLE);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        deleteCommand.add(new DeleteCommand(ParserUtil.createPath(title)));"
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        return deleteCommand;"
+        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_TITLE)"
       },
       {
         "lineNumber": 36,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "            throw new ParseException(String.format(\"Invalid Command\"));"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        String title \u003d argMultimap.getValue(PREFIX_TITLE).get();"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        AbsolutePath uncorrectedPath \u003d ParserUtil.createAbsolutePath(title, notablyModel.getCurrentlyOpenPath());"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        Optional\u003cAbsolutePath\u003e correctedPath \u003d correctionEngine.correct(uncorrectedPath).getCorrectedItem();"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        if (correctedPath.equals(Optional.empty())) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "            throw new ParseException(\"Invalid Path\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        return List.of(new DeleteCommand(correctedPath.get()));"
+      },
+      {
+        "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
@@ -17980,7 +17966,7 @@
     "authorContributionMap": {
       "kevinputera": 3,
       "-": 12,
-      "ljiazh3ng": 22
+      "ljiazh3ng": 33
     }
   },
   {
@@ -18097,14 +18083,14 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * TODO: integrate with CorrectionEngine."
+        "content": "    /**"
       },
       {
         "lineNumber": 18,
@@ -18337,7 +18323,7 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.commons.core.path.Path;"
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
       },
       {
         "lineNumber": 11,
@@ -18372,294 +18358,294 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.model.block.Block;"
+        "content": "import com.notably.model.Model;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.model.block.BlockImpl;"
+        "content": "import com.notably.model.block.Block;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.model.block.Body;"
+        "content": "import com.notably.model.block.BlockImpl;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.model.block.Title;"
+        "content": "import com.notably.model.block.Body;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.model.block.Title;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " * Represents a Parser for New Command."
+        "content": "/**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " */"
+        "content": " * Represents a Parser for New Command."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "public class NewCommandParser implements CommandParser {"
+        "content": " */"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "public class NewCommandParser implements CommandParser {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    /**"
+        "content": "    private Model notablyModel;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * TODO: integrate with CorrectionEngine."
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * Parse input and create NewCommand and OpenCommand."
+        "content": "    public NewCommandParser(Model notablyModel) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @param args parse userInput used to create block."
+        "content": "        this.notablyModel \u003d notablyModel;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @return List of command to execute."
+        "content": "    }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @throws ParseException when input is invalid."
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     */"
+        "content": "     * Parse input and create NewCommand and OpenCommand."
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public List\u003cCommand\u003e parse(String args) throws ParseException {"
+        "content": "     * @param args parse userInput used to create block."
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        ArgumentMultimap argMultimap \u003d"
+        "content": "     * @return List of command to execute."
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_BODY, PREFIX_JUMP);"
+        "content": "     * @throws ParseException when input is invalid."
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_BODY)"
+        "content": "    public List\u003cCommand\u003e parse(String args) throws ParseException {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
+        "content": "        ArgumentMultimap argMultimap \u003d"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            throw new ParseException(String.format(\"Invalid Command\"));"
+        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_BODY, PREFIX_JUMP);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_BODY)"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        String title \u003d argMultimap.getValue(PREFIX_TITLE).get();"
+        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        String body \u003d argMultimap.getValue(PREFIX_BODY).get();"
+        "content": "            throw new ParseException(String.format(\"Invalid Command\"));"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        Path path \u003d ParserUtil.createPath(title);"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        Block block \u003d new BlockImpl(new Title(title), new Body(body));"
+        "content": "        String title \u003d argMultimap.getValue(PREFIX_TITLE).get();"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        List\u003cCommand\u003e commands \u003d new ArrayList\u003c\u003e();"
+        "content": "        String body \u003d argMultimap.getValue(PREFIX_BODY).get();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        commands.add(new NewCommand(block, path));"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        AbsolutePath path \u003d ParserUtil.createAbsolutePath(title, notablyModel.getCurrentlyOpenPath());"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_JUMP)) {"
+        "content": "        Block block \u003d new BlockImpl(new Title(title), new Body(body));"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            return commands;"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        }"
+        "content": "        List\u003cCommand\u003e commands \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        commands.add(new NewCommand(block, path));"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        commands.add(new OpenCommand(path));"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        return commands;"
+        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_JUMP)) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "            return commands;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 57,
@@ -18673,11 +18659,46 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
+        "content": "        commands.add(new OpenCommand(path));"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        return commands;"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "ljiazh3ng": 58
+      "ljiazh3ng": 63
     }
   },
   {
@@ -18703,14 +18724,14 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.Optional;"
       },
       {
         "lineNumber": 5,
@@ -18787,56 +18808,56 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.parser.exceptions.ParseException;"
+        "content": "import com.notably.logic.correction.StringCorrectionEngine;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "/**"
+        "content": "import com.notably.model.Model;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " * Parse in users input and generate the respective Commands"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " */"
+        "content": "/**"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "public class NotablyParser {"
+        "content": " * Parse in users input and generate the respective Commands"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
+        "content": "public class NotablyParser {"
       },
       {
         "lineNumber": 23,
@@ -18850,287 +18871,287 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    /**"
+        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * Create list of different Commands base on user input."
+        "content": "    private static final List\u003cString\u003e COMMAND_LIST \u003d List.of(\"new\", \"edit\", \"delete\", \"exit\", \"open\", \"help\");"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @param userInput supplied by the user."
+        "content": "    private final int distanceThreshold \u003d 2;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @return list of commands."
+        "content": "    private Model notablyModel;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @throws ParseException when there is a invalid input string."
+        "content": "    private StringCorrectionEngine correctionEngine;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public List\u003c? extends Command\u003e parseCommand(String userInput) throws ParseException {"
+        "content": "    public NotablyParser(Model notablyModel) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
+        "content": "        this.notablyModel \u003d notablyModel;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        if (!matcher.matches()) {"
+        "content": "        this.correctionEngine \u003d new StringCorrectionEngine(COMMAND_LIST, distanceThreshold);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            throw new ParseException(String.format(\"Invalid Command\"));"
+        "content": "    }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "     * Create list of different Commands base on user input."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+        "content": "     * @param userInput supplied by the user."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
+        "content": "     * @return list of commands."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        switch (commandWord) {"
+        "content": "     * @throws ParseException when there is a invalid input string."
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        case NewCommand.COMMAND_WORD:"
+        "content": "     */"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            return new NewCommandParser().parse(arguments);"
+        "content": "    public List\u003c? extends Command\u003e parseCommand(String userInput) throws ParseException {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        case OpenCommand.COMMAND_WORD:"
+        "content": "        if (!matcher.matches()) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            return new OpenCommandParser().parse(arguments);"
+        "content": "            throw new ParseException(String.format(\"Invalid Command\"));"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        case DeleteCommand.COMMAND_WORD:"
+        "content": "        String commandWord \u003d matcher.group(\"commandWord\");"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            return new DeleteCommandParser().parse(arguments);"
+        "content": "        Optional\u003cString\u003e correctedCommand \u003d correctionEngine.correct(commandWord).getCorrectedItem();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        if (correctedCommand.equals(Optional.empty())) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        case EditCommand.COMMAND_WORD:"
+        "content": "            throw new ParseException(\"Invalid command\");"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            return new EditCommandParser().parse(arguments);"
+        "content": "        }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        commandWord \u003d correctedCommand.get();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        case HelpCommand.COMMAND_WORD:"
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            List\u003cCommand\u003e helpCommand \u003d new ArrayList\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            helpCommand.add(new HelpCommand());"
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            return helpCommand;"
+        "content": "        case NewCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "            return new NewCommandParser(notablyModel).parse(arguments);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        case ExitCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            List\u003cCommand\u003e exitCommand \u003d new ArrayList\u003c\u003e();"
+        "content": "        case OpenCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            exitCommand.add(new ExitCommand());"
+        "content": "            return new OpenCommandParser(notablyModel).parse(arguments);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            return exitCommand;"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        case DeleteCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        default:"
+        "content": "            return new DeleteCommandParser(notablyModel).parse(arguments);"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            throw new ParseException(\"Invalid Command\");"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        }"
+        "content": "        case EditCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "            return new EditCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 65,
@@ -19144,10 +19165,87 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "}"
+        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 67,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "            return List.of(new HelpCommand());"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        case ExitCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "            return List.of(new ExitCommand());"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "            throw new ParseException(\"Invalid Command\");"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 78,
         "author": {
           "gitId": "ljiazh3ng"
         },
@@ -19155,7 +19253,7 @@
       }
     ],
     "authorContributionMap": {
-      "ljiazh3ng": 67
+      "ljiazh3ng": 78
     }
   },
   {
@@ -19195,14 +19293,14 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.Optional;"
       },
       {
         "lineNumber": 7,
@@ -19216,206 +19314,304 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.OpenCommand;"
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.parser.exceptions.ParseException;"
+        "content": "import com.notably.logic.commands.OpenCommand;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.logic.correction.AbsolutePathCorrectionEngine;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "/**"
+        "content": "import com.notably.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " * Represent a Parser for OpenCommand."
+        "content": "import com.notably.model.Model;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "public class OpenCommandParser implements CommandParser\u003cOpenCommand\u003e {"
+        "content": "/**"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": " * Represent a Parser for OpenCommand."
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    /**"
+        "content": " */"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * TODO: integrate with CorrectionEngine."
+        "content": "public class OpenCommandParser implements CommandParser\u003cOpenCommand\u003e {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * Creates OpenCommand with user input."
+        "content": "    private final int distanceThreshold \u003d 2;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @param args to be parse by into CorrectionEngine."
+        "content": "    private Model notablyModel;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @return List of command containing OpenCammnd."
+        "content": "    private AbsolutePathCorrectionEngine correctionEngine;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     * @throws ParseException"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "     */"
+        "content": "    public OpenCommandParser(Model notablyModel) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public List\u003cOpenCommand\u003e parse(String args) throws ParseException {"
+        "content": "        this.notablyModel \u003d notablyModel;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        ArgumentMultimap argMultimap \u003d"
+        "content": "        this.correctionEngine \u003d new AbsolutePathCorrectionEngine(notablyModel, distanceThreshold);"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_TITLE);"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_TITLE)"
+        "content": "    /**"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
+        "content": "     * Creates OpenCommand with user input."
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            throw new ParseException(String.format(\"Invalid input\"));"
+        "content": "     * @param args to be parse by into CorrectionEngine."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        }"
+        "content": "     * @return List of command containing OpenCammnd."
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "     * @throws ParseException"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        String titles \u003d argMultimap.getValue(PREFIX_TITLE).get();"
+        "content": "     */"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        List\u003cOpenCommand\u003e openCommandList \u003d new ArrayList\u003c\u003e();"
+        "content": "    public List\u003cOpenCommand\u003e parse(String args) throws ParseException {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        ArgumentMultimap argMultimap \u003d"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        openCommandList.add(new OpenCommand(ParserUtil.createPath(titles)));"
+        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_TITLE);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        return openCommandList;"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_TITLE)"
       },
       {
         "lineNumber": 37,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "            throw new ParseException(String.format(\"Invalid input\"));"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        String titles \u003d argMultimap.getValue(PREFIX_TITLE).get();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        AbsolutePath uncorrectedPath \u003d ParserUtil.createAbsolutePath(titles, notablyModel.getCurrentlyOpenPath());"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        Optional\u003cAbsolutePath\u003e correctedPath \u003d correctionEngine.correct(uncorrectedPath).getCorrectedItem();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        if (correctedPath.equals(Optional.empty())) {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "            throw new ParseException(\"Invalid Path\");"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        return List.of(new OpenCommand(correctedPath.get()));"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
         "author": {
           "gitId": "ljiazh3ng"
         },
@@ -19423,7 +19619,7 @@
       }
     ],
     "authorContributionMap": {
-      "ljiazh3ng": 37
+      "ljiazh3ng": 51
     }
   },
   {
@@ -19470,206 +19666,199 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.commons.core.path.Path;"
+        "content": "import com.notably.commons.core.path.RelativePath;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.commons.core.path.RelativePath;"
+        "content": "import com.notably.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "ljiazh3ng"
+          "gitId": "-"
         },
-        "content": "import com.notably.logic.parser.exceptions.ParseException;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": " * Contains utility methods used for parsing strings in the various *Parser classes."
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": " * Contains utility methods used for parsing strings in the various *Parser classes."
+        "content": " */"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": "public class ParserUtil {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
-        "content": "public class ParserUtil {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    /**"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "     * Returns true if none of the prefixes contains empty {@code Optional} values in the given"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "     * {@code ArgumentMultimap}."
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "    public static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "        return Stream.of(prefixes).allMatch(prefix -\u003e argumentMultimap.getValue(prefix).isPresent());"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "     * Returns either a AbsolutePath or RelativePath base on userInput."
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public static Path createPath(String text) throws ParseException {"
+        "content": "    public static AbsolutePath createAbsolutePath(String text, AbsolutePath currentDirectory) throws ParseException {"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "        if (AbsolutePath.isValidAbsolutePath(text)) {"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "            return AbsolutePath.fromString(text);"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "        if (RelativePath.isValidRelativePath(text)) {"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "            return RelativePath.fromString(text);"
+        "content": "            return RelativePath.fromString(text).toAbsolutePath(currentDirectory);"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
           "gitId": "ljiazh3ng"
         },
         "content": "        throw new ParseException(\"Invalid Path\");"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
@@ -19679,7 +19868,7 @@
     "authorContributionMap": {
       "kevinputera": 1,
       "-": 17,
-      "ljiazh3ng": 17
+      "ljiazh3ng": 16
     }
   },
   {
@@ -20299,6 +20488,778 @@
     ],
     "authorContributionMap": {
       "johannagwan": 13
+    }
+  },
+  {
+    "path": "src/main/java/com/notably/logic/suggestion/commands/DeleteSuggestionCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "package com.notably.logic.suggestion.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import static com.notably.logic.parser.CliSyntax.PREFIX_TITLE;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import java.util.Objects;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import java.util.stream.Collectors;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.logic.suggestion.SuggestionCommand;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.Model;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.block.BlockTreeItem;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.suggestion.SuggestionItem;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.suggestion.SuggestionItemImpl;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": " * Represents a suggestion command object to delete a note."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "public class DeleteSuggestionCommand implements SuggestionCommand {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static final String COMMAND_WORD \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static final String RESPONSE_MESSAGE \u003d \"Delete a note\";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private AbsolutePath path;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    public DeleteSuggestionCommand(AbsolutePath path) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Objects.requireNonNull(path);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        this.path \u003d path;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    public void execute(Model model) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        // Nullity check"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Objects.requireNonNull(model);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        // Set response text"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.setResponseText(RESPONSE_MESSAGE);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        // Set suggestions"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cAbsolutePath\u003e possiblePaths \u003d getPossiblePaths(model);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cSuggestionItem\u003e suggestions \u003d getSuggestions(possiblePaths, model);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.setSuggestions(suggestions);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     * Gets the list of possible absolute paths, based on the user\u0027s input path."
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     * @param model The app\u0027s model."
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     * @return List of possible absolute paths, based on the user\u0027s input path."
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private List\u003cAbsolutePath\u003e getPossiblePaths(Model model) {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Objects.requireNonNull(model);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cAbsolutePath\u003e possiblePaths \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        BlockTreeItem source \u003d model.getBlockTree().get(path);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cString\u003e components \u003d path.getComponents();"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        possiblePaths.add(path);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cBlockTreeItem\u003e children \u003d source.getBlockChildren();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        if (children.size() !\u003d 0) {"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            for (BlockTreeItem child : children) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                getChildDfs(child, components, possiblePaths);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        return possiblePaths;"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     * Traverses the tree block starting from the block with the path that the user inputs."
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     * @param curr Current BlockTreeItem."
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     * @param components The components of the current path."
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     * @param possiblePaths The list of possible paths."
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private void getChildDfs(BlockTreeItem curr, List\u003cString\u003e components,"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                             List\u003cAbsolutePath\u003e possiblePaths) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cString\u003e newComponents \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        newComponents.addAll(components);"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        newComponents.add(curr.getTitle().getText());"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cBlockTreeItem\u003e children \u003d curr.getBlockChildren();"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        if (children.size() \u003d\u003d 0) { // if last element in THAT current path, add curr path to list of possible paths."
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            AbsolutePath newPath \u003d AbsolutePath.fromComponents(newComponents);"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            possiblePaths.add(newPath);"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            for (BlockTreeItem child : children) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                getChildDfs(child, newComponents, possiblePaths);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private List\u003cSuggestionItem\u003e getSuggestions(List\u003cAbsolutePath\u003e possiblePaths, Model model) {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Objects.requireNonNull(possiblePaths);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Objects.requireNonNull(model);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        return possiblePaths.stream()"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                .map(path -\u003e {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                    String displayText \u003d path.getStringRepresentation();"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                    Runnable action \u003d () -\u003e {"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                        model.setInput(COMMAND_WORD + \" \" + PREFIX_TITLE + \" \" + displayText);"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                    };"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                    return new SuggestionItemImpl(displayText, action);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                })"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "                .collect(Collectors.toList());"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "johannagwan": 109
     }
   },
   {
@@ -51406,182 +52367,182 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import java.util.List;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.BeforeEach;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.Command;"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.DeleteCommand;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.HelpCommand;"
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.NewCommand;"
+        "content": "import com.notably.logic.commands.Command;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "import com.notably.logic.commands.OpenCommand;"
+        "content": "import com.notably.logic.commands.DeleteCommand;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.logic.commands.HelpCommand;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.logic.commands.NewCommand;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "public class NotablyParserTest {"
+        "content": "import com.notably.logic.commands.OpenCommand;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    private final NotablyParser parser \u003d new NotablyParser();"
+        "content": "import com.notably.model.Model;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.model.ModelManager;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "import com.notably.model.block.BlockImpl;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void parseCommand_newCommandInput_newCommand() throws Exception {"
+        "content": "import com.notably.model.block.BlockModel;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        Command command \u003d parser.parseCommand(\"new -t CS2103 -b Hi\").get(0);"
+        "content": "import com.notably.model.block.BlockModelImpl;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.model.block.Title;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertTrue(command instanceof NewCommand);"
+        "content": "import com.notably.model.suggestion.SuggestionModel;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "import com.notably.model.suggestion.SuggestionModelImpl;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "import com.notably.model.viewstate.ViewStateModel;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "import com.notably.model.viewstate.ViewStateModelImpl;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void parseCommand_newCommandInputJump_false() throws Exception {"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        List\u003c? extends Command\u003e commands \u003d parser.parseCommand(\"new -t CS2103 -b Hi\");"
+        "content": "public class NotablyParserTest {"
       },
       {
         "lineNumber": 29,
@@ -51595,84 +52556,84 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertTrue(commands.size() \u003d\u003d 1);"
+        "content": "    private static AbsolutePath toBlock;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "    private static AbsolutePath toAnother;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    private static AbsolutePath toAnotherBlock;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "    private static Model model;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void parseCommand_newCommandInputJump_true() throws Exception {"
+        "content": "    private static NotablyParser parser;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        List\u003c? extends Command\u003e commands \u003d parser.parseCommand(\"new -t CS2103 -b Hi -o\");"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertTrue(commands.size() \u003d\u003d 2);"
+        "content": "    @BeforeEach"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "    public void setUp() {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        // Set up paths"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "        toBlock \u003d AbsolutePath.fromString(\"/block\");"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void parseCommand_openCommandInput_openCommand() throws Exception {"
+        "content": "        toAnother \u003d AbsolutePath.fromString(\"/another\");"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        Command command \u003d parser.parseCommand(\"open -t CS2103\").get(0);"
+        "content": "        toAnotherBlock \u003d AbsolutePath.fromString(\"/another/block\");"
       },
       {
         "lineNumber": 42,
@@ -51686,63 +52647,63 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertTrue(command instanceof OpenCommand);"
+        "content": "        // Set up model"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "        BlockModel blockModel \u003d new BlockModelImpl();"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        SuggestionModel suggestionModel \u003d new SuggestionModelImpl();"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "        ViewStateModel viewStateModel \u003d new ViewStateModelImpl();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void parseCommand_deleteCommandInput_deleteCommand() throws Exception {"
+        "content": "        model \u003d new ModelManager(blockModel, suggestionModel, viewStateModel);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        Command command \u003d parser.parseCommand(\"delete -t CS2103\").get(0);"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        // Populate model with test data"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertTrue(command instanceof DeleteCommand);"
+        "content": "        model.addBlockToCurrentPath(new BlockImpl(new Title(\"CS2103\")));"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "        model.addBlockToCurrentPath(new BlockImpl(new Title(\"another\")));"
       },
       {
         "lineNumber": 52,
@@ -51756,49 +52717,49 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    @Test"
+        "content": "        model.setCurrentlyOpenBlock(toAnother);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    public void parseCommand_helpCommandInput_helpCommand() throws Exception {"
+        "content": "        model.addBlockToCurrentPath(new BlockImpl(new Title(\"block\")));"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        Command command \u003d parser.parseCommand(\"help\").get(0);"
+        "content": "        model.addBlockToCurrentPath(new BlockImpl(new Title(\"CS2103\")));"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "        model.addBlockToCurrentPath(new BlockImpl(new Title(\"toAnother\")));"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "        assertTrue(command instanceof HelpCommand);"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": "    }"
+        "content": "        parser \u003d new NotablyParser(model);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "ljiazh3ng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 60,
@@ -51812,11 +52773,1294 @@
         "author": {
           "gitId": "ljiazh3ng"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    public void parseCommand_newCommandInput_newCommand() throws Exception {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        Command command \u003d parser.parseCommand(\"nw -t 1234 -b Hi\").get(0);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertTrue(command instanceof NewCommand);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        command.execute(model);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertTrue(model.hasPath(ParserUtil.createAbsolutePath(\"1234\", model.getCurrentlyOpenPath())));"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    public void parseCommand_newCommandInputJump_false() throws Exception {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        List\u003c? extends Command\u003e commands \u003d parser.parseCommand(\"new -t CS2103 -b Hi\");"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertTrue(commands.size() \u003d\u003d 1);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    public void parseCommand_newCommandInputJump_true() throws Exception {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        List\u003c? extends Command\u003e commands \u003d parser.parseCommand(\"new -t CS2103 -b Hi -o\");"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertTrue(commands.size() \u003d\u003d 2);"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    public void parseCommand_openCommandInput_openCommand() throws Exception {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        Command command \u003d parser.parseCommand(\"open -t CS2104\").get(0);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertTrue(command instanceof OpenCommand);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        command.execute(model);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertEquals(AbsolutePath.fromString(\"/another/CS2103\"), model.getCurrentlyOpenPath());"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    public void parseCommand_deleteCommandInput_deleteCommand() throws Exception {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        Command command \u003d parser.parseCommand(\"delete -t ../CS2103\").get(0);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertTrue(command instanceof DeleteCommand);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    public void parseCommand_helpCommandInput_helpCommand() throws Exception {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        Command command \u003d parser.parseCommand(\"help\").get(0);"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "        assertTrue(command instanceof HelpCommand);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "ljiazh3ng"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "ljiazh3ng": 61
+      "ljiazh3ng": 112
+    }
+  },
+  {
+    "path": "src/test/java/com/notably/logic/suggestion/commands/DeleteSuggestionCommandTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "package com.notably.logic.suggestion.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import java.util.Optional;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import org.junit.jupiter.api.BeforeAll;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.commons.core.path.AbsolutePath;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.commons.core.path.exceptions.InvalidPathException;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.Model;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.ModelManager;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.block.Block;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.block.BlockImpl;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.block.BlockModel;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.block.BlockModelImpl;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.block.Title;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.suggestion.SuggestionItem;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.suggestion.SuggestionItemImpl;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.suggestion.SuggestionModel;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.suggestion.SuggestionModelImpl;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.viewstate.ViewStateModel;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "import com.notably.model.viewstate.ViewStateModelImpl;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "public class DeleteSuggestionCommandTest {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static AbsolutePath toRoot;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static AbsolutePath toCs2103;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static AbsolutePath toCs3230;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static AbsolutePath toCs2103Week1;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static AbsolutePath toCs2103Week2;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static AbsolutePath toCs2103Week3;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static AbsolutePath toCs2103Week1Lecture;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static Model model;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static final String COMMAND_WORD \u003d \"delete\";"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    private static final String PREFIX_TITLE \u003d \"-t\";"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    @BeforeAll"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    public static void setUp() throws InvalidPathException {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        // Set up paths"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        toRoot \u003d AbsolutePath.fromString(\"/\");"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        toCs2103 \u003d AbsolutePath.fromString(\"/CS2103\");"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        toCs3230 \u003d AbsolutePath.fromString(\"/CS3230\");"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        toCs2103Week1 \u003d AbsolutePath.fromString(\"/CS2103/Week1\");"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        toCs2103Week2 \u003d AbsolutePath.fromString(\"/CS2103/Week2\");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        toCs2103Week3 \u003d AbsolutePath.fromString(\"/CS2103/Week3\");"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        toCs2103Week1Lecture \u003d AbsolutePath.fromString(\"/CS2103/Week1/Lecture\");"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        // Set up model"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        BlockModel blockModel \u003d new BlockModelImpl();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        SuggestionModel suggestionModel \u003d new SuggestionModelImpl();"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        ViewStateModel viewStateModel \u003d new ViewStateModelImpl();"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model \u003d new ModelManager(blockModel, suggestionModel, viewStateModel);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        // Add test data to model"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Block cs2103 \u003d new BlockImpl(new Title(\"CS2103\"));"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Block cs3230 \u003d new BlockImpl(new Title(\"CS3230\"));"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.addBlockToCurrentPath(cs2103);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.addBlockToCurrentPath(cs3230);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Block week1 \u003d new BlockImpl(new Title(\"Week1\"));"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Block week2 \u003d new BlockImpl(new Title(\"Week2\"));"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Block week3 \u003d new BlockImpl(new Title(\"Week3\"));"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.setCurrentlyOpenBlock(toCs2103);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.addBlockToCurrentPath(week1);"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.addBlockToCurrentPath(week2);"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.addBlockToCurrentPath(week3);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        Block lecture \u003d new BlockImpl(new Title(\"Lecture\"));"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.setCurrentlyOpenBlock(toCs2103Week1);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        model.addBlockToCurrentPath(lecture);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    public void constructor_nullPath_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new DeleteSuggestionCommand(null));"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    public void execute_nullModel_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        DeleteSuggestionCommand deleteSuggestionCommand \u003d new DeleteSuggestionCommand(toRoot);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e deleteSuggestionCommand.execute(null));"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    public void execute_generateResponseCorrectly() {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        DeleteSuggestionCommand deleteSuggestionCommand \u003d new DeleteSuggestionCommand(toCs2103);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        deleteSuggestionCommand.execute(model);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        assertEquals(Optional.of(\"Delete a note\"), model.responseTextProperty().getValue());"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        // Expected result"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        SuggestionItem cs2103 \u003d new SuggestionItemImpl(toCs2103.getStringRepresentation(), null);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        SuggestionItem cs2103Week1Lecture \u003d new SuggestionItemImpl(toCs2103Week1Lecture.getStringRepresentation(),"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            null);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        SuggestionItem cs2103Week2 \u003d new SuggestionItemImpl(toCs2103Week2.getStringRepresentation(), null);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        SuggestionItem cs2103Week3 \u003d new SuggestionItemImpl(toCs2103Week3.getStringRepresentation(), null);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cSuggestionItem\u003e expectedSuggestions \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        expectedSuggestions.add(cs2103);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        expectedSuggestions.add(cs2103Week1Lecture);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        expectedSuggestions.add(cs2103Week2);"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        expectedSuggestions.add(cs2103Week3);"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cSuggestionItem\u003e suggestions \u003d model.getSuggestions();"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        for (int i \u003d 0; i \u003c expectedSuggestions.size(); i++) {"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            SuggestionItem suggestion \u003d suggestions.get(i);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            SuggestionItem expectedSuggestion \u003d expectedSuggestions.get(i);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            assertEquals(suggestion.getDisplayText(), expectedSuggestion.getDisplayText());"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        List\u003cString\u003e expectedInputs \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        expectedInputs.add(COMMAND_WORD + \" \" + PREFIX_TITLE + \" \" + toCs2103.getStringRepresentation());"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        expectedInputs.add(COMMAND_WORD + \" \" + PREFIX_TITLE + \" \" + toCs2103Week1Lecture.getStringRepresentation());"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        expectedInputs.add(COMMAND_WORD + \" \" + PREFIX_TITLE + \" \" + toCs2103Week2.getStringRepresentation());"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        expectedInputs.add(COMMAND_WORD + \" \" + PREFIX_TITLE + \" \" + toCs2103Week3.getStringRepresentation());"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        for (int i \u003d 0; i \u003c expectedInputs.size(); i++) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            SuggestionItem suggestionItem \u003d suggestions.get(i);"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            String expectedInput \u003d expectedInputs.get(i);"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            suggestionItem.getAction().run();"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            String input \u003d model.getInput();"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            assertEquals(expectedInput, input);"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "johannagwan": 131
     }
   },
   {

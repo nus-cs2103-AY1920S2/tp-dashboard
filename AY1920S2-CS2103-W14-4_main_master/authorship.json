@@ -10461,276 +10461,213 @@
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "        Person personToEdit \u003d lastShownList.get(index - 1);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        Person personToEdit \u003d lastShownList.get(index - 1);"
+        "content": "        Time current \u003d personToEdit.getTime();"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        Time current \u003d personToEdit.getTime();"
+        "content": "        Time newTime \u003d current.addTime(time.getMinutes(), time.getHours());"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        int newMins \u003d 0;"
+        "content": "        Person editedPerson \u003d new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        int newHours \u003d 0;"
+        "content": "                personToEdit.getAddress(), personToEdit.getTags(), newTime);"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        if (current.getMinutes() + time.getMinutes() \u003e\u003d 60) {"
+        "content": "        model.setPerson(personToEdit, editedPerson);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "            newMins \u003d (current.getMinutes() + time.getMinutes()) - 60;"
+        "content": "        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "            newHours \u003d (current.getHours() + time.getHours()) + 1;"
+        "content": "        editedPerson.addActivity(activity);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        } else {"
+        "content": "        editedPerson.addPlace(place);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "            newMins \u003d (current.getMinutes() + time.getMinutes());"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "            newHours \u003d (current.getHours() + time.getHours());"
+        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, personToEdit));"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        Person editedPerson \u003d new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "                personToEdit.getAddress(), personToEdit.getTags(), new Time(newMins, newHours));"
+        "content": "    @Override"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        model.setPerson(personToEdit, editedPerson);"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        editedPerson.addActivity(activity);"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        editedPerson.addPlace(place);"
+        "content": "            return true;"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, personToEdit));"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    }"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "        if (!(other instanceof AddEventCommand)) {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    @Override"
+        "content": "            return false;"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        }"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        // short circuit if same object"
+        "content": ""
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "        // state check"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "            return true;"
+        "content": "        AddEventCommand e \u003d (AddEventCommand) other;"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        }"
+        "content": "        return index \u003d\u003d (e.index)"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "                \u0026\u0026 activity.equals(e.activity) \u0026\u0026 place.equals(e.place) \u0026\u0026 time.equals(e.time);"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "l2ejected"
-        },
-        "content": "        if (!(other instanceof AddEventCommand)) {"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "l2ejected"
-        },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "l2ejected"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "l2ejected"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "l2ejected"
-        },
-        "content": "        // state check"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "l2ejected"
-        },
-        "content": "        AddEventCommand e \u003d (AddEventCommand) other;"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "l2ejected"
-        },
-        "content": "        return index \u003d\u003d (e.index)"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "l2ejected"
-        },
-        "content": "                \u0026\u0026 activity.equals(e.activity) \u0026\u0026 place.equals(e.place) \u0026\u0026 time.equals(e.time);"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "l2ejected"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 115,
         "author": {
           "gitId": "l2ejected"
         },
@@ -10738,7 +10675,7 @@
       }
     ],
     "authorContributionMap": {
-      "l2ejected": 124
+      "l2ejected": 115
     }
   },
   {
@@ -34883,185 +34820,297 @@
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    @Override"
+        "content": "    /**"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    public String toString() {"
+        "content": "     * Adds the input mins and hrs to the current Time"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        return String.format(\"%s:%s\", this.hours, this.minutes);"
+        "content": "     */"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    }"
+        "content": "    public Time addTime(int mins, int hrs) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "        int newMins;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    @Override"
+        "content": "        int newHrs;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        if (mins + this.getMinutes() \u003e\u003d 60) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        // short circuit if same object"
+        "content": "            newMins \u003d (mins + this.getMinutes()) - 60;"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "            newHrs \u003d (hrs + this.getHours()) + 1;"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "            return true;"
+        "content": "        } else {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        }"
+        "content": "            newMins \u003d mins + this.getMinutes();"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "            newHrs \u003d hrs + this.getHours();"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "        }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        if (!(other instanceof Time)) {"
+        "content": "        return new Time(newMins, newHrs);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "            return false;"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        // state check"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        Time t \u003d (Time) other;"
+        "content": "        return String.format(\"%s:%s\", this.hours, this.minutes);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        return this.value.equals(t.value);"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    @Override"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    public int hashCode() {"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "        return value.hashCode();"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": "    }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 76,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "        // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "        if (!(other instanceof Time)) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "        // state check"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "        Time t \u003d (Time) other;"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "        return this.value.equals(t.value);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "        return value.hashCode();"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "l2ejected"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 92,
         "author": {
           "gitId": "l2ejected"
         },
@@ -35069,7 +35118,7 @@
       }
     ],
     "authorContributionMap": {
-      "l2ejected": 76
+      "l2ejected": 92
     }
   },
   {

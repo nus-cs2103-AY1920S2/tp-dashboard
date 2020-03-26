@@ -43802,9 +43802,9 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "eclmist"
+          "gitId": "chuayijing"
         },
-        "content": "public class Session {"
+        "content": "public class Session implements Comparable\u003cSession\u003e {"
       },
       {
         "lineNumber": 14,
@@ -45167,6 +45167,62 @@
       {
         "lineNumber": 208,
         "author": {
+          "gitId": "chuayijing"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "     * Compare Sessions based on the session that will occur first."
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    public int compareTo(Session other) {"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        return getDate().compareTo(other.getDate());"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
           "gitId": "eclmist"
         },
         "content": "}"
@@ -45174,8 +45230,8 @@
     ],
     "authorContributionMap": {
       "aakanksha-rai": 1,
-      "eclmist": 175,
-      "chuayijing": 15,
+      "eclmist": 174,
+      "chuayijing": 24,
       "PotatoCombat": 17
     }
   },
@@ -45400,938 +45456,938 @@
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "import java.util.Iterator;"
+        "content": "import java.util.Comparator;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.Iterator;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "import javafx.collections.FXCollections;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": "import javafx.collections.FXCollections;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "chuayijing"
         },
-        "content": "import tatracker.model.session.exceptions.DuplicateSessionException;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "import tatracker.model.session.exceptions.SessionNotFoundException;"
+        "content": "import tatracker.model.session.exceptions.DuplicateSessionException;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "import tatracker.model.session.exceptions.SessionNotFoundException;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * A list of sessions that enforces uniqueness between its elements and does not allow nulls."
+        "content": "/**"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * A session is considered unique by comparing using {@code Session#isSameSession(Session)}."
+        "content": " * A list of sessions that enforces uniqueness between its elements and does not allow nulls."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * As such, adding and updating of sessions uses Session#isSameSession(Session)"
+        "content": " * A session is considered unique by comparing using {@code Session#isSameSession(Session)}."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * for equality so as to ensure that the session being added or updated is"
+        "content": " * As such, adding and updating of sessions uses Session#isSameSession(Session)"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * unique in terms of identity in the UniqueSessionList. However,"
+        "content": " * for equality so as to ensure that the session being added or updated is"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * the removal of a session uses Session#equals(Object) so as to ensure that"
+        "content": " * unique in terms of identity in the UniqueSessionList. However,"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * the session with exactly the same fields will be removed."
+        "content": " * the removal of a session uses Session#equals(Object) so as to ensure that"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " *"
+        "content": " * the session with exactly the same fields will be removed."
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * Supports a minimal set of list operations."
+        "content": " *"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " *"
+        "content": " * Supports a minimal set of list operations."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " * @see Session#isSameSession(Session)"
+        "content": " *"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": " */"
+        "content": " * @see Session#isSameSession(Session)"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "public class UniqueSessionList implements Iterable\u003cSession\u003e {"
+        "content": " */"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "public class UniqueSessionList implements Iterable\u003cSession\u003e {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    private final ObservableList\u003cSession\u003e internalList \u003d FXCollections.observableArrayList();"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    private final ObservableList\u003cSession\u003e internalUnmodifiableList \u003d"
+        "content": "    private final ObservableList\u003cSession\u003e internalList \u003d FXCollections.observableArrayList();"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            FXCollections.unmodifiableObservableList(internalList);"
+        "content": "    private final ObservableList\u003cSession\u003e internalUnmodifiableList \u003d"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "            FXCollections.unmodifiableObservableList(internalList);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * Returns true if the list contains an equivalent session as the given argument."
+        "content": "    /**"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     */"
+        "content": "     * Returns true if the list contains an equivalent session as the given argument."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public boolean contains(Session toCheck) {"
+        "content": "     */"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        requireNonNull(toCheck);"
+        "content": "    public boolean contains(Session toCheck) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        return internalList.stream().anyMatch(toCheck::isSameSession);"
+        "content": "        requireNonNull(toCheck);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "        return internalList.stream().anyMatch(toCheck::isSameSession);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Returns the size of the UniqueSessionList."
+        "content": "    /**"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "     * Returns the size of the UniqueSessionList."
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public int size() {"
+        "content": "     */"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return internalList.size();"
+        "content": "    public int size() {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        return internalList.size();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Returns the session at the given index."
+        "content": "    /**"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "     * Returns the session at the given index."
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public Session get(int n) {"
+        "content": "     */"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        return internalList.get(n);"
+        "content": "    public Session get(int n) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        return internalList.get(n);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * Adds a session to the list."
+        "content": "    /**"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * The session must not already exist in the list."
+        "content": "     * Adds a session to the list."
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     */"
+        "content": "     * The session must not already exist in the list."
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public void add(Session toAdd) {"
+        "content": "     */"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        requireNonNull(toAdd);"
+        "content": "    public void add(Session toAdd) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        if (contains(toAdd)) {"
+        "content": "        requireNonNull(toAdd);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            throw new DuplicateSessionException();"
+        "content": "        if (contains(toAdd)) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": "            throw new DuplicateSessionException();"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        internalList.add(toAdd);"
+        "content": "        }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "        internalList.add(toAdd);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * Replaces the session {@code target} in the list with {@code editedSession}."
+        "content": "    /**"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * {@code target} must exist in the list."
+        "content": "     * Replaces the session {@code target} in the list with {@code editedSession}."
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * The session identity of {@code editedSession} must not be the same as another existing session in the list."
+        "content": "     * {@code target} must exist in the list."
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     */"
+        "content": "     * The session identity of {@code editedSession} must not be the same as another existing session in the list."
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public void setSession(Session target, Session editedSession) {"
+        "content": "     */"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        requireAllNonNull(target, editedSession);"
+        "content": "    public void setSession(Session target, Session editedSession) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "        requireAllNonNull(target, editedSession);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        int index \u003d internalList.indexOf(target);"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        if (index \u003d\u003d -1) {"
+        "content": "        int index \u003d internalList.indexOf(target);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            throw new SessionNotFoundException();"
+        "content": "        if (index \u003d\u003d -1) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": "            throw new SessionNotFoundException();"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        if (!target.isSameSession(editedSession) \u0026\u0026 contains(editedSession)) {"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            throw new DuplicateSessionException();"
+        "content": "        if (!target.isSameSession(editedSession) \u0026\u0026 contains(editedSession)) {"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": "            throw new DuplicateSessionException();"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        internalList.set(index, editedSession);"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "        internalList.set(index, editedSession);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * Removes the equivalent session from the list."
+        "content": "    /**"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * The session must exist in the list."
+        "content": "     * Removes the equivalent session from the list."
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     */"
+        "content": "     * The session must exist in the list."
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public void remove(Session toRemove) {"
+        "content": "     */"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        requireNonNull(toRemove);"
+        "content": "    public void remove(Session toRemove) {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        if (!internalList.remove(toRemove)) {"
+        "content": "        requireNonNull(toRemove);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            throw new SessionNotFoundException();"
+        "content": "        if (!internalList.remove(toRemove)) {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": "            throw new SessionNotFoundException();"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 99,
         "author": {
-          "gitId": "aakanksha-rai"
+          "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * Removes the session of the given index from the list."
+        "content": "    /**"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     * The session must exist in the list."
+        "content": "     * Removes the session of the given index from the list."
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "     */"
+        "content": "     * The session must exist in the list."
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    public void remove(int n) {"
+        "content": "     */"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        requireNonNull(n);"
+        "content": "    public void remove(int n) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        if (n \u003c 0 || n \u003e internalList.size()) {"
+        "content": "        requireNonNull(n);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "            throw new SessionNotFoundException();"
+        "content": "        if (n \u003c 0 || n \u003e internalList.size()) {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        }"
+        "content": "            throw new SessionNotFoundException();"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "        internalList.remove(n);"
+        "content": ""
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": "    }"
+        "content": "        internalList.remove(n);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "aakanksha-rai"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 112,
         "author": {
-          "gitId": "chuayijing"
+          "gitId": "aakanksha-rai"
         },
-        "content": "    public void setSessions(UniqueSessionList replacement) {"
+        "content": ""
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        requireNonNull(replacement);"
+        "content": "    public void setSessions(UniqueSessionList replacement) {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        internalList.setAll(replacement.internalList);"
+        "content": "        requireNonNull(replacement);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "        internalList.setAll(replacement.internalList);"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * Replaces the contents of this list with {@code sessions}."
+        "content": "    /**"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * {@code sessions} must not contain duplicate sessions."
+        "content": "     * Replaces the contents of this list with {@code sessions}."
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     */"
+        "content": "     * {@code sessions} must not contain duplicate sessions."
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public void setSessions(List\u003cSession\u003e sessions) {"
+        "content": "     */"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        requireAllNonNull(sessions);"
+        "content": "    public void setSessions(List\u003cSession\u003e sessions) {"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        if (!sessionsAreUnique(sessions)) {"
+        "content": "        requireAllNonNull(sessions);"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            throw new DuplicateSessionException();"
+        "content": "        if (!sessionsAreUnique(sessions)) {"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": "            throw new DuplicateSessionException();"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        internalList.setAll(sessions);"
+        "content": ""
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "        internalList.setAll(sessions);"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * Returns the session list as an unmodifiable {@code ObservableList}."
+        "content": "    /**"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     */"
+        "content": "     * Returns the session list as an unmodifiable {@code ObservableList}."
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public ObservableList\u003cSession\u003e asUnmodifiableObservableList() {"
+        "content": "     */"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        return internalUnmodifiableList;"
+        "content": "    public ObservableList\u003cSession\u003e asUnmodifiableObservableList() {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "        FXCollections.sort(internalList, Comparator.comparing(Session::getDate)"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    @Override"
+        "content": "                                                    .thenComparing(Session::getStartDateTime)"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public Iterator\u003cSession\u003e iterator() {"
+        "content": "                                                    .thenComparing(Session::getEndDateTime));"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        return internalList.iterator();"
+        "content": "        return internalUnmodifiableList;"
       },
       {
         "lineNumber": 140,
@@ -46359,63 +46415,63 @@
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    public Iterator\u003cSession\u003e iterator() {"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "        return internalList.iterator();"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "                || (other instanceof UniqueSessionList // instanceof handles nulls"
+        "content": "    }"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "                \u0026\u0026 internalList.equals(((UniqueSessionList) other).internalList));"
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": ""
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    @Override"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    public int hashCode() {"
+        "content": "                || (other instanceof UniqueSessionList // instanceof handles nulls"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        return internalList.hashCode();"
+        "content": "                \u0026\u0026 internalList.equals(((UniqueSessionList) other).internalList));"
       },
       {
         "lineNumber": 152,
@@ -46436,94 +46492,129 @@
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    /**"
+        "content": "    @Override"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     * Returns true if {@code sessions} contains only unique sessions."
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "     */"
+        "content": "        return internalList.hashCode();"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    private boolean sessionsAreUnique(List\u003cSession\u003e sessions) {"
+        "content": "    }"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        for (int i \u003d 0; i \u003c sessions.size() - 1; i++) {"
+        "content": ""
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            for (int j \u003d i + 1; j \u003c sessions.size(); j++) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "                if (sessions.get(i).isSameSession(sessions.get(j))) {"
+        "content": "     * Returns true if {@code sessions} contains only unique sessions."
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "                    return false;"
+        "content": "     */"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "                }"
+        "content": "    private boolean sessionsAreUnique(List\u003cSession\u003e sessions) {"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "            }"
+        "content": "        for (int i \u003d 0; i \u003c sessions.size() - 1; i++) {"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        }"
+        "content": "            for (int j \u003d i + 1; j \u003c sessions.size(); j++) {"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "        return true;"
+        "content": "                if (sessions.get(i).isSameSession(sessions.get(j))) {"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "chuayijing"
         },
-        "content": "    }"
+        "content": "                    return false;"
       },
       {
         "lineNumber": 167,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "chuayijing"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 172,
         "author": {
           "gitId": "chuayijing"
         },
@@ -46532,7 +46623,7 @@
     ],
     "authorContributionMap": {
       "aakanksha-rai": 31,
-      "chuayijing": 136
+      "chuayijing": 141
     }
   },
   {

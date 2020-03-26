@@ -2539,6 +2539,13 @@
       {
         "lineNumber": 18,
         "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public static final String MESSAGE_INVALID_THRESHOLD_AMOUNT \u003d \"Threshold amount must be more than 0!\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
           "gitId": "-"
         },
         "content": "}"
@@ -2547,7 +2554,7 @@
     "authorContributionMap": {
       "aliciatxl": 2,
       "-": 10,
-      "junhaotan": 2,
+      "junhaotan": 3,
       "YingxuH": 4
     }
   },
@@ -10551,325 +10558,507 @@
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_PRODUCT;"
+        "content": "import static seedu.address.logic.commands.product.EditProductCommand.EditProductDescriptor;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_THRESHOLD;"
+        "content": "import static seedu.address.logic.commands.product.EditProductCommand.createEditedProduct;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PRODUCTS;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_PRODUCT;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_THRESHOLD;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.commons.core.index.Index;"
+        "content": "import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PRODUCTS;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.logic.commands.Command;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.logic.commands.CommandResult;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.Model;"
+        "content": "import seedu.address.commons.core.Messages;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.product.Product;"
+        "content": "import seedu.address.commons.core.index.Index;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "import seedu.address.model.util.QuantityThreshold;"
+        "content": "import seedu.address.logic.commands.Command;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "import seedu.address.logic.commands.CommandResult;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "/**"
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": " * Sets the product low limit threshold for notifications."
+        "content": "import seedu.address.model.Model;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": " */"
+        "content": "import seedu.address.model.product.Product;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "public class LowLimitCommand extends Command {"
+        "content": "import seedu.address.model.util.QuantityThreshold;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "import seedu.address.ui.NotificationWindow;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"lowlimit\";"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": sets the notification threshold for products.\""
+        "content": " * Sets the product low limit threshold for notifications."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + \"Alerts the user when the product quantity reached the threshold set by the user. \\n\""
+        "content": " */"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + \"Parameters: \""
+        "content": "public class LowLimitCommand extends Command {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + PREFIX_PRODUCT + \"PRODUCT_INDEX \""
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + PREFIX_THRESHOLD + \"THRESHOLD \\n\""
+        "content": "    public static final String COMMAND_WORD \u003d \"lowlimit\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + \"Example: \" + COMMAND_WORD + \" \""
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + PREFIX_PRODUCT + \"1 \""
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": sets the notification threshold for products.\""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "            + PREFIX_THRESHOLD + \"20\";"
+        "content": "            + \"Alerts the user when the product quantity reached the threshold set by the user. \\n\""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "            + \"Parameters: \""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New threshold set: %1$s\";"
+        "content": "            + PREFIX_PRODUCT + \"PRODUCT_INDEX \""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "            + PREFIX_THRESHOLD + \"THRESHOLD \\n\""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    private final Index productIndex;"
+        "content": "            + \"Example: \" + COMMAND_WORD + \" \""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    private QuantityThreshold threshold;"
+        "content": "            + PREFIX_PRODUCT + \"1 \""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "            + PREFIX_THRESHOLD + \"20\";"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public LowLimitCommand(Index productIndex, QuantityThreshold threshold) {"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        this.productIndex \u003d productIndex;"
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New threshold set: %1$s\";"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        this.threshold \u003d threshold;"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    }"
+        "content": "    private final Index productIndex;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "    private final EditProductDescriptor editProductDescriptor \u003d new EditProductDescriptor();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    @Override"
+        "content": "    private QuantityThreshold threshold;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        Product product \u003d model.getFilteredProductList().get(productIndex.getZeroBased());"
+        "content": "    public LowLimitCommand(Index productIndex, QuantityThreshold threshold) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        product.setThreshold(threshold.toString());"
+        "content": "        this.productIndex \u003d productIndex;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        model.updateFilteredProductList(PREDICATE_SHOW_ALL_PRODUCTS);"
+        "content": "        this.threshold \u003d threshold;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, product));"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 49,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        List\u003cProduct\u003e lastShownList \u003d model.getFilteredProductList();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        if (productIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_PRODUCT_DISPLAYED_INDEX);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        Product productToEdit \u003d lastShownList.get(productIndex.getZeroBased());"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        int thresholdValue \u003d Integer.parseInt(threshold.value);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        if (thresholdValue \u003e 0) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            editProductDescriptor.setThreshold(threshold);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_THRESHOLD_AMOUNT);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        Product editedProduct \u003d createEditedProduct(productToEdit, editProductDescriptor);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        model.setProduct(productToEdit, editedProduct);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        model.updateFilteredProductList(PREDICATE_SHOW_ALL_PRODUCTS);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        if (editedProduct.getQuantity().value \u003c thresholdValue) {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            NotificationWindow window \u003d new NotificationWindow();"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            window.show(editedProduct.getDescription(), editedProduct.getQuantity());"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, editedProduct));"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 75,
         "author": {
           "gitId": "junhaotan"
         },
@@ -10877,7 +11066,7 @@
       }
     ],
     "authorContributionMap": {
-      "junhaotan": 49
+      "junhaotan": 75
     }
   },
   {
@@ -11764,429 +11953,429 @@
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "import seedu.address.ui.NotificationWindow;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": " * Adds a transaction to the system."
+        "content": "/**"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": " */"
+        "content": " * Adds a transaction to the system."
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "public class AddTransactionCommand extends Command {"
+        "content": " */"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "public class AddTransactionCommand extends Command {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"addt\";"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"addt\";"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": add a transaction to the application. \""
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            + \"Parameters: \""
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": add a transaction to the application. \""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            + \"[\" + PREFIX_CUSTOMER + \"CUSTOMER] \""
+        "content": "            + \"Parameters: \""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            + \"[\" + PREFIX_PRODUCT + \"PRODUCT] \""
+        "content": "            + \"[\" + PREFIX_CUSTOMER + \"CUSTOMER] \""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            + \"[\" + PREFIX_DATETIME + \"DATETIME] \""
+        "content": "            + \"[\" + PREFIX_PRODUCT + \"PRODUCT] \""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            + \"[\" + PREFIX_QUANTITY + \"QUANTITY] \""
+        "content": "            + \"[\" + PREFIX_DATETIME + \"DATETIME] \""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            + \"[\" + PREFIX_MONEY + \"MONEY] \""
+        "content": "            + \"[\" + PREFIX_QUANTITY + \"QUANTITY] \""
       },
       {
         "lineNumber": 41,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "            + \"[\" + PREFIX_MONEY + \"MONEY] \""
+      },
+      {
+        "lineNumber": 42,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "            + \"[\" + PREFIX_TRANS_DESCRIPTION + \"DESCRIPTION] \\n\""
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 43,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "            + \"Example: \" + COMMAND_WORD + \" \""
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 44,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "            + PREFIX_CUSTOMER + \"1 \""
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 45,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "            + PREFIX_PRODUCT + \"1 \""
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 46,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "            + PREFIX_DATETIME + \"2020-02-20 10:00 \""
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 47,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "            + PREFIX_QUANTITY + \"30 \""
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 48,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "            + PREFIX_MONEY + \"30 \""
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 49,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "            + PREFIX_TRANS_DESCRIPTION + \"under discount \";"
       },
       {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "YingxuH"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 50,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New transaction added: %1$s\";"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    public static final String MESSAGE_DUPLICATE_TRANSACTION \u003d \"This transaction already exists in the address book\";"
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New transaction added: %1$s\";"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_DUPLICATE_TRANSACTION \u003d \"This transaction already exists in the address book\";"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    private final TransactionFactory transactionFactory;"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    private final EditProductDescriptor editProductDescriptor \u003d new EditProductDescriptor();"
+        "content": "    private final TransactionFactory transactionFactory;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "    private final EditProductDescriptor editProductDescriptor \u003d new EditProductDescriptor();"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    public AddTransactionCommand(TransactionFactory transactionFactory) {"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        requireNonNull(transactionFactory);"
+        "content": "    public AddTransactionCommand(TransactionFactory transactionFactory) {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        this.transactionFactory \u003d transactionFactory;"
+        "content": "        requireNonNull(transactionFactory);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    }"
+        "content": "        this.transactionFactory \u003d transactionFactory;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        List\u003cProduct\u003e lastShownList \u003d model.getFilteredProductList();"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "        List\u003cProduct\u003e lastShownList \u003d model.getFilteredProductList();"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        Index productIndex \u003d transactionFactory.getProductIndex();"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "        Index productIndex \u003d transactionFactory.getProductIndex();"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": "        if (productIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
+        "content": "        Index customerIndex \u003d transactionFactory.getCustomerIndex();"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        }"
+        "content": "        if (productIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_PRODUCT_DISPLAYED_INDEX);"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": "        Product productToEdit \u003d lastShownList.get(productIndex.getZeroBased());"
+        "content": "        }"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": "        Quantity oldQuantity \u003d productToEdit.getQuantity();"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "        if (customerIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        if (oldQuantity.compareTo(transactionFactory.getQuantity()) \u003e\u003d 0) {"
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            Quantity newQuantity \u003d oldQuantity.minus(transactionFactory.getQuantity());"
+        "content": "        }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            editProductDescriptor.setQuantity(newQuantity);"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        } else {"
+        "content": "        Product productToEdit \u003d lastShownList.get(productIndex.getZeroBased());"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PRODUCT_AMOUNT,"
+        "content": "        Quantity oldQuantity \u003d productToEdit.getQuantity();"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "                    oldQuantity.value, productToEdit.getDescription().value));"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        }"
+        "content": "        if (oldQuantity.compareTo(transactionFactory.getQuantity()) \u003e\u003d 0) {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "            Quantity newQuantity \u003d oldQuantity.minus(transactionFactory.getQuantity());"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        Product editedProduct \u003d createEditedProduct(productToEdit, editProductDescriptor);"
+        "content": "            editProductDescriptor.setQuantity(newQuantity);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "        } else {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        if (!productToEdit.isSameProduct(editedProduct) \u0026\u0026 model.hasProduct(editedProduct)) {"
+        "content": "            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PRODUCT_AMOUNT,"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            throw new CommandException(MESSAGE_DUPLICATE_TRANSACTION);"
+        "content": "                    oldQuantity.value, productToEdit.getDescription().value));"
       },
       {
         "lineNumber": 87,
@@ -12207,87 +12396,185 @@
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        model.setProduct(productToEdit, editedProduct);"
+        "content": "        Product editedProduct \u003d createEditedProduct(productToEdit, editProductDescriptor);"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        model.updateFilteredProductList(PREDICATE_SHOW_ALL_PRODUCTS);"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "        if (!productToEdit.isSameProduct(editedProduct) \u0026\u0026 model.hasProduct(editedProduct)) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        Transaction toAdd \u003d transactionFactory.createTransaction(model);"
+        "content": "            throw new CommandException(MESSAGE_DUPLICATE_TRANSACTION);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        if (model.hasTransaction(toAdd)) {"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": "            throw new CommandException(MESSAGE_DUPLICATE_TRANSACTION);"
+        "content": "        int thresholdValue \u003d Integer.parseInt(editedProduct.getThreshold().value);"
       },
       {
         "lineNumber": 96,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "        if (editedProduct.getQuantity().value \u003c thresholdValue) {"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            NotificationWindow window \u003d new NotificationWindow();"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": "            window.show(editedProduct.getDescription(), editedProduct.getQuantity());"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "junhaotan"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 101,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "        model.setProduct(productToEdit, editedProduct);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "        model.updateFilteredProductList(PREDICATE_SHOW_ALL_PRODUCTS);"
+      },
+      {
+        "lineNumber": 104,
         "author": {
           "gitId": "YingxuH"
         },
         "content": ""
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 105,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "        Transaction toAdd \u003d transactionFactory.createTransaction(model);"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "        if (model.hasTransaction(toAdd)) {"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "            throw new CommandException(MESSAGE_DUPLICATE_TRANSACTION);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "        model.addTransaction(toAdd);"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 113,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 114,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 115,
         "author": {
           "gitId": "YingxuH"
         },
@@ -12295,7 +12582,7 @@
       }
     ],
     "authorContributionMap": {
-      "junhaotan": 3,
+      "junhaotan": 17,
       "YingxuH": 98
     }
   },
@@ -36459,604 +36746,604 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "import seedu.address.ui.NotificationWindow;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
           "gitId": "YingxuH"
         },
         "content": ""
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": " * Represents a Product in the product list."
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": " * Guarantees: details are present and not null, field values are validated, immutable."
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": " */"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "public class Product {"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 17,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": ""
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    // Identity fields"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    private final Description description;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": ""
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    // Data fields"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    private final Price price;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    private final Quantity quantity;"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    private final Sales sales;"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "    private final UUID id;"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": ""
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "    private QuantityThreshold threshold;"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "junhaotan"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    /**"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    /**"
+        "content": "     * Every field must be present and not null."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "     * Every field must be present and not null."
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "aliciatxl"
-        },
         "content": "     */"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "    public Product(Description description, Price price, Quantity quantity, Sales sales, QuantityThreshold threshold) {"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "        requireAllNonNull(description, price, quantity);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        this.description \u003d description;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        this.description \u003d description;"
+        "content": "        this.price \u003d price;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        this.price \u003d price;"
+        "content": "        this.quantity \u003d quantity;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        this.quantity \u003d quantity;"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "aliciatxl"
-        },
         "content": "        this.sales \u003d sales;"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 38,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        this.threshold \u003d threshold;"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "        this.id \u003d UUID.randomUUID();"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    /**"
+        "content": "     * Every field must be present and not null."
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "     * Every field must be present and not null."
+        "content": "     */"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "     */"
+        "content": "    public Product(Description description, Price price, Quantity quantity, Sales sales,"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    public Product(Description description, Price price, Quantity quantity, Sales sales,"
+        "content": "                   QuantityThreshold threshold, UUID id) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "                   QuantityThreshold threshold, UUID id) {"
+        "content": "        requireAllNonNull(description, price, quantity);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        requireAllNonNull(description, price, quantity);"
+        "content": "        this.description \u003d description;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        this.description \u003d description;"
+        "content": "        this.price \u003d price;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        this.price \u003d price;"
+        "content": "        this.quantity \u003d quantity;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        this.quantity \u003d quantity;"
+        "content": "        this.sales \u003d sales;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        this.sales \u003d sales;"
+        "content": "        this.id \u003d id;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        this.id \u003d id;"
+        "content": "        this.threshold \u003d threshold;"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "aliciatxl"
         },
-        "content": "        this.threshold \u003d threshold;"
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "    public Description getDescription() {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    public Description getDescription() {"
+        "content": "        return description;"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        return description;"
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "    public Price getPrice() {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    public Price getPrice() {"
+        "content": "        return price;"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        return price;"
+        "content": "    }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "    public Quantity getQuantity() {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    public Quantity getQuantity() {"
+        "content": "        return quantity;"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        return quantity;"
+        "content": "    }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "    public Sales getSales() {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    public Sales getSales() {"
+        "content": "        return sales;"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        return sales;"
+        "content": "    }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "aliciatxl"
-        },
         "content": ""
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 72,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "    public UUID getId() {"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 73,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "        return id;"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 74,
         "author": {
           "gitId": "YingxuH"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 75,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "    public QuantityThreshold getThreshold() {"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 76,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "        return threshold;"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 77,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "junhaotan"
+        },
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": ""
+        "content": "    public void setThreshold(String quantityThreshold) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "    public void setThreshold(String quantityThreshold) {"
+        "content": "        this.threshold \u003d new QuantityThreshold(quantityThreshold);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "junhaotan"
         },
-        "content": "        this.threshold \u003d new QuantityThreshold(quantityThreshold);"
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        int numQuantity \u003d quantity.value;"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        int thresholdValue \u003d Integer.parseInt(quantityThreshold);"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        if (numQuantity \u003c\u003d thresholdValue) {"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "            NotificationWindow window \u003d new NotificationWindow();"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "            window.show(description, quantity);"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "junhaotan"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "YingxuH"
-        },
         "content": ""
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 83,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 84,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "     * Returns true if both products have the same identity and data fields."
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 85,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 86,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    public boolean isSameProduct(Product otherProduct) {"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 87,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "        if (otherProduct \u003d\u003d this) {"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 88,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "            return true;"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 89,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "        return otherProduct !\u003d null"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "                \u0026\u0026 otherProduct.getDescription().equals(getDescription())"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "                \u0026\u0026 otherProduct.getPrice().equals(getPrice())"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "                \u0026\u0026 otherProduct.getQuantity().equals(getQuantity())"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "                \u0026\u0026 otherProduct.getSales().equals(getSales());"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "aliciatxl"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 97,
@@ -37070,133 +37357,133 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        return otherProduct !\u003d null"
+        "content": "    /**"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "                \u0026\u0026 otherProduct.getDescription().equals(getDescription())"
+        "content": "     * Returns true if both products have the same identity and data fields."
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "                \u0026\u0026 otherProduct.getPrice().equals(getPrice())"
+        "content": "     */"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "                \u0026\u0026 otherProduct.getQuantity().equals(getQuantity())"
+        "content": "    @Override"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "                \u0026\u0026 otherProduct.getSales().equals(getSales());"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    }"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "            return true;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    /**"
+        "content": "        }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "     * Returns true if both products have the same identity and data fields."
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "     */"
+        "content": "        if (!(other instanceof Product)) {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    @Override"
+        "content": "            return false;"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "            return true;"
+        "content": "        Product otherProduct \u003d (Product) other;"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        }"
+        "content": "        return otherProduct.getDescription().equals(getDescription())"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "                \u0026\u0026 otherProduct.getPrice().equals(getPrice())"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        if (!(other instanceof Product)) {"
+        "content": "                \u0026\u0026 otherProduct.getQuantity().equals(getQuantity())"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "            return false;"
+        "content": "                \u0026\u0026 otherProduct.getSales().equals(getSales());"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 117,
@@ -37210,206 +37497,157 @@
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        Product otherProduct \u003d (Product) other;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        return otherProduct.getDescription().equals(getDescription())"
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "                \u0026\u0026 otherProduct.getPrice().equals(getPrice())"
+        "content": "        // use this method for custom fields hashing instead of implementing your own"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "                \u0026\u0026 otherProduct.getQuantity().equals(getQuantity())"
+        "content": "        return Objects.hash(description, price, quantity, sales);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "                \u0026\u0026 otherProduct.getSales().equals(getSales());"
+        "content": "    }"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    @Override"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    public int hashCode() {"
+        "content": "        final StringBuilder builder \u003d new StringBuilder();"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        // use this method for custom fields hashing instead of implementing your own"
+        "content": "        builder.append(\"Description: \")"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        return Objects.hash(description, price, quantity, sales);"
+        "content": "                .append(getDescription())"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    }"
+        "content": "                .append(\" Price: \")"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": ""
+        "content": "                .append(getPrice())"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    @Override"
+        "content": "                .append(\" Quantity: \")"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "    public String toString() {"
+        "content": "                .append(getQuantity())"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "aliciatxl"
         },
-        "content": "        final StringBuilder builder \u003d new StringBuilder();"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "        builder.append(\"Description: \")"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "                .append(getDescription())"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "                .append(\" Price: \")"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "                .append(getPrice())"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "                .append(\" Quantity: \")"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "aliciatxl"
-        },
-        "content": "                .append(getQuantity())"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "aliciatxl"
-        },
         "content": "                .append(\" Sales: \")"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 134,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "                .append(getSales())"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 135,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "                .append(\" Threshold: \")"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 136,
         "author": {
           "gitId": "junhaotan"
         },
         "content": "                .append(getThreshold());"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 137,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "        return builder.toString();"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 138,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 139,
         "author": {
           "gitId": "aliciatxl"
         },
         "content": ""
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 140,
         "author": {
           "gitId": "aliciatxl"
         },
@@ -37418,8 +37656,8 @@
     ],
     "authorContributionMap": {
       "aliciatxl": 101,
-      "junhaotan": 21,
-      "YingxuH": 25
+      "junhaotan": 15,
+      "YingxuH": 24
     }
   },
   {
@@ -42431,28 +42669,28 @@
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": "    public Quantity getQuantity() {"
+        "content": "    public Index getCustomerIndex() {"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
-        "content": "        return quantity;"
+        "content": "        return customerIndex;"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
         "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "YingxuH"
+          "gitId": "junhaotan"
         },
         "content": ""
       },
@@ -42461,56 +42699,56 @@
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    @Override"
+        "content": "    public Quantity getQuantity() {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return quantity;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            return true;"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": ""
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        if (!(other instanceof TransactionFactory)) {"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "            return false;"
+        "content": "            return true;"
       },
       {
         "lineNumber": 62,
@@ -42531,59 +42769,87 @@
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        TransactionFactory otherTransactionFactory \u003d (TransactionFactory) other;"
+        "content": "        if (!(other instanceof TransactionFactory)) {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "        return otherTransactionFactory.customerIndex.equals(customerIndex)"
+        "content": "            return false;"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "                \u0026\u0026 otherTransactionFactory.productIndex.equals(productIndex)"
+        "content": "        }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "                \u0026\u0026 otherTransactionFactory.dateTime.equals(dateTime)"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "                \u0026\u0026 otherTransactionFactory.quantity.equals(quantity)"
+        "content": "        TransactionFactory otherTransactionFactory \u003d (TransactionFactory) other;"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "                \u0026\u0026 otherTransactionFactory.money.equals(money)"
+        "content": "        return otherTransactionFactory.customerIndex.equals(customerIndex)"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "                \u0026\u0026 otherTransactionFactory.description.equals(description);"
+        "content": "                \u0026\u0026 otherTransactionFactory.productIndex.equals(productIndex)"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "YingxuH"
         },
-        "content": "    }"
+        "content": "                \u0026\u0026 otherTransactionFactory.dateTime.equals(dateTime)"
       },
       {
         "lineNumber": 72,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "                \u0026\u0026 otherTransactionFactory.quantity.equals(quantity)"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "                \u0026\u0026 otherTransactionFactory.money.equals(money)"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "                \u0026\u0026 otherTransactionFactory.description.equals(description);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "YingxuH"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
         "author": {
           "gitId": "YingxuH"
         },
@@ -42591,6 +42857,7 @@
       }
     ],
     "authorContributionMap": {
+      "junhaotan": 4,
       "YingxuH": 72
     }
   },

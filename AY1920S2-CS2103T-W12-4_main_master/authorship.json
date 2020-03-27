@@ -5721,9 +5721,9 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "    public static final String MESSAGE_RECIPES_LISTED_OVERVIEW \u003d \"%1$d recipes listed!\";"
+        "content": "    public static final String MESSAGE_RECIPES_LISTED_OVERVIEW \u003d \"%1$d recipes found!\";"
       },
       {
         "lineNumber": 12,
@@ -5741,8 +5741,8 @@
       }
     ],
     "authorContributionMap": {
-      "muhd97": 2,
-      "kevinswk94": 1,
+      "muhd97": 1,
+      "kevinswk94": 2,
       "-": 10
     }
   },
@@ -12335,7 +12335,7 @@
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "import cookbuddy.model.recipe.NameContainsKeywordsPredicate;"
+        "content": "import cookbuddy.model.recipe.ContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 8,
@@ -12403,9 +12403,9 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "AdarshChugani"
+          "gitId": "kevinswk94"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all recipes whose names contain any of \""
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Finds all recipes whose attribute contains any of \""
       },
       {
         "lineNumber": 18,
@@ -12417,16 +12417,16 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "            + \"Parameters: KEYWORD [MORE_KEYWORDS]...\\n\""
+        "content": "            + \"Parameters: attribute/ KEYWORD [MORE_KEYWORDS]...\\n\""
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "            + \"Example: \" + COMMAND_WORD + \" chicken \";"
+        "content": "            + \"Example: \" + COMMAND_WORD + \" n/ sandwich\";"
       },
       {
         "lineNumber": 21,
@@ -12438,9 +12438,9 @@
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "    private final NameContainsKeywordsPredicate predicate;"
+        "content": "    private final ContainsKeywordsPredicate predicate;"
       },
       {
         "lineNumber": 23,
@@ -12452,9 +12452,9 @@
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "    public FindCommand(NameContainsKeywordsPredicate predicate) {"
+        "content": "    public FindCommand(ContainsKeywordsPredicate predicate) {"
       },
       {
         "lineNumber": 25,
@@ -12584,10 +12584,9 @@
       }
     ],
     "authorContributionMap": {
-      "muhd97": 3,
-      "AdarshChugani": 1,
-      "kevinswk94": 5,
-      "-": 33
+      "muhd97": 2,
+      "kevinswk94": 10,
+      "-": 30
     }
   },
   {
@@ -17564,208 +17563,502 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "import static cookbuddy.logic.parser.CliSyntax.PREFIX_INGREDIENTS;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import static cookbuddy.logic.parser.CliSyntax.PREFIX_INSTRUCTIONS;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "import static cookbuddy.logic.parser.CliSyntax.PREFIX_NAME;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "import cookbuddy.logic.commands.FindCommand;"
+        "content": ""
       },
       {
         "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import cookbuddy.logic.commands.FindCommand;"
+      },
+      {
+        "lineNumber": 11,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "import cookbuddy.logic.parser.exceptions.ParseException;"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import cookbuddy.model.recipe.IngredientContainsKeywordsPredicate;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import cookbuddy.model.recipe.InstructionContainsKeywordsPredicate;"
+      },
+      {
+        "lineNumber": 14,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "import cookbuddy.model.recipe.NameContainsKeywordsPredicate;"
       },
       {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " * Parses input arguments and creates a new FindCommand object"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "public class FindCommandParser implements Parser\u003cFindCommand\u003e {"
-      },
-      {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "import cookbuddy.model.recipe.attribute.Name;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the FindCommand"
+        "content": "/**"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "     * and returns a FindCommand object for execution."
+        "content": " * Parses input arguments and creates a new FindCommand object"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": " */"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "public class FindCommandParser implements Parser\u003cFindCommand\u003e {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
-        "content": "    public FindCommand parse(String args) throws ParseException {"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "        String trimmedArgs \u003d args.trim();"
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "        if (trimmedArgs.isEmpty()) {"
+        "content": "     * Returns true if only one of the prefixes contains a value in the given"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "            throw new ParseException("
+        "content": "     * {@code ArgumentMultimap}."
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));"
+        "content": "     */"
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "        }"
+        "content": "    public static boolean isSinglePrefixPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "        long number \u003d Arrays.stream(prefixes).filter(prefix -\u003e argumentMultimap.getValue(prefix).isPresent()).count();"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
-        },
-        "content": "        String[] nameKeywords \u003d trimmedArgs.split(\"\\\\s+\");"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
         "content": ""
       },
       {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return number \u003d\u003d 1 ? true : false;"
+      },
+      {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));"
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Parses the given {@code String} of arguments in the context of the FindCommand"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * and returns a FindCommand object for execution."
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public FindCommand parse(String args) throws ParseException {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        ArgumentMultimap argumentMultimap \u003d ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_INGREDIENTS,"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                PREFIX_INSTRUCTIONS);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        // TODO: allow finding via multiple prefixes"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        if (!isSinglePrefixPresent(argumentMultimap, PREFIX_NAME, PREFIX_INGREDIENTS, PREFIX_INSTRUCTIONS)) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            throw new ParseException(\"Please search for 1 attribute at a time!\");"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        String[] keywords;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        if (argumentMultimap.getValue(PREFIX_NAME).isPresent()) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            if (argumentMultimap.getValue(PREFIX_NAME).get().isEmpty()) {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                throw new ParseException(Name.MESSAGE_CONSTRAINTS);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            keywords \u003d argumentMultimap.getValue(PREFIX_NAME).get().split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        } else if (argumentMultimap.getValue(PREFIX_INGREDIENTS).isPresent()) {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            if (argumentMultimap.getValue(PREFIX_INGREDIENTS).get().isEmpty()) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                throw new ParseException(\"Enter ingredients to search for.\");"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            keywords \u003d argumentMultimap.getValue(PREFIX_INGREDIENTS).get().split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            return new FindCommand(new IngredientContainsKeywordsPredicate(Arrays.asList(keywords)));"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        } else if (argumentMultimap.getValue(PREFIX_INSTRUCTIONS).isPresent()) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            if (argumentMultimap.getValue(PREFIX_INSTRUCTIONS).get().isEmpty()) {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                throw new ParseException(\"Enter instruction words to search for.\");"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            keywords \u003d argumentMultimap.getValue(PREFIX_INSTRUCTIONS).get().split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            return new FindCommand(new InstructionContainsKeywordsPredicate(Arrays.asList(keywords)));"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
@@ -17773,8 +18066,8 @@
       }
     ],
     "authorContributionMap": {
-      "kevinswk94": 5,
-      "-": 28
+      "kevinswk94": 54,
+      "-": 21
     }
   },
   {
@@ -24962,6 +25255,593 @@
     }
   },
   {
+    "path": "src/main/java/cookbuddy/model/recipe/ContainsKeywordsPredicate.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "package cookbuddy.model.recipe;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import java.util.function.Predicate;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": " * Predicate to test for."
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "public interface ContainsKeywordsPredicate extends Predicate\u003cRecipe\u003e {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    boolean test(Recipe recipe);"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kevinswk94": 10
+    }
+  },
+  {
+    "path": "src/main/java/cookbuddy/model/recipe/IngredientContainsKeywordsPredicate.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "package cookbuddy.model.recipe;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import java.util.stream.Collectors;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import cookbuddy.commons.util.StringUtil;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": " * Tests that a {@code Recipe}\u0027s {@code IngredientList} matches any of the keywords given."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "public class IngredientContainsKeywordsPredicate implements ContainsKeywordsPredicate {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    private final List\u003cString\u003e keywords;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    public IngredientContainsKeywordsPredicate(List\u003cString\u003e keywords) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        this.keywords \u003d keywords;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    public boolean test(Recipe recipe) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        List\u003cString\u003e ingredients \u003d recipe.getIngredients().ingredientData.stream()"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                .map(x -\u003e x.name)"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                .collect(Collectors.toList());"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return keywords.stream().anyMatch(keyword -\u003e ingredients.stream()"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                .anyMatch(ingredient -\u003e StringUtil.containsWordIgnoreCase(ingredient, keyword)));"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "               || (other instanceof IngredientContainsKeywordsPredicate // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                   \u0026\u0026 keywords.equals(((IngredientContainsKeywordsPredicate) other).keywords)); // state check"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kevinswk94": 35
+    }
+  },
+  {
+    "path": "src/main/java/cookbuddy/model/recipe/InstructionContainsKeywordsPredicate.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "package cookbuddy.model.recipe;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import java.util.stream.Collectors;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "import cookbuddy.commons.util.StringUtil;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": " * Tests that a {@code Recipe}\u0027s {@code IngredientList} matches any of the keywords given."
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "public class InstructionContainsKeywordsPredicate implements ContainsKeywordsPredicate {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    private final List\u003cString\u003e keywords;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    public InstructionContainsKeywordsPredicate(List\u003cString\u003e keywords) {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        this.keywords \u003d keywords;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    public boolean test(Recipe recipe) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        List\u003cString\u003e instructions \u003d recipe.getInstructions().instructionData.stream()"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                .map(x -\u003e x.instructionString)"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                .collect(Collectors.toList());"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return keywords.stream().anyMatch(keyword -\u003e instructions.stream()"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                .anyMatch(instruction -\u003e StringUtil.containsWordIgnoreCase(instruction, keyword)));"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                || (other instanceof InstructionContainsKeywordsPredicate // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                    \u0026\u0026 keywords.equals(((InstructionContainsKeywordsPredicate) other).keywords)); // state check"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "kevinswk94": 35
+    }
+  },
+  {
     "path": "src/main/java/cookbuddy/model/recipe/NameContainsKeywordsPredicate.java",
     "fileType": "java",
     "lines": [
@@ -24991,192 +25871,185 @@
         "author": {
           "gitId": "-"
         },
-        "content": "import java.util.function.Predicate;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 5,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "import cookbuddy.commons.util.StringUtil;"
       },
       {
-        "lineNumber": 7,
+        "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 8,
         "author": {
           "gitId": "muhd97"
         },
         "content": " * Tests that a {@code Recipe}\u0027s {@code Name} matches any of the keywords given."
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
         "content": " */"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 10,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "public class NameContainsKeywordsPredicate implements Predicate\u003cRecipe\u003e {"
+        "content": "public class NameContainsKeywordsPredicate implements ContainsKeywordsPredicate {"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
         "content": "    private final List\u003cString\u003e keywords;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": "    public NameContainsKeywordsPredicate(List\u003cString\u003e keywords) {"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
         "content": "        this.keywords \u003d keywords;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    @Override"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "muhd97"
         },
         "content": "    public boolean test(Recipe recipe) {"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
         "content": "        return keywords.stream()"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "                .anyMatch(keyword -\u003e StringUtil.containsWordIgnoreCase(recipe.getName().name, keyword));"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "                || (other instanceof NameContainsKeywordsPredicate // instanceof handles nulls"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "                || (other instanceof NameContainsKeywordsPredicate // instanceof handles nulls"
+        "content": "                \u0026\u0026 keywords.equals(((NameContainsKeywordsPredicate) other).keywords)); // state check"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "                \u0026\u0026 keywords.equals(((NameContainsKeywordsPredicate) other).keywords)); // state check"
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
@@ -25184,9 +26057,9 @@
       }
     ],
     "authorContributionMap": {
-      "muhd97": 3,
-      "kevinswk94": 3,
-      "-": 25
+      "muhd97": 2,
+      "kevinswk94": 4,
+      "-": 24
     }
   },
   {
@@ -28593,9 +29466,9 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "sharadhr"
+          "gitId": "kevinswk94"
         },
-        "content": "    private final ArrayList\u003cIngredient\u003e ingredientData;"
+        "content": "    public final ArrayList\u003cIngredient\u003e ingredientData;"
       },
       {
         "lineNumber": 14,
@@ -28991,8 +29864,8 @@
       }
     ],
     "authorContributionMap": {
-      "sharadhr": 49,
-      "kevinswk94": 20
+      "sharadhr": 48,
+      "kevinswk94": 21
     }
   },
   {

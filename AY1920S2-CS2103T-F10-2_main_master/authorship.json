@@ -2900,6 +2900,477 @@
     }
   },
   {
+    "path": "src/main/java/seedu/address/commons/util/DateTimeUtil.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "package seedu.address.commons.util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import java.time.format.DateTimeFormatter;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import java.time.format.DateTimeFormatterBuilder;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import java.time.format.DateTimeParseException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import java.time.temporal.ChronoField;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": " * Class containing DateTime parser."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "public class DateTimeUtil {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    private static DateTimeFormatter getDateTimeFormatter(int index, int defaultYear) {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        switch (index) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        case 0:"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            return new DateTimeFormatterBuilder()"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .appendPattern(\"yyyy M d\")"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .toFormatter();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        case 1:"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            return new DateTimeFormatterBuilder()"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .appendPattern(\"d M yyyy\")"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .toFormatter();"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        case 2:"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            return new DateTimeFormatterBuilder()"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .appendPattern(\"d M\")"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .parseDefaulting(ChronoField.YEAR, defaultYear)"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                    .toFormatter();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            // default should never be triggered but just in case."
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            assert false;"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            return DateTimeFormatter.ofPattern(\"d/M/yyyy\");"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "     * Parse the input string as a LocalDateTime if possible."
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "     * @param dateString String to be parsed."
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "     * @return The parsed string as a LocalDateTime."
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "     * @throws DateTimeParseException if string unable to be parsed."
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    public static LocalDate parseDate(String dateString) throws DateTimeParseException {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        requireNonNull(dateString);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        int currentYear \u003d LocalDate.now().getYear();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        dateString \u003d dateString.replaceAll(\"[\\\\\\\\/\\\\- ]+\", \" \");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        for (int i \u003d 0; i \u003c 3; i++) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                return LocalDate.parse(dateString, getDateTimeFormatter(i, currentYear));"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            } catch (DateTimeParseException e) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                // It\u0027s fine if DateTimeParseException is thrown now, it\u0027s only used to check format of date."
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "                // DateTimeParseException will be thrown if all cases fail."
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // This throws a DateTimeParseException"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        return LocalDate.parse(dateString, DateTimeFormatter.ofPattern(\"d/M/yyyy\"));"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "gerhean": 66
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/logic/Logic.java",
     "fileType": "java",
     "lines": [
@@ -24812,65 +25283,65 @@
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "/**"
+        "content": "import seedu.address.commons.util.DateTimeUtil;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": " * Represents a InternshipApplication\u0027s application date in the internship diary."
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "ongch00"
         },
-        "content": " * Guarantees: immutable; is valid as declared in {@link #isValidApplicationDate(String)}"
+        "content": "/**"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "ongch00"
         },
-        "content": " */"
+        "content": " * Represents a InternshipApplication\u0027s application date in the internship diary."
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "gerhean"
+          "gitId": "ongch00"
         },
-        "content": "public class ApplicationDate implements Comparable\u003cApplicationDate\u003e {"
+        "content": " * Guarantees: immutable; is valid as declared in {@link #isValidApplicationDate(String)}"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d"
+        "content": " */"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "            \"Date should be in the form: DD MM YYYY\";"
+        "content": "public class ApplicationDate implements Comparable\u003cApplicationDate\u003e {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ongch00"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    public static final String DATE_PATTERN \u003d \"dd MM yyyy\";"
+        "content": "            \"Date should be in the form: DD MM YYYY\";"
       },
       {
         "lineNumber": 19,
@@ -24882,411 +25353,432 @@
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "    public final LocalDate fullApplicationDate;"
+        "content": "    // Default Pattern"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ongch00"
         },
-        "content": ""
+        "content": "    public static final String DATE_PATTERN \u003d \"dd MM yyyy\";"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     * Constructs a {@code ApplicationDate}."
+        "content": "    public final LocalDate fullApplicationDate;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     * @param date A valid date."
+        "content": "    /**"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     */"
+        "content": "     * Constructs a {@code ApplicationDate}."
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    public ApplicationDate(String date) {"
+        "content": "     *"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        requireNonNull(date);"
+        "content": "     * @param date A valid date."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        checkArgument(isValidApplicationDate(date), MESSAGE_CONSTRAINTS);"
+        "content": "     */"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        fullApplicationDate \u003d LocalDate.parse(date, DateTimeFormatter.ofPattern(DATE_PATTERN));"
+        "content": "    public ApplicationDate(String date) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    }"
+        "content": "        requireNonNull(date);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ongch00"
         },
-        "content": ""
+        "content": "        checkArgument(isValidApplicationDate(date), MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "    /**"
+        "content": "        fullApplicationDate \u003d DateTimeUtil.parseDate(date);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     * Constructs a {@code ApplicationDate}."
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     * @param date A valid date of type LocalDate."
+        "content": "    /**"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     */"
+        "content": "     * Constructs a {@code ApplicationDate}."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    public ApplicationDate(LocalDate date) {"
+        "content": "     *"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        requireNonNull(date);"
+        "content": "     * @param date A valid date of type LocalDate."
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        fullApplicationDate \u003d date;"
+        "content": "     */"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    }"
+        "content": "    public ApplicationDate(LocalDate date) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "ongch00"
         },
-        "content": ""
+        "content": "        requireNonNull(date);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    /**"
+        "content": "        fullApplicationDate \u003d date;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     * Returns true if a given string is a valid application date."
+        "content": "    }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    public static boolean isValidApplicationDate(String test) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        try {"
+        "content": "     * Returns true if a given string is a valid application date."
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "            //simple parse test"
+        "content": "     */"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "            LocalDate.parse(test, DateTimeFormatter.ofPattern(DATE_PATTERN));"
+        "content": "    public static boolean isValidApplicationDate(String test) {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "            return true;"
+        "content": "        try {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        } catch (DateTimeParseException e) {"
+        "content": "            //simple parse test"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "            return false;"
+        "content": "            DateTimeUtil.parseDate(test);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    }"
+        "content": "        } catch (DateTimeParseException e) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "ongch00"
         },
-        "content": ""
+        "content": "            return false;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    @Override"
+        "content": "        }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    public String toString() {"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "gerhean"
+          "gitId": "ongch00"
         },
-        "content": "        return fullApplicationDate.format(DateTimeFormatter.ofPattern(DATE_PATTERN));"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "ongch00"
         },
-        "content": ""
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "    @Override"
+        "content": "        return fullApplicationDate.format(DateTimeFormatter.ofPattern(DATE_PATTERN));"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "                || (other instanceof ApplicationDate // instanceof handles nulls"
+        "content": "    @Override"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "                \u0026\u0026 fullApplicationDate.equals(((ApplicationDate) other).fullApplicationDate)); // state check"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    }"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "ongch00"
         },
-        "content": ""
+        "content": "                || (other instanceof ApplicationDate // instanceof handles nulls"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "gerhean"
+          "gitId": "ongch00"
         },
-        "content": "    @Override"
+        "content": "                \u0026\u0026 fullApplicationDate.equals(((ApplicationDate) other).fullApplicationDate)); // state check"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "gerhean"
+          "gitId": "ongch00"
         },
-        "content": "    public int compareTo(ApplicationDate other) {"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "gerhean"
+          "gitId": "ongch00"
         },
-        "content": "        return fullApplicationDate.compareTo(other.fullApplicationDate);"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "gerhean"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "gerhean"
         },
-        "content": ""
+        "content": "    public int compareTo(ApplicationDate other) {"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "    @Override"
+        "content": "        return fullApplicationDate.compareTo(other.fullApplicationDate);"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "    public int hashCode() {"
+        "content": "    }"
       },
       {
         "lineNumber": 75,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "        return String.valueOf(fullApplicationDate).hashCode();"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "ongch00"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "ongch00"
         },
-        "content": ""
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 78,
+        "author": {
+          "gitId": "ongch00"
+        },
+        "content": "        return String.valueOf(fullApplicationDate).hashCode();"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "ongch00"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "ongch00"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
         "author": {
           "gitId": "ongch00"
         },
@@ -25294,8 +25786,8 @@
       }
     ],
     "authorContributionMap": {
-      "gerhean": 7,
-      "ongch00": 71
+      "gerhean": 12,
+      "ongch00": 69
     }
   },
   {
@@ -46297,6 +46789,407 @@
     ],
     "authorContributionMap": {
       "wxwxwxwx9": 40
+    }
+  },
+  {
+    "path": "src/test/java/seedu/address/commons/util/DateTimeUtilTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "package seedu.address.commons.util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import static seedu.address.testutil.Assert.assertThrows;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import java.time.DateTimeException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import java.time.LocalDate;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "public class DateTimeUtilTest {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    public void parseDate_invalidDate_throwsDateTimeParseException() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // null"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        String invalidApplicationDate0 \u003d null;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // empty string"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        String invalidApplicationDate1 \u003d \"\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // random letters"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        String invalidApplicationDate2 \u003d \"asdfqawe\";"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // No numbers"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        String invalidApplicationDate3 \u003d \"/ / \";"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // Invalid date-like string"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        String invalidApplicationDate4 \u003d \"12/13/2020\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // Bad date format"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        String invalidApplicationDate5 \u003d \"12^12^2020\";"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // Extra stuff"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        String invalidApplicationDate6 \u003d \"12/12/2020 haha\";"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // Too much numbers"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        String invalidApplicationDate7 \u003d \"12/12/12/2020\";"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e DateTimeUtil.parseDate(invalidApplicationDate0));"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertThrows(DateTimeException.class, () -\u003e DateTimeUtil.parseDate(invalidApplicationDate1));"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertThrows(DateTimeException.class, () -\u003e DateTimeUtil.parseDate(invalidApplicationDate2));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertThrows(DateTimeException.class, () -\u003e DateTimeUtil.parseDate(invalidApplicationDate3));"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertThrows(DateTimeException.class, () -\u003e DateTimeUtil.parseDate(invalidApplicationDate4));"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertThrows(DateTimeException.class, () -\u003e DateTimeUtil.parseDate(invalidApplicationDate5));"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertThrows(DateTimeException.class, () -\u003e DateTimeUtil.parseDate(invalidApplicationDate6));"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertThrows(DateTimeException.class, () -\u003e DateTimeUtil.parseDate(invalidApplicationDate7));"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    public void parseDate_validDate_returnsCorrectDate() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        int currentYear \u003d LocalDate.now().getYear();"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        LocalDate date1 \u003d LocalDate.of(2019, 3, 1);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        LocalDate date2 \u003d LocalDate.of(currentYear, 4, 2);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        // parse correctly"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertEquals(DateTimeUtil.parseDate(\"1 3 2019\"), date1);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertEquals(DateTimeUtil.parseDate(\"01 03 2019\"), date1);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertEquals(DateTimeUtil.parseDate(\"1/3-2019\"), date1);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "        assertEquals(DateTimeUtil.parseDate(\"2/4\"), date2);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "gerhean"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "gerhean": 56
     }
   },
   {
@@ -76881,9 +77774,9 @@
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "    public void constructor_invalidCompany_throwsIllegalArgumentException() {"
+        "content": "    public void constructor_invalidApplicationDate_throwsIllegalArgumentException() {"
       },
       {
         "lineNumber": 23,
@@ -76923,9 +77816,9 @@
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "    public void isValidCompany() {"
+        "content": "    public void isValidApplicationDate() {"
       },
       {
         "lineNumber": 29,
@@ -76958,30 +77851,30 @@
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "        assertFalse(Company.isValidCompany(\"\")); // empty string"
+        "content": "        assertFalse(ApplicationDate.isValidApplicationDate(\"\")); // empty string"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "        assertFalse(Company.isValidCompany(\" \")); // spaces only"
+        "content": "        assertFalse(ApplicationDate.isValidApplicationDate(\" \")); // spaces only"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "        assertFalse(Company.isValidCompany(\"^\")); // only non-alphanumeric characters"
+        "content": "        assertFalse(ApplicationDate.isValidApplicationDate(\"^\")); // only non-alphanumeric characters"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "        assertFalse(Company.isValidCompany(\"20-01-2020\")); // contains non-alphanumeric characters"
+        "content": "        assertFalse(ApplicationDate.isValidApplicationDate(\"20^01-2020\")); // contains non-alphanumeric characters"
       },
       {
         "lineNumber": 37,
@@ -77000,9 +77893,9 @@
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "ongch00"
+          "gitId": "gerhean"
         },
-        "content": "        assertTrue(Company.isValidCompany(\"01 01 2020\")); // first day of year"
+        "content": "        assertTrue(ApplicationDate.isValidApplicationDate(\"01 01 2020\")); // first day of year"
       },
       {
         "lineNumber": 40,
@@ -77027,7 +77920,8 @@
       }
     ],
     "authorContributionMap": {
-      "ongch00": 42
+      "gerhean": 7,
+      "ongch00": 35
     }
   },
   {

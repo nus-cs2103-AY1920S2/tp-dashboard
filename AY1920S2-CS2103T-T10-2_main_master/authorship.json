@@ -14269,6 +14269,379 @@
     }
   },
   {
+    "path": "src/main/java/cardibuddy/logic/commands/OpenCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "package cardibuddy.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.commons.core.Messages;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.model.Model;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.model.deck.Deck;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": " * Opens the Deck that corresponds with the index and the subsequent Flashcards."
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "public class OpenCommand extends Command {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"open\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            + \": Opens the deck identified by the index number used in the displayed cardibuddy book.\\n\""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            + \"Parameters: INDEX (must be a positive integer)\\n\""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            + \"Example: \" + COMMAND_WORD + \"1\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    public static final String MESSAGE_OPEN_DECK_SUCCESS \u003d \"Opened Deck: %1$s\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    private final Index targetIndex;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    public OpenCommand(Index targetIndex) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        this.targetIndex \u003d targetIndex;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        List\u003cDeck\u003e lastShownList \u003d model.getFilteredDeckList();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        if (targetIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        Deck deckToOpen \u003d lastShownList.get(targetIndex.getZeroBased());"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        return new CommandResult(String.format(MESSAGE_OPEN_DECK_SUCCESS + deckToOpen.getFlashcards(), deckToOpen));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                || (other instanceof OpenCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                \u0026\u0026 targetIndex.equals(((OpenCommand) other).targetIndex)); // state check"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "phaebaez": 52
+    }
+  },
+  {
     "path": "src/main/java/cardibuddy/logic/commands/SearchCommand.java",
     "fileType": "java",
     "lines": [
@@ -15159,668 +15532,745 @@
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_ANSWER;"
+        "content": "import static cardibuddy.commons.core.Messages.MESSAGE_NOT_IN_DECK;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_DECK;"
+        "content": "import static cardibuddy.commons.core.Messages.MESSAGE_WRONG_DECK;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_FLASHCARD;"
+        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_ANSWER;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_QUESTION;"
+        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_DECK;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_TAG;"
+        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_FLASHCARD;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import static java.util.Objects.requireNonNull;"
+        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_QUESTION;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": ""
+        "content": "import static cardibuddy.logic.parser.CliSyntax.PREFIX_TAG;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import java.util.Collections;"
+        "content": "import static java.util.Objects.requireNonNull;"
       },
       {
         "lineNumber": 15,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "import java.util.List;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 17,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "import java.util.Set;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 18,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "import java.util.stream.Stream;"
       },
       {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 19,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.logic.commands.AddCommand;"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.logic.parser.exceptions.ParseException;"
+        "content": "import cardibuddy.logic.commands.AddCommand;"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": "import cardibuddy.model.deck.Deck;"
+        "content": "import cardibuddy.logic.commands.OpenCommand;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.model.deck.Title;"
+        "content": "import cardibuddy.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import cardibuddy.model.deck.exceptions.DeckCannotBeCardException;"
+        "content": "import cardibuddy.model.CardiBuddy;"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.model.deck.exceptions.InvalidDeckException;"
+        "content": "import cardibuddy.model.deck.Deck;"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.model.flashcard.Answer;"
+        "content": "import cardibuddy.model.deck.Title;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import cardibuddy.model.flashcard.Flashcard;"
+        "content": "import cardibuddy.model.deck.exceptions.DeckCannotBeCardException;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import cardibuddy.model.flashcard.Question;"
+        "content": "import cardibuddy.model.deck.exceptions.InvalidDeckException;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "import cardibuddy.model.flashcard.exceptions.InvalidFlashcardException;"
+        "content": "import cardibuddy.model.deck.exceptions.NotInDeckException;"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": "import cardibuddy.model.tag.Tag;"
+        "content": "import cardibuddy.model.deck.exceptions.WrongDeckException;"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": ""
+        "content": "import cardibuddy.model.flashcard.Answer;"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": "/**"
+        "content": "import cardibuddy.model.flashcard.Flashcard;"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": " * Parses input arguments and creates a new AddCommand object"
+        "content": "import cardibuddy.model.flashcard.Question;"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": " */"
+        "content": "import cardibuddy.model.flashcard.exceptions.InvalidFlashcardException;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "public class AddCommandParser implements Parser\u003cAddCommand\u003e {"
+        "content": "import cardibuddy.model.tag.Tag;"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "    private static Object toAdd;"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "    private boolean inDeck \u003d true;"
+        "content": "/**"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "    private Title deckTitle \u003d null;"
+        "content": " * Parses input arguments and creates a new AddCommand object"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": "public class AddCommandParser implements Parser\u003cAddCommand\u003e {"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the AddCommand"
+        "content": "    private static Object toAdd;"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": "     * and returns an AddCommand object for execution."
+        "content": "    private boolean inDeck \u003d true;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "     *"
+        "content": "    private CardiBuddy cardibuddy \u003d new CardiBuddy();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public AddCommand parse(String args) throws ParseException {"
+        "content": "     * Parses the given {@code String} of arguments in the context of the AddCommand"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "        requireNonNull(args);"
+        "content": "     * and returns an AddCommand object for execution."
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": ""
+        "content": "     *"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        ArgumentMultimap argMultimap \u003d"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 49,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_DECK, PREFIX_FLASHCARD, PREFIX_TAG,"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "                        PREFIX_QUESTION, PREFIX_ANSWER);"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        if (!argMultimap.getPreamble().isEmpty()) {"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        if (arePrefixesPresent(argMultimap, PREFIX_DECK, PREFIX_FLASHCARD)) {"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            // both PREFIX_DECK and PREFIX_FLASHCARD are present"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            throw new DeckCannotBeCardException(String.format(MESSAGE_DECK_CANNOT_BE_FLASHCARD"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "                    + \"\\n\" + AddCommand.MESSAGE_USAGE));"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        } else if (arePrefixesPresent(argMultimap, PREFIX_DECK, PREFIX_QUESTION, PREFIX_ANSWER)"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "                | arePrefixesPresent(argMultimap, PREFIX_DECK, PREFIX_QUESTION)"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "                | arePrefixesPresent(argMultimap, PREFIX_DECK, PREFIX_ANSWER)) {"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            //trying to add a deck with a question and/or an answer"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            throw new InvalidDeckException(String.format(MESSAGE_INVALID_DECK + \"\\n\""
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "                    + AddCommand.MESSAGE_ADD_DECK));"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        } else if (arePrefixesPresent(argMultimap, PREFIX_FLASHCARD)) {"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            Title title \u003d ParserUtil.parseTitle(argMultimap.getValue(PREFIX_FLASHCARD).get());"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            // if (!deckTitle.equals(title)) {"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            //   throw new WrongDeckException(String.format(MESSAGE_WRONG_DECK));"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            // }"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            if (!arePrefixesPresent(argMultimap, PREFIX_FLASHCARD, PREFIX_QUESTION, PREFIX_ANSWER)) {"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "                throw new InvalidFlashcardException(String.format(MESSAGE_INVALID_FLASHCARD + \"\\n\""
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "                        + AddCommand.MESSAGE_ADD_FLASHCARD));"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        if (argMultimap.containsKey(PREFIX_DECK)) {"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            Title title \u003d ParserUtil.parseTitle(argMultimap.getValue(PREFIX_DECK).get());"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            Set\u003cTag\u003e tagList \u003d ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            List\u003cFlashcard\u003e flashcardList \u003d Collections.\u003cFlashcard\u003eemptyList();"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            toAdd \u003d new Deck(title, tagList, flashcardList);"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            return new AddCommand((Deck) toAdd);"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        } else if (argMultimap.containsKey(PREFIX_FLASHCARD)) {"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            Title title \u003d ParserUtil.parseTitle(argMultimap.getValue(PREFIX_FLASHCARD).get());"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            Set\u003cTag\u003e tagList \u003d ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            Deck modelDeck \u003d new Deck(title, tagList);"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            Question modelQuestion \u003d ParserUtil.parseQuestion(argMultimap.getValue(PREFIX_QUESTION).get());"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            Answer modelAnswer \u003d ParserUtil.parseAnswer(argMultimap.getValue(PREFIX_ANSWER).get());"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            toAdd \u003d new Flashcard(modelDeck, modelQuestion, modelAnswer);"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "            return new AddCommand((Flashcard) toAdd);"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        return null;"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * Returns true if none of the prefixes contains empty {@code Optional} values in the given"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * {@code ArgumentMultimap}."
-      },
-      {
-        "lineNumber": 97,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 50,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
+        "content": "    public AddCommand parse(String args) throws ParseException {"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 51,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        requireNonNull(args);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return Stream.of(prefixes).allMatch(prefix -\u003e argumentMultimap.getValue(prefix).isPresent());"
+        "content": "        ArgumentMultimap argMultimap \u003d"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 54,
         "author": {
-          "gitId": "haveaqiupill"
+          "gitId": "phaebaez"
         },
-        "content": "    }"
+        "content": "                ArgumentTokenizer.tokenize(args, PREFIX_DECK, PREFIX_FLASHCARD, PREFIX_TAG,"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 55,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                        PREFIX_QUESTION, PREFIX_ANSWER);"
+      },
+      {
+        "lineNumber": 56,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        if (!argMultimap.getPreamble().isEmpty()) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        if (arePrefixesPresent(argMultimap, PREFIX_DECK, PREFIX_FLASHCARD)) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            // both PREFIX_DECK and PREFIX_FLASHCARD are present"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            throw new DeckCannotBeCardException(String.format(MESSAGE_DECK_CANNOT_BE_FLASHCARD"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                    + \"\\n\" + AddCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        } else if (arePrefixesPresent(argMultimap, PREFIX_DECK, PREFIX_QUESTION, PREFIX_ANSWER)"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                | arePrefixesPresent(argMultimap, PREFIX_DECK, PREFIX_QUESTION)"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                | arePrefixesPresent(argMultimap, PREFIX_DECK, PREFIX_ANSWER)) {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            //trying to add a deck with a question and/or an answer"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            throw new InvalidDeckException(String.format(MESSAGE_INVALID_DECK + \"\\n\""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                    + AddCommand.MESSAGE_ADD_DECK));"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        } else if (arePrefixesPresent(argMultimap, PREFIX_FLASHCARD)) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            if (!inDeck) {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                throw new NotInDeckException(String.format(MESSAGE_NOT_IN_DECK"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                        + \" You need to open a deck first. \\n\" + OpenCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Title title \u003d ParserUtil.parseTitle(argMultimap.getValue(PREFIX_FLASHCARD).get());"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            for (Deck d: cardibuddy.getDeckList()) {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                if (d.getTitle() \u003d\u003d title) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                    throw new WrongDeckException(String.format(MESSAGE_WRONG_DECK));"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            if (!arePrefixesPresent(argMultimap, PREFIX_FLASHCARD, PREFIX_QUESTION, PREFIX_ANSWER)) {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                throw new InvalidFlashcardException(String.format(MESSAGE_INVALID_FLASHCARD + \"\\n\""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                        + AddCommand.MESSAGE_ADD_FLASHCARD));"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        if (argMultimap.containsKey(PREFIX_DECK)) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Title title \u003d ParserUtil.parseTitle(argMultimap.getValue(PREFIX_DECK).get());"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Set\u003cTag\u003e tagList \u003d ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            List\u003cFlashcard\u003e flashcardList \u003d cardibuddy.getFlashcardList();"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            toAdd \u003d new Deck(title, tagList, flashcardList);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            return new AddCommand((Deck) toAdd);"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        } else if (argMultimap.containsKey(PREFIX_FLASHCARD)) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Title title \u003d ParserUtil.parseTitle(argMultimap.getValue(PREFIX_FLASHCARD).get());"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Set\u003cTag\u003e tagList \u003d ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Deck modelDeck \u003d new Deck(title, tagList);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Question modelQuestion \u003d ParserUtil.parseQuestion(argMultimap.getValue(PREFIX_QUESTION).get());"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Answer modelAnswer \u003d ParserUtil.parseAnswer(argMultimap.getValue(PREFIX_ANSWER).get());"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            toAdd \u003d new Flashcard(modelDeck, modelQuestion, modelAnswer);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            return new AddCommand((Flashcard) toAdd);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        }"
+      },
+      {
         "lineNumber": 102,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Returns true if none of the prefixes contains empty {@code Optional} values in the given"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * {@code ArgumentMultimap}."
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return Stream.of(prefixes).allMatch(prefix -\u003e argumentMultimap.getValue(prefix).isPresent());"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 113,
         "author": {
           "gitId": "haveaqiupill"
         },
@@ -15829,7 +16279,7 @@
     ],
     "authorContributionMap": {
       "haveaqiupill": 39,
-      "phaebaez": 63
+      "phaebaez": 74
     }
   },
   {
@@ -17484,224 +17934,224 @@
       {
         "lineNumber": 18,
         "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.logic.commands.OpenCommand;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
           "gitId": "haveaqiupill"
         },
         "content": "import cardibuddy.logic.commands.SearchCommand;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 20,
         "author": {
           "gitId": "airshhlay"
         },
         "content": "import cardibuddy.logic.commands.TestCommand;"
       },
       {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "import cardibuddy.logic.parser.exceptions.ParseException;"
-      },
-      {
         "lineNumber": 21,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " * Parses user input."
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "public class CardiBuddyParser {"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Used for initial separation of command word and args."
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Parses user input into command for execution."
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * @param userInput full user input string"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * @return the command based on the user input"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public Command parseCommand(String userInput) throws ParseException {"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        if (!matcher.matches()) {"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
-      },
-      {
-        "lineNumber": 47,
         "author": {
           "gitId": "phaebaez"
         },
         "content": ""
       },
       {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "import cardibuddy.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * Parses user input."
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "public class CardiBuddyParser {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Used for initial separation of command word and args."
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Parses user input into command for execution."
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @param userInput full user input string"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @return the command based on the user input"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public Command parseCommand(String userInput) throws ParseException {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        if (!matcher.matches()) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+      },
+      {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "        switch (commandWord) {"
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "-"
+          "gitId": "phaebaez"
         },
         "content": ""
       },
@@ -17710,238 +18160,238 @@
         "author": {
           "gitId": "-"
         },
-        "content": "        case AddCommand.COMMAND_WORD:"
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new AddCommandParser().parse(arguments);"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "-"
+          "gitId": "phaebaez"
         },
-        "content": ""
+        "content": "        case OpenCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "-"
+          "gitId": "phaebaez"
         },
-        "content": "        case EditCommand.COMMAND_WORD:"
+        "content": "            return new OpenCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new EditCommandParser().parse(arguments);"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        case AddCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": "        case DeleteCommand.COMMAND_WORD:"
+        "content": "            return new AddCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new DeleteCommandParser().parse(arguments);"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        case EditCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "airshhlay"
+          "gitId": "-"
         },
-        "content": "        case TestCommand.COMMAND_WORD:"
+        "content": "            return new EditCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "airshhlay"
+          "gitId": "-"
         },
-        "content": "            return new TestCommandParser().parse(arguments);"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "airshhlay"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "        case DeleteCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "        case ClearCommand.COMMAND_WORD:"
+        "content": "            return new DeleteCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new ClearCommand();"
+        "content": ""
       },
       {
         "lineNumber": 64,
+        "author": {
+          "gitId": "airshhlay"
+        },
+        "content": "        case TestCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "airshhlay"
+        },
+        "content": "            return new TestCommandParser().parse(arguments);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "airshhlay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        case ClearCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return new ClearCommand();"
+      },
+      {
+        "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 70,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        case FilterCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 71,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "            return new FilterCommandParser().parse(arguments);"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 72,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 73,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        case SearchCommand.COMMAND_WORD:"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 74,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "            return new SearchCommandParser().parse(arguments);"
       },
       {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        case ListCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            return new ListCommand();"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        case ExitCommand.COMMAND_WORD:"
-      },
-      {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new ExitCommand();"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        case ListCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "        case HelpCommand.COMMAND_WORD:"
+        "content": "            return new ListCommand();"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new HelpCommand();"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        case ExitCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "        default:"
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "            return new HelpCommand();"
       },
       {
         "lineNumber": 84,
@@ -17955,14 +18405,49 @@
         "author": {
           "gitId": "-"
         },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "-"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
       "haveaqiupill": 20,
       "airshhlay": 4,
-      "-": 60,
-      "phaebaez": 1
+      "-": 61,
+      "phaebaez": 5
     }
   },
   {
@@ -19002,6 +19487,232 @@
     ],
     "authorContributionMap": {
       "haveaqiupill": 34
+    }
+  },
+  {
+    "path": "src/main/java/cardibuddy/logic/parser/OpenCommandParser.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "package cardibuddy.logic.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import static cardibuddy.logic.commands.OpenCommand.MESSAGE_OPEN_DECK_SUCCESS;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import java.util.logging.Logger;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.logic.commands.OpenCommand;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "import cardibuddy.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": " * Parses input arguments and creates a new OpenCommand object"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "public class OpenCommandParser implements Parser\u003cOpenCommand\u003e {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    private static Logger logger \u003d Logger.getLogger(OpenCommand.COMMAND_WORD);"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "     * Parses the given {@code String} of arguments in the context of the OpenCommand"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "     * and returns a OpenCommand object for execution."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    public OpenCommand parse(String args) throws ParseException {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            Index index \u003d ParserUtil.parseIndex(args);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            return new OpenCommand(index);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        } catch (ParseException pe) {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "            throw new ParseException("
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "                    String.format(MESSAGE_OPEN_DECK_SUCCESS, OpenCommand.MESSAGE_USAGE), pe);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "phaebaez": 31
     }
   },
   {

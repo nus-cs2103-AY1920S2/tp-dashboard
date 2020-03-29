@@ -41543,7 +41543,7 @@
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        sidebarTreeView \u003d new SideBarTreeView(model.getBlockTree());"
+        "content": "        sidebarTreeView \u003d new SideBarTreeView(model.getBlockTree(), model.currentlyOpenPathProperty());"
       },
       {
         "lineNumber": 119,
@@ -42067,154 +42067,154 @@
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "import com.notably.model.block.Block;"
+        "content": "import com.notably.commons.path.AbsolutePath;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "import com.notably.model.block.BlockTree;"
+        "content": "import com.notably.model.block.Block;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "import com.notably.model.block.BlockTree;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "import javafx.fxml.FXML;"
+        "content": "import com.notably.model.block.BlockTreeItem;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "import javafx.scene.control.TreeCell;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "import javafx.scene.control.TreeView;"
+        "content": "import javafx.beans.property.Property;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "import javafx.scene.layout.Region;"
+        "content": "import javafx.fxml.FXML;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "import javafx.scene.control.TreeCell;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "/**"
+        "content": "import javafx.scene.control.TreeItem;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": " *"
+        "content": "import javafx.scene.control.TreeView;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": " */"
+        "content": "import javafx.scene.layout.Region;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "public class SideBarTreeView extends ViewPart\u003cRegion\u003e {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    private static final String FXML \u003d \"SideBarTreeView.fxml\";"
+        "content": " * Represents the View-Controller for the SideBarTreeView component."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    @FXML"
+        "content": "public class SideBarTreeView extends ViewPart\u003cRegion\u003e {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    private TreeView\u003cBlock\u003e sideBarTreeView;"
+        "content": ""
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "    private static final String FXML \u003d \"SideBarTreeView.fxml\";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    public SideBarTreeView(BlockTree blockTree) {"
+        "content": "    private BlockTreeItem currentlyOpenedNote;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        super(FXML);"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        initializeTree(blockTree);"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    }"
+        "content": "    private TreeView\u003cBlock\u003e sideBarTreeView;"
       },
       {
         "lineNumber": 25,
@@ -42228,290 +42228,731 @@
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    /**"
+        "content": "    public SideBarTreeView(BlockTree blockTree, Property\u003cAbsolutePath\u003e currentlyOpenPathProperty) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "     * Calls helper functions that set the tree settings and populate the SideBarTreeView with data."
+        "content": "        super(FXML);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "     * @param blockTree The custom tree used to populate the TreeView."
+        "content": "        this.currentlyOpenedNote \u003d blockTree.getRootBlock();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "     */"
+        "content": "        autoUpdateTree(blockTree, currentlyOpenPathProperty);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    private void initializeTree(BlockTree blockTree) {"
+        "content": "        initializeTree();"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        loadTreeItems(blockTree);"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        initializeTreeSettings();"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "     * Listens to changes in the structure of the tree in the Model, and accordingly updates the"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    private void loadTreeItems(BlockTree blockTree) {"
+        "content": "     * currently opened Note in the SidebarTreeView."
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        sideBarTreeView.setRoot(blockTree.getRootBlock().getTreeItem());"
+        "content": "     * @param blockTree A custom object that represents the tree-like hierarchy of Notes."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        sideBarTreeView.setCellFactory(treeView -\u003e new SideBarTreeViewCell());"
+        "content": "     * @param currentlyOpenPathProperty The path to the currently opened Note."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "    private void autoUpdateTree(BlockTree blockTree, Property\u003cAbsolutePath\u003e currentlyOpenPathProperty) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    /**"
+        "content": "        currentlyOpenPathProperty.addListener((observable, oldValue, newValue) -\u003e {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "     * Provides an alternative way to specify TreeView settings, versus via fxml tags."
+        "content": "            this.currentlyOpenedNote \u003d blockTree.get(AbsolutePath.fromString(newValue.toString()));"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "     */"
+        "content": "            initializeTree();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    private void initializeTreeSettings() {"
+        "content": "        });"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        sideBarTreeView.setEditable(false);"
+        "content": "    }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        sideBarTreeView.getRoot().setExpanded(true);"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "     * Calls helper functions that set the tree settings and populate the SideBarTreeView with data."
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "     * Custom {@code TreeCell} that displays the text of a {@code Block}."
+        "content": "    private void initializeTree() {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "     */"
+        "content": "        setTreeSettings();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    class SideBarTreeViewCell extends TreeCell\u003cBlock\u003e {"
+        "content": "        setTreeStructure();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        protected void updateItem(Block block, boolean empty) {"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "            super.updateItem(block, empty);"
+        "content": "    /**"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "     * Provides an alternative way to specify TreeView settings, versus via fxml tags."
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "            if (empty || block \u003d\u003d null) {"
+        "content": "     */"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "                setText(null);"
+        "content": "    private void setTreeSettings() {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "            } else {"
+        "content": "        sideBarTreeView.setEditable(false);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "                setText(getNoteTitle());"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": ""
+        "content": "     * Calls helper functions that set the strategies for populating the SideBarTreeView with data."
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        private String getNoteTitle() {"
+        "content": "     */"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "            return getItem().getTitle().getText();"
+        "content": "    private void setTreeStructure() {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "        }"
+        "content": "        sideBarTreeView.setCellFactory(treeView -\u003e new SideBarTreeViewCell());"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "    }"
+        "content": "        useLevelDisplayStrategy();"
       },
       {
         "lineNumber": 67,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        useExpansionStrategy();"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     * Configures the SideBarTreeView to only display a 3-level nested hierarchy of Notes,"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     * ie (Parent -\u003e currently opened Note and its siblings -\u003e direct children of currently opened Note)."
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     * If the currently open Note is the root, the hierarchy is modified to look like:"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     * (Root -\u003e Root\u0027s children -\u003e Root\u0027s grandchildren)"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    private void useLevelDisplayStrategy() {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        TreeItem\u003cBlock\u003e treeParent \u003d this.currentlyOpenedNote.getTreeItem().getParent();"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        if (treeParent !\u003d null) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            sideBarTreeView.setRoot(treeParent);"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            sideBarTreeView.setRoot(this.currentlyOpenedNote.getTreeItem());"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     * Expands the first and second level nodes, and contracts the third level nodes as per the"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     * 3-level Display Strategy of {@link #useLevelDisplayStrategy()}."
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    private void useExpansionStrategy() {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        sideBarTreeView.getRoot().setExpanded(true);"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        sideBarTreeView.getRoot().getChildren()"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                .forEach(child -\u003e {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                    child.setExpanded(true);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                    child.getChildren().forEach(grandChild -\u003e {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                        grandChild.setExpanded(false);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                    });"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                });"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     * Custom {@code TreeCell} that displays the text of a {@code Block}."
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    class SideBarTreeViewCell extends TreeCell\u003cBlock\u003e {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        protected void updateItem(Block block, boolean empty) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            super.updateItem(block, empty);"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            setGraphic(null);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            if (empty || block \u003d\u003d null) {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                setText(null);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                setText(getNoteTitle());"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                setSelectedProperty(block);"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        private String getNoteTitle() {"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            return getItem().getTitle().getText();"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        private void setSelectedProperty(Block block) {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            if ((block \u003d\u003d currentlyOpenedNote.getBlock())) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                updateSelected(true);"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            } else {"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "                updateSelected(false);"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "HemanshuGandhi"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 130,
         "author": {
           "gitId": "HemanshuGandhi"
         },
@@ -42519,7 +42960,7 @@
       }
     ],
     "authorContributionMap": {
-      "HemanshuGandhi": 67
+      "HemanshuGandhi": 130
     }
   },
   {
@@ -44637,7 +45078,7 @@
         "author": {
           "gitId": "HemanshuGandhi"
         },
-        "content": "  \u003cTreeView fx:id\u003d\"sideBarTreeView\" VBox.vgrow\u003d\"ALWAYS\" /\u003e"
+        "content": "  \u003cTreeView fx:id\u003d\"sideBarTreeView\" VBox.vgrow\u003d\"ALWAYS\" focusTraversable\u003d\"false\" /\u003e"
       },
       {
         "lineNumber": 8,

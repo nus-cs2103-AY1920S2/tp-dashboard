@@ -1,5 +1,686 @@
 [
   {
+    "path": "src/main/java/seedu/address/ContactTracingMainApp.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "package seedu.address;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import javafx.application.Application;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import javafx.stage.Stage;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.commons.core.Config;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.commons.core.LogsCenter;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.commons.core.Version;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.commons.exceptions.DataConversionException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.commons.util.ConfigUtil;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.commons.util.StringUtil;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.logic.AppLogic;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.logic.AppLogicManager;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.storage.AppStorage;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.storage.BluetoothPingsStorage;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.ui.AppUiManager;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.ui.Ui;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.util.Optional;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.util.logging.Logger;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "public class ContactTracingMainApp extends Application {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public static final Version VERSION \u003d new Version(0, 6, 0, true);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(ContactTracingMainApp.class);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    protected Ui ui;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    protected AppLogic logic;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    protected AppStorage storage;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    protected Config config;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public void init() throws Exception {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        logger.info(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d[ Initializing Contact tracing app ]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        super.init();"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        AppParameters appParameters \u003d AppParameters.parse(getParameters());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.config \u003d initConfig(appParameters.getConfigPath());"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        initLogging(this.config);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.storage    \u003d new BluetoothPingsStorage();"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.logic      \u003d new AppLogicManager(this.storage);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.ui         \u003d new AppUiManager(this.logic);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private void initLogging(Config config) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        LogsCenter.init(config);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     * Returns a {@code Config} using the file at {@code configFilePath}. \u003cbr\u003e"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     * The default file path {@code Config#DEFAULT_CONFIG_FILE} will be used instead"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     * if {@code configFilePath} is null."
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    protected Config initConfig(Path configFilePath) {"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        Config initializedConfig;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        Path configFilePathUsed;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        configFilePathUsed \u003d Config.DEFAULT_CONFIG_FILE;"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        if (configFilePath !\u003d null) {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            logger.info(\"Custom Config file specified \" + configFilePath);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            configFilePathUsed \u003d configFilePath;"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        logger.info(\"Using config file : \" + configFilePathUsed);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            Optional\u003cConfig\u003e configOptional \u003d ConfigUtil.readConfig(configFilePathUsed);"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            initializedConfig \u003d configOptional.orElse(new Config());"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        } catch (DataConversionException e) {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            logger.warning(\"Config file at \" + configFilePathUsed + \" is not in the correct format. \""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                    + \"Using default config properties\");"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            initializedConfig \u003d new Config();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        //Update config file in case it was missing to begin with or there are new/unused fields"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            ConfigUtil.saveConfig(initializedConfig, configFilePathUsed);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            logger.warning(\"Failed to save config file : \" + StringUtil.getDetails(e));"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return initializedConfig;"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public void start(Stage primaryStage) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        logger.info(\"Starting Contact tracking app \" + ContactTracingMainApp.VERSION);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        ui.start(primaryStage);"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public void stop() {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        logger.info(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d [ Stopping Contact tracking app ] \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JKOK005": 96
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/Main.java",
     "fileType": "java",
     "lines": [
@@ -27,159 +708,428 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "import seedu.address.ui.ContactTracingMainApp;"
+        "content": ""
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": " * The main entry point to the application."
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
-        "content": " * The main entry point to the application."
+        "content": " *"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
-        "content": " *"
+        "content": " * This is a workaround for the following error when MainApp is made the"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": " * This is a workaround for the following error when MainApp is made the"
+        "content": " * entry point of the application:"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": " * entry point of the application:"
+        "content": " *"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": " *"
+        "content": " *     Error: JavaFX runtime components are missing, and are required to run this application"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": " *     Error: JavaFX runtime components are missing, and are required to run this application"
+        "content": " *"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
-        "content": " *"
+        "content": " * The reason is that MainApp extends Application. In that case, the"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
-        "content": " * The reason is that MainApp extends Application. In that case, the"
+        "content": " * LauncherHelper will check for the javafx.graphics module to be present"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": " * LauncherHelper will check for the javafx.graphics module to be present"
+        "content": " * as a named module. We don\u0027t use JavaFX via the module system so it can\u0027t"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": " * as a named module. We don\u0027t use JavaFX via the module system so it can\u0027t"
+        "content": " * find the javafx.graphics module, and so the launch is aborted."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
-        "content": " * find the javafx.graphics module, and so the launch is aborted."
+        "content": " *"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": " *"
+        "content": " * By having a separate main class (Main) that doesn\u0027t extend Application"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
-        "content": " * By having a separate main class (Main) that doesn\u0027t extend Application"
+        "content": " * to be the entry point of the application, we avoid this issue."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": " * to be the entry point of the application, we avoid this issue."
+        "content": " */"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": "public class Main {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": "public class Main {"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public static void main(String[] args) {"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "JKOK005"
         },
         "content": "        Application.launch(ContactTracingMainApp.class, args);"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JKOK005": 1,
+      "-": 24
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/commons/util/AppUtil.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "package seedu.address.commons.util;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import javafx.scene.image.Image;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.ContactTracingMainApp;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " * A container for App specific utility functions"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class AppUtil {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static Image getImage(String imagePath) {"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        requireNonNull(imagePath);"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return new Image(ContactTracingMainApp.class.getResourceAsStream(imagePath));"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Checks that {@code condition} is true. Used for validating arguments to methods."
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @throws IllegalArgumentException if {@code condition} is false."
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void checkArgument(Boolean condition) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        if (!condition) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw new IllegalArgumentException();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
         "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Checks that {@code condition} is true. Used for validating arguments to methods."
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @throws IllegalArgumentException with {@code errorMessage} if {@code condition} is false."
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static void checkArgument(Boolean condition, String errorMessage) {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        if (!condition) {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw new IllegalArgumentException(errorMessage);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
@@ -188,7 +1138,7 @@
     ],
     "authorContributionMap": {
       "JKOK005": 2,
-      "-": 24
+      "-": 36
     }
   },
   {
@@ -419,21 +1369,21 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.commands.AppCommandResult;"
+        "content": "import seedu.address.logic.commands.AppCommand;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.conditions.Conditions;"
+        "content": "import seedu.address.logic.commands.AppCommandResult;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.parser.CommandRouter;"
+        "content": "import seedu.address.logic.conditions.Conditions;"
       },
       {
         "lineNumber": 9,
@@ -454,346 +1404,360 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import seedu.address.logic.parser.CommandRouter;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import java.util.logging.Logger;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "public class AppLogicManager\u003cT, M\u003e implements AppLogic\u003cT\u003e {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private AppStorage\u003cT\u003e dao;"
+        "content": "public class AppLogicManager\u003cT, M\u003e implements AppLogic\u003cT\u003e {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(AppLogicManager.class);"
+        "content": "    private AppStorage\u003cT\u003e dao;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(AppLogicManager.class);"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Asserts that the user must always declare type M which is subclass of {@code AppStorage}"
+        "content": "    /**"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     *"
+        "content": "     * Asserts that the user must always declare type M which is subclass of {@code AppStorage}"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @param   dao        Data access object implementation"
+        "content": "     *"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @throws  Exception"
+        "content": "     * @param   dao        Data access object implementation"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "     * @throws  Exception"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public AppLogicManager(M dao) throws Exception {"
+        "content": "     */"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        assert (dao instanceof AppStorage);"
+        "content": "    public AppLogicManager(M dao) throws Exception {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.dao \u003d (AppStorage) dao;"
+        "content": "        assert (dao instanceof AppStorage);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "        this.dao \u003d (AppStorage) dao;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Fetches all pings from the database"
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     *"
+        "content": "     * Fetches all pings from the database"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @return  ObservableList\u003cT\u003e   List of all pings for rendering to UI"
+        "content": "     *"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "     * @return  ObservableList\u003cT\u003e   List of all pings for rendering to UI"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public ObservableList\u003cT\u003e getAll() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        ArrayList\u003cT\u003e results \u003d this.dao.search();"
+        "content": "    public ObservableList\u003cT\u003e getAll() {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return FXCollections.observableArrayList(results);"
+        "content": "        ArrayList\u003cT\u003e results \u003d this.dao.search();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "        return FXCollections.observableArrayList(results);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Fetches all pings that satisfies a conditional filter"
+        "content": "    /**"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     *"
+        "content": "     * Fetches all pings that satisfies a conditional filter"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @param   cond                {@code seedu.address.conditions.Conditions Class} Conditional class"
+        "content": "     *"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @return  ObservableList\u003cT\u003e   List of all pings in condition for rendering to UI"
+        "content": "     * @param   cond                {@code seedu.address.conditions.Conditions Class} Conditional class"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "     * @return  ObservableList\u003cT\u003e   List of all pings in condition for rendering to UI"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public ObservableList\u003cT\u003e filterBy(Conditions\u003cT\u003e cond) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        ArrayList\u003cT\u003e results \u003d this.dao.search(cond);"
+        "content": "    public ObservableList\u003cT\u003e filterBy(Conditions\u003cT\u003e cond) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return FXCollections.observableArrayList(results);"
+        "content": "        ArrayList\u003cT\u003e results \u003d this.dao.search(cond);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "        return FXCollections.observableArrayList(results);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public AppCommandResult execute(String command) throws ParseException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        logger.info(\"----------------[USER COMMAND][\" + command + \"]\");"
+        "content": "    public AppCommandResult execute(String command) throws ParseException {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "        logger.info(\"----------------[USER COMMAND][\" + command + \"]\");"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        AppCommandResult result \u003d new CommandRouter().parse(command);"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return result;"
+        "content": "        AppCommand appCommand \u003d new CommandRouter().parse(command);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "        AppCommandResult result \u003d appCommand.execute(dao);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "}"
+        "content": "        return result;"
       },
       {
         "lineNumber": 60,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 62,
         "author": {
           "gitId": "JKOK005"
         },
@@ -801,7 +1765,7 @@
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 60
+      "JKOK005": 62
     }
   },
   {
@@ -834,73 +1798,143 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "import seedu.address.storage.AppStorage;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "public interface AppCommand {"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": "public interface AppCommand {"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Command interface"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     *"
+        "content": "    /**"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @param   arguments           Arguments for command"
+        "content": "     * To validate that the arguments passed in are sound"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @return  CommandResult"
+        "content": "     *"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @throws  ParseException      Invalid argument case"
+        "content": "     * @param   arguments           String arguments"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "     * @return  AppCommand"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public AppCommandResult execute(String arguments) throws ParseException;"
+        "content": "     * @throws  ParseException      Raise if arguments do not meet the condition"
       },
       {
         "lineNumber": 14,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public AppCommand validate(String arguments) throws ParseException;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     * Command interface"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     * @param   dao                 Data access object"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     * @return  CommandResult"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public AppCommandResult execute(AppStorage dao);"
+      },
+      {
+        "lineNumber": 24,
         "author": {
           "gitId": "JKOK005"
         },
@@ -908,7 +1942,7 @@
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 14
+      "JKOK005": 24
     }
   },
   {
@@ -934,42 +1968,42 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import java.util.Objects;"
+        "content": "import javafx.collections.FXCollections;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import static java.util.Objects.requireNonNull;"
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "import seedu.address.model.bluetooth.BluetoothPings;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "public class AppCommandResult {"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "import java.util.Objects;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private final String feedbackToUser;"
+        "content": "import static java.util.Objects.requireNonNull;"
       },
       {
         "lineNumber": 9,
@@ -983,35 +2017,35 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /** Help information should be shown to the user. */"
+        "content": "public class AppCommandResult {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private final boolean showHelp;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    private final String feedbackToUser;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /** The application should exit. */"
+        "content": "    private Boolean RENDER_FLAG;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private final boolean exit;"
+        "content": "    private ArrayList\u003cBluetoothPings\u003e toDisplayList;"
       },
       {
         "lineNumber": 15,
@@ -1025,353 +2059,444 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": "    /** The application should exit. */"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Constructs a {@code CommandResult} with the specified fields."
+        "content": "    private final boolean exit;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public AppCommandResult(String feedbackToUser, boolean showHelp, boolean exit) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.feedbackToUser \u003d requireNonNull(feedbackToUser);"
+        "content": "     * Constructs a {@code CommandResult} with the specified fields."
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.showHelp \u003d showHelp;"
+        "content": "     */"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.exit \u003d exit;"
+        "content": "    public AppCommandResult(String feedbackToUser, boolean exit) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "        this.feedbackToUser \u003d requireNonNull(feedbackToUser);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "        this.exit \u003d exit;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": "        this.RENDER_FLAG \u003d false;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},"
+        "content": "    }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * and other fields set to their default value."
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public AppCommandResult(String feedbackToUser) {"
+        "content": "     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this(feedbackToUser, false, false);"
+        "content": "     * and other fields set to their default value."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    public AppCommandResult(String feedbackToUser) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public String getFeedbackToUser() {"
+        "content": "        this(feedbackToUser, false);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return feedbackToUser;"
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    public String getFeedbackToUser() {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public boolean isShowHelp() {"
+        "content": "        return feedbackToUser;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return showHelp;"
+        "content": "    }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    public Boolean getRenderFlag() { return this.RENDER_FLAG; }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public boolean isExit() {"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return exit;"
+        "content": "    public ObservableList\u003cBluetoothPings\u003e getDisplayAsObservable() { return FXCollections.observableArrayList(this.toDisplayList); }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    @Override"
+        "content": "     * A display list contains the necessary items needed to be rendered on the screen"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "     * If this function is called, we set the RENDER_FLAG to true as signal that there is something to be displayed"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "     *"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            return true;"
+        "content": "     * @param displayList   List to be rendered on the screen"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        }"
+        "content": "     */"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    public void setToDisplayList(ArrayList\u003cBluetoothPings\u003e displayList) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "        this.toDisplayList  \u003d displayList;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        if (!(other instanceof CommandResult)) {"
+        "content": "        this.RENDER_FLAG    \u003d true;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            return false;"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    public boolean isExit() {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        AppCommandResult otherCommandResult \u003d (AppCommandResult) other;"
+        "content": "        return exit;"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return feedbackToUser.equals(otherCommandResult.feedbackToUser)"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "                \u0026\u0026 showHelp \u003d\u003d otherCommandResult.showHelp"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "                \u0026\u0026 exit \u003d\u003d otherCommandResult.exit;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    @Override"
+        "content": "            return true;"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public int hashCode() {"
+        "content": "        }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return Objects.hash(feedbackToUser, showHelp, exit);"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 66,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        if (!(other instanceof AppCommandResult)) {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        AppCommandResult otherCommandResult \u003d (AppCommandResult) other;"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return feedbackToUser.equals(otherCommandResult.feedbackToUser)"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                \u0026\u0026 exit \u003d\u003d otherCommandResult.exit;"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return Objects.hash(feedbackToUser, exit);"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 79,
         "author": {
           "gitId": "JKOK005"
         },
@@ -1379,7 +2504,7 @@
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 66
+      "JKOK005": 79
     }
   },
   {
@@ -1405,66 +2530,297 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.address.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "import seedu.address.logic.conditions.Conditions;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "public class FilterTimestampCommand implements AppCommand {"
+        "content": "import seedu.address.logic.conditions.TimestampConditions;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"from\";"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "import seedu.address.storage.AppStorage;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public AppCommandResult execute(String arguments) throws ParseException {"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return null;"
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "import java.util.regex.Matcher;"
       },
       {
         "lineNumber": 12,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.util.regex.Pattern;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "public class FilterTimestampCommand implements AppCommand {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private static Long START_TIME;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private static Long END_TIME;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"from\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private static final Pattern COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003cstart\u003e\\\\d+) to (?\u003cend\u003e\\\\d+)\");"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(FilterTimestampCommand.class);"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public FilterTimestampCommand validate(String arguments) throws ParseException {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        logger.info(String.format(\"Validating: %s\", arguments));"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        final Matcher matcher \u003d COMMAND_FORMAT.matcher(arguments.trim());"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        if (!matcher.matches()) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            String error \u003d String.format(\"Command %s invalid\", arguments);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            throw new ParseException(error);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.START_TIME \u003d Long.parseLong(matcher.group(\"start\"));"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.END_TIME   \u003d Long.parseLong(matcher.group(\"end\"));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return this;"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public AppCommandResult execute(AppStorage dao) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        Conditions cond \u003d new TimestampConditions(this.START_TIME, this.END_TIME);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        ArrayList resp  \u003d dao.search(cond);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        AppCommandResult result \u003d new AppCommandResult(\"Filtered by timestamp\", false);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        result.setToDisplayList(resp);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return result;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "JKOK005"
         },
@@ -1472,7 +2828,317 @@
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 12
+      "JKOK005": 45
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/logic/commands/FilterUserIDCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "package seedu.address.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.commons.core.LogsCenter;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.logic.conditions.Conditions;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.logic.conditions.UserIDConditions;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.storage.AppStorage;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.util.logging.Logger;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.util.regex.Matcher;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import java.util.regex.Pattern;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "public class FilterUserIDCommand implements AppCommand {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private static int USER_ID;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"id\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private static final Pattern COMMAND_FORMAT \u003d Pattern.compile(\"is (?\u003cuserid\u003e\\\\d+)\");"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(FilterUserIDCommand.class);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public FilterUserIDCommand validate(String arguments) throws ParseException {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        logger.info(String.format(\"Validating: %s\", arguments));"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        final Matcher matcher \u003d COMMAND_FORMAT.matcher(arguments.trim());"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        if (!matcher.matches()) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            String error \u003d String.format(\"Command %s invalid\", arguments);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            throw new ParseException(error);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.USER_ID \u003d Integer.parseInt(matcher.group(\"userid\"));"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return this;"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public AppCommandResult execute(AppStorage dao) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        Conditions cond \u003d new UserIDConditions(USER_ID);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        ArrayList resp  \u003d dao.search(cond);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        AppCommandResult result \u003d new AppCommandResult(\"Identifying recods with User ID.\", false);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        result.setToDisplayList(resp);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return result;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      }
+    ],
+    "authorContributionMap": {
+      "JKOK005": 43
     }
   },
   {
@@ -1704,6 +3370,269 @@
     }
   },
   {
+    "path": "src/main/java/seedu/address/logic/conditions/TimestampConditions.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "package seedu.address.logic.conditions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.model.bluetooth.BluetoothPings;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "public class TimestampConditions implements Conditions\u003cBluetoothPings\u003e {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private Long start;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private Long end;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public TimestampConditions(Long start, Long end) {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.start  \u003d start;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.end    \u003d end;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public Boolean satisfies(BluetoothPings objToTest) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        Long timestamp \u003d objToTest.getEpochTs();"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return this.start \u003c\u003d timestamp \u0026\u0026 timestamp \u003c\u003d this.end;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JKOK005": 19
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/logic/conditions/UserIDConditions.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "package seedu.address.logic.conditions;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "import seedu.address.model.bluetooth.BluetoothPings;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "public class UserIDConditions implements Conditions\u003cBluetoothPings\u003e {"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    private int userid;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public UserIDConditions(int userid) {"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        this.userid \u003d userid;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    public Boolean satisfies(BluetoothPings objToTest) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        return objToTest.getUserIDs().contains(this.userid);"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "JKOK005": 16
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/logic/parser/CommandRouter.java",
     "fileType": "java",
     "lines": [
@@ -1726,28 +3655,28 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.commands.AppCommandResult;"
+        "content": "import seedu.address.logic.commands.AppCommand;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.commands.HelpCommand;"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.address.logic.commands.FilterTimestampCommand;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.commands.FilterTimestampCommand;"
+        "content": "import seedu.address.logic.commands.FilterUserIDCommand;"
       },
       {
         "lineNumber": 7,
@@ -1824,115 +3753,164 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public AppCommandResult parse(String userInput) throws ParseException {"
+        "content": "    public static final String COMMAND_WORD \u003d \"help\";"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Shows program usage instructions.\\n\""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        if (!matcher.matches()) {"
+        "content": "            + \"Example: \" + COMMAND_WORD;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        }"
+        "content": "    public AppCommand parse(String userInput) throws ParseException {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+        "content": "        if (!matcher.matches()) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, this.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        switch (commandWord) {"
+        "content": "        }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        case FilterTimestampCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            return new FilterTimestampCommand().execute(arguments);"
+        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        default:"
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        case FilterTimestampCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        }"
+        "content": "            return new FilterTimestampCommand().validate(arguments);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 33,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        case FilterUserIDCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            return new FilterUserIDCommand().validate(arguments);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
         "author": {
           "gitId": "JKOK005"
         },
@@ -1940,7 +3918,7 @@
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 33
+      "JKOK005": 40
     }
   },
   {
@@ -3711,42 +5689,42 @@
       {
         "lineNumber": 1,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "package seedu.address.ui;"
       },
       {
         "lineNumber": 2,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import javafx.fxml.FXML;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import javafx.scene.control.TextField;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import javafx.scene.layout.Region;"
       },
@@ -3760,14 +5738,14 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -3781,21 +5759,21 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    public static final String ERROR_STYLE_CLASS \u003d \"error\";"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    private static final String FXML \u003d \"CommandBox.fxml\";"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -3809,7 +5787,7 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -3823,14 +5801,14 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    private TextField commandTextField;"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -3844,70 +5822,70 @@
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        super(FXML);"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        this.commandExecutor \u003d commandExecutor;"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        // calls #setStyleToDefault() whenever there is a change to the text of the command box."
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        commandTextField.textProperty().addListener((unused1, unused2, unused3) -\u003e setStyleToDefault());"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    /**"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     * Handles the Enter button pressed event."
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     */"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    @FXML"
       },
@@ -3935,224 +5913,224 @@
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    /**"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     * Sets the command box style to use the default style."
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     */"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    private void setStyleToDefault() {"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        commandTextField.getStyleClass().remove(ERROR_STYLE_CLASS);"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    /**"
       },
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     * Sets the command box style to indicate a failed command."
       },
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     */"
       },
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    private void setStyleToIndicateCommandFailure() {"
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        ObservableList\u003cString\u003e styleClass \u003d commandTextField.getStyleClass();"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        if (styleClass.contains(ERROR_STYLE_CLASS)) {"
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "            return;"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        }"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        styleClass.add(ERROR_STYLE_CLASS);"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    /**"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     * Represents a function that can execute commands."
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     */"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    @FunctionalInterface"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    public interface CommandExecutor {"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        /**"
       },
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "         * Executes the command and returns the result."
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "         *"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "         * @see seedu.address.logic.Logic#execute(String)"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "         */"
       },
@@ -4166,20 +6144,21 @@
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 67
+      "JKOK005": 9,
+      "-": 58
     }
   },
   {
@@ -4450,14 +6429,14 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public AppMainWindow(Stage primaryStage, AppLogic logic) {"
+        "content": "    private void renderToPanel() {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        super(FXML, primaryStage);"
+        "content": "        this.bluetoothPingPanelPlaceholder.getChildren().clear();"
       },
       {
         "lineNumber": 40,
@@ -4471,28 +6450,28 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        // Set dependencies"
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.primaryStage \u003d primaryStage;"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.logic \u003d logic;"
+        "content": "    public AppMainWindow(Stage primaryStage, AppLogic logic) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "        super(FXML, primaryStage);"
       },
       {
         "lineNumber": 45,
@@ -4506,374 +6485,472 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    public Stage getPrimaryStage() {"
+        "content": "        // Set dependencies"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        return primaryStage;"
+        "content": "        this.primaryStage \u003d primaryStage;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "        this.logic \u003d logic;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Fills up all the placeholders of this window."
+        "content": "    public Stage getPrimaryStage() {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "        return primaryStage;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    void fillInnerParts() {"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.bluetoothPingPanel \u003d new BluetoothPingPanel(logic.getAll());"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.bluetoothPingPanelPlaceholder.getChildren().add(this.bluetoothPingPanel.getRoot());"
+        "content": "    public void renderToDisplay(AppCommandResult commandResult) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "        if (commandResult.getRenderFlag()) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.resultDisplay \u003d new ResultDisplay();"
+        "content": "            this.bluetoothPingPanelPlaceholder.getChildren().clear();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        resultDisplayPlaceholder.getChildren().add(this.resultDisplay.getRoot());"
+        "content": "            this.bluetoothPingPanel \u003d new BluetoothPingPanel(commandResult.getDisplayAsObservable());"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "            this.bluetoothPingPanelPlaceholder.getChildren().add(this.bluetoothPingPanel.getRoot());"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        AppCommandBox commandBox \u003d new AppCommandBox(this::executeCommand);"
+        "content": "        }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        this.commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    void show() {"
+        "content": "     * Fills up all the placeholders of this window."
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        primaryStage.show();"
+        "content": "     */"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "    void fillInnerParts() {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "        this.bluetoothPingPanel \u003d new BluetoothPingPanel(logic.getAll());"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": "        this.bluetoothPingPanelPlaceholder.getChildren().add(this.bluetoothPingPanel.getRoot());"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Closes the application."
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "        this.resultDisplay \u003d new ResultDisplay();"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    @FXML"
+        "content": "        resultDisplayPlaceholder.getChildren().add(this.resultDisplay.getRoot());"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private void handleExit() {"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
+        "content": "        AppCommandBox commandBox \u003d new AppCommandBox(this::executeCommand);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
+        "content": "        this.commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        primaryStage.hide();"
+        "content": "    }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    void show() {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    /**"
+        "content": "        primaryStage.show();"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * Executes the command and returns the result."
+        "content": "    }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     * @see seedu.address.logic.Logic#execute(String)"
+        "content": "    /**"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "     * Closes the application."
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private AppCommandResult executeCommand(String commandText) throws ParseException {"
+        "content": "     */"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        try {"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            AppCommandResult commandResult \u003d logic.execute(commandText);"
+        "content": "    private void handleExit() {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
+        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
+        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "        primaryStage.hide();"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            if (commandResult.isExit()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "                handleExit();"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            }"
+        "content": "    /**"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            return commandResult;"
+        "content": "     * Executes the command and returns the result."
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        } catch (ParseException e) {"
+        "content": "     *"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            logger.warning(\"Invalid command: \" + commandText);"
+        "content": "     * @see seedu.address.logic.Logic#execute(String)"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
+        "content": "     */"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            throw e;"
+        "content": "    private AppCommandResult executeCommand(String commandText) throws ParseException {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        }"
+        "content": "        try {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    }"
+        "content": "            AppCommandResult commandResult \u003d logic.execute(commandText);"
       },
       {
         "lineNumber": 99,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            this.renderToDisplay(commandResult);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            if (commandResult.isExit()) {"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                handleExit();"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            return commandResult;"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        } catch (ParseException e) {"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            logger.warning(\"Invalid command: \" + commandText);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            throw e;"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 113,
         "author": {
           "gitId": "JKOK005"
         },
@@ -4881,7 +6958,7 @@
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 99
+      "JKOK005": 113
     }
   },
   {
@@ -4891,566 +6968,560 @@
       {
         "lineNumber": 1,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "package seedu.address.ui;"
       },
       {
         "lineNumber": 2,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import javafx.application.Platform;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import javafx.scene.control.Alert;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import javafx.scene.image.Image;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import javafx.stage.Stage;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "import seedu.address.MainApp;"
+        "content": "import seedu.address.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "import seedu.address.commons.core.LogsCenter;"
+        "content": "import seedu.address.commons.util.StringUtil;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.commons.util.StringUtil;"
+        "content": "import seedu.address.logic.AppLogic;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "import seedu.address.logic.AppLogic;"
+        "content": "import seedu.address.ContactTracingMainApp;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "import java.util.logging.Logger;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "public class AppUiManager implements Ui {"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "public class AppUiManager implements Ui {"
+        "content": "    public static final String ALERT_DIALOG_PANE_FIELD_ID \u003d \"alertDialogPane\";"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "    public static final String ALERT_DIALOG_PANE_FIELD_ID \u003d \"alertDialogPane\";"
+        "content": ""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(AppUiManager.class);"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(AppUiManager.class);"
+        "content": "    private static final String ICON_APPLICATION \u003d \"/images/address_book_32.png\";"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "    private static final String ICON_APPLICATION \u003d \"/images/address_book_32.png\";"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    private AppLogic logic;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private AppLogic logic;"
+        "content": "    private AppMainWindow mainWindow;"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "    private AppMainWindow mainWindow;"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": ""
+        "content": "    public AppUiManager(AppLogic logic) {"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    public AppUiManager(AppLogic logic) {"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        super();"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        this.logic \u003d logic;"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    public void start(Stage primaryStage) {"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        logger.info(\"Starting UI...\");"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        //Set the application icon."
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        primaryStage.getIcons().add(getImage(ICON_APPLICATION));"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        try {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        try {"
+        "content": "            mainWindow \u003d new AppMainWindow(primaryStage, logic);"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            mainWindow \u003d new AppMainWindow(primaryStage, logic);"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "            mainWindow.show(); //This should be called before creating other UI parts"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 37,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "            mainWindow.fillInnerParts();"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 38,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        } catch (Throwable e) {"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "            logger.severe(StringUtil.getDetails(e));"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "            showFatalErrorDialogAndShutdown(\"Fatal error during initializing\", e);"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 44,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private Image getImage(String imagePath) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    private Image getImage(String imagePath) {"
+        "content": "        return new Image(ContactTracingMainApp.class.getResourceAsStream(imagePath));"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "        return new Image(MainApp.class.getResourceAsStream(imagePath));"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 50,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 51,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 52,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 53,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 54,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     * Shows an alert dialog on {@code owner} with the given parameters."
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     * This method only returns after the user has closed the alert dialog."
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "     */"
+        "content": "    private static void showAlertDialogAndWait(Stage owner, Alert.AlertType type, String title, String headerText,"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    private static void showAlertDialogAndWait(Stage owner, Alert.AlertType type, String title, String headerText,"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "                                               String contentText) {"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        final Alert alert \u003d new Alert(type);"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        alert.getDialogPane().getStylesheets().add(\"view/DarkTheme.css\");"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        alert.initOwner(owner);"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        alert.setTitle(title);"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 63,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        alert.setHeaderText(headerText);"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        alert.setContentText(contentText);"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 65,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        alert.getDialogPane().setId(ALERT_DIALOG_PANE_FIELD_ID);"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 66,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        alert.showAndWait();"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 67,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 68,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 69,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 70,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     * Shows an error alert dialog with {@code title} and error message, {@code e},"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 71,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     * and exits the application after the user has closed the alert dialog."
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 72,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 73,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    private void showFatalErrorDialogAndShutdown(String title, Throwable e) {"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 74,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        logger.severe(title + \" \" + e.getMessage() + StringUtil.getDetails(e));"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 75,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        showAlertDialogAndWait(Alert.AlertType.ERROR, title, e.getMessage(), e.toString());"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 76,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        Platform.exit();"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 77,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "        System.exit(1);"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 78,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 79,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 80
+      "JKOK005": 11,
+      "-": 68
     }
   },
   {
@@ -5955,1046 +8026,365 @@
     }
   },
   {
-    "path": "src/main/java/seedu/address/ui/ContactTracingMainApp.java",
+    "path": "src/main/java/seedu/address/ui/UiPart.java",
     "fileType": "java",
     "lines": [
       {
         "lineNumber": 1,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "package seedu.address.ui;"
       },
       {
         "lineNumber": 2,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "import javafx.application.Application;"
+        "content": "import static java.util.Objects.requireNonNull;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import javafx.stage.Stage;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.AppParameters;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.MainApp;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.commons.core.Config;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.commons.core.LogsCenter;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.commons.core.Version;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.commons.exceptions.DataConversionException;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.commons.util.ConfigUtil;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.commons.util.StringUtil;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.logic.AppLogic;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.logic.AppLogicManager;"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.storage.AppStorage;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import seedu.address.storage.BluetoothPingsStorage;"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 5,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
         "content": "import java.io.IOException;"
       },
       {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import java.nio.file.Path;"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import java.util.Optional;"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "import java.util.logging.Logger;"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "public class ContactTracingMainApp extends Application {"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    public static final Version VERSION \u003d new Version(0, 6, 0, true);"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(ContactTracingMainApp.class);"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    protected Ui ui;"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    protected AppLogic logic;"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    protected AppStorage storage;"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    protected Config config;"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    public void init() throws Exception {"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        logger.info(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d[ Initializing Contact tracing app ]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        super.init();"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        AppParameters appParameters \u003d AppParameters.parse(getParameters());"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        this.config \u003d initConfig(appParameters.getConfigPath());"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        initLogging(this.config);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        this.storage    \u003d new BluetoothPingsStorage();"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        this.logic      \u003d new AppLogicManager(this.storage);"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        this.ui         \u003d new AppUiManager(this.logic);"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    private void initLogging(Config config) {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        LogsCenter.init(config);"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "     * Returns a {@code Config} using the file at {@code configFilePath}. \u003cbr\u003e"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "     * The default file path {@code Config#DEFAULT_CONFIG_FILE} will be used instead"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "     * if {@code configFilePath} is null."
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    protected Config initConfig(Path configFilePath) {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        Config initializedConfig;"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        Path configFilePathUsed;"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        configFilePathUsed \u003d Config.DEFAULT_CONFIG_FILE;"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        if (configFilePath !\u003d null) {"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            logger.info(\"Custom Config file specified \" + configFilePath);"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            configFilePathUsed \u003d configFilePath;"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        logger.info(\"Using config file : \" + configFilePathUsed);"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            Optional\u003cConfig\u003e configOptional \u003d ConfigUtil.readConfig(configFilePathUsed);"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            initializedConfig \u003d configOptional.orElse(new Config());"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        } catch (DataConversionException e) {"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            logger.warning(\"Config file at \" + configFilePathUsed + \" is not in the correct format. \""
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "                    + \"Using default config properties\");"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            initializedConfig \u003d new Config();"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        //Update config file in case it was missing to begin with or there are new/unused fields"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            ConfigUtil.saveConfig(initializedConfig, configFilePathUsed);"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        } catch (IOException e) {"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "            logger.warning(\"Failed to save config file : \" + StringUtil.getDetails(e));"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        return initializedConfig;"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    public void start(Stage primaryStage) {"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        logger.info(\"Starting Contact tracking app \" + MainApp.VERSION);"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        ui.start(primaryStage);"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    public void stop() {"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "        logger.info(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d [ Stopping Contact tracking app ] \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "JKOK005"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "JKOK005": 96
-    }
-  },
-  {
-    "path": "src/main/java/seedu/address/ui/MainWindow.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "package seedu.address.ui;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.util.logging.Logger;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import javafx.event.ActionEvent;"
-      },
-      {
         "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.fxml.FXML;"
+        "content": "import java.net.URL;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.control.MenuItem;"
+        "content": "import javafx.fxml.FXMLLoader;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "JKOK005"
         },
-        "content": "import javafx.scene.control.TextInputControl;"
+        "content": "import seedu.address.ContactTracingMainApp;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.input.KeyCombination;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import javafx.scene.input.KeyEvent;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import javafx.scene.layout.StackPane;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import javafx.stage.Stage;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.commons.core.GuiSettings;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.commons.core.LogsCenter;"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.logic.Logic;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.logic.commands.CommandResult;"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": " * The Main Window. Provides the basic application layout containing"
+        "content": " * Represents a distinct part of the UI. e.g. Windows, dialogs, panels, status bars, etc."
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": " * a menu bar and space where other JavaFX elements can be placed."
+        "content": " * It contains a scene graph with a root node of type {@code T}."
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": " */"
       },
       {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public abstract class UiPart\u003cT\u003e {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /** Resource folder where FXML files are stored. */"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final String FXML_FILE_FOLDER \u003d \"/view/\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private final FXMLLoader fxmlLoader \u003d new FXMLLoader();"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Constructs a UiPart with the specified FXML file URL."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * The FXML file must not specify the {@code fx:controller} attribute."
+      },
+      {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "public class MainWindow extends UiPart\u003cStage\u003e {"
+        "content": "     */"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public UiPart(URL fxmlFileUrl) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String FXML \u003d \"MainWindow.fxml\";"
+        "content": "        loadFxmlFile(fxmlFileUrl, null);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "    private Stage primaryStage;"
+        "content": "     * Constructs a UiPart using the specified FXML file within {@link #FXML_FILE_FOLDER}."
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    private Logic logic;"
+        "content": "     * @see #UiPart(URL)"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    // Independent Ui parts residing in this Ui container"
+        "content": "    public UiPart(String fxmlFileName) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    private PersonListPanel personListPanel;"
+        "content": "        this(getFxmlFileUrl(fxmlFileName));"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "    private ResultDisplay resultDisplay;"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "    private HelpWindow helpWindow;"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "     * Constructs a UiPart with the specified FXML file URL and root object."
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": "    private StackPane timeFilterWindow;"
+        "content": "     * The FXML file must not specify the {@code fx:controller} attribute."
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "JKOK005"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "    public UiPart(URL fxmlFileUrl, T root) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    private StackPane commandBoxPlaceholder;"
+        "content": "        loadFxmlFile(fxmlFileUrl, root);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": "    private MenuItem helpMenuItem;"
+        "content": "    /**"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Constructs a UiPart with the specified FXML file within {@link #FXML_FILE_FOLDER} and root object."
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "     * @see #UiPart(URL, T)"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "    private StackPane personListPanelPlaceholder;"
+        "content": "     */"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public UiPart(String fxmlFileName, T root) {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "        this(getFxmlFileUrl(fxmlFileName), root);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "    private StackPane resultDisplayPlaceholder;"
+        "content": "    }"
       },
       {
         "lineNumber": 52,
@@ -7008,1004 +8398,241 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "    /**"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "    private StackPane statusbarPlaceholder;"
+        "content": "     * Returns the root object of the scene graph of this UiPart."
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": "    public MainWindow(Stage primaryStage, Logic logic) {"
+        "content": "    public T getRoot() {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "        super(FXML, primaryStage);"
+        "content": "        return fxmlLoader.getRoot();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
-        "content": "        // Set dependencies"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
-        "content": "        this.primaryStage \u003d primaryStage;"
+        "content": "    /**"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": "        this.logic \u003d logic;"
+        "content": "     * Loads the object hierarchy from a FXML document."
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * @param location Location of the FXML document."
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "        // Configure the UI"
+        "content": "     * @param root Specifies the root of the object hierarchy."
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": "        setWindowDefaultSize(logic.getGuiSettings());"
+        "content": "     */"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private void loadFxmlFile(URL location, T root) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": "        setAccelerators();"
+        "content": "        requireNonNull(location);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        fxmlLoader.setLocation(location);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": "        helpWindow \u003d new HelpWindow();"
+        "content": "        fxmlLoader.setController(this);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        fxmlLoader.setRoot(root);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        try {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": "    public Stage getPrimaryStage() {"
+        "content": "            fxmlLoader.load();"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "        return primaryStage;"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "            throw new AssertionError(e);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void setAccelerators() {"
+        "content": "    }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "        setAccelerator(helpMenuItem, KeyCombination.valueOf(\"F1\"));"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Returns the FXML file URL for the specified FXML file name within {@link #FXML_FILE_FOLDER}."
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Sets the accelerator of a MenuItem."
+        "content": "    private static URL getFxmlFileUrl(String fxmlFileName) {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param keyCombination the KeyCombination value of the accelerator"
+        "content": "        requireNonNull(fxmlFileName);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "        String fxmlFileNameWithFolder \u003d FXML_FILE_FOLDER + fxmlFileName;"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "-"
+          "gitId": "JKOK005"
         },
-        "content": "    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {"
+        "content": "        URL fxmlFileUrl \u003d ContactTracingMainApp.class.getResource(fxmlFileNameWithFolder);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": "        menuItem.setAccelerator(keyCombination);"
+        "content": "        return requireNonNull(fxmlFileUrl);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "        /*"
+        "content": ""
       },
       {
         "lineNumber": 87,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * TODO: the code below can be removed once the bug reported here"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * https://bugs.openjdk.java.net/browse/JDK-8131666"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * is fixed in later version of SDK."
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         *"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * According to the bug report, TextInputControl (TextField, TextArea) will"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * consume function-key events. Because CommandBox contains a TextField, and"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * not work when the focus is in them because the key event is consumed by"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * the TextInputControl(s)."
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         *"
-      },
-      {
-        "lineNumber": 97,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * For now, we add following event filter to capture such key events and open"
-      },
-      {
-        "lineNumber": 98,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * help window purposely so to support accelerators even when focus is"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         * in CommandBox or ResultDisplay."
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "         */"
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -\u003e {"
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            if (event.getTarget() instanceof TextInputControl \u0026\u0026 keyCombination.match(event)) {"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                menuItem.getOnAction().handle(new ActionEvent());"
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                event.consume();"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        });"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Fills up all the placeholders of this window."
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    void fillInnerParts() {"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        personListPanel \u003d new PersonListPanel(logic.getFilteredPersonList());"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        resultDisplay \u003d new ResultDisplay();"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getAddressBookFilePath());"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Sets the default size based on {@code guiSettings}."
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private void setWindowDefaultSize(GuiSettings guiSettings) {"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        primaryStage.setHeight(guiSettings.getWindowHeight());"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        primaryStage.setWidth(guiSettings.getWindowWidth());"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        if (guiSettings.getWindowCoordinates() !\u003d null) {"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            primaryStage.setX(guiSettings.getWindowCoordinates().getX());"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            primaryStage.setY(guiSettings.getWindowCoordinates().getY());"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @FXML"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public void handleHelp() {"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        if (!helpWindow.isShowing()) {"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            helpWindow.show();"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            helpWindow.focus();"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    void show() {"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        primaryStage.show();"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Closes the application."
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @FXML"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private void handleExit() {"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        logic.setGuiSettings(guiSettings);"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        helpWindow.hide();"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        primaryStage.hide();"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public PersonListPanel getPersonListPanel() {"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        return personListPanel;"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Executes the command and returns the result."
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * @see seedu.address.logic.Logic#execute(String)"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            if (commandResult.isShowHelp()) {"
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                handleHelp();"
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            if (commandResult.isExit()) {"
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                handleExit();"
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            return commandResult;"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        } catch (CommandException | ParseException e) {"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            logger.info(\"Invalid command: \" + commandText);"
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw e;"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
@@ -8013,8 +8640,8 @@
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 3,
-      "-": 193
+      "JKOK005": 2,
+      "-": 85
     }
   },
   {
@@ -8392,21 +9019,21 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "\u003c?import javafx.scene.layout.GridPane?\u003e"
+        "content": "\u003c?import javafx.scene.text.Font?\u003e"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "\u003c?import javafx.scene.layout.HBox?\u003e"
+        "content": "\u003c?import javafx.scene.layout.GridPane?\u003e"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
+        "content": "\u003c?import javafx.scene.layout.HBox?\u003e"
       },
       {
         "lineNumber": 10,
@@ -8441,7 +9068,7 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10\" prefWidth\u003d\"150\" /\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10\" maxWidth\u003d\"200\" prefWidth\u003d\"20\" /\u003e"
       },
       {
         "lineNumber": 15,
@@ -8455,73 +9082,367 @@
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        \u003cVBox alignment\u003d\"CENTER_LEFT\" minHeight\u003d\"105\" GridPane.columnIndex\u003d\"0\"\u003e"
+        "content": "        \u003cpadding\u003e"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            \u003cpadding\u003e"
+        "content": "            \u003cInsets top\u003d\"5\" right\u003d\"5\" bottom\u003d\"5\" left\u003d\"15\" /\u003e"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "                \u003cInsets top\u003d\"5\" right\u003d\"5\" bottom\u003d\"5\" left\u003d\"15\" /\u003e"
+        "content": "        \u003c/padding\u003e"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            \u003c/padding\u003e"
+        "content": "        \u003cFlowPane fx:id\u003d\"tags\" /\u003e"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            \u003cFlowPane fx:id\u003d\"tags\" /\u003e"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            \u003cLabel text\u003d\"Time recorded: \" /\u003e \u003cLabel fx:id\u003d\"timestamp\" styleClass\u003d\"cell_small_label\" text\u003d\"\\$phone\" /\u003e"
+        "content": "        \u003cLabel text\u003d\"Ping timestamp: \" GridPane.columnIndex\u003d\"0\""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            \u003cLabel text\u003d\"\" /\u003e"
+        "content": "               GridPane.rowIndex\u003d\"0\" GridPane.columnSpan\u003d\"1\""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "            \u003cLabel text\u003d\"Contacts\" /\u003e \u003cLabel fx:id\u003d\"contacts\" styleClass\u003d\"cell_small_label\" text\u003d\"\\$address\" /\u003e"
+        "content": "               GridPane.rowSpan\u003d\"1\" \u003e"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "        \u003c/VBox\u003e"
+        "content": "            \u003cfont\u003e"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "JKOK005"
         },
-        "content": "    \u003c/GridPane\u003e"
+        "content": "                \u003cFont name\u003d\"Arial\" size\u003d\"20\" \u003e\u003c/Font\u003e"
       },
       {
         "lineNumber": 26,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003c/font\u003e"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003cGridPane.margin\u003e"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                \u003cInsets top\u003d\"0\" right\u003d\"0\" bottom\u003d\"20\" left\u003d\"0\"\u003e\u003c/Insets\u003e"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003c/GridPane.margin\u003e"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        \u003c/Label\u003e"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        \u003cLabel fx:id\u003d\"timestamp\" styleClass\u003d\"cell_small_label\" text\u003d\"\\$timestamp\""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "               GridPane.columnIndex\u003d\"1\""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "               GridPane.rowIndex\u003d\"0\" GridPane.columnSpan\u003d\"1\""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "               GridPane.rowSpan\u003d\"1\" \u003e"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003cfont\u003e"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                \u003cFont name\u003d\"Arial\" size\u003d\"20\" \u003e\u003c/Font\u003e"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003c/font\u003e"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003cGridPane.margin\u003e"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                \u003cInsets top\u003d\"0\" right\u003d\"0\" bottom\u003d\"20\" left\u003d\"0\"\u003e\u003c/Insets\u003e"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003c/GridPane.margin\u003e"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        \u003c/Label\u003e"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        \u003c!--\u003cLabel text\u003d\"\" /\u003e--\u003e"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        \u003cLabel text\u003d\"Contact IDs: \" GridPane.columnIndex\u003d\"0\""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "               GridPane.rowIndex\u003d\"1\" GridPane.columnSpan\u003d\"1\""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "               GridPane.rowSpan\u003d\"1\" \u003e"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003cfont\u003e"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                \u003cFont name\u003d\"Arial\" size\u003d\"20\" \u003e\u003c/Font\u003e"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003c/font\u003e"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003cGridPane.margin\u003e"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                \u003cInsets top\u003d\"0\" right\u003d\"0\" bottom\u003d\"20\" left\u003d\"0\"\u003e\u003c/Insets\u003e"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003c/GridPane.margin\u003e"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        \u003c/Label\u003e"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        \u003cLabel fx:id\u003d\"contacts\" styleClass\u003d\"cell_small_label\" text\u003d\"\\$address\""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "               GridPane.columnIndex\u003d\"1\""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "               GridPane.rowIndex\u003d\"1\" GridPane.columnSpan\u003d\"1\""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "               GridPane.rowSpan\u003d\"1\" \u003e"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003cfont\u003e"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                \u003cFont name\u003d\"Arial\" size\u003d\"20\" \u003e\u003c/Font\u003e"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003c/font\u003e"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003cGridPane.margin\u003e"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "                \u003cInsets top\u003d\"0\" right\u003d\"0\" bottom\u003d\"20\" left\u003d\"0\"\u003e\u003c/Insets\u003e"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "            \u003c/GridPane.margin\u003e"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "        \u003c/Label\u003e"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "JKOK005"
+        },
+        "content": "    \u003c/GridPane\u003e"
+      },
+      {
+        "lineNumber": 68,
         "author": {
           "gitId": "JKOK005"
         },
@@ -8529,7 +9450,7 @@
       }
     ],
     "authorContributionMap": {
-      "JKOK005": 26
+      "JKOK005": 68
     }
   },
   {

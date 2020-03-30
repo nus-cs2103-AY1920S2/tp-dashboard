@@ -16996,7 +16996,7 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * Parse the {@code userInput} for task description."
+        "content": "     * Parse the {@code userInput} for task date and time."
       },
       {
         "lineNumber": 39,
@@ -17017,217 +17017,217 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @return"
+        "content": "     * @param taskType"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @throws AddTaskCommandException"
+        "content": "     * @return"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     */"
+        "content": "     * @throws AddTaskCommandException"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public static String parseDescription(String userInput) throws AddTaskCommandException {"
+        "content": "     */"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        String result \u003d \"\";"
+        "content": "    public static LocalDateTime[] parseDateTime(String userInput, TaskType taskType) throws AddTaskCommandException {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return result;"
+        "content": "        LocalDateTime[] result \u003d null;"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "        switch (taskType) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "        case Assignment:"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    /**"
+        "content": "            try {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * Parse the {@code userInput} for task date and time."
+        "content": "                result \u003d new LocalDateTime[1];"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     *"
+        "content": "                result[0] \u003d TimeParser.parseDateTime(userInput);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @param userInput"
+        "content": "            } catch (InteractiveCommandException e) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @param taskType"
+        "content": "                throw new AddTaskCommandException(\"dataTimeFormatError\");"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @return"
+        "content": "            }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @throws AddTaskCommandException"
+        "content": "            // filter out the input with correct format but invalid date time"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     */"
+        "content": "            if (result[0].isBefore(LocalDateTime.now())) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public static LocalDateTime[] parseDateTime(String userInput, TaskType taskType) throws AddTaskCommandException {"
+        "content": "                throw new AddTaskCommandException(\"pastDateTime\");"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        LocalDateTime[] result \u003d null;"
+        "content": "            }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        switch (taskType) {"
+        "content": "            break;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case Assignment:"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            try {"
+        "content": "        case Quiz:"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                result \u003d new LocalDateTime[1];"
+        "content": "        case Exam:"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                result[0] \u003d TimeParser.parseDateTime(userInput);"
+        "content": "        case Meeting:"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            } catch (InteractiveCommandException e) {"
+        "content": "        case Presentation:"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                throw new AddTaskCommandException(\"dataTimeFormatError\");"
+        "content": "        case Others:"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "            result \u003d new LocalDateTime[2];"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            // filter out the input with correct format but invalid date time"
+        "content": "            String[] tempInputDateTimes;"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            if (result[0].isBefore(LocalDateTime.now())) {"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                throw new AddTaskCommandException(\"pastDateTime\");"
+        "content": "            if (!userInput.contains(\"-\")) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "                throw new AddTaskCommandException(\"dataTimeFormatError\");"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "            }"
       },
       {
         "lineNumber": 72,
@@ -17241,168 +17241,168 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case Quiz:"
+        "content": "            // filter out the invalid input with wrong \"start-end\" format"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case Exam:"
+        "content": "            tempInputDateTimes \u003d userInput.trim().split(\"-\");"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case Meeting:"
+        "content": "            if (tempInputDateTimes.length !\u003d 2 || tempInputDateTimes[0].isBlank()) {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case Presentation:"
+        "content": "                throw new AddTaskCommandException(\"dataTimeFormatError\");"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case Others:"
+        "content": "            }"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            result \u003d new LocalDateTime[2];"
+        "content": ""
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            String[] tempInputDateTimes;"
+        "content": "            try {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "                result[0] \u003d TimeParser.parseDateTime(tempInputDateTimes[0]);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            if (!userInput.contains(\"-\")) {"
+        "content": "                result[1] \u003d TimeParser.parseDateTime(tempInputDateTimes[1]);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                throw new AddTaskCommandException(\"dataTimeFormatError\");"
+        "content": "            } catch (InteractiveCommandException e) {"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "                throw new AddTaskCommandException(\"dataTimeFormatError\");"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            // filter out the invalid input with wrong \"start-end\" format"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            tempInputDateTimes \u003d userInput.trim().split(\"-\");"
+        "content": "            if (result[0].isBefore(LocalDateTime.now()) || result[1].isBefore(LocalDateTime.now())) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            if (tempInputDateTimes.length !\u003d 2 || tempInputDateTimes[0].isBlank()) {"
+        "content": "                throw new AddTaskCommandException(\"pastDateTime\");"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                throw new AddTaskCommandException(\"dataTimeFormatError\");"
+        "content": "            }"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "            if (result[1].isBefore(result[0])) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "                throw new AddTaskCommandException(\"eventEndBeforeStartError\");"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            try {"
+        "content": "            }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                result[0] \u003d TimeParser.parseDateTime(tempInputDateTimes[0]);"
+        "content": "            break;"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                result[1] \u003d TimeParser.parseDateTime(tempInputDateTimes[1]);"
+        "content": "        default:"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            } catch (InteractiveCommandException e) {"
+        "content": "        }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                throw new AddTaskCommandException(\"dataTimeFormatError\");"
+        "content": "        return result;"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
@@ -17416,605 +17416,633 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            if (result[0].isBefore(LocalDateTime.now()) || result[1].isBefore(LocalDateTime.now())) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                throw new AddTaskCommandException(\"pastDateTime\");"
+        "content": "     * Parse the {@code userInput} for the module of the task."
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "     *"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            if (result[1].isBefore(result[0])) {"
+        "content": "     * @param userInput"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                throw new AddTaskCommandException(\"eventEndBeforeStartError\");"
+        "content": "     * @return"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "     * @throws AddTaskCommandException"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "     */"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        default:"
+        "content": "    public static Module parseModule(String userInput, ObservableList\u003cModule\u003e modules) throws AddTaskCommandException {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        }"
+        "content": "        Module result \u003d null;"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return result;"
+        "content": "        try {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "            if (ModuleCode.isModuleCode(userInput)) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "                List\u003cModule\u003e tempModules \u003d modules.stream()"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    /**"
+        "content": "                    .filter(m -\u003e m.getModuleCode().toString().equals(userInput)).collect(Collectors.toList());"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * Parse the {@code userInput} for the module of the task."
+        "content": "                if (!tempModules.isEmpty()) {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     *"
+        "content": "                    result \u003d tempModules.get(0);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @param userInput"
+        "content": "                } else {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @return"
+        "content": "                    throw new AddTaskCommandException(\"noSuchModuleError\");"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @throws AddTaskCommandException"
+        "content": "                }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     */"
+        "content": "            } else {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public static Module parseModule(String userInput, ObservableList\u003cModule\u003e modules) throws AddTaskCommandException {"
+        "content": "                int index \u003d Integer.parseInt(userInput) - 1;"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        Module result \u003d null;"
+        "content": "                if (index \u003c 0 || index \u003e\u003d modules.size()) {"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        try {"
+        "content": "                    throw new AddTaskCommandException(\"invalidIndexRangeError\");"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            if (ModuleCode.isModuleCode(userInput)) {"
+        "content": "                }"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                List\u003cModule\u003e tempModules \u003d modules.stream()"
+        "content": "                result \u003d modules.get(index);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    .filter(m -\u003e m.getModuleCode().toString().equals(userInput)).collect(Collectors.toList());"
+        "content": "            }"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                if (!tempModules.isEmpty()) {"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    result \u003d tempModules.get(0);"
+        "content": "            throw new AddTaskCommandException(\"wrongIndexFormatError\");"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                } else {"
+        "content": "        }"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    throw new AddTaskCommandException(\"noSuchModuleError\");"
+        "content": "        return result;"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                }"
+        "content": "    }"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            } else {"
+        "content": ""
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                int index \u003d Integer.parseInt(userInput) - 1;"
+        "content": "    /**"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                if (index \u003c 0 || index \u003e\u003d modules.size()) {"
+        "content": "     * Parse the {@code userInput} for the type of the task."
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    throw new AddTaskCommandException(\"invalidIndexRangeError\");"
+        "content": "     *"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                }"
+        "content": "     * @param userInput"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                result \u003d modules.get(index);"
+        "content": "     * @param size"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "     * @return"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "     * @throws AddTaskCommandException"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            throw new AddTaskCommandException(\"wrongIndexFormatError\");"
+        "content": "     * @throws NumberFormatException"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        }"
+        "content": "     */"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return result;"
+        "content": "    public static TaskType parseType(String userInput, int size) throws AddTaskCommandException, NumberFormatException {"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "        TaskType result;"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "        int index \u003d Integer.parseInt(userInput.trim());"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    /**"
+        "content": "        if (index \u003c\u003d 0 || index \u003e size) {"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * Parse the {@code userInput} for the type of the task."
+        "content": "            throw new AddTaskCommandException(\"invalidIndexRange\");"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     *"
+        "content": "        } else {"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @param userInput"
+        "content": "            result \u003d TaskType.getTaskTypes()[index - 1];"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @param size"
+        "content": "        }"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @return"
+        "content": "        return result;"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @throws AddTaskCommandException"
+        "content": "    }"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @throws NumberFormatException"
+        "content": ""
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public static TaskType parseType(String userInput, int size) throws AddTaskCommandException, NumberFormatException {"
+        "content": "     * Parse the {@code userInput} for weight of the task."
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        TaskType result;"
+        "content": "     *"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        int index \u003d Integer.parseInt(userInput.trim());"
+        "content": "     * @param userInput"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        if (index \u003c\u003d 0 || index \u003e size) {"
+        "content": "     * @return"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            throw new AddTaskCommandException(\"invalidIndexRange\");"
+        "content": "     * @throws AddTaskCommandException"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        } else {"
+        "content": "     */"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            result \u003d TaskType.getTaskTypes()[index - 1];"
+        "content": "    public static double parseWeight(String userInput) throws AddTaskCommandException {"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        }"
+        "content": "        double result \u003d 0.0;"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return result;"
+        "content": "        try {"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "            result \u003d Double.parseDouble(userInput);"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "            if (result \u003c 0.0 || result \u003e 100.0) {"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    /**"
+        "content": "                throw new AddTaskCommandException(\"wrongWeightRangeError\");"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * Parse the {@code userInput} for weight of the task."
+        "content": "            }"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     *"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @param userInput"
+        "content": "            throw new AddTaskCommandException(\"wrongWeightFormatError\");"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @return"
+        "content": "        }"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @throws AddTaskCommandException"
+        "content": "        return result;"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public static String parseWeight(String userInput) throws AddTaskCommandException {"
+        "content": ""
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        String result \u003d \"\";"
+        "content": "    /**"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return result;"
+        "content": "     * Parse the {@code userInput} for the estimated time needed to complete the task."
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "     *"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "     * @param userInput"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    /**"
+        "content": "     * @return"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * Parse the {@code userInput} for the estimated time needed to complete the task."
+        "content": "     * @throws AddTaskCommandException"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     *"
+        "content": "     */"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @param userInput"
+        "content": "    public static double parseTimeCost(String userInput) throws AddTaskCommandException {"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @return"
+        "content": "        double result \u003d 0.0;"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @throws AddTaskCommandException"
+        "content": "        try {"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     */"
+        "content": "            result \u003d Double.parseDouble(userInput);"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public static String parseTimeCost(String userInput) throws AddTaskCommandException {"
+        "content": "            if (result \u003c 0.0) {"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        String result \u003d \"\";"
+        "content": "                throw new AddTaskCommandException(\"wrongEstimatedTimeRangeError\");"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return result;"
+        "content": "            }"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 184,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            throw new AddTaskCommandException(\"wrongEstimatedTimeFormatError\");"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        return result;"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 188,
         "author": {
           "gitId": "wyt-sonia"
         },
@@ -18023,7 +18051,7 @@
     ],
     "authorContributionMap": {
       "teikjun": 5,
-      "wyt-sonia": 179
+      "wyt-sonia": 183
     }
   },
   {
@@ -19664,14 +19692,14 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case \"noSuchModuleError\":"
+        "content": "        case \"wrongWeightFormatError\":"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            errorMessage \u003d \"Could not find the module based on the module code entered, please check and re-enter.\";"
+        "content": "            errorMessage \u003d \"Please enter decimal number for task task weight.\";"
       },
       {
         "lineNumber": 20,
@@ -19692,14 +19720,14 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case \"invalidIndexRangeError\":"
+        "content": "        case \"wrongWeightRangeError\":"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            errorMessage \u003d \"The index entered is out of range, please check again.\";"
+        "content": "            errorMessage \u003d \"The weight should be from 0.0 to 100.0.\";"
       },
       {
         "lineNumber": 24,
@@ -19720,14 +19748,14 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case \"invalidOptionRangeError\":"
+        "content": "        case \"wrongEstimatedTimeFormatError\":"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            errorMessage \u003d \"The option index entered is out of range, please check again.\";"
+        "content": "            errorMessage \u003d \"Please enter decimal number for the number of hours the task might take.\";"
       },
       {
         "lineNumber": 28,
@@ -19748,14 +19776,14 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case \"wrongIndexFormatError\":"
+        "content": "        case \"wrongEstimatedTimeRangeError\":"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            errorMessage \u003d \"The format of index entered is invalid, please enter an integer.\";"
+        "content": "            errorMessage \u003d \"Please enter a positive number for the number of hours the task might take.\";"
       },
       {
         "lineNumber": 32,
@@ -19776,14 +19804,14 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case \"wrongOptionFormatError\":"
+        "content": "        case \"noSuchModuleError\":"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            errorMessage \u003d \"The format of option index entered is invalid, please enter an integer.\";"
+        "content": "            errorMessage \u003d \"Could not find the module based on the module code entered, please check and re-enter.\";"
       },
       {
         "lineNumber": 36,
@@ -19804,154 +19832,154 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case \"dataTimeFormatError\":"
+        "content": "        case \"invalidIndexRangeError\":"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            errorMessage \u003d \"Invalid date time format, please follow the format below:\\n  \""
+        "content": "            errorMessage \u003d \"The index entered is out of range, please check again.\";"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                + \"Event: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\\n\""
+        "content": "            break;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                + \"e.g. 12:00 01/01/2020-14:00 01/01/2020\\n\""
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                + \"Rest : HH:mm dd/MM/yyyy   e.g. 12:00 01/01/2020\\n\";"
+        "content": "        case \"invalidOptionRangeError\":"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "            errorMessage \u003d \"The option index entered is out of range, please check again.\";"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "            break;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case \"pastDateTime\":"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            errorMessage \u003d \"Invalid date time, please enter a time in the future.\";"
+        "content": "        case \"wrongIndexFormatError\":"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "            errorMessage \u003d \"The format of index entered is invalid, please enter an integer.\";"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "            break;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case \"eventEndBeforeStartError\":"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            errorMessage \u003d \"Invalid date time, the end date you entered is before the start date, please check.\";"
+        "content": "        case \"wrongOptionFormatError\":"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "            errorMessage \u003d \"The format of option index entered is invalid, please enter an integer.\";"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        default:"
+        "content": "            break;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "        case \"dataTimeFormatError\":"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "            errorMessage \u003d \"Invalid date time format, please follow the format below:\\n  \""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "                + \"Event: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\\n\""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public String getErrorMessage() {"
+        "content": "                + \"e.g. 12:00 01/01/2020-14:00 01/01/2020\\n\""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return errorMessage;"
+        "content": "                + \"Rest : HH:mm dd/MM/yyyy   e.g. 12:00 01/01/2020\\n\";"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "            break;"
       },
       {
         "lineNumber": 60,
@@ -19965,24 +19993,136 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public String getErrorType() {"
+        "content": "        case \"pastDateTime\":"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return errorType;"
+        "content": "            errorMessage \u003d \"Invalid date time, please enter a time in the future.\";"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "            break;"
       },
       {
         "lineNumber": 64,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        case \"eventEndBeforeStartError\":"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            errorMessage \u003d \"Invalid date time, the end date you entered is before the start date, please check.\";"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    public String getErrorMessage() {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        return errorMessage;"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    public String getErrorType() {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        return errorType;"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 80,
         "author": {
           "gitId": "wyt-sonia"
         },
@@ -19991,7 +20131,7 @@
     ],
     "authorContributionMap": {
       "teikjun": 1,
-      "wyt-sonia": 63
+      "wyt-sonia": 79
     }
   },
   {
@@ -26239,9 +26379,9 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "        super(\"No Module Allocated\", \"O0000O\");"
+        "content": "        super(\"No Module Allocated\", \"OO0000O\");"
       },
       {
         "lineNumber": 9,
@@ -26260,7 +26400,8 @@
     ],
     "authorContributionMap": {
       "teikjun": 1,
-      "aegis-bot": 9
+      "aegis-bot": 8,
+      "wyt-sonia": 1
     }
   },
   {
@@ -26326,919 +26467,919 @@
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "import javafx.collections.FXCollections;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "import javafx.collections.FXCollections;"
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "/**"
+        "content": " * packages task into various modules that the student have. Each module has list of task, taken from the main TaskList."
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": " * packages task into various modules that the student have. Each module has list of task, taken from the main TaskList."
+        "content": " * Identified by ModuleCode instead of ModuleName to minimise errors."
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": " * Identified by ModuleCode instead of ModuleName to minimise errors."
+        "content": " */"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": " */"
+        "content": "public class Module {"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "public class Module {"
+        "content": "    private ObservableList\u003cTask\u003e internalTaskList \u003d FXCollections.observableArrayList();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    private ObservableList\u003cTask\u003e internalTaskList \u003d FXCollections.observableArrayList();"
+        "content": "    private String moduleName;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    private String moduleName;"
+        "content": "    private ModuleCode moduleCode;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    private ModuleCode moduleCode;"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": "     * Constructs a Module. Will check for any duplicates in the moduleList."
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "teikjun"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param moduleName"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param fullModuleCode"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "     * @throws ModuleCodeException"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "     * @throws ModuleCodeException"
+        "content": "     */"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "     */"
+        "content": "    public Module(String moduleName, String fullModuleCode) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public Module(String moduleName, String fullModuleCode) {"
+        "content": "        this.moduleName \u003d moduleName;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        this.moduleName \u003d moduleName;"
+        "content": "        try {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        try {"
+        "content": "            this.moduleCode \u003d new ModuleCode(fullModuleCode);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            this.moduleCode \u003d new ModuleCode(fullModuleCode);"
+        "content": "        } catch (ModuleCodeException e) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        } catch (ModuleCodeException e) {"
+        "content": "            System.out.println(\"ModuleCode is invalid!\");"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            System.out.println(\"ModuleCode is invalid!\");"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": "     * Same as previous constructor, but a module without a name."
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
           "gitId": "teikjun"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param fullModuleCode"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @throws ModuleCodeException"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    public Module(String fullModuleCode) throws ModuleCodeException {"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 44,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        this.moduleName \u003d \"\";"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 45,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        this.moduleCode \u003d new ModuleCode(fullModuleCode);"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public Module() {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public Module() {"
+        "content": "        this.moduleName \u003d \"\";"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        this.moduleName \u003d \"\";"
+        "content": "        try {"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "        try {"
+        "content": "            this.moduleCode \u003d new ModuleCode(\"OO0000O\");"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            this.moduleCode \u003d new ModuleCode(\"O0000O\");"
+        "content": "        } catch (ModuleCodeException e) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        } catch (ModuleCodeException e) {"
+        "content": "            System.out.println(\"from Module(). ModuleCode is invalid!\");"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            System.out.println(\"from Module(). ModuleCode is invalid!\");"
+        "content": "        }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": "     * returns whether a Task is inside the internalList of this module."
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "teikjun"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param toCheck"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @return"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 63,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    public boolean contains(Task toCheck) {"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        requireNonNull(toCheck);"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 65,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        return internalTaskList.stream().anyMatch(toCheck::isSameTask);"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 66,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": "     * Adds a task."
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 70,
         "author": {
           "gitId": "teikjun"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 71,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param toAdd"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 72,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @throws DuplicateTaskException"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 73,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 74,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    public void add(Task toAdd) throws DuplicateTaskException {"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 75,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        requireNonNull(toAdd);"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 76,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        if (contains(toAdd)) {"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 77,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "            throw new DuplicateTaskException();"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 78,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 79,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        internalTaskList.add(toAdd);"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 80,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": "     * Removes a task from the module list."
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 84,
         "author": {
           "gitId": "teikjun"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 85,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param toRemove"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 86,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @throws TaskNotFoundException"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 87,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 88,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    public void remove(Task toRemove) throws TaskNotFoundException {"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 89,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        requireNonNull(toRemove);"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 90,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        if (contains(toRemove)) {"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 91,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "            internalTaskList.remove(toRemove);"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 92,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 93,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "            throw new TaskNotFoundException();"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 94,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": "     * Compares moduleCode instead of moduleName."
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 99,
         "author": {
           "gitId": "teikjun"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 100,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param other object, possibly a module"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 101,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @return true or false."
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 102,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 103,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 104,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    public boolean equals(Object other) {"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 105,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        if (other instanceof Module) {"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 106,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "            ModuleCode otherModuleCode \u003d ((Module) other).moduleCode;"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 107,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "            return this.moduleCode.equals(otherModuleCode) ? true : false;"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 108,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 109,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "            return false;"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 110,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 111,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 112,
         "author": {
           "gitId": "teikjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 113,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    public String getModuleName() {"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 114,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        return moduleName;"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 115,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public void setModuleName(String moduleName) {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public void setModuleName(String moduleName) {"
+        "content": "        this.moduleName \u003d moduleName;"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        this.moduleName \u003d moduleName;"
+        "content": "    }"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": ""
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 121,
         "author": {
           "gitId": "teikjun"
         },
         "content": "    public ModuleCode getModuleCode() {"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 122,
         "author": {
           "gitId": "teikjun"
         },
         "content": "        return moduleCode;"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 123,
         "author": {
           "gitId": "teikjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 124,
         "author": {
           "gitId": "teikjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 125,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    public void setModuleCode(String moduleCode) throws ModuleCodeException {"
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 126,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        this.moduleCode \u003d new ModuleCode(moduleCode);"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 127,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public ObservableList\u003cTask\u003e getInternalTaskList() {"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public ObservableList\u003cTask\u003e getInternalTaskList() {"
+        "content": "        return internalTaskList;"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        return internalTaskList;"
+        "content": "    }"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public void setInternalTaskList(ObservableList\u003cTask\u003e internalTaskList) {"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public void setInternalTaskList(ObservableList\u003cTask\u003e internalTaskList) {"
+        "content": "        this.internalTaskList \u003d internalTaskList;"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        this.internalTaskList \u003d internalTaskList;"
+        "content": "    }"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    /**"
+        "content": "     * Takes in an ObservableList of Task, filters it, then setInternalTaskList()."
       },
       {
         "lineNumber": 139,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "     * Takes in an ObservableList of Task, filters it, then setInternalTaskList()."
+        "content": "     *"
       },
       {
         "lineNumber": 140,
@@ -27266,7 +27407,7 @@
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        ObservableList\u003cTask\u003e collectedTasks \u003d externalTaskList.filtered(x-\u003e x.getModule().equals(this));"
+        "content": "        ObservableList\u003cTask\u003e collectedTasks \u003d externalTaskList.filtered(x -\u003e x.getModule().equals(this));"
       },
       {
         "lineNumber": 144,
@@ -27285,40 +27426,47 @@
       {
         "lineNumber": 146,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public String toString() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        return getModuleCode().toString();"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": "        return getModuleCode().toString();"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 151,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 152,
         "author": {
           "gitId": "aegis-bot"
         },
@@ -27327,8 +27475,8 @@
     ],
     "authorContributionMap": {
       "teikjun": 16,
-      "souwmyaa": 1,
-      "aegis-bot": 134
+      "aegis-bot": 133,
+      "wyt-sonia": 3
     }
   },
   {
@@ -27429,303 +27577,303 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "        try {"
+        "content": "        if (fullModuleCode.length() \u003e 8) {"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            this.prefix \u003d parsePrefix(fullModuleCode);"
+        "content": "            throw new ModuleCodeException(\"The module code should be at most 8 digits, please check.\");"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            this.number \u003d parseNumber(fullModuleCode);"
+        "content": "        }"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            this.postfix \u003d parsePostfix(fullModuleCode);"
+        "content": "        this.prefix \u003d parsePrefix(fullModuleCode);"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        } catch (ModuleCodeException e) {"
+        "content": "        this.number \u003d parseNumber(fullModuleCode);"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            throw new ModuleCodeException(\"ModuleCode is invalid!\");"
+        "content": "        this.postfix \u003d parsePostfix(fullModuleCode);"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    /**"
+        "content": "     * Checks whether the {@code userInput} is module code."
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * Checks whether the {@code userInput} is module code."
+        "content": "     *"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     *"
+        "content": "     * @param userInput"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @param userInput"
+        "content": "     * @return"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * @return"
+        "content": "     */"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     */"
+        "content": "    public static boolean isModuleCode(String userInput) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public static boolean isModuleCode(String userInput) {"
+        "content": "        boolean result \u003d true;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        boolean result \u003d true;"
+        "content": "        try {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        try {"
+        "content": "            parsePrefix(userInput);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            parsePrefix(userInput);"
+        "content": "            parseNumber(userInput);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            parseNumber(userInput);"
+        "content": "            parsePostfix(userInput);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            parsePostfix(userInput);"
+        "content": "        } catch (ModuleCodeException e) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        } catch (ModuleCodeException e) {"
+        "content": "            result \u003d false;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            result \u003d false;"
+        "content": "        }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        }"
+        "content": "        return result;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return result;"
+        "content": "    }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
         "content": ""
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "     * method to parse prefix from the input to ensure correctness of moduleCode."
+        "content": "     * Parses prefix from the input. Also, Ensure at least the first 2 digits are alphabetical."
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
           "gitId": "teikjun"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param input"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 44,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @return"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 45,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @throws ModuleCodeException"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 47,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    private static String parsePrefix(String input) throws ModuleCodeException {"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 48,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "        String output \u003d \"\";"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 49,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        if (!Character.isLetter(input.charAt(0))) {"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 50,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            throw new ModuleCodeException(\"Module prefix not found.\");"
+        "content": "            throw new ModuleCodeException(\"Module code prefix not found.\");"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 51,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        } else {"
       },
       {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            for (int i \u003d 0; i \u003c 3; i++) {"
+      },
+      {
         "lineNumber": 53,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            int i \u003d 0;"
+        "content": "                if (i !\u003d 2 \u0026\u0026 !Character.isLetter(input.charAt(i))) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            while (Character.isLetter(input.charAt(i))) {"
+        "content": "                    throw new ModuleCodeException(\"Wrong module code prefix format error.\");"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                output +\u003d input.charAt(i);"
+        "content": "                }"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "                i++;"
+        "content": "                output +\u003d Character.isLetter(input.charAt(i)) ? input.charAt(i) : \"\";"
       },
       {
         "lineNumber": 57,
@@ -27772,9 +27920,9 @@
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "     * method to parse number from the input to ensure correctness of moduleCode."
+        "content": "     * Parse the number part of the module code and make sure the number part is 4 digits."
       },
       {
         "lineNumber": 64,
@@ -27821,65 +27969,65 @@
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "        String outputAsString \u003d \"\";"
+        "content": "        int result \u003d 0;"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "        for (int i \u003d 0; i \u003c input.length(); i++) {"
+        "content": "        int startIndex \u003d Character.isDigit(input.charAt(2)) ? 2 : 1;"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            char character \u003d input.charAt(i);"
+        "content": "        if (input.length() - startIndex \u003e 5 || Character.isDigit(startIndex + 5)) {"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            try {"
+        "content": "            throw new ModuleCodeException(\"Please enter a valid module code.\");"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "                Integer.parseInt(\"\" + character);"
+        "content": "        }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "                outputAsString +\u003d character;"
+        "content": "        try {"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            } catch (NumberFormatException e) {"
+        "content": "            result \u003d Integer.parseInt(input.substring(startIndex, startIndex + 4));"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "                //ignore"
+        "content": "        } catch (NumberFormatException e) {"
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "            throw new ModuleCodeException(\"Please enter a valid module code.\");"
       },
       {
         "lineNumber": 79,
@@ -27891,170 +28039,170 @@
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "        return result;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        if (outputAsString.equals(\"\")) {"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            throw new ModuleCodeException(\"Module number not found!\");"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "            int output \u003d Integer.parseInt(outputAsString);"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "            return output;"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 82,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": ""
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 83,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 84,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "     * method to parse postfix from the input to ensure correctness of moduleCode."
+        "content": "     * Parses postfix from the input to ensure correctness of moduleCode."
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 85,
         "author": {
           "gitId": "teikjun"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 86,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @param input"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 87,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     * @return"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 88,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 89,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    private static String parsePostfix(String input) {"
       },
       {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        return Character.isLetter(input.charAt(input.length() - 1))"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            ? input.substring(input.length() - 1).toUpperCase() : \"\";"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    private String getPrefix() {"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        return prefix;"
+      },
+      {
         "lineNumber": 96,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        String output \u003d \"\";"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        char character \u003d input.charAt(input.length() - 1);"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        try {"
+        "content": "    private int getNumber() {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            Integer.parseInt(\"\" + character);"
+        "content": "        return number;"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        } catch (NumberFormatException e) {"
+        "content": "    }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            output +\u003d character;"
+        "content": ""
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        }"
+        "content": "    private String getPostfix() {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        return output.toUpperCase();"
+        "content": "        return postfix;"
       },
       {
         "lineNumber": 104,
@@ -28075,227 +28223,143 @@
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    private String getPrefix() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        return prefix;"
+        "content": "    public boolean equals(Object object) {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": "        if (object instanceof ModuleCode) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "            if (this.getPrefix().equals(((ModuleCode) object).prefix)"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    private int getNumber() {"
+        "content": "                \u0026\u0026 (this.getNumber() \u003d\u003d ((ModuleCode) object).number)"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        return number;"
+        "content": "                \u0026\u0026 this.getPostfix().equals(((ModuleCode) object).postfix)) {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": "                return true;"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "            } else {"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    private String getPostfix() {"
+        "content": "                return false;"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        return postfix;"
+        "content": "            }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "            return false;"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    @Override"
+        "content": "        }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public boolean equals(Object object) {"
+        "content": "    }"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        if (object instanceof ModuleCode) {"
+        "content": ""
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            if (this.getPrefix().equals(((ModuleCode) object).prefix)"
+        "content": "    @Override"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "                \u0026\u0026 (this.getNumber() \u003d\u003d ((ModuleCode) object).number)"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "                \u0026\u0026 this.getPostfix().equals(((ModuleCode) object).postfix)) {"
+        "content": "        return prefix + String.format(\"%04d\", number) + postfix;"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "                return true;"
+        "content": "    }"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            } else {"
+        "content": ""
       },
       {
         "lineNumber": 126,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "                return false;"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "        return prefix + String.format(\"%04d\", number) + postfix;"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 138,
         "author": {
           "gitId": "aegis-bot"
         },
@@ -28304,8 +28368,8 @@
     ],
     "authorContributionMap": {
       "teikjun": 5,
-      "aegis-bot": 106,
-      "wyt-sonia": 27
+      "aegis-bot": 76,
+      "wyt-sonia": 45
     }
   },
   {
@@ -57080,1148 +57144,1148 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    static final String QUIT_COMMAND_MSG \u003d \"Successfully quited from add task command.\";"
+        "content": "    static final String REQUIRED_MODULE_MSG \u003d \"Please choose a Module for this task or press enter to skip.\\n\""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    private String moduleListString \u003d \"\";"
+        "content": "        + \"Index number and module code are both acceptable.\\n\";"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    private ObservableList\u003cModule\u003e modules;"
+        "content": "    static final String REQUIRED_TASK_NAME_MSG \u003d \"Please enter the task name.\";"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    private boolean isModuleTried \u003d false;"
+        "content": "    static final String REQUIRED_TASK_TYPE_MSG \u003d \"Please choose the task type:\\n\" + TaskType.getTypeString();"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    private Task task;"
+        "content": "    static final String REQUIRED_DATE_TIME_MSG \u003d \"Please enter the deadline with format: \";"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "    static final String REQUIRED_TASK_DESCRIPTION_MSG \u003d \"Please enter task description or press enter to skip.\\n\";"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "    static final String REQUIRED_TASK_WEIGHT_MSG \u003d \"Please enter the weight of the task or press enter to skip.\\n\";"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG \u003d \"Please enter the estimated number of hours cost.\\n\";"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public AddTaskInteractivePrompt() {"
+        "content": "    static final String TASK_INFO_HEADER \u003d \"The task is ready to be added, press enter again to add the task:\\n\\n\""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        super();"
+        "content": "        + \"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d TASK INFO \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\n\";"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        this.interactivePromptType \u003d ADD_TASK;"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        this.task \u003d new Task();"
+        "content": "    static final String QUIT_COMMAND_MSG \u003d \"Successfully quited from add task command.\";"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        this.modules \u003d null;"
+        "content": "    private String moduleListString \u003d \"\";"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "    private ObservableList\u003cModule\u003e modules;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "    private boolean isModuleTried \u003d false;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    @Override"
+        "content": "    private Task task;"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    public String interact(String userInput) {"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        if (userInput.equals(\"quit\")) {"
+        "content": "    public AddTaskInteractivePrompt() {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            endInteract(QUIT_COMMAND_MSG);"
+        "content": "        super();"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            return reply;"
+        "content": "        this.interactivePromptType \u003d ADD_TASK;"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        }"
+        "content": "        this.task \u003d new Task();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "        this.modules \u003d null;"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        switch (currentTerm) {"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case INIT:"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            this.reply \u003d \"Please choose a Module for this task or press enter to skip.\\n\""
+        "content": "    @Override"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                + \"Index number and module code are both acceptable.\\n\""
+        "content": "    public String interact(String userInput) {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                + \"The Modules available are: \\n\";"
+        "content": "        if (userInput.equals(\"quit\")) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            this.modules \u003d logic.getFilteredModuleList();"
+        "content": "            endInteract(QUIT_COMMAND_MSG);"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            AtomicInteger counter \u003d new AtomicInteger();"
+        "content": "            return reply;"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            modules.forEach(m -\u003e {"
+        "content": "        }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                counter.getAndAdd(1);"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                reply +\u003d counter + \".\" + m.getModuleCode() + \" \" + m.getModuleName() + \"\\n\";"
+        "content": "        switch (currentTerm) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            });"
+        "content": "        case INIT:"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            moduleListString \u003d this.reply;"
+        "content": "            this.reply \u003d REQUIRED_MODULE_MSG;"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            currentTerm \u003d InteractivePromptTerms.TASK_MODULE;"
+        "content": "            moduleListString \u003d \"The Modules available are: \\n\";"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            /**"
+        "content": "            this.modules \u003d logic.getFilteredModuleList();"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "             * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE."
+        "content": "            AtomicInteger counter \u003d new AtomicInteger();"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "             * REMOVE task.setAttribute once you\u0027ve create methods to handle these...."
+        "content": "            modules.forEach(m -\u003e {"
       },
       {
         "lineNumber": 75,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "             * By default, Task will go to Module code AA0000. To add to a specific module, use other commands."
+        "content": "                counter.getAndAdd(1);"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "             */"
+        "content": "                moduleListString +\u003d counter + \".\" + m.getModuleCode() + \" \" + m.getModuleName() + \"\\n\";"
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            task.setStatus(\"pending\");"
+        "content": "            });"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            task.setTaskDescription(\"No Description\");"
+        "content": "            this.reply +\u003d moduleListString;"
       },
       {
         "lineNumber": 79,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "            task.setWeight(0.0);"
+        "content": "            currentTerm \u003d InteractivePromptTerms.TASK_MODULE;"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "            task.setEstimatedTimeCost(0);"
+        "content": "            task.setStatus(\"pending\");"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "            task.setTaskDescription(\"No Description\");"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "            task.setWeight(0.0);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case TASK_MODULE:"
+        "content": "            task.setEstimatedTimeCost(0);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            try {"
+        "content": "            break;"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                Module module \u003d null;"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                if (userInput.isBlank() \u0026\u0026 !isModuleTried) {"
+        "content": "        case TASK_MODULE:"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    module \u003d new EmptyModule();"
+        "content": "            try {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                } else if (userInput.isBlank() \u0026\u0026 isModuleTried) {"
+        "content": "                Module module \u003d null;"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    throw new AddTaskCommandException(\"emptyInputError\");"
+        "content": "                if (userInput.isBlank() \u0026\u0026 !isModuleTried) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                } else {"
+        "content": "                    module \u003d new EmptyModule();"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    isModuleTried \u003d true;"
+        "content": "                } else if (userInput.isBlank() \u0026\u0026 isModuleTried) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    module \u003d AddTaskCommandParser.parseModule(userInput, modules);"
+        "content": "                    throw new AddTaskCommandException(\"emptyInputError\");"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                }"
+        "content": "                } else {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                task.setModule(module);"
+        "content": "                    isModuleTried \u003d true;"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                currentTerm \u003d InteractivePromptTerms.TASK_NAME;"
+        "content": "                    module \u003d AddTaskCommandParser.parseModule(userInput, modules);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                this.reply \u003d \"The module has been set as: \" + module.getModuleCode() + \" \""
+        "content": "                }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    + module.getModuleName() + \"\\n\\n\""
+        "content": "                task.setModule(module);"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    + \"Please enter the task name.\";"
+        "content": "                currentTerm \u003d InteractivePromptTerms.TASK_NAME;"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            } catch (AddTaskCommandException e) {"
+        "content": "                this.reply \u003d \"The module has been set as: \" + module.getModuleCode() + \" \""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                isModuleTried \u003d false;"
+        "content": "                    + module.getModuleName() + \"\\n\\n\""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                reply \u003d e.getErrorMessage() + \"\\n\\n\" + moduleListString;"
+        "content": "                    + REQUIRED_TASK_NAME_MSG;"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "            } catch (AddTaskCommandException e) {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "                isModuleTried \u003d false;"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "                reply \u003d e.getErrorMessage() + \"\\n\\n\" + moduleListString;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case TASK_NAME:"
+        "content": "            }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            try {"
+        "content": "            break;"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                userInput \u003d AddTaskCommandParser.parseName(userInput);"
+        "content": ""
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                this.reply \u003d \"The name of task is set to: \" + userInput + \".\\n\""
+        "content": "        case TASK_NAME:"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    + \"Please choose the task type:\\n\""
+        "content": "            try {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    + TaskType.getTypeString();"
+        "content": "                userInput \u003d AddTaskCommandParser.parseName(userInput);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                task.setTaskName(userInput);"
+        "content": "                this.reply \u003d \"The name of task is set to: \" + userInput + \".\\n\""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                currentTerm \u003d InteractivePromptTerms.TASK_TYPE;"
+        "content": "                    + REQUIRED_TASK_TYPE_MSG;"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            } catch (AddTaskCommandException ex) {"
+        "content": "                task.setTaskName(userInput);"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                reply \u003d ex.getErrorMessage() + \"\\n\\n\""
+        "content": "                currentTerm \u003d InteractivePromptTerms.TASK_TYPE;"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                    + \"Please enter the task name.\";"
+        "content": "            } catch (AddTaskCommandException ex) {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            }"
+        "content": "                reply \u003d ex.getErrorMessage() + \"\\n\\n\""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "                    + REQUIRED_TASK_NAME_MSG;"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case TASK_TYPE:"
+        "content": "            break;"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            try {"
+        "content": ""
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                TaskType taskType \u003d AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);"
+        "content": "        case TASK_TYPE:"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                task.setTaskType(taskType);"
+        "content": "            try {"
       },
       {
         "lineNumber": 123,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "                TaskType taskType \u003d AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                this.reply \u003d \"The type of task has been set to: \" + taskType.toString() + \".\\n\""
+        "content": "                task.setTaskType(taskType);"
       },
       {
         "lineNumber": 125,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    + \"Please enter the deadline with format: \";"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                if (taskType.equals(TaskType.Assignment)) {"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    this.reply +\u003d \"HH:mm dd/MM/yyyy\";"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    this.reply +\u003d \"HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\";"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                currentTerm \u003d InteractivePromptTerms.TASK_DATETIME;"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            } catch (NumberFormatException ex) {"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                reply \u003d (new AddTaskCommandException(\"wrongIndexFormat\")).getErrorMessage();"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            } catch (AddTaskCommandException ex) {"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                reply \u003d ex.getErrorMessage();"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "        case TASK_DATETIME:"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                LocalDateTime[] dateTimes \u003d AddTaskCommandParser.parseDateTime(userInput, task.getTaskType());"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                task.setDateTimes(dateTimes);"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                if (dateTimes.length \u003d\u003d 1) {"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    userInput \u003d TimeParser.getDateTimeString(dateTimes[0]);"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    userInput \u003d TimeParser.getDateTimeString(dateTimes[0])"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                        + \"-\" + TimeParser.getDateTimeString(dateTimes[1]);"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                reply \u003d \"The date and time is set to: \" + userInput + \"\\n\\n\""
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    + \"Press enter again to add the task:\\n\\n\""
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    + \"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d TASK INFO \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\n\""
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    + task.toString();"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                currentTerm \u003d InteractivePromptTerms.READY_TO_EXECUTE;"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            } catch (AddTaskCommandException ex) {"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                reply \u003d ex.getErrorMessage();"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "        case READY_TO_EXECUTE:"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                task.setCreationDateTime(LocalDateTime.now());"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                AddTaskCommand addTaskCommand \u003d new AddTaskCommand(task);"
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                logic.executeCommand(addTaskCommand);"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                if (task.isDuplicate()) {"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                    reply \u003d \"This is a duplicate task. Are you sure you would like to proceed?\\n\""
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                        + \"Please enter yes or no.\";"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                    currentTerm \u003d InteractivePromptTerms.ADD_DUPLICATE;"
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                } else {"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                    endInteract(END_OF_COMMAND_MSG);"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "            } catch (ParseException | CommandException e) {"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                e.printStackTrace();"
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 180,
         "author": {
           "gitId": "aegis-bot"
         },
         "content": ""
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 126,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "        case ADD_DUPLICATE:"
+        "content": "                this.reply \u003d \"The type of task has been set to: \" + taskType.toString() + \".\\n\""
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 127,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "            if (userInput.equalsIgnoreCase(\"yes\")) {"
+        "content": "                    + REQUIRED_DATE_TIME_MSG;"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 128,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "                AddTaskCommand addDuplicateTaskCommand \u003d new AddTaskCommand(task);"
+        "content": "                if (taskType.equals(TaskType.Assignment)) {"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 129,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "                try {"
+        "content": "                    this.reply +\u003d \"HH:mm dd/MM/yyyy\";"
       },
       {
-        "lineNumber": 185,
+        "lineNumber": 130,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "                    logic.executeCommand(addDuplicateTaskCommand);"
+        "content": "                } else {"
       },
       {
-        "lineNumber": 186,
+        "lineNumber": 131,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "                    endInteract(END_OF_COMMAND_MSG);"
+        "content": "                    this.reply +\u003d \"HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\";"
       },
       {
-        "lineNumber": 187,
+        "lineNumber": 132,
         "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                } catch (CommandException e) {"
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                    e.printStackTrace();"
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                } catch (ParseException e) {"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "souwmyaa"
-        },
-        "content": "                    e.printStackTrace();"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 192,
+        "lineNumber": 133,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "            } else if (userInput.equalsIgnoreCase(\"no\")) {"
+        "content": "                currentTerm \u003d InteractivePromptTerms.TASK_DATETIME;"
       },
       {
-        "lineNumber": 193,
+        "lineNumber": 134,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "                endInteract(END_OF_COMMAND_DUPLICATE_MSG);"
+        "content": "            } catch (NumberFormatException ex) {"
       },
       {
-        "lineNumber": 194,
+        "lineNumber": 135,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "            } else {"
+        "content": "                reply \u003d (new AddTaskCommandException(\"wrongIndexFormat\")).getErrorMessage();"
       },
       {
-        "lineNumber": 195,
+        "lineNumber": 136,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
         },
-        "content": "                reply \u003d (new AddTaskCommandException(\"wrongDuplicateFormat\")).getErrorMessage();"
+        "content": "            } catch (AddTaskCommandException ex) {"
       },
       {
-        "lineNumber": 196,
+        "lineNumber": 137,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "wyt-sonia"
+        },
+        "content": "                reply \u003d ex.getErrorMessage();"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "wyt-sonia"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 197,
+        "lineNumber": 139,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 198,
+        "lineNumber": 140,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": ""
       },
       {
-        "lineNumber": 199,
+        "lineNumber": 141,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        case TASK_DATETIME:"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                LocalDateTime[] dateTimes \u003d AddTaskCommandParser.parseDateTime(userInput, task.getTaskType());"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                task.setDateTimes(dateTimes);"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                if (dateTimes.length \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                    userInput \u003d TimeParser.getDateTimeString(dateTimes[0]);"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                    userInput \u003d TimeParser.getDateTimeString(dateTimes[0])"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                        + \"-\" + TimeParser.getDateTimeString(dateTimes[1]);"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply \u003d \"The date and time is set to: \" + userInput + \"\\n\\n\""
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                    + REQUIRED_TASK_DESCRIPTION_MSG;"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                currentTerm \u003d InteractivePromptTerms.TASK_DESCRIPTION;"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            } catch (AddTaskCommandException ex) {"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply \u003d ex.getErrorMessage();"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        case TASK_DESCRIPTION:"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            this.reply \u003d \"\";"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            if (!userInput.isBlank()) {"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                task.setTaskDescription(userInput);"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply \u003d \"The task description has been set as \" + userInput + \"\\n\\n\";"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            this.reply +\u003d REQUIRED_TASK_WEIGHT_MSG;"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            currentTerm \u003d InteractivePromptTerms.TASK_WEIGHT;"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 172,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        case TASK_WEIGHT:"
       },
       {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply \u003d \"\";"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                if (!userInput.isBlank()) {"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                    task.setWeight(AddTaskCommandParser.parseWeight(userInput));"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                    this.reply \u003d \"The weight of the task has been set as \" + userInput + \"\\n\\n\";"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply +\u003d REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.currentTerm \u003d InteractivePromptTerms.TASK_ESTIMATED_TIME_COST;"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            } catch (AddTaskCommandException e) {"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply \u003d e.getErrorMessage() + \"\\n\\n\" + REQUIRED_TASK_WEIGHT_MSG;"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            break;"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        case TASK_ESTIMATED_TIME_COST:"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply \u003d \"\";"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                if (!userInput.isBlank()) {"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                    task.setEstimatedTimeCost(AddTaskCommandParser.parseTimeCost(userInput));"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                    this.reply \u003d \"The estimated number of hours the task might take has been set as \""
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                        + userInput + \"\\n\\n\";"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply +\u003d TASK_INFO_HEADER + task.toString();"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.currentTerm \u003d InteractivePromptTerms.READY_TO_EXECUTE;"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            } catch (AddTaskCommandException e) {"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "                this.reply \u003d e.getErrorMessage() + \"\\n\\n\" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "            }"
+      },
+      {
         "lineNumber": 200,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            //TASK_WEIGHT under construction"
+        "content": ""
       },
       {
         "lineNumber": 201,
@@ -58242,238 +58306,238 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case TASK_DESCRIPTION:"
+        "content": "        case READY_TO_EXECUTE:"
       },
       {
         "lineNumber": 204,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "            //TASK_DESCRIPTION under construction"
+        "content": "            try {"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            break;"
+        "content": "                task.setCreationDateTime(LocalDateTime.now());"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": ""
+        "content": "                AddTaskCommand addTaskCommand \u003d new AddTaskCommand(task);"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        case TASK_ESTIMATED_TIME_COST:"
+        "content": "                logic.executeCommand(addTaskCommand);"
       },
       {
         "lineNumber": 208,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "            //TASK_ESTIMATED_TIME_COST under construction"
+        "content": "                if (task.isDuplicate()) {"
       },
       {
         "lineNumber": 209,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "            break;"
+        "content": "                    reply \u003d \"This is a duplicate task. Are you sure you would like to proceed?\\n\""
       },
       {
         "lineNumber": 210,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": ""
+        "content": "                        + \"Please enter yes or no.\";"
       },
       {
         "lineNumber": 211,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "        default:"
+        "content": "                    currentTerm \u003d InteractivePromptTerms.ADD_DUPLICATE;"
       },
       {
         "lineNumber": 212,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "        }"
+        "content": "                } else {"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        return reply;"
+        "content": "                    endInteract(END_OF_COMMAND_MSG);"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "                }"
       },
       {
         "lineNumber": 215,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": ""
+        "content": "            } catch (ParseException | CommandException e) {"
       },
       {
         "lineNumber": 216,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": ""
+        "content": "                e.printStackTrace();"
       },
       {
         "lineNumber": 217,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    @Override"
+        "content": "            }"
       },
       {
         "lineNumber": 218,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    public void interruptInteract() {"
+        "content": "            break;"
       },
       {
         "lineNumber": 219,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
         "content": ""
       },
       {
         "lineNumber": 220,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    }"
+        "content": "        case ADD_DUPLICATE:"
       },
       {
         "lineNumber": 221,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": ""
+        "content": "            if (userInput.equalsIgnoreCase(\"yes\")) {"
       },
       {
         "lineNumber": 222,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    @Override"
+        "content": "                AddTaskCommand addDuplicateTaskCommand \u003d new AddTaskCommand(task);"
       },
       {
         "lineNumber": 223,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    public void endInteract(String msg) {"
+        "content": "                try {"
       },
       {
         "lineNumber": 224,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "        this.reply \u003d msg;"
+        "content": "                    logic.executeCommand(addDuplicateTaskCommand);"
       },
       {
         "lineNumber": 225,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "        super.setEndOfCommand(true);"
+        "content": "                    endInteract(END_OF_COMMAND_MSG);"
       },
       {
         "lineNumber": 226,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    }"
+        "content": "                } catch (CommandException e) {"
       },
       {
         "lineNumber": 227,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": ""
+        "content": "                    e.printStackTrace();"
       },
       {
         "lineNumber": 228,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    @Override"
+        "content": "                } catch (ParseException e) {"
       },
       {
         "lineNumber": 229,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    public void back() {"
+        "content": "                    e.printStackTrace();"
       },
       {
         "lineNumber": 230,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": ""
+        "content": "                }"
       },
       {
         "lineNumber": 231,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    }"
+        "content": "            } else if (userInput.equalsIgnoreCase(\"no\")) {"
       },
       {
         "lineNumber": 232,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": ""
+        "content": "                endInteract(END_OF_COMMAND_DUPLICATE_MSG);"
       },
       {
         "lineNumber": 233,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    @Override"
+        "content": "            } else {"
       },
       {
         "lineNumber": 234,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": "    public void next() {"
+        "content": "                reply \u003d (new AddTaskCommandException(\"wrongDuplicateFormat\")).getErrorMessage();"
       },
       {
         "lineNumber": 235,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "souwmyaa"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": "            break;"
       },
       {
         "lineNumber": 237,
@@ -58487,45 +58551,234 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    /**"
+        "content": "        default:"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     * pending."
+        "content": "        }"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "     */"
+        "content": "        return reply;"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    private String dateTime() {"
+        "content": "    }"
       },
       {
         "lineNumber": 242,
         "author": {
-          "gitId": "gx-huang"
+          "gitId": "wyt-sonia"
         },
-        "content": "        return \"\";"
+        "content": ""
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 244,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    public void interruptInteract() {"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 248,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 249,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 250,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    public void endInteract(String msg) {"
+      },
+      {
+        "lineNumber": 251,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        this.reply \u003d msg;"
+      },
+      {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "        super.setEndOfCommand(true);"
+      },
+      {
+        "lineNumber": 253,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 254,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 255,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 256,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    public void back() {"
+      },
+      {
+        "lineNumber": 257,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 258,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    public void next() {"
+      },
+      {
+        "lineNumber": 262,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 263,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 266,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "     * pending."
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 268,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    private String dateTime() {"
+      },
+      {
+        "lineNumber": 269,
+        "author": {
+          "gitId": "gx-huang"
+        },
+        "content": "        return \"\";"
+      },
+      {
+        "lineNumber": 270,
+        "author": {
+          "gitId": "wyt-sonia"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 271,
         "author": {
           "gitId": "wyt-sonia"
         },
@@ -58534,9 +58787,9 @@
     ],
     "authorContributionMap": {
       "teikjun": 14,
-      "souwmyaa": 29,
-      "aegis-bot": 9,
-      "wyt-sonia": 191,
+      "souwmyaa": 28,
+      "aegis-bot": 4,
+      "wyt-sonia": 224,
       "gx-huang": 1
     }
   },
@@ -92126,9 +92379,9 @@
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "gx-huang"
+          "gitId": "wyt-sonia"
         },
-        "content": "        String reply \u003d \"Module Code: \" + \"O0000O\" + \"\\n\""
+        "content": "        String reply \u003d \"Module Code: \" + \"OO0000O\" + \"\\n\""
       },
       {
         "lineNumber": 38,
@@ -92140,9 +92393,9 @@
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "gx-huang"
+          "gitId": "wyt-sonia"
         },
-        "content": "        assertEquals(reply, prompt.interact(\"O0000O\"));"
+        "content": "        assertEquals(reply, prompt.interact(\"OO0000O\"));"
       },
       {
         "lineNumber": 40,
@@ -92196,9 +92449,9 @@
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "gx-huang"
+          "gitId": "wyt-sonia"
         },
-        "content": "        prompt.interact(\"O0000O\");"
+        "content": "        prompt.interact(\"OO0000O\");"
       },
       {
         "lineNumber": 48,
@@ -92273,7 +92526,8 @@
     ],
     "authorContributionMap": {
       "teikjun": 1,
-      "gx-huang": 56
+      "wyt-sonia": 3,
+      "gx-huang": 53
     }
   },
   {

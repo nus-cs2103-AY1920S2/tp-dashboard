@@ -22999,325 +22999,486 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "/**"
+        "content": "import java.math.BigDecimal;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": " * Represents current weight (in kg) of a client in FitBiz. Guarantees:"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": " * immutable; is valid as declared in {@link #isValidWeight(String)}"
+        "content": "/**"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": " */"
+        "content": " * Represents current weight (in kg) of a client in FitBiz. Guarantees:"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "public class CurrentWeight {"
+        "content": " * immutable; is valid as declared in {@link #isValidWeight(String)}"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d"
+        "content": "public class CurrentWeight {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            \"Input weight must either be whole or decimal number (eg. 65 or 86.22)\";"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static final String VALIDATION_REGEX \u003d \"[0-9]+(\\\\.[0-9]+)?\";"
+        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d \"Input weight must either be whole or decimal number\""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public final String value;"
+        "content": "            + \" (eg. 65 or 86.22)\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    public static final String VALIDATION_REGEX \u003d \"[0-9]{1,3}(\\\\.[0-9]{0,3})?\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    /**"
+        "content": "    private static final String EMPTY_STRING \u003d \"\";"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     * Constructs a {@code CurrentWeight}."
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     *"
+        "content": "    public final String value;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     * @param weight A valid weight."
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public CurrentWeight(String weight) {"
+        "content": "     * Constructs a {@code CurrentWeight}."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        requireNonNull(weight);"
+        "content": "     *"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        checkArgument(isValidWeight(weight), MESSAGE_CONSTRAINTS);"
+        "content": "     * @param weight A valid weight."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        value \u003d weight;"
+        "content": "     */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    public CurrentWeight(String weight) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        requireNonNull(weight);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    /**"
+        "content": "        checkArgument(isValidWeight(weight), MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     * Returns true if a given string is a valid weight."
+        "content": "        String formattedWeight \u003d formatWeight(weight);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     */"
+        "content": "        value \u003d formattedWeight;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static boolean isValidWeight(String test) {"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return test.equals(\"\") || test.matches(VALIDATION_REGEX);"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    private static boolean isEmptyString(String toTest) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        return toTest.equals(EMPTY_STRING);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return value;"
+        "content": "    /**"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "     * Formats the weight using {@code BigDecimal}."
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "     *"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Override"
+        "content": "     * @param weight weight to format"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "     * @return formatted weight to 2 decimal places"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "     */"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "                || (other instanceof CurrentWeight // instanceof handles nulls"
+        "content": "    private static String formatWeight(String weight) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "                        \u0026\u0026 value.equals(((CurrentWeight) other).value)); // state check"
+        "content": "        if (isEmptyString(weight)) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "            return EMPTY_STRING;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Override"
+        "content": "        BigDecimal bd \u003d new BigDecimal(weight);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public int hashCode() {"
+        "content": "        return String.format(\"%1$.2f\", bd);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return value.hashCode();"
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 52,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Returns true if a given string is a valid weight."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public static boolean isValidWeight(String test) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return isEmptyString(test) || test.matches(VALIDATION_REGEX);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return value;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                || (other instanceof CurrentWeight // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                        \u0026\u0026 value.equals(((CurrentWeight) other).value)); // state check"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return value.hashCode();"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
         "author": {
           "gitId": "AaronCQL"
         },
@@ -23325,7 +23486,7 @@
       }
     ],
     "authorContributionMap": {
-      "AaronCQL": 52
+      "AaronCQL": 75
     }
   },
   {
@@ -24357,325 +24518,486 @@
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "/**"
+        "content": "import java.math.BigDecimal;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": " * Represents current height (in cm) of a client in FitBiz. Guarantees:"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": " * immutable; is valid as declared in {@link #isValidHeight(String)}"
+        "content": "/**"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": " */"
+        "content": " * Represents current height (in cm) of a client in FitBiz. Guarantees:"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "public class Height {"
+        "content": " * immutable; is valid as declared in {@link #isValidHeight(String)}"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d"
+        "content": "public class Height {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "            \"Input height must either be whole or decimal number (eg. 165 or 155.2)\";"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public static final String VALIDATION_REGEX \u003d \"[0-9]+(\\\\.[0-9]+)?\";"
+        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public final String value;"
+        "content": "            \"Input height must either be whole or decimal number (eg. 165 or 155.2)\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "    public static final String VALIDATION_REGEX \u003d \"[0-9]{1,3}(\\\\.[0-9]{0,3})?\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    /**"
+        "content": "    private static final String EMPTY_STRING \u003d \"\";"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "     * Constructs a {@code Height}."
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "     *"
+        "content": "    public final String value;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "     * @param height A valid height."
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public Height(String height) {"
+        "content": "     * Constructs a {@code Height}."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        requireNonNull(height);"
+        "content": "     *"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        checkArgument(isValidHeight(height), MESSAGE_CONSTRAINTS);"
+        "content": "     * @param height A valid height."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        value \u003d height;"
+        "content": "     */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "    public Height(String height) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "        requireNonNull(height);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    /**"
+        "content": "        checkArgument(isValidHeight(height), MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "     * Returns true if a given string is a valid height."
+        "content": "        String formattedHeight \u003d formatHeight(height);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "     */"
+        "content": "        value \u003d formattedHeight;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public static boolean isValidHeight(String test) {"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        return test.equals(\"\") || test.matches(VALIDATION_REGEX);"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "    private static boolean isEmptyString(String toTest) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "        return toTest.equals(EMPTY_STRING);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        return value;"
+        "content": "    /**"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "     * Formats the height using {@code BigDecimal}."
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "     *"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    @Override"
+        "content": "     * @param height height to format"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "     * @return formatted height to 2 decimal places"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "     */"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "                || (other instanceof Height // instanceof handles nulls"
+        "content": "    private static String formatHeight(String height) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "                        \u0026\u0026 value.equals(((Height) other).value)); // state check"
+        "content": "        if (isEmptyString(height)) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "            return EMPTY_STRING;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    @Override"
+        "content": "        BigDecimal bd \u003d new BigDecimal(height);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public int hashCode() {"
+        "content": "        return String.format(\"%1$.2f\", bd);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        return value.hashCode();"
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 52,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "     * Returns true if a given string is a valid height."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    public static boolean isValidHeight(String test) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        return isEmptyString(test) || test.matches(VALIDATION_REGEX);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        return value;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "                || (other instanceof Height // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "                        \u0026\u0026 value.equals(((Height) other).value)); // state check"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        return value.hashCode();"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
         "author": {
           "gitId": "ziyingli"
         },
@@ -24683,7 +25005,7 @@
       }
     ],
     "authorContributionMap": {
-      "ziyingli": 52
+      "ziyingli": 75
     }
   },
   {
@@ -26431,325 +26753,486 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "/**"
+        "content": "import java.math.BigDecimal;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": " * Represents current weight (in kg) of a client in FitBiz. Guarantees:"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": " * immutable; is valid as declared in {@link #isValidWeight(String)}"
+        "content": "/**"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": " */"
+        "content": " * Represents current weight (in kg) of a client in FitBiz. Guarantees:"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "public class TargetWeight {"
+        "content": " * immutable; is valid as declared in {@link #isValidWeight(String)}"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d"
+        "content": "public class TargetWeight {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            \"Input weight must either be whole or decimal number (eg. 65 or 86.22)\";"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static final String VALIDATION_REGEX \u003d \"[0-9]+(\\\\.[0-9]+)?\";"
+        "content": "    public static final String MESSAGE_CONSTRAINTS \u003d \"Input weight must either be whole or decimal number\""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public final String value;"
+        "content": "            + \" (eg. 65 or 86.22)\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    public static final String VALIDATION_REGEX \u003d \"[0-9]{1,3}(\\\\.[0-9]{0,3})?\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    /**"
+        "content": "    private static final String EMPTY_STRING \u003d \"\";"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     * Constructs a {@code TargetWeight}."
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     *"
+        "content": "    public final String value;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     * @param weight A valid weight."
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public TargetWeight(String weight) {"
+        "content": "     * Constructs a {@code TargetWeight}."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        requireNonNull(weight);"
+        "content": "     *"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        checkArgument(isValidWeight(weight), MESSAGE_CONSTRAINTS);"
+        "content": "     * @param weight A valid weight."
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        value \u003d weight;"
+        "content": "     */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    public TargetWeight(String weight) {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        requireNonNull(weight);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    /**"
+        "content": "        checkArgument(isValidWeight(weight), MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     * Returns true if a given string is a valid weight."
+        "content": "        String formattedWeight \u003d formatWeight(weight);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "     */"
+        "content": "        value \u003d formattedWeight;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static boolean isValidWeight(String test) {"
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return test.equals(\"\") || test.matches(VALIDATION_REGEX);"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    private static boolean isEmptyString(String toTest) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        return toTest.equals(EMPTY_STRING);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public String toString() {"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return value;"
+        "content": "    /**"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "     * Formats the weight using {@code BigDecimal}."
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "     *"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Override"
+        "content": "     * @param weight weight to format"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "     * @return formatted weight to 2 decimal places"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "     */"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "                || (other instanceof TargetWeight // instanceof handles nulls"
+        "content": "    private String formatWeight(String weight) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "                        \u0026\u0026 value.equals(((TargetWeight) other).value)); // state check"
+        "content": "        if (isEmptyString(weight)) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "            return EMPTY_STRING;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Override"
+        "content": "        BigDecimal bd \u003d new BigDecimal(weight);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public int hashCode() {"
+        "content": "        return String.format(\"%1$.2f\", bd);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return value.hashCode();"
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 52,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     * Returns true if a given string is a valid weight."
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public static boolean isValidWeight(String test) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return isEmptyString(test) || test.matches(VALIDATION_REGEX);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return value;"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                || (other instanceof TargetWeight // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                        \u0026\u0026 value.equals(((TargetWeight) other).value)); // state check"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        return value.hashCode();"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 75,
         "author": {
           "gitId": "AaronCQL"
         },
@@ -26757,7 +27240,7 @@
       }
     ],
     "authorContributionMap": {
-      "AaronCQL": 52
+      "AaronCQL": 75
     }
   },
   {
@@ -54953,514 +55436,605 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import static seedu.address.testutil.Assert.assertThrows;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "import static seedu.address.testutil.Assert.assertThrows;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "public class CurrentWeightTest {"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "public class CurrentWeightTest {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void constructor_null_throwsNullPointerException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e new CurrentWeight(null));"
+        "content": "    public void constructor_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new CurrentWeight(null));"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void constructor_invalidCurrentWeight_throwsIllegalArgumentException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        String invalidCurrentWeight \u003d \"i\";"
+        "content": "    public void constructor_invalidCurrentWeight_throwsIllegalArgumentException() {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertThrows(IllegalArgumentException.class, () -\u003e new CurrentWeight(invalidCurrentWeight));"
+        "content": "        String invalidCurrentWeight \u003d \"i\";"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertThrows(IllegalArgumentException.class, () -\u003e new CurrentWeight(invalidCurrentWeight));"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void isValidWeight() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        // null weight"
+        "content": "    public void isValidWeight() {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e CurrentWeight.isValidWeight(null));"
+        "content": "        // null weight"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertThrows(NullPointerException.class, () -\u003e CurrentWeight.isValidWeight(null));"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        // invalid weight"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\" \")); // spaces only"
+        "content": "        // invalid weight"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"ab\")); // contains no numbers"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\" \")); // spaces only"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"a.b\")); // contains no numbers"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"ab\")); // contains no numbers"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\".2\")); // no leading number before decimal"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"a.b\")); // contains no numbers"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"2.2.2\")); // too many decimal points"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\".2\")); // no leading number before decimal"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"-23\")); // negative numbers"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"2.2.2\")); // too many decimal points"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"-23.23\")); // negative decimals"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"-23\")); // negative numbers"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"as.23\")); // inclusion of letters"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"-23.23\")); // negative decimals"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23.as\")); // inclusion of letters"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"as.23\")); // inclusion of letters"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23.a1\")); // inclusion of letters"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23.as\")); // inclusion of letters"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23z1\")); // inclusion of letters"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23.a1\")); // inclusion of letters"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23,23\")); // wrong symbols"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23z1\")); // inclusion of letters"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23|23\")); // wrong symbols"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23,23\")); // wrong symbols"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23/23\")); // wrong symbols"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23|23\")); // wrong symbols"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23./23\")); // wrong symbols"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23/23\")); // wrong symbols"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23/.23\")); // wrong symbols"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23./23\")); // wrong symbols"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"2-3.23\")); // wrong symbols"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23/.23\")); // wrong symbols"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23.2\u00273\")); // wrong symbols"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"2-3.23\")); // wrong symbols"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"23.2\u00273\")); // wrong symbols"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        // valid weight"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"41.34573223138567385432\")); // long decimal"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(CurrentWeight.isValidWeight(\"\")); // empty string"
+        "content": "        assertFalse(CurrentWeight.isValidWeight(\"34573223138567385432.3\")); // long decimal"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(CurrentWeight.isValidWeight(\"0\")); // single digit"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(CurrentWeight.isValidWeight(\"5\")); // single digit"
+        "content": "        // valid weight"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(CurrentWeight.isValidWeight(\"456\")); // numbers only"
+        "content": "        assertTrue(CurrentWeight.isValidWeight(\"\")); // empty string"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(CurrentWeight.isValidWeight(\"1.2\")); // numbers with decimal points"
+        "content": "        assertTrue(CurrentWeight.isValidWeight(\"0\")); // single digit"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(CurrentWeight.isValidWeight(\"45.23\")); // numbers with decimal points"
+        "content": "        assertTrue(CurrentWeight.isValidWeight(\"5\")); // single digit"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(CurrentWeight.isValidWeight(\"0.1\")); // numbers with decimal points and leading 0"
+        "content": "        assertTrue(CurrentWeight.isValidWeight(\"003\")); // leading zeros"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(CurrentWeight.isValidWeight(\"412343212384755.34573223138567385432\")); // arbitrarily long numbers"
+        "content": "        assertTrue(CurrentWeight.isValidWeight(\"456\")); // numbers only"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertTrue(CurrentWeight.isValidWeight(\"1.2\")); // numbers with decimal points"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertTrue(CurrentWeight.isValidWeight(\"45.23\")); // numbers with decimal points"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "        assertTrue(CurrentWeight.isValidWeight(\"0.1\")); // numbers with decimal points and leading 0"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void equals_validWeight() {"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        CurrentWeight w1 \u003d new CurrentWeight(\"12.2\");"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(w1.equals(w1));"
+        "content": "    public void formatWeight_properlyFormatted() {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(w1.equals(new CurrentWeight(\"12.2\")));"
+        "content": "        assertEquals((new TargetWeight(\"0\")).value, \"0.00\"); // single digits"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertEquals((new TargetWeight(\"5\")).value, \"5.00\"); // single digits"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(w1.equals(new CurrentWeight(\"12\")));"
+        "content": "        assertEquals((new TargetWeight(\"003\")).value, \"3.00\"); // strip leading zeros"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertEquals((new TargetWeight(\"000\")).value, \"0.00\"); // at least one zero before decimal place"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertEquals((new TargetWeight(\"000.3\")).value, \"0.30\"); // at least one zero before decimal place"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "        assertEquals((new TargetWeight(\"45.23\")).value, \"45.23\"); // at least one zero before decimal place"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void hashCode_validWeight() {"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        CurrentWeight w1 \u003d new CurrentWeight(\"12.2\");"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(w1.hashCode() \u003d\u003d new CurrentWeight(\"12.2\").hashCode());"
+        "content": "    public void equals_validWeight() {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        CurrentWeight w1 \u003d new CurrentWeight(\"12.2\");"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(w1.hashCode() \u003d\u003d new CurrentWeight(\"12.1\").hashCode());"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertTrue(w1.equals(w1));"
       },
       {
         "lineNumber": 76,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(w1.equals(new CurrentWeight(\"12.2\")));"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertFalse(w1.equals(new CurrentWeight(\"12\")));"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void hashCode_validWeight() {"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        CurrentWeight w1 \u003d new CurrentWeight(\"12.2\");"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(w1.hashCode() \u003d\u003d new CurrentWeight(\"12.2\").hashCode());"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertFalse(w1.hashCode() \u003d\u003d new CurrentWeight(\"12.1\").hashCode());"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 89,
         "author": {
           "gitId": "AaronCQL"
         },
@@ -55468,7 +56042,7 @@
       }
     ],
     "authorContributionMap": {
-      "AaronCQL": 76
+      "AaronCQL": 89
     }
   },
   {
@@ -56262,427 +56836,427 @@
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "import static seedu.address.testutil.Assert.assertThrows;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "import static seedu.address.testutil.Assert.assertThrows;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "public class HeightTest {"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "public class HeightTest {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public void constructor_null_throwsNullPointerException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e new Height(null));"
+        "content": "    public void constructor_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new Height(null));"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public void constructor_invalidHeight_throwsIllegalArgumentException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        String invalidHeight \u003d \"i\";"
+        "content": "    public void constructor_invalidHeight_throwsIllegalArgumentException() {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertThrows(IllegalArgumentException.class, () -\u003e new Height(invalidHeight));"
+        "content": "        String invalidHeight \u003d \"i\";"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "        assertThrows(IllegalArgumentException.class, () -\u003e new Height(invalidHeight));"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public void isValidHeight() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        // null height"
+        "content": "    public void isValidHeight() {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e Height.isValidHeight(null));"
+        "content": "        // null height"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "        assertThrows(NullPointerException.class, () -\u003e Height.isValidHeight(null));"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        // invalid height"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\" \")); // spaces only"
+        "content": "        // invalid height"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"ab\")); // contains no numbers"
+        "content": "        assertFalse(Height.isValidHeight(\" \")); // spaces only"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"a.b\")); // contains no numbers"
+        "content": "        assertFalse(Height.isValidHeight(\"ab\")); // contains no numbers"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\".2\")); // no leading number before decimal"
+        "content": "        assertFalse(Height.isValidHeight(\"a.b\")); // contains no numbers"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"2.2.2\")); // too many decimal points"
+        "content": "        assertFalse(Height.isValidHeight(\".2\")); // no leading number before decimal"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"-23\")); // negative numbers"
+        "content": "        assertFalse(Height.isValidHeight(\"2.2.2\")); // too many decimal points"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"-23.23\")); // negative decimals"
+        "content": "        assertFalse(Height.isValidHeight(\"-23\")); // negative numbers"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"as.23\")); // inclusion of letters"
+        "content": "        assertFalse(Height.isValidHeight(\"-23.23\")); // negative decimals"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23.as\")); // inclusion of letters"
+        "content": "        assertFalse(Height.isValidHeight(\"as.23\")); // inclusion of letters"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23.a1\")); // inclusion of letters"
+        "content": "        assertFalse(Height.isValidHeight(\"23.as\")); // inclusion of letters"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23z1\")); // inclusion of letters"
+        "content": "        assertFalse(Height.isValidHeight(\"23.a1\")); // inclusion of letters"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23,23\")); // wrong symbols"
+        "content": "        assertFalse(Height.isValidHeight(\"23z1\")); // inclusion of letters"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23|23\")); // wrong symbols"
+        "content": "        assertFalse(Height.isValidHeight(\"23,23\")); // wrong symbols"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23/23\")); // wrong symbols"
+        "content": "        assertFalse(Height.isValidHeight(\"23|23\")); // wrong symbols"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23./23\")); // wrong symbols"
+        "content": "        assertFalse(Height.isValidHeight(\"23/23\")); // wrong symbols"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23/.23\")); // wrong symbols"
+        "content": "        assertFalse(Height.isValidHeight(\"23./23\")); // wrong symbols"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"2-3.23\")); // wrong symbols"
+        "content": "        assertFalse(Height.isValidHeight(\"23/.23\")); // wrong symbols"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(Height.isValidHeight(\"23.2\u00273\")); // wrong symbols"
+        "content": "        assertFalse(Height.isValidHeight(\"2-3.23\")); // wrong symbols"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "        assertFalse(Height.isValidHeight(\"23.2\u00273\")); // wrong symbols"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        // valid height"
+        "content": "        assertFalse(Height.isValidHeight(\"41.34573223138567385432\")); // long decimal"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(Height.isValidHeight(\"\")); // empty string"
+        "content": "        assertFalse(Height.isValidHeight(\"34573223138567385432.3\")); // long decimal"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(Height.isValidHeight(\"0\")); // single digit"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(Height.isValidHeight(\"5\")); // single digit"
+        "content": "        // valid height"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(Height.isValidHeight(\"456\")); // numbers only"
+        "content": "        assertTrue(Height.isValidHeight(\"\")); // empty string"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(Height.isValidHeight(\"1.2\")); // numbers with decimal points"
+        "content": "        assertTrue(Height.isValidHeight(\"0\")); // single digit"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(Height.isValidHeight(\"45.23\")); // numbers with decimal points"
+        "content": "        assertTrue(Height.isValidHeight(\"5\")); // single digit"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(Height.isValidHeight(\"0.1\")); // numbers with decimal points and leading 0"
+        "content": "        assertTrue(Height.isValidHeight(\"003\")); // leading zeros"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(Height.isValidHeight(\"412343212384755.34573223138567385432\")); // arbitrarily long numbers"
+        "content": "        assertTrue(Height.isValidHeight(\"456\")); // numbers only"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "        assertTrue(Height.isValidHeight(\"1.2\")); // numbers with decimal points"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "        assertTrue(Height.isValidHeight(\"45.23\")); // numbers with decimal points"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    @Test"
+        "content": "        assertTrue(Height.isValidHeight(\"0.1\")); // numbers with decimal points and leading 0"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public void equals_validHeight() {"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        Height h1 \u003d new Height(\"152.2\");"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(h1.equals(h1));"
+        "content": "    public void equals_validHeight() {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(h1.equals(new Height(\"152.2\")));"
+        "content": "        Height h1 \u003d new Height(\"152.2\");"
       },
       {
         "lineNumber": 64,
@@ -56696,14 +57270,14 @@
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(h1.equals(new Height(\"152\")));"
+        "content": "        assertTrue(h1.equals(h1));"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "        assertTrue(h1.equals(new Height(\"152.2\")));"
       },
       {
         "lineNumber": 67,
@@ -56717,59 +57291,157 @@
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    @Test"
+        "content": "        assertFalse(h1.equals(new Height(\"152\")));"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    public void hashCode_validHeight() {"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        Height h1 \u003d new Height(\"152.2\");"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertTrue(h1.hashCode() \u003d\u003d new Height(\"152.2\").hashCode());"
+        "content": "    public void formatHeight_properlyFormatted() {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": ""
+        "content": "        assertEquals((new Height(\"0\")).value, \"0.00\"); // single digits"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "        assertFalse(h1.hashCode() \u003d\u003d new Height(\"152.1\").hashCode());"
+        "content": "        assertEquals((new Height(\"5\")).value, \"5.00\"); // single digits"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "ziyingli"
         },
-        "content": "    }"
+        "content": "        assertEquals((new Height(\"003\")).value, \"3.00\"); // strip leading zeros"
       },
       {
         "lineNumber": 76,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        assertEquals((new Height(\"000\")).value, \"0.00\"); // at least one zero before decimal place"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        assertEquals((new Height(\"000.3\")).value, \"0.30\"); // at least one zero before decimal place"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        assertEquals((new Height(\"45.23\")).value, \"45.23\"); // at least one zero before decimal place"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        assertEquals((new Height(\"\")).value, \"\"); // empty string"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    public void hashCode_validHeight() {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        Height h1 \u003d new Height(\"152.2\");"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        assertTrue(h1.hashCode() \u003d\u003d new Height(\"152.2\").hashCode());"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "        assertFalse(h1.hashCode() \u003d\u003d new Height(\"152.1\").hashCode());"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 90,
         "author": {
           "gitId": "ziyingli"
         },
@@ -56777,7 +57449,7 @@
       }
     ],
     "authorContributionMap": {
-      "ziyingli": 76
+      "ziyingli": 90
     }
   },
   {
@@ -58574,476 +59246,476 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import static seedu.address.testutil.Assert.assertThrows;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "import static seedu.address.testutil.Assert.assertThrows;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "public class TargetWeightTest {"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "public class TargetWeightTest {"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void constructor_null_throwsNullPointerException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e new TargetWeight(null));"
+        "content": "    public void constructor_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new TargetWeight(null));"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void constructor_invalidTargetWeight_throwsIllegalArgumentException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        String invalidTargetWeight \u003d \"i\";"
+        "content": "    public void constructor_invalidTargetWeight_throwsIllegalArgumentException() {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertThrows(IllegalArgumentException.class, () -\u003e new TargetWeight(invalidTargetWeight));"
+        "content": "        String invalidTargetWeight \u003d \"i\";"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertThrows(IllegalArgumentException.class, () -\u003e new TargetWeight(invalidTargetWeight));"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void isValidWeight() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        // null weight"
+        "content": "    public void isValidWeight() {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e TargetWeight.isValidWeight(null));"
+        "content": "        // null weight"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertThrows(NullPointerException.class, () -\u003e TargetWeight.isValidWeight(null));"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        // invalid weight"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\" \")); // spaces only"
+        "content": "        // invalid weight"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"ab\")); // contains no numbers"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\" \")); // spaces only"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"a.b\")); // contains no numbers"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"ab\")); // contains no numbers"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\".2\")); // no leading number before decimal"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"a.b\")); // contains no numbers"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"2.2.2\")); // too many decimal points"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\".2\")); // no leading number before decimal"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"-23\")); // negative numbers"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"2.2.2\")); // too many decimal points"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"-23.23\")); // negative decimals"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"-23\")); // negative numbers"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"as.23\")); // inclusion of letters"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"-23.23\")); // negative decimals"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23.as\")); // inclusion of letters"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"as.23\")); // inclusion of letters"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23.a1\")); // inclusion of letters"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23.as\")); // inclusion of letters"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23z1\")); // inclusion of letters"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23.a1\")); // inclusion of letters"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23,23\")); // wrong symbols"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23z1\")); // inclusion of letters"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23|23\")); // wrong symbols"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23,23\")); // wrong symbols"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23/23\")); // wrong symbols"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23|23\")); // wrong symbols"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23./23\")); // wrong symbols"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23/23\")); // wrong symbols"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23/.23\")); // wrong symbols"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23./23\")); // wrong symbols"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"2-3.23\")); // wrong symbols"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23/.23\")); // wrong symbols"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(TargetWeight.isValidWeight(\"23.2\u00273\")); // wrong symbols"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"2-3.23\")); // wrong symbols"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"23.2\u00273\")); // wrong symbols"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        // valid weight"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"41.34573223138567385432\")); // long decimal"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(TargetWeight.isValidWeight(\"\")); // empty string"
+        "content": "        assertFalse(TargetWeight.isValidWeight(\"34573223138567385432.3\")); // long decimal"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(TargetWeight.isValidWeight(\"0\")); // single digit"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(TargetWeight.isValidWeight(\"5\")); // single digit"
+        "content": "        // valid weight"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(TargetWeight.isValidWeight(\"456\")); // numbers only"
+        "content": "        assertTrue(TargetWeight.isValidWeight(\"\")); // empty string"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(TargetWeight.isValidWeight(\"1.2\")); // numbers with decimal points"
+        "content": "        assertTrue(TargetWeight.isValidWeight(\"0\")); // single digit"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(TargetWeight.isValidWeight(\"45.23\")); // numbers with decimal points"
+        "content": "        assertTrue(TargetWeight.isValidWeight(\"5\")); // single digit"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(TargetWeight.isValidWeight(\"0.1\")); // numbers with decimal points and leading 0"
+        "content": "        assertTrue(TargetWeight.isValidWeight(\"003\")); // leading zeros"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(TargetWeight.isValidWeight(\"412343212384755.34573223138567385432\")); // arbitrarily long numbers"
+        "content": "        assertTrue(TargetWeight.isValidWeight(\"456\")); // numbers only"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertTrue(TargetWeight.isValidWeight(\"1.2\")); // numbers with decimal points"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertTrue(TargetWeight.isValidWeight(\"45.23\")); // numbers with decimal points"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "        assertTrue(TargetWeight.isValidWeight(\"0.1\")); // numbers with decimal points and leading 0"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void equals_validWeight() {"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        TargetWeight w1 \u003d new TargetWeight(\"12.2\");"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(w1.equals(w1));"
+        "content": "    public void formatWeight_properlyFormatted() {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(w1.equals(new TargetWeight(\"12.2\")));"
+        "content": "        assertEquals((new TargetWeight(\"0\")).value, \"0.00\"); // single digits"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertEquals((new TargetWeight(\"5\")).value, \"5.00\"); // single digits"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(w1.equals(new TargetWeight(\"12\")));"
+        "content": "        assertEquals((new TargetWeight(\"003\")).value, \"3.00\"); // strip leading zeros"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertEquals((new TargetWeight(\"000\")).value, \"0.00\"); // at least one zero before decimal place"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        assertEquals((new TargetWeight(\"000.3\")).value, \"0.30\"); // at least one zero before decimal place"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "        assertEquals((new TargetWeight(\"45.23\")).value, \"45.23\"); // at least one zero before decimal place"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void hashCode_validWeight() {"
+        "content": "        assertEquals((new TargetWeight(\"\")).value, \"\"); // empty string"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        TargetWeight w1 \u003d new TargetWeight(\"12.2\");"
+        "content": "    }"
       },
       {
         "lineNumber": 71,
@@ -59057,31 +59729,129 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertTrue(w1.hashCode() \u003d\u003d new TargetWeight(\"12.2\").hashCode());"
+        "content": "    @Test"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    public void equals_validWeight() {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertFalse(w1.hashCode() \u003d\u003d new TargetWeight(\"12.1\").hashCode());"
+        "content": "        TargetWeight w1 \u003d new TargetWeight(\"12.2\");"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 76,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(w1.equals(w1));"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(w1.equals(new TargetWeight(\"12.2\")));"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertFalse(w1.equals(new TargetWeight(\"12\")));"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void hashCode_validWeight() {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        TargetWeight w1 \u003d new TargetWeight(\"12.2\");"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertTrue(w1.hashCode() \u003d\u003d new TargetWeight(\"12.2\").hashCode());"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertFalse(w1.hashCode() \u003d\u003d new TargetWeight(\"12.1\").hashCode());"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 90,
         "author": {
           "gitId": "AaronCQL"
         },
@@ -59089,7 +59859,7 @@
       }
     ],
     "authorContributionMap": {
-      "AaronCQL": 76
+      "AaronCQL": 90
     }
   },
   {

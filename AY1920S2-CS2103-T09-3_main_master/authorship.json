@@ -11017,7 +11017,7 @@
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "            + \"Parameters: BUDGET_AMOUNT (must be a positive with at most 2 decimal points)\\n\""
+        "content": "            + \"Parameters: b/BUDGET_AMOUNT (must be a positive with at most 2 decimal points) rc/RECURRING (yes/no)\\n\""
       },
       {
         "lineNumber": 20,
@@ -11150,11 +11150,60 @@
         "author": {
           "gitId": "HubertHalim"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "                || (other instanceof BudgetCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "                \u0026\u0026 budgetValue.equals(((BudgetCommand) other).budgetValue));"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "HubertHalim"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "HubertHalim": 37,
+      "HubertHalim": 44,
       "PangKimJin": 1
     }
   },
@@ -40333,56 +40382,56 @@
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.commons.core.LogsCenter;"
+        "content": "import javafx.scene.layout.StackPane;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.model.Balance;"
+        "content": "import javafx.scene.paint.Color;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.model.monthlydata.MonthlyData;"
+        "content": "import javafx.scene.paint.Paint;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": ""
+        "content": "import javafx.scene.shape.Arc;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "/**"
+        "content": "import javafx.scene.shape.ArcType;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "chlalstjr"
+          "gitId": "HubertHalim"
         },
-        "content": " * Panel containing the list of transactions."
+        "content": "import seedu.expensela.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": " */"
+        "content": "import seedu.expensela.model.Balance;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "public class MonthlyDataPanel extends UiPart\u003cRegion\u003e {"
+        "content": "import seedu.expensela.model.monthlydata.MonthlyData;"
       },
       {
         "lineNumber": 16,
@@ -40396,56 +40445,56 @@
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    private static final String FXML \u003d \"MonthlyDataPanel.fxml\";"
+        "content": "/**"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "chlalstjr"
         },
-        "content": ""
+        "content": " * Panel containing the list of transactions."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    public final MonthlyData monthlyData;"
+        "content": " */"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": ""
+        "content": "public class MonthlyDataPanel extends UiPart\u003cRegion\u003e {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(MonthlyDataPanel.class);"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": ""
+        "content": "    private static final String FXML \u003d \"MonthlyDataPanel.fxml\";"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    @FXML"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    private Label balance;"
+        "content": "    public final MonthlyData monthlyData;"
       },
       {
         "lineNumber": 25,
@@ -40459,143 +40508,640 @@
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    @FXML"
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(MonthlyDataPanel.class);"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    private Label budget;"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    @FXML"
+        "content": "    private StackPane circleContainer;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    private Label expenditure;"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    @FXML"
+        "content": "    private Arc outer;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    private Label income;"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    public MonthlyDataPanel(MonthlyData monthlyData, Double balanceAmount) {"
+        "content": "    private Arc outerOverlay;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "        super(FXML);"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "        this.monthlyData \u003d monthlyData;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "        Balance balanceModel \u003d new Balance(balanceAmount.toString());"
+        "content": "    private Arc inner;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "        balance.setText(\"Total Balance: \" + balanceModel);"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "        budget.setText(\"Monthly Budget: \" + monthlyData.getBudget());"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "        expenditure.setText(\"Monthly Expense: \" + monthlyData.getExpense());"
+        "content": "    private Label circleLabel;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "        income.setText(\"Monthly Income: \" + monthlyData.getIncome());"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    }"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": ""
+        "content": "    private Label balance;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "}"
+        "content": ""
       },
       {
         "lineNumber": 46,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private Label budget;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private Label expenditure;"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private Label income;"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "     * Create an instance of MonthlyData Panel with given monthlyData and balanceAmount"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "     * @param monthlyData to be displayed"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "     * @param balanceAmount to be displayed"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public MonthlyDataPanel(MonthlyData monthlyData, Double balanceAmount) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        super(FXML);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        this.monthlyData \u003d monthlyData;"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        Balance balanceModel \u003d new Balance(balanceAmount.toString());"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        drawCircle(monthlyData.getBudget().budgetAmount, monthlyData.getExpense().expenseAmount);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        balance.setText(\"Total Balance: \" + balanceModel);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        budget.setText(\"Monthly Budget: \" + monthlyData.getBudget());"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        expenditure.setText(\"Monthly Expense: \" + monthlyData.getExpense());"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        income.setText(\"Monthly Income: \" + monthlyData.getIncome());"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "     * Draw circle object representation of ratio of expense and budget"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "     * @param budget"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "     * @param expense"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private void drawCircle(double budget, double expense) {"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        double angle \u003d 360 - expense / budget * 360;"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        double overlayAngle \u003d 0;"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        if (angle \u003c 0) {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            angle \u003d 0;"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        Paint fill;"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        Paint overlay \u003d Color.web(\"#383838\");"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        if (angle \u003e 180) {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            fill \u003d Color.GREEN;"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        } else if (angle \u003e 90) {"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            fill \u003d Color.YELLOW;"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            overlayAngle \u003d expense / budget * 360;"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            angle \u003d 100;"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            fill \u003d Color.RED;"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outer.setRadiusX(55);"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outer.setRadiusY(55);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outer.setStartAngle(90);"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outer.setLength(angle);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outer.setType(ArcType.ROUND);"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outer.setFill(fill);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outerOverlay.setRadiusX(60);"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outerOverlay.setRadiusY(60);"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outerOverlay.setStartAngle(90);"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outerOverlay.setLength(-overlayAngle);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outerOverlay.setType(ArcType.ROUND);"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        outerOverlay.setFill(overlay);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        inner.setRadiusX(40);"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        inner.setRadiusY(40);"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        inner.setStartAngle(0);"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        inner.setLength(360);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        inner.setType(ArcType.ROUND);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        inner.setFill(overlay);"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        int percentage \u003d 100 - (int) (expense * 100 / budget);"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        String displayedPercentage \u003d percentage + \"%\";"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        circleLabel.setText(displayedPercentage);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 117,
         "author": {
           "gitId": "HubertHalim"
         },
@@ -40603,7 +41149,7 @@
       }
     ],
     "authorContributionMap": {
-      "HubertHalim": 45,
+      "HubertHalim": 116,
       "chlalstjr": 1
     }
   },
@@ -43882,108 +44428,199 @@
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "\u003cGridPane fx:id\u003d\"monthlyDataContainer\" prefHeight\u003d\"250\" prefWidth\u003d\"370\""
+        "content": "\u003c?import javafx.scene.layout.StackPane?\u003e"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "          hgap\u003d\"40\" vgap\u003d\"20\""
+        "content": "\u003c?import javafx.scene.shape.Arc?\u003e"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "          xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    \u003cLabel GridPane.columnIndex\u003d\"0\" GridPane.rowIndex\u003d\"0\" GridPane.rowSpan\u003d\"2\""
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "           text\u003d\"Placeholder for graphics\"/\u003e"
+        "content": "\u003cGridPane fx:id\u003d\"monthlyDataContainer\" prefHeight\u003d\"250\" prefWidth\u003d\"370\" minHeight\u003d\"110\" maxHeight\u003d\"110\""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    \u003cLabel fx:id\u003d\"expenditure\" GridPane.columnIndex\u003d\"1\" GridPane.rowIndex\u003d\"0\""
+        "content": "          hgap\u003d\"40\" vgap\u003d\"20\""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "           styleClass\u003d\"monthly-data-label\" text\u003d\"Total expenditure for this month: \"/\u003e"
+        "content": "          xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    \u003cLabel fx:id\u003d\"budget\" GridPane.columnIndex\u003d\"1\" GridPane.rowIndex\u003d\"1\""
+        "content": "    \u003cStackPane fx:id\u003d\"circleContainer\" minWidth\u003d\"110\" minHeight\u003d\"110\" maxWidth\u003d\"110\""
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "           styleClass\u003d\"monthly-data-label\" text\u003d\"Budget for this month: \"/\u003e"
+        "content": "               GridPane.columnIndex\u003d\"0\" GridPane.rowIndex\u003d\"0\" GridPane.rowSpan\u003d\"2\"\u003e"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    \u003cSeparator orientation\u003d\"VERTICAL\" valignment\u003d\"CENTER\" prefHeight\u003d\"370\""
+        "content": "        \u003cArc fx:id\u003d\"outer\" StackPane.alignment\u003d\"TOP_LEFT\" /\u003e"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "               GridPane.columnIndex\u003d\"2\" GridPane.rowIndex\u003d\"0\" GridPane.rowSpan\u003d\"2\"/\u003e"
+        "content": "        \u003cArc fx:id\u003d\"outerOverlay\" StackPane.alignment\u003d\"CENTER\" /\u003e"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    \u003cLabel fx:id\u003d\"income\" GridPane.columnIndex\u003d\"3\" GridPane.rowIndex\u003d\"0\""
+        "content": "        \u003cArc fx:id\u003d\"inner\" StackPane.alignment\u003d\"CENTER\"/\u003e"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "           styleClass\u003d\"monthly-data-label\" text\u003d\"Income for this month: \"/\u003e"
+        "content": "        \u003cVBox StackPane.alignment\u003d\"CENTER\" minWidth\u003d\"55\" maxWidth\u003d\"55\" minHeight\u003d\"55\" maxHeight\u003d\"55\" alignment\u003d\"CENTER\"\u003e"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "    \u003cLabel fx:id\u003d\"balance\" GridPane.columnIndex\u003d\"3\" GridPane.rowIndex\u003d\"1\""
+        "content": "            \u003cLabel fx:id\u003d\"circleLabel\" styleClass\u003d\"circle-data-label\"/\u003e"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "           styleClass\u003d\"monthly-data-label\" text\u003d\"Total Balance: \"/\u003e"
+        "content": "            \u003cLabel styleClass\u003d\"circle-data-label\" text\u003d\"Budget\" /\u003e"
       },
       {
         "lineNumber": 23,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            \u003cLabel styleClass\u003d\"circle-data-label\" text\u003d\"Left\" /\u003e"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        \u003c/VBox\u003e"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    \u003c/StackPane\u003e"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    \u003cLabel fx:id\u003d\"expenditure\" GridPane.columnIndex\u003d\"1\" GridPane.rowIndex\u003d\"0\""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "           styleClass\u003d\"monthly-data-label\" text\u003d\"Total expenditure for this month: \"/\u003e"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    \u003cLabel fx:id\u003d\"budget\" GridPane.columnIndex\u003d\"1\" GridPane.rowIndex\u003d\"1\""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "           styleClass\u003d\"monthly-data-label\" text\u003d\"Budget for this month: \"/\u003e"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    \u003cSeparator orientation\u003d\"VERTICAL\" valignment\u003d\"CENTER\" prefHeight\u003d\"370\""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "               GridPane.columnIndex\u003d\"2\" GridPane.rowIndex\u003d\"0\" GridPane.rowSpan\u003d\"2\"/\u003e"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    \u003cLabel fx:id\u003d\"income\" GridPane.columnIndex\u003d\"3\" GridPane.rowIndex\u003d\"0\""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "           styleClass\u003d\"monthly-data-label\" text\u003d\"Income for this month: \"/\u003e"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    \u003cLabel fx:id\u003d\"balance\" GridPane.columnIndex\u003d\"3\" GridPane.rowIndex\u003d\"1\""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "           styleClass\u003d\"monthly-data-label\" text\u003d\"Total Balance: \"/\u003e"
+      },
+      {
+        "lineNumber": 36,
         "author": {
           "gitId": "HubertHalim"
         },
@@ -43991,7 +44628,7 @@
       }
     ],
     "authorContributionMap": {
-      "HubertHalim": 23
+      "HubertHalim": 36
     }
   },
   {
@@ -52734,6 +53371,274 @@
     }
   },
   {
+    "path": "src/test/java/seedu/expensela/logic/commands/BudgetCommandTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "package seedu.expensela.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import static seedu.expensela.testutil.TypicalTransactions.getTypicalExpenseLa;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import org.junit.jupiter.api.BeforeEach;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.Model;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.ModelManager;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.UserPrefs;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.monthlydata.Budget;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.monthlydata.Expense;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.monthlydata.Income;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.monthlydata.MonthlyData;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "public class BudgetCommandTest {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private Model model;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private Model expectedModel;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @BeforeEach"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void setUp() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        model \u003d new ModelManager(getTypicalExpenseLa(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        expectedModel \u003d new ModelManager(model.getExpenseLa(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        expectedModel.setMonthlyData(new MonthlyData(\"1\", new Budget(\"1500\"),"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "                new Expense(\"500\"), new Income(\"2000\")));"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void execute_budgetChanged() throws Exception {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        CommandResult result \u003d new BudgetCommand(1500.0).execute(model);"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertEquals(String.format(BudgetCommand.MESSAGE_SUCCESS, 1500.00), result.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertEquals(model, expectedModel);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "HubertHalim": 37
+    }
+  },
+  {
     "path": "src/test/java/seedu/expensela/logic/commands/ClearCommandTest.java",
     "fileType": "java",
     "lines": [
@@ -57950,6 +58855,225 @@
     }
   },
   {
+    "path": "src/test/java/seedu/expensela/logic/commands/ResetBalanceCommandTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "package seedu.expensela.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import static seedu.expensela.logic.commands.CommandTestUtil.assertCommandSuccess;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import static seedu.expensela.testutil.TypicalTransactions.getTypicalExpenseLa;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import org.junit.jupiter.api.BeforeEach;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.Model;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.ModelManager;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.UserPrefs;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "public class ResetBalanceCommandTest {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private Model model;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private Model expectedModel;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @BeforeEach"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void setUp() {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        model \u003d new ModelManager(getTypicalExpenseLa(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        UserPrefs up \u003d new UserPrefs();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        up.setTotalBalance(0.0);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        expectedModel \u003d new ModelManager(model.getExpenseLa(), up);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void execute_resetBalance() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertCommandSuccess(new ResetBalanceCommand(), model, ResetBalanceCommand.MESSAGE_SUCCESS, expectedModel);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "HubertHalim": 30
+    }
+  },
+  {
     "path": "src/test/java/seedu/expensela/logic/parser/AddCommandParserTest.java",
     "fileType": "java",
     "lines": [
@@ -59942,6 +61066,134 @@
     "authorContributionMap": {
       "HubertHalim": 1,
       "-": 149
+    }
+  },
+  {
+    "path": "src/test/java/seedu/expensela/logic/parser/BudgetCommandParserTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "package seedu.expensela.logic.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import static seedu.expensela.logic.parser.CommandParserTestUtil.assertParseSuccess;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.logic.commands.BudgetCommand;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "public class BudgetCommandParserTest {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private BudgetCommandParser parser \u003d new BudgetCommandParser();"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void parse_allFieldsPresentNonRecurring_success() {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertParseSuccess(parser, \" b/1500 rc/no\", new BudgetCommand(1500.0));"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "HubertHalim": 17
     }
   },
   {
@@ -62079,420 +63331,420 @@
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.logic.commands.ClearCommand;"
+        "content": "import seedu.expensela.logic.commands.BudgetCommand;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.logic.commands.DeleteCommand;"
+        "content": "import seedu.expensela.logic.commands.ClearCommand;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.logic.commands.EditCommand;"
+        "content": "import seedu.expensela.logic.commands.DeleteCommand;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.logic.commands.ExitCommand;"
+        "content": "import seedu.expensela.logic.commands.EditCommand;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.logic.commands.FindCommand;"
+        "content": "import seedu.expensela.logic.commands.ExitCommand;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.logic.commands.HelpCommand;"
+        "content": "import seedu.expensela.logic.commands.FindCommand;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.logic.commands.ListCommand;"
+        "content": "import seedu.expensela.logic.commands.HelpCommand;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.expensela.logic.commands.ListCommand;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.model.transaction.NameContainsKeywordsPredicate;"
+        "content": "import seedu.expensela.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.model.transaction.Transaction;"
+        "content": "import seedu.expensela.model.transaction.NameContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "HubertHalim"
         },
-        "content": "import seedu.expensela.testutil.EditTransactionDescriptorBuilder;"
+        "content": "import seedu.expensela.model.transaction.Transaction;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "import seedu.expensela.testutil.TransactionBuilder;"
+        "content": "import seedu.expensela.testutil.EditTransactionDescriptorBuilder;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "import seedu.expensela.testutil.TransactionUtil;"
+        "content": "import seedu.expensela.testutil.TransactionBuilder;"
       },
       {
         "lineNumber": 30,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "import seedu.expensela.testutil.TransactionUtil;"
+      },
+      {
+        "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 32,
         "author": {
           "gitId": "HubertHalim"
         },
         "content": "public class ExpenseLaParserTest {"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 34,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": "    private final ExpenseLaParser parser \u003d new ExpenseLaParser();"
       },
       {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_add() throws Exception {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "-"
         },
-        "content": "        Transaction transaction \u003d new TransactionBuilder().build();"
+        "content": "    public void parseCommand_add() throws Exception {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "        AddCommand command \u003d (AddCommand) parser.parseCommand(TransactionUtil.getAddCommand(transaction));"
+        "content": "        Transaction transaction \u003d new TransactionBuilder().build();"
       },
       {
         "lineNumber": 39,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        AddCommand command \u003d (AddCommand) parser.parseCommand(TransactionUtil.getAddCommand(transaction));"
+      },
+      {
+        "lineNumber": 40,
         "author": {
           "gitId": "HubertHalim"
         },
         "content": "        assertEquals(new AddCommand(transaction), command);"
       },
       {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_clear() throws Exception {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);"
+        "content": "    public void parseCommand_clear() throws Exception {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + \" 3\") instanceof ClearCommand);"
+        "content": "        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + \" 3\") instanceof ClearCommand);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_delete() throws Exception {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "        DeleteCommand command \u003d (DeleteCommand) parser.parseCommand("
+        "content": "    public void parseCommand_delete() throws Exception {"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "-"
         },
-        "content": "                DeleteCommand.COMMAND_WORD + \" \" + INDEX_FIRST_TRANSACTION.getOneBased());"
+        "content": "        DeleteCommand command \u003d (DeleteCommand) parser.parseCommand("
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "        assertEquals(new DeleteCommand(INDEX_FIRST_TRANSACTION), command);"
+        "content": "                DeleteCommand.COMMAND_WORD + \" \" + INDEX_FIRST_TRANSACTION.getOneBased());"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "-"
+          "gitId": "PangKimJin"
         },
-        "content": "    }"
+        "content": "        assertEquals(new DeleteCommand(INDEX_FIRST_TRANSACTION), command);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "-"
+          "gitId": "HubertHalim"
         },
-        "content": "    public void parseCommand_edit() throws Exception {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "HubertHalim"
         },
-        "content": "        Transaction transaction \u003d new TransactionBuilder().build();"
+        "content": "    public void parseCommand_budget() throws Exception {"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "HubertHalim"
         },
-        "content": "        EditCommand.EditTransactionDescriptor descriptor \u003d new EditTransactionDescriptorBuilder(transaction).build();"
+        "content": "        BudgetCommand command \u003d (BudgetCommand) parser.parseCommand("
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "-"
+          "gitId": "HubertHalim"
         },
-        "content": "        EditCommand command \u003d (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + \" \""
+        "content": "                BudgetCommand.COMMAND_WORD + \" b/1000 rc/no\");"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "                + INDEX_FIRST_TRANSACTION.getOneBased() + \" \""
+        "content": "        assertEquals(new BudgetCommand(1000.0), command);"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "                + TransactionUtil.getEditTransactionDescriptorDetails(descriptor));"
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "HubertHalim"
         },
-        "content": "        assertEquals(new EditCommand(INDEX_FIRST_TRANSACTION, descriptor), command);"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public void parseCommand_edit() throws Exception {"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "-"
+          "gitId": "PangKimJin"
         },
-        "content": "    @Test"
+        "content": "        Transaction transaction \u003d new TransactionBuilder().build();"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "-"
+          "gitId": "PangKimJin"
         },
-        "content": "    public void parseCommand_exit() throws Exception {"
+        "content": "        EditCommand.EditTransactionDescriptor descriptor \u003d new EditTransactionDescriptorBuilder(transaction).build();"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);"
+        "content": "        EditCommand command \u003d (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + \" \""
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "-"
+          "gitId": "HubertHalim"
         },
-        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + \" 3\") instanceof ExitCommand);"
+        "content": "                + INDEX_FIRST_TRANSACTION.getOneBased() + \" \""
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "-"
+          "gitId": "HubertHalim"
         },
-        "content": "    }"
+        "content": "                + TransactionUtil.getEditTransactionDescriptorDetails(descriptor));"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "-"
+          "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "        assertEquals(new EditCommand(INDEX_FIRST_TRANSACTION, descriptor), command);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_find() throws Exception {"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": "        List\u003cString\u003e keywords \u003d Arrays.asList(\"foo\", \"bar\", \"baz\");"
+        "content": "    @Test"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": "        FindCommand command \u003d (FindCommand) parser.parseCommand("
+        "content": "    public void parseCommand_exit() throws Exception {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": "                FindCommand.COMMAND_WORD + \" \" + keywords.stream().collect(Collectors.joining(\" \")));"
+        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);"
+        "content": "        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + \" 3\") instanceof ExitCommand);"
       },
       {
         "lineNumber": 77,
@@ -62520,157 +63772,213 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_help() throws Exception {"
+        "content": "    public void parseCommand_find() throws Exception {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);"
+        "content": "        List\u003cString\u003e keywords \u003d Arrays.asList(\"foo\", \"bar\", \"baz\");"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + \" 3\") instanceof HelpCommand);"
+        "content": "        FindCommand command \u003d (FindCommand) parser.parseCommand("
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "                FindCommand.COMMAND_WORD + \" \" + keywords.stream().collect(Collectors.joining(\" \")));"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_list() throws Exception {"
+        "content": ""
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);"
+        "content": "    @Test"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + \" 3\") instanceof ListCommand);"
+        "content": "    public void parseCommand_help() throws Exception {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + \" 3\") instanceof HelpCommand);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_unrecognisedInput_throwsParseException() {"
-      },
-      {
-        "lineNumber": 93,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "                HelpCommand.MESSAGE_USAGE), () -\u003e parser.parseCommand(\"\"));"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void parseCommand_unknownCommand_throwsParseException() {"
+        "content": "    public void parseCommand_list() throws Exception {"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 95,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "-"
         },
-        "content": "        assertThrows(ParseException.class,"
+        "content": "        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 96,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "-"
         },
-        "content": "                MESSAGE_UNKNOWN_COMMAND, () -\u003e parser.parseCommand(\"unknownCommand\"));"
+        "content": "        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + \" 3\") instanceof ListCommand);"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void parseCommand_unrecognisedInput_throwsParseException() {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
         "lineNumber": 102,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "                HelpCommand.MESSAGE_USAGE), () -\u003e parser.parseCommand(\"\"));"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void parseCommand_unknownCommand_throwsParseException() {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertThrows(ParseException.class,"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "                MESSAGE_UNKNOWN_COMMAND, () -\u003e parser.parseCommand(\"unknownCommand\"));"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
@@ -62678,7 +63986,7 @@
       }
     ],
     "authorContributionMap": {
-      "HubertHalim": 23,
+      "HubertHalim": 31,
       "-": 67,
       "PangKimJin": 12
     }
@@ -63770,7 +65078,7 @@
     }
   },
   {
-    "path": "src/test/java/seedu/expensela/model/DateBookTest.java",
+    "path": "src/test/java/seedu/expensela/model/ExpenseLaTest.java",
     "fileType": "java",
     "lines": [
       {
@@ -63932,7 +65240,7 @@
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "public class DateBookTest {"
+        "content": "public class ExpenseLaTest {"
       },
       {
         "lineNumber": 24,
@@ -64077,282 +65385,282 @@
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "chlalstjr"
+          "gitId": "-"
         },
-        "content": "    /*"
+        "content": "    @Test"
       },
       {
         "lineNumber": 45,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "    public void resetData_withDuplicateTransactions_throwsDuplicateTransactionException() {"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "        // Two transactions with the same identity fields"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "chlalstjr"
-        },
-        "content": "        Transaction editedPizza \u003d new TransactionBuilder(PIZZA).withRemark(VALID_REMARK_AIRPODS)"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "                .build();"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "chlalstjr"
-        },
-        "content": "        List\u003cTransaction\u003e newTransactions \u003d Arrays.asList(PIZZA, editedPizza);"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "        ExpenseLaStub newData \u003d new ExpenseLaStub(newTransactions);"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "        assertThrows(DuplicateTransactionException.class, () -\u003e expenseLa.resetData(newData));"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "chlalstjr"
-        },
-        "content": "    } */"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 57,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": "    public void hasTransaction_nullTransaction_throwsNullPointerException() {"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 46,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": "        assertThrows(NullPointerException.class, () -\u003e expenseLa.hasTransaction(null));"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 50,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": "    public void hasTransaction_transactionNotInExpenseLa_returnsFalse() {"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 51,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        assertFalse(expenseLa.hasTransaction(PIZZA));"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 55,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": "    public void hasTransaction_transactionInExpenseLa_returnsTrue() {"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 56,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        expenseLa.addTransaction(PIZZA);"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 57,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        assertTrue(expenseLa.hasTransaction(PIZZA));"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 61,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "    public void hasTransaction_transactionWithDiffFieldsInExpenseLa_returnsFalse() {"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 62,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        expenseLa.addTransaction(PIZZA);"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 63,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        Transaction editedPizza \u003d new TransactionBuilder(PIZZA).withRemark(VALID_REMARK_AIRPODS)"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
         "content": "                .build();"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 65,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        assertFalse(expenseLa.hasTransaction(editedPizza));"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 69,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": "    public void getTransactionList_modifyList_throwsUnsupportedOperationException() {"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 70,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": "        assertThrows(UnsupportedOperationException.class, () -\u003e expenseLa.getTransactionList().remove(0));"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void getMonthlyData() {"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertTrue(expenseLa.getMonthlyData() instanceof MonthlyData);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     * A stub ReadOnlyExpenseLa whose transactions list can violate interface constraints."
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private static class ExpenseLaStub implements ReadOnlyExpenseLa {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        private final ObservableList\u003cTransaction\u003e transactions \u003d FXCollections.observableArrayList();"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "chlalstjr"
+        },
+        "content": "        private final MonthlyData monthlyData \u003d new MonthlyDataBuilder().build();"
       },
       {
         "lineNumber": 84,
@@ -64364,159 +65672,110 @@
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "     * A stub ReadOnlyExpenseLa whose transactions list can violate interface constraints."
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "    private static class ExpenseLaStub implements ReadOnlyExpenseLa {"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "        private final ObservableList\u003cTransaction\u003e transactions \u003d FXCollections.observableArrayList();"
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "chlalstjr"
-        },
-        "content": "        private final MonthlyData monthlyData \u003d new MonthlyDataBuilder().build();"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 92,
-        "author": {
           "gitId": "HubertHalim"
         },
         "content": "        ExpenseLaStub(Collection\u003cTransaction\u003e transactions) {"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 86,
         "author": {
           "gitId": "HubertHalim"
         },
         "content": "            this.transactions.setAll(transactions);"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
         "content": "        @Override"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 90,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": "        public ObservableList\u003cTransaction\u003e getTransactionList() {"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 91,
         "author": {
           "gitId": "HubertHalim"
         },
         "content": "            return transactions;"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 93,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": ""
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 94,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        @Override"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 95,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        public MonthlyData getMonthlyData() {"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 96,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "            return monthlyData;"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 97,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
@@ -64524,10 +65783,10 @@
       }
     ],
     "authorContributionMap": {
-      "HubertHalim": 15,
-      "chlalstjr": 20,
-      "-": 56,
-      "PangKimJin": 16
+      "HubertHalim": 18,
+      "chlalstjr": 16,
+      "-": 52,
+      "PangKimJin": 14
     }
   },
   {
@@ -70432,6 +71691,442 @@
     }
   },
   {
+    "path": "src/test/java/seedu/expensela/storage/JsonAdaptedMonthlyDataTest.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "package seedu.expensela.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import static seedu.expensela.storage.JsonAdaptedMonthlyData.MISSING_FIELD_MESSAGE_FORMAT;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import static seedu.expensela.testutil.Assert.assertThrows;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import static seedu.expensela.testutil.TypicalTransactions.GRAB;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.commons.exceptions.IllegalValueException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.monthlydata.Budget;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.monthlydata.Expense;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "import seedu.expensela.model.monthlydata.Income;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "public class JsonAdaptedMonthlyDataTest {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private static final String INVALID_AMOUNT \u003d \".20\";"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    private static final String VALID_AMOUNT \u003d GRAB.getAmount().toString().substring(3);"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void toModelType_invalidBudget_throwsIllegalValueException() {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        JsonAdaptedMonthlyData monthlyData \u003d new JsonAdaptedMonthlyData(INVALID_AMOUNT, VALID_AMOUNT, VALID_AMOUNT);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        String expectedMessage \u003d Budget.MESSAGE_CONSTRAINTS;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertThrows(IllegalValueException.class, expectedMessage, monthlyData::toModelType);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void toModelType_nullBudget_throwsIllegalValueException() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        JsonAdaptedMonthlyData monthlyData \u003d new JsonAdaptedMonthlyData(null, VALID_AMOUNT, VALID_AMOUNT);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        String expectedMessage \u003d String.format(MISSING_FIELD_MESSAGE_FORMAT, Budget.class.getSimpleName());"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertThrows(IllegalValueException.class, expectedMessage, monthlyData::toModelType);"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void toModelType_invalidExpense_throwsIllegalValueException() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        JsonAdaptedMonthlyData monthlyData \u003d new JsonAdaptedMonthlyData(VALID_AMOUNT, INVALID_AMOUNT, VALID_AMOUNT);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        String expectedMessage \u003d Expense.MESSAGE_CONSTRAINTS;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertThrows(IllegalValueException.class, expectedMessage, monthlyData::toModelType);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void toModelType_nullExpense_throwsIllegalValueException() {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        JsonAdaptedMonthlyData monthlyData \u003d new JsonAdaptedMonthlyData(VALID_AMOUNT, null, VALID_AMOUNT);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        String expectedMessage \u003d String.format(MISSING_FIELD_MESSAGE_FORMAT, Expense.class.getSimpleName());"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertThrows(IllegalValueException.class, expectedMessage, monthlyData::toModelType);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void toModelType_invalidIncome_throwsIllegalValueException() {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        JsonAdaptedMonthlyData monthlyData \u003d new JsonAdaptedMonthlyData(VALID_AMOUNT, VALID_AMOUNT, INVALID_AMOUNT);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        String expectedMessage \u003d Income.MESSAGE_CONSTRAINTS;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertThrows(IllegalValueException.class, expectedMessage, monthlyData::toModelType);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public void toModelType_nullIncome_throwsIllegalValueException() {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        JsonAdaptedMonthlyData monthlyData \u003d new JsonAdaptedMonthlyData(VALID_AMOUNT, VALID_AMOUNT, null);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        String expectedMessage \u003d String.format(MISSING_FIELD_MESSAGE_FORMAT, Income.class.getSimpleName());"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        assertThrows(IllegalValueException.class, expectedMessage, monthlyData::toModelType);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "HubertHalim": 61
+    }
+  },
+  {
     "path": "src/test/java/seedu/expensela/storage/JsonAdaptedTransactionTest.java",
     "fileType": "java",
     "lines": [
@@ -72957,327 +74652,334 @@
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "-"
+          "gitId": "HubertHalim"
         },
-        "content": "        return userPrefs;"
+        "content": "        userPrefs.setTotalBalance(0.0);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        return userPrefs;"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void savePrefs_nullPrefs_throwsNullPointerException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e saveUserPrefs(null, \"SomeFile.json\"));"
+        "content": "    public void savePrefs_nullPrefs_throwsNullPointerException() {"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e saveUserPrefs(null, \"SomeFile.json\"));"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void saveUserPrefs_nullFilePath_throwsNullPointerException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e saveUserPrefs(new UserPrefs(), null));"
+        "content": "    public void saveUserPrefs_nullFilePath_throwsNullPointerException() {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e saveUserPrefs(new UserPrefs(), null));"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Saves {@code userPrefs} at the specified {@code prefsFileInTestDataFolder} filepath."
+        "content": "    /**"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Saves {@code userPrefs} at the specified {@code prefsFileInTestDataFolder} filepath."
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void saveUserPrefs(UserPrefs userPrefs, String prefsFileInTestDataFolder) {"
+        "content": "     */"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
-        "content": "        try {"
+        "content": "    private void saveUserPrefs(UserPrefs userPrefs, String prefsFileInTestDataFolder) {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
-        "content": "            new JsonUserPrefsStorage(addToTestDataPathIfNotNull(prefsFileInTestDataFolder))"
+        "content": "        try {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "-"
         },
-        "content": "                    .saveUserPrefs(userPrefs);"
+        "content": "            new JsonUserPrefsStorage(addToTestDataPathIfNotNull(prefsFileInTestDataFolder))"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
-        "content": "        } catch (IOException ioe) {"
+        "content": "                    .saveUserPrefs(userPrefs);"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw new AssertionError(\"There should not be an error writing to the file\", ioe);"
+        "content": "        } catch (IOException ioe) {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            throw new AssertionError(\"There should not be an error writing to the file\", ioe);"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void saveUserPrefs_allInOrder_success() throws DataConversionException, IOException {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public void saveUserPrefs_allInOrder_success() throws DataConversionException, IOException {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
-        "content": "        UserPrefs original \u003d new UserPrefs();"
+        "content": ""
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
-        "content": "        original.setGuiSettings(new GuiSettings(1200, 200, 0, 2));"
+        "content": "        UserPrefs original \u003d new UserPrefs();"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        original.setGuiSettings(new GuiSettings(1200, 200, 0, 2));"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
-        "content": "        Path pefsFilePath \u003d testFolder.resolve(\"TempPrefs.json\");"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "-"
         },
-        "content": "        JsonUserPrefsStorage jsonUserPrefsStorage \u003d new JsonUserPrefsStorage(pefsFilePath);"
+        "content": "        Path pefsFilePath \u003d testFolder.resolve(\"TempPrefs.json\");"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        JsonUserPrefsStorage jsonUserPrefsStorage \u003d new JsonUserPrefsStorage(pefsFilePath);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "-"
         },
-        "content": "        //Try writing when the file doesn\u0027t exist"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "-"
         },
-        "content": "        jsonUserPrefsStorage.saveUserPrefs(original);"
+        "content": "        //Try writing when the file doesn\u0027t exist"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "-"
         },
-        "content": "        UserPrefs readBack \u003d jsonUserPrefsStorage.readUserPrefs().get();"
+        "content": "        jsonUserPrefsStorage.saveUserPrefs(original);"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(original, readBack);"
+        "content": "        UserPrefs readBack \u003d jsonUserPrefsStorage.readUserPrefs().get();"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertEquals(original, readBack);"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "-"
         },
-        "content": "        //Try saving when the file exists"
+        "content": ""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "-"
         },
-        "content": "        original.setGuiSettings(new GuiSettings(5, 5, 5, 5));"
+        "content": "        //Try saving when the file exists"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "-"
         },
-        "content": "        jsonUserPrefsStorage.saveUserPrefs(original);"
+        "content": "        original.setGuiSettings(new GuiSettings(5, 5, 5, 5));"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
-        "content": "        readBack \u003d jsonUserPrefsStorage.readUserPrefs().get();"
+        "content": "        jsonUserPrefsStorage.saveUserPrefs(original);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(original, readBack);"
+        "content": "        readBack \u003d jsonUserPrefsStorage.readUserPrefs().get();"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        assertEquals(original, readBack);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 123,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 124,
         "author": {
           "gitId": "-"
         },
@@ -73285,7 +74987,7 @@
       }
     ],
     "authorContributionMap": {
-      "HubertHalim": 5,
+      "HubertHalim": 6,
       "-": 117,
       "PangKimJin": 1
     }

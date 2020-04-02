@@ -16959,6 +16959,386 @@
     }
   },
   {
+    "path": "src/main/java/cookbuddy/logic/commands/UndoCommand.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "package cookbuddy.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.commons.core.Messages;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.model.Model;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.model.recipe.Recipe;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": " * Un-Marks a recipe as done, identified using it\u0027s displayed index from the recipe book."
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "public class UndoCommand extends Command {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"undo\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            + \": Un-Marks the recipe identified by the index number used in the displayed recipe list as done.\\n\""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            + \"Parameters: INDEX (must be a positive integer)\\n\""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            + \"Example: \" + COMMAND_WORD + \" 1\";"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public static final String MESSAGE_UNDONE_RECIPE_SUCCESS \u003d \"Un-Marked Recipe: %1$s\";"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    private final Index targetIndex;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public UndoCommand(Index targetIndex) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        this.targetIndex \u003d targetIndex;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        List\u003cRecipe\u003e lastShownList \u003d model.getFilteredRecipeList();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        if (targetIndex.getZeroBased() \u003e\u003d lastShownList.size()) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        Recipe recipeToDo \u003d lastShownList.get(targetIndex.getZeroBased());"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        model.unAttemptRecipe(recipeToDo);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        return new CommandResult(String.format(MESSAGE_UNDONE_RECIPE_SUCCESS, recipeToDo.getName()));"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "                || (other instanceof UndoCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "                \u0026\u0026 targetIndex.equals(((UndoCommand) other).targetIndex)); // state check"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AdarshChugani": 53
+    }
+  },
+  {
     "path": "src/main/java/cookbuddy/logic/commands/ViewCommand.java",
     "fileType": "java",
     "lines": [
@@ -23624,521 +24004,549 @@
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "import cookbuddy.logic.commands.ViewCommand;"
+        "content": "import cookbuddy.logic.commands.UndoCommand;"
       },
       {
         "lineNumber": 23,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.logic.commands.ViewCommand;"
+      },
+      {
+        "lineNumber": 24,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "import cookbuddy.logic.parser.exceptions.ParseException;"
       },
       {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": " * Parses user input."
+        "content": "/**"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": " * Parses user input."
       },
       {
         "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 29,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "public class RecipeBookParser {"
       },
       {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Used for initial separation of command word and args."
+        "content": "    /**"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Used for initial separation of command word and args."
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
+        "content": "     */"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private static final Pattern BASIC_COMMAND_FORMAT \u003d Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Parses user input into command for execution."
+        "content": "    /**"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "     *"
+        "content": "     * Parses user input into command for execution."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param userInput full user input string"
+        "content": "     *"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @return the command based on the user input"
+        "content": "     * @param userInput full user input string"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "     * @return the command based on the user input"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    public Command parseCommand(String userInput) throws ParseException {"
+        "content": "     */"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
+        "content": "    public Command parseCommand(String userInput) throws ParseException {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!matcher.matches()) {"
+        "content": "        final Matcher matcher \u003d BASIC_COMMAND_FORMAT.matcher(userInput.trim());"
       },
       {
         "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        if (!matcher.matches()) {"
+      },
+      {
+        "lineNumber": 46,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));"
       },
       {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
+        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "        switch (commandWord) {"
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "-"
         },
-        "content": "        case NewCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "            return new NewCommandParser().parse(arguments);"
+        "content": "        case NewCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "            return new NewCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "-"
         },
-        "content": "        case ModifyCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "            return new ModifyCommandParser().parse(arguments);"
+        "content": "        case ModifyCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": ""
+        "content": "            return new ModifyCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": "        case DeleteCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new DeleteCommandParser().parse(arguments);"
+        "content": "        case DeleteCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new DeleteCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 61,
         "author": {
-          "gitId": "AdarshChugani"
+          "gitId": "-"
         },
-        "content": "        case DoneCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "            return new DoneCommandParser().parse(arguments);"
+        "content": "        case DoneCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": ""
+        "content": "            return new DoneCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "        case FavCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "            return new FavCommandParser().parse(arguments);"
+        "content": "        case UndoCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": ""
+        "content": "            return new UndoCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "        case UnFavCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "            return new UnFavCommandParser().parse(arguments);"
+        "content": "        case FavCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": ""
+        "content": "            return new FavCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "        case ResetCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "            return new ResetCommand();"
+        "content": "        case UnFavCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
-        "content": ""
+        "content": "            return new UnFavCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "        case ViewCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "AdarshChugani"
+          "gitId": "kevinswk94"
         },
-        "content": "            return new ViewCommandParser().parse(arguments);"
+        "content": "        case ResetCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 75,
         "author": {
-          "gitId": "AdarshChugani"
+          "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "            return new ResetCommand();"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "        case FindCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
-        "content": "            return new FindCommandParser().parse(arguments);"
+        "content": "        case ViewCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
-        "content": ""
+        "content": "            return new ViewCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 79,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
-        "content": "        case ListCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new ListCommand();"
+        "content": "        case FindCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new FindCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "-"
         },
-        "content": "        case CountCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "-"
         },
-        "content": "            return new CountCommand();"
+        "content": "        case ListCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "            return new ListCommand();"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": "        case ExitCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": "            return new ExitCommand();"
+        "content": "        case CountCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": ""
+        "content": "            return new CountCommand();"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": "        case HelpCommand.COMMAND_WORD:"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": "            return new HelpCommand();"
+        "content": "        case ExitCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return new ExitCommand();"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "        default:"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "-"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        case HelpCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return new HelpCommand();"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        default:"
       },
       {
         "lineNumber": 96,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
@@ -24147,7 +24555,7 @@
     ],
     "authorContributionMap": {
       "muhd97": 5,
-      "AdarshChugani": 26,
+      "AdarshChugani": 30,
       "kevinswk94": 12,
       "-": 53
     }
@@ -24337,6 +24745,225 @@
           "gitId": "AdarshChugani"
         },
         "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnFavCommand.MESSAGE_USAGE), pe);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "AdarshChugani": 30
+    }
+  },
+  {
+    "path": "src/main/java/cookbuddy/logic/parser/UndoCommandParser.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "package cookbuddy.logic.parser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import static cookbuddy.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.commons.core.index.Index;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.logic.commands.UndoCommand;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "import cookbuddy.logic.parser.exceptions.ParseException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": " * Parses input arguments and creates a new UndoCommand object"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "public class UndoCommandParser implements Parser\u003cUndoCommand\u003e {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "     * Parses the given {@code String} of arguments in the context of the UndoCommand"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "     * and returns a UndoCommand object for execution."
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public UndoCommand parse(String args) throws ParseException {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            Index index \u003d ParserUtil.parseIndex(args);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            return new UndoCommand(index);"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        } catch (ParseException pe) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            throw new ParseException("
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, UndoCommand.MESSAGE_USAGE), pe);"
       },
       {
         "lineNumber": 27,
@@ -25268,14 +25895,14 @@
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "     *"
+        "content": "     * Un-Makrs a recipe as attempted/done"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "     * Favourites the recipe"
+        "content": "     * @param recipe the recipe to be un-marked."
       },
       {
         "lineNumber": 77,
@@ -25289,7 +25916,7 @@
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "    void favRecipe(Recipe recipe);"
+        "content": "    void unAttemptRecipe(Recipe recipe);"
       },
       {
         "lineNumber": 79,
@@ -25310,14 +25937,14 @@
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "     * Un-Favourites the recipe"
+        "content": "     *"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "     *"
+        "content": "     * Favourites the recipe"
       },
       {
         "lineNumber": 83,
@@ -25331,7 +25958,7 @@
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "    void unFavRecipe(Recipe recipe);"
+        "content": "    void favRecipe(Recipe recipe);"
       },
       {
         "lineNumber": 85,
@@ -25343,42 +25970,42 @@
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": "    /**"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "AdarshChugani"
         },
-        "content": "     * Deletes the given recipe."
+        "content": "     * Un-Favourites the recipe"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "     * The recipe must exist in the recipe book."
+        "content": "     *"
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": "     */"
       },
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "    void deleteRecipe(Recipe target);"
+        "content": "    void unFavRecipe(Recipe recipe);"
       },
       {
         "lineNumber": 91,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": ""
       },
@@ -25394,14 +26021,14 @@
         "author": {
           "gitId": "muhd97"
         },
-        "content": "     * Adds the given recipe."
+        "content": "     * Deletes the given recipe."
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "     * {@code recipe} must not already exist in the recipe book."
+        "content": "     * The recipe must exist in the recipe book."
       },
       {
         "lineNumber": 95,
@@ -25415,7 +26042,7 @@
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    void addRecipe(Recipe recipe);"
+        "content": "    void deleteRecipe(Recipe target);"
       },
       {
         "lineNumber": 97,
@@ -25436,101 +26063,143 @@
         "author": {
           "gitId": "muhd97"
         },
-        "content": "     * Replaces the given recipe {@code target} with {@code editedRecipe}."
+        "content": "     * Adds the given recipe."
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "     * {@code target} must exist in the recipe book."
+        "content": "     * {@code recipe} must not already exist in the recipe book."
       },
       {
         "lineNumber": 101,
-        "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "     * The recipe identity of {@code editedRecipe} must not be the same as another existing recipe in the recipe book."
-      },
-      {
-        "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 102,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    void setRecipe(Recipe target, Recipe editedRecipe);"
+        "content": "    void addRecipe(Recipe recipe);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "    /** Returns an unmodifiable view of the filtered recipe list */"
+        "content": "     * Replaces the given recipe {@code target} with {@code editedRecipe}."
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    ObservableList\u003cRecipe\u003e getFilteredRecipeList();"
+        "content": "     * {@code target} must exist in the recipe book."
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "     * The recipe identity of {@code editedRecipe} must not be the same as another existing recipe in the recipe book."
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 109,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "     * Updates the filter of the filtered recipe list to filter by the given {@code predicate}."
+        "content": "    void setRecipe(Recipe target, Recipe editedRecipe);"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @throws NullPointerException if {@code predicate} is null."
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": "     */"
+        "content": "    /** Returns an unmodifiable view of the filtered recipe list */"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    void updateFilteredRecipeList(Predicate\u003cRecipe\u003e predicate);"
+        "content": "    ObservableList\u003cRecipe\u003e getFilteredRecipeList();"
       },
       {
         "lineNumber": 113,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "     * Updates the filter of the filtered recipe list to filter by the given {@code predicate}."
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * @throws NullPointerException if {@code predicate} is null."
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    void updateFilteredRecipeList(Predicate\u003cRecipe\u003e predicate);"
+      },
+      {
+        "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
@@ -25539,7 +26208,7 @@
     ],
     "authorContributionMap": {
       "muhd97": 11,
-      "AdarshChugani": 24,
+      "AdarshChugani": 30,
       "kevinswk94": 22,
       "-": 56
     }
@@ -25565,14 +26234,14 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import static cookbuddy.commons.util.CollectionUtil.requireAllNonNull;"
       },
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": "import static java.util.Objects.requireNonNull;"
       },
@@ -25586,70 +26255,70 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": "import java.nio.file.Path;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.commons.core.GuiSettings;"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.model.recipe.Recipe;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": "import javafx.collections.transformation.FilteredList;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "AdarshChugani"
         },
         "content": ""
       },
@@ -26281,14 +26950,14 @@
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "    public void favRecipe(Recipe recipe) {"
+        "content": "    public void unAttemptRecipe(Recipe recipe) {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "        recipeBook.fav(recipe);"
+        "content": "        recipeBook.unAttempt(recipe);"
       },
       {
         "lineNumber": 107,
@@ -26330,14 +26999,14 @@
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "    public void unFavRecipe(Recipe recipe) {"
+        "content": "    public void favRecipe(Recipe recipe) {"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "AdarshChugani"
         },
-        "content": "        recipeBook.unFav(recipe);"
+        "content": "        recipeBook.fav(recipe);"
       },
       {
         "lineNumber": 114,
@@ -26370,317 +27039,317 @@
       {
         "lineNumber": 118,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "AdarshChugani"
         },
         "content": "    @Override"
       },
       {
         "lineNumber": 119,
         "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public void unFavRecipe(Recipe recipe) {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        recipeBook.unFav(recipe);"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        updateFilteredRecipeList(PREDICATE_SHOW_NO_RECIPES);"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        updateFilteredRecipeList(PREDICATE_SHOW_ALL_RECIPES);"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
           "gitId": "muhd97"
         },
         "content": "    public long count() {"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 127,
         "author": {
           "gitId": "muhd97"
         },
         "content": "        return recipeBook.count();"
       },
       {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "muhd97"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "muhd97"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "    public void deleteRecipe(Recipe target) {"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "        recipeBook.removeRecipe(target);"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 128,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "muhd97"
         },
-        "content": "    public void addRecipe(Recipe recipe) {"
+        "content": ""
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "-"
         },
-        "content": "        recipeBook.addRecipe(recipe);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        updateFilteredRecipeList(PREDICATE_SHOW_ALL_RECIPES);"
+        "content": "    public void deleteRecipe(Recipe target) {"
       },
       {
         "lineNumber": 132,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "    }"
+        "content": "        recipeBook.removeRecipe(target);"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "-"
         },
-        "content": "    public void setRecipe(Recipe target, Recipe editedRecipe) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        requireAllNonNull(target, editedRecipe);"
+        "content": "    public void addRecipe(Recipe recipe) {"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        recipeBook.setRecipe(target, editedRecipe);"
+        "content": "        recipeBook.addRecipe(recipe);"
       },
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "    }"
+        "content": "        updateFilteredRecipeList(PREDICATE_SHOW_ALL_RECIPES);"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 140,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "-"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Recipe List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": ""
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 142,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "    /**"
+        "content": "    public void setRecipe(Recipe target, Recipe editedRecipe) {"
       },
       {
         "lineNumber": 143,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "     * Returns an unmodifiable view of the list of {@code Recipe} backed by the internal list of"
+        "content": "        requireAllNonNull(target, editedRecipe);"
       },
       {
         "lineNumber": 144,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "     * {@code versionedAddressBook}"
+        "content": "        recipeBook.setRecipe(target, editedRecipe);"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "muhd97"
         },
-        "content": "    public ObservableList\u003cRecipe\u003e getFilteredRecipeList() {"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Recipe List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 148,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "-"
         },
-        "content": "        return filteredRecipes;"
+        "content": ""
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 150,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": ""
+        "content": "     * Returns an unmodifiable view of the list of {@code Recipe} backed by the internal list of"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "     * {@code versionedAddressBook}"
       },
       {
         "lineNumber": 152,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "-"
         },
-        "content": "    public void updateFilteredRecipeList(Predicate\u003cRecipe\u003e predicate) {"
+        "content": "     */"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(predicate);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 154,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "        filteredRecipes.setPredicate(predicate);"
+        "content": "    public ObservableList\u003cRecipe\u003e getFilteredRecipeList() {"
       },
       {
         "lineNumber": 155,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": "    }"
+        "content": "        return filteredRecipes;"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 159,
         "author": {
-          "gitId": "-"
+          "gitId": "kevinswk94"
         },
-        "content": "        // short circuit if same object"
+        "content": "    public void updateFilteredRecipeList(Predicate\u003cRecipe\u003e predicate) {"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": "        requireNonNull(predicate);"
       },
       {
         "lineNumber": 161,
         "author": {
-          "gitId": "-"
+          "gitId": "muhd97"
         },
-        "content": "            return true;"
+        "content": "        filteredRecipes.setPredicate(predicate);"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 163,
@@ -26694,77 +27363,77 @@
         "author": {
           "gitId": "-"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "    @Override"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!(obj instanceof ModelManager)) {"
+        "content": "    public boolean equals(Object obj) {"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "-"
         },
-        "content": "            return false;"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "        if (obj \u003d\u003d this) {"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return true;"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "-"
         },
-        "content": "        // state check"
+        "content": "        }"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelManager other \u003d (ModelManager) obj;"
+        "content": ""
       },
       {
         "lineNumber": 171,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "-"
         },
-        "content": "        return recipeBook.equals(other.recipeBook)"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "-"
         },
-        "content": "               \u0026\u0026 userPrefs.equals(other.userPrefs)"
+        "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
         "lineNumber": 173,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "-"
         },
-        "content": "               \u0026\u0026 filteredRecipes.equals(other.filteredRecipes);"
+        "content": "            return false;"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 175,
@@ -26778,14 +27447,63 @@
         "author": {
           "gitId": "-"
         },
+        "content": "        // state check"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        ModelManager other \u003d (ModelManager) obj;"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return recipeBook.equals(other.recipeBook)"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "               \u0026\u0026 userPrefs.equals(other.userPrefs)"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "               \u0026\u0026 filteredRecipes.equals(other.filteredRecipes);"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "-"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
       "muhd97": 16,
-      "AdarshChugani": 21,
-      "kevinswk94": 33,
-      "-": 106
+      "AdarshChugani": 40,
+      "kevinswk94": 29,
+      "-": 98
     }
   },
   {
@@ -27783,63 +28501,63 @@
       {
         "lineNumber": 104,
         "author": {
-          "gitId": "muhd97"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "muhd97"
+          "gitId": "AdarshChugani"
         },
         "content": "    /**"
       },
       {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "     * Un-Marks the recipe as attempted, marking it as not done."
+      },
+      {
         "lineNumber": 106,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "     * Adds a recipe to the recipe book."
+        "content": "     * @param recipe the recipe to be un-marked."
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "     * The recipe must not already exist in the recipe book."
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "muhd97"
+          "gitId": "AdarshChugani"
         },
         "content": "     */"
       },
       {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "    public void unAttempt(Recipe recipe) {"
+      },
+      {
         "lineNumber": 109,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "    public void addRecipe(Recipe recipe) {"
+        "content": "        requireNonNull(recipe);"
       },
       {
         "lineNumber": 110,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "        recipes.add(recipe);"
+        "content": "        recipe.unAttemptRecipe();"
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "AdarshChugani"
         },
         "content": "    }"
       },
       {
         "lineNumber": 112,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "AdarshChugani"
         },
         "content": ""
       },
@@ -27848,28 +28566,28 @@
         "author": {
           "gitId": "muhd97"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "     * Replaces the given recipe {@code target} in the list with {@code editedRecipe}."
+        "content": "    /**"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "     * {@code target} must exist in the recipe book."
+        "content": "     * Adds a recipe to the recipe book."
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "     * The recipe identity of {@code editedRecipe} must not be the same as another existing recipe in the recipe book."
+        "content": "     * The recipe must not already exist in the recipe book."
       },
       {
         "lineNumber": 117,
@@ -27883,311 +28601,374 @@
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    public void setRecipe(Recipe target, Recipe editedRecipe) {"
+        "content": "    public void addRecipe(Recipe recipe) {"
       },
       {
         "lineNumber": 119,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "        requireNonNull(editedRecipe);"
+        "content": "        recipes.add(recipe);"
       },
       {
         "lineNumber": 120,
-        "author": {
-          "gitId": "AdarshChugani"
-        },
-        "content": "        if (target.getFavStatus().toString().equals(\"\\u2665\")) {"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "AdarshChugani"
-        },
-        "content": "            editedRecipe.favRecipe();"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "AdarshChugani"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "AdarshChugani"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "AdarshChugani"
-        },
-        "content": "        if (target.getDoneStatus().toString().equals(\"Yes\")) {"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "AdarshChugani"
-        },
-        "content": "            editedRecipe.attemptRecipe();"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "AdarshChugani"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "muhd97"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "        recipes.setRecipe(target, editedRecipe);"
-      },
-      {
-        "lineNumber": 129,
         "author": {
           "gitId": "muhd97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 121,
         "author": {
           "gitId": "muhd97"
         },
         "content": ""
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 122,
         "author": {
           "gitId": "muhd97"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 132,
+        "lineNumber": 123,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "     * Removes {@code key} from this {@code RecipeBook}."
+        "content": "     * Replaces the given recipe {@code target} in the list with {@code editedRecipe}."
       },
       {
-        "lineNumber": 133,
+        "lineNumber": 124,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "     * {@code key} must exist in the recipe book."
+        "content": "     * {@code target} must exist in the recipe book."
       },
       {
-        "lineNumber": 134,
+        "lineNumber": 125,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "     * The recipe identity of {@code editedRecipe} must not be the same as another existing recipe in the recipe book."
+      },
+      {
+        "lineNumber": 126,
         "author": {
           "gitId": "muhd97"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 135,
+        "lineNumber": 127,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    public void removeRecipe(Recipe key) {"
+        "content": "    public void setRecipe(Recipe target, Recipe editedRecipe) {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "        requireNonNull(editedRecipe);"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        if (target.getFavStatus().toString().equals(\"\\u2665\")) {"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            editedRecipe.favRecipe();"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        if (target.getDoneStatus().toString().equals(\"Yes\")) {"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "            editedRecipe.attemptRecipe();"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "AdarshChugani"
+        },
+        "content": "        }"
       },
       {
         "lineNumber": 136,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "muhd97"
         },
-        "content": "        recipes.remove(key);"
+        "content": ""
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "    }"
+        "content": "        recipes.setRecipe(target, editedRecipe);"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "muhd97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "    //// util methods"
+        "content": ""
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "muhd97"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "    @Override"
+        "content": "     * Removes {@code key} from this {@code RecipeBook}."
       },
       {
         "lineNumber": 142,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "    public String toString() {"
+        "content": "     * {@code key} must exist in the recipe book."
       },
       {
         "lineNumber": 143,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "muhd97"
         },
-        "content": "        return recipes.asUnmodifiableObservableList().size() + \" recipes\";"
+        "content": "     */"
       },
       {
         "lineNumber": 144,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "    }"
+        "content": "    public void removeRecipe(Recipe key) {"
       },
       {
         "lineNumber": 145,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "        recipes.remove(key);"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 147,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "muhd97"
         },
-        "content": "    public ObservableList\u003cRecipe\u003e getRecipeList() {"
+        "content": ""
       },
       {
         "lineNumber": 148,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "muhd97"
         },
-        "content": "        return recipes.asUnmodifiableObservableList();"
+        "content": "    //// util methods"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "muhd97"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "    @Override"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 152,
         "author": {
-          "gitId": "muhd97"
+          "gitId": "kevinswk94"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return recipes.asUnmodifiableObservableList().size() + \" recipes\";"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "    }"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "muhd97"
         },
-        "content": "               || (other instanceof RecipeBook // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "                   \u0026\u0026 recipes.equals(((RecipeBook) other).recipes));"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "muhd97"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "muhd97"
-        },
         "content": ""
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 155,
         "author": {
           "gitId": "muhd97"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "muhd97"
-        },
-        "content": "    public int hashCode() {"
-      },
-      {
-        "lineNumber": 160,
+        "lineNumber": 156,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        return recipes.hashCode();"
+        "content": "    public ObservableList\u003cRecipe\u003e getRecipeList() {"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 157,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return recipes.asUnmodifiableObservableList();"
+      },
+      {
+        "lineNumber": 158,
         "author": {
           "gitId": "muhd97"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
         "lineNumber": 162,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "               || (other instanceof RecipeBook // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "                   \u0026\u0026 recipes.equals(((RecipeBook) other).recipes));"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return recipes.hashCode();"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "muhd97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 171,
         "author": {
           "gitId": "muhd97"
         },
@@ -28196,7 +28977,7 @@
     ],
     "authorContributionMap": {
       "muhd97": 88,
-      "AdarshChugani": 41,
+      "AdarshChugani": 50,
       "kevinswk94": 33
     }
   },
@@ -29973,7 +30754,7 @@
       {
         "lineNumber": 3,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import static cookbuddy.commons.util.CollectionUtil.requireAllNonNull;"
       },
@@ -30022,7 +30803,7 @@
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.model.recipe.attribute.Calorie;"
       },
@@ -30057,42 +30838,42 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.model.recipe.attribute.IngredientList;"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.model.recipe.attribute.InstructionList;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.model.recipe.attribute.Name;"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.model.recipe.attribute.Rating;"
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.model.recipe.attribute.Serving;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
         "content": "import cookbuddy.model.recipe.attribute.Tag;"
       },
@@ -30890,86 +31671,86 @@
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "    /**"
+        "content": "    public void unAttemptRecipe() {"
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "sharadhr"
+          "gitId": "AdarshChugani"
         },
-        "content": "     * Returns true if both recipes have the same identity and data fields. This"
+        "content": "        doneStatus.unAttempt();"
       },
       {
         "lineNumber": 136,
         "author": {
-          "gitId": "sharadhr"
+          "gitId": "AdarshChugani"
         },
-        "content": "     * defines a stronger notion of equality between two recipes."
+        "content": "    }"
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "AdarshChugani"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    @Override"
+        "content": "    /**"
       },
       {
         "lineNumber": 139,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "sharadhr"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "     * Returns true if both recipes have the same identity and data fields. This"
       },
       {
         "lineNumber": 140,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "sharadhr"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "     * defines a stronger notion of equality between two recipes."
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "            return true;"
+        "content": "     */"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        if (!(other instanceof Recipe)) {"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "            return false;"
+        "content": "            return true;"
       },
       {
         "lineNumber": 146,
@@ -30983,185 +31764,213 @@
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        Recipe otherRecipe \u003d (Recipe) other;"
+        "content": ""
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        return otherRecipe.getName().equals(getName()) \u0026\u0026 otherRecipe.getIngredients().equals(getIngredients())"
+        "content": "        if (!(other instanceof Recipe)) {"
       },
       {
         "lineNumber": 149,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        Recipe otherRecipe \u003d (Recipe) other;"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        return otherRecipe.getName().equals(getName()) \u0026\u0026 otherRecipe.getIngredients().equals(getIngredients())"
+      },
+      {
+        "lineNumber": 153,
         "author": {
           "gitId": "muhd97"
         },
         "content": "            \u0026\u0026 otherRecipe.getInstructions().equals(getInstructions()) \u0026\u0026 otherRecipe.getImageFilePath()"
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 154,
         "author": {
           "gitId": "muhd97"
         },
         "content": "            .equals(getImageFilePath())"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 155,
         "author": {
           "gitId": "muhd97"
         },
         "content": "            \u0026\u0026 otherRecipe.getCalorie().equals(getCalorie()) \u0026\u0026 otherRecipe.getRating().equals(getRating())"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 156,
         "author": {
           "gitId": "AdarshChugani"
         },
         "content": "            \u0026\u0026 otherRecipe.getDifficulty().equals(getDifficulty())"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 157,
         "author": {
           "gitId": "AdarshChugani"
         },
         "content": "            \u0026\u0026 otherRecipe.getTags().equals(getTags());"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 158,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 159,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "    public int hashCode() {"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "kevinswk94"
-        },
-        "content": "        // use this method for custom fields hashing instead of implementing your own"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "muhd97"
-        },
-        "content": "        return Objects.hash(name, ingredients, instructions, filePath, calorie, serving, rating, difficulty, tags);"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": ""
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "    @Override"
+        "content": "        // use this method for custom fields hashing instead of implementing your own"
       },
       {
         "lineNumber": 163,
         "author": {
-          "gitId": "kevinswk94"
+          "gitId": "muhd97"
         },
-        "content": "    public String toString() {"
+        "content": "        return Objects.hash(name, ingredients, instructions, filePath, calorie, serving, rating, difficulty, tags);"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+        "content": "    }"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "kevinswk94"
         },
-        "content": "        builder.append(getName()).append(\" Ingredients: \").append(getIngredients()).append("
+        "content": ""
       },
       {
         "lineNumber": 166,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "kevinswk94"
+        },
+        "content": "        builder.append(getName()).append(\" Ingredients: \").append(getIngredients()).append("
+      },
+      {
+        "lineNumber": 170,
         "author": {
           "gitId": "muhd97"
         },
         "content": "            \" Instructions: \").append(getInstructions()).append(\"Path: \").append(getImageFilePath()).append("
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 171,
         "author": {
           "gitId": "muhd97"
         },
         "content": "            \" Calories: \").append(getCalorie()).append(\" Serving size: \").append(getServing()).append("
       },
       {
-        "lineNumber": 168,
+        "lineNumber": 172,
         "author": {
           "gitId": "muhd97"
         },
         "content": "            \" Rating: \").append(getRating()).append(\" Difficulty \").append(getDifficulty()).append("
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 173,
         "author": {
           "gitId": "muhd97"
         },
         "content": "            \" Tags\" + \": \");"
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 174,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "        getTags().forEach(builder::append);"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 175,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "        return builder.toString();"
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 176,
         "author": {
           "gitId": "kevinswk94"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 177,
         "author": {
           "gitId": "kevinswk94"
         },
@@ -31171,8 +31980,8 @@
     "authorContributionMap": {
       "muhd97": 30,
       "sharadhr": 7,
-      "AdarshChugani": 45,
-      "kevinswk94": 91
+      "AdarshChugani": 57,
+      "kevinswk94": 83
     }
   },
   {

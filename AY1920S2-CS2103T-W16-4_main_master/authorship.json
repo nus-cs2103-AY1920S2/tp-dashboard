@@ -27975,6 +27975,421 @@
     }
   },
   {
+    "path": "src/main/java/seedu/address/searcher/ModPlanLogic.java",
+    "fileType": "java",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "package seedu.address.searcher;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": " * \u003ch1\u003eModule Planner Logic Class\u003c/h1\u003e"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": " * Just a class to handle logic behind module planning"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "public class ModPlanLogic {"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "     * Function to check if Modules, myMod and toCheck,"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "     * have clashing lecture slots"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "     * @param myMod module in question"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "     * @param toCheck module to check"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "     * @param sem which sem you planning"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "     * @return true if there is a clash, false otherwise"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public static boolean checkLectureClash (Module myMod, Module toCheck, int sem) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        ArrayList\u003cClasses\u003e myModLectures;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        ArrayList\u003cClasses\u003e toCheckLectures;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        if (sem \u003d\u003d 1) {"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            myModLectures \u003d myMod.getSem1Lectures();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            toCheckLectures \u003d toCheck.getSem1Lectures();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            myModLectures \u003d myMod.getSem2Lectures();"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            toCheckLectures \u003d toCheck.getSem2Lectures();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        for (Classes myModCurr : myModLectures) {"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            String myModCurrDay \u003d myModCurr.getDay();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            int myModCurrStart \u003d Integer.parseInt(myModCurr.getStartTime());"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            int myModCurrEnd \u003d Integer.parseInt(myModCurr.getEndTime());"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            for (Classes toCheckCurr : toCheckLectures) {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                String toCheckCurrDay \u003d toCheckCurr.getDay();"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                int toCheckCurrStart \u003d Integer.parseInt(toCheckCurr.getStartTime());"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                int toCheckCurrEnd \u003d Integer.parseInt(toCheckCurr.getEndTime());"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                if (myModCurrDay.equals(toCheckCurrDay)) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                    if (myModCurrStart \u003e\u003d toCheckCurrStart) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                        if (myModCurrStart \u003e\u003d toCheckCurrEnd) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                            return false;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                        }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                    } else {"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                        if (myModCurrEnd \u003c\u003d toCheckCurrStart) {"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                            return false;"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                        }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                    return false;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "mpang45456": 58
+    }
+  },
+  {
     "path": "src/main/java/seedu/address/searcher/Module.java",
     "fileType": "java",
     "lines": [
@@ -28137,154 +28552,154 @@
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "    private ArrayList\u003cClasses\u003e sem1Lectures \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    /**"
+        "content": "    private ArrayList\u003cClasses\u003e sem1Tutorials \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "     * Constructor for module class"
+        "content": "    private ArrayList\u003cClasses\u003e sem1Others \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "     * Parses info from http request into module"
+        "content": "    private ArrayList\u003cClasses\u003e sem2Lectures \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "     * access information easily by using class functions"
+        "content": "    private ArrayList\u003cClasses\u003e sem2Tutorials \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "     * @param input this is raw HTTP data to be parsed"
+        "content": "    private ArrayList\u003cClasses\u003e sem2Others \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public Module(String input) throws StringIndexOutOfBoundsException {"
+        "content": "    /**"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        this.preclusion \u003d input.substring(input.indexOf(\"preclusion\") + 13, input.indexOf(\"description\") - 3);"
+        "content": "     * Constructor for module class"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        this.description \u003d input.substring(input.indexOf(\"description\") + 14, input.indexOf(\"title\\\":\") - 3);"
+        "content": "     * Parses info from http request into module"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        this.title \u003d input.substring(input.indexOf(\"title\") + 8, input.indexOf(\"department\") - 3);"
+        "content": "     * access information easily by using class functions"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        this.department \u003d input.substring(input.indexOf(\"department\") + 13, input.indexOf(\"faculty\") - 3);"
+        "content": "     * @param input this is raw HTTP data to be parsed"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        this.faculty \u003d input.substring(input.indexOf(\"faculty\") + 10, input.indexOf(\"workload\") - 3);"
+        "content": "     */"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        this.workload \u003d input.substring(input.indexOf(\"workload\") + 10, input.indexOf(\"moduleCredit\") - 2);"
+        "content": "    public Module(String input) throws StringIndexOutOfBoundsException {"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        this.credits \u003d Integer.parseInt(input.substring(input.indexOf(\"moduleCredit\") + 15,"
+        "content": "        this.preclusion \u003d input.substring(input.indexOf(\"preclusion\") + 13, input.indexOf(\"description\") - 3);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "                input.indexOf(\"moduleCode\") - 3));"
+        "content": "        this.description \u003d input.substring(input.indexOf(\"description\") + 14, input.indexOf(\"title\\\":\") - 3);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "        this.title \u003d input.substring(input.indexOf(\"title\") + 8, input.indexOf(\"department\") - 3);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        try {"
+        "content": "        this.department \u003d input.substring(input.indexOf(\"department\") + 13, input.indexOf(\"faculty\") - 3);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            this.code \u003d input.substring(input.indexOf(\"moduleCode\") + 13, input.indexOf(\"attributes\") - 3);"
+        "content": "        this.faculty \u003d input.substring(input.indexOf(\"faculty\") + 10, input.indexOf(\"workload\") - 3);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        } catch (StringIndexOutOfBoundsException e) {"
+        "content": "        this.workload \u003d input.substring(input.indexOf(\"workload\") + 10, input.indexOf(\"moduleCredit\") - 2);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            this.code \u003d input.substring(input.indexOf(\"moduleCode\") + 13, input.indexOf(\"semesterData\") - 3);"
+        "content": "        this.credits \u003d Integer.parseInt(input.substring(input.indexOf(\"moduleCredit\") + 15,"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        }"
+        "content": "                input.indexOf(\"moduleCode\") - 3));"
       },
       {
         "lineNumber": 45,
@@ -28298,35 +28713,35 @@
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        String semesterData \u003d input.substring(input.indexOf(\"semester\\\":\"));"
+        "content": "        try {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        semesterData \u003d semesterData.split(\"prereqTree\")[0];"
+        "content": "            this.code \u003d input.substring(input.indexOf(\"moduleCode\") + 13, input.indexOf(\"attributes\") - 3);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        semesterData \u003d semesterData.split(\"fulfillRequirements\")[0];"
+        "content": "        } catch (StringIndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        parseSemData(semesterData);"
+        "content": "            this.code \u003d input.substring(input.indexOf(\"moduleCode\") + 13, input.indexOf(\"semesterData\") - 3);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 51,
@@ -28340,210 +28755,210 @@
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    /**"
+        "content": "        String semesterData \u003d input.substring(input.indexOf(\"semester\\\":\"));"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "     * Helper function for search function to parse class timetable information"
+        "content": "        semesterData \u003d semesterData.split(\"prereqTree\")[0];"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "     * @param input string of class information"
+        "content": "        semesterData \u003d semesterData.split(\"fulfillRequirements\")[0];"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "     */"
+        "content": "        parseSemData(semesterData);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    private void parseSemData(String input) {"
+        "content": "        splitClassByType();"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        boolean hasSem1 \u003d input.contains(\"semester\\\":1\");"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        boolean hasSem2 \u003d input.contains(\"semester\\\":2\");"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        boolean hasExam \u003d input.contains(\"examDate\");"
+        "content": "    /**"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        String sem1Data \u003d \"\";"
+        "content": "     * Helper function for search function to parse class timetable information"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        String sem2Data \u003d \"\";"
+        "content": "     * @param input string of class information"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        if (hasSem1 \u0026\u0026 hasExam) {"
+        "content": "    private void parseSemData(String input) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            sem1Data \u003d input.substring(input.indexOf(\"timetable\") + 12, input.indexOf(\"examDate\") - 4);"
+        "content": "        boolean hasSem1 \u003d input.contains(\"semester\\\":1\");"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            sem1Exam \u003d input.substring(input.indexOf(\"examDate\") + 11, input.indexOf(\"examDuration\") - 3).split(\"T\")[0];"
+        "content": "        boolean hasSem2 \u003d input.contains(\"semester\\\":2\");"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        } else if (hasSem1) {"
+        "content": "        boolean hasExam \u003d input.contains(\"examDate\");"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            if (hasSem2) {"
+        "content": "        String sem1Data \u003d \"\";"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "                sem1Data \u003d input.substring(input.indexOf(\"timetable\") + 12, input.indexOf(\"semester\\\":2\"));"
+        "content": "        String sem2Data \u003d \"\";"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            } else {"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "                sem1Data \u003d input.substring(input.indexOf(\"timetable\") + 12);"
+        "content": "        if (hasSem1 \u0026\u0026 hasExam) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            }"
+        "content": "            sem1Data \u003d input.substring(input.indexOf(\"timetable\") + 12, input.indexOf(\"examDate\") - 4);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        }"
+        "content": "            sem1Exam \u003d input.substring(input.indexOf(\"examDate\") + 11, input.indexOf(\"examDuration\") - 3).split(\"T\")[0];"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "        } else if (hasSem1) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        String[] classes \u003d sem1Data.split(\"classNo\");"
+        "content": "            if (hasSem2) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "                sem1Data \u003d input.substring(input.indexOf(\"timetable\") + 12, input.indexOf(\"semester\\\":2\"));"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        for (int i \u003d 1; i \u003c classes.length; i++) {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            String temp \u003d classes[i];"
+        "content": "                sem1Data \u003d input.substring(input.indexOf(\"timetable\") + 12);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            temp \u003d temp.split(\"},\\\\{\")[0];"
+        "content": "            }"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            Classes myClass \u003d new Classes(temp);"
+        "content": "        }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            sem1Classes.add(myClass);"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        }"
+        "content": "        String[] classes \u003d sem1Data.split(\"classNo\");"
       },
       {
         "lineNumber": 82,
@@ -28557,357 +28972,357 @@
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        if (hasSem2) {"
+        "content": "        for (int i \u003d 1; i \u003c classes.length; i++) {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            if (hasExam) {"
+        "content": "            String temp \u003d classes[i];"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "                sem2Data \u003d input.substring(input.lastIndexOf(\"timetable\") + 12,"
+        "content": "            temp \u003d temp.split(\"},\\\\{\")[0];"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "                        input.lastIndexOf(\"examDate\") - 4);"
+        "content": "            Classes myClass \u003d new Classes(temp);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "                sem2Exam \u003d input.substring(input.lastIndexOf(\"examDate\") + 11,"
+        "content": "            sem1Classes.add(myClass);"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "                        input.lastIndexOf(\"examDuration\") - 3).split(\"T\")[0];"
+        "content": "        }"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            } else {"
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "                sem2Data \u003d input.substring(input.lastIndexOf(\"timetable\") + 12);"
+        "content": "        if (hasSem2) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            }"
+        "content": "            if (hasExam) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        }"
+        "content": "                sem2Data \u003d input.substring(input.lastIndexOf(\"timetable\") + 12,"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "                        input.lastIndexOf(\"examDate\") - 4);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        classes \u003d sem2Data.split(\"classNo\");"
+        "content": "                sem2Exam \u003d input.substring(input.lastIndexOf(\"examDate\") + 11,"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "                        input.lastIndexOf(\"examDuration\") - 3).split(\"T\")[0];"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        for (int i \u003d 1; i \u003c classes.length; i++) {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            String temp \u003d classes[i];"
+        "content": "                sem2Data \u003d input.substring(input.lastIndexOf(\"timetable\") + 12);"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            temp \u003d temp.split(\"},\\\\{\")[0];"
+        "content": "            }"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            Classes myClass \u003d new Classes(temp);"
+        "content": "        }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            sem2Classes.add(myClass);"
+        "content": ""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        }"
+        "content": "        classes \u003d sem2Data.split(\"classNo\");"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "        for (int i \u003d 1; i \u003c classes.length; i++) {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public String getCode() {"
+        "content": "            String temp \u003d classes[i];"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return this.code;"
+        "content": "            temp \u003d temp.split(\"},\\\\{\")[0];"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": "            Classes myClass \u003d new Classes(temp);"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "            sem2Classes.add(myClass);"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public String getTitle() {"
+        "content": "        }"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return this.title;"
+        "content": "    }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public String getDescription() {"
+        "content": "     * Helper Function for Constructor"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return this.description;"
+        "content": "     */"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": "    private void splitClassByType() {"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "        for (Classes curr : sem1Classes) {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public ArrayList\u003cClasses\u003e getSem1Classes() {"
+        "content": "            if (curr.getLessonType().equals(\"Lecture\")) {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return sem1Classes;"
+        "content": "                sem1Lectures.add(curr);"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": "            } else if (curr.getLessonType().equals(\"Tutorial\")) {"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "                sem1Tutorials.add(curr);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public String getSem1_exam() {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return sem1Exam;"
+        "content": "                sem1Others.add(curr);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public ArrayList\u003cClasses\u003e getSem2Classes() {"
+        "content": ""
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return sem2Classes;"
+        "content": "        for (Classes curr : sem2Classes) {"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": "            if (curr.getLessonType().equals(\"Lecture\")) {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "                sem2Lectures.add(curr);"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public String getSem2_exam() {"
+        "content": "            } else if (curr.getLessonType().equals(\"Tutorial\")) {"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return sem2Exam;"
+        "content": "                sem2Tutorials.add(curr);"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": "            } else {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "                sem2Others.add(curr);"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public int getCredits() {"
+        "content": "            }"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return this.credits;"
+        "content": "        }"
       },
       {
         "lineNumber": 134,
@@ -28928,21 +29343,21 @@
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    @Override"
+        "content": "    public String getCode() {"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    public String toString() {"
+        "content": "        return this.code;"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        String output \u003d \"\";"
+        "content": "    }"
       },
       {
         "lineNumber": 139,
@@ -28956,286 +29371,515 @@
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        output \u003d output + this.code + \" \" + this.title + \"\\n\";"
+        "content": "    public String getTitle() {"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        output \u003d output + \"Faculty: \" + this.faculty + \"\\n\";"
+        "content": "        return this.title;"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        output \u003d output + \"Department: \" + this.department + \"\\n\";"
+        "content": "    }"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        output \u003d output + \"Credit Units: \" + this.credits + \"\\n\";"
+        "content": ""
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        output \u003d output + \"Workload: \" + this.workload + \"\\n\";"
+        "content": "    public String getDescription() {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        output \u003d output + this.description + \"\\n\";"
+        "content": "        return this.description;"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        if (!sem1Exam.equals(\"\")) {"
+        "content": ""
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            output \u003d output + \"Semester 1 Exam: \" + sem1Exam + \"\\n\";"
+        "content": "    public ArrayList\u003cClasses\u003e getSem1Classes() {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        }"
+        "content": "        return sem1Classes;"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        if (!sem2Exam.equals(\"\")) {"
+        "content": ""
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "            output \u003d output + \"Semester 2 Exam: \" + sem2Exam + \"\\n\";"
+        "content": "    public String getSem1_exam() {"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        }"
+        "content": "        return sem1Exam;"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "        return output;"
+        "content": "    }"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "mpang45456"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "mpang45456"
         },
+        "content": "    public ArrayList\u003cClasses\u003e getSem2Classes() {"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return sem2Classes;"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public String getSem2_exam() {"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return sem2Exam;"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public int getCredits() {"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return this.credits;"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public ArrayList\u003cClasses\u003e getSem1Lectures() {"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return this.sem1Lectures;"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public ArrayList\u003cClasses\u003e getSem1Tutorials() {"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return this.sem1Tutorials;"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public ArrayList\u003cClasses\u003e getSem1Others() {"
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return this.sem1Others;"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public ArrayList\u003cClasses\u003e getSem2Lectures() {"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return this.sem2Lectures;"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public ArrayList\u003cClasses\u003e getSem2Tutorials() {"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return this.sem2Tutorials;"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public ArrayList\u003cClasses\u003e getSem2Others() {"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return this.sem2Others;"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        String output \u003d \"\";"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        output \u003d output + this.code + \" \" + this.title + \"\\n\";"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        output \u003d output + \"Faculty: \" + this.faculty + \"\\n\";"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        output \u003d output + \"Department: \" + this.department + \"\\n\";"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        output \u003d output + \"Credit Units: \" + this.credits + \"\\n\";"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        output \u003d output + \"Workload: \" + this.workload + \"\\n\";"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        output \u003d output + this.description + \"\\n\";"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        if (!sem1Exam.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            output \u003d output + \"Semester 1 Exam: \" + sem1Exam + \"\\n\";"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        if (!sem2Exam.equals(\"\")) {"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "            output \u003d output + \"Semester 2 Exam: \" + sem2Exam + \"\\n\";"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "        return output;"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "mpang45456"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "mpang45456"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "mpang45456": 156
-    }
-  },
-  {
-    "path": "src/main/java/seedu/address/searcher/ModulePlanner.java",
-    "fileType": "java",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "package seedu.address.searcher;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "import java.util.ArrayList;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "/**\u003ch1\u003eMod Planner Logic Class\u003c/h1\u003e"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": " * just simple logic and functions for mod planing"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "public class ModulePlanner {"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "    private ArrayList\u003cModule\u003e myMods;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "    public ModulePlanner() {"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "        myMods \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "    public void addModule(String moduleCode) {"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "        myMods.add(Search.findModule(moduleCode));"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "    public void removeModule(String moduleCode) {"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "mpang45456"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "mpang45456": 22
+      "mpang45456": 212
     }
   },
   {
@@ -29957,7 +30601,7 @@
     }
   },
   {
-    "path": "src/main/java/seedu/address/searcher/cache/CS2103T.txt",
+    "path": "src/main/java/seedu/address/searcher/cache/CS2106.txt",
     "fileType": "txt",
     "lines": [
       {
@@ -29965,7 +30609,7 @@
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "{\"acadYear\":\"2019/2020\",\"preclusion\":\"CS2103, CS2113, CS2113T, IS2101 or its equivalent.\",\"description\":\"This module introduces the necessary conceptual and analytical tools for systematic and rigorous development of software systems. It covers four main areas of software development, namely object-oriented system analysis, object-oriented system modelling and design, implementation, and testing, with emphasis on system modelling and design and implementation of software modules that work cooperatively to fulfill the requirements of the system. Tools and techniques for software development, such as Unified Modelling Language (UML), program specification, and testing methods, will be taught. Major software engineering issues such as modularisation criteria, program correctness, and software quality will also be covered.\",\"title\":\"Software Engineering\",\"department\":\"Computer Science\",\"faculty\":\"Computing\",\"workload\":[2,1,0,3,4],\"prerequisite\":\"For SoC students only. (CS1020 or its equivalent) or CS2020 or (CS2030 and (CS2040 or its equivalent))\",\"corequisite\":\"Students have to read CS2101 Effective Communication for Computing Professionals at the same time as this module\",\"moduleCredit\":\"4\",\"moduleCode\":\"CS2103T\",\"aliases\":[\"CS2103\"],\"semesterData\":[{\"semester\":1,\"timetable\":[{\"classNo\":\"G13\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G11\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G10\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G08\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G07\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G03\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G01\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G04\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G13\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0216\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G13\",\"startTime\":\"1700\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G13\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0201\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G07\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0217\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G05\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0210\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G01\",\"startTime\":\"0800\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G08\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0611\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G08\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0611\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G09\",\"startTime\":\"1500\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0610\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G04\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0210\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G02\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0216\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G10\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G09\",\"startTime\":\"1400\",\"endTime\":\"1500\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G03\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G06\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0216\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G12\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0611\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G12\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0611\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G06\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0216\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G03\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0216\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G09\",\"startTime\":\"1500\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0610\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G10\",\"startTime\":\"0800\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G05\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0210\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G07\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0217\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G10\",\"startTime\":\"0800\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0610\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G01\",\"startTime\":\"0800\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G02\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G04\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G05\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G07\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G12\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G06\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G11\",\"startTime\":\"0900\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G12\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G02\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G09\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G06\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G03\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0216\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G08\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G11\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0610\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G04\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0210\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G11\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS3-0610\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G02\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0216\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G01\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0210\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G05\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20}],\"examDate\":\"2019-11-29T01:00:00.000Z\",\"examDuration\":120},{\"semester\":2,\"timetable\":[{\"classNo\":\"G03\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G09\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G02\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G07\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G08\",\"startTime\":\"0900\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G05\",\"startTime\":\"1600\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G04\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G05\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G05\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G01\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G02\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G02\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G04\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G07\",\"startTime\":\"0800\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G08\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G08\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G01\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G06\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G07\",\"startTime\":\"0800\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G08\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G07\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G05\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G03\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G09\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G02\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G01\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G04\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G09\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G06\",\"startTime\":\"1700\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G01\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G04\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B103\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G03\",\"startTime\":\"0800\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Monday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G03\",\"startTime\":\"0800\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Thursday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G06\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G09\",\"startTime\":\"1600\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Friday\",\"lessonType\":\"Lecture\",\"size\":20},{\"classNo\":\"G06\",\"startTime\":\"1200\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"AS6-0208\",\"day\":\"Tuesday\",\"lessonType\":\"Lecture\",\"size\":20}],\"examDate\":\"2020-04-25T05:00:00.000Z\",\"examDuration\":120}],\"prereqTree\":{\"or\":[\"CS1020\",\"CS2020\",{\"and\":[\"CS2030\",\"CS2040\"]}]},\"fulfillRequirements\":[\"CP3880\",\"CS3203\",\"CS3283\",\"IS4234\",\"BT3102\",\"IS4302\"]}"
+        "content": "{\"acadYear\":\"2019/2020\",\"preclusion\":\"CG2271 or EE4214. CEG students are not allowed to take this module.\",\"description\":\"This module introduces the basic concepts in operating systems and links it with contemporary operating systems (eg. Unix/Linux and Windows). It focuses on OS structuring and architecture, processes, memory management, concurrency and file systems. Topics include kernel architecture, system calls, interrupts, models of processes, process abstraction and services, scheduling, review of physical memory and memory management hardware, kernel memory management, virtual memory and paging, caches, working set, deadlock, mutual exclusion, synchronisation mechanisms, data and metadata in file systems, directories and structure, file system abstraction and operations, OS protection mechanisms, and user authentication.\",\"title\":\"Introduction to Operating Systems\",\"department\":\"Computer Science\",\"faculty\":\"Computing\",\"workload\":[2,1,1,0,6],\"prerequisite\":\"CS2100 or EE2007 or EE2024 or EE2028\",\"moduleCredit\":\"4\",\"moduleCode\":\"CS2106\",\"semesterData\":[{\"semester\":1,\"timetable\":[{\"classNo\":\"02\",\"startTime\":\"0900\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0208\",\"day\":\"Tuesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"07\",\"startTime\":\"1600\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Monday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"05\",\"startTime\":\"1700\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Monday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"09\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Friday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"08\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"04\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Monday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"01\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0207\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"03\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Wednesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"05\",\"startTime\":\"0900\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Monday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"06\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Monday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"10\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"11\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Thursday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"1\",\"startTime\":\"1400\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"LT19\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":250},{\"classNo\":\"02\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Monday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"03\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Monday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"04\",\"startTime\":\"0900\",\"endTime\":\"1000\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Thursday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"13\",\"startTime\":\"1500\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0208\",\"day\":\"Tuesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"08\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"10\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"09\",\"startTime\":\"1700\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Wednesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"12\",\"startTime\":\"1600\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Wednesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"11\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0209\",\"day\":\"Wednesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"01\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Laboratory\",\"size\":20},{\"classNo\":\"07\",\"startTime\":\"1400\",\"endTime\":\"1500\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-0208\",\"day\":\"Tuesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"06\",\"startTime\":\"1400\",\"endTime\":\"1500\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Friday\",\"lessonType\":\"Laboratory\",\"size\":20}],\"examDate\":\"2019-12-03T01:00:00.000Z\",\"examDuration\":120},{\"semester\":2,\"timetable\":[{\"classNo\":\"11\",\"startTime\":\"1600\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"13\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"06\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"05\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"07\",\"startTime\":\"1600\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Thursday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"09\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"08\",\"startTime\":\"1700\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Wednesday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"09\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Thursday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"10\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Thursday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"03\",\"startTime\":\"1600\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"04\",\"startTime\":\"1700\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"07\",\"startTime\":\"1600\",\"endTime\":\"1700\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Wednesday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"1\",\"startTime\":\"1000\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"I3-AUD\",\"day\":\"Wednesday\",\"lessonType\":\"Lecture\",\"size\":280},{\"classNo\":\"03\",\"startTime\":\"1200\",\"endTime\":\"1300\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Monday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"08\",\"startTime\":\"1700\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Thursday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"11\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Thursday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"12\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Thursday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"10\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"05\",\"startTime\":\"1400\",\"endTime\":\"1500\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Wednesday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"06\",\"startTime\":\"1500\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Wednesday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"01\",\"startTime\":\"1000\",\"endTime\":\"1100\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Monday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"02\",\"startTime\":\"1100\",\"endTime\":\"1200\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Monday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"02\",\"startTime\":\"1500\",\"endTime\":\"1600\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"01\",\"startTime\":\"1400\",\"endTime\":\"1500\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Tuesday\",\"lessonType\":\"Laboratory\",\"size\":25},{\"classNo\":\"04\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Monday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"12\",\"startTime\":\"1700\",\"endTime\":\"1800\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20},{\"classNo\":\"14\",\"startTime\":\"1300\",\"endTime\":\"1400\",\"weeks\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"venue\":\"COM1-B113\",\"day\":\"Friday\",\"lessonType\":\"Tutorial\",\"size\":20}],\"examDate\":\"2020-04-27T09:00:00.000Z\",\"examDuration\":120}],\"prereqTree\":{\"or\":[\"CS2100\",\"EE2007\",\"EE2024\",\"EE2028\"]},\"fulfillRequirements\":[\"CS6280\",\"CS6211\",\"CS5272\",\"CS6219\",\"CS5248\",\"CS5250\",\"CS3235\",\"CS4344\",\"CS4223\",\"CS3211\",\"CS3221\",\"CS3220\",\"EE5903\"]}"
       }
     ],
     "authorContributionMap": {
@@ -36348,241 +36992,234 @@
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                setCircleNotVisible();"
+        "content": "            } else {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                System.out.println(\"here\");"
+        "content": "                setGraphic(new CalenderDeadline(deadline, getIndex() + 1).getRoot());"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            } else {"
+        "content": "                System.out.println(\"Else\");"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                setGraphic(new CalenderDeadline(deadline, getIndex() + 1).getRoot());"
+        "content": "                String[] date \u003d deadline.getDate().split(\"-\");"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                System.out.println(\"Else\");"
+        "content": "                int year \u003d Integer.parseInt(date[2]);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                String[] date \u003d deadline.getDate().split(\"-\");"
+        "content": "                String day \u003d date[0];"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                int year \u003d Integer.parseInt(date[2]);"
+        "content": "                int month \u003d Integer.parseInt(date[1]);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                String day \u003d date[0];"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                int month \u003d Integer.parseInt(date[1]);"
+        "content": "                /** problem with setting circle to not visible"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "                 *  is that this else runs random number of time, so you dont know how many count to --"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                setCircleNotVisible();"
+        "content": "                 */"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "                System.out.println(CalenderPanel.getYear());"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                /** problem with setting circle to not visible"
+        "content": "                System.out.println(CalenderPanel.getCurrentMonth());"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                 *  is that this else runs random number of time, so you dont know how many count to --"
+        "content": "                if (CalenderPanel.getYear() \u003d\u003d year"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                 */"
+        "content": "                        \u0026\u0026 CalenderPanel.getCurrentMonth() \u003d\u003d month) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                if (CalenderPanel.getYear() \u003d\u003d year"
+        "content": "                    CalenderDate calenderDate \u003d CalenderPanel.getCalenderDatesArrayList()"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                        \u0026\u0026 CalenderPanel.getCurrentMonth() \u003d\u003d month) {"
+        "content": "                            .get(Integer.parseInt(day) - 1);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                    CalenderDate calenderDate \u003d CalenderPanel.getCalenderDatesArrayList()"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                            .get(Integer.parseInt(day) - 1);"
+        "content": "                    calenderDate.setCircleVisible();"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                    calenderDate.setCircleVisible();"
+        "content": "                    calenderDate.increaseCount();"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                    calenderDate.increaseCount();"
+        "content": "                }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                }"
+        "content": "            }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "        private void setCircleNotVisible() {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        private void setCircleNotVisible() {"
+        "content": "            for (CalenderDate calenderDate : CalenderPanel.getCalenderDatesArrayList()) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            for (CalenderDate calenderDate : CalenderPanel.getCalenderDatesArrayList()) {"
+        "content": "                if (calenderDate.getCount() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                if (calenderDate.getCount() \u003d\u003d 0) {"
+        "content": "                    calenderDate.setCircleNotVisible();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                    calenderDate.setCircleNotVisible();"
+        "content": "                }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                }"
+        "content": "            }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "zhouxinwei97"
-        },
         "content": ""
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 73,
         "author": {
           "gitId": "zhouxinwei97"
         },
@@ -36590,7 +37227,7 @@
       }
     ],
     "authorContributionMap": {
-      "zhouxinwei97": 74
+      "zhouxinwei97": 73
     }
   },
   {
@@ -36784,14 +37421,14 @@
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    private static int year \u003d 2020;"
+        "content": "    private static int year;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    private static int currentMonth \u003d Calendar.MONTH + 1;"
+        "content": "    private static int monthNow;"
       },
       {
         "lineNumber": 29,
@@ -37106,336 +37743,336 @@
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        int currentMonthInt \u003d Integer.parseInt(currentMonth);"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        String currentMonthAndYear \u003d monthsArray[currentMonthInt - 1] + \" \" + currentYear;"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        month.setText(currentMonthAndYear);"
+        "content": "        int currentMonthInt \u003d Integer.parseInt(currentMonth);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        todayDate.setText(\"Today: \" + date + \" \" + currentMonthAndYear);"
+        "content": "        monthNow \u003d currentMonthInt;"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    }"
+        "content": "        year \u003d Integer.parseInt(todayYear);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "        String currentMonthAndYear \u003d monthsArray[currentMonthInt - 1] + \" \" + currentYear;"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    public void setDates() {"
+        "content": "        month.setText(currentMonthAndYear);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        try {"
+        "content": "        todayDate.setText(\"Today: \" + date + \" \" + currentMonthAndYear);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            String firstDay \u003d getCalenderDates();"
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            int firstDayInt \u003d datesArray.get(firstDay);"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            System.out.println(firstDayInt);"
+        "content": "    public void setDates() {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            for (int i \u003d 1; i \u003c 32; i++) {"
+        "content": "        try {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                calenderDatesArrayList.add(new CalenderDate(Integer.toString(i), \"Mon\"));"
+        "content": "            String firstDay \u003d getCalenderDates();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            }"
+        "content": "            int firstDayInt \u003d datesArray.get(firstDay);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "            System.out.println(firstDayInt);"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            int x \u003d 0;"
+        "content": "            for (int i \u003d 1; i \u003c 32; i++) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            for (int col \u003d firstDayInt; col \u003c 7; col++) {"
+        "content": "                calenderDatesArrayList.add(new CalenderDate(Integer.toString(i), \"Mon\"));"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                System.out.println(col);"
+        "content": "            }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                calenderGrid.add(calenderDatesArrayList.get(x).getRoot(), col, 1, 1, 1);"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                x++;"
+        "content": "            int x \u003d 0;"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            }"
+        "content": "            for (int col \u003d firstDayInt; col \u003c 7; col++) {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "                System.out.println(col);"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            for (int row \u003d 2; row \u003c 7; row++) {"
+        "content": "                calenderGrid.add(calenderDatesArrayList.get(x).getRoot(), col, 1, 1, 1);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                for (int col \u003d 0; col \u003c 7; col++) {"
+        "content": "                x++;"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                    if (x \u003e\u003d 31) {"
+        "content": "            }"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                        break;"
+        "content": ""
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                    }"
+        "content": "            for (int row \u003d 2; row \u003c 7; row++) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                    calenderGrid.add(calenderDatesArrayList.get(x).getRoot(), col, row, 1, 1);"
+        "content": "                for (int col \u003d 0; col \u003c 7; col++) {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                    x++;"
+        "content": "                    if (x \u003e\u003d 31) {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "                }"
+        "content": "                        break;"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            }"
+        "content": "                    }"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        } catch (ParseException ex) {"
+        "content": "                    calenderGrid.add(calenderDatesArrayList.get(x).getRoot(), col, row, 1, 1);"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "            logger.info(ex.getMessage());"
+        "content": "                    x++;"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        }"
+        "content": "                }"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    }"
+        "content": "        } catch (ParseException ex) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "            logger.info(ex.getMessage());"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    private String getCalenderDates() throws ParseException {"
+        "content": "        }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        String inputDate \u003d String.format(\"01/%s/%s\", todayMonth, todayYear);"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        SimpleDateFormat format1 \u003d new SimpleDateFormat(\"dd/MM/yyyy\");"
+        "content": "    }"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        Date dt1 \u003d format1.parse(inputDate);"
+        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        DateFormat format2 \u003d new SimpleDateFormat(\"EEEE\");"
+        "content": "    private String getCalenderDates() throws ParseException {"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        String finalDay \u003d format2.format(dt1);"
+        "content": "        String inputDate \u003d String.format(\"01/%s/%s\", todayMonth, todayYear);"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        return finalDay;"
+        "content": "        SimpleDateFormat format1 \u003d new SimpleDateFormat(\"dd/MM/yyyy\");"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    }"
+        "content": "        Date dt1 \u003d format1.parse(inputDate);"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "        DateFormat format2 \u003d new SimpleDateFormat(\"EEEE\");"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    public static ArrayList\u003cCalenderDate\u003e getCalenderDatesArrayList() {"
+        "content": "        String finalDay \u003d format2.format(dt1);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        return calenderDatesArrayList;"
+        "content": "        return finalDay;"
       },
       {
         "lineNumber": 121,
@@ -37456,14 +38093,14 @@
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    public static int getYear() {"
+        "content": "    public static ArrayList\u003cCalenderDate\u003e getCalenderDatesArrayList() {"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        return year;"
+        "content": "        return calenderDatesArrayList;"
       },
       {
         "lineNumber": 125,
@@ -37484,14 +38121,14 @@
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    public static int getCurrentMonth() {"
+        "content": "    public static int getYear() {"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        return currentMonth;"
+        "content": "        return year;"
       },
       {
         "lineNumber": 129,
@@ -37512,73 +38149,101 @@
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    private void setDatesArray() {"
+        "content": "    public static int getCurrentMonth() {"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        datesArray.put(\"Monday\", 0);"
+        "content": "        return monthNow;"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        datesArray.put(\"Tuesday\", 1);"
+        "content": "    }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        datesArray.put(\"Wednesday\", 2);"
+        "content": ""
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        datesArray.put(\"Thursday\", 3);"
+        "content": "    private void setDatesArray() {"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        datesArray.put(\"Friday\", 4);"
+        "content": "        datesArray.put(\"Monday\", 0);"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        datesArray.put(\"Saturday\", 5);"
+        "content": "        datesArray.put(\"Tuesday\", 1);"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "        datesArray.put(\"Sunday\", 6);"
+        "content": "        datesArray.put(\"Wednesday\", 2);"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": "    }"
+        "content": "        datesArray.put(\"Thursday\", 3);"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "zhouxinwei97"
         },
-        "content": ""
+        "content": "        datesArray.put(\"Friday\", 4);"
       },
       {
         "lineNumber": 141,
+        "author": {
+          "gitId": "zhouxinwei97"
+        },
+        "content": "        datesArray.put(\"Saturday\", 5);"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "zhouxinwei97"
+        },
+        "content": "        datesArray.put(\"Sunday\", 6);"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "zhouxinwei97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "zhouxinwei97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
         "author": {
           "gitId": "zhouxinwei97"
         },
@@ -37586,7 +38251,7 @@
       }
     ],
     "authorContributionMap": {
-      "zhouxinwei97": 141
+      "zhouxinwei97": 145
     }
   },
   {

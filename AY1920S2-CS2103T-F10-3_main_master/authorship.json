@@ -18575,154 +18575,154 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    private int weekNum;"
+        "content": "    public static final String MESSAGE_NOWEEK \u003d \"No week beyond week 13\";"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    private String project;"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    private String taskDesc;"
+        "content": "    private int weekNum;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "    private String project;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public PtAddCommand(int weekNum, String project, String taskDesc) {"
+        "content": "    private String taskDesc;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        this.weekNum \u003d weekNum;"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        this.project \u003d project.trim().toLowerCase();"
+        "content": "    public PtAddCommand(int weekNum, String project, String taskDesc) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        this.taskDesc \u003d taskDesc;"
+        "content": "        this.weekNum \u003d weekNum;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": "        this.project \u003d project.trim().toLowerCase();"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        this.taskDesc \u003d taskDesc;"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        ProgressTracker pt \u003d model.getProgressTracker();"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtWeek week \u003d null;"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        Project project;"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        if (weekNum \u003e 13) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        if (this.project.equals(\"ip\")) {"
+        "content": "            throw new CommandException(MESSAGE_NOWEEK);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            project \u003d pt.getIp();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        } else {"
+        "content": "            ProgressTracker pt \u003d model.getProgressTracker();"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            project \u003d pt.getTp();"
+        "content": "            PtWeek week;"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
+        "content": "            Project project;"
       },
       {
         "lineNumber": 59,
@@ -18736,119 +18736,119 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        //Create new task"
+        "content": "            if (this.project.equals(\"ip\")) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        TaskDesc taskDesc \u003d new TaskDesc(this.taskDesc);"
+        "content": "                project \u003d pt.getIp();"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtTask newTask \u003d new PtTask(taskDesc, this.weekNum);"
+        "content": "            } else {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "                project \u003d pt.getTp();"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtWeekList weekList \u003d project.getWeekList();"
+        "content": "            }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        week \u003d weekList.getWeek(weekNum);"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "            //Create new task"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        //if week not created, create week"
+        "content": "            TaskDesc taskDesc \u003d new TaskDesc(this.taskDesc);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        if (week \u003d\u003d null) {"
+        "content": "            PtTask newTask \u003d new PtTask(taskDesc, this.weekNum);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            PtWeek newWeek \u003d new PtWeek(weekNum);"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            weekList.addWeek(newWeek);"
+        "content": "            PtWeekList weekList \u003d project.getWeekList();"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "            week \u003d weekList.getWeek(weekNum);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            week \u003d newWeek;"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
+        "content": "            PtTaskList taskList \u003d week.getTaskList();"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "            taskList.addTask(newTask);"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtTaskList taskList \u003d week.getTaskList();"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        taskList.addTask(newTask);"
+        "content": "            String result \u003d \"Added task to week \" + weekNum + \" of \" + this.project.toUpperCase();"
       },
       {
         "lineNumber": 77,
@@ -18862,31 +18862,24 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        String result \u003d \"Added task to week \" + weekNum + \" of \" + this.project.toUpperCase();"
+        "content": "            return new CommandResult(result, false, false);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        return new CommandResult(result, false, false);"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "BryanYap972"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 81,
         "author": {
           "gitId": "BryanYap972"
         },
@@ -18894,7 +18887,7 @@
       }
     ],
     "authorContributionMap": {
-      "BryanYap972": 82
+      "BryanYap972": 81
     }
   },
   {
@@ -20084,59 +20077,38 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        if (taskList.getNumTask() \u003d\u003d 0) {"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            weekList.removeWeek(weekNum);"
+        "content": "        String result \u003d \"Deleted task \" + taskNum + \" in week \" + weekNum + \" of \" + this.project.toUpperCase();"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        return new CommandResult(result, false, false);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        String result \u003d \"Deleted task \" + taskNum + \" in week \" + weekNum + \" of \" + this.project.toUpperCase();"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "BryanYap972"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "BryanYap972"
-        },
-        "content": "        return new CommandResult(result, false, false);"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "BryanYap972"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 86,
         "author": {
           "gitId": "BryanYap972"
         },
@@ -20144,7 +20116,7 @@
       }
     ],
     "authorContributionMap": {
-      "BryanYap972": 89
+      "BryanYap972": 86
     }
   },
   {
@@ -21026,154 +20998,154 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    private int weekNum;"
+        "content": "    public static final String MESSAGE_NOWEEK \u003d \"No week beyond week 13\";"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    private String project;"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    private int taskNum;"
+        "content": "    private int weekNum;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "    private String project;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public PtDoneCommand(int weekNum, String project, int taskNum) {"
+        "content": "    private int taskNum;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        this.weekNum \u003d weekNum;"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        this.project \u003d project.trim().toLowerCase();"
+        "content": "    public PtDoneCommand(int weekNum, String project, int taskNum) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        this.taskNum \u003d taskNum;"
+        "content": "        this.weekNum \u003d weekNum;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": "        this.project \u003d project.trim().toLowerCase();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        this.taskNum \u003d taskNum;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        ProgressTracker pt \u003d model.getProgressTracker();"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtWeek week \u003d null;"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        Project project;"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        if (weekNum \u003e 13) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        if (this.project.equals(\"ip\")) {"
+        "content": "            throw new CommandException(MESSAGE_NOWEEK);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            project \u003d pt.getIp();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        } else {"
+        "content": "            ProgressTracker pt \u003d model.getProgressTracker();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            project \u003d pt.getTp();"
+        "content": "            PtWeek week;"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
+        "content": "            Project project;"
       },
       {
         "lineNumber": 60,
@@ -21187,129 +21159,171 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtWeekList weekList \u003d project.getWeekList();"
+        "content": "            if (this.project.equals(\"ip\")) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        week \u003d weekList.getWeek(weekNum);"
+        "content": "                project \u003d pt.getIp();"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "            } else {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        //if week not created, create week"
+        "content": "                project \u003d pt.getTp();"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        if (week \u003d\u003d null) {"
+        "content": "            }"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            throw new CommandException(MESSAGE_NULLTASK);"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
+        "content": "            PtWeekList weekList \u003d project.getWeekList();"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "            week \u003d weekList.getWeek(weekNum);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtTaskList taskList \u003d week.getTaskList();"
+        "content": "            PtTaskList taskList \u003d week.getTaskList();"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtTask task \u003d taskList.getTask(taskNum);"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        task.setDone();"
+        "content": "            if (taskNum \u003e taskList.getNumTask()) {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "                throw new CommandException(MESSAGE_NULLTASK);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        String result \u003d \"Changed done status of task \" + taskNum + \" in week \" + weekNum + \" of \""
+        "content": "            }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "                + this.project.toUpperCase();"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "            PtTask task \u003d taskList.getTask(taskNum);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        return new CommandResult(result, false, false);"
+        "content": "            task.setDone();"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "}"
+        "content": "            String result \u003d \"Changed done status of task \" + taskNum + \" in week \" + weekNum + \" of \""
       },
       {
         "lineNumber": 79,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "                    + this.project.toUpperCase();"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "            return new CommandResult(result, false, false);"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "}"
+      },
+      {
+        "lineNumber": 85,
         "author": {
           "gitId": "BryanYap972"
         },
@@ -21317,7 +21331,7 @@
       }
     ],
     "authorContributionMap": {
-      "BryanYap972": 79
+      "BryanYap972": 85
     }
   },
   {
@@ -22775,140 +22789,140 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    private int weekNum;"
+        "content": "    public static final String MESSAGE_NOWEEK \u003d \"No week beyond week 13\";"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    private String project;"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "    private int weekNum;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public PtListCommand(int weekNum, String project) {"
+        "content": "    private String project;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        this.weekNum \u003d weekNum;"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        this.project \u003d project.trim().toLowerCase();"
+        "content": "    public PtListCommand(int weekNum, String project) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": "        this.weekNum \u003d weekNum;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        this.project \u003d project.trim().toLowerCase();"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        ProgressTracker pt \u003d model.getProgressTracker();"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        PtWeek week \u003d null;"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        Project project;"
+        "content": "        ProgressTracker pt \u003d model.getProgressTracker();"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        PtWeek week;"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        if (this.project.equals(\"ip\")) {"
+        "content": "        Project project;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            project \u003d pt.getIp();"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        } else {"
+        "content": "        if (weekNum \u003e 13) {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            project \u003d pt.getTp();"
+        "content": "            throw new CommandException(MESSAGE_NOWEEK);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 52,
@@ -22922,49 +22936,49 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        week \u003d project.getWeekList().getWeek(weekNum);"
+        "content": "            if (this.project.equals(\"ip\")) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "                project \u003d pt.getIp();"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        if (week \u003d\u003d null) {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            throw new CommandException(MESSAGE_NULLWEEK);"
+        "content": "                project \u003d pt.getTp();"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        String header \u003d this.project.toUpperCase() + \" Project \" + \"(Week \" + weekNum + \"):\" + \"\\n\";"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        String result \u003d header + \"  \" + week.getTaskList().listTasks();"
+        "content": "            week \u003d project.getWeekList().getWeek(weekNum);"
       },
       {
         "lineNumber": 60,
@@ -22978,17 +22992,73 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        return new CommandResult(result, false, false);"
+        "content": "            if (week.getTaskList().getNumTask() \u003d\u003d 0) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": "                throw new CommandException(MESSAGE_NULLWEEK);"
       },
       {
         "lineNumber": 63,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "            String header \u003d this.project.toUpperCase() + \" Project \" + \"(Week \" + weekNum + \"):\" + \"\\n\";"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "            String result \u003d header + \"  \" + week.getTaskList().listTasks();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "            return new CommandResult(result, false, false);"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "BryanYap972"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
         "author": {
           "gitId": "BryanYap972"
         },
@@ -22996,7 +23066,7 @@
       }
     ],
     "authorContributionMap": {
-      "BryanYap972": 63
+      "BryanYap972": 71
     }
   },
   {
@@ -62556,7 +62626,7 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        for (int i \u003d 0; i \u003c list.size(); i++) {"
+        "content": "        for (int i \u003d 0; i \u003c totalTask; i++) {"
       },
       {
         "lineNumber": 55,
@@ -63001,325 +63071,276 @@
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        //create 13 weeks since one semester only has 13 weeks"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    /**"
+        "content": "        for (int i \u003d 0; i \u003c 13; i++) {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "     * Adds week into list"
+        "content": "            PtWeek week \u003d new PtWeek(i + 1);"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "     * @param week"
+        "content": "            weekList.add(week);"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "     */"
+        "content": "        }"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public void addWeek(PtWeek week) {"
+        "content": "    }"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        int num \u003d week.getWeekNum();"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "    public PtWeek getWeek(int num) {"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        weekList.add(num - 1, week);"
+        "content": "        if (weekList.size() \u003e\u003d num) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": "            return weekList.get(num - 1);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        } else {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public PtWeek getWeek(int num) {"
+        "content": "            return null;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        if (weekList.size() \u003e\u003d num) {"
+        "content": "        }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            return weekList.get(num - 1);"
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        } else {"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            return null;"
+        "content": "    public double getProgressProject() {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
+        "content": "        boolean hasTask;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": "        int numWeeks \u003d 0;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        double totalPercentage \u003d 0;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public void removeWeek(int num) {"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        weekList.remove(num - 1);"
+        "content": "        for (int i \u003d 0; i \u003c weekList.size(); i++) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    }"
+        "content": "            PtWeek current \u003d weekList.get(i);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "            PtTaskList taskList \u003d current.getTaskList();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "    public double getProgressProject() {"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        boolean weekExist;"
+        "content": "            hasTask \u003d taskList.getNumTask() !\u003d 0;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        int numWeeks \u003d 0;"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        double totalPercentage \u003d 0;"
+        "content": "            if (hasTask) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "                numWeeks++;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        for (int i \u003d 0; i \u003c weekList.size(); i++) {"
+        "content": "                totalPercentage \u003d totalPercentage + current.getProgressWeek();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            PtWeek current \u003d weekList.get(i);"
+        "content": "            }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            weekExist \u003d current !\u003d null;"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": ""
+        "content": "        if (numWeeks \u003d\u003d 0) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            if (weekExist) {"
+        "content": "            return 0;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "                numWeeks++;"
+        "content": "        } else {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "                totalPercentage \u003d totalPercentage + current.getProgressWeek();"
+        "content": "            return totalPercentage / numWeeks;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "BryanYap972"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "BryanYap972"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "BryanYap972"
-        },
-        "content": "        if (numWeeks \u003d\u003d 0) {"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "BryanYap972"
-        },
-        "content": "            return 0;"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "BryanYap972"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "BryanYap972"
-        },
-        "content": "            return totalPercentage / numWeeks;"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "BryanYap972"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "BryanYap972"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 52,
         "author": {
           "gitId": "BryanYap972"
         },
@@ -63327,7 +63348,7 @@
       }
     ],
     "authorContributionMap": {
-      "BryanYap972": 59
+      "BryanYap972": 52
     }
   },
   {

@@ -5709,122 +5709,178 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "import seedu.address.model.Library;"
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "kschiew"
+          "gitId": "oLiXino"
         },
-        "content": "import seedu.address.model.Model;"
+        "content": "import seedu.address.model.Library;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "kschiew"
         },
-        "content": ""
+        "content": "import seedu.address.model.Model;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "oLiXino"
         },
-        "content": "/**"
+        "content": "import seedu.address.model.util.Mode;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "amrl"
+          "gitId": "kschiew"
         },
-        "content": " * Clears the library."
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": "/**"
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "ncslzh"
+          "gitId": "amrl"
         },
-        "content": "public class ResetLibraryCommand extends Command {"
+        "content": " * Clears the library."
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 13,
+        "author": {
+          "gitId": "ncslzh"
+        },
+        "content": "public class ResetLibraryCommand extends Command {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
         "author": {
           "gitId": "kschiew"
         },
         "content": "    public static final String COMMAND_WORD \u003d \"reset\";"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 16,
         "author": {
           "gitId": "oLiXino"
         },
         "content": "    public static final String MESSAGE_SUCCESS \u003d \"Library has been cleared!\";"
       },
       {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Override"
-      },
-      {
         "lineNumber": 17,
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Cannot reset library in the play view\";"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(model);"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "oLiXino"
+          "gitId": "-"
         },
-        "content": "        model.setLibrary(new Library());"
+        "content": "    @Override"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 21,
+        "author": {
+          "gitId": "oLiXino"
+        },
+        "content": "        if (model.getMode() \u003d\u003d Mode.PLAY) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "oLiXino"
+        },
+        "content": "            throw new CommandException(MESSAGE_NOT_IN_VIEW_MODE);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "oLiXino"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "oLiXino"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "oLiXino"
+        },
+        "content": "        model.setLibrary(new Library());"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "        model.returnToLibrary();"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "oLiXino"
+        },
+        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
+      },
+      {
+        "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
@@ -5832,9 +5888,10 @@
       }
     ],
     "authorContributionMap": {
-      "oLiXino": 5,
+      "oLiXino": 12,
       "kschiew": 3,
       "ncslzh": 1,
+      "lacedaemon98": 1,
       "amrl": 1,
       "-": 12
     }
@@ -6341,7 +6398,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Not in View Mode\";"
+        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Cannot add card in the play view\";"
       },
       {
         "lineNumber": 31,
@@ -6817,7 +6874,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Not in View Mode\";"
+        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Cannot delete card in the play view\";"
       },
       {
         "lineNumber": 29,
@@ -7376,7 +7433,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Not in View Mode\";"
+        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Cannot edit card in the play view\";"
       },
       {
         "lineNumber": 45,
@@ -7955,7 +8012,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Not in View Mode\";"
+        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Cannot create deck in the play view\";"
       },
       {
         "lineNumber": 31,
@@ -8416,7 +8473,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Not in View Mode\";"
+        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Cannot remove deck in the play view\";"
       },
       {
         "lineNumber": 31,
@@ -8926,7 +8983,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Not in View Mode\";"
+        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Cannot rename deck in the play view\";"
       },
       {
         "lineNumber": 39,
@@ -9483,7 +9540,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Not in View Mode\";"
+        "content": "    public static final String MESSAGE_NOT_IN_VIEW_MODE \u003d \"Cannot select deck in the play view\";"
       },
       {
         "lineNumber": 30,
@@ -10010,7 +10067,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_PLAY_MODE \u003d \"Not in play mode!\";"
+        "content": "    public static final String MESSAGE_NOT_PLAY_MODE \u003d \"Cannot answer card in non-play view\";"
       },
       {
         "lineNumber": 20,
@@ -10406,7 +10463,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_PLAY_MODE \u003d \"Not in play mode!\";"
+        "content": "    public static final String MESSAGE_NOT_PLAY_MODE \u003d \"Cannot answer card in non-play view\";"
       },
       {
         "lineNumber": 20,
@@ -10796,7 +10853,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_PLAY_MODE \u003d \"Not in play mode!\";"
+        "content": "    public static final String MESSAGE_NOT_PLAY_MODE \u003d \"Cannot flip card in non-play view\";"
       },
       {
         "lineNumber": 19,
@@ -11603,7 +11660,7 @@
         "author": {
           "gitId": "oLiXino"
         },
-        "content": "    public static final String MESSAGE_NOT_PLAY_MODE \u003d \"Not in play mode!\";"
+        "content": "    public static final String MESSAGE_NOT_PLAY_MODE \u003d \"You have not started a new game session\";"
       },
       {
         "lineNumber": 19,
@@ -23251,129 +23308,157 @@
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        if (wrongCounter \u003e 0) {"
+        "content": "        if (this.totalQns \u003d\u003d 0) {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            output +\u003d \"Here is a list of cards you guessed incorrectly:\" + \"\\n\";"
+        "content": "            output +\u003d \"You did not attempt any card!\"+\"\\n\";"
       },
       {
         "lineNumber": 117,
         "author": {
-          "gitId": "kschiew"
+          "gitId": "lacedaemon98"
         },
-        "content": "            for (Map.Entry\u003cCard, Integer\u003e entry: wrongAttempts.entrySet()) {"
+        "content": ""
       },
       {
         "lineNumber": 118,
-        "author": {
-          "gitId": "kschiew"
-        },
-        "content": "                if (entry.getValue() \u003e 0) {"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "                    output +\u003d String.format(\"%s : %s (%d %s)\\n\","
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "kschiew"
-        },
-        "content": "                            entry.getKey().getFrontFace().getValue(),"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "kschiew"
-        },
-        "content": "                            entry.getKey().getBackFace().getValue(),"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "amrl"
-        },
-        "content": "                            entry.getValue(),"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "amrl"
-        },
-        "content": "                            entry.getValue() \u003d\u003d 1 ? \"time\" : \"times\");"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "kschiew"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "kschiew"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "        } else if (wrongCounter \u003d\u003d 0 \u0026\u0026 this.totalQns !\u003d 0) {"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "            output +\u003d \"Congratulations! You got them all correct!\" +\"\\n\";"
-      },
-      {
-        "lineNumber": 128,
         "author": {
           "gitId": "lacedaemon98"
         },
         "content": "        }"
       },
       {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "        else if (wrongCounter \u003e 0) {"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "            output +\u003d \"Here is a list of cards you guessed incorrectly:\" + \"\\n\";"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "kschiew"
+        },
+        "content": "            for (Map.Entry\u003cCard, Integer\u003e entry: wrongAttempts.entrySet()) {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "kschiew"
+        },
+        "content": "                if (entry.getValue() \u003e 0) {"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "                    output +\u003d String.format(\"%s : %s (%d %s)\\n\","
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "kschiew"
+        },
+        "content": "                            entry.getKey().getFrontFace().getValue(),"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "kschiew"
+        },
+        "content": "                            entry.getKey().getBackFace().getValue(),"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "                            entry.getValue(),"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "                            entry.getValue() \u003d\u003d 1 ? \"time\" : \"times\");"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "kschiew"
+        },
+        "content": "                }"
+      },
+      {
         "lineNumber": 129,
+        "author": {
+          "gitId": "kschiew"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "            output +\u003d \"Congratulations! You got them all correct!\" +\"\\n\";"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 133,
         "author": {
           "gitId": "lacedaemon98"
         },
         "content": ""
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 134,
         "author": {
           "gitId": "kschiew"
         },
         "content": "        return output;"
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 135,
         "author": {
           "gitId": "oLiXino"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 132,
+        "lineNumber": 136,
         "author": {
           "gitId": "oLiXino"
         },
         "content": ""
       },
       {
-        "lineNumber": 133,
+        "lineNumber": 137,
         "author": {
           "gitId": "oLiXino"
         },
@@ -23383,7 +23468,7 @@
     "authorContributionMap": {
       "oLiXino": 51,
       "kschiew": 64,
-      "lacedaemon98": 16,
+      "lacedaemon98": 20,
       "amrl": 2
     }
   },
@@ -24624,7 +24709,7 @@
         "author": {
           "gitId": "amrl"
         },
-        "content": "                \u0026\u0026 otherDeck.getName().equals(getName());"
+        "content": "                \u0026\u0026 otherDeck.getName().equalsLowerCase(getName());"
       },
       {
         "lineNumber": 90,
@@ -24827,7 +24912,7 @@
         "author": {
           "gitId": "amrl"
         },
-        "content": "        return otherDeck.getName().equals(getName());"
+        "content": "        return otherDeck.getName().equalsLowerCase(getName());"
       },
       {
         "lineNumber": 119,
@@ -25041,9 +25126,9 @@
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": "            \"Names should only contain alphanumeric characters and spaces, and it should not be blank\";"
+        "content": "            \"Names should contain at least one (non-whitespace) character, i.e. should not be blank\";"
       },
       {
         "lineNumber": 14,
@@ -25055,170 +25140,170 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "ncslzh"
         },
-        "content": "    /*"
+        "content": "    public final String name;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": "     * The first character of the address must not be a whitespace,"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
-        "content": "     * otherwise \" \" (a blank string) becomes a valid input."
+        "content": "    /**"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * Constructs a {@code Name}."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALIDATION_REGEX \u003d \"[\\\\p{Alnum}][\\\\p{Alnum} ]*\";"
+        "content": "     *"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * @param name A valid name."
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "ncslzh"
+          "gitId": "-"
         },
-        "content": "    public final String name;"
+        "content": "     */"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public Name(String name) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "        requireNonNull(name);"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": "     * Constructs a {@code Name}."
+        "content": "        name \u003d name.strip();"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * @param name A valid name."
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public Name(String name) {"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        requireNonNull(name);"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 26,
         "author": {
           "gitId": "ncslzh"
         },
         "content": "        this.name \u003d name;"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
         "content": "     * Returns true if a given string is a valid name."
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
         "content": "    public static boolean isValidName(String test) {"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 33,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "        return !test.isEmpty();"
+      },
+      {
+        "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "        return test.matches(VALIDATION_REGEX);"
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public String toString() {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "ncslzh"
+        },
+        "content": "        return name;"
       },
       {
         "lineNumber": 39,
@@ -25239,77 +25324,77 @@
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "ncslzh"
-        },
-        "content": "        return name;"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public boolean equals(Object other) {"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
         "content": "                || (other instanceof Name // instanceof handles nulls"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 45,
         "author": {
           "gitId": "ncslzh"
         },
         "content": "                \u0026\u0026 name.equals(((Name) other).name)); // state check"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "    public boolean equalsLowerCase(Object other) {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "                || (other instanceof Name // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "                \u0026\u0026 name.toLowerCase().equals(((Name) other).name.toLowerCase())); // state check"
       },
       {
         "lineNumber": 52,
@@ -25363,7 +25448,8 @@
     ],
     "authorContributionMap": {
       "ncslzh": 7,
-      "-": 51
+      "amrl": 7,
+      "-": 44
     }
   },
   {
@@ -27149,6 +27235,125 @@
       {
         "lineNumber": 26,
         "author": {
+          "gitId": "amrl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "     * Returns true if both faces have the same value."
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "        if (other \u003d\u003d this) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "        if (!(other instanceof Face)) {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "        Face otherFace \u003d (Face) other;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "        return otherFace.getValue().equals(getValue());"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
           "gitId": "kschiew"
         },
         "content": "}"
@@ -27157,7 +27362,8 @@
     "authorContributionMap": {
       "kschiew": 10,
       "ncslzh": 11,
-      "lacedaemon98": 5
+      "lacedaemon98": 5,
+      "amrl": 17
     }
   },
   {
@@ -35290,198 +35496,198 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "import javafx.scene.control.MenuItem;"
+        "content": "import javafx.geometry.Rectangle2D;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.control.TextInputControl;"
+        "content": "import javafx.scene.control.MenuItem;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.input.KeyCombination;"
+        "content": "import javafx.scene.control.TextInputControl;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.input.KeyEvent;"
+        "content": "import javafx.scene.input.KeyCombination;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.scene.layout.StackPane;"
+        "content": "import javafx.scene.input.KeyEvent;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.stage.Stage;"
+        "content": "import javafx.scene.layout.StackPane;"
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "import seedu.address.commons.core.GuiSettings;"
+        "content": "import javafx.stage.Screen;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.commons.core.LogsCenter;"
+        "content": "import javafx.stage.Stage;"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "import seedu.address.logic.Logic;"
+        "content": "import javafx.stage.StageStyle;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.CommandResult;"
+        "content": "import seedu.address.commons.core.GuiSettings;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+        "content": "import seedu.address.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "import seedu.address.logic.commands.gamecommands.StopCommand;"
+        "content": "import seedu.address.logic.Logic;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.address.logic.commands.CommandResult;"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "import seedu.address.model.Statistics;"
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "import seedu.address.model.util.Mode;"
+        "content": "import seedu.address.logic.commands.gamecommands.StopCommand;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "/**"
+        "content": "import seedu.address.model.Statistics;"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": " * The Main Window. Provides the basic application layout containing"
+        "content": "import seedu.address.model.util.Mode;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": " * a menu bar and space where other JavaFX elements can be placed."
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": "/**"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "public class MainWindow extends UiPart\u003cStage\u003e {"
+        "content": " * The Main Window. Provides the basic application layout containing"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " * a menu bar and space where other JavaFX elements can be placed."
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String FXML \u003d \"MainWindow.fxml\";"
+        "content": " */"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "public class MainWindow extends UiPart\u003cStage\u003e {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private static final String FXML \u003d \"MainWindow.fxml\";"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    private Stage primaryStage;"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    private Logic logic;"
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
       },
       {
         "lineNumber": 35,
@@ -35495,91 +35701,91 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    // Independent Ui parts residing in this Ui container"
+        "content": "    private Stage primaryStage;"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "    private CardListPanel cardListPanel;"
+        "content": "    private Logic logic;"
       },
       {
         "lineNumber": 38,
-        "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "    private PlayPanel playPanel;"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "amrl"
-        },
-        "content": "    private DeckListPanel deckListPanel;"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private ResultDisplay resultDisplay;"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private HelpWindow helpWindow;"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "    private StatisticsPopUp statisticsPopUp;"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    "
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "    @FXML"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "    private StackPane rightPlaceholder;"
-      },
-      {
-        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 39,
         "author": {
           "gitId": "-"
+        },
+        "content": "    // Independent Ui parts residing in this Ui container"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "    private CardListPanel cardListPanel;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "    private PlayPanel playPanel;"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "amrl"
+        },
+        "content": "    private DeckListPanel deckListPanel;"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private ResultDisplay resultDisplay;"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private HelpWindow helpWindow;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "    private StatisticsPopUp statisticsPopUp;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    "
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "lacedaemon98"
         },
         "content": "    @FXML"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "    private StackPane commandBoxPlaceholder;"
+        "content": "    private StackPane rightPlaceholder;"
       },
       {
         "lineNumber": 49,
@@ -35600,7 +35806,7 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private MenuItem helpMenuItem;"
+        "content": "    private StackPane commandBoxPlaceholder;"
       },
       {
         "lineNumber": 52,
@@ -35619,9 +35825,9 @@
       {
         "lineNumber": 54,
         "author": {
-          "gitId": "amrl"
+          "gitId": "-"
         },
-        "content": "    private StackPane deckListPanelPlaceholder;"
+        "content": "    private MenuItem helpMenuItem;"
       },
       {
         "lineNumber": 55,
@@ -35640,9 +35846,9 @@
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": "    private StackPane resultDisplayPlaceholder;"
+        "content": "    private StackPane deckListPanelPlaceholder;"
       },
       {
         "lineNumber": 58,
@@ -35663,7 +35869,7 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private StackPane statusbarPlaceholder;"
+        "content": "    private StackPane resultDisplayPlaceholder;"
       },
       {
         "lineNumber": 61,
@@ -35677,154 +35883,154 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public MainWindow(Stage primaryStage, Logic logic) {"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "        super(FXML, primaryStage);"
+        "content": "    private StackPane statusbarPlaceholder;"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        primaryStage.setMaximized(true);"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        primaryStage.setResizable(false);"
+        "content": "    public MainWindow(Stage primaryStage, Logic logic) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        super(FXML, primaryStage);"
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        // Set dependencies"
+        "content": "        Rectangle2D primaryScreenBounds \u003d Screen.getPrimary().getVisualBounds();"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        this.primaryStage \u003d primaryStage;"
+        "content": "        primaryStage.setX(primaryScreenBounds.getMinX());"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        this.logic \u003d logic;"
+        "content": "        primaryStage.setY(primaryScreenBounds.getMinY());"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
         "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        // Configure the UI"
+        "content": "        primaryStage.setMaxWidth(primaryScreenBounds.getWidth());"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        setWindowDefaultSize(logic.getGuiSettings());"
+        "content": "        primaryStage.setMinWidth(primaryScreenBounds.getWidth());"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
         "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        setAccelerators();"
+        "content": "        primaryStage.setMaxHeight(primaryScreenBounds.getHeight());"
       },
       {
         "lineNumber": 75,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "        primaryStage.setMinHeight(primaryScreenBounds.getHeight());"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        helpWindow \u003d new HelpWindow();"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        statisticsPopUp \u003d new StatisticsPopUp(null);"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "        // Set dependencies"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        this.primaryStage \u003d primaryStage;"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        this.logic \u003d logic;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "    public Stage getPrimaryStage() {"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "        return primaryStage;"
+        "content": "        // Configure the UI"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        setWindowDefaultSize(logic.getGuiSettings());"
       },
       {
         "lineNumber": 84,
@@ -35838,70 +36044,70 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private void setAccelerators() {"
+        "content": "        setAccelerators();"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "        setAccelerator(helpMenuItem, KeyCombination.valueOf(\"F1\"));"
+        "content": ""
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        helpWindow \u003d new HelpWindow();"
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "        statisticsPopUp \u003d new StatisticsPopUp(null);"
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Sets the accelerator of a MenuItem."
+        "content": "    }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param keyCombination the KeyCombination value of the accelerator"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    public Stage getPrimaryStage() {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {"
+        "content": "        return primaryStage;"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
-        "content": "        menuItem.setAccelerator(keyCombination);"
+        "content": "    }"
       },
       {
         "lineNumber": 95,
@@ -35915,840 +36121,840 @@
         "author": {
           "gitId": "-"
         },
-        "content": "        /*"
+        "content": "    private void setAccelerators() {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
-        "content": "         * TODO: the code below can be removed once the bug reported here"
+        "content": "        setAccelerator(helpMenuItem, KeyCombination.valueOf(\"F1\"));"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
-        "content": "         * https://bugs.openjdk.java.net/browse/JDK-8131666"
+        "content": "    }"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
-        "content": "         * is fixed in later version of SDK."
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
-        "content": "         *"
+        "content": "    /**"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "-"
         },
-        "content": "         * According to the bug report, TextInputControl (TextField, TextArea) will"
+        "content": "     * Sets the accelerator of a MenuItem."
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
-        "content": "         * consume function-key events. Because CommandBox contains a TextField, and"
+        "content": "     * @param keyCombination the KeyCombination value of the accelerator"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "-"
         },
-        "content": "         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will"
+        "content": "     */"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
-        "content": "         * not work when the focus is in them because the key event is consumed by"
+        "content": "    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
-        "content": "         * the TextInputControl(s)."
+        "content": "        menuItem.setAccelerator(keyCombination);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
-        "content": "         *"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
-        "content": "         * For now, we add following event filter to capture such key events and open"
+        "content": "        /*"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
-        "content": "         * help window purposely so to support accelerators even when focus is"
+        "content": "         * TODO: the code below can be removed once the bug reported here"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "-"
         },
-        "content": "         * in CommandBox or ResultDisplay."
+        "content": "         * https://bugs.openjdk.java.net/browse/JDK-8131666"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
-        "content": "         */"
+        "content": "         * is fixed in later version of SDK."
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "-"
         },
-        "content": "        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -\u003e {"
+        "content": "         *"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "-"
         },
-        "content": "            if (event.getTarget() instanceof TextInputControl \u0026\u0026 keyCombination.match(event)) {"
+        "content": "         * According to the bug report, TextInputControl (TextField, TextArea) will"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "-"
         },
-        "content": "                menuItem.getOnAction().handle(new ActionEvent());"
+        "content": "         * consume function-key events. Because CommandBox contains a TextField, and"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "-"
         },
-        "content": "                event.consume();"
+        "content": "         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "-"
         },
-        "content": "            }"
+        "content": "         * not work when the focus is in them because the key event is consumed by"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "-"
         },
-        "content": "        });"
+        "content": "         * the TextInputControl(s)."
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "         *"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "         * For now, we add following event filter to capture such key events and open"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "         * help window purposely so to support accelerators even when focus is"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Fills up all the placeholders of this window."
+        "content": "         * in CommandBox or ResultDisplay."
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "         */"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "-"
         },
-        "content": "    void fillInnerParts() {"
+        "content": "        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -\u003e {"
       },
       {
         "lineNumber": 123,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        if (logic.getMode() \u003d\u003d Mode.VIEW) {"
+        "content": "            if (event.getTarget() instanceof TextInputControl \u0026\u0026 keyCombination.match(event)) {"
       },
       {
         "lineNumber": 124,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            cardListPanel \u003d new CardListPanel(logic.selectedDeckProperty());"
+        "content": "                menuItem.getOnAction().handle(new ActionEvent());"
       },
       {
         "lineNumber": 125,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            rightPlaceholder.getChildren().add(cardListPanel.getRoot());"
+        "content": "                event.consume();"
       },
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        } else if (logic.getMode() \u003d\u003d Mode.PLAY) {"
+        "content": "            }"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            playPanel \u003d new PlayPanel(logic.playingCardProperty(), logic.flippedProperty(), logic.cardAttemptedProperty(), logic.cardRemainingProperty());"
+        "content": "        });"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            rightPlaceholder.getChildren().add(playPanel.getRoot());"
+        "content": "    }"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "amrl"
+          "gitId": "-"
         },
-        "content": "        "
+        "content": "    /**"
       },
       {
         "lineNumber": 131,
         "author": {
-          "gitId": "amrl"
+          "gitId": "-"
         },
-        "content": "        deckListPanel \u003d new DeckListPanel(logic.getFilteredDeckList(), logic.selectedDeckProperty(), logic::setSelectedDeck);"
+        "content": "     * Fills up all the placeholders of this window."
       },
       {
         "lineNumber": 132,
         "author": {
-          "gitId": "amrl"
+          "gitId": "-"
         },
-        "content": "        deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());"
+        "content": "     */"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    void fillInnerParts() {"
       },
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        resultDisplay \u003d new ResultDisplay();"
+        "content": "        if (logic.getMode() \u003d\u003d Mode.VIEW) {"
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
+        "content": "            cardListPanel \u003d new CardListPanel(logic.selectedDeckProperty());"
       },
       {
         "lineNumber": 136,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "            rightPlaceholder.getChildren().add(cardListPanel.getRoot());"
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "amrl"
+          "gitId": "lacedaemon98"
         },
-        "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getLibraryFilePath());"
+        "content": "        } else if (logic.getMode() \u003d\u003d Mode.PLAY) {"
       },
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
+        "content": "            playPanel \u003d new PlayPanel(logic.playingCardProperty(), logic.flippedProperty(), logic.cardAttemptedProperty(), logic.cardRemainingProperty());"
       },
       {
         "lineNumber": 139,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "            rightPlaceholder.getChildren().add(playPanel.getRoot());"
       },
       {
         "lineNumber": 140,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
+        "content": "        }"
       },
       {
         "lineNumber": 141,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": "        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
+        "content": "        "
       },
       {
         "lineNumber": 142,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": "    }"
+        "content": "        deckListPanel \u003d new DeckListPanel(logic.getFilteredDeckList(), logic.selectedDeckProperty(), logic::setSelectedDeck);"
       },
       {
         "lineNumber": 143,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": ""
+        "content": "        deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Sets the default size based on {@code guiSettings}."
+        "content": "        resultDisplay \u003d new ResultDisplay();"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void setWindowDefaultSize(GuiSettings guiSettings) {"
+        "content": ""
       },
       {
         "lineNumber": 148,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": "        primaryStage.setHeight(guiSettings.getWindowHeight());"
+        "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getLibraryFilePath());"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "-"
         },
-        "content": "        primaryStage.setWidth(guiSettings.getWindowWidth());"
+        "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (guiSettings.getWindowCoordinates() !\u003d null) {"
+        "content": ""
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "-"
         },
-        "content": "            primaryStage.setX(guiSettings.getWindowCoordinates().getX());"
+        "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "-"
         },
-        "content": "            primaryStage.setY(guiSettings.getWindowCoordinates().getY());"
+        "content": "        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     * Sets the default size based on {@code guiSettings}."
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
+        "content": "     */"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    private void setWindowDefaultSize(GuiSettings guiSettings) {"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "        primaryStage.setHeight(guiSettings.getWindowHeight());"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void handleHelp() {"
+        "content": "        primaryStage.setWidth(guiSettings.getWindowWidth());"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!helpWindow.isShowing()) {"
+        "content": "        if (guiSettings.getWindowCoordinates() !\u003d null) {"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
-        "content": "            helpWindow.show();"
+        "content": "            primaryStage.setX(guiSettings.getWindowCoordinates().getX());"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "-"
         },
-        "content": "        } else {"
+        "content": "            primaryStage.setY(guiSettings.getWindowCoordinates().getY());"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "-"
         },
-        "content": "            helpWindow.focus();"
+        "content": "        }"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 168,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
       },
       {
         "lineNumber": 169,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "    public void handleStop(Statistics statistics) {"
+        "content": "     */"
       },
       {
         "lineNumber": 170,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        if (statistics \u003d\u003d null) {"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 171,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            return;"
+        "content": "    public void handleHelp() {"
       },
       {
         "lineNumber": 172,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        }"
+        "content": "        if (!helpWindow.isShowing()) {"
       },
       {
         "lineNumber": 173,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        if (!statisticsPopUp.isShowing()) {"
+        "content": "            helpWindow.show();"
       },
       {
         "lineNumber": 174,
         "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "            statisticsPopUp \u003d new StatisticsPopUp(statistics);"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "lacedaemon98"
-        },
-        "content": "            statisticsPopUp.show();"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
         "content": "        } else {"
       },
       {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            helpWindow.focus();"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
         "lineNumber": 177,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            statisticsPopUp.hide();"
+        "content": "    }"
       },
       {
         "lineNumber": 178,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            statisticsPopUp \u003d new StatisticsPopUp(statistics);"
+        "content": ""
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            statisticsPopUp.show();"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        }"
+        "content": "    public void handleStop(Statistics statistics) {"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "        if (statistics \u003d\u003d null) {"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "            return;"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "        if (!statisticsPopUp.isShowing()) {"
       },
       {
         "lineNumber": 185,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "    void show() {"
+        "content": "            statisticsPopUp \u003d new StatisticsPopUp(statistics);"
       },
       {
         "lineNumber": 186,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        primaryStage.show();"
+        "content": "            statisticsPopUp.show();"
       },
       {
         "lineNumber": 187,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "    }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 188,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "            statisticsPopUp.hide();"
       },
       {
         "lineNumber": 189,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "    /**"
+        "content": "            statisticsPopUp \u003d new StatisticsPopUp(statistics);"
       },
       {
         "lineNumber": 190,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "     * Closes the application."
+        "content": "            statisticsPopUp.show();"
       },
       {
         "lineNumber": 191,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "     */"
+        "content": "        }"
       },
       {
         "lineNumber": 192,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "    @FXML"
+        "content": ""
       },
       {
         "lineNumber": 193,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "    private void handleExit() {"
+        "content": ""
       },
       {
         "lineNumber": 194,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
+        "content": "    }"
       },
       {
         "lineNumber": 195,
         "author": {
-          "gitId": "-"
+          "gitId": "lacedaemon98"
         },
-        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
+        "content": ""
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
-        "content": "        logic.setGuiSettings(guiSettings);"
+        "content": "    void show() {"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "-"
         },
-        "content": "        helpWindow.hide();"
+        "content": "        primaryStage.show();"
       },
       {
         "lineNumber": 198,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "        statisticsPopUp.hide();"
+        "content": "    }"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "-"
         },
-        "content": "        primaryStage.hide();"
+        "content": ""
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Closes the application."
       },
       {
         "lineNumber": 202,
-        "author": {
-          "gitId": "amrl"
-        },
-        "content": "    public DeckListPanel getDeckListPanel() {"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "amrl"
-        },
-        "content": "        return deckListPanel;"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * Executes the command and returns the result."
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     *"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * @see seedu.address.logic.Logic#execute(String)"
-      },
-      {
-        "lineNumber": 210,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private void handleExit() {"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        logic.setGuiSettings(guiSettings);"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        helpWindow.hide();"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "        statisticsPopUp.hide();"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        primaryStage.hide();"
+      },
+      {
         "lineNumber": 211,
         "author": {
           "gitId": "-"
         },
-        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
+        "content": "    }"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "-"
         },
-        "content": "        try {"
+        "content": ""
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
+        "content": "    public DeckListPanel getDeckListPanel() {"
       },
       {
         "lineNumber": 214,
         "author": {
-          "gitId": "-"
+          "gitId": "amrl"
         },
-        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
+        "content": "        return deckListPanel;"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "-"
         },
-        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
+        "content": "    }"
       },
       {
         "lineNumber": 216,
@@ -36762,136 +36968,213 @@
         "author": {
           "gitId": "-"
         },
-        "content": "            if (commandResult.isShowHelp()) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "-"
         },
-        "content": "                handleHelp();"
+        "content": "     * Executes the command and returns the result."
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "-"
         },
-        "content": "            }"
+        "content": "     *"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * @see seedu.address.logic.Logic#execute(String)"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "-"
         },
-        "content": "            if (commandResult.isExit()) {"
+        "content": "     */"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "-"
         },
-        "content": "                handleExit();"
+        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "-"
         },
-        "content": "            }"
+        "content": "        try {"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
       },
       {
         "lineNumber": 225,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            if (commandResult.isStop()) {"
+        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 226,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "                handleStop(commandResult.getStatistics());"
+        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 227,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 228,
         "author": {
-          "gitId": "lacedaemon98"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "            if (commandResult.isShowHelp()) {"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "-"
         },
-        "content": "            return commandResult;"
+        "content": "                handleHelp();"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "-"
         },
-        "content": "        } catch (CommandException | ParseException e) {"
+        "content": "            }"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "-"
         },
-        "content": "            logger.info(\"Invalid command: \" + commandText);"
+        "content": ""
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "-"
         },
-        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
+        "content": "            if (commandResult.isExit()) {"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw e;"
+        "content": "                handleExit();"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 236,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "            if (commandResult.isStop()) {"
+      },
+      {
+        "lineNumber": 237,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "                handleStop(commandResult.getStatistics());"
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 239,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 240,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return commandResult;"
+      },
+      {
+        "lineNumber": 241,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (CommandException | ParseException e) {"
+      },
+      {
+        "lineNumber": 242,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            logger.info(\"Invalid command: \" + commandText);"
+      },
+      {
+        "lineNumber": 243,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
+      },
+      {
+        "lineNumber": 244,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw e;"
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 247,
         "author": {
           "gitId": "-"
         },
@@ -36899,7 +37182,7 @@
       }
     ],
     "authorContributionMap": {
-      "lacedaemon98": 41,
+      "lacedaemon98": 52,
       "amrl": 8,
       "-": 187
     }
@@ -37480,245 +37763,245 @@
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            }"
+        "content": "                instruction.setText(\"Type \u0027flip\u0027 to reveal back face\");"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        });"
+        "content": "            }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "        });"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        cardAttempted.addListener((observable, oldValue, newValue) -\u003e {"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            if (newValue !\u003d null) {"
+        "content": "        cardAttempted.addListener((observable, oldValue, newValue) -\u003e {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "                attempted \u003d newValue;"
+        "content": "            if (newValue !\u003d null) {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "                setProgress();"
+        "content": "                attempted \u003d newValue;"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "                noAttempted.setText(String.valueOf(newValue));"
+        "content": "                setProgress();"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            }"
+        "content": "                noAttempted.setText(String.valueOf(newValue));"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        });"
+        "content": "            }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "        });"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        cardRemaining.addListener((observable, oldValue, newValue) -\u003e {"
+        "content": ""
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            if (newValue !\u003d null) {"
+        "content": "        cardRemaining.addListener((observable, oldValue, newValue) -\u003e {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "                remaining \u003d newValue;"
+        "content": "            if (newValue !\u003d null) {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "                setProgress();"
+        "content": "                remaining \u003d newValue;"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "                noRemaining.setText(String.valueOf(newValue));"
+        "content": "                setProgress();"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            }"
+        "content": "                noRemaining.setText(String.valueOf(newValue));"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        });"
+        "content": "            }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "    }"
+        "content": "        });"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "    private void showPlayingCard(Card card) {"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        front.setText(card.getFrontFace().toString());"
+        "content": "    private void showPlayingCard(Card card) {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        front.setWrapText(true);"
+        "content": "        front.setText(card.getFrontFace().toString());"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        back.setText(card.getBackFace().toString());"
+        "content": "        front.setWrapText(true);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        back.setWrapText(true);"
+        "content": "        back.setText(card.getBackFace().toString());"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        instruction.setText(\"Type \u0027flip\u0027 to reveal back face\");"
+        "content": "        back.setWrapText(true);"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "    }"
+        "content": "        instruction.setText(\"Type \u0027flip\u0027 to reveal back face\");"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "    private void setProgress() {"
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        double currentProgress \u003d Double.valueOf(attempted)/(attempted+remaining);"
+        "content": "    private void setProgress() {"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        double prog \u003d currentProgress * 100;"
+        "content": "        double currentProgress \u003d Double.valueOf(attempted)/(attempted+remaining);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        progressPercent.setText(String.format(\"%.1f\", prog)+\"%\");"
+        "content": "        double prog \u003d currentProgress * 100;"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "        progress.setProgress(currentProgress);"
+        "content": "        progressPercent.setText(String.format(\"%.1f\", prog)+\"%\");"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "    }"
+        "content": "        progress.setProgress(currentProgress);"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 117,
@@ -37732,11 +38015,18 @@
         "author": {
           "gitId": "lacedaemon98"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "lacedaemon98": 112,
+      "lacedaemon98": 113,
       "amrl": 6
     }
   },
@@ -41014,119 +41304,119 @@
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003cStackPane GridPane.rowIndex\u003d\"0\" style\u003d\"-fx-background-color: #f4b184; -fx-border-width: 1 1 0 1;-fx-border-color: black; -fx-padding: 0 0 0 0 ;\" \u003e"
+        "content": "             \u003ccolumnConstraints\u003e"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            \u003cProgressBar style\u003d\"-fx-padding: 20 0 0 0 ;\" fx:id\u003d\"progress\" minWidth\u003d\"811\" prefWidth\u003d\"811\" \u003e\u003c/ProgressBar\u003e"
+        "content": "                \u003cColumnConstraints percentWidth\u003d\"100\" /\u003e"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            \u003cHBox \u003e"
+        "content": "             \u003c/columnConstraints\u003e"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "               \u003cRegion prefWidth\u003d\"12.5\"\u003e\u003c/Region\u003e"
+        "content": "         \u003cStackPane GridPane.rowIndex\u003d\"0\" GridPane.columnIndex\u003d\"0\" style\u003d\"-fx-background-color: #f4b184; -fx-border-width: 1 1 0 1;-fx-border-color: black; -fx-padding: 0 0 0 0 ;\" \u003e"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "               \u003cLabel alignment\u003d\"CENTER\" text\u003d\"Cards attempted: \" style\u003d\"-fx-text-fill: black; -fx-font-size: 15;\" /\u003e"
+        "content": "            \u003cProgressBar style\u003d\"-fx-padding: 20 0 0 0 ;\" fx:id\u003d\"progress\" minWidth\u003d\"870\" prefWidth\u003d\"870\" \u003e\u003c/ProgressBar\u003e"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "               \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"noAttempted\" text\u003d\"0\" style\u003d\"-fx-text-fill: black; -fx-font-size: 15;\" /\u003e"
+        "content": "            \u003cHBox alignment\u003d\"TOP_LEFT\"\u003e"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "               \u003cRegion prefWidth\u003d\"625\"\u003e\u003c/Region\u003e"
+        "content": "                \u003cRegion prefWidth\u003d\"20\"\u003e\u003c/Region\u003e"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "               \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"stats2\" text\u003d\"Cards remaining: \" style\u003d\"-fx-text-fill: black; -fx-font-size: 15;\" /\u003e"
+        "content": "               \u003cLabel  text\u003d\"Cards attempted: \" style\u003d\"-fx-text-fill: black; -fx-font-size: 15;\" /\u003e"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "               \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"noRemaining\" text\u003d\"0\" style\u003d\"-fx-text-fill: black; -fx-font-size: 15;\" /\u003e"
+        "content": "               \u003cLabel  fx:id\u003d\"noAttempted\" text\u003d\"0\" style\u003d\"-fx-text-fill: black; -fx-font-size: 15;\" /\u003e"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "               \u003cRegion prefWidth\u003d\"12.5\"\u003e\u003c/Region\u003e"
+        "content": "            \u003c/HBox\u003e\u003cHBox alignment\u003d\"TOP_RIGHT\"\u003e"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            \u003c/HBox\u003e"
+        "content": "               \u003cLabel fx:id\u003d\"stats2\" text\u003d\"Cards remaining: \" style\u003d\"-fx-text-fill: black; -fx-font-size: 15;\" /\u003e"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"progressPercent\"  style\u003d\"-fx-text-fill: black; -fx-font-size: 15; -fx-padding: 20 0 0 0 ;\" /\u003e"
+        "content": "               \u003cLabel  fx:id\u003d\"noRemaining\" text\u003d\"0\" style\u003d\"-fx-text-fill: black; -fx-font-size: 15;\" /\u003e"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "               \u003cRegion prefWidth\u003d\"20\"\u003e\u003c/Region\u003e"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "            \u003c/HBox\u003e"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003c/StackPane\u003e"
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"progressPercent\"  style\u003d\"-fx-text-fill: black; -fx-font-size: 15; -fx-padding: 20 0 0 0 ;\" /\u003e"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003cStackPane GridPane.rowIndex\u003d\"1\" style\u003d\"-fx-background-color: #f4b184; -fx-border-width: 0 1 1 1;-fx-border-color: black; \"  \u003e"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"instruction\" style\u003d\"-fx-text-fill: black; -fx-font-size: 18;\" /\u003e"
+        "content": ""
       },
       {
         "lineNumber": 49,
@@ -41140,87 +41430,108 @@
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "         \u003cStackPane GridPane.rowIndex\u003d\"1\" style\u003d\"-fx-background-color: #f4b184; -fx-border-width: 0 1 1 1;-fx-border-color: black; \"  \u003e"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003cStackPane  GridPane.rowIndex\u003d\"2\" style\u003d\"-fx-background-color: #4473c5; -fx-border-width: 0 1 1 1;-fx-border-color: black; \"  \u003e"
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"instruction\" style\u003d\"-fx-text-fill: black; -fx-font-size: 18;\" /\u003e"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"front\" style\u003d\"-fx-text-fill: white; -fx-font-size: 50;\" /\u003e"
+        "content": "         \u003c/StackPane\u003e"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003c/StackPane\u003e"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "         \u003cStackPane  GridPane.rowIndex\u003d\"2\" style\u003d\"-fx-background-color: #4473c5; -fx-border-width: 0 1 1 1;-fx-border-color: black; \"  \u003e"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003cStackPane GridPane.rowIndex\u003d\"3\" style\u003d\"-fx-background-color: #ff5722; -fx-border-width: 0 1 1 1; -fx-border-color: black\"  \u003e"
+        "content": "         \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"front\" style\u003d\"-fx-text-fill: white; -fx-font-size: 50;\" /\u003e"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "                  \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"back\" style\u003d\"-fx-text-fill: white; -fx-font-size: 50;\"/\u003e"
+        "content": "         \u003c/StackPane\u003e"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003c/StackPane\u003e"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "         \u003c/GridPane\u003e"
+        "content": "         \u003cStackPane GridPane.rowIndex\u003d\"3\" style\u003d\"-fx-background-color: #ff5722; -fx-border-width: 0 1 1 1; -fx-border-color: black\"  \u003e"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": "\u003c/StackPane\u003e"
+        "content": "                  \u003cLabel alignment\u003d\"CENTER\" fx:id\u003d\"back\" style\u003d\"-fx-text-fill: white; -fx-font-size: 50;\"/\u003e"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "         \u003c/StackPane\u003e"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "lacedaemon98"
         },
-        "content": ""
+        "content": "         \u003c/GridPane\u003e"
       },
       {
         "lineNumber": 62,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": "\u003c/StackPane\u003e"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "lacedaemon98"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
         "author": {
           "gitId": "lacedaemon98"
         },
@@ -41228,7 +41539,7 @@
       }
     ],
     "authorContributionMap": {
-      "lacedaemon98": 62
+      "lacedaemon98": 65
     }
   },
   {

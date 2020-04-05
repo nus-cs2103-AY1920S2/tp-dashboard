@@ -9234,9 +9234,9 @@
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "alam8064"
+          "gitId": "yaojiethng"
         },
-        "content": "        return new TaskDueAfterDatePredicate(getDateToday()).and(new TaskDueBeforeDatePredicate(getDateTomorrow()));"
+        "content": "        return new TaskDueAfterDatePredicate().and(new TaskDueBeforeDatePredicate(getDateTomorrow()));"
       },
       {
         "lineNumber": 81,
@@ -9366,8 +9366,7 @@
       }
     ],
     "authorContributionMap": {
-      "yaojiethng": 97,
-      "alam8064": 1
+      "yaojiethng": 98
     }
   },
   {
@@ -12510,595 +12509,595 @@
         "author": {
           "gitId": "eedenong"
         },
-        "content": "import seedu.jelphabot.model.task.UniqueTaskList;"
+        "content": "import seedu.jelphabot.model.task.predicates.TaskCompletedWithinDayPredicate;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "import seedu.jelphabot.model.task.predicates.TaskCompletedWithinDayPredicate;"
+        "content": "import seedu.jelphabot.model.task.predicates.TaskIsCompletedPredicate;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "import seedu.jelphabot.model.task.predicates.TaskIsCompletedPredicate;"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "eedenong"
-        },
         "content": "import seedu.jelphabot.model.task.predicates.TaskIsIncompletePredicate;"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "import seedu.jelphabot.model.task.tasklist.GroupedTaskList;"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "import seedu.jelphabot.model.task.tasklist.PinnedTaskList;"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "import seedu.jelphabot.storage.Storage;"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
         "content": " * The main LogicManager of the app."
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
         "content": " */"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
         "content": "public class LogicManager implements Logic {"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
         "content": "    public static final String FILE_OPS_ERROR_MESSAGE \u003d \"Could not save data to file: \";"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
         "content": "    private final Logger logger \u003d LogsCenter.getLogger(LogicManager.class);"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
         "content": "    private final Model model;"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
         "content": "    private final Storage storage;"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "    private final JelphaBotParser jelphaBotParser;"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
         "content": "    public LogicManager(Model model, Storage storage) {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
         "content": "        this.model \u003d model;"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
         "content": "        this.storage \u003d storage;"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 48,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "        jelphaBotParser \u003d new JelphaBotParser();"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    public CommandResult execute(String commandText) throws CommandException, ParseException {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "    public CommandResult execute(String commandText) throws CommandException, ParseException {"
+        "content": "        logger.info(\"----------------[USER COMMAND][\" + commandText + \"]\");"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "        logger.info(\"----------------[USER COMMAND][\" + commandText + \"]\");"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        CommandResult commandResult;"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 56,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "        Command command \u003d jelphaBotParser.parseCommand(commandText);"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
         "content": "        commandResult \u003d command.execute(model);"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "            storage.saveJelphaBot(model.getJelphaBot());"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "            storage.saveJelphaBot(model.getJelphaBot(), true);"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
         "content": "        } catch (IOException ioe) {"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
         "content": "            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
         "content": "        return commandResult;"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    @Override"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 70,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "    public ReadOnlyJelphaBot getJelphaBot() {"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 71,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "        return model.getJelphaBot();"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    @Override"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 75,
         "author": {
           "gitId": "Clouddoggo"
         },
         "content": "    public ObservableList\u003cTask\u003e getFilteredTaskList() {"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 76,
         "author": {
           "gitId": "Clouddoggo"
         },
         "content": "        return model.getFilteredTaskList();"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "alam8064"
+        },
+        "content": "    @Override"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "alam8064"
         },
-        "content": "    @Override"
+        "content": "    public ObservableList\u003cTask\u003e getFilteredCalendarTaskList() {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "alam8064"
         },
-        "content": "    public ObservableList\u003cTask\u003e getFilteredCalendarTaskList() {"
+        "content": "        return model.getFilteredCalendarTaskList();"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "alam8064"
         },
-        "content": "        return model.getFilteredCalendarTaskList();"
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "alam8064"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "alam8064"
+          "gitId": "eedenong"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    // makeshift implementation to ensure that build still runs as per normal"
+        "content": "    public ObservableList\u003cTask\u003e getFilteredByCompleteTaskList() {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    // TODO: implement this method in a way that does not require the creation of another UniqueTaskList"
+        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    @Override"
+        "content": "        TaskIsCompletedPredicate predicate \u003d new TaskIsCompletedPredicate();"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    public ObservableList\u003cTask\u003e getFilteredByCompleteTaskList() {"
+        "content": "        return new FilteredList\u003c\u003e(filteredTasks, predicate);"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
+        "content": "    }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        TaskIsCompletedPredicate predicate \u003d new TaskIsCompletedPredicate();"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        return new FilteredList\u003c\u003e(filteredTasks, predicate);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    }"
+        "content": "    public ObservableList\u003cTask\u003e getFilteredByCompletedTodayTaskList() {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "eedenong"
         },
-        "content": ""
+        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    @Override"
+        "content": "        TaskCompletedWithinDayPredicate pred \u003d new TaskCompletedWithinDayPredicate();"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    public ObservableList\u003cTask\u003e getFilteredByCompletedTodayTaskList() {"
+        "content": "        return new FilteredList\u003c\u003e(filteredTasks, pred);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        TaskCompletedWithinDayPredicate pred \u003d new TaskCompletedWithinDayPredicate();"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        return new FilteredList\u003c\u003e(filteredTasks, pred);"
-      },
-      {
-        "lineNumber": 99,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 100,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 101,
-        "author": {
-          "gitId": "eedenong"
-        },
         "content": "    public ObservableList\u003cTask\u003e getFilteredByReminder() {"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 99,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "        //logger.info(\"reached filtered by reminder\");"
       },
       {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "        UniqueTaskList uniqueTaskList \u003d new UniqueTaskList();"
-      },
-      {
-        "lineNumber": 104,
+        "lineNumber": 100,
         "author": {
           "gitId": "eedenong"
         },
         "content": "        List\u003cTask\u003e taskList \u003d model.getTaskListFromJelphaBot();"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 101,
         "author": {
           "gitId": "eedenong"
         },
         "content": "        List\u003cReminder\u003e reminderList \u003d model.getReminderListFromJelphaBot();"
       },
       {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
-      },
-      {
-        "lineNumber": 107,
+        "lineNumber": 102,
         "author": {
           "gitId": "eedenong"
         },
         "content": "        ReminderPredicate reminderPredicate \u003d new ReminderPredicate(taskList, reminderList);"
       },
       {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "        FilteredList\u003cTask\u003e filteredList \u003d new FilteredList\u003c\u003e(filteredTasks, reminderPredicate);"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "        uniqueTaskList.setTasks(filteredList);"
-      },
-      {
-        "lineNumber": 110,
+        "lineNumber": 103,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "        //logger.info(\"\" + filteredList.size());"
       },
       {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "        return model.getFilteredTaskList().filtered(reminderPredicate);"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "eedenong"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "eedenong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "eedenong"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "eedenong"
+        },
+        "content": "    public ObservableList\u003cTask\u003e getFilteredByIncompleteTaskList() {"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "eedenong"
+        },
+        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "eedenong"
+        },
+        "content": "        TaskIsIncompletePredicate taskIncompletePredicate \u003d new TaskIsIncompletePredicate();"
+      },
+      {
         "lineNumber": 111,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        return uniqueTaskList.asUnmodifiableObservableList();"
+        "content": "        return new FilteredList\u003c\u003e(filteredTasks, taskIncompletePredicate);"
       },
       {
         "lineNumber": 112,
@@ -13119,493 +13118,437 @@
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    // makeshift implementation to ensure that build still runs as per normal"
+        "content": "    public ObservableList\u003cTask\u003e getFilteredByIncompleteDueTodayTaskList() {"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    // TODO: implement this method in a way that does not require the creation of another UniqueTaskList"
+        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    @Override"
+        "content": "        TaskIsIncompletePredicate taskIncompletePredicate \u003d new TaskIsIncompletePredicate();"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "    public ObservableList\u003cTask\u003e getFilteredByIncompleteTaskList() {"
+        "content": "        FilteredList\u003cTask\u003e filteredIncompleteList \u003d new FilteredList\u003c\u003e(filteredTasks, taskIncompletePredicate);"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
+        "content": "        return new FilteredList\u003c\u003e(filteredIncompleteList, getDueTodayPredicate());"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        TaskIsIncompletePredicate taskIncompletePredicate \u003d new TaskIsIncompletePredicate();"
+        "content": "    }"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "eedenong"
         },
-        "content": "        return new FilteredList\u003c\u003e(filteredTasks, taskIncompletePredicate);"
+        "content": ""
       },
       {
         "lineNumber": 121,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "    public ObservableList\u003cTask\u003e getFilteredByIncompleteDueTodayTaskList() {"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "        ObservableList\u003cTask\u003e filteredTasks \u003d model.getFilteredTaskList();"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "        TaskIsIncompletePredicate taskIncompletePredicate \u003d new TaskIsIncompletePredicate();"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "        FilteredList\u003cTask\u003e filteredIncompleteList \u003d new FilteredList\u003c\u003e(filteredTasks, taskIncompletePredicate);"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "        return new FilteredList\u003c\u003e(filteredIncompleteList, getDueTodayPredicate());"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "eedenong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 130,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 122,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "    public GroupedTaskList getGroupedTaskList(GroupedTaskList.Category category) {"
       },
       {
-        "lineNumber": 132,
+        "lineNumber": 123,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "        return model.getGroupedTaskList(category);"
       },
       {
-        "lineNumber": 133,
+        "lineNumber": 124,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 134,
+        "lineNumber": 125,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": ""
       },
       {
-        "lineNumber": 135,
+        "lineNumber": 126,
         "author": {
           "gitId": "eedenong"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 136,
+        "lineNumber": 127,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "    public PinnedTaskList getPinnedTaskList() {"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 128,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "        return model.getPinnedTaskList();"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 129,
         "author": {
           "gitId": "eedenong"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 130,
         "author": {
           "gitId": "eedenong"
         },
         "content": ""
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 131,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 132,
         "author": {
           "gitId": "Clouddoggo"
         },
         "content": "    public ProductivityList getProductivityList() {"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 133,
         "author": {
           "gitId": "Clouddoggo"
         },
         "content": "        return model.getProductivityList();"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 134,
         "author": {
           "gitId": "Clouddoggo"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 135,
         "author": {
           "gitId": "Clouddoggo"
         },
         "content": ""
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 136,
         "author": {
           "gitId": "eedenong"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 137,
         "author": {
           "gitId": "eedenong"
         },
         "content": "    public SummaryList getSummaryList() {"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 138,
         "author": {
           "gitId": "eedenong"
         },
         "content": "        return model.getSummaryList();"
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 139,
         "author": {
           "gitId": "eedenong"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 140,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 141,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 142,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "    public Path getJelphaBotFilePath() {"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 143,
         "author": {
           "gitId": "yaojiethng"
         },
         "content": "        return model.getJelphaBotFilePath();"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 144,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 145,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 146,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 147,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "    public Path getRemindersFilePath() {"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 148,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "        return model.getRemindersFilePath();"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 149,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 150,
         "author": {
           "gitId": "yapdianhao"
         },
         "content": ""
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 151,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 152,
         "author": {
           "gitId": "-"
         },
         "content": "    public GuiSettings getGuiSettings() {"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 153,
         "author": {
           "gitId": "-"
         },
         "content": "        return model.getGuiSettings();"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 154,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 155,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 156,
         "author": {
           "gitId": "eedenong"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 157,
         "author": {
           "gitId": "eedenong"
         },
         "content": "    public GuiSettings getPopUpWindowGuiSettings() {"
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 158,
         "author": {
           "gitId": "eedenong"
         },
         "content": "        return model.getPopUpWindowGuiSettings();"
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 159,
         "author": {
           "gitId": "eedenong"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 168,
+        "lineNumber": 160,
         "author": {
           "gitId": "eedenong"
         },
         "content": ""
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 161,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
         "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 163,
         "author": {
           "gitId": "-"
         },
         "content": "        model.setGuiSettings(guiSettings);"
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 164,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 165,
         "author": {
           "gitId": "alam8064"
         },
         "content": ""
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 166,
         "author": {
           "gitId": "alam8064"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 167,
         "author": {
           "gitId": "alam8064"
         },
         "content": "     * Updates the filter of the filtered calendar task list to filter by the given {@code predicate}."
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 168,
         "author": {
           "gitId": "alam8064"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 169,
         "author": {
           "gitId": "alam8064"
         },
         "content": "     * @throws NullPointerException if {@code predicate} is null."
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 170,
         "author": {
           "gitId": "alam8064"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 171,
         "author": {
           "gitId": "alam8064"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 172,
         "author": {
           "gitId": "alam8064"
         },
         "content": "    public void updateFilteredCalendarTaskList(Predicate\u003cTask\u003e predicate) {"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 173,
         "author": {
           "gitId": "alam8064"
         },
         "content": "        model.updateFilteredCalendarTaskList(predicate);"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 174,
         "author": {
           "gitId": "alam8064"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 175,
         "author": {
           "gitId": "alam8064"
         },
         "content": ""
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 176,
         "author": {
           "gitId": "-"
         },
@@ -13613,10 +13556,10 @@
       }
     ],
     "authorContributionMap": {
-      "yaojiethng": 35,
+      "yaojiethng": 37,
       "yapdianhao": 9,
       "Clouddoggo": 7,
-      "eedenong": 66,
+      "eedenong": 56,
       "-": 50,
       "alam8064": 17
     }
@@ -47948,533 +47891,6 @@
     }
   },
   {
-    "path": "src/main/java/seedu/jelphabot/model/task/UniqueModuleCodeList.java",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "package seedu.jelphabot.model.task;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "import static java.util.Objects.requireNonNull;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "import static seedu.jelphabot.commons.util.CollectionUtil.requireAllNonNull;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "import java.util.HashSet;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "import java.util.Iterator;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "import java.util.List;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "import javafx.collections.FXCollections;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "import javafx.collections.ObservableList;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "import seedu.jelphabot.model.task.exceptions.DuplicateModuleCodeException;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": " * A list of module codes that enforces uniqueness between its elements and does not allow nulls."
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": " * Two ModuleCodes are considered equal if they have the same module code String."
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": " * \u003cp\u003e"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": " * Supports a minimal set of list operations."
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": " *"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": " * @see Task#isSameTask(Task)"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "public class UniqueModuleCodeList implements Iterable\u003cModuleCode\u003e {"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    private final ObservableList\u003cModuleCode\u003e internalList \u003d FXCollections.observableArrayList();"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    private final ObservableList\u003cModuleCode\u003e internalUnmodifiableList \u003d"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        FXCollections.unmodifiableObservableList(internalList);"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     * Returns true if the list contains an equivalent task as the given argument."
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    public boolean contains(ModuleCode toCheck) {"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        requireNonNull(toCheck);"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        return internalList.stream().anyMatch(toCheck::equals);"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     * Adds a ModuleCode to the list."
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     * The ModuleCode must not already exist in the list."
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    public void add(ModuleCode toAdd) {"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        requireNonNull(toAdd);"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        if (contains(toAdd)) {"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "            throw new DuplicateModuleCodeException();"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        internalList.add(toAdd);"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    public Iterator\u003cModuleCode\u003e iterator() {"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        return null;"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     * Replaces the contents of this list with {@code replacement}."
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     * {@code replacement} must not contain duplicate ModuleCodes."
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    public void setModuleCodes(UniqueModuleCodeList replacement) {"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        requireNonNull(replacement);"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        internalList.setAll(replacement.internalList);"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     * Replaces the contents of this list with {@code tasks}."
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     * {@code tasks} must not contain duplicate tasks."
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    public void setModuleCodes(List\u003cTask\u003e tasks) {"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        requireAllNonNull(tasks);"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        HashSet\u003cModuleCode\u003e replacement \u003d new HashSet\u003c\u003e();"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        for (Task task : tasks) {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "            replacement.add(task.getModuleCode());"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        internalList.setAll(replacement);"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "yaojiethng": 74
-    }
-  },
-  {
     "path": "src/main/java/seedu/jelphabot/model/task/UniqueTaskList.java",
     "fileType": "functional-code",
     "lines": [
@@ -52257,7 +51673,7 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        subgroupTaskLists.add("
+        "content": "        subLists.add("
       },
       {
         "lineNumber": 51,
@@ -52299,7 +51715,7 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return subgroupTaskLists.filtered(subgroupTaskList -\u003e !subgroupTaskList.isEmpty());"
+        "content": "        return subLists.filtered(subgroupTaskList -\u003e !subgroupTaskList.isEmpty());"
       },
       {
         "lineNumber": 57,
@@ -52355,7 +51771,7 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.subgroupTaskLists.clear();"
+        "content": "        this.subLists.clear();"
       },
       {
         "lineNumber": 65,
@@ -52518,595 +51934,595 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import java.util.HashSet;"
+        "content": "import java.util.Comparator;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.HashSet;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import java.util.Set;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import java.util.function.Predicate;"
+        "content": "import java.util.Set;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import javafx.collections.FXCollections;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import javafx.collections.ListChangeListener;"
+        "content": "import javafx.collections.FXCollections;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": "import javafx.collections.ListChangeListener;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import javafx.collections.ObservableSet;"
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import javafx.collections.SetChangeListener;"
+        "content": "import javafx.collections.ObservableSet;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import seedu.jelphabot.model.task.ModuleCode;"
+        "content": "import javafx.collections.SetChangeListener;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "import seedu.jelphabot.model.task.Task;"
+        "content": "import seedu.jelphabot.model.task.ModuleCode;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "import seedu.jelphabot.model.task.Task;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": " * A container for ObservableList\u0026lt;Task\u0026gt; that splits the TaskList into groups."
+        "content": "/**"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": " * GroupedByDateTaskList groups Tasks by their module codes."
+        "content": " * A container for ObservableList\u0026lt;Task\u0026gt; that splits the TaskList into groups."
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": " * Separation is done over @code{ObservableList} through use of filters."
+        "content": " * GroupedByDateTaskList groups Tasks by their module codes."
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": " * \u003cp\u003e"
+        "content": " * Separation is done over @code{ObservableList} through use of filters."
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": " */"
+        "content": " * \u003cp\u003e"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "public class GroupedByModuleTaskList extends GroupedTaskList {"
+        "content": " */"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    private final ObservableSet\u003cModuleCode\u003e moduleCodes \u003d FXCollections.observableSet();"
+        "content": "public class GroupedByModuleTaskList extends GroupedTaskList {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    private final ObservableSet\u003cModuleCode\u003e moduleCodes \u003d FXCollections.observableSet();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public GroupedByModuleTaskList(ObservableList\u003cTask\u003e tasks, PinnedTaskList pinnedTaskList) {"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        super(pinnedTaskList, tasks);"
+        "content": "    public GroupedByModuleTaskList(ObservableList\u003cTask\u003e tasks, PinnedTaskList pinnedTaskList) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.moduleCodes.addAll(getUniqueModuleSet(tasks));"
+        "content": "        super(pinnedTaskList, tasks);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        for (ModuleCode code : moduleCodes) {"
+        "content": "        this.moduleCodes.addAll(getUniqueModuleSet(tasks));"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            addSublist(code);"
+        "content": "        for (ModuleCode code : moduleCodes) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "            addSublist(code);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.moduleCodes.addListener(new ModuleCodeChangeListener());"
+        "content": "        }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.tasks.addListener(new TaskListChangeListener());"
+        "content": "        this.moduleCodes.addListener(new ModuleCodeChangeListener());"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "        this.tasks.addListener(new TaskListChangeListener());"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected GroupedByModuleTaskList(PinnedTaskList pinnedTaskList) {"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        super(pinnedTaskList, FXCollections.observableArrayList());"
+        "content": "    protected GroupedByModuleTaskList(PinnedTaskList pinnedTaskList) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.moduleCodes.addListener(new ModuleCodeChangeListener());"
+        "content": "        super(pinnedTaskList, FXCollections.observableArrayList());"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.tasks.addListener(new TaskListChangeListener());"
+        "content": "        this.moduleCodes.addListener(new ModuleCodeChangeListener());"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "        this.tasks.addListener(new TaskListChangeListener());"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    private static Set\u003cModuleCode\u003e getUniqueModuleSet(List\u003cTask\u003e taskList) {"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        Set\u003cModuleCode\u003e moduleSet \u003d new HashSet\u003c\u003e();"
+        "content": "    private static Set\u003cModuleCode\u003e getUniqueModuleSet(List\u003cTask\u003e taskList) {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        for (Task task : taskList) {"
+        "content": "        Set\u003cModuleCode\u003e moduleSet \u003d new HashSet\u003c\u003e();"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            moduleSet.add(task.getModuleCode());"
+        "content": "        for (Task task : taskList) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "            moduleSet.add(task.getModuleCode());"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return moduleSet;"
+        "content": "        }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "        return moduleSet;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * @param moduleCode The ModuleCode to be tested"
+        "content": "    /**"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * @return a predicate which tests Tasks for the parameter module code."
+        "content": "     * @param moduleCode The ModuleCode to be tested"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "     * @return a predicate which tests Tasks for the parameter module code."
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    private Predicate\u003cTask\u003e hasModuleCode(ModuleCode moduleCode) {"
+        "content": "     */"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return task -\u003e task.getModuleCode().equals(moduleCode);"
+        "content": "    private Predicate\u003cTask\u003e withModuleCode(ModuleCode moduleCode) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "        return task -\u003e task.getModuleCode().equals(moduleCode);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public Category getCategory() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return Category.MODULE;"
+        "content": "    public Category getCategory() {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "        return Category.MODULE;"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Adds a new sublist with the given ModuleCode as header."
+        "content": "    /**"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * The sublist must not already exist in the list."
+        "content": "     * Adds a new sublist with the given ModuleCode as header."
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     *"
+        "content": "     * The sublist must not already exist in the list."
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * @param moduleCode the value of the sublist header."
+        "content": "     *"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "     * @param moduleCode the value of the sublist header."
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    private void addSublist(ModuleCode moduleCode) {"
+        "content": "     */"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        subgroupTaskLists.add("
+        "content": "    private void addSublist(ModuleCode moduleCode) {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            new SubgroupTaskList(moduleCode.toString(), this.tasks.filtered(hasModuleCode(moduleCode)),"
+        "content": "        subLists.add("
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                subsequentElementStartIndex()"
+        "content": "            new SubgroupTaskList(moduleCode.toString(), this.tasks.filtered(withModuleCode(moduleCode)),"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            ));"
+        "content": "                subsequentElementStartIndex()"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "            ));"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Returns true if the list contains a sublist with the same module code as the given argument."
+        "content": "    /**"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "     * Returns true if the list contains a sublist with the same module code as the given argument."
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public boolean containsSublist(ModuleCode moduleCode) {"
+        "content": "     */"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        requireNonNull(moduleCode);"
+        "content": "    public boolean containsSublist(ModuleCode moduleCode) {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return subgroupTaskLists.stream().anyMatch(sublist -\u003e sublist.getGroupName().equals(moduleCode.toString()));"
+        "content": "        requireNonNull(moduleCode);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "        return subLists.stream().anyMatch(sublist -\u003e sublist.getGroupName().equals(moduleCode.toString()));"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /* \u003d\u003d\u003d Methods used for testing. Application classes should not call these methods as Tasks are intended"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    to be modified through UniqueTaskList. \u003d\u003d\u003d */"
+        "content": "    @Override"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    @Override"
+        "content": "    public ObservableList\u003cSubgroupTaskList\u003e getSublists() {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected void setTasks(List\u003cTask\u003e taskList) {"
+        "content": "        return subLists.sorted(Comparator.comparing(SubgroupTaskList::getGroupName));"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.tasks.setAll(taskList);"
+        "content": "    }"
       },
       {
         "lineNumber": 90,
@@ -53120,402 +52536,444 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        moduleCodes.clear();"
+        "content": "    /* \u003d\u003d\u003d Methods used for testing. Application classes should not call these methods as Tasks are intended"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        moduleCodes.addAll(getUniqueModuleSet(tasks));"
+        "content": "    to be modified through UniqueTaskList. \u003d\u003d\u003d */"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        for (ModuleCode code : moduleCodes) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            addSublist(code);"
+        "content": "    protected void setTasks(List\u003cTask\u003e taskList) {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "        this.tasks.setAll(taskList);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    // \u003d\u003d\u003d End of Methods used for testing \u003d\u003d\u003d"
+        "content": "        moduleCodes.clear();"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "        moduleCodes.addAll(getUniqueModuleSet(tasks));"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    @Override"
+        "content": "        for (ModuleCode code : moduleCodes) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "            addSublist(code);"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "        }"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                   || (other instanceof GroupedByModuleTaskList // instanceof handles nulls"
+        "content": "    }"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                           \u0026\u0026 tasks.equals(((GroupedByModuleTaskList) other).tasks));"
+        "content": "    // \u003d\u003d\u003d End of Methods used for testing \u003d\u003d\u003d"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * A Listener that handles the updating of moduleCodes when the underlying list of Tasks is updated."
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "                   || (other instanceof GroupedByModuleTaskList // instanceof handles nulls"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    private class TaskListChangeListener implements ListChangeListener\u003cTask\u003e {"
+        "content": "                           \u0026\u0026 tasks.equals(((GroupedByModuleTaskList) other).tasks));"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        public void onChanged(Change\u003c? extends Task\u003e change) {"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            while (change.next()) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                if (change.wasAdded()) {"
+        "content": "     * A Listener that handles the updating of moduleCodes when the underlying list of Tasks is updated."
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                    for (Task task : change.getAddedSubList()) {"
+        "content": "     */"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                        moduleCodes.add(task.getModuleCode());"
+        "content": "    private class TaskListChangeListener implements ListChangeListener\u003cTask\u003e {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                    }"
+        "content": "        @Override"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                }"
+        "content": "        public void onChanged(Change\u003c? extends Task\u003e change) {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                if (change.wasRemoved()) {"
+        "content": "            while (change.next()) {"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                    for (Task task : change.getRemoved()) {"
+        "content": "                if (change.wasAdded()) {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                        if (tasks.stream().noneMatch(toCheck -\u003e toCheck.getModuleCode() \u003d\u003d task.getModuleCode())) {"
+        "content": "                    for (Task task : change.getAddedSubList()) {"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                            moduleCodes.remove(task.getModuleCode());"
+        "content": "                        moduleCodes.add(task.getModuleCode());"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                        }"
+        "content": "                    }"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                    }"
+        "content": "                }"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                }"
+        "content": "                if (change.wasRemoved()) {"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            }"
+        "content": "                    for (Task task : change.getRemoved()) {"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "                        if (tasks.stream().noneMatch(toCheck -\u003e toCheck.getModuleCode() \u003d\u003d task.getModuleCode())) {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "                            moduleCodes.remove(task.getModuleCode());"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "                        }"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "                    }"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * A Listener that handles the updating of SubgroupTaskList when the underlying set of ModuleCodes is updated."
+        "content": "                }"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "            }"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    private class ModuleCodeChangeListener"
+        "content": "        }"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        implements SetChangeListener\u003cModuleCode\u003e {"
+        "content": "    }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        public void onChanged(Change\u003c? extends ModuleCode\u003e change) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            if (change.wasAdded()) {"
+        "content": "     * A Listener that handles the updating of SubgroupTaskList when the underlying set of ModuleCodes is updated."
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                ModuleCode addedCode \u003d change.getElementAdded();"
+        "content": "     */"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                if (!containsSublist(addedCode)) {"
+        "content": "    private class ModuleCodeChangeListener"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                    addSublist(addedCode);"
+        "content": "        implements SetChangeListener\u003cModuleCode\u003e {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                }"
+        "content": "        @Override"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            }"
+        "content": "        public void onChanged(Change\u003c? extends ModuleCode\u003e change) {"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            if (change.wasRemoved()) {"
+        "content": "            if (change.wasAdded()) {"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                ModuleCode removedCode \u003d change.getElementRemoved();"
+        "content": "                ModuleCode addedCode \u003d change.getElementAdded();"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                subgroupTaskLists.removeIf(sublist -\u003e sublist.getGroupName().equals(removedCode.toString()));"
+        "content": "                if (!containsSublist(addedCode)) {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            }"
+        "content": "                    addSublist(addedCode);"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "                }"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "            }"
       },
       {
         "lineNumber": 148,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "            if (change.wasRemoved()) {"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "                ModuleCode removedCode \u003d change.getElementRemoved();"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "                subLists.removeIf(sublist -\u003e sublist.getGroupName().equals(removedCode.toString()));"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 154,
         "author": {
           "gitId": "yaojiethng"
         },
@@ -53523,7 +52981,7 @@
       }
     ],
     "authorContributionMap": {
-      "yaojiethng": 148
+      "yaojiethng": 154
     }
   },
   {
@@ -53766,7 +53224,7 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected final ObservableList\u003cSubgroupTaskList\u003e subgroupTaskLists \u003d FXCollections.observableArrayList();"
+        "content": "    protected final ObservableList\u003cSubgroupTaskList\u003e subLists \u003d FXCollections.observableArrayList();"
       },
       {
         "lineNumber": 35,
@@ -53906,7 +53364,7 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        for (SubgroupTaskList sublist : subgroupTaskLists) {"
+        "content": "        for (SubgroupTaskList sublist : subLists) {"
       },
       {
         "lineNumber": 55,
@@ -54011,948 +53469,934 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "    @Override"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Returns true if the list contains an equivalent task as the given argument."
+        "content": "    public boolean contains(Task toCheck) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "        requireNonNull(toCheck);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public boolean contains(Task toCheck) {"
+        "content": "        return tasks.stream().anyMatch(toCheck::isSameTask);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        requireNonNull(toCheck);"
+        "content": "    }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return tasks.stream().anyMatch(toCheck::isSameTask);"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    public int size() {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    @Override"
+        "content": "        return tasks.size();"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public int size() {"
+        "content": "    }"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return tasks.size();"
+        "content": ""
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    public boolean isEmpty() {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    @Override"
+        "content": "        return tasks.isEmpty();"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public boolean isEmpty() {"
+        "content": "    }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return tasks.isEmpty();"
+        "content": ""
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    public Iterator\u003cTask\u003e iterator() {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    @Override"
+        "content": "        List\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public Iterator\u003cTask\u003e iterator() {"
+        "content": "        for (SubgroupTaskList sublist : subLists) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        List\u003cTask\u003e tasks \u003d new ArrayList\u003c\u003e();"
+        "content": "            tasks.addAll(sublist.getList());"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        for (SubgroupTaskList sublist : subgroupTaskLists) {"
+        "content": "        }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            tasks.addAll(sublist.getList());"
+        "content": "        return tasks.iterator();"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return tasks.iterator();"
+        "content": ""
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    public ObservableList\u003cSubgroupTaskList\u003e getSublists() {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "        return subLists;"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public ObservableList\u003cSubgroupTaskList\u003e getSublists() {"
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        return subgroupTaskLists;"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "     * Gets an IntegerBinding for the next Sublist in this GroupedTaskList."
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Gets an IntegerBinding for the next Sublist in this GroupedTaskList."
+        "content": "    protected IntegerBinding subsequentElementStartIndex() {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "        if (subLists.isEmpty()) {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected IntegerBinding subsequentElementStartIndex() {"
+        "content": "            return Bindings.createIntegerBinding(() -\u003e 0);"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        if (subgroupTaskLists.isEmpty()) {"
+        "content": "        } else {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            return Bindings.createIntegerBinding(() -\u003e 0);"
+        "content": "            SubgroupTaskList lastSublist \u003d subLists.get(subLists.size() - 1);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        } else {"
+        "content": "            return (IntegerBinding) lastSublist.startIndexBinding().add(lastSublist.sizeBinding());"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            SubgroupTaskList lastSublist \u003d subgroupTaskLists.get(subgroupTaskLists.size() - 1);"
+        "content": "        }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            return (IntegerBinding) lastSublist.startIndexBinding().add(lastSublist.sizeBinding());"
+        "content": "    }"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    /* \u003d\u003d\u003d Methods used for testing. Application classes should not call these methods as Tasks are intended"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "        to be modified through UniqueTaskList. \u003d\u003d\u003d */"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /* \u003d\u003d\u003d Methods used for testing. Application classes should not call these methods as Tasks are intended"
+        "content": ""
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        to be modified through UniqueTaskList. \u003d\u003d\u003d */"
+        "content": "    /**"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "     * Adds a task to the list."
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "     * The task must not already exist in the list."
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Adds a task to the list."
+        "content": "     */"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * The task must not already exist in the list."
+        "content": "    protected void add(Task toAdd) {"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "        requireNonNull(toAdd);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected void add(Task toAdd) {"
+        "content": "        if (contains(toAdd)) {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        requireNonNull(toAdd);"
+        "content": "            throw new DuplicateTaskException();"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        if (contains(toAdd)) {"
+        "content": "        }"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            throw new DuplicateTaskException();"
+        "content": "        tasks.add(toAdd);"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        tasks.add(toAdd);"
+        "content": ""
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "     * Replaces the task {@code target} in the list with {@code editedTask}."
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "     * {@code target} must exist in the list."
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Replaces the task {@code target} in the list with {@code editedTask}."
+        "content": "     * The task identity of {@code editedTask} must not be the same as another existing task in the list."
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * {@code target} must exist in the list."
+        "content": "     */"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * The task identity of {@code editedTask} must not be the same as another existing task in the list."
+        "content": "    protected void setTask(Task target, Task editedTask) {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "        requireAllNonNull(target, editedTask);"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected void setTask(Task target, Task editedTask) {"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        requireAllNonNull(target, editedTask);"
+        "content": "        int index \u003d tasks.indexOf(target);"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "        if (index \u003d\u003d -1) {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        int index \u003d tasks.indexOf(target);"
+        "content": "            throw new TaskNotFoundException();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        if (index \u003d\u003d -1) {"
+        "content": "        }"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            throw new TaskNotFoundException();"
+        "content": ""
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "        if (!target.isSameTask(editedTask) \u0026\u0026 contains(editedTask)) {"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "            throw new DuplicateTaskException();"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        if (!target.isSameTask(editedTask) \u0026\u0026 contains(editedTask)) {"
+        "content": "        }"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            throw new DuplicateTaskException();"
+        "content": ""
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "        tasks.set(index, editedTask);"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        tasks.set(index, editedTask);"
+        "content": ""
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "     * Removes the equivalent task from the list."
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "     * The task must exist in the list."
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Removes the equivalent task from the list."
+        "content": "     */"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * The task must exist in the list."
+        "content": "    protected void remove(Task target) {"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "        requireNonNull(target);"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected void remove(Task target) {"
+        "content": "        if (!contains(target)) {"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        requireNonNull(target);"
+        "content": "            throw new TaskNotFoundException();"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        if (!contains(target)) {"
+        "content": "        }"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            throw new TaskNotFoundException();"
+        "content": "        tasks.remove(target);"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        tasks.remove(target);"
+        "content": ""
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "     * Removes all tasks from the list."
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Removes all tasks from the list."
+        "content": "    protected void clear() {"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "        this.pinnedTaskList.clear();"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected void clear() {"
+        "content": "        this.tasks.clear();"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.pinnedTaskList.clear();"
+        "content": "        this.subLists.clear();"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.tasks.clear();"
+        "content": "    }"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        this.subgroupTaskLists.clear();"
+        "content": ""
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "     * Sets the inner moduleCodeTaskLists according to the contents of taskList."
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "     * Since taskList is retrieved from UniqueTaskList, it is assumed that there are no duplicate tasks."
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Sets the inner moduleCodeTaskLists according to the contents of taskList."
+        "content": "     *"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * Since taskList is retrieved from UniqueTaskList, it is assumed that there are no duplicate tasks."
+        "content": "     * @param taskList the updated list of tasks."
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     *"
+        "content": "     */"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * @param taskList the updated list of tasks."
+        "content": "    protected abstract void setTasks(List\u003cTask\u003e taskList);"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected abstract void setTasks(List\u003cTask\u003e taskList);"
+        "content": "    protected void setTasks(GroupedTaskList replacement) {"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "        requireNonNull(replacement);"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    protected void setTasks(GroupedTaskList replacement) {"
+        "content": "        subLists.setAll(replacement.getSublists());"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        requireNonNull(replacement);"
+        "content": "        setTasks(replacement.tasks);"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        subgroupTaskLists.setAll(replacement.getSublists());"
+        "content": "    }"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        setTasks(replacement.tasks);"
+        "content": "    // \u003d\u003d\u003d End of Methods used for testing \u003d\u003d\u003d"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    // \u003d\u003d\u003d End of Methods used for testing \u003d\u003d\u003d"
+        "content": "    /**"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "     * GroupedTaskList.Groupings define a set of fixed enum mappings from the commandArgument to the corresponding"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    /**"
+        "content": "     * constructor."
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * GroupedTaskList.Groupings define a set of fixed enum mappings from the commandArgument to the corresponding"
+        "content": "     */"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     * constructor."
+        "content": "    public enum Category {"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "     */"
+        "content": "        DATE(\"date\", GroupedByDateTaskList::new),"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "    public enum Category {"
+        "content": "        MODULE(\"module\", GroupedByModuleTaskList::new);"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        DATE(\"date\", GroupedByDateTaskList::new),"
+        "content": ""
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        MODULE(\"module\", GroupedByModuleTaskList::new);"
+        "content": "        public final String commandArgument;"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "        private final BiFunction\u003cObservableList\u003cTask\u003e, PinnedTaskList, GroupedTaskList\u003e constructor;"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        public final String commandArgument;"
+        "content": ""
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        private final BiFunction\u003cObservableList\u003cTask\u003e, PinnedTaskList, GroupedTaskList\u003e constructor;"
+        "content": "        Category(String commandArgument,"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "            BiFunction\u003cObservableList\u003cTask\u003e, PinnedTaskList, GroupedTaskList\u003e groupedTaskListConstructor) {"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        Category(String commandArgument,"
+        "content": "            this.commandArgument \u003d commandArgument;"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            BiFunction\u003cObservableList\u003cTask\u003e, PinnedTaskList, GroupedTaskList\u003e groupedTaskListConstructor) {"
+        "content": "            this.constructor \u003d groupedTaskListConstructor;"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            this.commandArgument \u003d commandArgument;"
+        "content": "        }"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            this.constructor \u003d groupedTaskListConstructor;"
+        "content": ""
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        }"
+        "content": "        private GroupedTaskList construct(ObservableList\u003cTask\u003e tasks, PinnedTaskList pinnedTasks) {"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
+        "content": "            return constructor.apply(tasks, pinnedTasks);"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "        private GroupedTaskList construct(ObservableList\u003cTask\u003e tasks, PinnedTaskList pinnedTasks) {"
+        "content": "        }"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "            return constructor.apply(tasks, pinnedTasks);"
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "yaojiethng"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 204,
+        "lineNumber": 202,
         "author": {
           "gitId": "yaojiethng"
         },
@@ -54960,7 +54404,7 @@
       }
     ],
     "authorContributionMap": {
-      "yaojiethng": 204
+      "yaojiethng": 202
     }
   },
   {
@@ -55464,46 +54908,11 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    public IntegerBinding subsequentElementStartIndex() {"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "        return (IntegerBinding) startIndex.add(size);"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "yaojiethng"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "yaojiethng"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "yaojiethng": 60
+      "yaojiethng": 55
     }
   },
   {
@@ -55627,11 +55036,46 @@
         "author": {
           "gitId": "yaojiethng"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "     * Returns true if the list contains an equivalent task as the given argument."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": "    boolean contains(Task task);"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "yaojiethng"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "yaojiethng": 17
+      "yaojiethng": 22
     }
   },
   {
@@ -119264,42 +118708,42 @@
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                VALID_DESCRIPTION,"
+        "content": "            VALID_DESCRIPTION,"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                VALID_STATUS,"
+        "content": "            VALID_STATUS,"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                VALID_DATETIME,"
+        "content": "            VALID_DATETIME,"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                null,"
+        "content": "            null,"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "yaojiethng"
         },
-        "content": "                VALID_PRIORITY,"
+        "content": "            VALID_PRIORITY,"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Clouddoggo"
         },
-        "content": "                VALID_TAGS, VALID_TIME_SPENT"
+        "content": "            VALID_TAGS, VALID_TIME_SPENT"
       },
       {
         "lineNumber": 92,
@@ -119650,10 +119094,24 @@
           "gitId": "-"
         },
         "content": "}"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "yaojiethng"
+        },
+        "content": ""
       }
     ],
     "authorContributionMap": {
-      "yaojiethng": 52,
+      "yaojiethng": 54,
       "yapdianhao": 34,
       "Clouddoggo": 45,
       "-": 10

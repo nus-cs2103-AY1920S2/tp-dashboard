@@ -5272,16 +5272,16 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    public static final String MESSAGE_BUDGET_VIEW \u003d \"Your %s budget is $%.2f.\\n\""
+        "content": "    public static final String MESSAGE_BUDGET_VIEW \u003d \"Your %s budget is $%.2f.\""
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "            + \"Your remaining budget is $%.2f, with $%.2f to spend today.\\n\""
+        "content": "            + \" Remaining budget: $%.2f.\\nYou have $%.2f left to spend today.\\n\""
       },
       {
         "lineNumber": 19,
@@ -5384,8 +5384,9 @@
     ],
     "authorContributionMap": {
       "leslieharland": 10,
-      "lsjxavier": 10,
+      "lsjxavier": 8,
       "Samanthaseahpl": 6,
+      "SHAUNGOH97": 2,
       "-": 6
     }
   },
@@ -15652,9 +15653,9 @@
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "            + \" \""
+        "content": "            + \"set \""
       },
       {
         "lineNumber": 28,
@@ -16477,8 +16478,9 @@
       }
     ],
     "authorContributionMap": {
-      "leslieharland": 45,
-      "lsjxavier": 99
+      "leslieharland": 44,
+      "lsjxavier": 99,
+      "SHAUNGOH97": 1
     }
   },
   {
@@ -27999,313 +28001,306 @@
       {
         "lineNumber": 119,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "        if (!model.getBudget().get().equals(new Budget())) {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        if (model.getBudget().isPresent()) {"
+        "content": "            Budget savedBudget \u003d model.getFoodieBot().getBudget();"
       },
       {
         "lineNumber": 121,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "            Budget savedBudget \u003d model.getBudget().get();"
+        "content": ""
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "            if (savedBudget.getRemainingBudget() \u003c priceOfFood) {"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            if (savedBudget.getRemainingBudget() \u003c priceOfFood) {"
+        "content": "                throw new CommandException(EXCEEDED_BUDGET);"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                throw new CommandException(EXCEEDED_BUDGET);"
+        "content": "            }"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "lsjxavier"
-        },
         "content": ""
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 126,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "            savedBudget.subtractFromRemainingBudget(priceOfFood);"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 127,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "            model.setBudget(savedBudget);"
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 128,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            Budget newBudget \u003d model.getBudget().get();"
+        "content": "            Budget newBudget \u003d model.getFoodieBot().getBudget();"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 129,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": ""
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 130,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "            saveTransaction(model, purchase);"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            return new CommandResult(COMMAND_WORD, String.format("
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            return new CommandResult(COMMAND_WORD, String.format("
+        "content": "                    MESSAGE_SUCCESS_BUDGET, nameOfFood,"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                    MESSAGE_SUCCESS_BUDGET, nameOfFood,"
+        "content": "                    priceOfFood,"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                    priceOfFood,"
+        "content": "                    newBudget.getRemainingBudget(),"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                    newBudget.getRemainingBudget(),"
+        "content": "                    newBudget.getRemainingDailyBudget()));"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                    newBudget.getRemainingDailyBudget()));"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "SHAUNGOH97"
-        },
         "content": "        } else {"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 137,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "            saveTransaction(model, purchase);"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 138,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "            return new CommandResult(COMMAND_WORD, String.format("
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 139,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "                    MESSAGE_SUCCESS, nameOfFood, priceOfFood));"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 140,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 141,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    @Override"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "leslieharland"
-        },
         "content": "    public boolean needToSaveCommand() {"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 144,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "        return true;"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 145,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @Override"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "            return true;"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            return true;"
+        "content": "        }"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "        if (!(other instanceof SelectItemCommand)) {"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        if (!(other instanceof SelectItemCommand)) {"
+        "content": "            return false;"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "leslieharland"
-        },
         "content": "        }"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 156,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": ""
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 157,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "        SelectItemCommand otherItem \u003d (SelectItemCommand) other;"
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 158,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "        return otherItem.index.orElseGet(() -\u003e Index.fromZeroBased(0))"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 159,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "            .equals(index.orElseGet(() -\u003e Index.fromZeroBased(0)))"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 160,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "            \u0026\u0026 otherItem.foodName.orElseGet(() -\u003e \"\").equals(foodName.orElseGet(() -\u003e \"\"));"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 161,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 162,
         "author": {
           "gitId": "leslieharland"
         },
@@ -28314,7 +28309,7 @@
     ],
     "authorContributionMap": {
       "leslieharland": 33,
-      "lsjxavier": 49,
+      "lsjxavier": 48,
       "SHAUNGOH97": 81
     }
   },
@@ -75367,520 +75362,520 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "import javafx.scene.layout.Region;"
+        "content": "import javafx.scene.control.ProgressBar;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import javafx.scene.layout.StackPane;"
+        "content": "import javafx.scene.layout.Region;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import javafx.scene.layout.VBox;"
+        "content": "import javafx.scene.layout.StackPane;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import javafx.stage.Stage;"
+        "content": "import javafx.scene.layout.VBox;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "import javafx.stage.Stage;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import seedu.foodiebot.MainApp;"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import seedu.foodiebot.commons.core.GuiSettings;"
+        "content": "import seedu.foodiebot.MainApp;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import seedu.foodiebot.commons.core.LogsCenter;"
+        "content": "import seedu.foodiebot.commons.core.GuiSettings;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import seedu.foodiebot.logic.Logic;"
+        "content": "import seedu.foodiebot.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "import seedu.foodiebot.logic.Logic;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import seedu.foodiebot.logic.commands.ActionCommandResult;"
+        "content": ""
       },
       {
         "lineNumber": 26,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "import seedu.foodiebot.logic.commands.ActionCommandResult;"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "ignatiusong"
         },
         "content": "import seedu.foodiebot.logic.commands.BackCommand;"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 28,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "import seedu.foodiebot.logic.commands.BudgetCommand;"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 29,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.commands.CommandResult;"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 30,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.commands.DirectionsCommandResult;"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 31,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.commands.EnterCanteenCommand;"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 32,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.commands.FavoritesCommand;"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 33,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.commands.GoToCanteenCommand;"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 34,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.commands.ListCommand;"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 35,
         "author": {
           "gitId": "Samanthaseahpl"
         },
         "content": "import seedu.foodiebot.logic.commands.RandomizeCommand;"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 36,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "import seedu.foodiebot.logic.commands.RateCommand;"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 37,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "import seedu.foodiebot.logic.commands.ReportCommand;"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 38,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "import seedu.foodiebot.logic.commands.ReviewCommand;"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 39,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "import seedu.foodiebot.logic.commands.SelectItemCommand;"
+      },
+      {
+        "lineNumber": 40,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "import seedu.foodiebot.logic.commands.TransactionsCommand;"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 41,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.commands.exceptions.CommandException;"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 42,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.parser.ParserContext;"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 43,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "import seedu.foodiebot.logic.parser.exceptions.ParseException;"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 44,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "import seedu.foodiebot.model.Model;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "import seedu.foodiebot.model.budget.Budget;"
+      },
+      {
+        "lineNumber": 46,
         "author": {
           "gitId": "ignatiusong"
         },
         "content": "import seedu.foodiebot.model.canteen.Canteen;"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 47,
         "author": {
           "gitId": "ignatiusong"
         },
         "content": "import seedu.foodiebot.model.canteen.Stall;"
       },
       {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": " * Base class for creating a javafx scene."
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": " */"
-      },
-      {
         "lineNumber": 48,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "public class BaseScene {"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    public static final String FXML_FILE_FOLDER \u003d \"/view/\";"
+        "content": "/**"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": " * Base class for creating a javafx scene."
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    protected MenuItem helpMenuItem;"
+        "content": " */"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "public class BaseScene {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    protected Logic logic;"
+        "content": "    public static final String FXML_FILE_FOLDER \u003d \"/view/\";"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    protected Stage primaryStage;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    // Independent Ui parts residing in this Ui container"
+        "content": "    protected MenuItem helpMenuItem;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
+        "content": ""
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "    protected Logic logic;"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    private StackPane statusbarPlaceholder;"
+        "content": "    protected Model model;"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "    protected Stage primaryStage;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private StackPane commandBoxPlaceholder;"
+        "content": "    // Independent Ui parts residing in this Ui container"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private StackPane listPanelPlaceholder;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    private StackPane statusbarPlaceholder;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private ResultDisplay resultDisplay;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "    private StackPane commandBoxPlaceholder;"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private StackPane resultDisplayPlaceholder;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "    private StackPane listPanelPlaceholder;"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private VBox vbox;"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "    private ResultDisplay resultDisplay;"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private VBox stallList;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    private StackPane resultDisplayPlaceholder;"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
         "content": "    @FXML"
       },
       {
         "lineNumber": 73,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "    private Label topLabel;"
+        "content": "    private VBox vbox;"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
         "content": "    @FXML"
       },
       {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    private VBox stallList;"
+      },
+      {
         "lineNumber": 76,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "    private Label bottomLabel;"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "ignatiusong"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    private HelpWindow helpWindow;"
+        "content": "    private Label topLabel;"
       },
       {
         "lineNumber": 79,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
         "content": ""
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": ""
+        "content": "    private Label bottomLabel;"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    public BaseScene(Stage primaryStage, Logic logic) {"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        this.primaryStage \u003d primaryStage;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        this.logic \u003d logic;"
+        "content": "    private ProgressBar budgetTracker;"
       },
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        fillInnerParts();"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        helpWindow \u003d new HelpWindow();"
+        "content": "    private HelpWindow helpWindow;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        showPinnedItem(false);"
+        "content": ""
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 89,
@@ -75894,441 +75889,441 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private static URL getFxmlFileUrl(String fxmlFileName) {"
+        "content": "    public BaseScene(Stage primaryStage, Logic logic) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        requireNonNull(fxmlFileName);"
+        "content": "        this.primaryStage \u003d primaryStage;"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        String fxmlFileNameWithFolder \u003d FXML_FILE_FOLDER + fxmlFileName;"
+        "content": "        this.logic \u003d logic;"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        URL fxmlFileUrl \u003d MainApp.class.getResource(fxmlFileNameWithFolder);"
+        "content": "        fillInnerParts();"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        return requireNonNull(fxmlFileUrl);"
+        "content": "        helpWindow \u003d new HelpWindow();"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "        showPinnedItem(false);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    void addToListPanel(UiPart\u003cRegion\u003e regionUiPart) {"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        listPanelPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#listPanelPlaceholder\");"
+        "content": "    private static URL getFxmlFileUrl(String fxmlFileName) {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        listPanelPlaceholder.getChildren().clear();"
+        "content": "        requireNonNull(fxmlFileName);"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        listPanelPlaceholder.getChildren().add(regionUiPart.getRoot());"
+        "content": "        String fxmlFileNameWithFolder \u003d FXML_FILE_FOLDER + fxmlFileName;"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "        URL fxmlFileUrl \u003d MainApp.class.getResource(fxmlFileNameWithFolder);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "        return requireNonNull(fxmlFileUrl);"
       },
       {
         "lineNumber": 103,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 104,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "     * Clears the extraListPanel and adds the regionUiPart"
+        "content": ""
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     *"
+        "content": "    void addToListPanel(UiPart\u003cRegion\u003e regionUiPart) {"
       },
       {
         "lineNumber": 106,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "     * @param regionUiPart"
+        "content": "        listPanelPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#listPanelPlaceholder\");"
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "        listPanelPlaceholder.getChildren().clear();"
       },
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "    void addToExtraListPanel(UiPart\u003cRegion\u003e regionUiPart) {"
+        "content": "        listPanelPlaceholder.getChildren().add(regionUiPart.getRoot());"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        StackPane extraListPanelPlaceholder \u003d (StackPane) primaryStage.getScene().lookup("
+        "content": "    }"
       },
       {
         "lineNumber": 110,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "            \"#extraListPanelPlaceholder\");"
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "ignatiusong"
         },
-        "content": "        extraListPanelPlaceholder.getChildren().clear();"
+        "content": "    /**"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "ignatiusong"
         },
-        "content": "        extraListPanelPlaceholder.getChildren().add(regionUiPart.getRoot());"
+        "content": "     * Clears the extraListPanel and adds the regionUiPart"
       },
       {
         "lineNumber": 113,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "     *"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "ignatiusong"
         },
-        "content": ""
+        "content": "     * @param regionUiPart"
       },
       {
         "lineNumber": 115,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 116,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "     * Fills up all the placeholders of this window."
+        "content": "    void addToExtraListPanel(UiPart\u003cRegion\u003e regionUiPart) {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "        StackPane extraListPanelPlaceholder \u003d (StackPane) primaryStage.getScene().lookup("
       },
       {
         "lineNumber": 118,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    void fillInnerParts() {"
+        "content": "            \"#extraListPanelPlaceholder\");"
       },
       {
         "lineNumber": 119,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
+        "content": "        extraListPanelPlaceholder.getChildren().clear();"
       },
       {
         "lineNumber": 120,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "        commandBoxPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#commandBoxPlaceholder\");"
+        "content": "        extraListPanelPlaceholder.getChildren().add(regionUiPart.getRoot());"
       },
       {
         "lineNumber": 121,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 122,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
+        "content": ""
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getFoodieBotFilePath());"
+        "content": "     * Fills up all the placeholders of this window."
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        statusbarPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#statusbarPlaceholder\");"
+        "content": "     */"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
+        "content": "    void fillInnerParts() {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        commandBox.getCommandTextField().requestFocus();"
+        "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "        commandBoxPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#commandBoxPlaceholder\");"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        vbox \u003d (VBox) primaryStage.getScene().lookup(\"#vbox\");"
+        "content": ""
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        stallList \u003d (VBox) primaryStage.getScene().lookup(\"#stallList\");"
+        "content": "        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getFoodieBotFilePath());"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    void updateStatusFooter(String message) {"
+        "content": "        statusbarPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#statusbarPlaceholder\");"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        statusbarPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#statusbarPlaceholder\");"
+        "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        statusbarPlaceholder.getChildren().clear();"
+        "content": "        commandBox.getCommandTextField().requestFocus();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        statusbarPlaceholder.getChildren().add(new Label(message));"
+        "content": ""
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "        vbox \u003d (VBox) primaryStage.getScene().lookup(\"#vbox\");"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "        stallList \u003d (VBox) primaryStage.getScene().lookup(\"#stallList\");"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    StackPane getResultDisplayPlaceholder() {"
+        "content": "    }"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        resultDisplayPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#resultDisplayPlaceholder\");"
+        "content": ""
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        return resultDisplayPlaceholder;"
+        "content": "    void updateStatusFooter(String message) {"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "        statusbarPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#statusbarPlaceholder\");"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "        statusbarPlaceholder.getChildren().clear();"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    ResultDisplay getResultDisplay() {"
+        "content": "        statusbarPlaceholder.getChildren().add(new Label(message));"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        resultDisplay \u003d new ResultDisplay();"
+        "content": "    }"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        return resultDisplay;"
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "    StackPane getResultDisplayPlaceholder() {"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    /**"
+        "content": "        resultDisplayPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#resultDisplayPlaceholder\");"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * ."
+        "content": "        return resultDisplayPlaceholder;"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    void updateResultDisplay(String result) {"
+        "content": ""
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        resultDisplayPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#resultDisplayPlaceholder\");"
+        "content": "    ResultDisplay getResultDisplay() {"
       },
       {
         "lineNumber": 153,
@@ -76342,294 +76337,294 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        if (!result.isEmpty()) {"
+        "content": "        return resultDisplay;"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            getResultDisplay().setFeedbackToUser(result);"
+        "content": "    }"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
+        "content": "    /**"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
+        "content": "     * ."
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    void updateResultDisplay(String result) {"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    void updateResultDisplayContextAware(String result) {"
+        "content": "        resultDisplayPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#resultDisplayPlaceholder\");"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        if (!ParserContext.getCurrentContext().equals(ParserContext.DIRECTIONS_CONTEXT)) {"
+        "content": "        resultDisplay \u003d new ResultDisplay();"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            updateResultDisplay(result);"
+        "content": "        if (!result.isEmpty()) {"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
+        "content": "            getResultDisplay().setFeedbackToUser(result);"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "            resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    /** Fills the stallListPanelRegion */"
+        "content": "    }"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": ""
       },
       {
         "lineNumber": 168,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    public void handleListStalls() {"
+        "content": "    /**"
       },
       {
         "lineNumber": 169,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        Canteen cureentCanteen \u003d ParserContext.getCurrentCanteen().get();"
+        "content": "     * ."
       },
       {
         "lineNumber": 170,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "     * @param result"
       },
       {
         "lineNumber": 171,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        showPinnedItem(false);"
+        "content": "     * @param budget"
       },
       {
         "lineNumber": 172,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        VBox stallList \u003d (VBox) loadFxmlFile(\"PinnedItem.fxml\");"
+        "content": "     */"
       },
       {
         "lineNumber": 173,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "    void updateResultDisplayBudget(String result, Budget budget) {"
       },
       {
         "lineNumber": 174,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
+        "content": "        resultDisplayPlaceholder \u003d (StackPane) primaryStage.getScene().lookup(\"#resultDisplayPlaceholder\");"
       },
       {
         "lineNumber": 175,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        topLabel.setText(\"List of Stalls in \" + cureentCanteen.getName());"
+        "content": "        resultDisplay \u003d new ResultDisplay();"
       },
       {
         "lineNumber": 176,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "        if (!result.isEmpty()) {"
       },
       {
         "lineNumber": 177,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        vbox.getChildren().add(vbox.getChildren().size() - 1, stallList);"
+        "content": "            getResultDisplay().setFeedbackToUser(result, budget);"
       },
       {
         "lineNumber": 178,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        addToListPanel(new StallsListPanel(logic.getFilteredStallList(true)));"
+        "content": "            resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
       },
       {
         "lineNumber": 179,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        addToExtraListPanel(new CanteenListPanel(FXCollections.observableArrayList("
+        "content": "        }"
       },
       {
         "lineNumber": 180,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "            ParserContext.getCurrentCanteen().get()), false));"
+        "content": "    }"
       },
       {
         "lineNumber": 181,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
         "content": ""
       },
       {
         "lineNumber": 182,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        bottomLabel \u003d (Label) primaryStage.getScene().lookup(\"#bottomLabel\");"
+        "content": "    /**"
       },
       {
         "lineNumber": 183,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    }"
+        "content": "     * /"
       },
       {
         "lineNumber": 184,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "     * @param result"
       },
       {
         "lineNumber": 185,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * Fills the foodListPanel region."
+        "content": "    void updateResultDisplayContextAware(String result) {"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "        if (!ParserContext.getCurrentContext().equals(ParserContext.DIRECTIONS_CONTEXT)) {"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "            updateResultDisplay(result);"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    public void handleListFood() {"
+        "content": "        }"
       },
       {
         "lineNumber": 190,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "        Stall currentStall \u003d ParserContext.getCurrentStall().get();"
+        "content": "    }"
       },
       {
         "lineNumber": 191,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "        topLabel.setText(\"List of Foods in \" + currentStall.getName());"
+        "content": ""
       },
       {
         "lineNumber": 192,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "leslieharland"
         },
-        "content": "        if (!ParserContext.getPreviousContext().equals(\"RANDOMIZE\")) {"
+        "content": "    /** Fills the stallListPanelRegion */"
       },
       {
         "lineNumber": 193,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "            bottomLabel \u003d (Label) primaryStage.getScene().lookup(\"#bottomLabel\");"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 194,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "            bottomLabel.setText(\"Current Stall\");"
+        "content": "    public void handleListStalls() {"
       },
       {
         "lineNumber": 195,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "ignatiusong"
         },
-        "content": "        }"
+        "content": "        Canteen cureentCanteen \u003d ParserContext.getCurrentCanteen().get();"
       },
       {
         "lineNumber": 196,
@@ -76643,343 +76638,343 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        addToListPanel(new FoodListPanel(logic.getFilteredFoodList(true)));"
+        "content": "        showPinnedItem(false);"
       },
       {
         "lineNumber": 198,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "        addToExtraListPanel(new StallsListPanel(FXCollections.observableArrayList("
+        "content": "        VBox stallList \u003d (VBox) loadFxmlFile(\"PinnedItem.fxml\");"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "ignatiusong"
         },
-        "content": "            ParserContext.getCurrentStall().get())));"
+        "content": ""
       },
       {
         "lineNumber": 200,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    }"
+        "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
       },
       {
         "lineNumber": 201,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": ""
+        "content": "        topLabel.setText(\"List of Stalls in \" + cureentCanteen.getName());"
       },
       {
         "lineNumber": 202,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * Fills the foodListPanel region."
+        "content": "        vbox.getChildren().add(vbox.getChildren().size() - 1, stallList);"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "        addToListPanel(new StallsListPanel(logic.getFilteredStallList(true)));"
       },
       {
         "lineNumber": 205,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    @FXML"
+        "content": "        addToExtraListPanel(new CanteenListPanel(FXCollections.observableArrayList("
       },
       {
         "lineNumber": 206,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    public void handleListFavorites() {"
+        "content": "            ParserContext.getCurrentCanteen().get()), false));"
       },
       {
         "lineNumber": 207,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "        changeScene(\"MainScene.fxml\");"
+        "content": ""
       },
       {
         "lineNumber": 208,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "        new BaseScene(primaryStage, logic);"
+        "content": "        bottomLabel \u003d (Label) primaryStage.getScene().lookup(\"#bottomLabel\");"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        StackPane extraListPanelPlaceholder \u003d (StackPane) primaryStage.getScene().lookup("
+        "content": "    }"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            \"#extraListPanelPlaceholder\");"
+        "content": ""
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        if (extraListPanelPlaceholder !\u003d null) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            extraListPanelPlaceholder.getChildren().clear();"
+        "content": "     * Fills the foodListPanel region."
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 215,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
-      },
-      {
-        "lineNumber": 216,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": "        topLabel.setText(\"List of Favorites\");"
-      },
-      {
-        "lineNumber": 217,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 218,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "        addToListPanel(new FoodListPanel(logic.getFilteredFavoriteFoodList(false)));"
-      },
-      {
-        "lineNumber": 219,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 220,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 221,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 222,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 223,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "     * ."
-      },
-      {
-        "lineNumber": 224,
-        "author": {
-          "gitId": "leslieharland"
-        },
         "content": "     */"
       },
       {
-        "lineNumber": 225,
+        "lineNumber": 214,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "    @FXML"
       },
       {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    public void handleListFood() {"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": "        Stall currentStall \u003d ParserContext.getCurrentStall().get();"
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": "        topLabel.setText(\"List of Foods in \" + currentStall.getName());"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "        if (!ParserContext.getPreviousContext().equals(\"RANDOMIZE\")) {"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": "            bottomLabel \u003d (Label) primaryStage.getScene().lookup(\"#bottomLabel\");"
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": "            bottomLabel.setText(\"Current Stall\");"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        addToListPanel(new FoodListPanel(logic.getFilteredFoodList(true)));"
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": "        addToExtraListPanel(new StallsListPanel(FXCollections.observableArrayList("
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": "            ParserContext.getCurrentStall().get())));"
+      },
+      {
         "lineNumber": 226,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "    public void handleListCanteens(CommandResult commandResult) {"
-      },
-      {
-        "lineNumber": 227,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "        changeScene(\"MainScene.fxml\");"
-      },
-      {
-        "lineNumber": 228,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "        new MainScene(primaryStage, logic);"
-      },
-      {
-        "lineNumber": 229,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 230,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
-      },
-      {
-        "lineNumber": 231,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": "        topLabel.setText(\"List of Canteens in NUS\");"
-      },
-      {
-        "lineNumber": 232,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 233,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "        addToListPanel(new CanteenListPanel("
-      },
-      {
-        "lineNumber": 234,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "            commandResult.isLocationSpecified()"
-      },
-      {
-        "lineNumber": 235,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                ? logic.getFilteredCanteenListSortedByDistance()"
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                : logic.getFilteredCanteenList(), commandResult.isLocationSpecified()));"
-      },
-      {
-        "lineNumber": 237,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "        showPinnedItem(false);"
-      },
-      {
-        "lineNumber": 238,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 227,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 228,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 229,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "     * Fills the foodListPanel region."
+      },
+      {
+        "lineNumber": 230,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 231,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 232,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    public void handleListFavorites() {"
+      },
+      {
+        "lineNumber": 233,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        changeScene(\"MainScene.fxml\");"
+      },
+      {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        new BaseScene(primaryStage, logic);"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        StackPane extraListPanelPlaceholder \u003d (StackPane) primaryStage.getScene().lookup("
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            \"#extraListPanelPlaceholder\");"
+      },
+      {
+        "lineNumber": 237,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        if (extraListPanelPlaceholder !\u003d null) {"
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            extraListPanelPlaceholder.getChildren().clear();"
+      },
+      {
         "lineNumber": 239,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    /** .*/"
+        "content": "        }"
       },
       {
         "lineNumber": 240,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "    void showPinnedItem(boolean value) {"
+        "content": ""
       },
       {
         "lineNumber": 241,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "        if (!value) {"
+        "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
       },
       {
         "lineNumber": 242,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "            if (vbox !\u003d null) {"
+        "content": "        topLabel.setText(\"List of Favorites\");"
       },
       {
         "lineNumber": 243,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "                vbox.getChildren().remove(stallList);"
+        "content": ""
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            }"
+        "content": "        addToListPanel(new FoodListPanel(logic.getFilteredFavoriteFoodList(false)));"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 246,
@@ -77007,7 +77002,7 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * Fills the foodListPanel region."
+        "content": "     * ."
       },
       {
         "lineNumber": 250,
@@ -77019,1461 +77014,1650 @@
       {
         "lineNumber": 251,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
         "content": "    @FXML"
       },
       {
         "lineNumber": 252,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
-        "content": "    public void handleListTransactions() {"
+        "content": "    public void handleListCanteens(CommandResult commandResult) {"
       },
       {
         "lineNumber": 253,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "        // changeScene(\"MainScene.fxml\");"
-      },
-      {
-        "lineNumber": 254,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "        // new MainScene(primaryStage, logic);"
-      },
-      {
-        "lineNumber": 255,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": "        topLabel.setText(\"List of Transactions\");"
-      },
-      {
-        "lineNumber": 256,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "        addToListPanel(new TransactionsPanel(logic.getFilteredTransactionsList()));"
-      },
-      {
-        "lineNumber": 257,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 258,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 259,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 260,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "    /** Fills the randomize panel. */"
-      },
-      {
-        "lineNumber": 261,
-        "author": {
-          "gitId": "Samanthaseahpl"
-        },
-        "content": "    @FXML"
-      },
-      {
-        "lineNumber": 262,
-        "author": {
-          "gitId": "Samanthaseahpl"
-        },
-        "content": "    public void handleListRandomize() {"
-      },
-      {
-        "lineNumber": 263,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "        changeScene(\"MainScene.fxml\");"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 254,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        new BaseScene(primaryStage, logic);"
+        "content": "        new MainScene(primaryStage, logic);"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 255,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 256,
         "author": {
           "gitId": "ignatiusong"
         },
         "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 257,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "ignatiusong"
         },
-        "content": "        topLabel.setText(\"Randomize Option: \");"
+        "content": "        topLabel.setText(\"List of Canteens in NUS\");"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 258,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "ignatiusong"
         },
-        "content": "        addToListPanel(new RandomizeListPanel(logic.getFilteredRandomizeList()));"
+        "content": ""
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 259,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "leslieharland"
+        },
+        "content": "        addToListPanel(new CanteenListPanel("
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            commandResult.isLocationSpecified()"
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                ? logic.getFilteredCanteenListSortedByDistance()"
+      },
+      {
+        "lineNumber": 262,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                : logic.getFilteredCanteenList(), commandResult.isLocationSpecified()));"
+      },
+      {
+        "lineNumber": 263,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        showPinnedItem(false);"
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "leslieharland"
         },
         "content": "    }"
       },
       {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    /** .*/"
+      },
+      {
+        "lineNumber": 266,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    void showPinnedItem(boolean value) {"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        if (!value) {"
+      },
+      {
+        "lineNumber": 268,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            if (vbox !\u003d null) {"
+      },
+      {
         "lineNumber": 269,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "                vbox.getChildren().remove(stallList);"
       },
       {
         "lineNumber": 270,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    /**"
+        "content": "            }"
       },
       {
         "lineNumber": 271,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * The method passed from logic to UI."
+        "content": "        }"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    protected CommandResult executeCommand(String commandText)"
+        "content": ""
       },
       {
         "lineNumber": 274,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        throws CommandException, ParseException, IOException {"
+        "content": "    /**"
       },
       {
         "lineNumber": 275,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        CommandResult commandResult \u003d null;"
+        "content": "     * Fills the foodListPanel region."
       },
       {
         "lineNumber": 276,
         "author": {
-          "gitId": "ignatiusong"
+          "gitId": "leslieharland"
         },
-        "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
+        "content": "     */"
       },
       {
         "lineNumber": 277,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "lsjxavier"
         },
-        "content": "        try {"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 278,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "lsjxavier"
         },
-        "content": "            commandResult \u003d logic.execute(commandText);"
+        "content": "    public void handleListTransactions() {"
       },
       {
         "lineNumber": 279,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "lsjxavier"
         },
-        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
+        "content": "        // changeScene(\"MainScene.fxml\");"
       },
       {
         "lineNumber": 280,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "        // new MainScene(primaryStage, logic);"
       },
       {
         "lineNumber": 281,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "            switch (commandResult.commandName) {"
+        "content": "        topLabel.setText(\"List of Transactions\");"
       },
       {
         "lineNumber": 282,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "lsjxavier"
         },
-        "content": "            case ListCommand.COMMAND_WORD:"
+        "content": "        addToListPanel(new TransactionsPanel(logic.getFilteredTransactionsList()));"
       },
       {
         "lineNumber": 283,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "lsjxavier"
         },
-        "content": "                handleListCanteens(commandResult);"
+        "content": "    }"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                ParserContext.setCurrentContext(ParserContext.MAIN_CONTEXT);"
+        "content": ""
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+        "content": "    /** Fills the randomize panel. */"
       },
       {
         "lineNumber": 286,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": "                break;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 287,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": "            case GoToCanteenCommand"
+        "content": "    public void handleListRandomize() {"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    .COMMAND_WORD:"
+        "content": "        changeScene(\"MainScene.fxml\");"
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                if (commandResult instanceof DirectionsCommandResult \u0026\u0026 ParserContext.getCurrentContext()"
+        "content": "        new BaseScene(primaryStage, logic);"
       },
       {
         "lineNumber": 290,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "                    .equals(ParserContext.MAIN_CONTEXT)) {"
+        "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
       },
       {
         "lineNumber": 291,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": "                    //new DirectionsWindowScene(getPrimaryStage(), logic, (DirectionsCommandResult) commandResult)"
+        "content": "        topLabel.setText(\"Randomize Option: \");"
       },
       {
         "lineNumber": 292,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": "                    // .show();"
+        "content": "        addToListPanel(new RandomizeListPanel(logic.getFilteredRandomizeList()));"
       },
       {
         "lineNumber": 293,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 294,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": "                    VBox pane \u003d (VBox) loadFxmlFile(\"NoResultDisplayScene.fxml\");"
+        "content": ""
       },
       {
         "lineNumber": 295,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    /* This is a negative example to load ui"
+        "content": "    /**"
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    Scene scene \u003d new Scene(pane); // optionally specify dimensions too"
+        "content": "     * The method passed from logic to UI."
       },
       {
         "lineNumber": 297,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    getPrimaryStage().setScene(scene);"
+        "content": "     */"
       },
       {
         "lineNumber": 298,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    */"
+        "content": "    protected CommandResult executeCommand(String commandText)"
       },
       {
         "lineNumber": 299,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    ParserContext.setCurrentContext(ParserContext.DIRECTIONS_CONTEXT);"
+        "content": "        throws CommandException, ParseException, IOException {"
       },
       {
         "lineNumber": 300,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    primaryStage.getScene().setRoot(pane);"
+        "content": "        CommandResult commandResult \u003d null;"
       },
       {
         "lineNumber": 301,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "ignatiusong"
         },
-        "content": "                    new DirectionsScene(primaryStage, logic, (DirectionsCommandResult) commandResult);"
+        "content": "        topLabel \u003d (Label) primaryStage.getScene().lookup(\"#topLabel\");"
       },
       {
         "lineNumber": 302,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                }"
+        "content": "        try {"
       },
       {
         "lineNumber": 303,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                break;"
+        "content": "            commandResult \u003d logic.execute(commandText);"
       },
       {
         "lineNumber": 304,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            case EnterCanteenCommand.COMMAND_WORD:"
+        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 305,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                if (ParserContext.getCurrentContext().equals(ParserContext.MAIN_CONTEXT)"
+        "content": "            switch (commandResult.commandName) {"
       },
       {
         "lineNumber": 306,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    \u0026\u0026 ParserContext.getCurrentCanteen().isPresent()) {"
+        "content": "            case ListCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 307,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    ParserContext.setCurrentContext(ParserContext.CANTEEN_CONTEXT);"
+        "content": "                handleListCanteens(commandResult);"
       },
       {
         "lineNumber": 308,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    handleListStalls();"
+        "content": "                ParserContext.setCurrentContext(ParserContext.MAIN_CONTEXT);"
       },
       {
         "lineNumber": 309,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                } else if (ParserContext.getCurrentContext().equals(ParserContext.CANTEEN_CONTEXT)"
+        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 310,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    \u0026\u0026 ParserContext.getCurrentStall().isPresent()) {"
+        "content": "                break;"
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    ParserContext.setCurrentContext(ParserContext.STALL_CONTEXT);"
+        "content": "            case GoToCanteenCommand"
       },
       {
         "lineNumber": 312,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    handleListFood();"
+        "content": "                    .COMMAND_WORD:"
       },
       {
         "lineNumber": 313,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "leslieharland"
         },
-        "content": "                } else if (ParserContext.getCurrentContext().equals(ParserContext.RANDOMIZE_CONTEXT)"
+        "content": "                if (commandResult instanceof DirectionsCommandResult \u0026\u0026 ParserContext.getCurrentContext()"
       },
       {
         "lineNumber": 314,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "leslieharland"
         },
-        "content": "                        \u0026\u0026 ParserContext.getCurrentStall().isPresent()) {"
+        "content": "                    .equals(ParserContext.MAIN_CONTEXT)) {"
       },
       {
         "lineNumber": 315,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "leslieharland"
         },
-        "content": "                    ParserContext.setCurrentContext(ParserContext.STALL_CONTEXT);"
+        "content": "                    //new DirectionsWindowScene(getPrimaryStage(), logic, (DirectionsCommandResult) commandResult)"
       },
       {
         "lineNumber": 316,
         "author": {
-          "gitId": "Samanthaseahpl"
+          "gitId": "leslieharland"
         },
-        "content": "                    handleListFood();"
+        "content": "                    // .show();"
       },
       {
         "lineNumber": 317,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                }"
+        "content": ""
       },
       {
         "lineNumber": 318,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+        "content": "                    VBox pane \u003d (VBox) loadFxmlFile(\"NoResultDisplayScene.fxml\");"
       },
       {
         "lineNumber": 319,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                break;"
+        "content": "                    /* This is a negative example to load ui"
       },
       {
         "lineNumber": 320,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            case FavoritesCommand.COMMAND_WORD:"
+        "content": "                    Scene scene \u003d new Scene(pane); // optionally specify dimensions too"
       },
       {
         "lineNumber": 321,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                assert commandResult instanceof ActionCommandResult;"
+        "content": "                    getPrimaryStage().setScene(scene);"
       },
       {
         "lineNumber": 322,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                switch (((ActionCommandResult) commandResult).action) {"
+        "content": "                    */"
       },
       {
         "lineNumber": 323,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                case \"view\":"
+        "content": "                    ParserContext.setCurrentContext(ParserContext.DIRECTIONS_CONTEXT);"
       },
       {
         "lineNumber": 324,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    handleListFavorites();"
+        "content": "                    primaryStage.getScene().setRoot(pane);"
       },
       {
         "lineNumber": 325,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    break;"
+        "content": "                    new DirectionsScene(primaryStage, logic, (DirectionsCommandResult) commandResult);"
       },
       {
         "lineNumber": 326,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                case \"set\":"
+        "content": "                }"
       },
       {
         "lineNumber": 327,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    break;"
+        "content": "                break;"
       },
       {
         "lineNumber": 328,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                case \"remove\":"
+        "content": "            case EnterCanteenCommand.COMMAND_WORD:"
       },
       {
         "lineNumber": 329,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    handleListFavorites();"
+        "content": "                if (ParserContext.getCurrentContext().equals(ParserContext.MAIN_CONTEXT)"
       },
       {
         "lineNumber": 330,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    break;"
+        "content": "                    \u0026\u0026 ParserContext.getCurrentCanteen().isPresent()) {"
       },
       {
         "lineNumber": 331,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                default:"
+        "content": "                    ParserContext.setCurrentContext(ParserContext.CANTEEN_CONTEXT);"
       },
       {
         "lineNumber": 332,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                    break;"
+        "content": "                    handleListStalls();"
       },
       {
         "lineNumber": 333,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                }"
+        "content": "                } else if (ParserContext.getCurrentContext().equals(ParserContext.CANTEEN_CONTEXT)"
       },
       {
         "lineNumber": 334,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+        "content": "                    \u0026\u0026 ParserContext.getCurrentStall().isPresent()) {"
       },
       {
         "lineNumber": 335,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                break;"
+        "content": "                    ParserContext.setCurrentContext(ParserContext.STALL_CONTEXT);"
       },
       {
         "lineNumber": 336,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "            case TransactionsCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 337,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                handleListTransactions();"
-      },
-      {
-        "lineNumber": 338,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 339,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 340,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "            case ReportCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 341,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                changeScene(\"MainScene.fxml\");"
-      },
-      {
-        "lineNumber": 342,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                // VBox pane \u003d (VBox) loadFxmlFile(\"NoResultDisplayScene.fxml\");"
-      },
-      {
-        "lineNumber": 343,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                // primaryStage.getScene().setRoot(pane);"
-      },
-      {
-        "lineNumber": 344,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                new ReportScene(primaryStage, logic);"
-      },
-      {
-        "lineNumber": 345,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 346,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 347,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "            case BudgetCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 348,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                handleListTransactions();"
-      },
-      {
-        "lineNumber": 349,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 350,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 351,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "            case RateCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 352,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                handleListTransactions();"
-      },
-      {
-        "lineNumber": 353,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 354,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 355,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "            case ReviewCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 356,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                handleListTransactions();"
-      },
-      {
-        "lineNumber": 357,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 358,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 359,
-        "author": {
-          "gitId": "Samanthaseahpl"
-        },
-        "content": "            case RandomizeCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 360,
-        "author": {
-          "gitId": "Samanthaseahpl"
-        },
-        "content": "                handleListRandomize();"
-      },
-      {
-        "lineNumber": 361,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 362,
-        "author": {
-          "gitId": "Samanthaseahpl"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 363,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": "            case BackCommand.COMMAND_WORD:"
-      },
-      {
-        "lineNumber": 364,
-        "author": {
-          "gitId": "ignatiusong"
-        },
-        "content": "                topLabel.setText(\"\");"
-      },
-      {
-        "lineNumber": 365,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                switch (ParserContext.getCurrentContext()) {"
-      },
-      {
-        "lineNumber": 366,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                case ParserContext.MAIN_CONTEXT:"
-      },
-      {
-        "lineNumber": 367,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    handleListCanteens(commandResult);"
-      },
-      {
-        "lineNumber": 368,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 369,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                case ParserContext.CANTEEN_CONTEXT:"
-      },
-      {
-        "lineNumber": 370,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    handleListStalls();"
-      },
-      {
-        "lineNumber": 371,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 372,
-        "author": {
-          "gitId": "Samanthaseahpl"
-        },
-        "content": "                case ParserContext.RANDOMIZE_CONTEXT:"
-      },
-      {
-        "lineNumber": 373,
-        "author": {
-          "gitId": "Samanthaseahpl"
-        },
-        "content": "                    handleListRandomize();"
-      },
-      {
-        "lineNumber": 374,
-        "author": {
-          "gitId": "Samanthaseahpl"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 375,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                case ParserContext.DIRECTIONS_CONTEXT:"
-      },
-      {
-        "lineNumber": 376,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    handleListCanteens(commandResult);"
-      },
-      {
-        "lineNumber": 377,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 378,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                case ParserContext.FAVORITE_CONTEXT:"
-      },
-      {
-        "lineNumber": 379,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    switch (ParserContext.getPreviousContext()) {"
-      },
-      {
-        "lineNumber": 380,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    case ParserContext.STALL_CONTEXT:"
-      },
-      {
-        "lineNumber": 381,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                        handleListStalls();"
-      },
-      {
-        "lineNumber": 382,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                        ParserContext.setCurrentContext(ParserContext.CANTEEN_CONTEXT);"
-      },
-      {
-        "lineNumber": 383,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                        break;"
-      },
-      {
-        "lineNumber": 384,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    default:"
-      },
-      {
-        "lineNumber": 385,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                        handleListCanteens(commandResult);"
-      },
-      {
-        "lineNumber": 386,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                        ParserContext.setCurrentContext(ParserContext.MAIN_CONTEXT);"
-      },
-      {
-        "lineNumber": 387,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                        break;"
-      },
-      {
-        "lineNumber": 388,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    }"
-      },
-      {
-        "lineNumber": 389,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                    break;"
-      },
-      {
-        "lineNumber": 390,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                case ParserContext.STALL_CONTEXT:"
-      },
-      {
-        "lineNumber": 391,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "                    handleListFood();"
       },
       {
-        "lineNumber": 392,
+        "lineNumber": 337,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": "                    break;"
+        "content": "                } else if (ParserContext.getCurrentContext().equals(ParserContext.RANDOMIZE_CONTEXT)"
       },
       {
-        "lineNumber": 393,
+        "lineNumber": 338,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": "                default:"
+        "content": "                        \u0026\u0026 ParserContext.getCurrentStall().isPresent()) {"
       },
       {
-        "lineNumber": 394,
+        "lineNumber": 339,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "Samanthaseahpl"
         },
-        "content": "                    break;"
+        "content": "                    ParserContext.setCurrentContext(ParserContext.STALL_CONTEXT);"
       },
       {
-        "lineNumber": 395,
+        "lineNumber": 340,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "                    handleListFood();"
+      },
+      {
+        "lineNumber": 341,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "                }"
       },
       {
-        "lineNumber": 396,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                updateResultDisplayContextAware(commandResult.getFeedbackToUser());"
-      },
-      {
-        "lineNumber": 397,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "                break;"
-      },
-      {
-        "lineNumber": 398,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": "            default:"
-      },
-      {
-        "lineNumber": 399,
+        "lineNumber": 342,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
       },
       {
-        "lineNumber": 400,
+        "lineNumber": 343,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "                break;"
       },
       {
-        "lineNumber": 401,
+        "lineNumber": 344,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            }"
+        "content": "            case FavoritesCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 345,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                assert commandResult instanceof ActionCommandResult;"
+      },
+      {
+        "lineNumber": 346,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                switch (((ActionCommandResult) commandResult).action) {"
+      },
+      {
+        "lineNumber": 347,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                case \"view\":"
+      },
+      {
+        "lineNumber": 348,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    handleListFavorites();"
+      },
+      {
+        "lineNumber": 349,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 350,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                case \"set\":"
+      },
+      {
+        "lineNumber": 351,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 352,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                case \"remove\":"
+      },
+      {
+        "lineNumber": 353,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    handleListFavorites();"
+      },
+      {
+        "lineNumber": 354,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 355,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                default:"
+      },
+      {
+        "lineNumber": 356,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 357,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 358,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 359,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 360,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "            case TransactionsCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 361,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                handleListTransactions();"
+      },
+      {
+        "lineNumber": 362,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 363,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 364,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "            case ReportCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 365,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                changeScene(\"MainScene.fxml\");"
+      },
+      {
+        "lineNumber": 366,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                // VBox pane \u003d (VBox) loadFxmlFile(\"NoResultDisplayScene.fxml\");"
+      },
+      {
+        "lineNumber": 367,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                // primaryStage.getScene().setRoot(pane);"
+      },
+      {
+        "lineNumber": 368,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                new ReportScene(primaryStage, logic);"
+      },
+      {
+        "lineNumber": 369,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 370,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 371,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "            case BudgetCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 372,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                handleListTransactions();"
+      },
+      {
+        "lineNumber": 373,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "                updateResultDisplayBudget(commandResult.getFeedbackToUser(), logic.getFoodieBot().getBudget());"
+      },
+      {
+        "lineNumber": 374,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 375,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "            case RateCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 376,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                handleListTransactions();"
+      },
+      {
+        "lineNumber": 377,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 378,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 379,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "            case ReviewCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 380,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                handleListTransactions();"
+      },
+      {
+        "lineNumber": 381,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 382,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 383,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "            case RandomizeCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 384,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "                handleListRandomize();"
+      },
+      {
+        "lineNumber": 385,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 386,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 387,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            case SelectItemCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 388,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "                updateResultDisplayBudget(commandResult.getFeedbackToUser(), logic.getFoodieBot().getBudget());"
+      },
+      {
+        "lineNumber": 389,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "                break;"
+      },
+      {
+        "lineNumber": 390,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": "            case BackCommand.COMMAND_WORD:"
+      },
+      {
+        "lineNumber": 391,
+        "author": {
+          "gitId": "ignatiusong"
+        },
+        "content": "                topLabel.setText(\"\");"
+      },
+      {
+        "lineNumber": 392,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                switch (ParserContext.getCurrentContext()) {"
+      },
+      {
+        "lineNumber": 393,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                case ParserContext.MAIN_CONTEXT:"
+      },
+      {
+        "lineNumber": 394,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    handleListCanteens(commandResult);"
+      },
+      {
+        "lineNumber": 395,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 396,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                case ParserContext.CANTEEN_CONTEXT:"
+      },
+      {
+        "lineNumber": 397,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    handleListStalls();"
+      },
+      {
+        "lineNumber": 398,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "                    break;"
+      },
+      {
+        "lineNumber": 399,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "                case ParserContext.RANDOMIZE_CONTEXT:"
+      },
+      {
+        "lineNumber": 400,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "                    handleListRandomize();"
+      },
+      {
+        "lineNumber": 401,
+        "author": {
+          "gitId": "Samanthaseahpl"
+        },
+        "content": "                    break;"
       },
       {
         "lineNumber": 402,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            if (commandResult.isShowHelp()) {"
+        "content": "                case ParserContext.DIRECTIONS_CONTEXT:"
       },
       {
         "lineNumber": 403,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                handleHelp();"
+        "content": "                    handleListCanteens(commandResult);"
       },
       {
         "lineNumber": 404,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            }"
+        "content": "                    break;"
       },
       {
         "lineNumber": 405,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "                case ParserContext.FAVORITE_CONTEXT:"
       },
       {
         "lineNumber": 406,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            if (commandResult.isExit()) {"
+        "content": "                    switch (ParserContext.getPreviousContext()) {"
       },
       {
         "lineNumber": 407,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                handleExit();"
+        "content": "                    case ParserContext.STALL_CONTEXT:"
       },
       {
         "lineNumber": 408,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            }"
+        "content": "                        handleListStalls();"
       },
       {
         "lineNumber": 409,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            return commandResult;"
+        "content": "                        ParserContext.setCurrentContext(ParserContext.CANTEEN_CONTEXT);"
       },
       {
         "lineNumber": 410,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        } catch (CommandException | ParseException | IOException e) {"
+        "content": "                        break;"
       },
       {
         "lineNumber": 411,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            updateResultDisplayContextAware(e.getMessage());"
+        "content": "                    default:"
       },
       {
         "lineNumber": 412,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            throw e;"
+        "content": "                        handleListCanteens(commandResult);"
       },
       {
         "lineNumber": 413,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
+        "content": "                        ParserContext.setCurrentContext(ParserContext.MAIN_CONTEXT);"
       },
       {
         "lineNumber": 414,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "                        break;"
       },
       {
         "lineNumber": 415,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "                    }"
       },
       {
         "lineNumber": 416,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    /**"
+        "content": "                    break;"
       },
       {
         "lineNumber": 417,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * Closes the application."
+        "content": "                case ParserContext.STALL_CONTEXT:"
       },
       {
         "lineNumber": 418,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "                    handleListFood();"
       },
       {
         "lineNumber": 419,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "                    break;"
       },
       {
         "lineNumber": 420,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    protected void handleExit() {"
+        "content": "                default:"
       },
       {
         "lineNumber": 421,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
+        "content": "                    break;"
       },
       {
         "lineNumber": 422,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            (int) primaryStage.getX(), (int) primaryStage.getY());"
+        "content": "                }"
       },
       {
         "lineNumber": 423,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        logic.setGuiSettings(guiSettings);"
+        "content": "                updateResultDisplayContextAware(commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 424,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        helpWindow.hide();"
+        "content": "                break;"
       },
       {
         "lineNumber": 425,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        primaryStage.hide();"
+        "content": "            default:"
       },
       {
         "lineNumber": 426,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "                updateResultDisplay(commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 427,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    /**"
+        "content": "                break;"
       },
       {
         "lineNumber": 428,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * Switches the scene of the stage by setting the root."
+        "content": "            }"
       },
       {
         "lineNumber": 429,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "            if (commandResult.isShowHelp()) {"
       },
       {
         "lineNumber": 430,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    protected void changeScene(String layoutName) {"
+        "content": "                handleHelp();"
       },
       {
         "lineNumber": 431,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        primaryStage.getScene().setRoot(loadFxmlFile(layoutName));"
+        "content": "            }"
       },
       {
         "lineNumber": 432,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 433,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "            if (commandResult.isExit()) {"
       },
       {
         "lineNumber": 434,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    /**"
+        "content": "                handleExit();"
       },
       {
         "lineNumber": 435,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
+        "content": "            }"
       },
       {
         "lineNumber": 436,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "            return commandResult;"
       },
       {
         "lineNumber": 437,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @FXML"
+        "content": "        } catch (CommandException | ParseException | IOException e) {"
       },
       {
         "lineNumber": 438,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    protected void handleHelp() {"
+        "content": "            updateResultDisplayContextAware(e.getMessage());"
       },
       {
         "lineNumber": 439,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        if (!helpWindow.isShowing()) {"
+        "content": "            throw e;"
       },
       {
         "lineNumber": 440,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            helpWindow.show();"
+        "content": "        }"
       },
       {
         "lineNumber": 441,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        } else {"
+        "content": "    }"
       },
       {
         "lineNumber": 442,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            helpWindow.focus();"
+        "content": ""
       },
       {
         "lineNumber": 443,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 444,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "     * Closes the application."
       },
       {
         "lineNumber": 445,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 446,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    /**"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 447,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     * ."
+        "content": "    protected void handleExit() {"
       },
       {
         "lineNumber": 448,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "     */"
+        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
       },
       {
         "lineNumber": 449,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    protected Parent loadFxmlFile(String fxmlFileName) {"
+        "content": "            (int) primaryStage.getX(), (int) primaryStage.getY());"
       },
       {
         "lineNumber": 450,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        FXMLLoader newLoader \u003d new FXMLLoader();"
+        "content": "        logic.setGuiSettings(guiSettings);"
       },
       {
         "lineNumber": 451,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        newLoader.setLocation(getFxmlFileUrl(fxmlFileName));"
+        "content": "        helpWindow.hide();"
       },
       {
         "lineNumber": 452,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        newLoader.setController(this);"
+        "content": "        primaryStage.hide();"
       },
       {
         "lineNumber": 453,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        try {"
+        "content": "    }"
       },
       {
         "lineNumber": 454,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            return newLoader.load();"
+        "content": "    /**"
       },
       {
         "lineNumber": 455,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        } catch (IOException e) {"
+        "content": "     * Switches the scene of the stage by setting the root."
       },
       {
         "lineNumber": 456,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            throw new AssertionError(e);"
+        "content": "     */"
       },
       {
         "lineNumber": 457,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
+        "content": "    protected void changeScene(String layoutName) {"
       },
       {
         "lineNumber": 458,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "        primaryStage.getScene().setRoot(loadFxmlFile(layoutName));"
       },
       {
         "lineNumber": 459,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 460,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 461,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 462,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
+      },
+      {
+        "lineNumber": 463,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 464,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 465,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    protected void handleHelp() {"
+      },
+      {
+        "lineNumber": 466,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        if (!helpWindow.isShowing()) {"
+      },
+      {
+        "lineNumber": 467,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            helpWindow.show();"
+      },
+      {
+        "lineNumber": 468,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 469,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            helpWindow.focus();"
+      },
+      {
+        "lineNumber": 470,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 471,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 472,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 473,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 474,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "     * ."
+      },
+      {
+        "lineNumber": 475,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 476,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    protected Parent loadFxmlFile(String fxmlFileName) {"
+      },
+      {
+        "lineNumber": 477,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        FXMLLoader newLoader \u003d new FXMLLoader();"
+      },
+      {
+        "lineNumber": 478,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        newLoader.setLocation(getFxmlFileUrl(fxmlFileName));"
+      },
+      {
+        "lineNumber": 479,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        newLoader.setController(this);"
+      },
+      {
+        "lineNumber": 480,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 481,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            return newLoader.load();"
+      },
+      {
+        "lineNumber": 482,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        } catch (IOException e) {"
+      },
+      {
+        "lineNumber": 483,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            throw new AssertionError(e);"
+      },
+      {
+        "lineNumber": 484,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 485,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 486,
         "author": {
           "gitId": "leslieharland"
         },
@@ -78481,9 +78665,10 @@
       }
     ],
     "authorContributionMap": {
-      "leslieharland": 360,
-      "lsjxavier": 30,
+      "leslieharland": 358,
+      "lsjxavier": 29,
       "Samanthaseahpl": 19,
+      "SHAUNGOH97": 30,
       "ignatiusong": 50
     }
   },
@@ -86552,37 +86737,37 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "import javafx.scene.control.TextArea;"
+        "content": "import javafx.scene.control.Label;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "import javafx.scene.layout.Region;"
+        "content": "import javafx.scene.control.ProgressBar;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import javafx.scene.control.TextArea;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "-"
         },
-        "content": "/** A ui for the status bar that is displayed at the header of the application. */"
+        "content": "import javafx.scene.layout.Region;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "-"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "public class ResultDisplay extends UiPart\u003cRegion\u003e {"
+        "content": "import seedu.foodiebot.model.budget.Budget;"
       },
       {
         "lineNumber": 11,
@@ -86594,89 +86779,320 @@
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "leslieharland"
         },
-        "content": "    private static final String FXML \u003d \"ResultDisplay.fxml\";"
+        "content": "/** A ui for the status bar that is displayed at the header of the application. */"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "public class ResultDisplay extends UiPart\u003cRegion\u003e {"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "-"
         },
-        "content": "    @FXML private TextArea resultDisplay;"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private static final String FXML \u003d \"ResultDisplay.fxml\";"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": "    public ResultDisplay() {"
+        "content": ""
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
+          "gitId": "leslieharland"
         },
-        "content": "        super(FXML);"
+        "content": "    @FXML private TextArea resultDisplay;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 19,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "    @FXML private Label budgetLabel;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "    @FXML private ProgressBar budgetTrackerHigh;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "    @FXML private ProgressBar budgetTrackerLow;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public ResultDisplay() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        super(FXML);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        budgetLabel.setVisible(false);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        budgetTrackerHigh.setVisible(false);"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        budgetTrackerLow.setVisible(false);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
         "content": "    public void setFeedbackToUser(String feedbackToUser) {"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
         "content": "        requireNonNull(feedbackToUser);"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 34,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        budgetLabel.setVisible(false);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        budgetTrackerHigh.setVisible(false);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        budgetTrackerLow.setVisible(false);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        resultDisplay.setText(feedbackToUser);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "    public void setFeedbackToUser(String feedbackToUser, Budget budget) {"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        requireNonNull(feedbackToUser);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        budgetLabel.setVisible(true);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        float progress \u003d budget.getRemainingBudget() / budget.getTotalBudget();"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        if (progress \u003c 0.25) {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            budgetTrackerLow.setProgress(progress);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            budgetTrackerHigh.setProgress(progress);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            budgetTrackerHigh.setVisible(false);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            budgetTrackerLow.setVisible(true);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            budgetTrackerLow.setProgress(progress);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            budgetTrackerHigh.setProgress(progress);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            budgetTrackerHigh.setVisible(true);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            budgetTrackerLow.setVisible(false);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
         "content": "        resultDisplay.setText(feedbackToUser);"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
@@ -86685,6 +87101,7 @@
     ],
     "authorContributionMap": {
       "leslieharland": 3,
+      "SHAUNGOH97": 33,
       "-": 21
     }
   },
@@ -93569,9 +93986,9 @@
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "\u003cHBox id\u003d\"id\" fx:id\u003d\"id\" styleClass\u003d\"stack-pane\" xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+        "content": "\u003cHBox id\u003d\"id\" fx:id\u003d\"id\" styleClass\u003d\"stack-pane\" xmlns\u003d\"http://javafx.com/javafx/8.0.171\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
       },
       {
         "lineNumber": 9,
@@ -93618,9 +94035,9 @@
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "                \u003cScrollPane fitToWidth\u003d\"true\" vbarPolicy\u003d\"AS_NEEDED\" styleClass\u003d\"stack-pane\"\u003e"
+        "content": "                \u003cScrollPane fitToWidth\u003d\"true\" styleClass\u003d\"stack-pane\" vbarPolicy\u003d\"AS_NEEDED\"\u003e"
       },
       {
         "lineNumber": 16,
@@ -93632,9 +94049,9 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "                        \u003cVBox VBox.vgrow\u003d\"ALWAYS\" styleClass\u003d\"stack-pane\"\u003e"
+        "content": "                        \u003cVBox styleClass\u003d\"stack-pane\" VBox.vgrow\u003d\"ALWAYS\"\u003e"
       },
       {
         "lineNumber": 18,
@@ -93723,7 +94140,179 @@
     ],
     "authorContributionMap": {
       "lsjxavier": 23,
-      "leslieharland": 6
+      "leslieharland": 3,
+      "SHAUNGOH97": 3
+    }
+  },
+  {
+    "path": "src/main/resources/view/ResultDisplay.fxml",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "\u003c?import javafx.geometry.Insets?\u003e"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "\u003c?import javafx.scene.control.Label?\u003e"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "\u003c?import javafx.scene.control.ProgressBar?\u003e"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.control.TextArea?\u003e"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c?import javafx.scene.layout.StackPane?\u003e"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "\u003cStackPane fx:id\u003d\"placeHolder\" styleClass\u003d\"pane-with-border\" xmlns\u003d\"http://javafx.com/javafx/8.0.171\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "  \u003cTextArea fx:id\u003d\"resultDisplay\" editable\u003d\"false\" styleClass\u003d\"result-display\" /\u003e"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "    \u003cProgressBar fx:id\u003d\"budgetTrackerHigh\" maxWidth\u003d\"-Infinity\" prefWidth\u003d\"200.0\" progress\u003d\"0.0\"\u003e"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "      \u003cStackPane.margin\u003e"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "         \u003cInsets left\u003d\"485.0\" /\u003e"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "      \u003c/StackPane.margin\u003e\u003c/ProgressBar\u003e"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "    \u003cProgressBar fx:id\u003d\"budgetTrackerLow\" maxWidth\u003d\"-Infinity\" prefWidth\u003d\"200.0\" progress\u003d\"0.0\"\u003e"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        \u003cStackPane.margin\u003e"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            \u003cInsets left\u003d\"485.0\" /\u003e"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        \u003c/StackPane.margin\u003e\u003c/ProgressBar\u003e"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "    \u003cLabel fx:id\u003d\"budgetLabel\" text\u003d\"Budget\" textFill\u003d\"white\"\u003e"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "      \u003cStackPane.margin\u003e"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "         \u003cInsets bottom\u003d\"50.0\" left\u003d\"485.0\" /\u003e"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "      \u003c/StackPane.margin\u003e\u003c/Label\u003e"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u003c/StackPane\u003e"
+      }
+    ],
+    "authorContributionMap": {
+      "SHAUNGOH97": 16,
+      "-": 7
     }
   },
   {

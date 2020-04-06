@@ -965,9 +965,9 @@
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "-"
+          "gitId": "souwmyaa"
         },
-        "content": "            \u0027site-seedu\u0027        : true,  // delete this line if your project is not a fork (not a SE-EDU project)"
+        "content": "            \u0027site-draganddrop\u0027        : true,  // delete this line if your project is not a fork (not a SE-EDU project)"
       },
       {
         "lineNumber": 139,
@@ -1091,7 +1091,8 @@
     ],
     "authorContributionMap": {
       "teikjun": 3,
-      "-": 151,
+      "souwmyaa": 1,
+      "-": 150,
       "gx-huang": 1
     }
   },
@@ -11804,49 +11805,49 @@
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": " * A command to create modules."
+        "content": " * A command to create modules. Adds into study buddy. module is constructed outside createModCommand"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": " */"
+        "content": " * and it will throw an exception outside createModCommand."
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "public class CreateModCommand extends Command {"
+        "content": " */"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"create mod\";"
+        "content": "public class CreateModCommand extends Command {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"create mod\";"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Adds a new mod. \""
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New Mod added: %1$s\";"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "wyt-sonia"
         },
-        "content": "        + \"Parameters: Name \u0026 Code\";"
+        "content": "    public static final String MESSAGE_DUPLICATE_TASK \u003d \"This module already exists in the study buddy\";"
       },
       {
         "lineNumber": 19,
@@ -11860,206 +11861,192 @@
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New Mod added: %1$s\";"
+        "content": "    private final Module mod;"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "    public static final String MESSAGE_DUPLICATE_TASK \u003d \"This module already exists in the study buddy\";"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public CreateModCommand(Module mod) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    private final Module mod;"
+        "content": "        requireNonNull(mod);"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "        this.mod \u003d mod;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public CreateModCommand(Module mod) {"
+        "content": "    }"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        requireNonNull(mod);"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        this.mod \u003d mod;"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "        if (model.hasMod(mod)) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        requireNonNull(model);"
+        "content": "            throw new CommandException(MESSAGE_DUPLICATE_TASK);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        if (model.hasMod(mod)) {"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            throw new CommandException(MESSAGE_DUPLICATE_TASK);"
+        "content": "        model.addMod(mod);"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        }"
+        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, mod));"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        model.addMod(mod);"
+        "content": "    }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, mod));"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    @Override"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "            || (other instanceof CreateModCommand // instanceof handles nulls"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "            \u0026\u0026 mod.equals(((CreateModCommand) other).mod));"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "            || (other instanceof CreateModCommand // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "            \u0026\u0026 mod.equals(((CreateModCommand) other).mod));"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 47,
         "author": {
           "gitId": "aegis-bot"
         },
@@ -12068,7 +12055,7 @@
     ],
     "authorContributionMap": {
       "teikjun": 6,
-      "aegis-bot": 42,
+      "aegis-bot": 40,
       "wyt-sonia": 1
     }
   },
@@ -26693,23 +26680,23 @@
       {
         "lineNumber": 207,
         "author": {
-          "gitId": "aegis-bot"
+          "gitId": "souwmyaa"
         },
-        "content": "        System.out.println(\"ModelManager add mod\");"
+        "content": "        studyBuddy.addModule(mod);"
       },
       {
         "lineNumber": 208,
         "author": {
-          "gitId": "souwmyaa"
+          "gitId": "aegis-bot"
         },
-        "content": "        studyBuddy.addModule(mod);"
+        "content": ""
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        System.out.println(\"ModelManager add mod success\");"
+        "content": "    }"
       },
       {
         "lineNumber": 210,
@@ -26723,556 +26710,542 @@
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public void changeModName(Module oldMod, Module newMod) throws ModuleCodeException {"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    @Override"
+        "content": "        studyBuddy.changeModuleName(oldMod, newMod);"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public void changeModName(Module oldMod, Module newMod) throws ModuleCodeException {"
+        "content": "    }"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        studyBuddy.changeModuleName(oldMod, newMod);"
+        "content": ""
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public void changeModCode(Module oldMod, Module newMod) throws ModuleCodeException {"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    @Override"
+        "content": "        studyBuddy.changeModuleCode(oldMod, newMod);"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public void changeModCode(Module oldMod, Module newMod) throws ModuleCodeException {"
+        "content": "    }"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        studyBuddy.changeModuleCode(oldMod, newMod);"
+        "content": ""
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": ""
+        "content": "    public void deleteMod(Module mod) throws ModuleCodeException {"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    @Override"
+        "content": "        studyBuddy.deleteMod(mod);"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "    public void deleteMod(Module mod) throws ModuleCodeException {"
+        "content": "    }"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "aegis-bot"
         },
-        "content": "        studyBuddy.deleteMod(mod);"
-      },
-      {
-        "lineNumber": 226,
-        "author": {
-          "gitId": "aegis-bot"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 227,
-        "author": {
-          "gitId": "aegis-bot"
-        },
         "content": ""
       },
       {
-        "lineNumber": 228,
+        "lineNumber": 226,
         "author": {
           "gitId": "teikjun"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 229,
+        "lineNumber": 227,
         "author": {
           "gitId": "teikjun"
         },
         "content": "    public void setTask(Task target, Task editedTask) {"
       },
       {
-        "lineNumber": 230,
+        "lineNumber": 228,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "        CollectionUtil.requireAllNonNull(target, editedTask);"
       },
       {
-        "lineNumber": 231,
+        "lineNumber": 229,
         "author": {
           "gitId": "teikjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 230,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "        studyBuddy.setTasks(target, editedTask);"
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 231,
         "author": {
           "gitId": "teikjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 232,
         "author": {
           "gitId": "teikjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 233,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Task List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 234,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 235,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 238,
+        "lineNumber": 236,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "     * Returns an unmodifiable view of the list of {@code Task} backed by the internal list of"
       },
       {
-        "lineNumber": 239,
+        "lineNumber": 237,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "     * {@code versionedStudyBuddy}"
       },
       {
-        "lineNumber": 240,
+        "lineNumber": 238,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 241,
+        "lineNumber": 239,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 242,
+        "lineNumber": 240,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 243,
+        "lineNumber": 241,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    public ObservableList\u003cTask\u003e getFilteredTaskList() {"
       },
       {
-        "lineNumber": 244,
+        "lineNumber": 242,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        return filteredTasks;"
       },
       {
-        "lineNumber": 245,
+        "lineNumber": 243,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 246,
+        "lineNumber": 244,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": ""
       },
       {
-        "lineNumber": 247,
+        "lineNumber": 245,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 248,
+        "lineNumber": 246,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "    public ObservableList\u003cTask\u003e getFilteredArchivedTaskList() {"
       },
       {
-        "lineNumber": 249,
+        "lineNumber": 247,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "        return filteredArchiveTasks;"
       },
       {
-        "lineNumber": 250,
+        "lineNumber": 248,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 251,
+        "lineNumber": 249,
         "author": {
           "gitId": "gx-huang"
         },
         "content": ""
       },
       {
-        "lineNumber": 252,
+        "lineNumber": 250,
         "author": {
           "gitId": "teikjun"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 253,
+        "lineNumber": 251,
         "author": {
           "gitId": "teikjun"
         },
         "content": "    public ObservableList\u003cModule\u003e getFilteredModuleList() {"
       },
       {
-        "lineNumber": 254,
+        "lineNumber": 252,
         "author": {
           "gitId": "teikjun"
         },
         "content": "        return filteredModules;"
       },
       {
-        "lineNumber": 255,
+        "lineNumber": 253,
         "author": {
           "gitId": "teikjun"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 256,
+        "lineNumber": 254,
         "author": {
           "gitId": "teikjun"
         },
         "content": ""
       },
       {
-        "lineNumber": 257,
+        "lineNumber": 255,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 258,
+        "lineNumber": 256,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "    public ObservableList\u003cTask\u003e getFilteredDueSoonTaskList() {"
       },
       {
-        "lineNumber": 259,
+        "lineNumber": 257,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "        return filteredDueSoonTasks;"
       },
       {
-        "lineNumber": 260,
+        "lineNumber": 258,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 261,
+        "lineNumber": 259,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": ""
       },
       {
-        "lineNumber": 262,
+        "lineNumber": 260,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 263,
+        "lineNumber": 261,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    public void updateFilteredTaskList(Predicate\u003cTask\u003e predicate) {"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 262,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        requireNonNull(predicate);"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 263,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        filteredTasks.setPredicate(predicate);"
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 264,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 265,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": ""
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 266,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 269,
+        "lineNumber": 267,
         "author": {
           "gitId": "-"
         },
         "content": "    public boolean equals(Object obj) {"
       },
       {
-        "lineNumber": 270,
+        "lineNumber": 268,
         "author": {
           "gitId": "-"
         },
         "content": "        // short circuit if same object"
       },
       {
-        "lineNumber": 271,
+        "lineNumber": 269,
         "author": {
           "gitId": "-"
         },
         "content": "        if (obj \u003d\u003d this) {"
       },
       {
-        "lineNumber": 272,
+        "lineNumber": 270,
         "author": {
           "gitId": "-"
         },
         "content": "            return true;"
       },
       {
-        "lineNumber": 273,
+        "lineNumber": 271,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 274,
+        "lineNumber": 272,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 275,
+        "lineNumber": 273,
         "author": {
           "gitId": "-"
         },
         "content": "        // instanceof handles nulls"
       },
       {
-        "lineNumber": 276,
+        "lineNumber": 274,
         "author": {
           "gitId": "-"
         },
         "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
-        "lineNumber": 277,
+        "lineNumber": 275,
         "author": {
           "gitId": "-"
         },
         "content": "            return false;"
       },
       {
-        "lineNumber": 278,
+        "lineNumber": 276,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 279,
+        "lineNumber": 277,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 280,
+        "lineNumber": 278,
         "author": {
           "gitId": "-"
         },
         "content": "        // state check"
       },
       {
-        "lineNumber": 281,
+        "lineNumber": 279,
         "author": {
           "gitId": "-"
         },
         "content": "        ModelManager other \u003d (ModelManager) obj;"
       },
       {
-        "lineNumber": 282,
+        "lineNumber": 280,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "        return studyBuddy.equals(other.studyBuddy)"
       },
       {
-        "lineNumber": 283,
+        "lineNumber": 281,
         "author": {
           "gitId": "-"
         },
         "content": "            \u0026\u0026 userPrefs.equals(other.userPrefs)"
       },
       {
-        "lineNumber": 284,
+        "lineNumber": 282,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "            \u0026\u0026 filteredTasks.equals(other.filteredTasks)"
       },
       {
-        "lineNumber": 285,
+        "lineNumber": 283,
         "author": {
           "gitId": "souwmyaa"
         },
         "content": "            \u0026\u0026 filteredDueSoonTasks.equals(other.filteredDueSoonTasks)"
       },
       {
-        "lineNumber": 286,
+        "lineNumber": 284,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "            \u0026\u0026 filteredArchiveTasks.equals(other.filteredArchiveTasks);"
       },
       {
-        "lineNumber": 287,
+        "lineNumber": 285,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 288,
+        "lineNumber": 286,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 289,
+        "lineNumber": 287,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": ""
       },
       {
-        "lineNumber": 290,
+        "lineNumber": 288,
         "author": {
           "gitId": "-"
         },
@@ -27282,7 +27255,7 @@
     "authorContributionMap": {
       "teikjun": 32,
       "souwmyaa": 62,
-      "aegis-bot": 42,
+      "aegis-bot": 40,
       "wyt-sonia": 48,
       "-": 86,
       "gx-huang": 20
@@ -84748,30 +84721,30 @@
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "\u003cVBox styleClass\u003d\"calender_panel\" xmlns\u003d\"http://javafx.com/javafx/10.0.2-internal\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "    \u003cHBox alignment\u003d\"CENTER\" minHeight\u003d\"40.0\"\u003e"
+        "content": "\u003cVBox styleClass\u003d\"calender_panel\" xmlns\u003d\"http://javafx.com/javafx/11.0.1\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        \u003cButton fx:id\u003d\"prev\" alignment\u003d\"CENTER\" mnemonicParsing\u003d\"false\" onAction\u003d\"#onClickPrevious\""
+        "content": "    \u003cHBox alignment\u003d\"CENTER\" minHeight\u003d\"40.0\"\u003e"
       },
       {
         "lineNumber": 15,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "                styleClass\u003d\"calender_btn\" text\u003d\"Previous\"\u003e"
+        "content": "        \u003cButton fx:id\u003d\"prev\" alignment\u003d\"CENTER\" mnemonicParsing\u003d\"false\" onAction\u003d\"#onClickPrevious\" styleClass\u003d\"calender_btn\" text\u003d\"Previous\"\u003e"
       },
       {
         "lineNumber": 16,
@@ -84785,7 +84758,7 @@
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                \u003cInsets left\u003d\"10.0\" right\u003d\"10.0\"/\u003e"
+        "content": "                \u003cInsets left\u003d\"10.0\" right\u003d\"10.0\" /\u003e"
       },
       {
         "lineNumber": 18,
@@ -84804,261 +84777,261 @@
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "        \u003cLabel fx:id\u003d\"month\" alignment\u003d\"CENTER_RIGHT\" contentDisplay\u003d\"CENTER\" prefHeight\u003d\"42.0\""
+        "content": "        \u003cLabel fx:id\u003d\"month\" alignment\u003d\"CENTER_RIGHT\" contentDisplay\u003d\"CENTER\" prefHeight\u003d\"42.0\" styleClass\u003d\"calender_lbl_lg\" text\u003d\"Month\"\u003e"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "               styleClass\u003d\"calender_lbl_lg\" text\u003d\"Month\"\u003e"
+        "content": "            \u003cHBox.margin\u003e"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cHBox.margin\u003e"
+        "content": "                \u003cInsets left\u003d\"10.0\" right\u003d\"5.0\" /\u003e"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                \u003cInsets left\u003d\"10.0\" right\u003d\"5.0\"/\u003e"
+        "content": "            \u003c/HBox.margin\u003e"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003c/HBox.margin\u003e"
+        "content": "        \u003c/Label\u003e"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        \u003c/Label\u003e"
+        "content": "        \u003cLabel fx:id\u003d\"year\" contentDisplay\u003d\"CENTER\" prefHeight\u003d\"42.0\" styleClass\u003d\"calender_lbl_lg\" text\u003d\"Year\"\u003e"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        \u003cLabel fx:id\u003d\"year\" contentDisplay\u003d\"CENTER\" prefHeight\u003d\"42.0\" styleClass\u003d\"calender_lbl_lg\" text\u003d\"Year\"\u003e"
+        "content": "            \u003cHBox.margin\u003e"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cHBox.margin\u003e"
+        "content": "                \u003cInsets left\u003d\"5.0\" right\u003d\"10.0\" /\u003e"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                \u003cInsets left\u003d\"5.0\" right\u003d\"10.0\"/\u003e"
+        "content": "            \u003c/HBox.margin\u003e"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003c/HBox.margin\u003e"
+        "content": "        \u003c/Label\u003e"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        \u003c/Label\u003e"
+        "content": "        \u003cButton fx:id\u003d\"next\" mnemonicParsing\u003d\"false\" onAction\u003d\"#onClickNext\" styleClass\u003d\"calender_btn\" text\u003d\"Next\"\u003e"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        \u003cButton fx:id\u003d\"next\" mnemonicParsing\u003d\"false\" onAction\u003d\"#onClickNext\" styleClass\u003d\"calender_btn\" text\u003d\"Next\"\u003e"
+        "content": "            \u003cHBox.margin\u003e"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cHBox.margin\u003e"
+        "content": "                \u003cInsets left\u003d\"10.0\" /\u003e"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                \u003cInsets left\u003d\"10.0\"/\u003e"
+        "content": "            \u003c/HBox.margin\u003e"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003c/HBox.margin\u003e"
+        "content": "        \u003c/Button\u003e"
       },
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "        \u003c/Button\u003e"
+        "content": "        \u003cButton contentDisplay\u003d\"RIGHT\" mnemonicParsing\u003d\"false\" onAction\u003d\"#onClickHome\" styleClass\u003d\"calender_btn\" text\u003d\"Current Month\" GridPane.columnIndex\u003d\"5\"\u003e"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        \u003cButton contentDisplay\u003d\"RIGHT\" mnemonicParsing\u003d\"false\" onAction\u003d\"#onClickHome\" styleClass\u003d\"calender_btn\""
+        "content": "            \u003cGridPane.margin\u003e"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                text\u003d\"Current Month\" GridPane.columnIndex\u003d\"5\"\u003e"
+        "content": "                \u003cInsets top\u003d\"10.0\" /\u003e"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cGridPane.margin\u003e"
+        "content": "            \u003c/GridPane.margin\u003e"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                \u003cInsets top\u003d\"10.0\"/\u003e"
+        "content": "            \u003cHBox.margin\u003e"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003c/GridPane.margin\u003e"
+        "content": "                \u003cInsets left\u003d\"20.0\" right\u003d\"10.0\" /\u003e"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cHBox.margin\u003e"
+        "content": "            \u003c/HBox.margin\u003e"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "                \u003cInsets left\u003d\"20.0\" right\u003d\"10.0\"/\u003e"
+        "content": "        \u003c/Button\u003e"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003c/HBox.margin\u003e"
+        "content": "    \u003c/HBox\u003e"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        \u003c/Button\u003e"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "    \u003c/HBox\u003e"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
         "content": "    \u003cGridPane prefHeight\u003d\"30.0\" prefWidth\u003d\"790.0\" BorderPane.alignment\u003d\"CENTER\"\u003e"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 45,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "        \u003ccolumnConstraints\u003e"
       },
       {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "gx-huang"
+        },
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "gx-huang"
+        },
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
+      },
+      {
         "lineNumber": 48,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "        \u003c/columnConstraints\u003e"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "        \u003crowConstraints\u003e"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "gx-huang"
+          "gitId": "wyt-sonia"
         },
-        "content": "        \u003c/columnConstraints\u003e"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "        \u003crowConstraints\u003e"
+        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"15.0\" vgrow\u003d\"SOMETIMES\" /\u003e"
       },
       {
         "lineNumber": 57,
@@ -85072,388 +85045,318 @@
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"15.0\" vgrow\u003d\"SOMETIMES\"/\u003e"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "gx-huang"
-        },
         "content": "        \u003c/rowConstraints\u003e"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 59,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "        \u003cchildren\u003e"
       },
       {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"SUN\" GridPane.columnIndex\u003d\"0\" GridPane.halignment\u003d\"CENTER\" /\u003e"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"MON\" GridPane.columnIndex\u003d\"1\" /\u003e"
+      },
+      {
         "lineNumber": 62,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"Sunday\""
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"TUE\" GridPane.columnIndex\u003d\"2\" /\u003e"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "                   GridPane.columnIndex\u003d\"0\" GridPane.halignment\u003d\"CENTER\"/\u003e"
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"WED\" GridPane.columnIndex\u003d\"3\" /\u003e"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"Monday\""
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"THU\" GridPane.columnIndex\u003d\"4\" /\u003e"
       },
       {
         "lineNumber": 65,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "                   GridPane.columnIndex\u003d\"1\"/\u003e"
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"FRI\" GridPane.columnIndex\u003d\"5\" /\u003e"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"Tuesday\""
+        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"SAT\" GridPane.columnIndex\u003d\"6\" /\u003e"
       },
       {
         "lineNumber": 67,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                   GridPane.columnIndex\u003d\"2\"/\u003e"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"Wednesday\""
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                   GridPane.columnIndex\u003d\"3\"/\u003e"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"Thursday\""
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                   GridPane.columnIndex\u003d\"4\"/\u003e"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"Friday\""
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                   GridPane.columnIndex\u003d\"5\"/\u003e"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "            \u003cLabel alignment\u003d\"CENTER\" prefHeight\u003d\"17.0\" prefWidth\u003d\"117.0\" styleClass\u003d\"calender_lbl_sm\" text\u003d\"Saturday\""
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "                   GridPane.columnIndex\u003d\"6\"/\u003e"
-      },
-      {
-        "lineNumber": 76,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "        \u003c/children\u003e"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 68,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        \u003cBorderPane.margin\u003e"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 69,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cInsets top\u003d\"5.0\"/\u003e"
+        "content": "            \u003cInsets top\u003d\"5.0\" /\u003e"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 70,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        \u003c/BorderPane.margin\u003e"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 71,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        \u003copaqueInsets\u003e"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 72,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cInsets/\u003e"
+        "content": "            \u003cInsets /\u003e"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 73,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        \u003c/opaqueInsets\u003e"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 74,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        \u003cVBox.margin\u003e"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 75,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cInsets top\u003d\"20.0\"/\u003e"
+        "content": "            \u003cInsets top\u003d\"20.0\" /\u003e"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 76,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        \u003c/VBox.margin\u003e"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 77,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "    \u003c/GridPane\u003e"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 78,
         "author": {
-          "gitId": "wyt-sonia"
+          "gitId": "aegis-bot"
         },
-        "content": "    \u003cGridPane fx:id\u003d\"monthBox\" hgap\u003d\"5.0\" onMouseClicked\u003d\"#onClickDate\" prefHeight\u003d\"375\" prefWidth\u003d\"790.0\" vgap\u003d\"5.0\""
+        "content": "    \u003cGridPane fx:id\u003d\"monthBox\" hgap\u003d\"5.0\" onMouseClicked\u003d\"#onClickDate\" prefHeight\u003d\"375\" prefWidth\u003d\"790.0\" vgap\u003d\"5.0\" BorderPane.alignment\u003d\"CENTER\" VBox.vgrow\u003d\"ALWAYS\"\u003e"
       },
       {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "wyt-sonia"
-        },
-        "content": "              BorderPane.alignment\u003d\"CENTER\" VBox.vgrow\u003d\"ALWAYS\"\u003e"
-      },
-      {
-        "lineNumber": 89,
+        "lineNumber": 79,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "        \u003ccolumnConstraints\u003e"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 80,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 81,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 82,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 83,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 84,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 85,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 86,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\"/\u003e"
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10.0\" prefWidth\u003d\"100.0\" /\u003e"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 87,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "        \u003c/columnConstraints\u003e"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 88,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "        \u003crowConstraints\u003e"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 89,
         "author": {
           "gitId": "gx-huang"
         },
-        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\"/\u003e"
+        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\" /\u003e"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 90,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\"/\u003e"
+        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\" /\u003e"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 91,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\"/\u003e"
+        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\" /\u003e"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 92,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\"/\u003e"
+        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\" /\u003e"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 93,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\"/\u003e"
+        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\" /\u003e"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 94,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\"/\u003e"
+        "content": "            \u003cRowConstraints minHeight\u003d\"10.0\" prefHeight\u003d\"30.0\" vgrow\u003d\"SOMETIMES\" /\u003e"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 95,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "        \u003c/rowConstraints\u003e"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 96,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        \u003cVBox.margin\u003e"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 97,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "            \u003cInsets top\u003d\"15.0\"/\u003e"
+        "content": "            \u003cInsets top\u003d\"15.0\" /\u003e"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 98,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "        \u003c/VBox.margin\u003e"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 99,
         "author": {
           "gitId": "gx-huang"
         },
         "content": "    \u003c/GridPane\u003e"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 100,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    \u003cpadding\u003e"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 101,
         "author": {
           "gitId": "wyt-sonia"
         },
-        "content": "        \u003cInsets bottom\u003d\"15.0\" left\u003d\"15.0\" right\u003d\"15.0\" top\u003d\"15.0\"/\u003e"
+        "content": "        \u003cInsets bottom\u003d\"15.0\" left\u003d\"15.0\" right\u003d\"15.0\" top\u003d\"15.0\" /\u003e"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 102,
         "author": {
           "gitId": "wyt-sonia"
         },
         "content": "    \u003c/padding\u003e"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 103,
         "author": {
           "gitId": "wyt-sonia"
         },
@@ -85461,7 +85364,8 @@
       }
     ],
     "authorContributionMap": {
-      "wyt-sonia": 78,
+      "aegis-bot": 13,
+      "wyt-sonia": 55,
       "gx-huang": 35
     }
   },
@@ -100196,6 +100100,449 @@
     }
   },
   {
+    "path": "src/test/java/draganddrop/studybuddy/logic/commands/add/CreateModCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "package draganddrop.studybuddy.logic.commands.add;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import org.junit.jupiter.api.Assertions;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import draganddrop.studybuddy.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import draganddrop.studybuddy.model.Model;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import draganddrop.studybuddy.model.ModelManager;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import draganddrop.studybuddy.model.UserPrefs;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "import draganddrop.studybuddy.model.module.Module;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "public class CreateModCommandTest {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    private Module moduleA \u003d new Module(\"A\", \"CS1111\");"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    private Module moduleB \u003d new Module(\"B\", \"CS2222\");"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    private Model model \u003d new ModelManager(getTypicalTaskList(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    public void addDuplicateModule_throwsCommandException() {"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        CreateModCommand createModCommand \u003d new CreateModCommand(moduleA);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        Assertions.assertThrows(CommandException.class, () -\u003e {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "            createModCommand.execute(model);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "            createModCommand.execute(model);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        });"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    public void addDuplicateModule_correctExceptionMessage() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        String expectedMessage \u003d CreateModCommand.MESSAGE_DUPLICATE_TASK;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        CreateModCommand createModCommand \u003d new CreateModCommand(moduleA);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "            createModCommand.execute(model);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "            createModCommand.execute(model);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        } catch (CommandException ex) {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "            assertEquals(expectedMessage, ex.getMessage());"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    public void addModule_success() throws CommandException {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        String expected_message \u003d String.format(CreateModCommand.MESSAGE_SUCCESS, moduleB);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        CreateModCommand createModCommand \u003d new CreateModCommand(moduleB);"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        assertEquals(createModCommand.execute(model).getFeedbackToUser(), expected_message);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    public void equalCreateModCommand() {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        CreateModCommand createModCommand1 \u003d new CreateModCommand(moduleA);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        CreateModCommand createModCommand2 \u003d new CreateModCommand(moduleA);"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        CreateModCommand createModCommand3 \u003d new CreateModCommand(moduleB);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        assertTrue(createModCommand1.equals(createModCommand2));"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "        assertFalse(createModCommand1.equals(createModCommand3));"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "aegis-bot"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "aegis-bot": 62
+    }
+  },
+  {
     "path": "src/test/java/draganddrop/studybuddy/logic/commands/delete/DeleteDuplicateTasksCommandTest.java",
     "fileType": "test-code",
     "lines": [
@@ -103569,6 +103916,337 @@
     ],
     "authorContributionMap": {
       "souwmyaa": 39
+    }
+  },
+  {
+    "path": "src/test/java/draganddrop/studybuddy/logic/commands/parser/interactivecommandparser/FilterTaskCommandParserTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "package draganddrop.studybuddy.logic.commands.parser.interactivecommandparser;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertThrows;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "import draganddrop.studybuddy.logic.parser.interactivecommandparser.FilterTaskCommandParser;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.FilterTaskCommandException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "import draganddrop.studybuddy.model.task.TaskStatus;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "import draganddrop.studybuddy.model.task.TaskType;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "public class FilterTaskCommandParserTest {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    private FilterTaskCommandParser parser \u003d new FilterTaskCommandParser();"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    public void filterTaskCommandParserTestParseStatusIndexCheck() {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertThrows(FilterTaskCommandException.class, () -\u003e {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "            parser.parseStatusIndex(\"10\"); });"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertThrows(FilterTaskCommandException.class, () -\u003e {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "            parser.parseStatusIndex(\"\"); });"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        TaskStatus status \u003d TaskStatus.getTaskStatusList().get(0);"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertEquals(status, parser.parseStatusIndex(\"1\"));"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    public void filterTaskCommandParserTestParseOptionIndex() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertThrows(FilterTaskCommandException.class, () -\u003e {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "            parser.parseOptionIndex(\"10\"); });"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertThrows(FilterTaskCommandException.class, () -\u003e {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "            parser.parseOptionIndex(\"\"); });"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertEquals(1, parser.parseOptionIndex(\"1\"));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    public void filterTaskCommandParserTestParseTypeIndex() {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertThrows(FilterTaskCommandException.class, () -\u003e {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "            parser.parseTypeIndex(\"10\"); });"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertThrows(FilterTaskCommandException.class, () -\u003e {"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "            parser.parseTypeIndex(\"\"); });"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        TaskType type \u003d TaskType.getTaskTypes()[0];"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "        assertEquals(type, parser.parseTypeIndex(\"1\"));"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "souwmyaa"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "souwmyaa": 46
     }
   },
   {

@@ -14364,107 +14364,107 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "import static seedu.address.commons.core.Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX;"
+        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE_CODE;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE_CODE;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import java.util.List;"
+        "content": "import seedu.address.commons.core.index.Index;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import java.util.Optional;"
+        "content": "import seedu.address.logic.commands.CommandResult;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "import seedu.address.logic.commands.CommandType;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.commons.core.index.Index;"
+        "content": "import seedu.address.model.Model;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.commands.CommandResult;"
+        "content": "import seedu.address.model.lesson.Lesson;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.commands.CommandType;"
+        "content": "import seedu.address.model.module.ModuleCode;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.model.Model;"
+        "content": "/**"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "import seedu.address.model.facilitator.ModuleCodesContainKeywordPredicate;"
+        "content": " * Deletes a lesson identified using it\u0027s displayed index from Mod Manager."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.model.lesson.Lesson;"
+        "content": " */"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.model.module.ModuleCode;"
+        "content": "public class LessonDeleteCommand extends LessonCommand {"
       },
       {
         "lineNumber": 19,
@@ -14478,91 +14478,91 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "/**"
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_GROUP_CLASS + \" \" + COMMAND_WORD_DELETE"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " * Deletes a lesson identified using it\u0027s displayed index from Mod Manager."
+        "content": "            + \": Deletes the lesson identified by the index number used in the displayed lesson list.\\n\""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " */"
+        "content": "            + \"Parameters: INDEX (must be a positive integer)\\n\""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "public class LessonDeleteCommand extends LessonCommand {"
+        "content": "            + \"Example: \" + COMMAND_GROUP_CLASS + \" \" + COMMAND_WORD_DELETE + \" 1\\n\""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "            + \" or \\n\""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_GROUP_CLASS + \" \" + COMMAND_WORD_DELETE"
+        "content": "            + \"Parameters: INDEX (must be a positive number) \" + PREFIX_MODULE_CODE + \" MOD_CODE\\n\""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            + \": Deletes the lesson identified by the index number used in the displayed lesson list.\\n\""
+        "content": "            + \"Example: \" + COMMAND_GROUP_CLASS + \" \" + COMMAND_WORD_DELETE"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            + \"Parameters: INDEX (must be a positive integer)\\n\""
+        "content": "            + \" 1 \" + PREFIX_MODULE_CODE + \" CS2103T\\n\";"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            + \"Example: \" + COMMAND_GROUP_CLASS + \" \" + COMMAND_WORD_DELETE + \" 1\\n\""
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            + \" or \\n\""
+        "content": "    public static final String MESSAGE_INVALID_LESSON_DISPLAYED_INDEX \u003d"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            + \"Parameters: INDEX (must be a positive number) \" + PREFIX_MODULE_CODE + \" MOD_CODE\\n\""
+        "content": "            \"The lesson index provided is invalid\";"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            + \"Example: \" + COMMAND_GROUP_CLASS + \" \" + COMMAND_WORD_DELETE"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            + \" 1 \" + PREFIX_MODULE_CODE + \" CS2103T\\n\";"
+        "content": "    public static final String MESSAGE_DELETE_LESSON_SUCCESS \u003d \"Deleted Lesson: %1$s\";"
       },
       {
         "lineNumber": 33,
@@ -14576,7 +14576,7 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String MESSAGE_DELETE_LESSON_SUCCESS \u003d \"Deleted Lesson: %1$s\";"
+        "content": "    public static final String MESSAGE_INVALID_MODULE_CODE \u003d \"Module code provided is invalid\";"
       },
       {
         "lineNumber": 35,
@@ -14590,374 +14590,241 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String MESSAGE_INVALID_MODULE_CODE \u003d \"Module code provided is invalid\";"
+        "content": "    private final Index targetIndex;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    private ModuleCode moduleCode;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    private final Index targetIndex;"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    private Optional\u003cModuleCode\u003e moduleCode;"
+        "content": "    public LessonDeleteCommand(Index targetIndex, ModuleCode moduleCode) {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        this.targetIndex \u003d targetIndex;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public LessonDeleteCommand(Index targetIndex, Optional\u003cModuleCode\u003e moduleCode) {"
+        "content": "        this.moduleCode \u003d moduleCode;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        this.targetIndex \u003d targetIndex;"
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        this.moduleCode \u003d moduleCode;"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    @Override"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        requireNonNull(model);"
+        "content": "        if (!model.hasModuleCode(moduleCode.toString())) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        if (moduleCode.isEmpty()) {"
+        "content": "            throw new CommandException(MESSAGE_INVALID_MODULE_CODE);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            List\u003cLesson\u003e lessons \u003d model.getLessons();"
+        "content": "        }"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            if (targetIndex.getZeroBased() \u003e\u003d lessons.size()) {"
+        "content": "        ObservableList\u003cLesson\u003e lessons \u003d model.getLessonListForModule(moduleCode);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                throw new CommandException(MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
+        "content": "        if (targetIndex.getZeroBased() \u003e\u003d lessons.size()) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            }"
+        "content": "            throw new CommandException(MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            Lesson lessonToDelete \u003d lessons.get(targetIndex.getZeroBased());"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            model.removeLesson(lessonToDelete);"
+        "content": "        Lesson lessonToDelete \u003d lessons.get(targetIndex.getZeroBased());"
       },
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "            model.updateModule(model.findModule(lessonToDelete.getModuleCode()));"
+        "content": "        model.removeLesson(lessonToDelete);"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "            model.updateFacilitatorListForModule("
+        "content": "        return new CommandResult(String.format(MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete),"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "                    new ModuleCodesContainKeywordPredicate(lessonToDelete.getModuleCode().value));"
+        "content": "                CommandType.LESSON);"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "            model.updateTaskListForModule(x -\u003e x.getModuleCode().equals(lessonToDelete.getModuleCode()));"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            return new CommandResult(String.format(MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete),"
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                    CommandType.LESSON);"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        } else {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            if (!model.hasModuleCode(moduleCode.get().toString())) {"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                throw new CommandException(MESSAGE_INVALID_MODULE_CODE);"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            }"
+        "content": "                || (other instanceof LessonDeleteCommand // instanceof handles nulls"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            ObservableList\u003cLesson\u003e lessons \u003d model.getLessonListForModule(moduleCode.get());"
+        "content": "                \u0026\u0026 targetIndex.equals(((LessonDeleteCommand) other).targetIndex)); // state check"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            if (targetIndex.getZeroBased() \u003e\u003d lessons.size()) {"
+        "content": "    }"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                throw new CommandException(MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
+        "content": ""
       },
       {
         "lineNumber": 70,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            Lesson lessonToDelete \u003d lessons.get(targetIndex.getZeroBased());"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            model.removeLesson(lessonToDelete);"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "            model.updateModule(model.findModule(lessonToDelete.getModuleCode()));"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "            model.updateFacilitatorListForModule("
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "                    new ModuleCodesContainKeywordPredicate(lessonToDelete.getModuleCode().value));"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "            model.updateTaskListForModule(x -\u003e x.getModuleCode().equals(lessonToDelete.getModuleCode()));"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            return new CommandResult(String.format(MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete),"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "                    CommandType.LESSON);"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    public boolean equals(Object other) {"
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "                || (other instanceof LessonDeleteCommand // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "                \u0026\u0026 targetIndex.equals(((LessonDeleteCommand) other).targetIndex)); // state check"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 89,
         "author": {
           "gitId": "heidicrq"
         },
@@ -14965,8 +14832,7 @@
       }
     ],
     "authorContributionMap": {
-      "heidicrq": 79,
-      "zixinn": 10
+      "heidicrq": 70
     }
   },
   {
@@ -35232,318 +35098,290 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.commands.lesson.LessonListCommand;"
+        "content": "import seedu.address.logic.parser.Parser;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.parser.Parser;"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "/**"
+        "content": " * Parses input arguments and creates a new LessonCommand object"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " * Parses input arguments and creates a new LessonCommand object"
+        "content": " */"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " */"
+        "content": "public class LessonCommandParser implements Parser\u003cLessonCommand\u003e {"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "public class LessonCommandParser implements Parser\u003cLessonCommand\u003e {"
+        "content": "    /**"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    /**"
+        "content": "     * Used for initial separation of command word and args."
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "     * Used for initial separation of command word and args."
+        "content": "     */"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "     */"
+        "content": "    private static final Pattern BASIC_LESSON_COMMAND_FORMAT \u003d"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    private static final Pattern BASIC_LESSON_COMMAND_FORMAT \u003d"
+        "content": "            Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            Pattern.compile(\"(?\u003ccommandWord\u003e\\\\S+)(?\u003carguments\u003e.*)\");"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    @Override"
+        "content": "    public LessonCommand parse(String userInput) throws ParseException {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public LessonCommand parse(String userInput) throws ParseException {"
+        "content": "        final Matcher matcher \u003d BASIC_LESSON_COMMAND_FORMAT.matcher(userInput.trim());"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        final Matcher matcher \u003d BASIC_LESSON_COMMAND_FORMAT.matcher(userInput.trim());"
+        "content": "        if (!matcher.matches()) {"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "heidicrq"
+          "gitId": "zixinn"
         },
-        "content": "        if (!matcher.matches()) {"
+        "content": "            throw new ParseException(String.format(MESSAGE_UNKNOWN_LESSON_COMMAND, HelpCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_UNKNOWN_LESSON_COMMAND, HelpCommand.MESSAGE_USAGE));"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        final String commandWord \u003d matcher.group(\"commandWord\");"
+        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        final String arguments \u003d matcher.group(\"arguments\");"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        switch (commandWord) {"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        case Command.COMMAND_WORD_ADD:"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        case Command.COMMAND_WORD_ADD:"
+        "content": "            return new LessonAddCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            return new LessonAddCommandParser().parse(arguments);"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        case Command.COMMAND_WORD_EDIT:"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        case Command.COMMAND_WORD_EDIT:"
+        "content": "            return new LessonEditCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            return new LessonEditCommandParser().parse(arguments);"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        case Command.COMMAND_WORD_DELETE:"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        case Command.COMMAND_WORD_LIST:"
+        "content": "            return new LessonDeleteCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            return new LessonListCommand();"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        case Command.COMMAND_WORD_FIND:"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        case Command.COMMAND_WORD_DELETE:"
+        "content": "            return new LessonFindCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            return new LessonDeleteCommandParser().parse(arguments);"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        case Command.COMMAND_WORD_FIND:"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            return new LessonFindCommandParser().parse(arguments);"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "heidicrq"
-        },
         "content": "        default:"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 49,
         "author": {
           "gitId": "zixinn"
         },
         "content": "            throw new ParseException(String.format(MESSAGE_UNKNOWN_LESSON_COMMAND, HelpCommand.MESSAGE_USAGE));"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 50,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 51,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 52,
         "author": {
           "gitId": "heidicrq"
         },
@@ -35551,7 +35389,7 @@
       }
     ],
     "authorContributionMap": {
-      "heidicrq": 54,
+      "heidicrq": 50,
       "zixinn": 2
     }
   },
@@ -35613,374 +35451,360 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import java.util.Optional;"
+        "content": "import java.util.stream.Stream;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import java.util.stream.Stream;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "import seedu.address.commons.core.index.Index;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.commons.core.index.Index;"
+        "content": "import seedu.address.logic.commands.lesson.LessonDeleteCommand;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.commands.lesson.LessonDeleteCommand;"
+        "content": "import seedu.address.logic.parser.ArgumentMultimap;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.parser.ArgumentMultimap;"
+        "content": "import seedu.address.logic.parser.ArgumentTokenizer;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.parser.ArgumentTokenizer;"
+        "content": "import seedu.address.logic.parser.Parser;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.parser.Parser;"
+        "content": "import seedu.address.logic.parser.ParserUtil;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.parser.ParserUtil;"
+        "content": "import seedu.address.logic.parser.Prefix;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.parser.Prefix;"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.model.module.ModuleCode;"
+        "content": "/**"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": " * Parses input arguments and creates a new LessonDeleteCommand object"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "/**"
+        "content": " */"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " * Parses input arguments and creates a new LessonDeleteCommand object"
+        "content": "public class LessonDeleteCommandParser implements Parser\u003cLessonDeleteCommand\u003e {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " */"
+        "content": "    /**"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "public class LessonDeleteCommandParser implements Parser\u003cLessonDeleteCommand\u003e {"
+        "content": "     * Parses the given {@code String} of arguments in the context of the LessonDeleteCommand"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    /**"
+        "content": "     * and returns a LessonDeleteCommand object for execution."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the LessonDeleteCommand"
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "     * and returns a LessonDeleteCommand object for execution."
+        "content": "     */"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "    public LessonDeleteCommand parse(String args) throws ParseException {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "     */"
+        "content": "        ArgumentMultimap argMultimap \u003d ArgumentTokenizer.tokenize(args, PREFIX_MODULE_CODE);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public LessonDeleteCommand parse(String args) throws ParseException {"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        ArgumentMultimap argMultimap \u003d ArgumentTokenizer.tokenize(args, PREFIX_MODULE_CODE);"
+        "content": "        Index index;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        if (argMultimap.getPreamble().trim().equals(\"\")) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        Index index;"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, LessonDeleteCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        if (argMultimap.getPreamble().trim().equals(\"\")) {"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, LessonDeleteCommand.MESSAGE_USAGE));"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "heidicrq"
-        },
         "content": "        }"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 35,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 36,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 37,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "            index \u003d ParserUtil.parseIndex(argMultimap.getPreamble());"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 38,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        } catch (ParseException pe) {"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 39,
         "author": {
           "gitId": "zixinn"
         },
         "content": "            throw new ParseException(MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 40,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 41,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
       },
       {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        Optional\u003cModuleCode\u003e moduleCode \u003d Optional.empty();"
-      },
-      {
-        "lineNumber": 45,
+        "lineNumber": 42,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        if (arePrefixesPresent(argMultimap, PREFIX_MODULE_CODE)) {"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 43,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "            if (argMultimap.numOfValuesPresent(PREFIX_MODULE_CODE) \u003e 1) {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 44,
         "author": {
           "gitId": "zixinn"
         },
         "content": "                throw new ParseException(String.format(MESSAGE_TOO_MANY_ARGUMENTS, \"one\", PREFIX_MODULE_CODE));"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 45,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 46,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            moduleCode \u003d Optional.of(ParserUtil.parseModuleCode(argMultimap.getValue(PREFIX_MODULE_CODE)));"
+        "content": "            return new LessonDeleteCommand(index, ParserUtil.parseModuleCode(argMultimap.getValue(PREFIX_MODULE_CODE)));"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 47,
+        "author": {
+          "gitId": "heidicrq"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "heidicrq"
+        },
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, LessonDeleteCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 49,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        return new LessonDeleteCommand(index, moduleCode);"
-      },
-      {
-        "lineNumber": 52,
+        "lineNumber": 50,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 51,
         "author": {
           "gitId": "heidicrq"
         },
         "content": ""
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 52,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 53,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "     * Returns true if none of the prefixes contains empty {@code Optional} values in the given"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 54,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "     * {@code ArgumentMultimap}."
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 55,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 56,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 57,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        return Stream.of(prefixes).allMatch(prefix -\u003e argumentMultimap.getValue(prefix) !\u003d null);"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 58,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 59,
         "author": {
           "gitId": "heidicrq"
         },
@@ -35988,7 +35812,7 @@
       }
     ],
     "authorContributionMap": {
-      "heidicrq": 53,
+      "heidicrq": 51,
       "zixinn": 8
     }
   },
@@ -60962,7 +60786,7 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        } else if (other instanceof LessonList) {"
+        "content": "        } else if (other instanceof LessonList \u0026\u0026 lessons.size() \u003d\u003d ((LessonList) other).getLessonList().size()) {"
       },
       {
         "lineNumber": 225,
@@ -60997,108 +60821,87 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                for (int i \u003d 0; i \u003c lessons.size(); i++) {"
+        "content": "                sortLessonsByDayAndTime();"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                    if (!lessons.get(i).equals(otherList.getLessonList().get(i))) {"
+        "content": "                otherList.sortLessonsByDayAndTime();"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                        return false;"
+        "content": "                return lessons.equals(otherList.getLessonList());"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                    }"
+        "content": "            }"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                return true;"
+        "content": "            return false;"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        } else {"
+        "content": "    }"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            return false;"
+        "content": ""
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        }"
+        "content": "    public void sortLessonsByDayAndTime() {"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    }"
+        "content": "        Collections.sort(lessons);"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 241,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    public void sortLessonsByDayAndTime() {"
-      },
-      {
-        "lineNumber": 242,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        Collections.sort(lessons);"
-      },
-      {
-        "lineNumber": 243,
-        "author": {
-          "gitId": "heidicrq"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 244,
+        "lineNumber": 241,
         "author": {
           "gitId": "heidicrq"
         },
@@ -61106,7 +60909,7 @@
       }
     ],
     "authorContributionMap": {
-      "heidicrq": 223,
+      "heidicrq": 220,
       "zixinn": 21
     }
   },
@@ -105981,605 +105784,486 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;"
+        "content": "import static seedu.address.logic.commands.lesson.LessonDeleteCommand.MESSAGE_INVALID_MODULE_CODE;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;"
+        "content": "import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;"
+        "content": "import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import java.util.Optional;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "import seedu.address.commons.core.Messages;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "heidicrq"
-        },
         "content": "import seedu.address.commons.core.index.Index;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 15,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "import seedu.address.logic.commands.CommandType;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 16,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "import seedu.address.model.Model;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 17,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "import seedu.address.model.ModelManager;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 18,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "import seedu.address.model.UserPrefs;"
       },
       {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "import seedu.address.model.facilitator.ModuleCodesContainKeywordPredicate;"
-      },
-      {
-        "lineNumber": 22,
+        "lineNumber": 19,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "import seedu.address.model.lesson.Lesson;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 20,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "import seedu.address.model.module.ModuleCode;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 21,
         "author": {
           "gitId": "heidicrq"
         },
         "content": ""
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 22,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "public class LessonDeleteCommandTest {"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 23,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    private Model model \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 24,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    private Model expectedModel \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 25,
         "author": {
           "gitId": "heidicrq"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "heidicrq"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "heidicrq"
+        },
+        "content": "    public void execute_invalidModuleCode_throwsException() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "heidicrq"
+        },
+        "content": "        LessonDeleteCommand command \u003d new LessonDeleteCommand(INDEX_FIRST, new ModuleCode(\"CS8000\"));"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    @Test"
+        "content": "        assertCommandFailure(command, model, MESSAGE_INVALID_MODULE_CODE);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public void execute_validIndexLessonList_success() {"
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        Lesson lessonToDelete \u003d model.getLessons().get(INDEX_FIRST.getZeroBased());"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        LessonDeleteCommand command \u003d new LessonDeleteCommand(INDEX_FIRST, Optional.empty());"
+        "content": "    @Test"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        String expectedMessage \u003d String.format(LessonDeleteCommand.MESSAGE_DELETE_LESSON_SUCCESS,"
+        "content": "    public void execute_invalidIndexLessonList_throwsCommandException() {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                lessonToDelete);"
+        "content": "        Index outOfBound \u003d Index.fromOneBased(model.getLessons().size() + 1);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        expectedModel.removeLesson(lessonToDelete);"
+        "content": "        LessonDeleteCommand command \u003d new LessonDeleteCommand(outOfBound, new ModuleCode(\"CS2103T\"));"
       },
       {
         "lineNumber": 36,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "        expectedModel.updateModule(model.findModule(lessonToDelete.getModuleCode()));"
+        "content": "        assertCommandFailure(command, model, LessonDeleteCommand.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "        expectedModel.updateFacilitatorListForModule("
+        "content": "    }"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "                new ModuleCodesContainKeywordPredicate(lessonToDelete.getModuleCode().value));"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "        expectedModel.updateTaskListForModule(x -\u003e x.getModuleCode().equals(lessonToDelete.getModuleCode()));"
+        "content": "    @Test"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        assertCommandSuccess(command, model, expectedMessage, CommandType.LESSON, expectedModel);"
+        "content": "    public void execute_validModuleCodeLessonList_success() {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    }"
+        "content": "        Lesson lessonToDelete \u003d model.getLessons().get(INDEX_FIRST.getZeroBased());"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        LessonDeleteCommand command \u003d new LessonDeleteCommand(INDEX_FIRST, lessonToDelete.getModuleCode());"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    @Test"
+        "content": "        String expectedMessage \u003d String.format(LessonDeleteCommand.MESSAGE_DELETE_LESSON_SUCCESS,"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public void execute_invalidIndexLessonList_throwsCommandException() {"
+        "content": "                lessonToDelete);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        Index outOfBound \u003d Index.fromOneBased(model.getLessons().size() + 1);"
+        "content": "        expectedModel.removeLesson(lessonToDelete);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        LessonDeleteCommand command \u003d new LessonDeleteCommand(outOfBound, Optional.empty());"
+        "content": "        assertCommandSuccess(command, model, expectedMessage, CommandType.LESSON, expectedModel);"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "        assertCommandFailure(command, model, Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
+        "content": "    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        command \u003d new LessonDeleteCommand(outOfBound, Optional.of(new ModuleCode(\"CS2103T\")));"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "        assertCommandFailure(command, model, Messages.MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
+        "content": "    @Test"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    }"
+        "content": "    public void execute_invalidModuleCodeLessonList_throwsCommandException() {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "        LessonDeleteCommand command \u003d new LessonDeleteCommand(INDEX_FIRST, new ModuleCode(\"CS9000\"));"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    @Test"
+        "content": "        assertCommandFailure(command, model, MESSAGE_INVALID_MODULE_CODE);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public void execute_validModuleCodeLessonList_success() {"
+        "content": "    }"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        Lesson lessonToDelete \u003d model.getLessons().get(INDEX_FIRST.getZeroBased());"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        LessonDeleteCommand command \u003d new LessonDeleteCommand(INDEX_FIRST, Optional.of(lessonToDelete.getModuleCode()));"
+        "content": "    @Test"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        String expectedMessage \u003d String.format(LessonDeleteCommand.MESSAGE_DELETE_LESSON_SUCCESS,"
+        "content": "    public void equals() {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                lessonToDelete);"
+        "content": "        LessonDeleteCommand deleteFirstCommand \u003d new LessonDeleteCommand(INDEX_FIRST, new ModuleCode(\"CS2103T\"));"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        expectedModel.removeLesson(lessonToDelete);"
+        "content": "        LessonDeleteCommand deleteSecondCommand \u003d new LessonDeleteCommand(INDEX_SECOND, new ModuleCode(\"CS2103T\"));"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "heidicrq"
         },
-        "content": "        expectedModel.updateModule(model.findModule(lessonToDelete.getModuleCode()));"
+        "content": ""
       },
       {
         "lineNumber": 60,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "        expectedModel.updateFacilitatorListForModule("
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "                new ModuleCodesContainKeywordPredicate(lessonToDelete.getModuleCode().value));"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "        expectedModel.updateTaskListForModule(x -\u003e x.getModuleCode().equals(lessonToDelete.getModuleCode()));"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        assertCommandSuccess(command, model, expectedMessage, CommandType.LESSON, expectedModel);"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    public void execute_invalidModuleCodeLessonList_throwsCommandException() {"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        LessonDeleteCommand command \u003d new LessonDeleteCommand(INDEX_FIRST, Optional.of(new ModuleCode(\"CS9000\")));"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        assertCommandFailure(command, model, LessonDeleteCommand.MESSAGE_INVALID_MODULE_CODE);"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    public void equals() {"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        LessonDeleteCommand deleteFirstCommand \u003d new LessonDeleteCommand(INDEX_FIRST, Optional.empty());"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        LessonDeleteCommand deleteSecondCommand \u003d new LessonDeleteCommand(INDEX_SECOND, Optional.empty());"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 77,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        // same object should return true"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 61,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 62,
         "author": {
           "gitId": "heidicrq"
         },
         "content": ""
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 63,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        // same values should return true"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 64,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        LessonDeleteCommand deleteFirstCommandCopy \u003d new LessonDeleteCommand(INDEX_FIRST, Optional.empty());"
+        "content": "        LessonDeleteCommand deleteFirstCommandCopy \u003d new LessonDeleteCommand(INDEX_FIRST, new ModuleCode(\"CS2103T\"));"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 65,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 66,
         "author": {
           "gitId": "heidicrq"
         },
         "content": ""
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 67,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        // different type should return false"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 68,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        assertFalse(deleteFirstCommand.equals(1));"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 69,
         "author": {
           "gitId": "heidicrq"
         },
         "content": ""
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 70,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        // null should return false"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 71,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        assertFalse(deleteFirstCommand.equals(null));"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 72,
         "author": {
           "gitId": "heidicrq"
         },
         "content": ""
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 73,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        // different command should return false"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 74,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 75,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 76,
         "author": {
           "gitId": "heidicrq"
         },
@@ -106587,8 +106271,7 @@
       }
     ],
     "authorContributionMap": {
-      "heidicrq": 81,
-      "zixinn": 12
+      "heidicrq": 76
     }
   },
   {
@@ -107945,309 +107628,6 @@
     ],
     "authorContributionMap": {
       "heidicrq": 63
-    }
-  },
-  {
-    "path": "src/test/java/seedu/address/logic/commands/lesson/LessonListCommandTest.java",
-    "fileType": "test-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "package seedu.address.logic.commands.lesson;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import static seedu.address.testutil.TypicalAddressBook.getTypicalAddressBook;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import java.util.List;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import org.junit.jupiter.api.Test;"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import seedu.address.logic.commands.CommandResult;"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import seedu.address.model.Model;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import seedu.address.model.ModelManager;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import seedu.address.model.UserPrefs;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "import seedu.address.model.lesson.Lesson;"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": " * Contains integration tests (interaction with the Model) for {@code LessonListCommand}."
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "public class LessonListCommandTest {"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    private Model model \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    public void execute_lessonList_success() {"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        LessonListCommand command \u003d new LessonListCommand();"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        CommandResult result \u003d command.execute(model);"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        String resultString \u003d result.getFeedbackToUser();"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        List\u003cLesson\u003e lessons \u003d model.getLessons();"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        String expectedString;"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        if (lessons.size() \u003d\u003d 0) {"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            expectedString \u003d \"There is currently no lessons\";"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            expectedString \u003d \"Lessons include:\\n\";"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            int index \u003d 1;"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            for (Lesson lesson : lessons) {"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "                expectedString \u003d expectedString + index + \". \" + lesson + \"\\n\";"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "                index++;"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        assertEquals(resultString, expectedString);"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "heidicrq": 42
     }
   },
   {
@@ -119160,605 +118540,542 @@
         "author": {
           "gitId": "zixinn"
         },
-        "content": "import seedu.address.logic.commands.lesson.LessonCommand;"
+        "content": "import seedu.address.logic.commands.module.ModuleCommand;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "import seedu.address.logic.commands.module.ModuleCommand;"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "zixinn"
-        },
         "content": "import seedu.address.logic.commands.task.TaskCommand;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "alushingg"
         },
         "content": "public class ModManagerParserTest {"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "alushingg"
         },
         "content": "    private final ModManagerParser parser \u003d new ModManagerParser();"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public void parseCommand_clear() throws Exception {"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "alushingg"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_WORD_CLEAR) instanceof ClearCommand);"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
           "gitId": "alushingg"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_WORD_CLEAR + \" 3\") instanceof ClearCommand);"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public void parseCommand_exit() throws Exception {"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_EXIT) instanceof ExitCommand);"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_EXIT + \" 3\") instanceof ExitCommand);"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    public void parseCommand_help() throws Exception {"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "alushingg"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_WORD_HELP) instanceof HelpCommand);"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "alushingg"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_WORD_HELP + \" 3\") instanceof HelpCommand);"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "    @Test"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "zixinn"
-        },
         "content": "    public void parseCommand_mod() throws Exception {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_MOD + \" \" + Command.COMMAND_WORD_LIST)"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 47,
         "author": {
           "gitId": "zixinn"
         },
         "content": "                instanceof ModuleCommand);"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 48,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_MOD + \" \" + Command.COMMAND_WORD_LIST + \" 3\")"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 49,
         "author": {
           "gitId": "zixinn"
         },
         "content": "                instanceof ModuleCommand);"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 50,
         "author": {
           "gitId": "zixinn"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 51,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 53,
         "author": {
           "gitId": "zixinn"
         },
         "content": "    public void parseCommand_facil() throws Exception {"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 54,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_FACIL + \" \" + Command.COMMAND_WORD_LIST)"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
           "gitId": "zixinn"
         },
         "content": "                instanceof FacilCommand);"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 56,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_FACIL + \" \" + Command.COMMAND_WORD_LIST + \" 3\")"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "zixinn"
         },
         "content": "                instanceof FacilCommand);"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "    @Test"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_cal() throws Exception {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public void parseCommand_class() throws Exception {"
+        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CAL + \" \" + Command.COMMAND_WORD_VIEW + \" \""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CLASS + \" \" + Command.COMMAND_WORD_LIST)"
+        "content": "                + PREFIX_WEEK + \" this\") instanceof CalCommand);"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                instanceof LessonCommand);"
+        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CAL + \" \" + Command.COMMAND_WORD_FIND + \" empty\")"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CLASS + \" \" + Command.COMMAND_WORD_LIST + \" 3\")"
+        "content": "                instanceof CalCommand);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                instanceof LessonCommand);"
+        "content": "    }"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "zixinn"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_task() throws Exception {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public void parseCommand_cal() throws Exception {"
+        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_TASK + \" \" + Command.COMMAND_WORD_LIST)"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CAL + \" \" + Command.COMMAND_WORD_VIEW + \" \""
+        "content": "                instanceof TaskCommand);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                + PREFIX_WEEK + \" this\") instanceof CalCommand);"
+        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_TASK + \" \" + Command.COMMAND_WORD_LIST + \" 3\")"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CAL + \" \" + Command.COMMAND_WORD_FIND + \" empty\")"
+        "content": "                instanceof TaskCommand);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                instanceof CalCommand);"
+        "content": "    }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "zixinn"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    @Test"
+        "content": "    public void parseCommand_cmd() throws Exception {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public void parseCommand_task() throws Exception {"
+        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CMD + \" \" + Command.COMMAND_WORD_ALL)"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_TASK + \" \" + Command.COMMAND_WORD_LIST)"
+        "content": "                instanceof CmdCommand);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                instanceof TaskCommand);"
+        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CMD + \" \" + Command.COMMAND_WORD_GROUP + \" \""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_TASK + \" \" + Command.COMMAND_WORD_LIST + \" 3\")"
+        "content": "                + Command.COMMAND_GROUP_TASK) instanceof CmdCommand);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                instanceof TaskCommand);"
+        "content": "    }"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 84,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 85,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 86,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "    public void parseCommand_cmd() throws Exception {"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CMD + \" \" + Command.COMMAND_WORD_ALL)"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "                instanceof CmdCommand);"
-      },
-      {
-        "lineNumber": 89,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "        assertTrue(parser.parseCommand(Command.COMMAND_GROUP_CMD + \" \" + Command.COMMAND_WORD_GROUP + \" \""
-      },
-      {
-        "lineNumber": 90,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "                + Command.COMMAND_GROUP_TASK) instanceof CmdCommand);"
-      },
-      {
-        "lineNumber": 91,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 92,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
         "content": "    public void parseCommand_unrecognisedInput_throwsParseException() {"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
         "content": "        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
         "content": "            -\u003e parser.parseCommand(\"\"));"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
         "content": "    public void parseCommand_unknownCommand_throwsParseException() {"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 92,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertThrows(ParseException.class,"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 93,
         "author": {
           "gitId": "zixinn"
         },
         "content": "                MESSAGE_UNKNOWN_COMMAND, () -\u003e parser.parseCommand(\"unknownCommand\"));"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 94,
         "author": {
           "gitId": "zixinn"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
@@ -119769,7 +119086,7 @@
       "NNpanpan": 8,
       "alushingg": 8,
       "-": 38,
-      "zixinn": 50
+      "zixinn": 41
     }
   },
   {
@@ -129624,7 +128941,7 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import java.util.Optional;"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 9,
@@ -129638,199 +128955,178 @@
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": "import seedu.address.logic.commands.lesson.LessonDeleteCommand;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "import seedu.address.model.module.ModuleCode;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.logic.commands.lesson.LessonDeleteCommand;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "import seedu.address.model.module.ModuleCode;"
+        "content": "/**"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": " * As we are only doing white-box testing, our test cases do not cover path variations"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "/**"
+        "content": " * outside of the LessonDeleteCommand code. For example, inputs \"1\" and \"1 abc\" take the"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " * As we are only doing white-box testing, our test cases do not cover path variations"
+        "content": " * same path through the LessonDeleteCommand, and therefore we test only one of them."
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " * outside of the LessonDeleteCommand code. For example, inputs \"1\" and \"1 abc\" take the"
+        "content": " * The path variation for those two cases occur inside the ParserUtil, and"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " * same path through the LessonDeleteCommand, and therefore we test only one of them."
+        "content": " * therefore should be covered by the ParserUtilTest."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " * The path variation for those two cases occur inside the ParserUtil, and"
+        "content": " */"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " * therefore should be covered by the ParserUtilTest."
+        "content": "public class LessonDeleteCommandParserTest {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": " */"
+        "content": "    private LessonDeleteCommandParser parser \u003d new LessonDeleteCommandParser();"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "public class LessonDeleteCommandParserTest {"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    private LessonDeleteCommandParser parser \u003d new LessonDeleteCommandParser();"
+        "content": "    @Test"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    public void parse_validArgs_returnsDeleteCommand() {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    @Test"
+        "content": "        assertParseSuccess(parser, \" 1 /code CS2103T\","
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public void parse_validArgs_returnsDeleteCommand() {"
+        "content": "                new LessonDeleteCommand(INDEX_FIRST, new ModuleCode(\"CS2103T\")));"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        assertParseSuccess(parser, \" 1 /code CS2103T\","
+        "content": "    }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "                new LessonDeleteCommand(INDEX_FIRST, Optional.of(new ModuleCode(\"CS2103T\"))));"
+        "content": ""
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "        assertParseSuccess(parser, \" 1 \", new LessonDeleteCommand(INDEX_FIRST, Optional.empty()));"
+        "content": "    @Test"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "heidicrq"
-        },
         "content": "    public void parse_invalidArgs_throwsParseException() {"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 31,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertParseFailure(parser, \" a \", MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 32,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertParseFailure(parser, \" a /code CS2103T \", MESSAGE_INVALID_LESSON_DISPLAYED_INDEX);"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 33,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "        assertParseFailure(parser, \" 1 /code CODE123 \", ModuleCode.MESSAGE_CONSTRAINTS);"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 34,
         "author": {
           "gitId": "heidicrq"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 35,
         "author": {
           "gitId": "heidicrq"
         },
@@ -129838,7 +129134,7 @@
       }
     ],
     "authorContributionMap": {
-      "heidicrq": 35,
+      "heidicrq": 32,
       "zixinn": 3
     }
   },

@@ -5139,54 +5139,82 @@
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "BenFheng"
+          "gitId": "PangKimJin"
         },
-        "content": "    public static final String MESSAGE_INVALID_FILTER \u003d \"Filter keyword is invalid!\";"
+        "content": "    public static final String MESSAGE_INVALID_FILTER \u003d \"Filter keyword is invalid! \\nEnter command in format: \""
       },
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "BenFheng"
+          "gitId": "PangKimJin"
         },
-        "content": "    public static final String MESSAGE_WORD_NOT_FOUND \u003d \"Unable to find any matches! Enter \u0027list\u0027 to go back\";"
+        "content": "            + \"filter c/\u003cCATEGORY\u003e m/\u003cMONTH\u003e where \u003cMONTH\u003e is in YYYY-MM, starting from year 2000 \\n\""
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "PangKimJin"
         },
-        "content": "    public static final String MESSAGE_INVALID_TRANSACTION_DISPLAYED_INDEX \u003d \"The transaction index \""
+        "content": "            + \"example: filter c/FOOD m/2020-01\\n\""
       },
       {
         "lineNumber": 13,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "PangKimJin"
         },
-        "content": "            + \"provided is invalid\";"
+        "content": "            + \"example: filter c/GROCERIES m/ALL\\n\""
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "BenFheng"
+          "gitId": "PangKimJin"
         },
-        "content": "    public static final String MESSAGE_TRANSACTION_LISTED_OVERVIEW \u003d \"%1$d transactions listed!\";"
+        "content": "            + \"example: filter m/2021-12\";"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "BenFheng"
         },
-        "content": ""
+        "content": "    public static final String MESSAGE_WORD_NOT_FOUND \u003d \"Unable to find any matches! Enter \u0027list\u0027 to go back\";"
       },
       {
         "lineNumber": 16,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "    public static final String MESSAGE_INVALID_TRANSACTION_DISPLAYED_INDEX \u003d \"The transaction index \""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            + \"provided is invalid\";"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "BenFheng"
+        },
+        "content": "    public static final String MESSAGE_TRANSACTION_LISTED_OVERVIEW \u003d \"%1$d transactions listed!\";"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "BenFheng"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
@@ -5195,8 +5223,9 @@
     ],
     "authorContributionMap": {
       "HubertHalim": 3,
-      "BenFheng": 4,
-      "-": 10
+      "BenFheng": 3,
+      "-": 10,
+      "PangKimJin": 5
     }
   },
   {
@@ -20802,9 +20831,9 @@
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "BenFheng"
+          "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "        // missing both category and month"
       },
       {
         "lineNumber": 31,
@@ -20837,341 +20866,887 @@
       {
         "lineNumber": 35,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "PangKimJin"
         },
-        "content": "        try {"
+        "content": "        // invalid category"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            if (argMultimap.getValue(PREFIX_CATEGORY).isPresent() \u0026\u0026 argMultimap.getValue(PREFIX_MONTH).isPresent()) {"
+        "content": "        if (argMultimap.getValue(PREFIX_CATEGORY).isPresent()"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                // get category filter"
+        "content": "                \u0026\u0026 !isValidCategory(argMultimap.getValue(PREFIX_CATEGORY).get().trim())) {"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "PangKimJin"
         },
-        "content": "                String cat \u003d argMultimap.getValue(PREFIX_CATEGORY).get().trim();"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_FILTER, FilterCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                // sends the next word after \"date\" to see if it matches any transaction dates"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                String date \u003d argMultimap.getValue(PREFIX_MONTH).get().trim();"
+        "content": "        // invalid month"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                // removes the day in the string version of transaction date, so we filter by month"
+        "content": "        if (argMultimap.getValue(PREFIX_MONTH).isPresent()"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                String dateMinusDay;"
+        "content": "                \u0026\u0026 !isValidMonth(argMultimap.getValue(PREFIX_MONTH).get().trim())) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                if (date.equals(\"ALL\")) {"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_FILTER, FilterCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                    dateMinusDay \u003d \"ALL\";"
+        "content": "        }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                } else {"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "HubertHalim"
         },
-        "content": "                    dateMinusDay \u003d date.split(\"-\")[0] + \"-\" + date.split(\"-\")[1];"
+        "content": "        try {"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "PangKimJin"
         },
-        "content": "                }"
+        "content": "            if (argMultimap.getValue(PREFIX_CATEGORY).isPresent() \u0026\u0026 argMultimap.getValue(PREFIX_MONTH).isPresent()) {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                return new FilterCommand(new CategoryEqualsKeywordPredicate(Arrays.asList(cat)),"
+        "content": "                // get category filter"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "HubertHalim"
         },
-        "content": "                        new DateEqualsKeywordPredicate(Arrays.asList(dateMinusDay)));"
+        "content": "                String cat \u003d argMultimap.getValue(PREFIX_CATEGORY).get().trim();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            } else if (argMultimap.getValue(PREFIX_CATEGORY).isPresent()"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                    \u0026\u0026 !argMultimap.getValue(PREFIX_MONTH).isPresent()) {"
+        "content": "                // sends the next word after \"date\" to see if it matches any transaction dates"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                // get category filter"
+        "content": "                String date \u003d argMultimap.getValue(PREFIX_MONTH).get().trim();"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                String cat \u003d argMultimap.getValue(PREFIX_CATEGORY).get().trim();"
+        "content": "                // removes the day in the string version of transaction date, so we filter by month"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                // set date as all transaction dates"
+        "content": "                String dateMinusDay;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                String dateMinusDay \u003d \"ALL\";"
+        "content": "                if (date.equals(\"ALL\")) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "                    dateMinusDay \u003d \"ALL\";"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                return new FilterCommand(new CategoryEqualsKeywordPredicate(Arrays.asList(cat)),"
+        "content": "                } else {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                        new DateEqualsKeywordPredicate(Arrays.asList(dateMinusDay)));"
+        "content": "                    dateMinusDay \u003d date.split(\"-\")[0] + \"-\" + date.split(\"-\")[1];"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "PangKimJin"
+          "gitId": "HubertHalim"
         },
-        "content": "            } else if (!argMultimap.getValue(PREFIX_CATEGORY).isPresent()"
+        "content": "                }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                    \u0026\u0026 argMultimap.getValue(PREFIX_MONTH).isPresent()) {"
+        "content": "                return new FilterCommand(new CategoryEqualsKeywordPredicate(Arrays.asList(cat)),"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                // get category filter"
+        "content": "                        new DateEqualsKeywordPredicate(Arrays.asList(dateMinusDay)));"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                String cat \u003d \"ALL\";"
+        "content": "            } else if (argMultimap.getValue(PREFIX_CATEGORY).isPresent()"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "                    \u0026\u0026 !argMultimap.getValue(PREFIX_MONTH).isPresent()) {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                // sends the next word after \"date\" to see if it matches any transaction dates"
+        "content": "                // get category filter"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                String date \u003d argMultimap.getValue(PREFIX_MONTH).get().trim();"
+        "content": "                String cat \u003d argMultimap.getValue(PREFIX_CATEGORY).get().trim();"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                // removes the day in the string version of transaction date, so we filter by month"
+        "content": "                // set date as all transaction dates"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                String dateMinusDay;"
+        "content": "                String dateMinusDay \u003d \"ALL\";"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                if (date.equals(\"ALL\")) {"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                    dateMinusDay \u003d \"ALL\";"
+        "content": "                return new FilterCommand(new CategoryEqualsKeywordPredicate(Arrays.asList(cat)),"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                } else {"
+        "content": "                        new DateEqualsKeywordPredicate(Arrays.asList(dateMinusDay)));"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                    dateMinusDay \u003d date.split(\"-\")[0] + \"-\" + date.split(\"-\")[1];"
+        "content": "            } else if (!argMultimap.getValue(PREFIX_CATEGORY).isPresent()"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                }"
+        "content": "                    \u0026\u0026 argMultimap.getValue(PREFIX_MONTH).isPresent()) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                return new FilterCommand(new CategoryEqualsKeywordPredicate(Arrays.asList(cat)),"
+        "content": "                // get category filter"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                        new DateEqualsKeywordPredicate(Arrays.asList(dateMinusDay)));"
+        "content": "                String cat \u003d \"ALL\";"
       },
       {
         "lineNumber": 76,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "        } catch (IllegalArgumentException e) {"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "            throw new ParseException(e.getMessage());"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "HubertHalim"
-        },
-        "content": "        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 82,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": ""
       },
       {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                // sends the next word after \"date\" to see if it matches any transaction dates"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                String date \u003d argMultimap.getValue(PREFIX_MONTH).get().trim();"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                // removes the day in the string version of transaction date, so we filter by month"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                String dateMinusDay;"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                if (date.equals(\"ALL\")) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                    dateMinusDay \u003d \"ALL\";"
+      },
+      {
         "lineNumber": 83,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                } else {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                    dateMinusDay \u003d date.split(\"-\")[0] + \"-\" + date.split(\"-\")[1];"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                return new FilterCommand(new CategoryEqualsKeywordPredicate(Arrays.asList(cat)),"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                        new DateEqualsKeywordPredicate(Arrays.asList(dateMinusDay)));"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        } catch (IllegalArgumentException e) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            throw new ParseException(e.getMessage());"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     * Checks if the category input by the user is valid"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     * @param input"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     * @return"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "    public boolean isValidCategory(String input) {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        switch(input) {"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"FOOD\"):"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"SHOPPING\"):"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"TRANSPORT\"):"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"GROCERIES\"):"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"HEALTH\"):"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"RECREATION\"):"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"MISC\"):"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"UTILITIES\"):"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"INCOME\"):"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        case(\"ALL\"):"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        default:"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     * Checks if the month inputted by the user is valid."
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     * @param input"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     * @return"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "    public boolean isValidMonth(String input) {"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        if (input.length() !\u003d 7) {"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            String inputYear \u003d input.split(\"-\")[0];"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            int inputYearInteger \u003d Integer.parseInt(inputYear);"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            String inputMonth \u003d input.split(\"-\")[1];"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            int inputMonthInteger \u003d Integer.parseInt(inputMonth);"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            if (inputYear.length() !\u003d 4) {"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                return false;"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            if (inputYearInteger \u003c 2000) {"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                return false;"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            if (inputMonth \u003d\u003d null) {"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                return false;"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            if (inputMonth.length() !\u003d 2) {"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                return false;"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            if (inputMonthInteger \u003c 1 || inputMonthInteger \u003e 12) {"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "                return false;"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        } catch (Exception e) {"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 161,
         "author": {
           "gitId": "PangKimJin"
         },
@@ -21180,8 +21755,8 @@
     ],
     "authorContributionMap": {
       "HubertHalim": 11,
-      "BenFheng": 4,
-      "PangKimJin": 68
+      "BenFheng": 3,
+      "PangKimJin": 147
     }
   },
   {
@@ -44095,105 +44670,105 @@
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            Amount amount \u003d transaction.getAmount();"
+        "content": "            if (category.equals(\"INCOME\")) {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            double amountDouble \u003d amount.transactionAmount;"
+        "content": "                continue;"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            int amountInteger \u003d (int) amountDouble;"
+        "content": "            }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            if (categories.contains(category)) {"
+        "content": "            Amount amount \u003d transaction.getAmount();"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                int index \u003d categories.indexOf(category);"
+        "content": "            double amountDouble \u003d amount.transactionAmount;"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                int newCategoryAmount \u003d amountInteger + amounts.get(index);"
+        "content": "            int amountInteger \u003d (int) amountDouble;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                amounts.add(index, newCategoryAmount);"
+        "content": "            if (categories.contains(category)) {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            } else {"
+        "content": "                int index \u003d categories.indexOf(category);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                categories.add(category);"
+        "content": "                int newCategoryAmount \u003d amountInteger + amounts.get(index);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                int index \u003d categories.size() - 1;"
+        "content": "                amounts.add(index, newCategoryAmount);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "                amounts.add(index, amountInteger);"
+        "content": "            } else {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            }"
+        "content": "                categories.add(category);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "        }"
+        "content": "                int index \u003d categories.size() - 1;"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "        for (int i \u003d 0; i \u003c categories.size(); i++) {"
+        "content": "                amounts.add(index, amountInteger);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "            pieChartData.add(new PieChart.Data(categories.get(i), amounts.get(i)));"
+        "content": "            }"
       },
       {
         "lineNumber": 73,
@@ -44207,217 +44782,217 @@
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "        pieChart.setData(pieChartData);"
+        "content": "        for (int i \u003d 0; i \u003c categories.size(); i++) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "        pieChart.setTitle(\"Expense by Category\");"
+        "content": "            pieChartData.add(new PieChart.Data(categories.get(i), amounts.get(i)));"
       },
       {
         "lineNumber": 76,
         "author": {
-          "gitId": "chlalstjr"
+          "gitId": "PangKimJin"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 77,
         "author": {
-          "gitId": "chlalstjr"
+          "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "        pieChart.setData(pieChartData);"
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "chlalstjr"
+          "gitId": "PangKimJin"
         },
-        "content": "    /**"
+        "content": "        pieChart.setTitle(\"Expense by Category\");"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "     * Creates a stacked bar chart, X axis is days of the week and Y axis is total expenditure, stacked by weeks."
+        "content": "    }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "     * @param transactionList Transaction List filtered by a certain month."
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "    private void graphByWeek(ObservableList\u003cTransaction\u003e transactionList) {"
+        "content": "     * Creates a stacked bar chart, X axis is days of the week and Y axis is total expenditure, stacked by weeks."
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        xAxis.setLabel(\"Day\");"
+        "content": "     * @param transactionList Transaction List filtered by a certain month."
       },
       {
         "lineNumber": 84,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "chlalstjr"
         },
-        "content": "        xAxis.getCategories().addAll(\"Week 1\", \"Week 2\", \"Week 3\", \"Week 4\", \"Week 5\");"
+        "content": "     */"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        yAxis.setLabel(\"Spent\");"
+        "content": "    private void graphByWeek(ObservableList\u003cTransaction\u003e transactionList) {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": ""
+        "content": "        xAxis.setLabel(\"Day\");"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "HubertHalim"
         },
-        "content": "        double[][] spentByWeekAndDay \u003d new double[5][7];"
+        "content": "        xAxis.getCategories().addAll(\"Week 1\", \"Week 2\", \"Week 3\", \"Week 4\", \"Week 5\");"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": ""
+        "content": "        yAxis.setLabel(\"Spent\");"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        for (Transaction transaction : transactionList) {"
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
-          "gitId": "chlalstjr"
+          "gitId": "HubertHalim"
         },
-        "content": "            Amount amount \u003d transaction.getAmount();"
+        "content": "        double[][] spentByWeekAndDay \u003d new double[5][7];"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            LocalDate transactionLocalDate \u003d transaction.getDate().transactionDate;"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            int weekIndex \u003d (transactionLocalDate.getDayOfMonth() - 1) / 7;"
+        "content": "        for (Transaction transaction : transactionList) {"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            DayOfWeek day \u003d transactionLocalDate.getDayOfWeek();"
+        "content": "            Amount amount \u003d transaction.getAmount();"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": ""
+        "content": "            LocalDate transactionLocalDate \u003d transaction.getDate().transactionDate;"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            if (amount.positive) {"
+        "content": "            int weekIndex \u003d (transactionLocalDate.getDayOfMonth() - 1) / 7;"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                continue;"
+        "content": "            DayOfWeek day \u003d transactionLocalDate.getDayOfWeek();"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": ""
+        "content": "            if (amount.positive) {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            switch (day.toString()) {"
+        "content": "                continue;"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            case \"MONDAY\":"
+        "content": "            }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                spentByWeekAndDay[weekIndex][0] +\u003d amount.transactionAmount;"
+        "content": ""
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                break;"
+        "content": "            switch (day.toString()) {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            case \"TUESDAY\":"
+        "content": "            case \"MONDAY\":"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                spentByWeekAndDay[weekIndex][1] +\u003d amount.transactionAmount;"
+        "content": "                spentByWeekAndDay[weekIndex][0] +\u003d amount.transactionAmount;"
       },
       {
         "lineNumber": 105,
@@ -44431,14 +45006,14 @@
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            case \"WEDNESDAY\":"
+        "content": "            case \"TUESDAY\":"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                spentByWeekAndDay[weekIndex][2] +\u003d amount.transactionAmount;"
+        "content": "                spentByWeekAndDay[weekIndex][1] +\u003d amount.transactionAmount;"
       },
       {
         "lineNumber": 108,
@@ -44452,14 +45027,14 @@
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            case \"THURSDAY\":"
+        "content": "            case \"WEDNESDAY\":"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                spentByWeekAndDay[weekIndex][3] +\u003d amount.transactionAmount;"
+        "content": "                spentByWeekAndDay[weekIndex][2] +\u003d amount.transactionAmount;"
       },
       {
         "lineNumber": 111,
@@ -44473,14 +45048,14 @@
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            case \"FRIDAY\":"
+        "content": "            case \"THURSDAY\":"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                spentByWeekAndDay[weekIndex][4] +\u003d amount.transactionAmount;"
+        "content": "                spentByWeekAndDay[weekIndex][3] +\u003d amount.transactionAmount;"
       },
       {
         "lineNumber": 114,
@@ -44494,14 +45069,14 @@
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            case \"SATURDAY\":"
+        "content": "            case \"FRIDAY\":"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                spentByWeekAndDay[weekIndex][5] +\u003d amount.transactionAmount;"
+        "content": "                spentByWeekAndDay[weekIndex][4] +\u003d amount.transactionAmount;"
       },
       {
         "lineNumber": 117,
@@ -44515,14 +45090,14 @@
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            case \"SUNDAY\":"
+        "content": "            case \"SATURDAY\":"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                spentByWeekAndDay[weekIndex][6] +\u003d amount.transactionAmount;"
+        "content": "                spentByWeekAndDay[weekIndex][5] +\u003d amount.transactionAmount;"
       },
       {
         "lineNumber": 120,
@@ -44536,185 +45111,206 @@
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            default:"
+        "content": "            case \"SUNDAY\":"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "                continue;"
+        "content": "                spentByWeekAndDay[weekIndex][6] +\u003d amount.transactionAmount;"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            }"
+        "content": "                break;"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        }"
+        "content": "            default:"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": ""
+        "content": "                continue;"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek1 \u003d new XYChart.Series();"
+        "content": "            }"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        seriesWeek1.setName(\"Week 1\");"
+        "content": "        }"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek2 \u003d new XYChart.Series();"
+        "content": ""
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        seriesWeek2.setName(\"Week 2\");"
+        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek1 \u003d new XYChart.Series();"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek3 \u003d new XYChart.Series();"
+        "content": "        seriesWeek1.setName(\"Week 1\");"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        seriesWeek3.setName(\"Week 3\");"
+        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek2 \u003d new XYChart.Series();"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek4 \u003d new XYChart.Series();"
+        "content": "        seriesWeek2.setName(\"Week 2\");"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        seriesWeek4.setName(\"Week 4\");"
+        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek3 \u003d new XYChart.Series();"
       },
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "chlalstjr"
         },
-        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek5 \u003d new XYChart.Series();"
+        "content": "        seriesWeek3.setName(\"Week 3\");"
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "chlalstjr"
         },
-        "content": "        seriesWeek5.setName(\"Week 5\");"
+        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek4 \u003d new XYChart.Series();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": ""
+        "content": "        seriesWeek4.setName(\"Week 4\");"
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "chlalstjr"
+          "gitId": "HubertHalim"
         },
-        "content": "        String[] dayOfWeek \u003d {\"MON\", \"TUES\", \"WED\", \"THURS\", \"FRI\", \"SAT\", \"SUN\"};"
+        "content": "        XYChart.Series\u003cString, Number\u003e seriesWeek5 \u003d new XYChart.Series();"
       },
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "chlalstjr"
+          "gitId": "HubertHalim"
         },
-        "content": "        for (int i \u003d 0; i \u003c 7; i++) {"
+        "content": "        seriesWeek5.setName(\"Week 5\");"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            seriesWeek1.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[0][i]));"
+        "content": ""
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            seriesWeek2.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[1][i]));"
+        "content": "        String[] dayOfWeek \u003d {\"MON\", \"TUES\", \"WED\", \"THURS\", \"FRI\", \"SAT\", \"SUN\"};"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            seriesWeek3.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[2][i]));"
+        "content": "        for (int i \u003d 0; i \u003c 7; i++) {"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "            seriesWeek4.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[3][i]));"
+        "content": "            seriesWeek1.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[0][i]));"
       },
       {
         "lineNumber": 143,
         "author": {
-          "gitId": "HubertHalim"
+          "gitId": "chlalstjr"
         },
-        "content": "            seriesWeek5.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[4][i]));"
+        "content": "            seriesWeek2.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[1][i]));"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "chlalstjr"
         },
-        "content": "        }"
+        "content": "            seriesWeek3.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[2][i]));"
       },
       {
         "lineNumber": 145,
+        "author": {
+          "gitId": "chlalstjr"
+        },
+        "content": "            seriesWeek4.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[3][i]));"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "HubertHalim"
+        },
+        "content": "            seriesWeek5.getData().add(new XYChart.Data(dayOfWeek[i], spentByWeekAndDay[4][i]));"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "chlalstjr"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 148,
         "author": {
           "gitId": "HubertHalim"
         },
         "content": "        stackedBarChart.getData().addAll(seriesWeek1, seriesWeek2, seriesWeek3, seriesWeek4, seriesWeek5);"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 149,
         "author": {
           "gitId": "chlalstjr"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 150,
         "author": {
           "gitId": "chlalstjr"
         },
@@ -44724,7 +45320,7 @@
     "authorContributionMap": {
       "HubertHalim": 6,
       "chlalstjr": 102,
-      "PangKimJin": 39
+      "PangKimJin": 42
     }
   },
   {
@@ -45833,35 +46429,35 @@
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "import javafx.scene.control.Label;"
+        "content": "import javafx.scene.layout.FlowPane;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "import javafx.scene.layout.FlowPane;"
+        "content": "import javafx.scene.layout.Region;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "import javafx.scene.layout.Region;"
+        "content": "import seedu.expensela.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "import seedu.expensela.commons.core.LogsCenter;"
+        "content": "import seedu.expensela.model.Filter;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "import seedu.expensela.model.Filter;"
+        "content": ""
       },
       {
         "lineNumber": 14,
@@ -45882,220 +46478,157 @@
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "/**"
+        "content": " * Panel containing the list of transactions."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": " * Panel containing the list of transactions."
+        "content": " */"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": " */"
+        "content": "public class FilterPanel extends UiPart\u003cRegion\u003e {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "public class FilterPanel extends UiPart\u003cRegion\u003e {"
+        "content": "    private static final String FXML \u003d \"FilterPanel.fxml\";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    private static final String FXML \u003d \"FilterPanel.fxml\";"
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(FilterPanel.class);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(FilterPanel.class);"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "PangKimJin"
-        },
         "content": ""
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "HubertHalim"
         },
         "content": "    private final Filter filter;"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "PangKimJin"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "PangKimJin"
+        },
+        "content": "    @FXML"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    @FXML"
+        "content": "    private FlowPane filterCategory;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    private Label filterCategoryLabel;"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    @FXML"
+        "content": "    private FlowPane filterDateMonth;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    private Label filterMonthLabel;"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "    public FilterPanel(Filter filter) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    @FXML"
+        "content": "        super(FXML);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    private FlowPane filterCategory;"
+        "content": "        this.filter \u003d filter;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "        filterCategory.getChildren().add(getColouredCategoryLabel(\"Category: \" + filter.getFilterCategoryName()));"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    @FXML"
+        "content": "        filterDateMonth.getChildren().add(getColouredDateLabel(\"Month: \" + filter.getDateMonth()));"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    private FlowPane filterDateMonth;"
+        "content": "    }"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "    public FilterPanel(Filter filter) {"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "        super(FXML);"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "        this.filter \u003d filter;"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "        filterCategoryLabel.setText(\"Category: \");"
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "        filterCategory.getChildren().add(getColouredCategoryLabel(filter.getFilterCategoryName()));"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "        filterMonthLabel.setText(\"Month: \");"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "        filterDateMonth.getChildren().add(getColouredDateLabel(filter.getDateMonth()));"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "PangKimJin"
-        },
         "content": "}"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 38,
         "author": {
           "gitId": "PangKimJin"
         },
@@ -46104,7 +46637,7 @@
     ],
     "authorContributionMap": {
       "HubertHalim": 1,
-      "PangKimJin": 46
+      "PangKimJin": 37
     }
   },
   {
@@ -52106,87 +52639,66 @@
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "\u003c?import javafx.scene.control.Label?\u003e"
+        "content": ""
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "\u003c?import javafx.scene.layout.HBox?\u003e"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "\u003c?import javafx.scene.layout.HBox?\u003e"
+        "content": "\u003c?import javafx.scene.layout.Region?\u003e"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "\u003c?import javafx.scene.layout.Region?\u003e"
+        "content": ""
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": ""
+        "content": "\u003c?import javafx.scene.layout.FlowPane?\u003e"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "\u003c?import javafx.scene.layout.FlowPane?\u003e"
+        "content": "\u003cHBox xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\" styleClass\u003d\"hbox\"\u003e"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "\u003cHBox xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+        "content": "    \u003cFlowPane fx:id\u003d\"filterCategory\"/\u003e"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    \u003cLabel fx:id\u003d\"filterCategoryLabel\" styleClass\u003d\"filter-label-left\"/\u003e"
+        "content": "    \u003cRegion prefHeight\u003d\"20.0\" prefWidth\u003d\"20.0\" HBox.hgrow\u003d\"ALWAYS\" /\u003e"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "PangKimJin"
         },
-        "content": "    \u003cFlowPane fx:id\u003d\"filterCategory\"/\u003e"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "    \u003cRegion prefHeight\u003d\"20.0\" prefWidth\u003d\"20.0\" HBox.hgrow\u003d\"ALWAYS\" /\u003e"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "PangKimJin"
-        },
-        "content": "    \u003cLabel fx:id\u003d\"filterMonthLabel\" styleClass\u003d\"filter-label-right\"/\u003e"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "PangKimJin"
-        },
         "content": "    \u003cFlowPane fx:id\u003d\"filterDateMonth\" prefWidth\u003d\"20.0\"/\u003e"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 12,
         "author": {
           "gitId": "PangKimJin"
         },
@@ -52194,7 +52706,7 @@
       }
     ],
     "authorContributionMap": {
-      "PangKimJin": 15
+      "PangKimJin": 12
     }
   },
   {

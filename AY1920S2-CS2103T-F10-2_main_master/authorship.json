@@ -18093,126 +18093,126 @@
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "import java.util.List;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "import java.util.function.Predicate;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
         "content": ""
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 7,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.logic.comparator.ApplicationDateAndInterviewDateComparator;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 8,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.Model;"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 9,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.InternshipApplication;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 10,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.ApplicationDateDuePredicate;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 11,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.CustomToStringPredicate;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 12,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.InterviewDateDuePredicate;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 13,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.IsNotArchivedPredicate;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 14,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.StatusIsInterviewPredicate;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 15,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.StatusIsWishlistPredicate;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 16,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": ""
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 17,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 18,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": " * Lists all internship applications in the internship diary that are due or have interview dates in 7 days."
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 19,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": " */"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 20,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "public class ReminderCommand extends Command {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"reminder\";"
       },
       {
         "lineNumber": 23,
@@ -18226,28 +18226,28 @@
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"reminder\";"
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Shows applications that have are due or have interview\""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
+        "content": "        + \"dates in 7 days.\\n\" + \"Example: \" + COMMAND_WORD;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Shows applications that have are due or have interview\""
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        + \"dates in 7 days.\\n\" + \"Example: \" + COMMAND_WORD;"
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"Listed applications that are due or have interviews in 7 days.\";"
       },
       {
         "lineNumber": 28,
@@ -18261,325 +18261,220 @@
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"Listed applications that are due or have interviews in 7 days.\";"
+        "content": "    @Override"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "    @Override"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "        ApplicationDateDuePredicate appDateWithin7DaysPredicate \u003d new ApplicationDateDuePredicate();"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        requireNonNull(model);"
+        "content": "        StatusIsWishlistPredicate statusIsWishlistPredicate \u003d new StatusIsWishlistPredicate();"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        ApplicationDateDuePredicate appDateWithin7DaysPredicate \u003d new ApplicationDateDuePredicate();"
+        "content": "        Predicate\u003cInternshipApplication\u003e wishlistPredicate \u003d appDateWithin7DaysPredicate.and(statusIsWishlistPredicate);"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        StatusIsWishlistPredicate statusIsWishlistPredicate \u003d new StatusIsWishlistPredicate();"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        List\u003cPredicate\u003cInternshipApplication\u003e\u003e checkWishlistPredicate \u003d new ArrayList\u003c\u003e();"
+        "content": "        InterviewDateDuePredicate interviewDateWithin7DaysPredicate \u003d new InterviewDateDuePredicate();"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkWishlistPredicate.add(appDateWithin7DaysPredicate);"
+        "content": "        StatusIsInterviewPredicate statusIsInterviewPredicate \u003d new StatusIsInterviewPredicate();"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkWishlistPredicate.add(statusIsWishlistPredicate);"
+        "content": "        Predicate\u003cInternshipApplication\u003e interviewPredicate \u003d interviewDateWithin7DaysPredicate"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        Predicate\u003cInternshipApplication\u003e wishlistPredicate \u003d checkWishlistPredicate.stream()"
+        "content": "                .and(statusIsInterviewPredicate);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "                .reduce(x -\u003e true, Predicate::and);"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
+        "content": "        Predicate\u003cInternshipApplication\u003e datePredicate \u003d wishlistPredicate.or(interviewPredicate);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        InterviewDateDuePredicate interviewDateWithin7DaysPredicate \u003d new InterviewDateDuePredicate();"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        StatusIsInterviewPredicate statusIsInterviewPredicate \u003d new StatusIsInterviewPredicate();"
+        "content": "        IsNotArchivedPredicate isNotArchivedPredicate \u003d new IsNotArchivedPredicate();"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        List\u003cPredicate\u003cInternshipApplication\u003e\u003e checkInterviewPredicate \u003d new ArrayList\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkInterviewPredicate.add(interviewDateWithin7DaysPredicate);"
+        "content": "        Predicate\u003cInternshipApplication\u003e predicate \u003d isNotArchivedPredicate.and(datePredicate);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkInterviewPredicate.add(statusIsInterviewPredicate);"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        Predicate\u003cInternshipApplication\u003e interviewPredicate \u003d checkInterviewPredicate.stream()"
+        "content": "        Predicate\u003cInternshipApplication\u003e customPredicate \u003d new CustomToStringPredicate\u003c\u003e(predicate,"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "                .reduce(x -\u003e true, Predicate::and);"
+        "content": "            \"Reminder\");"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
+        "content": "        model.updateFilteredInternshipApplicationList(customPredicate);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        List\u003cPredicate\u003cInternshipApplication\u003e\u003e checkDatePredicates \u003d new ArrayList\u003c\u003e();"
+        "content": "        model.updateFilteredInternshipApplicationList(new ApplicationDateAndInterviewDateComparator());"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkDatePredicates.add(wishlistPredicate);"
+        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkDatePredicates.add(interviewPredicate);"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        Predicate\u003cInternshipApplication\u003e datePredicate \u003d checkDatePredicates.stream().reduce(x -\u003e false, Predicate::or);"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        IsNotArchivedPredicate isNotArchivedPredicate \u003d new IsNotArchivedPredicate();"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        List\u003cPredicate\u003cInternshipApplication\u003e\u003e dateAndNotArchivedPredicates \u003d new ArrayList\u003c\u003e();"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        dateAndNotArchivedPredicates.add(datePredicate);"
+        "content": "            || (other instanceof ReminderCommand); // instanceof handles nulls"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        dateAndNotArchivedPredicates.add(isNotArchivedPredicate);"
+        "content": "    }"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        Predicate\u003cInternshipApplication\u003e predicate \u003d dateAndNotArchivedPredicates.stream()"
+        "content": ""
       },
       {
         "lineNumber": 60,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "                .reduce(x -\u003e true, Predicate::and);"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        model.updateFilteredInternshipApplicationList(new ApplicationDateAndInterviewDateComparator());"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        Predicate\u003cInternshipApplication\u003e customPredicate \u003d new CustomToStringPredicate\u003c\u003e(predicate,"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "            \"Reminder\");"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        model.updateFilteredInternshipApplicationList(customPredicate);"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "    public boolean equals(Object other) {"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "            || (other instanceof ReminderCommand); // instanceof handles nulls"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 75,
         "author": {
           "gitId": "FeliciaTay"
         },
@@ -18587,7 +18482,7 @@
       }
     ],
     "authorContributionMap": {
-      "FeliciaTay": 65,
+      "FeliciaTay": 50,
       "gerhean": 10
     }
   },
@@ -95852,161 +95747,161 @@
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.util.function.Predicate;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "import java.util.List;"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "import java.util.function.Predicate;"
+        "content": "import org.junit.jupiter.api.BeforeEach;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "import org.junit.jupiter.api.BeforeEach;"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "import org.junit.jupiter.api.Test;"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
         "content": ""
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 15,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.logic.comparator.ApplicationDateAndInterviewDateComparator;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 16,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.InternshipDiary;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 17,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.Model;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 18,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.ModelManager;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 19,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.UserPrefs;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 20,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.ApplicationDate;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 21,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.InternshipApplication;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 22,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.interview.Interview;"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 23,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.ApplicationDateDuePredicate;"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 24,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.InterviewDateDuePredicate;"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 25,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.IsNotArchivedPredicate;"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 26,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.StatusIsInterviewPredicate;"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 27,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.internship.predicate.StatusIsWishlistPredicate;"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 28,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.model.status.Status;"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 29,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.testutil.InternshipApplicationBuilder;"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 30,
         "author": {
           "gitId": "gerhean"
         },
         "content": "import seedu.diary.testutil.InterviewBuilder;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "class ReminderCommandTest {"
       },
       {
         "lineNumber": 33,
@@ -96020,539 +95915,539 @@
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "class ReminderCommandTest {"
+        "content": "    private Model model;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
+        "content": "    private Model expectedModel;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "    private Model model;"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "    private Model expectedModel;"
+        "content": "    @BeforeEach"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "    @BeforeEach"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
         "content": "    public void setUp() {"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 39,
         "author": {
           "gitId": "foochifa"
         },
         "content": "        UserPrefs userPrefs \u003d new UserPrefs();"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 40,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        LocalDate currentDate \u003d LocalDate.now();"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 41,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        // old application which was rejected"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 42,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        InternshipApplication applicationA \u003d new InternshipApplicationBuilder()"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 43,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withApplicationDate(new ApplicationDate(currentDate.minus(2, ChronoUnit.DAYS)))"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 44,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withCompany(\"Company A\")"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 45,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withStatus(Status.REJECTED)"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 46,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .build();"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 47,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        // application that has not been applied to yet, due in 7 days"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 48,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        InternshipApplication applicationB \u003d new InternshipApplicationBuilder()"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 49,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withApplicationDate(new ApplicationDate(currentDate.plus(5, ChronoUnit.DAYS)))"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 50,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withCompany(\"Company B\")"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 51,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withStatus(Status.WISHLIST)"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 52,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .build();"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 53,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        // application that has not been applied to yet, application date already over"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 54,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        InternshipApplication applicationC \u003d new InternshipApplicationBuilder()"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 55,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withApplicationDate(new ApplicationDate(currentDate.minus(10, ChronoUnit.DAYS)))"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 56,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withCompany(\"Company C\")"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 57,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withStatus(Status.WISHLIST)"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 58,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .build();"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 59,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        // application with Status.APPLIED, and has an interview in 7 days"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 60,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        Interview interviewD \u003d new InterviewBuilder()"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 61,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withDate(currentDate.plus(2, ChronoUnit.DAYS))"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 62,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .build();"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 63,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        InternshipApplication applicationD \u003d new InternshipApplicationBuilder()"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 64,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withApplicationDate(new ApplicationDate(currentDate.minus(1, ChronoUnit.DAYS)))"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 65,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withCompany(\"Company D\")"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 66,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withStatus(Status.APPLIED)"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 67,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withInterview(interviewD)"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 68,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .buildWithInterviews();"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 69,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        // application with Status.INTERVIEW, and has an interview in 7 days"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 70,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        Interview interviewE \u003d new InterviewBuilder()"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 71,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withDate(currentDate.plus(2, ChronoUnit.DAYS))"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 72,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .build();"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 73,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        InternshipApplication applicationE \u003d new InternshipApplicationBuilder()"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 74,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withApplicationDate(new ApplicationDate(currentDate.minus(1, ChronoUnit.DAYS)))"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 75,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withCompany(\"Company E\")"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 76,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withStatus(Status.INTERVIEW)"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 77,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withInterview(interviewE)"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 78,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .buildWithInterviews();"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 79,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        // application with Status.INTERVIEW, and does not have an interview in 7 days"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 80,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        Interview interviewF \u003d new InterviewBuilder()"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 81,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withDate(currentDate.plus(9, ChronoUnit.DAYS))"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 82,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .build();"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 83,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        InternshipApplication applicationF \u003d new InternshipApplicationBuilder()"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 84,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withApplicationDate(new ApplicationDate(currentDate.minus(3, ChronoUnit.DAYS)))"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 85,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withCompany(\"Company F\")"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 86,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withStatus(Status.INTERVIEW)"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 87,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .withInterview(interviewF)"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 88,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "                .buildWithInterviews();"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 89,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        InternshipDiary internshipDiary \u003d new InternshipDiary();"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 90,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        internshipDiary.loadInternshipApplication(applicationA);"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 91,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        internshipDiary.loadInternshipApplication(applicationB);"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 92,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        internshipDiary.loadInternshipApplication(applicationC);"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 93,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        internshipDiary.loadInternshipApplication(applicationD);"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 94,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        internshipDiary.loadInternshipApplication(applicationE);"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 95,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        internshipDiary.loadInternshipApplication(applicationF);"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 96,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        model \u003d new ModelManager(internshipDiary, userPrefs);"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 97,
         "author": {
           "gitId": "foochifa"
         },
         "content": "        expectedModel \u003d new ModelManager(model.getInternshipDiary(), userPrefs);"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 98,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 99,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": ""
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 100,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 101,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "    public void execute_afterReminder_showsFilteredAndSortedList() {"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 102,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        ApplicationDateDuePredicate appDateWithin7DaysPredicate \u003d new ApplicationDateDuePredicate();"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 104,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        StatusIsWishlistPredicate statusIsWishlistPredicate \u003d new StatusIsWishlistPredicate();"
       },
       {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "        Predicate\u003cInternshipApplication\u003e wishlistPredicate \u003d appDateWithin7DaysPredicate.and(statusIsWishlistPredicate);"
+      },
+      {
         "lineNumber": 106,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        List\u003cPredicate\u003cInternshipApplication\u003e\u003e checkWishlistPredicate \u003d new ArrayList\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkWishlistPredicate.add(appDateWithin7DaysPredicate);"
+        "content": "        InterviewDateDuePredicate interviewDateWithin7DaysPredicate \u003d new InterviewDateDuePredicate();"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkWishlistPredicate.add(statusIsWishlistPredicate);"
+        "content": "        StatusIsInterviewPredicate statusIsInterviewPredicate \u003d new StatusIsInterviewPredicate();"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        Predicate\u003cInternshipApplication\u003e wishlistPredicate \u003d checkWishlistPredicate.stream()"
+        "content": "        Predicate\u003cInternshipApplication\u003e interviewPredicate \u003d interviewDateWithin7DaysPredicate"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "                .reduce(x -\u003e true, Predicate::and);"
+        "content": "                .and(statusIsInterviewPredicate);"
       },
       {
         "lineNumber": 111,
@@ -96566,189 +96461,189 @@
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        InterviewDateDuePredicate interviewDateWithin7DaysPredicate \u003d new InterviewDateDuePredicate();"
+        "content": "        Predicate\u003cInternshipApplication\u003e datePredicate \u003d wishlistPredicate.or(interviewPredicate);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        StatusIsInterviewPredicate statusIsInterviewPredicate \u003d new StatusIsInterviewPredicate();"
+        "content": ""
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        List\u003cPredicate\u003cInternshipApplication\u003e\u003e checkInterviewPredicate \u003d new ArrayList\u003c\u003e();"
+        "content": "        IsNotArchivedPredicate isNotArchivedPredicate \u003d new IsNotArchivedPredicate();"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkInterviewPredicate.add(interviewDateWithin7DaysPredicate);"
+        "content": ""
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkInterviewPredicate.add(statusIsInterviewPredicate);"
+        "content": "        Predicate\u003cInternshipApplication\u003e predicate \u003d isNotArchivedPredicate.and(datePredicate);"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        Predicate\u003cInternshipApplication\u003e interviewPredicate \u003d checkInterviewPredicate.stream()"
+        "content": ""
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "                .reduce(x -\u003e true, Predicate::and);"
+        "content": "        assertEquals(expectedModel.getAllInternshipApplicationList().size(), 6);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
+        "content": "        expectedModel.updateFilteredInternshipApplicationList(predicate);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        List\u003cPredicate\u003cInternshipApplication\u003e\u003e checkDatePredicates \u003d new ArrayList\u003c\u003e();"
+        "content": "        expectedModel.updateFilteredInternshipApplicationList(new ApplicationDateAndInterviewDateComparator());"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkDatePredicates.add(wishlistPredicate);"
+        "content": "        assertEquals(expectedModel.getFilteredInternshipApplicationList().size(), 2);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": "        checkDatePredicates.add(interviewPredicate);"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        Predicate\u003cInternshipApplication\u003e datePredicate \u003d checkDatePredicates.stream().reduce(x -\u003e false, Predicate::or);"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        IsNotArchivedPredicate isNotArchivedPredicate \u003d new IsNotArchivedPredicate();"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        List\u003cPredicate\u003cInternshipApplication\u003e\u003e dateAndNotArchivedPredicates \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        dateAndNotArchivedPredicates.add(datePredicate);"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        dateAndNotArchivedPredicates.add(isNotArchivedPredicate);"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        Predicate\u003cInternshipApplication\u003e predicate \u003d dateAndNotArchivedPredicates.stream()"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "                .reduce(x -\u003e true, Predicate::and);"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        assertEquals(expectedModel.getAllInternshipApplicationList().size(), 6);"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        expectedModel.updateFilteredInternshipApplicationList(predicate);"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        expectedModel.updateFilteredInternshipApplicationList(new ApplicationDateAndInterviewDateComparator());"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        assertEquals(expectedModel.getFilteredInternshipApplicationList().size(), 2);"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
         "content": "        CommandResult expectedMessage \u003d new CommandResult(MESSAGE_SUCCESS);"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 123,
         "author": {
           "gitId": "foochifa"
         },
         "content": "        assertEquals(expectedMessage, new ReminderCommand().execute(model));"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 124,
         "author": {
           "gitId": "FeliciaTay"
         },
         "content": "        assertCommandSuccess(new ReminderCommand(), model, expectedMessage, expectedModel);"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "    public void equals() {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "        ReminderCommand firstReminder \u003d new ReminderCommand();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "        // same object -\u003e returns true"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "        assertEquals(firstReminder, firstReminder);"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "        // different types -\u003e returns false"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "        assertNotEquals(\"reminder\", firstReminder);"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "        // null -\u003e returns false"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "FeliciaTay"
+        },
+        "content": "        assertNotEquals(null, firstReminder);"
       },
       {
         "lineNumber": 139,
@@ -96762,110 +96657,12 @@
         "author": {
           "gitId": "FeliciaTay"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "    public void equals() {"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        ReminderCommand firstReminder \u003d new ReminderCommand();"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        // same object -\u003e returns true"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        assertEquals(firstReminder, firstReminder);"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        // different types -\u003e returns false"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        assertNotEquals(\"reminder\", firstReminder);"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        // null -\u003e returns false"
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "        assertNotEquals(null, firstReminder);"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "FeliciaTay"
-        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
       "foochifa": 3,
-      "FeliciaTay": 132,
+      "FeliciaTay": 118,
       "gerhean": 19
     }
   },

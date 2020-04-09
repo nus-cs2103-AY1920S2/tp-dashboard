@@ -1159,6 +1159,226 @@
     }
   },
   {
+    "path": "config/travis/check-trailing-whitespace.sh",
+    "fileType": "other",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "#!/bin/sh"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "# Checks for trailing whitespace"
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "git grep --cached -I -n --no-color -P \u0027[ \\t]+$\u0027 -- \u0027:/\u0027 |"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "awk \u0027"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    BEGIN {"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        FS \u003d \":\""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        OFS \u003d \":\""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        ret \u003d 0"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    {"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        # Only warn for markdown files (*.md) to accomodate text editors"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        # which do not properly handle trailing whitespace."
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        # (e.g. GitHub web editor)"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        if ($1 ~ /\\.md$/) {"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            severity \u003d \"WARN\""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        } else if ($1 ~ /\\.puml$/) {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            severity \u003d \"WARN\""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        } else if ($1 ~ /\\.adoc$/) {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            severity \u003d \"WARN\""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            severity \u003d \"ERROR\""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            ret \u003d 1"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        print severity, $1, $2, \" trailing whitespace.\""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    END {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        exit ret"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "\u0027"
+      }
+    ],
+    "authorContributionMap": {
+      "leslieharland": 4,
+      "-": 26
+    }
+  },
+  {
     "path": "src/main/java/seedu/foodiebot/AppParameters.java",
     "fileType": "functional-code",
     "lines": [
@@ -27711,665 +27931,665 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import seedu.foodiebot.model.Model;"
+        "content": "import seedu.foodiebot.logic.parser.ParserContext;"
       },
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
-        "content": "import seedu.foodiebot.model.ReadOnlyFoodieBot;"
+        "content": "import seedu.foodiebot.model.Model;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "import seedu.foodiebot.model.UserPrefs;"
+        "content": "import seedu.foodiebot.model.ReadOnlyFoodieBot;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "import seedu.foodiebot.model.budget.Budget;"
+        "content": "import seedu.foodiebot.model.UserPrefs;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "import seedu.foodiebot.model.food.Food;"
+        "content": "import seedu.foodiebot.model.budget.Budget;"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "import seedu.foodiebot.model.rating.Rating;"
+        "content": "import seedu.foodiebot.model.food.Food;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "import seedu.foodiebot.model.rating.Review;"
+        "content": "import seedu.foodiebot.model.rating.Rating;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "import seedu.foodiebot.model.transaction.PurchasedFood;"
+        "content": "import seedu.foodiebot.model.rating.Review;"
       },
       {
         "lineNumber": 25,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": "import seedu.foodiebot.model.transaction.PurchasedFood;"
+      },
+      {
+        "lineNumber": 26,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "import seedu.foodiebot.storage.JsonAdaptedBudget;"
       },
       {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "leslieharland"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 27,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "/** Select the current list view item. */"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "public class SelectItemCommand extends Command {"
+        "content": "/** Select the current list view item. */"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"select\";"
+        "content": "public class SelectItemCommand extends Command {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"select\";"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            COMMAND_WORD"
+        "content": "    public static final String MESSAGE_USAGE \u003d"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            + \"Parameters: \""
+        "content": "            COMMAND_WORD"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            + \"FOOD_INDEX \\n\""
+        "content": "            + \"Parameters: \""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            + \"Example: \""
+        "content": "            + \"FOOD_INDEX \\n\""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            + COMMAND_WORD"
+        "content": "            + \"Example: \""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            + \" \""
+        "content": "            + COMMAND_WORD"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            + \"1 \";;"
+        "content": "            + \" \""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"You have selected: %s, this costs: $%.2f\\n\";"
+        "content": "            + \"1 \";;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    public static final String MESSAGE_SUCCESS_BUDGET \u003d \"You have selected: %s, this costs: $%.2f\\n\""
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"You have selected: %s, this costs: $%.2f\\n\";"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            + \"Your remaining budget is $%.2f\\nYou still have $%.2f to spend today:)\";"
+        "content": "    public static final String MESSAGE_SUCCESS_BUDGET \u003d \"You have selected: %s, this costs: $%.2f\\n\""
       },
       {
         "lineNumber": 42,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "            + \"Your remaining budget is $%.2f\\nYou still have $%.2f to spend today:)\";"
+      },
+      {
+        "lineNumber": 43,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "    public static final String MESSAGE_FAILURE \u003d \"Food not found!\";"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 44,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "    public static final String INVALID_INDEX_MESSAGE \u003d \"Please provide a valid index!\";"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 45,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "    public static final String EXCEEDED_BUDGET \u003d \"You will exceed your budget with this purchase!\\n\""
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 46,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "            + \"Try increasing your budget.\";"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 47,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "    private static final Logger logger \u003d LogsCenter.getLogger(SelectItemCommand.class);"
       },
       {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "SHAUNGOH97"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 48,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    private final Optional\u003cString\u003e foodName;"
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    private final Optional\u003cIndex\u003e index;"
+        "content": "    private final Optional\u003cString\u003e foodName;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "    private final Optional\u003cIndex\u003e index;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "     * @param index of the food in the filtered food list to edit"
+        "content": "    /**"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "     */"
+        "content": "     * @param index of the food in the filtered food list to edit"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    public SelectItemCommand(Index index) {"
+        "content": "     */"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        requireNonNull(index);"
+        "content": "    public SelectItemCommand(Index index) {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        this.index \u003d Optional.of(index);"
+        "content": "        requireNonNull(index);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        this.foodName \u003d Optional.empty();"
+        "content": "        this.index \u003d Optional.of(index);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    }"
+        "content": "        this.foodName \u003d Optional.empty();"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "     * @param foodName from the given food name"
+        "content": "    /**"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "     */"
+        "content": "     * @param foodName from the given food name"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    public SelectItemCommand(String foodName) {"
+        "content": "     */"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        requireNonNull(foodName);"
+        "content": "    public SelectItemCommand(String foodName) {"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        this.index \u003d Optional.empty();"
+        "content": "        requireNonNull(foodName);"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        this.foodName \u003d Optional.of(foodName);"
+        "content": "        this.index \u003d Optional.empty();"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    }"
+        "content": "        this.foodName \u003d Optional.of(foodName);"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
-        "content": "    /** Save the purchased food into transactions */"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "    public void saveTransaction(Model model, PurchasedFood purchase) throws IOException {"
+        "content": "    /** Save the purchased food into transactions */"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        model.addPurchasedFood(purchase);"
+        "content": "    public void saveTransaction(Model model, PurchasedFood purchase) throws IOException {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        ReadOnlyFoodieBot foodieBot \u003d model.getFoodieBot();"
+        "content": "        model.addPurchasedFood(purchase);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        Path budgetFilePath \u003d new UserPrefs().getBudgetFilePath();"
+        "content": "        ReadOnlyFoodieBot foodieBot \u003d model.getFoodieBot();"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "        Path budgetFilePath \u003d new UserPrefs().getBudgetFilePath();"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        JsonUtil.saveJsonFile(new JsonAdaptedBudget(foodieBot), budgetFilePath);"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "    }"
+        "content": "        JsonUtil.saveJsonFile(new JsonAdaptedBudget(foodieBot), budgetFilePath);"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 78,
+        "author": {
+          "gitId": "lsjxavier"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 80,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "    public CommandResult execute(Model model) throws CommandException, IOException {"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 81,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "        requireNonNull(model);"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 82,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "        String nameOfFood \u003d \"\";"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 83,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "        float priceOfFood \u003d 0;"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 84,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "        Optional\u003cFood\u003e food \u003d Optional.empty();"
       },
       {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 85,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        /*"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        if (index.isPresent() || foodName.isPresent()) {"
+        "content": "        /*"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            List\u003cFood\u003e foodList \u003d model.getFilteredFoodList();"
+        "content": "        if (index.isPresent() || foodName.isPresent()) {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            if (index.isPresent()) {"
+        "content": "            List\u003cFood\u003e foodList \u003d model.getFilteredFoodList();"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                try {"
+        "content": "            if (index.isPresent()) {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                    food \u003d Optional.of(foodList.get(index.get().getZeroBased()));"
+        "content": "                try {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                    nameOfFood \u003d food.get().getName();"
+        "content": "                    food \u003d Optional.of(foodList.get(index.get().getZeroBased()));"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                    priceOfFood \u003d food.get().getPrice();"
+        "content": "                    nameOfFood \u003d food.get().getName();"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                    logger.info(\"Enter \" + food.get().getName());"
+        "content": "                    priceOfFood \u003d food.get().getPrice();"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                } catch (IndexOutOfBoundsException e) {"
+        "content": "                    logger.info(\"Enter \" + food.get().getName());"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                    throw new CommandException(INVALID_INDEX_MESSAGE);"
+        "content": "                } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                }"
+        "content": "                    throw new CommandException(INVALID_INDEX_MESSAGE);"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            } else {"
+        "content": "                }"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                for (Food f : foodList) {"
+        "content": "            } else {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                    if (f.getName().equalsIgnoreCase(foodName.get())) {"
+        "content": "                for (Food f : foodList) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                        food \u003d Optional.of(f);"
+        "content": "                    if (f.getName().equalsIgnoreCase(foodName.get())) {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                        nameOfFood \u003d foodName.get();"
+        "content": "                        food \u003d Optional.of(f);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                        priceOfFood \u003d f.getPrice();"
+        "content": "                        nameOfFood \u003d foodName.get();"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                        break;"
+        "content": "                        priceOfFood \u003d f.getPrice();"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                    }"
+        "content": "                        break;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                }"
+        "content": "                    }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            }"
+        "content": "                }"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        } else {"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            throw new CommandException(INVALID_INDEX_MESSAGE);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        }*/"
+        "content": "            throw new CommandException(INVALID_INDEX_MESSAGE);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "        }*/"
       },
       {
         "lineNumber": 112,
@@ -28381,275 +28601,275 @@
       {
         "lineNumber": 113,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
-        "content": "        if (index.isPresent()) {"
+        "content": "        if (ParserContext.getCurrentContext().equals(ParserContext.FAVORITE_CONTEXT)) {"
       },
       {
         "lineNumber": 114,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
-        "content": "            List\u003cFood\u003e foodList \u003d model.getFilteredFoodList();"
+        "content": "            List\u003cFood\u003e foodList \u003d model.getFilteredFavoriteFoodList(true);"
       },
       {
         "lineNumber": 115,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
         "content": "            try {"
       },
       {
         "lineNumber": 116,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
         "content": "                food \u003d Optional.of(foodList.get(index.get().getZeroBased()));"
       },
       {
         "lineNumber": 117,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
         "content": "                nameOfFood \u003d food.get().getName();"
       },
       {
         "lineNumber": 118,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
         "content": "                priceOfFood \u003d food.get().getPrice();"
       },
       {
         "lineNumber": 119,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
-        "content": "                logger.info(\"Enter \" + food.get().getName());"
+        "content": "                logger.info(\"Select \" + food.get().getName());"
       },
       {
         "lineNumber": 120,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
         "content": "            } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 121,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
         "content": "                throw new CommandException(INVALID_INDEX_MESSAGE);"
       },
       {
         "lineNumber": 122,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
         "content": "            }"
       },
       {
         "lineNumber": 123,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
-        "content": "        } else if (foodName.isPresent()) {"
+        "content": "        } else {"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            List\u003cFood\u003e foodList \u003d model.getFilteredFoodList();"
+        "content": "            if (index.isPresent()) {"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            for (Food f : foodList) {"
+        "content": "                List\u003cFood\u003e foodList \u003d model.getFilteredFoodList();"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                if (f.getName().equalsIgnoreCase(foodName.get())) {"
+        "content": "                try {"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                    food \u003d Optional.of(f);"
+        "content": "                    food \u003d Optional.of(foodList.get(index.get().getZeroBased()));"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "                    nameOfFood \u003d foodName.get();"
+        "content": "                    nameOfFood \u003d food.get().getName();"
       },
       {
         "lineNumber": 129,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "                    priceOfFood \u003d f.getPrice();"
+        "content": "                    priceOfFood \u003d food.get().getPrice();"
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "                    break;"
+        "content": "                    logger.info(\"Enter \" + food.get().getName());"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                }"
+        "content": "                } catch (IndexOutOfBoundsException e) {"
       },
       {
         "lineNumber": 132,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "            }"
+        "content": "                    throw new CommandException(INVALID_INDEX_MESSAGE);"
       },
       {
         "lineNumber": 133,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        } else {"
+        "content": "                }"
       },
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "            throw new CommandException(INVALID_INDEX_MESSAGE);"
+        "content": "            } else if (foodName.isPresent()) {"
       },
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        }"
+        "content": "                List\u003cFood\u003e foodList \u003d model.getFilteredFoodList();"
       },
       {
         "lineNumber": 136,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "                for (Food f : foodList) {"
       },
       {
         "lineNumber": 137,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        if (food.isEmpty()) {"
+        "content": "                    if (f.getName().equalsIgnoreCase(foodName.get())) {"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            throw new CommandException(MESSAGE_FAILURE);"
+        "content": "                        food \u003d Optional.of(f);"
       },
       {
         "lineNumber": 139,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        }"
+        "content": "                        nameOfFood \u003d foodName.get();"
       },
       {
         "lineNumber": 140,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "                        priceOfFood \u003d f.getPrice();"
       },
       {
         "lineNumber": 141,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        model.loadFilteredTransactionsList();"
+        "content": "                        break;"
       },
       {
         "lineNumber": 142,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "                    }"
       },
       {
         "lineNumber": 143,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        LocalDate dateAdded \u003d LocalDate.now();"
+        "content": "                }"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        LocalTime timeAdded \u003d LocalTime.now().withNano(0);"
+        "content": "            } else {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        Rating rating \u003d new Rating();"
+        "content": "                throw new CommandException(INVALID_INDEX_MESSAGE);"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        Review review \u003d new Review();"
+        "content": "            }"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        PurchasedFood purchase \u003d new PurchasedFood(food.get(), dateAdded, timeAdded, rating, review);"
+        "content": ""
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "            if (food.isEmpty()) {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        Budget savedBudget \u003d model.getBudget().get();"
+        "content": "                throw new CommandException(MESSAGE_FAILURE);"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 151,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "leslieharland"
         },
-        "content": "        if (savedBudget.getTotalBudget() !\u003d 0) {"
+        "content": "        }"
       },
       {
         "lineNumber": 152,
@@ -28663,54 +28883,54 @@
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            if (savedBudget.getRemainingBudget() \u003c priceOfFood) {"
+        "content": "        model.loadFilteredTransactionsList();"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "                throw new CommandException(EXCEEDED_BUDGET);"
+        "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            }"
+        "content": "        LocalDate dateAdded \u003d LocalDate.now();"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "        LocalTime timeAdded \u003d LocalTime.now().withNano(0);"
       },
       {
         "lineNumber": 157,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "            savedBudget.subtractFromRemainingBudget(priceOfFood);"
+        "content": "        Rating rating \u003d new Rating();"
       },
       {
         "lineNumber": 158,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "            model.setBudget(savedBudget);"
+        "content": "        Review review \u003d new Review();"
       },
       {
         "lineNumber": 159,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "            Budget newBudget \u003d model.getFoodieBot().getBudget();"
+        "content": "        PurchasedFood purchase \u003d new PurchasedFood(food.get(), dateAdded, timeAdded, rating, review);"
       },
       {
         "lineNumber": 160,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
         "content": ""
       },
@@ -28719,227 +28939,311 @@
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            saveTransaction(model, purchase);"
+        "content": "        Budget savedBudget \u003d model.getBudget().get();"
       },
       {
         "lineNumber": 162,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "            return new CommandResult(COMMAND_WORD, String.format("
+        "content": ""
       },
       {
         "lineNumber": 163,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "                    MESSAGE_SUCCESS_BUDGET, nameOfFood,"
+        "content": "        if (savedBudget.getTotalBudget() !\u003d 0) {"
       },
       {
         "lineNumber": 164,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "                    priceOfFood,"
+        "content": ""
       },
       {
         "lineNumber": 165,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "                    newBudget.getRemainingBudget(),"
+        "content": "            if (savedBudget.getRemainingBudget() \u003c priceOfFood) {"
       },
       {
         "lineNumber": 166,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "                    newBudget.getRemainingDailyBudget()));"
+        "content": "                throw new CommandException(EXCEEDED_BUDGET);"
       },
       {
         "lineNumber": 167,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "        } else {"
+        "content": "            }"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            saveTransaction(model, purchase);"
+        "content": ""
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            return new CommandResult(COMMAND_WORD, String.format("
+        "content": "            savedBudget.subtractFromRemainingBudget(priceOfFood);"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                    MESSAGE_SUCCESS, nameOfFood, priceOfFood));"
+        "content": "            model.setBudget(savedBudget);"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        }"
+        "content": "            Budget newBudget \u003d model.getFoodieBot().getBudget();"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 173,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "lsjxavier"
         },
-        "content": "    @Override"
+        "content": "            saveTransaction(model, purchase);"
       },
       {
         "lineNumber": 174,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    public boolean needToSaveCommand() {"
+        "content": "            return new CommandResult(COMMAND_WORD, String.format("
       },
       {
         "lineNumber": 175,
         "author": {
-          "gitId": "lsjxavier"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        return true;"
+        "content": "                    MESSAGE_SUCCESS_BUDGET, nameOfFood,"
       },
       {
         "lineNumber": 176,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    }"
+        "content": "                    priceOfFood,"
       },
       {
         "lineNumber": 177,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "                    newBudget.getRemainingBudget(),"
       },
       {
         "lineNumber": 178,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    @Override"
+        "content": "                    newBudget.getRemainingDailyBudget()));"
       },
       {
         "lineNumber": 179,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        } else {"
       },
       {
         "lineNumber": 180,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "lsjxavier"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "            saveTransaction(model, purchase);"
       },
       {
         "lineNumber": 181,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "            return true;"
+        "content": "            return new CommandResult(COMMAND_WORD, String.format("
       },
       {
         "lineNumber": 182,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        }"
+        "content": "                    MESSAGE_SUCCESS, nameOfFood, priceOfFood));"
       },
       {
         "lineNumber": 183,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 184,
         "author": {
-          "gitId": "leslieharland"
+          "gitId": "SHAUNGOH97"
         },
-        "content": "        if (!(other instanceof SelectItemCommand)) {"
+        "content": "    }"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            return false;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        }"
+        "content": "    public boolean needToSaveCommand() {"
       },
       {
         "lineNumber": 187,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "        return true;"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        SelectItemCommand otherItem \u003d (SelectItemCommand) other;"
+        "content": "    }"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        return otherItem.index.orElseGet(() -\u003e Index.fromZeroBased(0))"
+        "content": ""
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            .equals(index.orElseGet(() -\u003e Index.fromZeroBased(0)))"
+        "content": "    @Override"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            \u0026\u0026 otherItem.foodName.orElseGet(() -\u003e \"\").equals(foodName.orElseGet(() -\u003e \"\"));"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 193,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        if (!(other instanceof SelectItemCommand)) {"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        SelectItemCommand otherItem \u003d (SelectItemCommand) other;"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        return otherItem.index.orElseGet(() -\u003e Index.fromZeroBased(0))"
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            .equals(index.orElseGet(() -\u003e Index.fromZeroBased(0)))"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            \u0026\u0026 otherItem.foodName.orElseGet(() -\u003e \"\").equals(foodName.orElseGet(() -\u003e \"\"));"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 205,
         "author": {
           "gitId": "leslieharland"
         },
@@ -28947,8 +29251,8 @@
       }
     ],
     "authorContributionMap": {
-      "leslieharland": 33,
-      "lsjxavier": 82,
+      "leslieharland": 46,
+      "lsjxavier": 81,
       "SHAUNGOH97": 78
     }
   },
@@ -40082,194 +40386,201 @@
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
-        "content": "        if (!ParserContext.getCurrentContext().equals(ParserContext.STALL_CONTEXT)) {"
+        "content": "        if (!ParserContext.getCurrentContext().equals(ParserContext.STALL_CONTEXT)"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "leslieharland"
         },
-        "content": "            throw new ParseException(ParserContext.INVALID_CONTEXT_MESSAGE + ParserContext.getCurrentContext()"
+        "content": "            \u0026 !ParserContext.getCurrentContext().equals(ParserContext.FAVORITE_CONTEXT)) {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                    + \"\\n\" + ParserContext.SUGGESTED_CONTEXT_MESSAGE"
+        "content": "            throw new ParseException(ParserContext.INVALID_CONTEXT_MESSAGE + ParserContext.getCurrentContext()"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "                    + ParserContext.STALL_CONTEXT);"
+        "content": "                    + \"\\n\" + ParserContext.SUGGESTED_CONTEXT_MESSAGE"
       },
       {
         "lineNumber": 26,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "                    + ParserContext.STALL_CONTEXT);"
+      },
+      {
+        "lineNumber": 27,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 28,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "lsjxavier"
-        },
-        "content": "        try {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            int i \u003d Integer.parseInt(enteredText);"
+        "content": "        try {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            index \u003d Index.fromOneBased(i);"
+        "content": "            int i \u003d Integer.parseInt(enteredText);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            return new SelectItemCommand(index);"
+        "content": "            index \u003d Index.fromOneBased(i);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "            return new SelectItemCommand(index);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        } catch (NumberFormatException nfe) {"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            return new SelectItemCommand(enteredText);"
+        "content": "        } catch (NumberFormatException nfe) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "            return new SelectItemCommand(enteredText);"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        } catch (IndexOutOfBoundsException oob) {"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            index \u003d Index.fromOneBased(999);"
+        "content": "        } catch (IndexOutOfBoundsException oob) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "            return new SelectItemCommand(index);"
+        "content": "            index \u003d Index.fromOneBased(999);"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        }"
+        "content": "            return new SelectItemCommand(index);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "lsjxavier"
         },
-        "content": "        /*"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "SHAUNGOH97"
+          "gitId": "lsjxavier"
         },
-        "content": "        try {"
+        "content": "        /*"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            index \u003d ParserUtil.parseIndex(enteredText);"
+        "content": "        try {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "            return new SelectItemCommand(index);"
+        "content": "            index \u003d ParserUtil.parseIndex(enteredText);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "SHAUNGOH97"
         },
-        "content": "        } catch (ParseException pe) {"
+        "content": "            return new SelectItemCommand(index);"
       },
       {
         "lineNumber": 46,
+        "author": {
+          "gitId": "SHAUNGOH97"
+        },
+        "content": "        } catch (ParseException pe) {"
+      },
+      {
+        "lineNumber": 47,
         "author": {
           "gitId": "leslieharland"
         },
         "content": "            return new SelectItemCommand(enteredText);"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 48,
         "author": {
           "gitId": "lsjxavier"
         },
         "content": "        }*/"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 49,
         "author": {
           "gitId": "SHAUNGOH97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 50,
         "author": {
           "gitId": "SHAUNGOH97"
         },
@@ -40277,9 +40588,9 @@
       }
     ],
     "authorContributionMap": {
-      "leslieharland": 7,
+      "leslieharland": 9,
       "lsjxavier": 15,
-      "SHAUNGOH97": 27
+      "SHAUNGOH97": 26
     }
   },
   {
@@ -114189,49 +114500,49 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "import seedu.foodiebot.model.util.SampleDataUtil;"
+        "content": "import seedu.foodiebot.model.food.Food;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "import seedu.foodiebot.model.util.SampleDataUtil;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "class FavoritesCommandTest {"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "class FavoritesCommandTest {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private Model model;"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    private Model expectedModel;"
+        "content": "    private Model model;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    private Model expectedModel;"
       },
       {
         "lineNumber": 23,
@@ -114245,84 +114556,84 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @BeforeEach"
+        "content": ""
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    public void setUp() {"
+        "content": "    @BeforeEach"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        model \u003d new ModelManager(getTypicalFoodieBot(), new UserPrefs());"
+        "content": "    public void setUp() {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        expectedModel \u003d new ModelManager(getTypicalFoodieBot(), new UserPrefs());"
+        "content": "        model \u003d new ModelManager(getTypicalFoodieBot(), new UserPrefs());"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        ParserContext.setCurrentContext(ParserContext.STALL_CONTEXT);"
+        "content": "        expectedModel \u003d new ModelManager(getTypicalFoodieBot(), new UserPrefs());"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "        ParserContext.setCurrentContext(ParserContext.STALL_CONTEXT);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    void execute_viewFavorite_success() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        assertCommandSuccess(new FavoritesCommand(\"view\"), FavoritesCommand.COMMAND_WORD, model,"
+        "content": "    void execute_viewFavorite_success() {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            FavoritesCommand.MESSAGE_VIEW_SUCCESS, expectedModel);"
+        "content": "        assertCommandSuccess(new FavoritesCommand(\"view\"), FavoritesCommand.COMMAND_WORD, model,"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "            FavoritesCommand.MESSAGE_VIEW_SUCCESS, model);"
       },
       {
         "lineNumber": 36,
@@ -114336,21 +114647,21 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        assertCommandSuccess(new FavoritesCommand(\"set 1\"), FavoritesCommand.COMMAND_WORD, model,"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            FavoritesCommand.MESSAGE_VIEW_SUCCESS, expectedModel);"
+        "content": "        assertCommandSuccess(new FavoritesCommand(\"set 1\"), FavoritesCommand.COMMAND_WORD, model,"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "            FavoritesCommand.MESSAGE_VIEW_SUCCESS, expectedModel);"
       },
       {
         "lineNumber": 40,
@@ -114364,143 +114675,199 @@
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        assertCommandSuccess(new FavoritesCommand(\"remove\"), FavoritesCommand.COMMAND_WORD, model,"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            FavoritesCommand.MESSAGE_VIEW_SUCCESS, expectedModel);"
+        "content": "        assertCommandSuccess(new FavoritesCommand(\"remove\"), FavoritesCommand.COMMAND_WORD, model,"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "            FavoritesCommand.MESSAGE_VIEW_SUCCESS, expectedModel);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        FavoritesCommand command \u003d new FavoritesCommand(\"view\");"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        SelectItemCommand otherCommandType \u003d new SelectItemCommand(INDEX_FIRST_ITEM);"
+        "content": "        FavoritesCommand command \u003d new FavoritesCommand(\"view\");"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        assertFalse(new FavoritesCommand(\"view\").equals(otherCommandType));"
+        "content": "        SelectItemCommand otherCommandType \u003d new SelectItemCommand(INDEX_FIRST_ITEM);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        assertTrue(command.equals(command));"
+        "content": "        assertFalse(new FavoritesCommand(\"view\").equals(otherCommandType));"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "        assertTrue(command.equals(command));"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    void execute_modifyFavorite_success() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        expectedModel.setFavorite(SampleDataUtil.getSampleFoods()[0]);"
+        "content": "    void execute_setFavorite_success() {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        assertCommandSuccess(new FavoritesCommand(INDEX_FIRST_ITEM, \"set\"), FavoritesCommand.COMMAND_WORD, model,"
+        "content": "        expectedModel.setFavorite(SampleDataUtil.getSampleFoods()[0]);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            String.format(FavoritesCommand.MESSAGE_SET_SUCCESS,"
+        "content": "        assertCommandSuccess(new FavoritesCommand(INDEX_FIRST_ITEM, \"set\"), FavoritesCommand.COMMAND_WORD, model,"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "                SampleDataUtil.getSampleFoods()[0].getName()), expectedModel);"
+        "content": "            String.format(FavoritesCommand.MESSAGE_SET_SUCCESS,"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        expectedModel.removeFavorite(SampleDataUtil.getSampleFoods()[0]);"
+        "content": "                SampleDataUtil.getSampleFoods()[0].getName()), expectedModel);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "        assertCommandSuccess(new FavoritesCommand(INDEX_FIRST_ITEM, \"remove\"), FavoritesCommand.COMMAND_WORD, model,"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "            FavoritesCommand.MESSAGE_VIEW_SUCCESS, expectedModel);"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "leslieharland"
         },
-        "content": "    }"
+        "content": "    void execute_removeFavorite_success() {"
       },
       {
         "lineNumber": 61,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        Food f \u003d SampleDataUtil.getSampleFoods()[0];"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        model.setFavorite(f);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        expectedModel.setFavorite(f);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        expectedModel.removeFavorite(f);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "        assertCommandSuccess(new FavoritesCommand(INDEX_FIRST_ITEM, \"remove\"), FavoritesCommand.COMMAND_WORD, model,"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "            FavoritesCommand.MESSAGE_VIEW_SUCCESS, expectedModel);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "leslieharland"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
         "author": {
           "gitId": "leslieharland"
         },
@@ -114508,7 +114875,7 @@
       }
     ],
     "authorContributionMap": {
-      "leslieharland": 61
+      "leslieharland": 69
     }
   },
   {

@@ -62178,395 +62178,563 @@
         "author": {
           "gitId": "alcen"
         },
-        "content": "            return this.getMonetaryAmount().equals(s.getMonetaryAmount())"
+        "content": "            if (this.getMonetaryAmount().equals(s.getMonetaryAmount())"
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                    \u0026\u0026 this.getPercentageAmount().equals(s.getPercentageAmount())"
+        "content": "                \u0026\u0026 this.getPercentageAmount().equals(s.getPercentageAmount())) {"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                    // does not take order of saveables list into account"
+        "content": "                // don\u0027t take order of saveables list into account"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                    \u0026\u0026 ((this.getSaveables().isEmpty() \u0026\u0026 s.getSaveables().isEmpty())"
+        "content": "                return compareSaveablesList(this.saveables, s.saveables);"
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                    || (this.getSaveables().isPresent() \u0026\u0026 s.getSaveables().isPresent()"
+        "content": "            } else {"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                    \u0026\u0026 this.saveables.containsAll(s.saveables)));"
+        "content": "                return false;"
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 287,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public int hashCode() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        return Objects.hash(this.monetaryAmount, this.percentage, this.saveables);"
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 291,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        return Objects.hash(this.monetaryAmount, this.percentage, this.saveables);"
       },
       {
         "lineNumber": 292,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 293,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 294,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public String toString() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 295,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        // use $ symbol as default"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        return this.getStringWithMoneySymbol(\"$\");"
+        "content": "        // use $ symbol as default"
       },
       {
         "lineNumber": 297,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        return this.getStringWithMoneySymbol(\"$\");"
       },
       {
         "lineNumber": 298,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 299,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 300,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * Utility function used by Savings.java to check if"
+        "content": "    /**"
       },
       {
         "lineNumber": 301,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * the List\u0026lt;Saveable\u0026gt; is non-empty, and none"
+        "content": "     * Utility function used by Savings.java to check if"
       },
       {
         "lineNumber": 302,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * of the Saveables are empty Strings or null."
+        "content": "     * the List\u0026lt;Saveable\u0026gt; is non-empty, and none"
       },
       {
         "lineNumber": 303,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * This should never return false, as if no Saveables"
+        "content": "     * of the Saveables are empty Strings or null."
       },
       {
         "lineNumber": 304,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * are given, the SavingsParser would have determined"
+        "content": "     * This should never return false, as if no Saveables"
       },
       {
         "lineNumber": 305,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * that the command did not have any Saveables and"
+        "content": "     * are given, the SavingsParser would have determined"
       },
       {
         "lineNumber": 306,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * not passed a list to Savings.java in the first place."
+        "content": "     * that the command did not have any Saveables and"
       },
       {
         "lineNumber": 307,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @param list The list to be checked."
+        "content": "     * not passed a list to Savings.java in the first place."
       },
       {
         "lineNumber": 308,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @return True, if the list is non-empty."
+        "content": "     * @param list The list to be checked."
       },
       {
         "lineNumber": 309,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     *     False if the list is empty."
+        "content": "     * @return True, if the list is non-empty."
       },
       {
         "lineNumber": 310,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     */"
+        "content": "     *     False if the list is empty."
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    protected static boolean isValidSaveablesList(List\u003cSaveable\u003e list) {"
+        "content": "     */"
       },
       {
         "lineNumber": 312,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        requireNonNull(list);"
+        "content": "    protected static boolean isValidSaveablesList(List\u003cSaveable\u003e list) {"
       },
       {
         "lineNumber": 313,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        return !list.isEmpty() \u0026\u0026 list.stream()"
+        "content": "        requireNonNull(list);"
       },
       {
         "lineNumber": 314,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                .allMatch(sva -\u003e Saveable.isValidSaveableValue(sva.getValue(), sva.getCount()));"
+        "content": "        return !list.isEmpty() \u0026\u0026 list.stream()"
       },
       {
         "lineNumber": 315,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "                .allMatch(sva -\u003e Saveable.isValidSaveableValue(sva.getValue(), sva.getCount()));"
       },
       {
         "lineNumber": 316,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 317,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 318,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * Given a Saveables list that possibly has duplicate items,"
+        "content": "    /**"
       },
       {
         "lineNumber": 319,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * find these duplicate items and put them together instead,"
+        "content": "     * Given a Saveables list that possibly has duplicate items,"
       },
       {
         "lineNumber": 320,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * increasing the count value of the item accordingly."
+        "content": "     * find these duplicate items and put them together instead,"
       },
       {
         "lineNumber": 321,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     *"
+        "content": "     * increasing the count value of the item accordingly."
       },
       {
         "lineNumber": 322,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @param list The original Saveables list."
+        "content": "     *"
       },
       {
         "lineNumber": 323,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @return A new Saveables list without any duplicates."
+        "content": "     * @param list The original Saveables list."
       },
       {
         "lineNumber": 324,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     */"
+        "content": "     * @return A new Saveables list without any duplicates."
       },
       {
         "lineNumber": 325,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    protected static List\u003cSaveable\u003e condenseSaveablesList(List\u003cSaveable\u003e list) {"
+        "content": "     */"
       },
       {
         "lineNumber": 326,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assert isValidSaveablesList(list);"
+        "content": "    protected static List\u003cSaveable\u003e condenseSaveablesList(List\u003cSaveable\u003e list) {"
       },
       {
         "lineNumber": 327,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        HashMap\u003cString, Integer\u003e nameToCountMap \u003d new HashMap\u003cString, Integer\u003e();"
+        "content": "        assert isValidSaveablesList(list);"
       },
       {
         "lineNumber": 328,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        list.forEach(sva -\u003e {"
+        "content": "        HashMap\u003cString, Integer\u003e nameToCountMap \u003d new HashMap\u003cString, Integer\u003e();"
       },
       {
         "lineNumber": 329,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            nameToCountMap.merge(sva.getValue(), sva.getCount(), Integer::sum);"
+        "content": "        list.forEach(sva -\u003e {"
       },
       {
         "lineNumber": 330,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        });"
+        "content": "            nameToCountMap.merge(sva.getValue(), sva.getCount(), Integer::sum);"
       },
       {
         "lineNumber": 331,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        return nameToCountMap.entrySet().stream()"
+        "content": "        });"
       },
       {
         "lineNumber": 332,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                .map(mapping -\u003e new Saveable(mapping.getKey(), mapping.getValue()))"
+        "content": "        return nameToCountMap.entrySet().stream()"
       },
       {
         "lineNumber": 333,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                .collect(Collectors.toList());"
+        "content": "                .map(mapping -\u003e new Saveable(mapping.getKey(), mapping.getValue()))"
       },
       {
         "lineNumber": 334,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "                .collect(Collectors.toList());"
       },
       {
         "lineNumber": 335,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 336,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 337,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 338,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * Utility function to compare two Saveable Lists."
+      },
+      {
+        "lineNumber": 339,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * Returns true if the items are the same in list1"
+      },
+      {
+        "lineNumber": 340,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * and list2, regardless of order of the items."
+      },
+      {
+        "lineNumber": 341,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 342,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * @param list1 The first list to be compared."
+      },
+      {
+        "lineNumber": 343,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * @param list2 The second list to be compared."
+      },
+      {
+        "lineNumber": 344,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 345,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * @return Returns true, if every Saveable in list1"
+      },
+      {
+        "lineNumber": 346,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     *         can be found in list2, and vice versa."
+      },
+      {
+        "lineNumber": 347,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     *         Returns false otherwise (if some Saveable"
+      },
+      {
+        "lineNumber": 348,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     *         does not exist in both lists)."
+      },
+      {
+        "lineNumber": 349,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 350,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    private static boolean compareSaveablesList(List\u003cSaveable\u003e list1, List\u003cSaveable\u003e list2) {"
+      },
+      {
+        "lineNumber": 351,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        if (list1 \u003d\u003d null \u0026\u0026 list2 \u003d\u003d null) {"
+      },
+      {
+        "lineNumber": 352,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 353,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        } else if (list1 \u003d\u003d null || list2 \u003d\u003d null) {"
+      },
+      {
+        "lineNumber": 354,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 355,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 356,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "            return list1.containsAll(list2) \u0026\u0026 list2.containsAll(list1);"
+      },
+      {
+        "lineNumber": 357,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 358,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 359,
         "author": {
           "gitId": "alcen"
         },
@@ -62574,7 +62742,7 @@
       }
     ],
     "authorContributionMap": {
-      "alcen": 328,
+      "alcen": 352,
       "nelsontky": 7
     }
   },
@@ -85620,224 +85788,224 @@
         "author": {
           "gitId": "alcen"
         },
-        "content": "import csdev.couponstash.model.coupon.savings.Savings;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import javafx.fxml.FXML;"
+        "content": "import java.util.function.Consumer;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import javafx.scene.control.Label;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import javafx.scene.layout.FlowPane;"
+        "content": "import csdev.couponstash.model.coupon.savings.Saveable;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import javafx.scene.layout.Region;"
+        "content": "import csdev.couponstash.model.coupon.savings.Savings;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import javafx.scene.layout.VBox;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "import javafx.fxml.FXML;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "alcen"
         },
-        "content": "/**"
+        "content": "import javafx.scene.control.Label;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "alcen"
         },
-        "content": " * The UI element that holds the Savings, this is"
+        "content": "import javafx.scene.layout.FlowPane;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "alcen"
         },
-        "content": " * displayed as a blue box beside the Coupon."
+        "content": "import javafx.scene.layout.Region;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "alcen"
         },
-        "content": " */"
+        "content": "import javafx.scene.layout.VBox;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "alcen"
         },
-        "content": "public class SavingsBox extends UiPart\u003cRegion\u003e {"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private static final String FXML \u003d \"SavingsBox.fxml\";"
+        "content": "/**"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    // to set certain elements to be invisible"
+        "content": " * The UI element that holds the Savings, this is"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private static final String HIDDEN \u003d \"visibility: hidden;\";"
+        "content": " * displayed as a blue box beside the Coupon."
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    // allow CSS styles for each label in the FlowPane"
+        "content": " */"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private static final String SAVEABLE_CLASS \u003d \"sv-label\";"
+        "content": "public class SavingsBox extends UiPart\u003cRegion\u003e {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    // make it more obvious that savings can exist without"
+        "content": "    private static final String FXML \u003d \"SavingsBox.fxml\";"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    // numerical but with saveable free items"
+        "content": "    // to set certain elements to be invisible"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private static final String NO_NUMERICAL_AMOUNT_STYLE \u003d \"-fx-font-size: 12;\""
+        "content": "    private static final String HIDDEN \u003d \"visibility: hidden;\";"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            + \"-fx-font-weight: normal; -fx-font-style: italic; -fx-text-fill: #6c96be;\";"
+        "content": "    // allow CSS styles for each label in the FlowPane"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    // controls font size of number amount"
+        "content": "    private static final String SAVEABLE_CLASS \u003d \"sv-label\";"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private static final int BASE_FONT_SIZE \u003d 125;"
+        "content": "    // make it more obvious that savings can exist without"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    // if no saveables, translate numerical amount"
+        "content": "    // numerical but with saveable free items"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private static final int NUMERICAL_AMOUNT_TRANSLATE_AMOUNT \u003d 12;"
+        "content": "    private static final String INFO_TEXT_STYLE \u003d \"-fx-font-size: 12;\""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "            + \"-fx-font-weight: normal; -fx-font-style: italic; -fx-text-fill: #6c96be;\";"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @FXML"
+        "content": "    // controls font size of number amount"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private VBox savingsPane;"
+        "content": "    private static final int BASE_FONT_SIZE \u003d 105;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @FXML"
+        "content": "    // if no saveables, translate numerical amount"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private Label numericalAmount;"
+        "content": "    private static final int NUMERICAL_AMOUNT_TRANSLATE_AMOUNT \u003d 12;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @FXML"
+        "content": "    // maximum number of saveables to be displayed"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private FlowPane saveables;"
+        "content": "    private static final int MAXIMUM_NUMBER_OF_SHOWN_SAVEABLES \u003d 2;"
       },
       {
         "lineNumber": 35,
@@ -85851,154 +86019,154 @@
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public SavingsBox() {"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        super(SavingsBox.FXML);"
+        "content": "    private VBox savingsPane;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    private Label numericalAmount;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    /**"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * Sets the Savings to be displayed in this SavingsBox."
+        "content": "    private FlowPane saveables;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @param s The Savings to be displayed."
+        "content": "    public SavingsBox() {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @param moneySymbol Money symbol for the display."
+        "content": "        super(SavingsBox.FXML);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public void setSavings(Savings s, String moneySymbol) {"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        // handle saveables"
+        "content": "    /**"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        s.getSaveables().ifPresentOrElse(saveablesList -\u003e saveablesList.stream()"
+        "content": "     * Sets the Savings to be displayed in this SavingsBox."
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            .forEach(sva -\u003e {"
+        "content": "     *"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                Label label \u003d new Label(sva.getValue());"
+        "content": "     * @param s The Savings to be displayed."
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                // ensure that label has the correct CSS style"
+        "content": "     * @param moneySymbol Money symbol for the display."
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                label.getStyleClass().add(SavingsBox.SAVEABLE_CLASS);"
+        "content": "     */"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                saveables.getChildren().add(label);"
+        "content": "    public void setSavings(Savings s, String moneySymbol) {"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            }), () -\u003e {"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                this.saveables.setStyle(SavingsBox.HIDDEN);"
+        "content": "        // logic for adding labels to the savings box for saveables"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                this.numericalAmount.setTranslateY(SavingsBox.NUMERICAL_AMOUNT_TRANSLATE_AMOUNT);"
+        "content": "        Consumer\u003cList\u003cSaveable\u003e\u003e labelAdderForSaveablesList \u003d saveablesList -\u003e {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            });"
+        "content": "            int numberOfSaveables \u003d saveablesList.size();"
       },
       {
         "lineNumber": 58,
@@ -86012,248 +86180,521 @@
         "author": {
           "gitId": "alcen"
         },
-        "content": "        // handle numerical value"
+        "content": "            // loop through all the items, or to maximum number to show (ignore last item)"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        String savingsNumber \u003d getSavingsString(s, moneySymbol);"
+        "content": "            int loopLimit \u003d Math.min(numberOfSaveables, SavingsBox.MAXIMUM_NUMBER_OF_SHOWN_SAVEABLES - 1);"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        if (savingsNumber.isBlank()) {"
+        "content": "            for (int i \u003d 0; i \u003c loopLimit; i++) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            this.numericalAmount.setText(\"(no amount)\");"
+        "content": "                addLabelToSavingsBox(saveablesList.get(i));"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            this.numericalAmount.setStyle(SavingsBox.NO_NUMERICAL_AMOUNT_STYLE);"
+        "content": "            }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        } else {"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            this.numericalAmount.setText(savingsNumber);"
+        "content": "            // special cases for last item"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            // resize numerical amount dynamically"
+        "content": "            if (numberOfSaveables \u003e SavingsBox.MAXIMUM_NUMBER_OF_SHOWN_SAVEABLES) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            this.numericalAmount.setStyle(\"-fx-font-size: \""
+        "content": "                // show a label that denotes presence of more saveables"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                    + (SavingsBox.BASE_FONT_SIZE / savingsNumber.length())"
+        "content": "                // but these saveables are not shown in savings box"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                    + \";\");"
+        "content": "                Label label \u003d new Label(\"(and more...)\");"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        }"
+        "content": "                label.setStyle(SavingsBox.INFO_TEXT_STYLE);"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "                saveables.getChildren().add(label);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "            } else if (numberOfSaveables \u003d\u003d SavingsBox.MAXIMUM_NUMBER_OF_SHOWN_SAVEABLES) {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    /**"
+        "content": "                // if there is only one more item, we have enough space to show it"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * Given a Savings object and the money symbol, return"
+        "content": "                addLabelToSavingsBox(saveablesList.get(numberOfSaveables - 1));"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * a String containing a formatted numerical value for"
+        "content": "            }"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * use in SavingsBox, or an empty String if the"
+        "content": "        };"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * Savings does not have any MonetaryAmount"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * or PercentageAmount (only Saveable)."
+        "content": "        // handle saveables"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     *"
+        "content": "        s.getSaveables().ifPresentOrElse(labelAdderForSaveablesList, () -\u003e {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @param s The Savings object to access."
+        "content": "            this.saveables.setStyle(SavingsBox.HIDDEN);"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @param moneySymbol The money symbol set in UserPrefs."
+        "content": "            this.numericalAmount.setTranslateY(SavingsBox.NUMERICAL_AMOUNT_TRANSLATE_AMOUNT);"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @return Nicely formatted String of the numerical savings."
+        "content": "        });"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    private static String getSavingsString(Savings s, String moneySymbol) {"
+        "content": "        // handle numerical value"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        // assumes that Savings only has either PercentageAmount"
+        "content": "        String savingsNumber \u003d getSavingsString(s, moneySymbol);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        // or MonetaryAmount, but never both"
+        "content": "        if (savingsNumber.isBlank()) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        StringBuilder sb \u003d new StringBuilder();"
+        "content": "            this.numericalAmount.setText(\"(no amount)\");"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        s.getPercentageAmount().ifPresent(pc -\u003e"
+        "content": "            this.numericalAmount.setStyle(SavingsBox.INFO_TEXT_STYLE);"
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "Denise-Ng"
+          "gitId": "alcen"
         },
-        "content": "            sb.append(pc.toString()));"
+        "content": "        } else {"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        s.getMonetaryAmount().ifPresent(ma -\u003e"
+        "content": "            this.numericalAmount.setText(savingsNumber);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "alcen"
         },
-        "content": "            sb.append(ma.getStringWithMoneySymbol(moneySymbol)));"
+        "content": "            // resize numerical amount dynamically"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        return sb.toString();"
+        "content": "            this.numericalAmount.setStyle(\"-fx-font-size: \""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "                    + (SavingsBox.BASE_FONT_SIZE / savingsNumber.length())"
       },
       {
         "lineNumber": 94,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "                    + \";\");"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * Given a Savings object and the money symbol, return"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * a String containing a formatted numerical value for"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * use in SavingsBox, or an empty String if the"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * Savings does not have any MonetaryAmount"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * or PercentageAmount (only Saveable)."
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * @param s The Savings object to access."
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * @param moneySymbol The money symbol set in UserPrefs."
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * @return Nicely formatted String of the numerical savings."
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    private static String getSavingsString(Savings s, String moneySymbol) {"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        // assumes that Savings only has either PercentageAmount"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        // or MonetaryAmount, but never both"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        StringBuilder sb \u003d new StringBuilder();"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        s.getPercentageAmount().ifPresent(pc -\u003e"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "Denise-Ng"
+        },
+        "content": "            sb.append(pc.toString()));"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        s.getMonetaryAmount().ifPresent(ma -\u003e"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "            sb.append(ma.getStringWithMoneySymbol(moneySymbol)));"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        return sb.toString();"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * Given a Saveable, adds a label to the SavingsBox"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * that displays the name of the Saveable."
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     * @param sva The Saveable to be displayed in"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     *            SavingsBox as a Label."
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    private void addLabelToSavingsBox(Saveable sva) {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        Label label \u003d new Label(sva.getValue());"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        // ensure that label has the correct CSS style"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        label.getStyleClass().add(SavingsBox.SAVEABLE_CLASS);"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        saveables.getChildren().add(label);"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 133,
         "author": {
           "gitId": "alcen"
         },
@@ -86262,7 +86703,7 @@
     ],
     "authorContributionMap": {
       "Denise-Ng": 1,
-      "alcen": 93
+      "alcen": 132
     }
   },
   {
@@ -144172,423 +144613,528 @@
         "author": {
           "gitId": "alcen"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertNotEquals;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import java.util.Arrays;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.Arrays;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "alcen"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "alcen"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "alcen"
         },
-        "content": " * Unit tests for Savings, this also tests the"
+        "content": "/**"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "alcen"
         },
-        "content": " * integration between MonetaryAmount, PercentageAmount"
+        "content": " * Unit tests for Savings, this also tests the"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "alcen"
         },
-        "content": " * Saveables and Savings."
+        "content": " * integration between MonetaryAmount, PercentageAmount"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "alcen"
         },
-        "content": " */"
+        "content": " * Saveables and Savings."
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "alcen"
         },
-        "content": "public class SavingsTest {"
+        "content": " */"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "public class SavingsTest {"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public void constructor_null_throwsNullPointerException() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e new Savings((MonetaryAmount) null));"
+        "content": "    public void constructor_null_throwsNullPointerException() {"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e new Savings((MonetaryAmount) null, null));"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new Savings((MonetaryAmount) null));"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new Savings((MonetaryAmount) null, null));"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public void isValidSaveablesList() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e Savings.isValidSaveablesList(null)); // null"
+        "content": "    public void isValidSaveablesList() {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assertFalse(Savings.isValidSaveablesList(new ArrayList\u003cSaveable\u003e())); // empty list"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e Savings.isValidSaveablesList(null)); // null"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "        assertFalse(Savings.isValidSaveablesList(new ArrayList\u003cSaveable\u003e())); // empty list"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        // valid saveables list"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assertTrue(Savings.isValidSaveablesList(Arrays.asList(new Saveable(\"Hello\"), new Saveable(\"World\"))));"
+        "content": "        // valid saveables list"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        assertTrue(Savings.isValidSaveablesList(Arrays.asList(new Saveable(\"Hello\"), new Saveable(\"World\"))));"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public void condenseSaveablesList_duplicateSaveables_addsDuplicatesTogether() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        List\u003cSaveable\u003e saveablesList \u003d Arrays.asList(new Saveable(\"Planet\"), new Saveable(\"Galaxy\"),"
+        "content": "    public void condenseSaveablesList_duplicateSaveables_addsDuplicatesTogether() {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                new Saveable(\"Planet\"), new Saveable(\"Galaxy\"), new Saveable(\"Planet\"));"
+        "content": "        List\u003cSaveable\u003e saveablesList \u003d Arrays.asList(new Saveable(\"Planet\"), new Saveable(\"Galaxy\"),"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        List\u003cSaveable\u003e resultList \u003d Savings.condenseSaveablesList(saveablesList);"
+        "content": "                new Saveable(\"Planet\"), new Saveable(\"Galaxy\"), new Saveable(\"Planet\"));"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        List\u003cSaveable\u003e expectedList \u003d Arrays.asList(new Saveable(\"Galaxy\", 2), new Saveable(\"Planet\", 3));"
+        "content": "        List\u003cSaveable\u003e resultList \u003d Savings.condenseSaveablesList(saveablesList);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        resultList.sort(Saveable::compareTo);"
+        "content": "        List\u003cSaveable\u003e expectedList \u003d Arrays.asList(new Saveable(\"Galaxy\", 2), new Saveable(\"Planet\", 3));"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        expectedList.sort(Saveable::compareTo);"
+        "content": "        resultList.sort(Saveable::compareTo);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assertEquals(resultList, expectedList);"
+        "content": "        expectedList.sort(Saveable::compareTo);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        assertEquals(resultList, expectedList);"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public void condenseSaveablesList_distinctSaveables_returnsSameItems() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        List\u003cSaveable\u003e saveablesList \u003d Arrays.asList(new Saveable(\"Mercury\"), new Saveable(\"Venus\"),"
+        "content": "    public void condenseSaveablesList_distinctSaveables_returnsSameItems() {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                new Saveable(\"Earth\"), new Saveable(\"Mars\"), new Saveable(\"Jupiter\"));"
+        "content": "        List\u003cSaveable\u003e saveablesList \u003d Arrays.asList(new Saveable(\"Mercury\"), new Saveable(\"Venus\"),"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        List\u003cSaveable\u003e clonedList \u003d new ArrayList\u003cSaveable\u003e(saveablesList);"
+        "content": "                new Saveable(\"Earth\"), new Saveable(\"Mars\"), new Saveable(\"Jupiter\"));"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        List\u003cSaveable\u003e resultList \u003d Savings.condenseSaveablesList(saveablesList);"
+        "content": "        List\u003cSaveable\u003e clonedList \u003d new ArrayList\u003cSaveable\u003e(saveablesList);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        resultList.sort(Saveable::compareTo);"
+        "content": "        List\u003cSaveable\u003e resultList \u003d Savings.condenseSaveablesList(saveablesList);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        clonedList.sort(Saveable::compareTo);"
+        "content": "        resultList.sort(Saveable::compareTo);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assertEquals(resultList, clonedList);"
+        "content": "        clonedList.sort(Saveable::compareTo);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        assertEquals(resultList, clonedList);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public void copy_validSavings_copiesAreEqual() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        Savings savings \u003d new Savings("
+        "content": "    public void copy_validSavings_copiesAreEqual() {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                new PercentageAmount(50),"
+        "content": "        Savings savings \u003d new Savings("
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                Arrays.asList(new Saveable(\"Saturn\", 5), new Saveable(\"Uranus\", 7), new Saveable(\"Neptune\"))"
+        "content": "                new PercentageAmount(50),"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        );"
+        "content": "                Arrays.asList(new Saveable(\"Saturn\", 5), new Saveable(\"Uranus\", 7), new Saveable(\"Neptune\"))"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        assertEquals(savings.copy(), savings);"
+        "content": "        );"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        assertEquals(savings.copy(), savings);"
       },
       {
         "lineNumber": 66,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    public void equals_identicalApartFromSaveablesList_areNotEqual() {"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        Savings savings1 \u003d new Savings("
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "                Arrays.asList(new Saveable(\"Ceres\", 12), new Saveable(\"Pluto\", 3), new Saveable(\"Eris\"),"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "                        new Saveable(\"Makemake\", 2), new Saveable(\"Haumea\", 10))"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        // savings2 is a subset of savings1"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        Savings savings2 \u003d new Savings("
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "                Arrays.asList(new Saveable(\"Ceres\", 12), new Saveable(\"Pluto\", 3), new Saveable(\"Eris\"))"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        );"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        assertNotEquals(savings1, savings2);"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "        assertNotEquals(savings2, savings1);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
         "author": {
           "gitId": "alcen"
         },
@@ -144596,7 +145142,7 @@
       }
     ],
     "authorContributionMap": {
-      "alcen": 66
+      "alcen": 81
     }
   },
   {

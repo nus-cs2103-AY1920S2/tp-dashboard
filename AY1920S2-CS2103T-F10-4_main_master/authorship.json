@@ -3400,7 +3400,7 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String MESSAGE_TASKS_LISTED_OVERVIEW \u003d \"%1$d tasks listed!\";"
+        "content": "    public static final String MESSAGE_TASKS_LISTED_OVERVIEW \u003d \"%1$d matching tasks are listed!\";"
       },
       {
         "lineNumber": 31,
@@ -3421,7 +3421,7 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            + \"Type `task list` to return to the main task list.\";"
+        "content": "            + \"Type: task list to return to the main task list.\";"
       },
       {
         "lineNumber": 34,
@@ -6192,7 +6192,7 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String COMMAND_WORD_UNDONE \u003d \"undone\";"
+        "content": "    public static final String COMMAND_WORD_UNDONE \u003d \"not-done\";"
       },
       {
         "lineNumber": 32,
@@ -9380,9 +9380,9 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "NNpanpan"
+          "gitId": "dinhnhobao"
         },
-        "content": "    private final String instruction \u003d \"Use \" + COMMAND_GROUP_CMD + \" \" + COMMAND_WORD_GROUP"
+        "content": "    private final String instruction \u003d \"Type: \" + COMMAND_GROUP_CMD + \" \" + COMMAND_WORD_GROUP"
       },
       {
         "lineNumber": 18,
@@ -9429,40 +9429,54 @@
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "NNpanpan"
+          "gitId": "dinhnhobao"
         },
-        "content": "        Command.ALL_COMMAND_GROUPS.forEach(str -\u003e builder.append(str).append(\" \"));"
+        "content": "        Command.ALL_COMMAND_GROUPS.forEach(str -\u003e builder.append(str).append(\", \"));"
       },
       {
         "lineNumber": 25,
         "author": {
-          "gitId": "NNpanpan"
+          "gitId": "dinhnhobao"
         },
-        "content": "        builder.append(\"\\n\").append(instruction);"
+        "content": "        StringBuilder stripedLastComma \u003d new StringBuilder("
       },
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "NNpanpan"
+          "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "                builder.toString().substring(0, builder.toString().length() - 2) + \".\");"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "NNpanpan"
+          "gitId": "dinhnhobao"
         },
-        "content": "        return new CommandResult(builder.toString(), CommandType.CMD);"
+        "content": "        stripedLastComma.append(\"\\n\").append(instruction);"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 29,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return new CommandResult(stripedLastComma.toString(), CommandType.CMD);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
         "author": {
           "gitId": "NNpanpan"
         },
@@ -9470,7 +9484,8 @@
       }
     ],
     "authorContributionMap": {
-      "NNpanpan": 29
+      "dinhnhobao": 6,
+      "NNpanpan": 25
     }
   },
   {
@@ -23193,9 +23208,9 @@
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "dinhnhobao"
+          "gitId": "NNpanpan"
         },
-        "content": "            + \"Please choose another name, or another time slot. Thanks!\";"
+        "content": "            + \"Please choose another description, or another time period.\";"
       },
       {
         "lineNumber": 42,
@@ -23493,8 +23508,8 @@
       }
     ],
     "authorContributionMap": {
-      "dinhnhobao": 53,
-      "NNpanpan": 23,
+      "dinhnhobao": 52,
+      "NNpanpan": 24,
       "alushingg": 6,
       "zixinn": 1
     }
@@ -24650,7 +24665,7 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            + \": Edits the details of the task identified \""
+        "content": "            + \": Edits the description and/or time of the task identified \""
       },
       {
         "lineNumber": 31,
@@ -24769,7 +24784,7 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "    public static final String MESSAGE_NOT_EDITED \u003d \"At least one field to edit must be provided.\";"
+        "content": "    public static final String MESSAGE_NOT_EDITED \u003d \"No difference detected. At least one different field is required.\";"
       },
       {
         "lineNumber": 48,
@@ -25091,133 +25106,133 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "        System.out.println(current);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        if (taskToEdit.equals(editedTask) || current.contains(editedTask)) {"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            logger.severe(\"Dups: \" + editedTask.toString() + \" and \" + taskToEdit.toString());"
+        "content": "        if (!taskToEdit.isSameTask(editedTask) \u0026\u0026 model.hasTask(editedTask)) {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            throw new CommandException(MESSAGE_DUPLICATE_TASK);"
+        "content": "            logger.severe(\"Dups: \" + editedTask.toString() + \" and \" + taskToEdit.toString());"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        }"
+        "content": "            throw new CommandException(MESSAGE_DUPLICATE_TASK);"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        if (editTaskDescriptor.getDescription().isEmpty()) {"
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            if (editTaskDescriptor.getTaskDateTime().equals(taskToEdit.getTaskDateTime())"
+        "content": "        if (taskToEdit.equals(editedTask)) {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "                    || (taskToEdit.getTaskDateTime().isEmpty()"
+        "content": "            throw new CommandException(MESSAGE_NOT_EDITED);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "                    \u0026\u0026 editTaskDescriptor.getTaskDateTime().equals(Optional.of(Task.TABOO_DATE_TIME)))"
+        "content": "        }"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            ) {"
+        "content": ""
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "                throw new CommandException(MESSAGE_NOT_EDITED);"
+        "content": "        model.setTask(taskToEdit, editedTask);"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            }"
+        "content": "        model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        }"
+        "content": "        TaskAction editTaskAction \u003d new TaskAction(taskToEdit, editedTask, DoableActionType.EDIT);"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "        model.addAction(editTaskAction);"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        model.setTask(taskToEdit, editedTask);"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);"
+        "content": "        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask),"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        TaskAction editTaskAction \u003d new TaskAction(taskToEdit, editedTask, DoableActionType.EDIT);"
+        "content": "                CommandType.TASK);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        model.addAction(editTaskAction);"
+        "content": "    }"
       },
       {
         "lineNumber": 112,
@@ -25231,245 +25246,245 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask),"
+        "content": "    /**"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "                CommandType.TASK);"
+        "content": "     * Creates and returns a {@code Task} with the details of {@code toEdit}"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "    }"
+        "content": "     * edited with {@code editTaskDescriptor}."
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "     * Lambdas might not be the best way to do this, but would avoid nested if-else."
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "     * Creates and returns a {@code Task} with the details of {@code toEdit}"
+        "content": "    private static Task createEditedTask(Task toEdit, EditTaskDescriptor editTaskDescriptor) {"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "     * edited with {@code editTaskDescriptor}."
+        "content": "        assert toEdit !\u003d null;"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "     * Lambdas might not be the best way to do this, but would avoid nested if-else."
+        "content": "        assert toEdit.getTaskNum() \u003d\u003d editTaskDescriptor.getTaskNum();"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "     */"
+        "content": "        assert toEdit.getModuleCode().equals(editTaskDescriptor.getModuleCode());"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "    private static Task createEditedTask(Task toEdit, EditTaskDescriptor editTaskDescriptor) {"
+        "content": ""
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        assert toEdit !\u003d null;"
+        "content": "        final Description updatedDescription \u003d editTaskDescriptor.getDescription().orElse(toEdit.getDescription());"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        assert toEdit.getTaskNum() \u003d\u003d editTaskDescriptor.getTaskNum();"
+        "content": "        final Optional\u003cTaskDateTime\u003e updatedTaskDateTime \u003d editTaskDescriptor.getTaskDateTime();"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        assert toEdit.getModuleCode().equals(editTaskDescriptor.getModuleCode());"
+        "content": "        final ModuleCode modCode \u003d toEdit.getModuleCode();"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "        final Description updatedDescription \u003d editTaskDescriptor.getDescription().orElse(toEdit.getDescription());"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "        final Optional\u003cTaskDateTime\u003e updatedTaskDateTime \u003d editTaskDescriptor.getTaskDateTime();"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "        final ModuleCode modCode \u003d toEdit.getModuleCode();"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "NNpanpan"
-        },
         "content": "        final int taskId \u003d toEdit.getTaskNum();"
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 127,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "        final boolean isDone \u003d toEdit.isTaskDone();"
       },
       {
-        "lineNumber": 132,
+        "lineNumber": 128,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        if (updatedTaskDateTime.isPresent()) {"
       },
       {
-        "lineNumber": 133,
+        "lineNumber": 129,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            TaskDateTime value \u003d updatedTaskDateTime.get();"
       },
       {
-        "lineNumber": 134,
+        "lineNumber": 130,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": ""
       },
       {
-        "lineNumber": 135,
+        "lineNumber": 131,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            return value.equals(Task.TABOO_DATE_TIME)"
       },
       {
-        "lineNumber": 136,
+        "lineNumber": 132,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "                    ? Task.makeNonScheduledTask(updatedDescription, modCode, taskId, isDone)"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 133,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "                    : Task.makeScheduledTask(updatedDescription, value,"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 134,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "                    toEdit.getModuleCode(), toEdit.getTaskNum(), isDone);"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 135,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 136,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            final Task[] toReturn \u003d new Task[1];"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 137,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            toEdit.getTaskDateTime()"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 138,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "                    .ifPresentOrElse(taskDateTime"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 139,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "                        -\u003e toReturn[0] \u003d Task.makeScheduledTask(updatedDescription, taskDateTime,"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 140,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "                            modCode, taskId, isDone), ()"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 141,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "                        -\u003e toReturn[0] \u003d Task.makeNonScheduledTask(updatedDescription,"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 142,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "                                modCode, taskId, isDone)"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 143,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "                );"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": "            return toReturn[0];"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 148,
@@ -25483,273 +25498,273 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            return toReturn[0];"
+        "content": "    /**"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        }"
+        "content": "     * Stores the details to edit the task with. Each non-empty field value will replace the"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "    }"
+        "content": "     * corresponding field value of the task."
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "    /**"
+        "content": "    public static class EditTaskDescriptor {"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "     * Stores the details to edit the task with. Each non-empty field value will replace the"
+        "content": "        private ModuleCode moduleCode;"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "     * corresponding field value of the task."
+        "content": "        private int taskNum;"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "     */"
+        "content": "        private Description description;"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "    public static class EditTaskDescriptor {"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "        private ModuleCode moduleCode;"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "        private int taskNum;"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "        private Description description;"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "NNpanpan"
-        },
         "content": "        private TaskDateTime taskDateTime;"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 158,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "        private boolean isDone;"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 159,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": ""
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 160,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        public EditTaskDescriptor() {}"
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 161,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": ""
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 162,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        /**"
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 163,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "         * Copy constructor."
       },
       {
-        "lineNumber": 168,
+        "lineNumber": 164,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "         */"
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 165,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        public EditTaskDescriptor(EditTaskDescriptor toCopy) {"
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 166,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            this.moduleCode \u003d toCopy.moduleCode;"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 167,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            this.taskNum \u003d toCopy.taskNum;"
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 168,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            this.description \u003d toCopy.description;"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 169,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            this.taskDateTime \u003d toCopy.taskDateTime;"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 170,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "            this.isDone \u003d toCopy.isDone;"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 171,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 172,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": ""
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 173,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        public EditTaskDescriptor(Task task) {"
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 174,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            this.moduleCode \u003d task.getModuleCode();"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 175,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            this.taskNum \u003d task.getTaskNum();"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 176,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            this.description \u003d task.getDescription();"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 177,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            Optional\u003cTaskDateTime\u003e tdt \u003d task.getTaskDateTime();"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 178,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            if (tdt.isEmpty()) {"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 179,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "                this.taskDateTime \u003d null;"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 180,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            } else {"
       },
       {
-        "lineNumber": 185,
+        "lineNumber": 181,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "                this.taskDateTime \u003d tdt.get();"
       },
       {
-        "lineNumber": 186,
+        "lineNumber": 182,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 187,
+        "lineNumber": 183,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            this.isDone \u003d task.isTaskDone();"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": "        public ModuleCode getModuleCode() {"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "NNpanpan"
+        },
+        "content": "            return this.moduleCode;"
       },
       {
         "lineNumber": 188,
@@ -25770,14 +25785,14 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        public ModuleCode getModuleCode() {"
+        "content": "        public int getTaskNum() {"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            return this.moduleCode;"
+        "content": "            return this.taskNum;"
       },
       {
         "lineNumber": 192,
@@ -25798,14 +25813,14 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        public int getTaskNum() {"
+        "content": "        public void setDescription(Description description) {"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            return this.taskNum;"
+        "content": "            this.description \u003d description;"
       },
       {
         "lineNumber": 196,
@@ -25826,14 +25841,14 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        public void setDescription(Description description) {"
+        "content": "        public Optional\u003cDescription\u003e getDescription() {"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            this.description \u003d description;"
+        "content": "            return Optional.ofNullable(this.description);"
       },
       {
         "lineNumber": 200,
@@ -25854,14 +25869,14 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        public Optional\u003cDescription\u003e getDescription() {"
+        "content": "        public void setTaskDateTime(TaskDateTime taskDateTime) {"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            return Optional.ofNullable(this.description);"
+        "content": "            this.taskDateTime \u003d taskDateTime;"
       },
       {
         "lineNumber": 204,
@@ -25882,14 +25897,14 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        public void setTaskDateTime(TaskDateTime taskDateTime) {"
+        "content": "        public Optional\u003cTaskDateTime\u003e getTaskDateTime() {"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            this.taskDateTime \u003d taskDateTime;"
+        "content": "            return Optional.ofNullable(this.taskDateTime);"
       },
       {
         "lineNumber": 208,
@@ -25910,133 +25925,133 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        public Optional\u003cTaskDateTime\u003e getTaskDateTime() {"
+        "content": "        /**"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            return Optional.ofNullable(this.taskDateTime);"
+        "content": "         * Makes the task."
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        }"
+        "content": "         */"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "        public Task build() {"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        /**"
+        "content": "            if (taskDateTime \u003d\u003d null) {"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "         * Makes the task."
+        "content": "                return Task.makeNonScheduledTask(description, moduleCode, taskNum, isDone);"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "         */"
+        "content": "            } else {"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        public Task build() {"
+        "content": "                return Task.makeScheduledTask(description, taskDateTime, moduleCode, taskNum, isDone);"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            if (taskDateTime \u003d\u003d null) {"
+        "content": "            }"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "                return Task.makeNonScheduledTask(description, moduleCode, taskNum, isDone);"
+        "content": "        }"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            } else {"
+        "content": ""
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "                return Task.makeScheduledTask(description, taskDateTime, moduleCode, taskNum, isDone);"
+        "content": "        @Override"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            }"
+        "content": "        public boolean equals(Object other) {"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        }"
+        "content": "            if (this \u003d\u003d other) {"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "                return true;"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        @Override"
+        "content": "            }"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        public boolean equals(Object other) {"
+        "content": ""
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            if (this \u003d\u003d other) {"
+        "content": "            if (!(other instanceof EditTaskDescriptor)) {"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "                return true;"
+        "content": "                return false;"
       },
       {
         "lineNumber": 229,
@@ -26057,94 +26072,66 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            if (!(other instanceof EditTaskDescriptor)) {"
+        "content": "            EditTaskDescriptor e \u003d (EditTaskDescriptor) other;"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "                return false;"
+        "content": ""
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            }"
+        "content": "            return this.moduleCode.equals(e.moduleCode)"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "                    \u0026\u0026 this.taskNum \u003d\u003d e.taskNum"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            EditTaskDescriptor e \u003d (EditTaskDescriptor) other;"
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 237,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "            return this.moduleCode.equals(e.moduleCode)"
-      },
-      {
-        "lineNumber": 238,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "                    \u0026\u0026 this.taskNum \u003d\u003d e.taskNum"
-      },
-      {
-        "lineNumber": 239,
-        "author": {
-          "gitId": "NNpanpan"
-        },
         "content": "                    \u0026\u0026 this.description.equals(e.description)"
       },
       {
-        "lineNumber": 240,
+        "lineNumber": 236,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "                    \u0026\u0026 this.taskDateTime.equals(e.taskDateTime)"
       },
       {
-        "lineNumber": 241,
+        "lineNumber": 237,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "                    \u0026\u0026 this.isDone \u003d\u003d (e.isDone);"
       },
       {
-        "lineNumber": 242,
+        "lineNumber": 238,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 243,
+        "lineNumber": 239,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 244,
+        "lineNumber": 240,
         "author": {
           "gitId": "NNpanpan"
         },
@@ -26153,7 +26140,7 @@
     ],
     "authorContributionMap": {
       "dinhnhobao": 9,
-      "NNpanpan": 231,
+      "NNpanpan": 227,
       "alushingg": 1,
       "zixinn": 3
     }
@@ -28138,143 +28125,178 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    private final TaskSearchPredicate predicate;"
+        "content": "    public static final String MESSAGE_OUT_OF_BOUNDS_VALUES \u003d \"The provided day, month, year, \""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "            + \"or any of their combination \""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public TaskSearchCommand(TaskSearchPredicate predicate) {"
+        "content": "            + \"is out of bounds. \""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        this.predicate \u003d predicate;"
+        "content": "            + \"Please try again. \\n\""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": "            + MESSAGE_COMMAND_EXAMPLE;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    private final TaskSearchPredicate predicate;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "NNpanpan"
+          "gitId": "dinhnhobao"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "    public TaskSearchCommand(TaskSearchPredicate predicate) {"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        requireNonNull(model);"
+        "content": "        this.predicate \u003d predicate;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        model.updateFilteredTaskList(predicate);"
+        "content": "    }"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        return new CommandResult(String.format(Messages.MESSAGE_TASKS_FILTERED_OVERVIEW,"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                model.getFilteredTaskList().size()), CommandType.TASK);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "dinhnhobao"
+          "gitId": "NNpanpan"
         },
-        "content": "    }"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Override"
+        "content": "        model.updateFilteredTaskList(predicate);"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return new CommandResult(String.format(Messages.MESSAGE_TASKS_FILTERED_OVERVIEW,"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "                model.getFilteredTaskList().size()), CommandType.TASK);"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                || (other instanceof TaskSearchCommand // instanceof handles nulls"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                \u0026\u0026 predicate.equals(((TaskSearchCommand) other).predicate)); // state check"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 60,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return other \u003d\u003d this // short circuit if same object"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                || (other instanceof TaskSearchCommand // instanceof handles nulls"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                \u0026\u0026 predicate.equals(((TaskSearchCommand) other).predicate)); // state check"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
         "author": {
           "gitId": "dinhnhobao"
         },
@@ -28282,7 +28304,7 @@
       }
     ],
     "authorContributionMap": {
-      "dinhnhobao": 58,
+      "dinhnhobao": 63,
       "NNpanpan": 2
     }
   },
@@ -28915,7 +28937,7 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final Prefix PREFIX_DAY \u003d new Prefix(\"/day\");"
+        "content": "    public static final Prefix PREFIX_DAY \u003d new Prefix(\"/date\");"
       },
       {
         "lineNumber": 19,
@@ -29346,271 +29368,278 @@
       {
         "lineNumber": 49,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "dinhnhobao"
         },
-        "content": "        switch (commandWord) {"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "alushingg"
+          "gitId": "zixinn"
         },
-        "content": "        case Command.COMMAND_WORD_CLEAR:"
+        "content": "        switch (commandWord) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "alushingg"
         },
-        "content": "            return new ClearCommand();"
+        "content": "        case Command.COMMAND_WORD_CLEAR:"
       },
       {
         "lineNumber": 52,
+        "author": {
+          "gitId": "alushingg"
+        },
+        "content": "            return new ClearCommand();"
+      },
+      {
+        "lineNumber": 53,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 54,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        case Command.COMMAND_GROUP_EXIT:"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 55,
         "author": {
           "gitId": "alushingg"
         },
         "content": "            return new ExitCommand();"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 56,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "alushingg"
-        },
-        "content": "        case Command.COMMAND_WORD_HELP:"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "alushingg"
         },
-        "content": "            return new HelpCommand();"
+        "content": "        case Command.COMMAND_WORD_HELP:"
       },
       {
         "lineNumber": 58,
+        "author": {
+          "gitId": "alushingg"
+        },
+        "content": "            return new HelpCommand();"
+      },
+      {
+        "lineNumber": 59,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 60,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        case Command.COMMAND_GROUP_MOD:"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 61,
         "author": {
           "gitId": "zixinn"
         },
         "content": "            return new ModuleCommandParser().parse(arguments);"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 62,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 63,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "        case Command.COMMAND_GROUP_FACIL:"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 64,
         "author": {
           "gitId": "zixinn"
         },
         "content": "            return new FacilCommandParser().parse(arguments);"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 65,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "heidicrq"
-        },
-        "content": "        case Command.COMMAND_GROUP_CLASS:"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "            return new LessonCommandParser().parse(arguments);"
+        "content": "        case Command.COMMAND_GROUP_CLASS:"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "            return new LessonCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "alushingg"
+          "gitId": "heidicrq"
         },
-        "content": "        case Command.COMMAND_GROUP_CAL:"
+        "content": ""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "alushingg"
         },
-        "content": "            return new CalCommandParser().parse(arguments);"
+        "content": "        case Command.COMMAND_GROUP_CAL:"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "alushingg"
         },
-        "content": ""
+        "content": "            return new CalCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "dinhnhobao"
+          "gitId": "alushingg"
         },
-        "content": "        case Command.COMMAND_GROUP_TASK:"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            return new TaskCommandParser().parse(arguments);"
+        "content": "        case Command.COMMAND_GROUP_TASK:"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "            return new TaskCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "NNpanpan"
+          "gitId": "dinhnhobao"
         },
-        "content": "        case Command.COMMAND_GROUP_CMD:"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            return new CmdCommandParser().parse(arguments);"
+        "content": "        case Command.COMMAND_GROUP_CMD:"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "            return new CmdCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        case Command.COMMAND_GROUP_UNDO:"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            return new UndoCommandParser().parse(arguments);"
+        "content": "        case Command.COMMAND_GROUP_UNDO:"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "            return new UndoCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        case Command.COMMAND_GROUP_REDO:"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "            return new RedoCommandParser().parse(arguments);"
+        "content": "        case Command.COMMAND_GROUP_REDO:"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "            return new RedoCommandParser().parse(arguments);"
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "alushingg"
+          "gitId": "NNpanpan"
         },
-        "content": "        default:"
+        "content": ""
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "alushingg"
         },
-        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
+        "content": "        default:"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "alushingg"
         },
-        "content": "        }"
+        "content": "            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);"
       },
       {
         "lineNumber": 86,
+        "author": {
+          "gitId": "alushingg"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 87,
         "author": {
           "gitId": "zixinn"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
@@ -29618,7 +29647,7 @@
       }
     ],
     "authorContributionMap": {
-      "dinhnhobao": 4,
+      "dinhnhobao": 5,
       "NNpanpan": 15,
       "alushingg": 15,
       "-": 37,
@@ -44731,175 +44760,175 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import java.util.HashMap;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import java.util.stream.Stream;"
+        "content": "import java.util.Arrays;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "import java.util.HashMap;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.logic.commands.task.TaskSearchCommand;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.logic.parser.ArgumentMultimap;"
+        "content": "import java.util.stream.Stream;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.logic.parser.ArgumentTokenizer;"
+        "content": ""
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.logic.parser.Parser;"
+        "content": "import seedu.address.logic.commands.task.TaskSearchCommand;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.logic.parser.Prefix;"
+        "content": "import seedu.address.logic.parser.ArgumentMultimap;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
+        "content": "import seedu.address.logic.parser.ArgumentTokenizer;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.model.task.TaskSearchPredicate;"
+        "content": "import seedu.address.logic.parser.Parser;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "import seedu.address.logic.parser.Prefix;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "/**"
+        "content": "import seedu.address.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": " * Parses input arguments and creates a new TaskSearchCommand object"
+        "content": "import seedu.address.model.task.TaskSearchPredicate;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "public class TaskSearchCommandParser implements Parser\u003cTaskSearchCommand\u003e {"
+        "content": "/**"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": " * Parses input arguments and creates a new TaskSearchCommand object"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    /**"
+        "content": " */"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the TaskSearchCommand"
+        "content": "public class TaskSearchCommandParser implements Parser\u003cTaskSearchCommand\u003e {"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "     * and returns a TaskSearchCommand object for execution."
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "     *"
+        "content": "    private static final int MINIMUM_YEAR \u003d 1;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "     * @throws ParseException if the user input does not conform the expected format"
+        "content": "    private static final int MAXIMUM_YEAR \u003d 9999;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "     */"
+        "content": "    private static final int MINIMUM_MONTH \u003d 1;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public TaskSearchCommand parse(String args) throws ParseException {"
+        "content": "    private static final int MAXIMUM_MONTH \u003d 12;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        ArgumentMultimap argMultimap \u003d ArgumentTokenizer.tokenize("
+        "content": "    private static final int MINIMUM_DATE \u003d 1;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                args, PREFIX_DAY, PREFIX_MONTH, PREFIX_YEAR);"
+        "content": "    private static final int MAXIMUM_DATE \u003d 31;"
       },
       {
         "lineNumber": 34,
@@ -44913,388 +44942,1403 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        HashMap\u003cString, Integer\u003e keywords \u003d new HashMap\u003cString, Integer\u003e();"
+        "content": "    private static final int THIRTY_MAXIMUM_DATE \u003d 30;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    private static final int TWENTY_NINE_MAXIMUM_DATE \u003d 29;"
       },
       {
         "lineNumber": 37,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "dinhnhobao"
         },
-        "content": "        if (argMultimap.numOfValuesPresent(PREFIX_DAY) \u003e 1) {"
+        "content": "    private static final int TWENTY_EIGHT_MAXIMUM_DATE \u003d 28;"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "dinhnhobao"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_TOO_MANY_ARGUMENTS, \"one\", PREFIX_DAY));"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "dinhnhobao"
         },
-        "content": "        }"
+        "content": "    private static final int FEBRUARY \u003d 2;"
       },
       {
         "lineNumber": 40,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "dinhnhobao"
         },
-        "content": "        if (argMultimap.numOfValuesPresent(PREFIX_MONTH) \u003e 1) {"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "dinhnhobao"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_TOO_MANY_ARGUMENTS, \"one\", PREFIX_MONTH));"
+        "content": "    private static final List\u003cInteger\u003e THIRTY_DAY_MONTHS \u003d new ArrayList\u003cInteger\u003e(Arrays.asList(4, 6, 9, 11));"
       },
       {
         "lineNumber": 42,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "        if (argMultimap.numOfValuesPresent(PREFIX_YEAR) \u003e 1) {"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "            throw new ParseException(String.format(MESSAGE_TOO_MANY_ARGUMENTS, \"one\", PREFIX_YEAR));"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        if (arePrefixesPresent(argMultimap, PREFIX_DAY)) {"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            int day;"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                day \u003d Integer.parseInt(argMultimap.getValue(PREFIX_DAY));"
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            } catch (NumberFormatException error) {"
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                        TaskSearchCommand.MESSAGE_INVALID_DAY_MONTH_YEAR));"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            keywords.put(\"day\", day);"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        if (arePrefixesPresent(argMultimap, PREFIX_MONTH)) {"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            int month;"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                month \u003d Integer.parseInt(argMultimap.getValue(PREFIX_MONTH));"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            } catch (NumberFormatException error) {"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                        TaskSearchCommand.MESSAGE_INVALID_DAY_MONTH_YEAR));"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            keywords.put(\"month\", month);"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        if (arePrefixesPresent(argMultimap, PREFIX_YEAR)) {"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            int year;"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            try {"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                year \u003d Integer.parseInt(argMultimap.getValue(PREFIX_YEAR));"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            } catch (NumberFormatException error) {"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                        TaskSearchCommand.MESSAGE_INVALID_DAY_MONTH_YEAR));"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "            keywords.put(\"year\", year);"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        return new TaskSearchCommand(new TaskSearchPredicate(keywords));"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 82,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 83,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 43,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "     * Returns true if none of the prefixes contains empty {@code Optional} values in the given"
+        "content": "     * Parses the given {@code String} of arguments in the context of the TaskSearchCommand"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 44,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "     * {@code ArgumentMultimap}."
+        "content": "     * and returns a TaskSearchCommand object for execution."
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 45,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "     *"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "     * @throws ParseException if the user input does not conform the expected format"
+      },
+      {
+        "lineNumber": 47,
         "author": {
           "gitId": "dinhnhobao"
         },
         "content": "     */"
       },
       {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    public TaskSearchCommand parse(String args) throws ParseException {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        ArgumentMultimap argMultimap \u003d ArgumentTokenizer.tokenize("
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                args, PREFIX_DAY, PREFIX_MONTH, PREFIX_YEAR);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        HashMap\u003cString, Integer\u003e keywords \u003d new HashMap\u003cString, Integer\u003e();"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "        if (argMultimap.numOfValuesPresent(PREFIX_DAY) \u003e 1) {"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "            throw new ParseException(String.format(MESSAGE_TOO_MANY_ARGUMENTS, \"one\", PREFIX_DAY));"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "        if (argMultimap.numOfValuesPresent(PREFIX_MONTH) \u003e 1) {"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "            throw new ParseException(String.format(MESSAGE_TOO_MANY_ARGUMENTS, \"one\", PREFIX_MONTH));"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "        if (argMultimap.numOfValuesPresent(PREFIX_YEAR) \u003e 1) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "            throw new ParseException(String.format(MESSAGE_TOO_MANY_ARGUMENTS, \"one\", PREFIX_YEAR));"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        // check for invalid date, month, and/or year, such as strings and characters"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        if (arePrefixesPresent(argMultimap, PREFIX_DAY)) {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            int day;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                day \u003d Integer.parseInt(argMultimap.getValue(PREFIX_DAY));"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            } catch (NumberFormatException error) {"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        TaskSearchCommand.MESSAGE_INVALID_DAY_MONTH_YEAR));"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            keywords.put(\"date\", day);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        if (arePrefixesPresent(argMultimap, PREFIX_MONTH)) {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            int month;"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                month \u003d Integer.parseInt(argMultimap.getValue(PREFIX_MONTH));"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            } catch (NumberFormatException error) {"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        TaskSearchCommand.MESSAGE_INVALID_DAY_MONTH_YEAR));"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            keywords.put(\"month\", month);"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
         "lineNumber": 87,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
+        "content": ""
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        return Stream.of(prefixes).allMatch(prefix -\u003e argumentMultimap.getValue(prefix) !\u003d null);"
+        "content": "        if (arePrefixesPresent(argMultimap, PREFIX_YEAR)) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": "            int year;"
       },
       {
         "lineNumber": 90,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            try {"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                year \u003d Integer.parseInt(argMultimap.getValue(PREFIX_YEAR));"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            } catch (NumberFormatException error) {"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        TaskSearchCommand.MESSAGE_INVALID_DAY_MONTH_YEAR));"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            keywords.put(\"year\", year);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        // check for out of bounds date, month, and/or year"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        boolean isFullDateMonthYear \u003d keywords.size() \u003d\u003d 3;"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        boolean twoOutOfThreeParametersProvided \u003d keywords.size() \u003d\u003d 2;"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        boolean oneParameterProvided \u003d keywords.size() \u003d\u003d 1;"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        if (isFullDateMonthYear) {"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            if (!isValidDate(keywords.get(\"date\"), keywords.get(\"month\"), keywords.get(\"year\"))) {"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        } else if (twoOutOfThreeParametersProvided) { // dd/MM, MM/yy, or dd/yy"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            if (keywords.containsKey(\"year\")) { // dd/YY or MM/yy -\u003e can just check independently"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                if (isOutOfBoundsYear(keywords.get(\"year\"))) {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                            TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                if (keywords.containsKey(\"date\")) { // dd/YY"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    if (isOutOfBoundsDate(keywords.get(\"date\"))) {"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                                TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                } else { // mm/YY"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    if (isOutOfBoundsMonth(keywords.get(\"month\"))) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                                TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            } else { // dd/MM, painful combination to check"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                if (isOutOfBoundsMonth(keywords.get(\"month\"))) {"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                            TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                if (keywords.get(\"month\") \u003d\u003d FEBRUARY) {"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    if (!(MINIMUM_DATE \u003c\u003d keywords.get(\"date\")"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                            \u0026\u0026 (keywords.get(\"date\")) \u003c\u003d TWENTY_NINE_MAXIMUM_DATE)) { // not valid days in Feb"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                                TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                } else if (THIRTY_DAY_MONTHS.contains(keywords.get(\"month\"))) { // thirty day months"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    if (!(MINIMUM_DATE \u003c\u003d keywords.get(\"date\")"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                            \u0026\u0026 (keywords.get(\"date\") \u003c\u003d THIRTY_MAXIMUM_DATE))) { // not valid days in Feb"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                                TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                } else { // thirty one day months"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    if (isOutOfBoundsDate(keywords.get(\"date\"))) {"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                                TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    }"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        } else if (oneParameterProvided) {"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            if (keywords.containsKey(\"date\")) {"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                if (isOutOfBoundsDate(keywords.get(\"date\"))) {"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                            TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            } else if (keywords.containsKey(\"month\")) {"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                if (isOutOfBoundsMonth(keywords.get(\"month\"))) {"
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                            TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            } else if (keywords.containsKey(\"year\")) {"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                if (isOutOfBoundsYear(keywords.get(\"year\"))) {"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                            TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES));"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        System.out.println(keywords);"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return new TaskSearchCommand(new TaskSearchPredicate(keywords));"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "     * Returns true if none of the prefixes contains empty {@code Optional} values in the given"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "     * {@code ArgumentMultimap}."
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return Stream.of(prefixes).allMatch(prefix -\u003e argumentMultimap.getValue(prefix) !\u003d null);"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    private boolean isLeapYear(int year) {"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return ((year % 400 \u003d\u003d 0) || (year % 4 \u003d\u003d 0 \u0026\u0026 year % 100 !\u003d 0));"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "     * Returns true if the date {@code date}/{@code month}/{@code year} is valid"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    private boolean isValidDate(int date, int month, int year) {"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        if (isOutOfBoundsYear(year)) {"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        if (isOutOfBoundsMonth(month)) {"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        if (isOutOfBoundsDate(date)) {"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        if (THIRTY_DAY_MONTHS.contains(month) \u0026\u0026 date \u003e THIRTY_MAXIMUM_DATE) {"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        if (isLeapYear(year)) {"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            if (month \u003d\u003d FEBRUARY \u0026\u0026 date \u003e TWENTY_NINE_MAXIMUM_DATE) {"
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                return false;"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            if (month \u003d\u003d FEBRUARY \u0026\u0026 date \u003e TWENTY_EIGHT_MAXIMUM_DATE) {"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "                return false;"
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return true;"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    private boolean isOutOfBoundsYear(int year) {"
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return !(MINIMUM_YEAR \u003c\u003d year \u0026\u0026 year \u003c\u003d MAXIMUM_YEAR);"
+      },
+      {
+        "lineNumber": 226,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 227,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 228,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    private boolean isOutOfBoundsMonth(int month) {"
+      },
+      {
+        "lineNumber": 229,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return !(MINIMUM_MONTH \u003c\u003d month \u0026\u0026 month \u003c\u003d MAXIMUM_MONTH);"
+      },
+      {
+        "lineNumber": 230,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 231,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 232,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    private boolean isOutOfBoundsDate(int date) {"
+      },
+      {
+        "lineNumber": 233,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "        return !(MINIMUM_DATE \u003c\u003d date \u0026\u0026 date \u003c\u003d MAXIMUM_DATE);"
+      },
+      {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 235,
         "author": {
           "gitId": "dinhnhobao"
         },
@@ -45302,7 +46346,7 @@
       }
     ],
     "authorContributionMap": {
-      "dinhnhobao": 79,
+      "dinhnhobao": 224,
       "zixinn": 11
     }
   },
@@ -49541,9 +50585,9 @@
       {
         "lineNumber": 175,
         "author": {
-          "gitId": "dinhnhobao"
+          "gitId": "NNpanpan"
         },
-        "content": "    boolean hasTask(Task module);"
+        "content": "    boolean hasTask(Task task);"
       },
       {
         "lineNumber": 176,
@@ -50205,8 +51249,8 @@
       }
     ],
     "authorContributionMap": {
-      "dinhnhobao": 32,
-      "NNpanpan": 20,
+      "dinhnhobao": 31,
+      "NNpanpan": 21,
       "alushingg": 17,
       "-": 76,
       "heidicrq": 21,
@@ -69812,70 +70856,70 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        boolean checkDay \u003d true;"
+        "content": "        if (keywords.containsKey(\"date\")) {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        boolean checkMonth \u003d true;"
+        "content": "            if (!task.getTaskDateTime().get().isDateOnThisDay(keywords.get(\"date\"))) {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        boolean checkYear \u003d true;"
+        "content": "                return false;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        if (keywords.containsKey(\"day\")) {"
+        "content": "        }"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            checkDay \u003d (task.getTaskDateTime().get().isDateOnThisDay(keywords.get(\"day\")));"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        }"
+        "content": "        if (keywords.containsKey(\"month\")) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "            if (!task.getTaskDateTime().get().isDateOnThisMonth(keywords.get(\"month\"))) {"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        if (keywords.containsKey(\"month\")) {"
+        "content": "                return false;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            checkMonth \u003d (task.getTaskDateTime().get().isDateOnThisMonth(keywords.get(\"month\")));"
+        "content": "            }"
       },
       {
         "lineNumber": 34,
@@ -69903,94 +70947,108 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            checkYear \u003d (task.getTaskDateTime().get().isDateOnThisYear(keywords.get(\"year\")));"
+        "content": "            if (!task.getTaskDateTime().get().isDateOnThisYear(keywords.get(\"year\"))) {"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        }"
+        "content": "                return false;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        return checkDay \u0026\u0026 checkMonth \u0026\u0026 checkYear;"
+        "content": "        }"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        return true;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "    @Override"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                || (other instanceof TaskSearchPredicate // instanceof handles nulls"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                \u0026\u0026 keywords.equals(((TaskSearchPredicate) other).keywords)); // state check"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": "                || (other instanceof TaskSearchPredicate // instanceof handles nulls"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "                \u0026\u0026 keywords.equals(((TaskSearchPredicate) other).keywords)); // state check"
       },
       {
         "lineNumber": 50,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "dinhnhobao"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
         "author": {
           "gitId": "dinhnhobao"
         },
@@ -69998,7 +71056,7 @@
       }
     ],
     "authorContributionMap": {
-      "dinhnhobao": 50
+      "dinhnhobao": 52
     }
   },
   {
@@ -104205,406 +105263,406 @@
       {
         "lineNumber": 99,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "dinhnhobao"
         },
-        "content": "    public static final String NAME_DESC_AMY \u003d \" \" + PREFIX_NAME + \" \" + VALID_NAME_AMY;"
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final String NAME_DESC_BOB \u003d \" \" + PREFIX_NAME + \" \" + VALID_NAME_BOB;"
+        "content": "    public static final String NAME_DESC_AMY \u003d \" \" + PREFIX_NAME + \" \" + VALID_NAME_AMY;"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final String PHONE_DESC_AMY \u003d \" \" + PREFIX_PHONE + \" \" + VALID_PHONE_AMY;"
+        "content": "    public static final String NAME_DESC_BOB \u003d \" \" + PREFIX_NAME + \" \" + VALID_NAME_BOB;"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final String PHONE_DESC_BOB \u003d \" \" + PREFIX_PHONE + \" \" + VALID_PHONE_BOB;"
+        "content": "    public static final String PHONE_DESC_AMY \u003d \" \" + PREFIX_PHONE + \" \" + VALID_PHONE_AMY;"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final String EMAIL_DESC_AMY \u003d \" \" + PREFIX_EMAIL + \" \" + VALID_EMAIL_AMY;"
+        "content": "    public static final String PHONE_DESC_BOB \u003d \" \" + PREFIX_PHONE + \" \" + VALID_PHONE_BOB;"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final String EMAIL_DESC_BOB \u003d \" \" + PREFIX_EMAIL + \" \" + VALID_EMAIL_BOB;"
+        "content": "    public static final String EMAIL_DESC_AMY \u003d \" \" + PREFIX_EMAIL + \" \" + VALID_EMAIL_AMY;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final String OFFICE_DESC_AMY \u003d \" \" + PREFIX_OFFICE + \" \" + VALID_OFFICE_AMY;"
+        "content": "    public static final String EMAIL_DESC_BOB \u003d \" \" + PREFIX_EMAIL + \" \" + VALID_EMAIL_BOB;"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final String OFFICE_DESC_BOB \u003d \" \" + PREFIX_OFFICE + \" \" + VALID_OFFICE_BOB;"
+        "content": "    public static final String OFFICE_DESC_AMY \u003d \" \" + PREFIX_OFFICE + \" \" + VALID_OFFICE_AMY;"
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "-"
+          "gitId": "zixinn"
         },
-        "content": ""
+        "content": "    public static final String OFFICE_DESC_BOB \u003d \" \" + PREFIX_OFFICE + \" \" + VALID_OFFICE_BOB;"
       },
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "-"
         },
-        "content": "    public static final String INVALID_MODULE_CODE_DESC \u003d \" \" + PREFIX_MODULE_CODE"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "            + \" cs2103*\"; // \u0027*\u0027 not allowed in module codes"
+        "content": "    public static final String INVALID_MODULE_CODE_DESC \u003d \" \" + PREFIX_MODULE_CODE"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final String INVALID_DESCRIPTION_DESC \u003d \" \" + PREFIX_DESCRIPTION + \" very very very very\""
+        "content": "            + \" cs2103*\"; // \u0027*\u0027 not allowed in module codes"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "            + \" very very very very very very very very very long description\"; // string more than 64 characters"
+        "content": "    public static final String INVALID_DESCRIPTION_DESC \u003d \" \" + PREFIX_DESCRIPTION + \" very very very very\""
       },
       {
         "lineNumber": 112,
         "author": {
-          "gitId": "-"
+          "gitId": "zixinn"
         },
-        "content": "    public static final String INVALID_NAME_DESC \u003d \" \" + PREFIX_NAME + \" James\u0026\"; // \u0027\u0026\u0027 not allowed in names"
+        "content": "            + \" very very very very very very very very very long description\"; // string more than 64 characters"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String INVALID_PHONE_DESC \u003d \" \" + PREFIX_PHONE + \" 911a\"; // \u0027a\u0027 not allowed in phones"
+        "content": "    public static final String INVALID_NAME_DESC \u003d \" \" + PREFIX_NAME + \" James\u0026\"; // \u0027\u0026\u0027 not allowed in names"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String INVALID_EMAIL_DESC \u003d \" \" + PREFIX_EMAIL + \" bob!yahoo\"; // missing \u0027@\u0027 symbol"
+        "content": "    public static final String INVALID_PHONE_DESC \u003d \" \" + PREFIX_PHONE + \" 911a\"; // \u0027a\u0027 not allowed in phones"
       },
       {
         "lineNumber": 115,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final String INVALID_EMAIL_DESC \u003d \" \" + PREFIX_EMAIL + \" bob!yahoo\"; // missing \u0027@\u0027 symbol"
+      },
+      {
+        "lineNumber": 116,
         "author": {
           "gitId": "zixinn"
         },
         "content": "    public static final String INVALID_OFFICE_DESC \u003d \" \" + PREFIX_OFFICE; // empty string not allowed for offices"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 117,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "    public static final String INVALID_TASK_DAY_STRING \u003d"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            \" \" + PREFIX_DAY + \" \" + \"monday\"; // strings not allowed for day"
+        "content": "    public static final String INVALID_TASK_DAY_STRING \u003d"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String INVALID_TASK_MONTH_STRING \u003d"
+        "content": "            \" \" + PREFIX_DAY + \" \" + \"monday\"; // strings not allowed for day"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            \" \" + PREFIX_MONTH + \" \" + \"facebook\"; // strings not allowed for month"
+        "content": "    public static final String INVALID_TASK_MONTH_STRING \u003d"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String INVALID_TASK_YEAR_STRING \u003d"
+        "content": "            \" \" + PREFIX_MONTH + \" \" + \"facebook\"; // strings not allowed for month"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            \" \" + PREFIX_YEAR + \" \" + \"instagram\"; // strings not allowed for year"
+        "content": "    public static final String INVALID_TASK_YEAR_STRING \u003d"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String INVALID_TASK_DAY_OUT_OF_BOUNDS \u003d"
+        "content": "            \" \" + PREFIX_YEAR + \" \" + \"instagram\"; // strings not allowed for year"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            \" \" + PREFIX_DAY + \" \" + INVALID_TASK_DAY_32; // strings not allowed for day"
+        "content": "    public static final String INVALID_TASK_DAY_OUT_OF_BOUNDS \u003d"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String INVALID_TASK_MONTH_OUT_OF_BOUNDS \u003d"
+        "content": "            \" \" + PREFIX_DAY + \" \" + INVALID_TASK_DAY_32; // strings not allowed for day"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            \" \" + PREFIX_MONTH + \" \" + INVALID_TASK_MONTH_13; // strings not allowed for month"
+        "content": "    public static final String INVALID_TASK_MONTH_OUT_OF_BOUNDS \u003d"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String INVALID_TASK_YEAR_OUT_OF_BOUNDS \u003d"
+        "content": "            \" \" + PREFIX_MONTH + \" \" + INVALID_TASK_MONTH_13; // strings not allowed for month"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            \" \" + PREFIX_YEAR + \" \" + INVALID_TASK_YEAR_NEGATIVE; // strings not allowed for year"
+        "content": "    public static final String INVALID_TASK_YEAR_OUT_OF_BOUNDS \u003d"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "            \" \" + PREFIX_YEAR + \" \" + INVALID_TASK_YEAR_NEGATIVE; // strings not allowed for year"
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "heidicrq"
+          "gitId": "dinhnhobao"
         },
-        "content": "    public static final String INVALID_INDEX_WITH_STRING \u003d \" 1 some random string \";"
+        "content": ""
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String INVALID_INDEX_WITH_PREFIX \u003d \" 1 /some random string \";"
+        "content": "    public static final String INVALID_INDEX_WITH_STRING \u003d \" 1 some random string \";"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    public static final String INVALID_INDEX_WITH_PREFIX \u003d \" 1 /some random string \";"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String INVALID_MODULE_CODE_CS9000 \u003d \"CS9000\";"
+        "content": ""
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String INVALID_MODULE_CODE_CODE123 \u003d \"code123\";"
+        "content": "    public static final String INVALID_MODULE_CODE_CS9000 \u003d \"CS9000\";"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    public static final String INVALID_MODULE_CODE_CODE123 \u003d \"code123\";"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_LESSON_TYPE_LEC \u003d \"LEC\";"
+        "content": ""
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_LESSON_TYPE_TUT \u003d \"TUT\";"
+        "content": "    public static final String VALID_LESSON_TYPE_LEC \u003d \"LEC\";"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_LESSON_TYPE_REC \u003d \"REC\";"
+        "content": "    public static final String VALID_LESSON_TYPE_TUT \u003d \"TUT\";"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_LESSON_TYPE_SEC \u003d \"SEC\";"
+        "content": "    public static final String VALID_LESSON_TYPE_REC \u003d \"REC\";"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String INVALID_LESSON_TYPE_FREE \u003d \"FREE\";"
+        "content": "    public static final String VALID_LESSON_TYPE_SEC \u003d \"SEC\";"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    public static final String INVALID_LESSON_TYPE_FREE \u003d \"FREE\";"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_DAY_AND_TIME_SUNDAY \u003d \"SUNDAY 01:00 02:00\";"
+        "content": ""
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_DAY_AND_TIME_MONDAY \u003d \"MONDAY 19:00 20:00\";"
+        "content": "    public static final String VALID_DAY_AND_TIME_SUNDAY \u003d \"SUNDAY 01:00 02:00\";"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_DAY_FRIDAY \u003d \"FRIDAY\";"
+        "content": "    public static final String VALID_DAY_AND_TIME_MONDAY \u003d \"MONDAY 19:00 20:00\";"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String INVALID_DAY_SUNNYDAY \u003d \"SUNNYDAY 19:00 20:00\";"
+        "content": "    public static final String VALID_DAY_FRIDAY \u003d \"FRIDAY\";"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String INVALID_TIME \u003d \"SUNDAY 19:00 2:00\";"
+        "content": "    public static final String INVALID_DAY_SUNNYDAY \u003d \"SUNNYDAY 19:00 20:00\";"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    public static final String INVALID_TIME \u003d \"SUNDAY 19:00 2:00\";"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_VENUE_HOME \u003d \"Home\";"
+        "content": ""
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String VALID_VENUE_PARK \u003d \"Park\";"
+        "content": "    public static final String VALID_VENUE_HOME \u003d \"Home\";"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    public static final String VALID_VENUE_PARK \u003d \"Park\";"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "heidicrq"
         },
-        "content": "    public static final String INVALID_INDEX_A \u003d \"a\";"
+        "content": ""
       },
       {
         "lineNumber": 152,
         "author": {
-          "gitId": "-"
+          "gitId": "heidicrq"
         },
-        "content": ""
+        "content": "    public static final String INVALID_INDEX_A \u003d \"a\";"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String PREAMBLE_WHITESPACE \u003d \"\\t  \\r  \\n\";"
+        "content": ""
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String PREAMBLE_NON_EMPTY \u003d \"NonEmptyPreamble\";"
+        "content": "    public static final String PREAMBLE_WHITESPACE \u003d \"\\t  \\r  \\n\";"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public static final String PREAMBLE_NON_EMPTY \u003d \"NonEmptyPreamble\";"
       },
       {
         "lineNumber": 156,
         "author": {
-          "gitId": "dinhnhobao"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -104613,633 +105671,640 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String EMPTY_ARGUMENTS \u003d \"\";"
+        "content": ""
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final String EMPTY_SPACES \u003d \"     \";"
+        "content": "    public static final String EMPTY_ARGUMENTS \u003d \"\";"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final int TASK_LIST_VALID_CONSTANT \u003d 3;"
+        "content": "    public static final String EMPTY_SPACES \u003d \"     \";"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public static final int AN_INT_VALUE \u003d 10;"
+        "content": "    public static final int TASK_LIST_VALID_CONSTANT \u003d 3;"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    public static final int AN_INT_VALUE \u003d 10;"
       },
       {
         "lineNumber": 162,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "dinhnhobao"
         },
-        "content": "    public static final FacilEditCommand.EditFacilitatorDescriptor DESC_AMY;"
+        "content": ""
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final FacilEditCommand.EditFacilitatorDescriptor DESC_BOB;"
+        "content": "    public static final FacilEditCommand.EditFacilitatorDescriptor DESC_AMY;"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final ModuleEditCommand.EditModuleDescriptor DESC_CS2101;"
+        "content": "    public static final FacilEditCommand.EditFacilitatorDescriptor DESC_BOB;"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "    public static final ModuleEditCommand.EditModuleDescriptor DESC_CS1101S;"
+        "content": "    public static final ModuleEditCommand.EditModuleDescriptor DESC_CS2101;"
       },
       {
         "lineNumber": 166,
         "author": {
-          "gitId": "-"
+          "gitId": "zixinn"
         },
-        "content": ""
+        "content": "    public static final ModuleEditCommand.EditModuleDescriptor DESC_CS1101S;"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "-"
         },
-        "content": "    static {"
+        "content": ""
       },
       {
         "lineNumber": 168,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "-"
         },
-        "content": "        DESC_CS2101 \u003d new EditModuleDescriptorBuilder().withModuleCode(VALID_MODULE_CODE_CS2101)"
+        "content": "    static {"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                .withDescription(VALID_DESCRIPTION_CS2101).build();"
+        "content": "        DESC_CS2101 \u003d new EditModuleDescriptorBuilder().withModuleCode(VALID_MODULE_CODE_CS2101)"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        DESC_CS1101S \u003d new EditModuleDescriptorBuilder().withModuleCode(VALID_MODULE_CODE_CS1101S)"
+        "content": "                .withDescription(VALID_DESCRIPTION_CS2101).build();"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                .withDescription(VALID_DESCRIPTION_CS1101S).build();"
+        "content": "        DESC_CS1101S \u003d new EditModuleDescriptorBuilder().withModuleCode(VALID_MODULE_CODE_CS1101S)"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        DESC_AMY \u003d new EditFacilitatorDescriptorBuilder().withName(VALID_NAME_AMY)"
+        "content": "                .withDescription(VALID_DESCRIPTION_CS1101S).build();"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withOffice(VALID_OFFICE_AMY)"
+        "content": "        DESC_AMY \u003d new EditFacilitatorDescriptorBuilder().withName(VALID_NAME_AMY)"
       },
       {
         "lineNumber": 174,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withOffice(VALID_OFFICE_AMY)"
+      },
+      {
+        "lineNumber": 175,
         "author": {
           "gitId": "alushingg"
         },
         "content": "                .withModuleCodes(VALID_MODULE_CODE_CS2101).build();"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 176,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        DESC_BOB \u003d new EditFacilitatorDescriptorBuilder().withName(VALID_NAME_BOB)"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 177,
         "author": {
           "gitId": "zixinn"
         },
         "content": "                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withOffice(VALID_OFFICE_BOB)"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 178,
         "author": {
           "gitId": "alushingg"
         },
         "content": "                .withModuleCodes(VALID_MODULE_CODE_CS2103T, VALID_MODULE_CODE_CS2101).build();"
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 179,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 180,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "NNpanpan"
-        },
-        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(CommandTestUtil.class);"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": ""
+        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(CommandTestUtil.class);"
       },
       {
         "lineNumber": 182,
         "author": {
-          "gitId": "-"
+          "gitId": "NNpanpan"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
+        "content": "    /**"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - the returned {@link CommandResult} matches {@code expectedCommandResult} \u003cbr\u003e"
+        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - the {@code actualModel} matches {@code expectedModel}"
+        "content": "     * - the returned {@link CommandResult} matches {@code expectedCommandResult} \u003cbr\u003e"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * - the {@code actualModel} matches {@code expectedModel}"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,"
+        "content": "     */"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "-"
         },
-        "content": "            Model expectedModel) {"
+        "content": "    public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "-"
         },
-        "content": "        try {"
+        "content": "            Model expectedModel) {"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "-"
         },
-        "content": "            CommandResult result \u003d command.execute(actualModel);"
+        "content": "        try {"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "-"
         },
-        "content": "            assertEquals(expectedCommandResult, result);"
+        "content": "            CommandResult result \u003d command.execute(actualModel);"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "-"
         },
-        "content": "            assertEquals(expectedModel, actualModel);"
+        "content": "            assertEquals(expectedCommandResult, result);"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "-"
         },
-        "content": "        } catch (CommandException ce) {"
+        "content": "            assertEquals(expectedModel, actualModel);"
       },
       {
         "lineNumber": 194,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (CommandException ce) {"
+      },
+      {
+        "lineNumber": 195,
         "author": {
           "gitId": "NNpanpan"
         },
         "content": "            logger.severe(ce.getMessage());"
       },
       {
-        "lineNumber": 195,
+        "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
         "content": "            throw new AssertionError(\"Execution of command should not fail.\", ce);"
       },
       {
-        "lineNumber": 196,
+        "lineNumber": 197,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 198,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}"
+        "content": "    /**"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "-"
         },
-        "content": "     * that takes a string {@code expectedMessage}."
+        "content": "     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * that takes a string {@code expectedMessage}."
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,"
+        "content": "     */"
       },
       {
         "lineNumber": 204,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "-"
         },
-        "content": "                CommandType type, Model expectedModel) {"
+        "content": "    public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        CommandResult expectedCommandResult \u003d new CommandResult(expectedMessage, type);"
+        "content": "                CommandType type, Model expectedModel) {"
       },
       {
         "lineNumber": 206,
         "author": {
-          "gitId": "-"
+          "gitId": "zixinn"
         },
-        "content": "        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);"
+        "content": "        CommandResult expectedCommandResult \u003d new CommandResult(expectedMessage, type);"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
+        "content": "    /**"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - a {@code CommandException} is thrown \u003cbr\u003e"
+        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - the CommandException message matches {@code expectedMessage} \u003cbr\u003e"
+        "content": "     * - a {@code CommandException} is thrown \u003cbr\u003e"
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "zixinn"
+          "gitId": "-"
         },
-        "content": "     * - the address book, filtered module list, filtered facilitator list, filtered task list and lesson list"
+        "content": "     * - the CommandException message matches {@code expectedMessage} \u003cbr\u003e"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "     * in {@code actualModel} remain unchanged"
+        "content": "     * - the address book, filtered module list, filtered facilitator list, filtered task list and lesson list"
       },
       {
         "lineNumber": 215,
         "author": {
-          "gitId": "-"
+          "gitId": "zixinn"
         },
-        "content": "     */"
+        "content": "     * in {@code actualModel} remain unchanged"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {"
+        "content": "     */"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "-"
         },
-        "content": "        // we are unable to defensively copy the model for comparison later, so we can"
+        "content": "    public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "-"
         },
-        "content": "        // only do so by copying its components."
+        "content": "        // we are unable to defensively copy the model for comparison later, so we can"
       },
       {
         "lineNumber": 219,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        // only do so by copying its components."
+      },
+      {
+        "lineNumber": 220,
         "author": {
           "gitId": "alushingg"
         },
         "content": "        ModManager expectedModManager \u003d new ModManager(actualModel.getModManager());"
       },
       {
-        "lineNumber": 220,
+        "lineNumber": 221,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        List\u003cModule\u003e expectedModuleList \u003d new ArrayList\u003c\u003e(actualModel.getFilteredModuleList());"
       },
       {
-        "lineNumber": 221,
+        "lineNumber": 222,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        List\u003cFacilitator\u003e expectedFacilitatorList \u003d new ArrayList\u003c\u003e(actualModel.getFilteredFacilitatorList());"
       },
       {
-        "lineNumber": 222,
+        "lineNumber": 223,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        List\u003cTask\u003e expectedTaskList \u003d new ArrayList\u003c\u003e(actualModel.getFilteredTaskList());"
       },
       {
-        "lineNumber": 223,
+        "lineNumber": 224,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        List\u003cLesson\u003e expectedLessonList \u003d new ArrayList\u003c\u003e(actualModel.getLessons());"
       },
       {
-        "lineNumber": 224,
+        "lineNumber": 225,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 225,
+        "lineNumber": 226,
         "author": {
           "gitId": "-"
         },
         "content": "        assertThrows(CommandException.class, expectedMessage, () -\u003e command.execute(actualModel));"
       },
       {
-        "lineNumber": 226,
+        "lineNumber": 227,
         "author": {
           "gitId": "alushingg"
         },
         "content": "        assertEquals(expectedModManager, actualModel.getModManager());"
       },
       {
-        "lineNumber": 227,
+        "lineNumber": 228,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertEquals(expectedModuleList, actualModel.getFilteredModuleList());"
       },
       {
-        "lineNumber": 228,
+        "lineNumber": 229,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertEquals(expectedFacilitatorList, actualModel.getFilteredFacilitatorList());"
       },
       {
-        "lineNumber": 229,
+        "lineNumber": 230,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertEquals(expectedTaskList, actualModel.getFilteredTaskList());"
       },
       {
-        "lineNumber": 230,
+        "lineNumber": 231,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertEquals(expectedLessonList, actualModel.getLessons());"
       },
       {
-        "lineNumber": 231,
+        "lineNumber": 232,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 233,
         "author": {
           "gitId": "zixinn"
         },
         "content": ""
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 234,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 235,
         "author": {
           "gitId": "zixinn"
         },
         "content": "     * Updates {@code model}\u0027s filtered list to show only the facilitator at the given {@code targetIndex} in the"
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 236,
         "author": {
           "gitId": "-"
         },
         "content": "     * {@code model}\u0027s address book."
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 237,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 238,
         "author": {
           "gitId": "zixinn"
         },
         "content": "    public static void showFacilitatorAtIndex(Model model, Index targetIndex) {"
       },
       {
-        "lineNumber": 238,
+        "lineNumber": 239,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertTrue(targetIndex.getZeroBased() \u003c model.getFilteredFacilitatorList().size());"
       },
       {
-        "lineNumber": 239,
+        "lineNumber": 240,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 240,
-        "author": {
-          "gitId": "zixinn"
-        },
-        "content": "        Facilitator facilitator \u003d model.getFilteredFacilitatorList().get(targetIndex.getZeroBased());"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        final String[] splitName \u003d facilitator.getName().fullName.split(\"\\\\s+\");"
+        "content": "        Facilitator facilitator \u003d model.getFilteredFacilitatorList().get(targetIndex.getZeroBased());"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "zixinn"
         },
-        "content": "        model.updateFilteredFacilitatorList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));"
+        "content": "        final String[] splitName \u003d facilitator.getName().fullName.split(\"\\\\s+\");"
       },
       {
         "lineNumber": 243,
+        "author": {
+          "gitId": "zixinn"
+        },
+        "content": "        model.updateFilteredFacilitatorList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));"
+      },
+      {
+        "lineNumber": 244,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 244,
+        "lineNumber": 245,
         "author": {
           "gitId": "zixinn"
         },
         "content": "        assertEquals(1, model.getFilteredFacilitatorList().size());"
       },
       {
-        "lineNumber": 245,
+        "lineNumber": 246,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 246,
+        "lineNumber": 247,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 247,
+        "lineNumber": 248,
         "author": {
           "gitId": "-"
         },
@@ -105247,7 +106312,7 @@
       }
     ],
     "authorContributionMap": {
-      "dinhnhobao": 57,
+      "dinhnhobao": 58,
       "NNpanpan": 6,
       "alushingg": 8,
       "-": 85,
@@ -122662,7 +123727,7 @@
         "author": {
           "gitId": "NNpanpan"
         },
-        "content": "        String expectedMsg \u003d TaskEditCommand.MESSAGE_DUPLICATE_TASK;"
+        "content": "        String expectedMsg \u003d TaskEditCommand.MESSAGE_NOT_EDITED;"
       },
       {
         "lineNumber": 112,
@@ -143375,7 +144440,7 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"day\", Integer.parseInt(TASK_DAY_26));"
+        "content": "                put(\"date\", Integer.parseInt(TASK_DAY_26));"
       },
       {
         "lineNumber": 124,
@@ -144728,119 +145793,119 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_DAY_32;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_DAY_OUT_OF_BOUNDS;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_DAY_OUT_OF_BOUNDS;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_DAY_STRING;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_DAY_STRING;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_MONTH_OUT_OF_BOUNDS;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_MONTH_13;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_MONTH_STRING;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_MONTH_OUT_OF_BOUNDS;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_YEAR_STRING;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_MONTH_STRING;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_YEAR_STRING;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_CMD_DAY_26;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_CMD_MONTH_03;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_CMD_DAY_26;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_CMD_YEAR_2020;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_CMD_MONTH_03;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_DAY_26;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_CMD_YEAR_2020;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_MONTH_03;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_DAY_26;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_YEAR_2020;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_MONTH_03;"
+        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.TASK_YEAR_2020;"
+        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;"
+        "content": "import java.util.HashMap;"
       },
       {
         "lineNumber": 22,
@@ -144854,7 +145919,7 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import java.util.HashMap;"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 24,
@@ -144868,742 +145933,742 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": "import seedu.address.logic.commands.task.TaskSearchCommand;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "import seedu.address.model.task.TaskSearchPredicate;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.logic.commands.task.TaskSearchCommand;"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "import seedu.address.model.task.TaskSearchPredicate;"
+        "content": "public class TaskSearchCommandParserTest {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    private TaskSearchCommandParser parser \u003d new TaskSearchCommandParser();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "public class TaskSearchCommandParserTest {"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    private TaskSearchCommandParser parser \u003d new TaskSearchCommandParser();"
+        "content": "    @Test"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    public void parse_withPreamble_success() {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Test"
+        "content": "        // whitespace only preamble, empty HashMap (no day/month/year supplied)"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public void parse_withPreamble_success() {"
+        "content": "        assertParseSuccess(parser, PREAMBLE_WHITESPACE,"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // whitespace only preamble, empty HashMap (no day/month/year supplied)"
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(new HashMap\u003cString, Integer\u003e())));"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, PREAMBLE_WHITESPACE,"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(new HashMap\u003cString, Integer\u003e())));"
+        "content": "        // arbitrary preamble"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        assertParseSuccess(parser, PREAMBLE_NON_EMPTY,"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // arbitrary preamble"
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(new HashMap\u003cString, Integer\u003e())));"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, PREAMBLE_NON_EMPTY,"
+        "content": ""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(new HashMap\u003cString, Integer\u003e())));"
+        "content": "        // arbitrary preamble with parameters supplied"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        assertParseSuccess(parser, PREAMBLE_NON_EMPTY + TASK_CMD_DAY_26 + TASK_CMD_YEAR_2020,"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // arbitrary preamble with parameters supplied"
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(new HashMap\u003cString, Integer\u003e() {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, PREAMBLE_NON_EMPTY + TASK_CMD_DAY_26 + TASK_CMD_YEAR_2020,"
+        "content": "                    {"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(new HashMap\u003cString, Integer\u003e() {"
+        "content": "                        put(\"date\", Integer.parseInt(TASK_DAY_26));"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                    {"
+        "content": "                        put(\"year\", Integer.parseInt(TASK_YEAR_2020));"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                        put(\"day\", Integer.parseInt(TASK_DAY_26));"
+        "content": "                    }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                        put(\"year\", Integer.parseInt(TASK_YEAR_2020));"
+        "content": "                })));"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                    }"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                })));"
+        "content": "        // the rest of the methods below will not test the presence of Preamble"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        // since we already tested it here."
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // the rest of the methods below will not test the presence of Preamble"
+        "content": "    }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // since we already tested it here."
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    public void parse_allFieldsMissing_success() {"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Test"
+        "content": "        // no preamble, empty HashMap (no day/month/year supplied)"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public void parse_allFieldsMissing_success() {"
+        "content": "        assertParseSuccess(parser, EMPTY_ARGUMENTS,"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // no preamble, empty HashMap (no day/month/year supplied)"
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(new HashMap\u003cString, Integer\u003e())));"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, EMPTY_ARGUMENTS,"
+        "content": "    }"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(new HashMap\u003cString, Integer\u003e())));"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    public void parse_someFieldsPresentAndHaveValidValues_success() {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Test"
+        "content": "        // apply heuristic \u0027each Valid Input at Least Once in a Positive Test Case\u0027"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public void parse_someFieldsPresentAndHaveValidValues_success() {"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // apply heuristic \u0027each Valid Input at Least Once in a Positive Test Case\u0027"
+        "content": "        // one and only valid field, year only"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        HashMap\u003cString, Integer\u003e year \u003d new HashMap\u003cString, Integer\u003e() {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // one and only valid field, year only"
+        "content": "            {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        HashMap\u003cString, Integer\u003e year \u003d new HashMap\u003cString, Integer\u003e() {"
+        "content": "                put(\"year\", Integer.parseInt(TASK_YEAR_2020));"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            {"
+        "content": "            }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"year\", Integer.parseInt(TASK_YEAR_2020));"
+        "content": "        };"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        };"
+        "content": "        assertParseSuccess(parser, PREAMBLE_WHITESPACE + TASK_CMD_YEAR_2020,"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(year)));"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, PREAMBLE_WHITESPACE + TASK_CMD_YEAR_2020,"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(year)));"
+        "content": "        assertParseSuccess(parser, TASK_CMD_YEAR_2020,"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(year)));"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, TASK_CMD_YEAR_2020,"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(year)));"
+        "content": "        // two and only two valid fields, day and month"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        HashMap\u003cString, Integer\u003e dayMonth \u003d new HashMap\u003cString, Integer\u003e() {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // two and only two valid fields, day and month"
+        "content": "            {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        HashMap\u003cString, Integer\u003e dayMonth \u003d new HashMap\u003cString, Integer\u003e() {"
+        "content": "                put(\"date\", Integer.parseInt(TASK_DAY_26));"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            {"
+        "content": "                put(\"month\", Integer.parseInt(TASK_MONTH_03));"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"day\", Integer.parseInt(TASK_DAY_26));"
+        "content": "            }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"month\", Integer.parseInt(TASK_MONTH_03));"
+        "content": "        };"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        };"
+        "content": "        assertParseSuccess(parser, PREAMBLE_WHITESPACE + TASK_CMD_DAY_26 + TASK_CMD_MONTH_03,"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(dayMonth)));"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, PREAMBLE_WHITESPACE + TASK_CMD_DAY_26 + TASK_CMD_MONTH_03,"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(dayMonth)));"
+        "content": "        assertParseSuccess(parser, TASK_CMD_DAY_26 + TASK_CMD_MONTH_03,"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(dayMonth)));"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, TASK_CMD_DAY_26 + TASK_CMD_MONTH_03,"
+        "content": "    }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(dayMonth)));"
+        "content": ""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    public void parse_allFieldsPresentAndHaveValidValues_success() {"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Test"
+        "content": "        HashMap\u003cString, Integer\u003e fullHashMap \u003d new HashMap\u003cString, Integer\u003e() {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public void parse_allFieldsPresentAndHaveValidValues_success() {"
+        "content": "            {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        HashMap\u003cString, Integer\u003e fullHashMap \u003d new HashMap\u003cString, Integer\u003e() {"
+        "content": "                put(\"date\", Integer.parseInt(TASK_DAY_26));"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            {"
+        "content": "                put(\"month\", Integer.parseInt(TASK_MONTH_03));"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"day\", Integer.parseInt(TASK_DAY_26));"
+        "content": "                put(\"year\", Integer.parseInt(TASK_YEAR_2020));"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"month\", Integer.parseInt(TASK_MONTH_03));"
+        "content": "            }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"year\", Integer.parseInt(TASK_YEAR_2020));"
+        "content": "        };"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        };"
+        "content": "        // no preamble, full HashMap (all of day/month/year supplied)"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        assertParseSuccess(parser, TASK_CMD_DAY_26 + TASK_CMD_MONTH_03 + TASK_CMD_YEAR_2020,"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // no preamble, full HashMap (all of day/month/year supplied)"
+        "content": "                new TaskSearchCommand(new TaskSearchPredicate(fullHashMap)));"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, TASK_CMD_DAY_26 + TASK_CMD_MONTH_03 + TASK_CMD_YEAR_2020,"
+        "content": "    }"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(fullHashMap)));"
+        "content": ""
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "    public void parse_fieldsArePresentButValuesOutOfBound_failure() {"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Test"
+        "content": "        String expectedMessage \u003d String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public void parse_fieldsArePresentButValuesOutOfBound_success() {"
+        "content": "                TaskSearchCommand.MESSAGE_OUT_OF_BOUNDS_VALUES);"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // /day 32 and /month 13 are allowed, look at the UG for more details."
+        "content": ""
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        HashMap\u003cString, Integer\u003e outOfBoundsDayAndMonthHashMap \u003d new HashMap\u003cString, Integer\u003e() {"
+        "content": "        assertParseFailure(parser, INVALID_TASK_DAY_OUT_OF_BOUNDS + INVALID_TASK_MONTH_OUT_OF_BOUNDS,"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            {"
+        "content": "                expectedMessage);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"day\", Integer.parseInt(INVALID_TASK_DAY_32));"
+        "content": "    }"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                put(\"month\", Integer.parseInt(INVALID_TASK_MONTH_13));"
+        "content": ""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "            }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        };"
+        "content": "    public void parse_fieldsArePresentButAtLeastOneFieldHaveStringInput_failure() {"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        // apply heuristic ‘no more than one invalid input in a test case’"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseSuccess(parser, INVALID_TASK_DAY_OUT_OF_BOUNDS"
+        "content": ""
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                        + INVALID_TASK_MONTH_OUT_OF_BOUNDS,"
+        "content": "        String expectedMessage \u003d String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                new TaskSearchCommand(new TaskSearchPredicate(outOfBoundsDayAndMonthHashMap)));"
+        "content": "                TaskSearchCommand.MESSAGE_INVALID_DAY_MONTH_YEAR);"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        // invalid field is day"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    @Test"
+        "content": "        assertParseFailure(parser, INVALID_TASK_DAY_STRING + TASK_CMD_MONTH_03 + TASK_CMD_YEAR_2020,"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "    public void parse_fieldsArePresentButAtLeastOneFieldHaveStringInput_failure() {"
+        "content": "                expectedMessage);"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // apply heuristic ‘no more than one invalid input in a test case’"
+        "content": ""
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
+        "content": "        // invalid field is month"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        String expectedMessage \u003d String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+        "content": "        assertParseFailure(parser, TASK_CMD_DAY_26 + INVALID_TASK_MONTH_STRING + TASK_CMD_YEAR_2020,"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "                TaskSearchCommand.MESSAGE_INVALID_DAY_MONTH_YEAR);"
+        "content": "                expectedMessage);"
       },
       {
         "lineNumber": 131,
@@ -145617,14 +146682,14 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        // invalid field is day"
+        "content": "        // invalid field is year"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        assertParseFailure(parser, INVALID_TASK_DAY_STRING + TASK_CMD_MONTH_03 + TASK_CMD_YEAR_2020,"
+        "content": "        assertParseFailure(parser, TASK_CMD_DAY_26 + TASK_CMD_MONTH_03 + INVALID_TASK_YEAR_STRING,"
       },
       {
         "lineNumber": 134,
@@ -145638,66 +146703,10 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        // invalid field is month"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        assertParseFailure(parser, TASK_CMD_DAY_26 + INVALID_TASK_MONTH_STRING + TASK_CMD_YEAR_2020,"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                expectedMessage);"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        // invalid field is year"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "        assertParseFailure(parser, TASK_CMD_DAY_26 + TASK_CMD_MONTH_03 + INVALID_TASK_YEAR_STRING,"
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
-        "content": "                expectedMessage);"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "dinhnhobao"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 136,
         "author": {
           "gitId": "dinhnhobao"
         },
@@ -145705,7 +146714,7 @@
       }
     ],
     "authorContributionMap": {
-      "dinhnhobao": 144
+      "dinhnhobao": 136
     }
   },
   {
@@ -160635,7 +161644,7 @@
         "author": {
           "gitId": "dinhnhobao"
         },
-        "content": "        keywords.put(\"day\", 1);"
+        "content": "        keywords.put(\"date\", 1);"
       },
       {
         "lineNumber": 18,

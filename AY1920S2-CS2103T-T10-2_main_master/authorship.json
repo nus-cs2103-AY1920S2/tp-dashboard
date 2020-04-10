@@ -13362,7 +13362,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New flashcard added: %1$s\";"
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"New flashcard added:\\n%1$s\";"
       },
       {
         "lineNumber": 45,
@@ -13516,7 +13516,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        logicToUiManager.getDisplayedDeck().addFlashcard(toAdd);"
+        "content": "        logicToUiManager.getDisplayedDeck().addCard(toAdd);"
       },
       {
         "lineNumber": 67,
@@ -18149,7 +18149,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        logicToUiManager.getDisplayedDeck().addImagecard(toAdd);"
+        "content": "        logicToUiManager.getDisplayedDeck().addCard(toAdd);"
       },
       {
         "lineNumber": 67,
@@ -39479,800 +39479,800 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.model.flashcard.Flashcard;"
+        "content": "import cardibuddy.model.flashcard.Question;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "import cardibuddy.model.flashcard.Imagecard;"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "import cardibuddy.model.flashcard.Question;"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
         "content": "import cardibuddy.model.flashcard.UniqueFlashcardList;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 19,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "import cardibuddy.model.tag.Tag;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 20,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "import javafx.collections.FXCollections;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 21,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "import javafx.collections.ObservableList;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 22,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "import javafx.collections.transformation.FilteredList;"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 23,
         "author": {
           "gitId": "phaebaez"
         },
         "content": ""
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 24,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 25,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": " * Represents a Deck in the cardibuddy application."
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 26,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": " * Guarantees: details are present and not null, field values are validated, immutable."
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 27,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": " */"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 28,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "public class Deck {"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 29,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 30,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    // Identity fields"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 31,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    private final Title title;"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 32,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 33,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    // Data fields"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 34,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    private final Set\u003cTag\u003e tags \u003d new HashSet\u003c\u003e();"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 35,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    private List\u003cCard\u003e flashcards \u003d new ArrayList\u003c\u003e();"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 36,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    private FilteredList\u003cCard\u003e filteredFlashcards;"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 37,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "    private Statistics statistics \u003d new Statistics();"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 38,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "    private final Logger logger \u003d LogsCenter.getLogger(Deck.class.getName());"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 39,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    private Predicate predicate;"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 40,
         "author": {
           "gitId": "phaebaez"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "     * Every field must be present and not null."
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "     * Every field must be present and not null."
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "phaebaez"
-        },
         "content": "     */"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 44,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    public Deck(Title title, Set\u003cTag\u003e tags, List\u003cCard\u003e flashcards) {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 45,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "        requireAllNonNull(title, tags);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        this.title \u003d title;"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "phaebaez"
+        },
+        "content": "        this.tags.addAll(tags);"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "        this.title \u003d title;"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        this.tags.addAll(tags);"
-      },
-      {
-        "lineNumber": 50,
-        "author": {
-          "gitId": "phaebaez"
-        },
         "content": "        this.flashcards.addAll(flashcards);"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 49,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        this.filteredFlashcards \u003d new FilteredList\u003c\u003e(FXCollections.observableList(flashcards));"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 50,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "        logger.info(\"Created Deck\");"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 51,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "     * Every field must be present and not null."
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * Every field must be present and not null."
+        "content": "    public Deck(Title title, Set\u003cTag\u003e tags) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "        requireAllNonNull(title, tags);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public Deck(Title title, Set\u003cTag\u003e tags) {"
+        "content": "        this.title \u003d title;"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        requireAllNonNull(title, tags);"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        this.title \u003d title;"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
         "content": "        this.tags.addAll(tags);"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 60,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "        logger.info(\"Created Deck\");"
       },
       {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
         "lineNumber": 63,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "    public Deck() {"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        title \u003d new Title(\"\");"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        flashcards \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 70,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    public Title getTitle() {"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 64,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        return this.title;"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 65,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 66,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 67,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 68,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 69,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * if modification is attempted."
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 70,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 71,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    public Set\u003cTag\u003e getTags() {"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 72,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        return Collections.unmodifiableSet(tags);"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 73,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 74,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 75,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    public List\u003cCard\u003e getFlashcards() {"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 76,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "        return Collections.unmodifiableList(flashcards);"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 77,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 78,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 79,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 80,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * Delete card from the flashcards and filteredFlashcards list."
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 81,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * @param card to be deleted."
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 82,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 83,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    public void deleteCard(Card card) {"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 84,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        flashcards.remove(card);"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 85,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        filteredFlashcards \u003d new FilteredList\u003c\u003e(FXCollections.observableList(flashcards));"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 86,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        filteredFlashcards.setPredicate(predicate);"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 87,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 88,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 89,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "    public Statistics getStatistics() {"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 90,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "        return statistics;"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 91,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 92,
         "author": {
           "gitId": "sigmund-c"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Adds a Card to a Deck."
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @param card"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * @return the set of Cards from the Deck."
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public List\u003cCard\u003e addCard(Card card) {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        flashcards.add(card);"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": "        filteredFlashcards \u003d new FilteredList\u003c\u003e(FXCollections.observableList(flashcards));"
       },
       {
         "lineNumber": 101,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * Adds a Flashcard to a Deck."
-      },
-      {
-        "lineNumber": 102,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * @param card"
-      },
-      {
-        "lineNumber": 103,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * @return the set of Flashcards from the Deck."
-      },
-      {
-        "lineNumber": 104,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    public List\u003cCard\u003e addFlashcard(Flashcard card) {"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        flashcards.add(card);"
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        filteredFlashcards \u003d new FilteredList\u003c\u003e(FXCollections.observableList(flashcards));"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        return Collections.unmodifiableList(flashcards);"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * Adds an Imagecard to a Deck."
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * @param card"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     * @return the set of Flashcards from the Deck."
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    public List\u003cCard\u003e addImagecard(Imagecard card) {"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        flashcards.add(card);"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        filteredFlashcards \u003d new FilteredList\u003c\u003e(FXCollections.observableList(flashcards));"
-      },
-      {
-        "lineNumber": 119,
         "author": {
           "gitId": "phaebaez"
         },
         "content": "        return Collections.unmodifiableList(flashcards);"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 102,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 103,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": ""
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 104,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 105,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * Checks if the Title of the Deck exists."
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 106,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * @param otherDeck the deck being compared to."
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 107,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     * @return true if the Deck already exists and false otherwise."
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 108,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 109,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "    public boolean isSameDeck(Deck otherDeck) {"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 110,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        if (otherDeck \u003d\u003d this) {"
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 111,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "            return true;"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 112,
         "author": {
           "gitId": "haveaqiupill"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return otherDeck !\u003d null"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "                \u0026\u0026 otherDeck.getTitle().equals(getTitle());"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public ObservableList\u003cCard\u003e getFlashcardList() {"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        UniqueFlashcardList flashcardList \u003d new UniqueFlashcardList();"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        flashcardList.setFlashcards(flashcards);"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return flashcardList.asUnmodifiableObservableList();"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * Returns an unmodifiable view of the list of {@code Flashcard} backed by the internal list of"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     * {@code versionedCardiBuddy}"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    public ObservableList\u003cCard\u003e getFilteredFlashcardList() {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return filteredFlashcards;"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 131,
@@ -40286,56 +40286,56 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return otherDeck !\u003d null"
+        "content": "    /**"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                \u0026\u0026 otherDeck.getTitle().equals(getTitle());"
+        "content": "     * Updates the filtered flashcards in a deck."
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "     * @param predicate SearchCardPredicate or FilterCardPredicate."
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public ObservableList\u003cCard\u003e getFlashcardList() {"
+        "content": "    public void updateFilteredFlashcardList(Predicate\u003cCard\u003e predicate) {"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        UniqueFlashcardList flashcardList \u003d new UniqueFlashcardList();"
+        "content": "        requireNonNull(predicate);"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        flashcardList.setFlashcards(flashcards);"
+        "content": "        this.predicate \u003d predicate;"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return flashcardList.asUnmodifiableObservableList();"
+        "content": "        filteredFlashcards.setPredicate(predicate);"
       },
       {
         "lineNumber": 140,
@@ -40363,507 +40363,381 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * Returns an unmodifiable view of the list of {@code Flashcard} backed by the internal list of"
+        "content": "     * Check if deck contains the flashcard to prevent duplicates."
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * {@code versionedCardiBuddy}"
+        "content": "     * @param card new card to be added."
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "     * @return true if card\u0027s question already exists."
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public ObservableList\u003cCard\u003e getFilteredFlashcardList() {"
+        "content": "     */"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return filteredFlashcards;"
+        "content": "    public boolean hasFlashcard(Card card) {"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "        Question cardQuestion \u003d card.getQuestion();"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "        for (Card c : flashcards) {"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": "            if (cardQuestion.equals(c.getQuestion())) {"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * Updates the filtered flashcards in a deck."
+        "content": "                System.out.println(c.getQuestion().toString());"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @param predicate SearchCardPredicate or FilterCardPredicate."
+        "content": "                return true;"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "            }"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public void updateFilteredFlashcardList(Predicate\u003cCard\u003e predicate) {"
+        "content": "        }"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        requireNonNull(predicate);"
+        "content": "        return false;"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        this.predicate \u003d predicate;"
+        "content": "    }"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        filteredFlashcards.setPredicate(predicate);"
+        "content": ""
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    /**"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * Check if deck contains the flashcard to prevent duplicates."
+        "content": "            return true;"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @param card new card to be added."
+        "content": "        }"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     * @return true if card\u0027s question already exists."
+        "content": ""
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "     */"
+        "content": "        if (!(other instanceof Deck)) {"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public boolean hasFlashcard(Card card) {"
+        "content": "            return false;"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        Question cardQuestion \u003d card.getQuestion();"
+        "content": "        }"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        for (Card c : flashcards) {"
+        "content": ""
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            if (cardQuestion.equals(c.getQuestion())) {"
+        "content": "        Deck otherDeck \u003d (Deck) other;"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                System.out.println(c.getQuestion().toString());"
+        "content": "        return otherDeck.getTitle().equals(getTitle())"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                return true;"
+        "content": "                \u0026\u0026 otherDeck.getFlashcards().equals(getFlashcards())"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            }"
+        "content": "                \u0026\u0026 otherDeck.getTags().equals(getTags());"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return false;"
+        "content": ""
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    @Override"
+        "content": "        // use this method for custom fields hashing instead of implementing your own"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return Objects.hash(title, flashcards, tags);"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "    }"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            return true;"
+        "content": ""
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        if (!(other instanceof Deck)) {"
+        "content": "        final StringBuilder builder \u003d new StringBuilder();"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            return false;"
+        "content": "        builder.append(getTitle()).append(\"\\nTags: \");"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "        if (!getTags().isEmpty()) {"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        Deck otherDeck \u003d (Deck) other;"
+        "content": "            getTags().forEach(builder::append);"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return otherDeck.getTitle().equals(getTitle())"
+        "content": "        } else {"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                \u0026\u0026 otherDeck.getFlashcards().equals(getFlashcards())"
+        "content": "            builder.append(\"None\");"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "                \u0026\u0026 otherDeck.getTags().equals(getTags());"
+        "content": "        }"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "        builder.append(\"\\nNo. of Cards: \").append(flashcards.size());"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public int hashCode() {"
+        "content": "        return builder.toString();"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        // use this method for custom fields hashing instead of implementing your own"
+        "content": "    }"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        return Objects.hash(title, flashcards, tags);"
+        "content": ""
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 197,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    public String toString() {"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        final StringBuilder builder \u003d new StringBuilder();"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        builder.append(getTitle()).append(\"\\nTags: \");"
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        if (!getTags().isEmpty()) {"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "            getTags().forEach(builder::append);"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        } else {"
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "            builder.append(\"None\");"
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        builder.append(\"\\nNo. of Cards: \").append(flashcards.size());"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "        return builder.toString();"
-      },
-      {
-        "lineNumber": 212,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 213,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 215,
         "author": {
           "gitId": "haveaqiupill"
         },
@@ -40872,8 +40746,8 @@
     ],
     "authorContributionMap": {
       "sigmund-c": 5,
-      "haveaqiupill": 180,
-      "phaebaez": 30
+      "haveaqiupill": 168,
+      "phaebaez": 24
     }
   },
   {
@@ -46793,7 +46667,7 @@
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "        builder.append(\"Q:\")"
+        "content": "        builder.append(\"Q: \")"
       },
       {
         "lineNumber": 68,
@@ -46807,7 +46681,7 @@
         "author": {
           "gitId": "sigmund-c"
         },
-        "content": "                .append(\"\\nA:\")"
+        "content": "                .append(\"\\nA: \")"
       },
       {
         "lineNumber": 70,
@@ -54514,28 +54388,28 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        deckA.addFlashcard(cardA);"
+        "content": "        deckA.addCard(cardA);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        deckA.addFlashcard(cardB);"
+        "content": "        deckA.addCard(cardB);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        deckA.addFlashcard(cardC);"
+        "content": "        deckA.addCard(cardC);"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        deckA.addFlashcard(cardD);"
+        "content": "        deckA.addCard(cardD);"
       },
       {
         "lineNumber": 46,
@@ -54626,7 +54500,7 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        Deck deckC \u003d new Deck(new Title(\"Vue.js\"), tagsC);"
+        "content": "        Deck deckC \u003d new Deck(new Title(\"Vuejs\"), tagsC);"
       },
       {
         "lineNumber": 59,
@@ -55750,80 +55624,101 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        final List\u003cCard\u003e modelFlashcards \u003d new ArrayList\u003c\u003e();"
+        "content": "        Title modelTitle \u003d new Title(title);"
       },
       {
         "lineNumber": 80,
         "author": {
-          "gitId": "airshhlay"
+          "gitId": "haveaqiupill"
         },
-        "content": "        for (JsonAdaptedFlashcard flashcard : flashcards) {"
+        "content": "        final Set\u003cTag\u003e modelTags \u003d new HashSet\u003c\u003e(deckTags);"
       },
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "            modelFlashcards.add(flashcard.toModelType());"
+        "content": "        Deck newDeck \u003d new Deck(modelTitle, modelTags);"
       },
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "airshhlay"
+          "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
-          "gitId": "airshhlay"
+          "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "        final List\u003cCard\u003e modelFlashcards \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "airshhlay"
         },
-        "content": "        // TODO: add if conditions here to check formatting"
+        "content": "        for (JsonAdaptedFlashcard flashcard : flashcards) {"
       },
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "        Title modelTitle \u003d new Title(title);"
+        "content": "            newDeck.addCard(flashcard.toModelType(newDeck));"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "airshhlay"
         },
-        "content": "        final Set\u003cTag\u003e modelTags \u003d new HashSet\u003c\u003e(deckTags);"
+        "content": "        }"
       },
       {
         "lineNumber": 87,
-        "author": {
-          "gitId": "phaebaez"
-        },
-        "content": "        return new Deck(modelTitle, modelTags, modelFlashcards); // TODO: to replace params with actual values"
-      },
-      {
-        "lineNumber": 88,
-        "author": {
-          "gitId": "airshhlay"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 89,
         "author": {
           "gitId": "airshhlay"
         },
         "content": ""
       },
       {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "airshhlay"
+        },
+        "content": "        // TODO: add if conditions here to check formatting"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": ""
+      },
+      {
         "lineNumber": 90,
+        "author": {
+          "gitId": "haveaqiupill"
+        },
+        "content": "        return newDeck; // TODO: to replace params with actual values"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "airshhlay"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "airshhlay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
         "author": {
           "gitId": "airshhlay"
         },
@@ -55831,9 +55726,9 @@
       }
     ],
     "authorContributionMap": {
-      "airshhlay": 72,
-      "haveaqiupill": 11,
-      "phaebaez": 7
+      "airshhlay": 71,
+      "haveaqiupill": 18,
+      "phaebaez": 4
     }
   },
   {
@@ -56237,108 +56132,101 @@
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "    public Card toModelType() throws IllegalValueException {"
+        "content": "    public Card toModelType(Deck modelDeck) throws IllegalValueException {"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "        Deck modelDeck \u003d new Deck();"
+        "content": "        Question modelQuestion \u003d new Question(question);"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "phaebaez"
         },
-        "content": "        Question modelQuestion \u003d new Question(question);"
+        "content": "        ShortAnswer modelAnswer \u003d new ShortAnswer(answer);"
       },
       {
         "lineNumber": 60,
         "author": {
-          "gitId": "phaebaez"
+          "gitId": "haveaqiupill"
         },
-        "content": "        ShortAnswer modelAnswer \u003d new ShortAnswer(answer);"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "        if (deck \u003d\u003d null || question \u003d\u003d null || answer \u003d\u003d null) {"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        if (deck \u003d\u003d null || question \u003d\u003d null || answer \u003d\u003d null) {"
+        "content": "            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Deck.class.getSimpleName()));"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Deck.class.getSimpleName()));"
+        "content": "        }"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": ""
+        "content": "        if (path.equals(\"\")) {"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        if (path.equals(\"\")) {"
+        "content": "            return new Flashcard(modelDeck, modelQuestion, modelAnswer, path);"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            return new Flashcard(modelDeck, modelQuestion, modelAnswer, path);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        } else {"
+        "content": "            return new Imagecard(modelDeck, modelQuestion, modelAnswer, path);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "            return new Imagecard(modelDeck, modelQuestion, modelAnswer, path);"
+        "content": "        }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "haveaqiupill"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "haveaqiupill"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 71,
         "author": {
           "gitId": "haveaqiupill"
         },
@@ -56348,7 +56236,7 @@
     "authorContributionMap": {
       "haveaqiupill": 55,
       "airshhlay": 5,
-      "phaebaez": 12
+      "phaebaez": 11
     }
   },
   {

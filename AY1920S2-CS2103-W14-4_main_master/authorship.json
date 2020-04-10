@@ -11905,11 +11905,109 @@
         "author": {
           "gitId": "raivatshah"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        if (other \u003d\u003d this) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        if (!(other instanceof AddGroupCommand)) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        AddGroupCommand otherCommand \u003d (AddGroupCommand) other;"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        return this.toAdd.equals(otherCommand.toAdd);"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "raivatshah"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "raivatshah": 85,
+      "raivatshah": 99,
       "harrychengly": 1
     }
   },
@@ -13255,7 +13353,7 @@
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static final String MESSAGE_DELETE_PERSON_SUCCESS \u003d \"Deleted Group: %1$s\";"
+        "content": "    public static final String MESSAGE_DELETE_GROUP_SUCCESS \u003d \"Deleted Group: %1$s\";"
       },
       {
         "lineNumber": 28,
@@ -13388,7 +13486,7 @@
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, groupToDelete), ViewType.GROUPS);"
+        "content": "        return new CommandResult(String.format(MESSAGE_DELETE_GROUP_SUCCESS, groupToDelete));"
       },
       {
         "lineNumber": 47,
@@ -40418,6 +40516,267 @@
       "raivatshah": 116,
       "l2ejected": 14,
       "harrychengly": 7
+    }
+  },
+  {
+    "path": "src/main/java/seedu/address/model/group/GroupNameContainsKeywordsPredicate.java",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "package seedu.address.model.group;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import java.util.function.Predicate;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.commons.util.StringUtil;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": " * Checks if a {@code Group}\u0027s {@code Name} matches any of the given keywords."
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "public class GroupNameContainsKeywordsPredicate implements Predicate\u003cGroup\u003e {"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    private final List\u003cString\u003e keywords;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public GroupNameContainsKeywordsPredicate(List\u003cString\u003e keywords) {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        this.keywords \u003d keywords;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean test(Group group) {"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        return keywords.stream()"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "                .anyMatch(keyword -\u003e StringUtil.containsWordIgnoreCase(group.getName().fullName, keyword));"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        if (other \u003d\u003d this) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            return true;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        if (!(other instanceof GroupNameContainsKeywordsPredicate)) {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            return false;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        GroupNameContainsKeywordsPredicate nameContainsKeywordsPredicate \u003d (GroupNameContainsKeywordsPredicate) other;"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        return this.keywords.equals(nameContainsKeywordsPredicate.keywords);"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "raivatshah": 36
     }
   },
   {
@@ -75376,196 +75735,196 @@
         "author": {
           "gitId": "-"
         },
-        "content": "import java.nio.file.Path;"
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
-        "content": "import java.util.ArrayList;"
+        "content": "import java.util.Arrays;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": "import java.util.Arrays;"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "import java.util.List;"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import java.util.function.Predicate;"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": "import org.junit.jupiter.api.Test;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import javafx.collections.ObservableList;"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.commons.core.GuiSettings;"
-      },
-      {
-        "lineNumber": 19,
+        "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.logic.commands.exceptions.CommandException;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.AddressBook;"
       },
       {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.model.Model;"
-      },
-      {
-        "lineNumber": 22,
+        "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.ReadOnlyAddressBook;"
       },
       {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "import seedu.address.model.ReadOnlyUserPrefs;"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "import seedu.address.model.event.Event;"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "import seedu.address.model.group.Group;"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "import seedu.address.model.person.EventDescriptor;"
-      },
-      {
-        "lineNumber": 27,
+        "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.person.Person;"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 18,
         "author": {
-          "gitId": "terencemah"
+          "gitId": "raivatshah"
         },
-        "content": "import seedu.address.model.person.RecentEvent;"
+        "content": "import seedu.address.testutil.ModelStub;"
       },
       {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "import seedu.address.model.person.Time;"
-      },
-      {
-        "lineNumber": 30,
+        "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.testutil.PersonBuilder;"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": "public class AddCommandTest {"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
         "content": "    @Test"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
         "content": "    public void constructor_nullPerson_throwsNullPointerException() {"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
         "content": "        assertThrows(NullPointerException.class, () -\u003e new AddCommand(null));"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void execute_personAcceptedByModel_addSuccessful() throws Exception {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        ModelStubAcceptingPersonAdded modelStub \u003d new ModelStubAcceptingPersonAdded();"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        Person validPerson \u003d new PersonBuilder().build();"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        CommandResult commandResult \u003d new AddCommand(validPerson).execute(modelStub);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);"
       },
       {
         "lineNumber": 37,
@@ -75593,294 +75952,294 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public void execute_personAcceptedByModel_addSuccessful() throws Exception {"
+        "content": "    public void execute_duplicatePerson_throwsCommandException() {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelStubAcceptingPersonAdded modelStub \u003d new ModelStubAcceptingPersonAdded();"
+        "content": "        Person validPerson \u003d new PersonBuilder().build();"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "        Person validPerson \u003d new PersonBuilder().build();"
+        "content": "        AddCommand addCommand \u003d new AddCommand(validPerson);"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        ModelStub modelStub \u003d new ModelStubWithPerson(validPerson);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "        CommandResult commandResult \u003d new AddCommand(validPerson).execute(modelStub);"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -\u003e addCommand.execute(modelStub));"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());"
+        "content": "    }"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public void equals() {"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        Person alice \u003d new PersonBuilder().withName(\"Alice\").build();"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void execute_duplicatePerson_throwsCommandException() {"
+        "content": "        Person bob \u003d new PersonBuilder().withName(\"Bob\").build();"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": "        Person validPerson \u003d new PersonBuilder().build();"
+        "content": "        AddCommand addAliceCommand \u003d new AddCommand(alice);"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "        AddCommand addCommand \u003d new AddCommand(validPerson);"
+        "content": "        AddCommand addBobCommand \u003d new AddCommand(bob);"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelStub modelStub \u003d new ModelStubWithPerson(validPerson);"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // same object -\u003e returns true"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -\u003e addCommand.execute(modelStub));"
+        "content": "        assertTrue(addAliceCommand.equals(addAliceCommand));"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // same values -\u003e returns true"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        AddCommand addAliceCommandCopy \u003d new AddCommand(alice);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void equals() {"
+        "content": "        assertTrue(addAliceCommand.equals(addAliceCommandCopy));"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": "        Person alice \u003d new PersonBuilder().withName(\"Alice\").build();"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "        Person bob \u003d new PersonBuilder().withName(\"Bob\").build();"
+        "content": "        // different types -\u003e returns false"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "        AddCommand addAliceCommand \u003d new AddCommand(alice);"
+        "content": "        assertFalse(addAliceCommand.equals(1));"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": "        AddCommand addBobCommand \u003d new AddCommand(bob);"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // null -\u003e returns false"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": "        // same object -\u003e returns true"
+        "content": "        assertFalse(addAliceCommand.equals(null));"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(addAliceCommand.equals(addAliceCommand));"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // different person -\u003e returns false"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "        // same values -\u003e returns true"
+        "content": "        assertFalse(addAliceCommand.equals(addBobCommand));"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": "        AddCommand addAliceCommandCopy \u003d new AddCommand(alice);"
+        "content": "    }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(addAliceCommand.equals(addAliceCommandCopy));"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": "        // different types -\u003e returns false"
+        "content": "     * A Model stub that contains a single person."
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(addAliceCommand.equals(1));"
+        "content": "     */"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private class ModelStubWithPerson extends ModelStub {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "        // null -\u003e returns false"
+        "content": "        private final Person person;"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(addAliceCommand.equals(null));"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        ModelStubWithPerson(Person person) {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": "        // different person -\u003e returns false"
+        "content": "            requireNonNull(person);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(addAliceCommand.equals(addBobCommand));"
+        "content": "            this.person \u003d person;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 82,
@@ -75894,119 +76253,119 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "        @Override"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": "     * A default model stub that have all of the methods failing."
+        "content": "        public boolean hasPerson(Person person) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "            requireNonNull(person);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "    private class ModelStub implements Model {"
+        "content": "            return this.person.isSamePerson(person);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
-        "content": "        @Override"
+        "content": "        }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
-        "content": "        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
+        "content": "    }"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * A Model stub that always accept the person being added."
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "        @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": "        public ReadOnlyUserPrefs getUserPrefs() {"
+        "content": "    private class ModelStubAcceptingPersonAdded extends ModelStub {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "        final ArrayList\u003cPerson\u003e personsAdded \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        @Override"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "-"
         },
-        "content": "        @Override"
+        "content": "        public boolean hasPerson(Person person) {"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "-"
         },
-        "content": "        public GuiSettings getGuiSettings() {"
+        "content": "            requireNonNull(person);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "            return personsAdded.stream().anyMatch(person::isSamePerson);"
       },
       {
         "lineNumber": 100,
@@ -76025,1671 +76384,89 @@
       {
         "lineNumber": 102,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
         "content": "        @Override"
       },
       {
         "lineNumber": 103,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "        public void updateFilteredGroupList(Predicate\u003cGroup\u003e predicate) {"
+        "content": "        public void addPerson(Person person) {"
       },
       {
         "lineNumber": 104,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
+        "content": "            requireNonNull(person);"
       },
       {
         "lineNumber": 105,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 106,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 107,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 108,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void updateFilteredEventList(Predicate\u003cEvent\u003e predicate) {"
-      },
-      {
-        "lineNumber": 109,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 110,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 111,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 112,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public ObservableList\u003cGroup\u003e getFilteredGroupList() {"
-      },
-      {
-        "lineNumber": 114,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 115,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public ObservableList\u003cEvent\u003e getFilteredEventList() {"
-      },
-      {
-        "lineNumber": 119,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 120,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 121,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public void setGuiSettings(GuiSettings guiSettings) {"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public Path getAddressBookFilePath() {"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public void setAddressBookFilePath(Path addressBookFilePath) {"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public void addPerson(Person person) {"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public void addEvent(Event event) {"
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public void setAddressBook(ReadOnlyAddressBook newData) {"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 150,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 151,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 152,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 153,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public ReadOnlyAddressBook getAddressBook() {"
-      },
-      {
-        "lineNumber": 154,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 155,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 156,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 157,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 158,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public boolean hasPerson(Person person) {"
-      },
-      {
-        "lineNumber": 159,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 160,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 162,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 163,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public boolean hasGroup(Group group) {"
-      },
-      {
-        "lineNumber": 164,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 165,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 166,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public boolean hasEvent(Event event) {"
-      },
-      {
-        "lineNumber": 169,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 170,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 171,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 172,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        public boolean hasGroups(List\u003cGroup\u003e groups) {"
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 178,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public void addGroup(Group group) {"
-      },
-      {
-        "lineNumber": 179,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 180,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 181,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 182,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 183,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        public boolean hasPersons(List\u003cPerson\u003e people) {"
-      },
-      {
-        "lineNumber": 184,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 185,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 186,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 187,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 188,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public boolean hasEvents(List\u003cEvent\u003e events) {"
-      },
-      {
-        "lineNumber": 189,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            return false;"
-      },
-      {
-        "lineNumber": 190,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 191,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 192,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 193,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public void deletePerson(Person target) {"
-      },
-      {
-        "lineNumber": 194,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 195,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 196,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 197,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 198,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public void deleteGroup(Group group) {"
-      },
-      {
-        "lineNumber": 199,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 200,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 202,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 203,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public void setPerson(Person target, Person editedPerson) {"
-      },
-      {
-        "lineNumber": 204,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 206,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 207,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 208,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "        public void setGroup(Group target, Group editedGroup) {"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 212,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 213,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public ObservableList\u003cPerson\u003e getFilteredPersonList() {"
-      },
-      {
-        "lineNumber": 214,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 215,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 216,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 217,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 218,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public void updateFilteredPersonList(Predicate\u003cPerson\u003e predicate) {"
-      },
-      {
-        "lineNumber": 219,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 220,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 221,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 222,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 223,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        public void importCsvToAddressBook(List\u003cPerson\u003e importedPeople) {"
-      },
-      {
-        "lineNumber": 224,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 225,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 226,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 227,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 228,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        public void importCsvGroupsToAddressBook(List\u003cGroup\u003e importedGroup) {"
-      },
-      {
-        "lineNumber": 229,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 230,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 231,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 232,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 233,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void importCsvEventsToAddressBook(List\u003cEvent\u003e importedEvent) {"
-      },
-      {
-        "lineNumber": 234,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 235,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 237,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 238,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void showPlaceList(Person target) {"
-      },
-      {
-        "lineNumber": 239,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 240,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 241,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 242,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 243,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void showActivityList(Person target) {"
-      },
-      {
-        "lineNumber": 244,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 245,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 246,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 247,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 248,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void showRecentList(Person target) {"
-      },
-      {
-        "lineNumber": 249,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 250,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 251,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 252,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 253,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        public void showTime() {"
-      },
-      {
-        "lineNumber": 254,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 255,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 256,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 257,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 258,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void suggestPerson() {"
-      },
-      {
-        "lineNumber": 259,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 260,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 261,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 262,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 263,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void suggestPlace() {"
-      },
-      {
-        "lineNumber": 264,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 265,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 266,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 267,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 268,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void suggestActivity() {"
-      },
-      {
-        "lineNumber": 269,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 270,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 271,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 272,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 273,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public void copyRecent(ObservableList\u003cRecentEvent\u003e list) {"
-      },
-      {
-        "lineNumber": 274,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 275,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 276,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 277,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 278,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        public void copyTime(ObservableList\u003cTime\u003e list) {"
-      },
-      {
-        "lineNumber": 279,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 280,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 281,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 282,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 283,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public ObservableList\u003cEventDescriptor\u003e getFrequencyList() {"
-      },
-      {
-        "lineNumber": 284,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 285,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 286,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 287,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 288,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        public ObservableList\u003cRecentEvent\u003e getRecentList() {"
-      },
-      {
-        "lineNumber": 289,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 290,
-        "author": {
-          "gitId": "terencemah"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 291,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 292,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 293,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        public ObservableList\u003cTime\u003e getTimeList() {"
-      },
-      {
-        "lineNumber": 294,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "            throw new AssertionError(\"This method should not be called.\");"
-      },
-      {
-        "lineNumber": 295,
-        "author": {
-          "gitId": "harrychengly"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 296,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 297,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 298,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 299,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * A Model stub that contains a single person."
-      },
-      {
-        "lineNumber": 300,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 301,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private class ModelStubWithPerson extends ModelStub {"
-      },
-      {
-        "lineNumber": 302,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        private final Person person;"
-      },
-      {
-        "lineNumber": 303,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 304,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        ModelStubWithPerson(Person person) {"
-      },
-      {
-        "lineNumber": 305,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            requireNonNull(person);"
-      },
-      {
-        "lineNumber": 306,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            this.person \u003d person;"
-      },
-      {
-        "lineNumber": 307,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 308,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 309,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 310,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public boolean hasPerson(Person person) {"
-      },
-      {
-        "lineNumber": 311,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            requireNonNull(person);"
-      },
-      {
-        "lineNumber": 312,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            return this.person.isSamePerson(person);"
-      },
-      {
-        "lineNumber": 313,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 314,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 315,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 316,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 317,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * A Model stub that always accept the person being added."
-      },
-      {
-        "lineNumber": 318,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 319,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private class ModelStubAcceptingPersonAdded extends ModelStub {"
-      },
-      {
-        "lineNumber": 320,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        final ArrayList\u003cPerson\u003e personsAdded \u003d new ArrayList\u003c\u003e();"
-      },
-      {
-        "lineNumber": 321,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 322,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 323,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public boolean hasPerson(Person person) {"
-      },
-      {
-        "lineNumber": 324,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            requireNonNull(person);"
-      },
-      {
-        "lineNumber": 325,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            return personsAdded.stream().anyMatch(person::isSamePerson);"
-      },
-      {
-        "lineNumber": 326,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 327,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 328,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 329,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        public void addPerson(Person person) {"
-      },
-      {
-        "lineNumber": 330,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            requireNonNull(person);"
-      },
-      {
-        "lineNumber": 331,
         "author": {
           "gitId": "-"
         },
         "content": "            personsAdded.add(person);"
       },
       {
-        "lineNumber": 332,
+        "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 333,
+        "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 334,
+        "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
         "content": "        @Override"
       },
       {
-        "lineNumber": 335,
+        "lineNumber": 109,
         "author": {
           "gitId": "-"
         },
         "content": "        public ReadOnlyAddressBook getAddressBook() {"
       },
       {
-        "lineNumber": 336,
+        "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
         "content": "            return new AddressBook();"
       },
       {
-        "lineNumber": 337,
+        "lineNumber": 111,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 338,
+        "lineNumber": 112,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 339,
+        "lineNumber": 113,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 340,
+        "lineNumber": 114,
         "author": {
           "gitId": "-"
         },
@@ -77697,10 +76474,8 @@
       }
     ],
     "authorContributionMap": {
-      "raivatshah": 50,
-      "terencemah": 55,
-      "harrychengly": 37,
-      "-": 198
+      "raivatshah": 1,
+      "-": 113
     }
   },
   {
@@ -79114,6 +77889,932 @@
     }
   },
   {
+    "path": "src/test/java/seedu/address/logic/commands/AddGroupCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "package seedu.address.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import static java.util.Objects.requireNonNull;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import static seedu.address.testutil.Assert.assertThrows;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import static seedu.address.testutil.TypicalPersons.ALICE;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import static seedu.address.testutil.TypicalPersons.BENSON;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import static seedu.address.testutil.TypicalPersons.CARL;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import javafx.collections.ObservableList;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import javafx.collections.transformation.FilteredList;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.AddressBook;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.ReadOnlyAddressBook;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.group.Group;"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.person.Person;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.person.UniquePersonList;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.testutil.GroupBuilder;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.testutil.ModelStub;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "public class AddGroupCommandTest {"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void constructorNullGroupThrowsNullGroupPointer() {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e new AddGroupCommand(null));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void executeGroupAcceptedByModelAddSuccessful() throws Exception {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        ModelStubAcceptingGroupAdded modelStub \u003d new ModelStubAcceptingGroupAdded();"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Group validGroup \u003d new GroupBuilder().build();"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        validGroup.setMemberIDs(new ArrayList\u003c\u003e(Arrays.asList(1, 2, 3)));"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        CommandResult commandResult \u003d new AddGroupCommand(validGroup).execute(modelStub);"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertEquals(String.format(AddGroupCommand.MESSAGE_SUCCESS, validGroup), commandResult.getFeedbackToUser());"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertEquals(Arrays.asList(validGroup), modelStub.groupsAdded);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void executeDuplicateGroupThrowsCommandException() throws Exception {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Group validGroup \u003d new GroupBuilder().build();"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        validGroup.setMemberIDs(new ArrayList\u003c\u003e(Arrays.asList(1, 2, 3)));"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        AddGroupCommand addGroupCommand \u003d new AddGroupCommand(validGroup);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        ModelStub modelStub \u003d new ModelStubWithGroup(validGroup);"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertThrows(CommandException.class, AddGroupCommand.MESSAGE_DUPLICATE_GROUP, ("
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        ) -\u003e addGroupCommand.execute(modelStub));"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void equals() {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Group soc \u003d new GroupBuilder().build();"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Group rc \u003d new GroupBuilder().withName(\"RC Friends\").build();"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        AddGroupCommand addSoCCommand \u003d new AddGroupCommand(soc);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        AddGroupCommand addRcCommand \u003d new AddGroupCommand(rc);"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        //same object so should be true"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertTrue(addSoCCommand.equals(addSoCCommand));"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        //same values so should be true"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        AddGroupCommand addSoCCopy \u003d new AddGroupCommand(soc);"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertTrue(addSoCCopy.equals(addSoCCommand));"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        //differeny types so should false"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertFalse((\"sample text\").equals(addSoCCommand));"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        //equality with null should be false"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertFalse(addRcCommand.equals(null));"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        // different groups should be false"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertFalse(addRcCommand.equals(addSoCCommand));"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    private class ModelStubWithGroup extends ModelStub {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        private final Group group;"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        ModelStubWithGroup(Group group) {"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            requireNonNull(group);"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            this.group \u003d group;"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        public boolean hasGroup(Group group) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            requireNonNull(group);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            return this.group.equals(group);"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    private class ModelStubAcceptingGroupAdded extends ModelStub {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        private final ArrayList\u003cGroup\u003e groupsAdded \u003d new ArrayList\u003c\u003e();"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        public ObservableList\u003cPerson\u003e getFilteredPersonList() {"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            // persons list with sample persons"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            UniquePersonList uniquePersonList \u003d new UniquePersonList();"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            uniquePersonList.add(ALICE);"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            uniquePersonList.add(BENSON);"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            uniquePersonList.add(CARL);"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            FilteredList\u003cPerson\u003e sampleList \u003d new FilteredList\u003c\u003e(uniquePersonList.asUnmodifiableObservableList());"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            return sampleList;"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        public boolean hasGroup(Group toCheck) {"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            requireNonNull(toCheck);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            return groupsAdded.stream().anyMatch(toCheck::equals);"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        public void addGroup(Group toAdd) {"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            requireNonNull(toAdd);"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            groupsAdded.add(toAdd);"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        public ReadOnlyAddressBook getAddressBook() {"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            return new AddressBook();"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "raivatshah": 131
+    }
+  },
+  {
     "path": "src/test/java/seedu/address/logic/commands/CommandResultTest.java",
     "fileType": "test-code",
     "lines": [
@@ -79641,884 +79342,884 @@
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "import seedu.address.model.person.NameContainsKeywordsPredicate;"
+        "content": "import seedu.address.model.group.Group;"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "import seedu.address.model.person.Person;"
+        "content": "import seedu.address.model.group.GroupNameContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
+        "content": "import seedu.address.model.person.NameContainsKeywordsPredicate;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import seedu.address.model.person.Person;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "/**"
+        "content": "import seedu.address.testutil.EditPersonDescriptorBuilder;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
-        "content": " * Contains helper methods for testing commands."
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": "/**"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "-"
         },
-        "content": "public class CommandTestUtil {"
+        "content": " * Contains helper methods for testing commands."
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " */"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_NAME_AMY \u003d \"Amy Bee\";"
+        "content": "public class CommandTestUtil {"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_NAME_BOB \u003d \"Bob Choo\";"
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_PHONE_AMY \u003d \"11111111\";"
+        "content": "    public static final String VALID_NAME_AMY \u003d \"Amy Bee\";"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_PHONE_BOB \u003d \"22222222\";"
+        "content": "    public static final String VALID_NAME_BOB \u003d \"Bob Choo\";"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_EMAIL_AMY \u003d \"amy@example.com\";"
+        "content": "    public static final String VALID_PHONE_AMY \u003d \"11111111\";"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_EMAIL_BOB \u003d \"bob@example.com\";"
+        "content": "    public static final String VALID_PHONE_BOB \u003d \"22222222\";"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_ADDRESS_AMY \u003d \"Block 312, Amy Street 1\";"
+        "content": "    public static final String VALID_EMAIL_AMY \u003d \"amy@example.com\";"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_ADDRESS_BOB \u003d \"Block 123, Bobby Street 3\";"
+        "content": "    public static final String VALID_EMAIL_BOB \u003d \"bob@example.com\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_TAG_HUSBAND \u003d \"husband\";"
+        "content": "    public static final String VALID_ADDRESS_AMY \u003d \"Block 312, Amy Street 1\";"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_TAG_FRIEND \u003d \"friend\";"
+        "content": "    public static final String VALID_ADDRESS_BOB \u003d \"Block 123, Bobby Street 3\";"
       },
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "l2ejected"
+          "gitId": "-"
         },
-        "content": "    public static final String VALID_TIME \u003d \"000\";"
+        "content": "    public static final String VALID_TAG_HUSBAND \u003d \"husband\";"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public static final String VALID_TAG_FRIEND \u003d \"friend\";"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "-"
+          "gitId": "l2ejected"
         },
-        "content": "    public static final String NAME_DESC_AMY \u003d \" \" + PREFIX_NAME + VALID_NAME_AMY;"
+        "content": "    public static final String VALID_TIME \u003d \"000\";"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String NAME_DESC_BOB \u003d \" \" + PREFIX_NAME + VALID_NAME_BOB;"
+        "content": ""
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String PHONE_DESC_AMY \u003d \" \" + PREFIX_PHONE + VALID_PHONE_AMY;"
+        "content": "    public static final String NAME_DESC_AMY \u003d \" \" + PREFIX_NAME + VALID_NAME_AMY;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String PHONE_DESC_BOB \u003d \" \" + PREFIX_PHONE + VALID_PHONE_BOB;"
+        "content": "    public static final String NAME_DESC_BOB \u003d \" \" + PREFIX_NAME + VALID_NAME_BOB;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String EMAIL_DESC_AMY \u003d \" \" + PREFIX_EMAIL + VALID_EMAIL_AMY;"
+        "content": "    public static final String PHONE_DESC_AMY \u003d \" \" + PREFIX_PHONE + VALID_PHONE_AMY;"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String EMAIL_DESC_BOB \u003d \" \" + PREFIX_EMAIL + VALID_EMAIL_BOB;"
+        "content": "    public static final String PHONE_DESC_BOB \u003d \" \" + PREFIX_PHONE + VALID_PHONE_BOB;"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String ADDRESS_DESC_AMY \u003d \" \" + PREFIX_ADDRESS + VALID_ADDRESS_AMY;"
+        "content": "    public static final String EMAIL_DESC_AMY \u003d \" \" + PREFIX_EMAIL + VALID_EMAIL_AMY;"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String ADDRESS_DESC_BOB \u003d \" \" + PREFIX_ADDRESS + VALID_ADDRESS_BOB;"
+        "content": "    public static final String EMAIL_DESC_BOB \u003d \" \" + PREFIX_EMAIL + VALID_EMAIL_BOB;"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String TAG_DESC_FRIEND \u003d \" \" + PREFIX_TAG + VALID_TAG_FRIEND;"
+        "content": "    public static final String ADDRESS_DESC_AMY \u003d \" \" + PREFIX_ADDRESS + VALID_ADDRESS_AMY;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String TAG_DESC_HUSBAND \u003d \" \" + PREFIX_TAG + VALID_TAG_HUSBAND;"
+        "content": "    public static final String ADDRESS_DESC_BOB \u003d \" \" + PREFIX_ADDRESS + VALID_ADDRESS_BOB;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public static final String TAG_DESC_FRIEND \u003d \" \" + PREFIX_TAG + VALID_TAG_FRIEND;"
       },
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "    public static final String INVALID_NAME_DESC \u003d"
+        "content": "    public static final String TAG_DESC_HUSBAND \u003d \" \" + PREFIX_TAG + VALID_TAG_HUSBAND;"
       },
       {
         "lineNumber": 53,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "            \" \" + PREFIX_NAME + \"James\u0026\"; // \u0027\u0026\u0027 not allowed in names"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static final String INVALID_PHONE_DESC \u003d"
+        "content": "    public static final String INVALID_NAME_DESC \u003d"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "            \" \" + PREFIX_PHONE + \"911a\"; // \u0027a\u0027 not allowed in phones"
+        "content": "            \" \" + PREFIX_NAME + \"James\u0026\"; // \u0027\u0026\u0027 not allowed in names"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static final String INVALID_EMAIL_DESC \u003d"
+        "content": "    public static final String INVALID_PHONE_DESC \u003d"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "            \" \" + PREFIX_EMAIL + \"bob!yahoo\"; // missing \u0027@\u0027 symbol"
+        "content": "            \" \" + PREFIX_PHONE + \"911a\"; // \u0027a\u0027 not allowed in phones"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static final String INVALID_ADDRESS_DESC \u003d"
+        "content": "    public static final String INVALID_EMAIL_DESC \u003d"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "            \" \" + PREFIX_ADDRESS; // empty string not allowed for addresses"
+        "content": "            \" \" + PREFIX_EMAIL + \"bob!yahoo\"; // missing \u0027@\u0027 symbol"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static final String INVALID_TAG_DESC \u003d"
+        "content": "    public static final String INVALID_ADDRESS_DESC \u003d"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "            \" \" + PREFIX_TAG + \"hubby*\"; // \u0027*\u0027 not allowed in tags"
+        "content": "            \" \" + PREFIX_ADDRESS; // empty string not allowed for addresses"
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "    public static final String INVALID_TAG_DESC \u003d"
       },
       {
         "lineNumber": 63,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "    public static final String PREAMBLE_WHITESPACE \u003d \"\\t  \\r  \\n\";"
+        "content": "            \" \" + PREFIX_TAG + \"hubby*\"; // \u0027*\u0027 not allowed in tags"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String PREAMBLE_NON_EMPTY \u003d \"NonEmptyPreamble\";"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public static final String PREAMBLE_WHITESPACE \u003d \"\\t  \\r  \\n\";"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final EditCommand.EditPersonDescriptor DESC_AMY;"
+        "content": "    public static final String PREAMBLE_NON_EMPTY \u003d \"NonEmptyPreamble\";"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final EditCommand.EditPersonDescriptor DESC_BOB;"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public static final EditCommand.EditPersonDescriptor DESC_AMY;"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": "    static {"
+        "content": "    public static final EditCommand.EditPersonDescriptor DESC_BOB;"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "        DESC_AMY \u003d"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "                new EditPersonDescriptorBuilder()"
+        "content": "    static {"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withName(VALID_NAME_AMY)"
+        "content": "        DESC_AMY \u003d"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withPhone(VALID_PHONE_AMY)"
+        "content": "                new EditPersonDescriptorBuilder()"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withEmail(VALID_EMAIL_AMY)"
+        "content": "                        .withName(VALID_NAME_AMY)"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withAddress(VALID_ADDRESS_AMY)"
+        "content": "                        .withPhone(VALID_PHONE_AMY)"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withTags(VALID_TAG_FRIEND)"
+        "content": "                        .withEmail(VALID_EMAIL_AMY)"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .build();"
+        "content": "                        .withAddress(VALID_ADDRESS_AMY)"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        DESC_BOB \u003d"
+        "content": "                        .withTags(VALID_TAG_FRIEND)"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                new EditPersonDescriptorBuilder()"
+        "content": "                        .build();"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withName(VALID_NAME_BOB)"
+        "content": "        DESC_BOB \u003d"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withPhone(VALID_PHONE_BOB)"
+        "content": "                new EditPersonDescriptorBuilder()"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withEmail(VALID_EMAIL_BOB)"
+        "content": "                        .withName(VALID_NAME_BOB)"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withAddress(VALID_ADDRESS_BOB)"
+        "content": "                        .withPhone(VALID_PHONE_BOB)"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)"
+        "content": "                        .withEmail(VALID_EMAIL_BOB)"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "                        .build();"
+        "content": "                        .withAddress(VALID_ADDRESS_BOB)"
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "    }"
+        "content": "                        .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "                        .build();"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - the returned {@link CommandResult} matches {@code expectedCommandResult} \u003cbr\u003e"
+        "content": "    /**"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - the {@code actualModel} matches {@code expectedModel}"
+        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "     * - the returned {@link CommandResult} matches {@code expectedCommandResult} \u003cbr\u003e"
       },
       {
         "lineNumber": 93,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "    public static void assertCommandSuccess("
+        "content": "     * - the {@code actualModel} matches {@code expectedModel}"
       },
       {
         "lineNumber": 94,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "            Command command,"
+        "content": "     */"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "            Model actualModel,"
+        "content": "    public static void assertCommandSuccess("
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "            CommandResult expectedCommandResult,"
+        "content": "            Command command,"
       },
       {
         "lineNumber": 97,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "            Model expectedModel) {"
+        "content": "            Model actualModel,"
       },
       {
         "lineNumber": 98,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "        try {"
+        "content": "            CommandResult expectedCommandResult,"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "-"
         },
-        "content": "            CommandResult result \u003d command.execute(actualModel);"
+        "content": "            Model expectedModel) {"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
-        "content": "            assertEquals(expectedCommandResult, result);"
+        "content": "        try {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "-"
         },
-        "content": "            assertEquals(expectedModel, actualModel);"
+        "content": "            CommandResult result \u003d command.execute(actualModel);"
       },
       {
         "lineNumber": 102,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "        } catch (CommandException ce) {"
+        "content": "            System.out.println(\"Expected feedback to user: \" + expectedCommandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 103,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "            throw new AssertionError(\"Execution of command should not fail.\", ce);"
+        "content": "            System.out.println(\"Actual feedback to user\" + result.getFeedbackToUser());"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            assertEquals(expectedCommandResult, result);"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "            assertEquals(expectedModel, actualModel);"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        } catch (CommandException ce) {"
       },
       {
         "lineNumber": 107,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "    /**"
+        "content": "            throw new AssertionError(ce.getMessage(), ce);"
       },
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)} that"
+        "content": "        }"
       },
       {
         "lineNumber": 109,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "     * takes a string {@code expectedMessage}."
+        "content": "    }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "-"
         },
-        "content": "    public static void assertCommandSuccess("
+        "content": "    /**"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "            Command command, Model actualModel, String expectedMessage, Model expectedModel) {"
+        "content": "     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)} that"
       },
       {
         "lineNumber": 113,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "        CommandResult expectedCommandResult \u003d new CommandResult(expectedMessage);"
+        "content": "     * takes a string {@code expectedMessage}."
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);"
+        "content": "     */"
       },
       {
         "lineNumber": 115,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": "    }"
+        "content": "    public static void assertCommandSuccess("
       },
       {
         "lineNumber": 116,
         "author": {
-          "gitId": "-"
+          "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "            Command command, Model actualModel, String expectedMessage, Model expectedModel) {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "        CommandResult expectedCommandResult \u003d new CommandResult(expectedMessage);"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
+        "content": "        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - a {@code CommandException} is thrown \u003cbr\u003e"
+        "content": "    }"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - the CommandException message matches {@code expectedMessage} \u003cbr\u003e"
+        "content": ""
       },
       {
         "lineNumber": 121,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "     * - the address book, filtered person list and selected person in {@code actualModel} remain"
-      },
-      {
-        "lineNumber": 122,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "     * unchanged"
-      },
-      {
-        "lineNumber": 123,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 124,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "    public static void assertCommandFailure("
-      },
-      {
-        "lineNumber": 125,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": "            Command command, Model actualModel, String expectedMessage) {"
-      },
-      {
-        "lineNumber": 126,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // we are unable to defensively copy the model for comparison later, so we can"
-      },
-      {
-        "lineNumber": 127,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        // only do so by copying its components."
-      },
-      {
-        "lineNumber": 128,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        AddressBook expectedAddressBook \u003d new AddressBook(actualModel.getAddressBook());"
-      },
-      {
-        "lineNumber": 129,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        List\u003cPerson\u003e expectedFilteredList \u003d new ArrayList\u003c\u003e(actualModel.getFilteredPersonList());"
-      },
-      {
-        "lineNumber": 130,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 131,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertThrows(CommandException.class, expectedMessage, () -\u003e command.execute(actualModel));"
-      },
-      {
-        "lineNumber": 132,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertEquals(expectedAddressBook, actualModel.getAddressBook());"
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());"
-      },
-      {
-        "lineNumber": 134,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 135,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 136,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 122,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * - a {@code CommandException} is thrown \u003cbr\u003e"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * - the CommandException message matches {@code expectedMessage} \u003cbr\u003e"
+      },
+      {
+        "lineNumber": 125,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "     * Updates {@code model}\u0027s filtered list to show only the person at the given {@code targetIndex}"
+        "content": "     * - the address book, filtered person list and selected person in {@code actualModel} remain"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 126,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "     * in the {@code model}\u0027s address book."
+        "content": "     * unchanged"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 127,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 128,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public static void assertCommandFailure("
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "            Command command, Model actualModel, String expectedMessage) {"
+      },
+      {
+        "lineNumber": 130,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static void showPersonAtIndex(Model model, Index targetIndex) {"
+        "content": "        // we are unable to defensively copy the model for comparison later, so we can"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 131,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(targetIndex.getZeroBased() \u003c model.getFilteredPersonList().size());"
+        "content": "        // only do so by copying its components."
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 132,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        AddressBook expectedAddressBook \u003d new AddressBook(actualModel.getAddressBook());"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        List\u003cPerson\u003e expectedFilteredList \u003d new ArrayList\u003c\u003e(actualModel.getFilteredPersonList());"
+      },
+      {
+        "lineNumber": 134,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertThrows(CommandException.class, expectedMessage, () -\u003e command.execute(actualModel));"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(expectedAddressBook, actualModel.getAddressBook());"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "     * Updates {@code model}\u0027s filtered list to show only the person at the given {@code targetIndex}"
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "     * in the {@code model}\u0027s address book."
+      },
+      {
         "lineNumber": 143,
         "author": {
           "gitId": "-"
         },
-        "content": "        Person person \u003d model.getFilteredPersonList().get(targetIndex.getZeroBased());"
+        "content": "     */"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "-"
         },
-        "content": "        final String[] splitName \u003d person.getName().fullName.split(\"\\\\s+\");"
+        "content": "    public static void showPersonAtIndex(Model model, Index targetIndex) {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "-"
         },
-        "content": "        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));"
+        "content": "        assertTrue(targetIndex.getZeroBased() \u003c model.getFilteredPersonList().size());"
       },
       {
         "lineNumber": 146,
@@ -80532,17 +80233,136 @@
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(1, model.getFilteredPersonList().size());"
+        "content": "        Person person \u003d model.getFilteredPersonList().get(targetIndex.getZeroBased());"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        final String[] splitName \u003d person.getName().fullName.split(\"\\\\s+\");"
       },
       {
         "lineNumber": 149,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(1, model.getFilteredPersonList().size());"
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "     * Updates {@code model}\u0027s filtered list to show only the group at the given {@code targetIndex}"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "     * @param model the current model"
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "     * @param targetIndex the targetted index"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public static void showGroupAtIndex(Model model, Index targetIndex) {"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertTrue(targetIndex.getZeroBased() \u003c model.getFilteredGroupList().size());"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Group group \u003d model.getFilteredGroupList().get(targetIndex.getZeroBased());"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        final String[] splitName \u003d group.getName().fullName.split(\"\\\\s+\");"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        model.updateFilteredGroupList(new GroupNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 166,
         "author": {
           "gitId": "-"
         },
@@ -80550,7 +80370,7 @@
       }
     ],
     "authorContributionMap": {
-      "raivatshah": 41,
+      "raivatshah": 58,
       "l2ejected": 1,
       "-": 107
     }
@@ -81379,28 +81199,28 @@
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "import static seedu.address.logic.commands.CommandTestUtil.showGroupAtIndex;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "import seedu.address.commons.core.index.Index;"
+        "content": "import static seedu.address.testutil.TypicalGroups.getTypicalAddressBook;"
       },
       {
         "lineNumber": 9,
@@ -81414,7 +81234,7 @@
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "public class DeleteGroupCommandTest {"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 11,
@@ -81428,108 +81248,584 @@
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    @Test"
+        "content": "import seedu.address.commons.core.Messages;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public void equals() {"
+        "content": "import seedu.address.commons.core.index.Index;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        DeleteGroupCommand deleteGroupCommand1 \u003d new DeleteGroupCommand(Index.fromZeroBased(0));"
+        "content": "import seedu.address.model.Model;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        DeleteGroupCommand deleteGroupCommand2 \u003d new DeleteGroupCommand(Index.fromZeroBased(1));"
+        "content": "import seedu.address.model.ModelManager;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "import seedu.address.model.UserPrefs;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        //check equals method"
+        "content": "import seedu.address.model.group.Group;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        assertTrue(deleteGroupCommand1.equals(deleteGroupCommand1));"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "public class DeleteGroupCommandTest {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        // different types -\u003e returns false"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        assertFalse(deleteGroupCommand1.equals(1));"
+        "content": "    private Model model \u003d new ModelManager(getTypicalAddressBook(), new UserPrefs());"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "    private Index targetIndex \u003d Index.fromOneBased(1);"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        // different groups -\u003e returns false"
+        "content": "    @Test"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        assertFalse(deleteGroupCommand1.equals(deleteGroupCommand2));"
+        "content": "    public void execute_validIndexUnfilteredList_success() {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    }"
+        "content": "        Group groupToDelete \u003d model.getFilteredGroupList().get(0);"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "        DeleteGroupCommand deleteGroupCommand \u003d new DeleteGroupCommand(Index.fromOneBased(1));"
       },
       {
         "lineNumber": 27,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        String expectedMessage \u003d String.format(DeleteGroupCommand.MESSAGE_DELETE_GROUP_SUCCESS, groupToDelete);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        ModelManager expectedModel \u003d new ModelManager(model.getAddressBook(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        expectedModel.deleteGroup(groupToDelete);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertCommandSuccess(deleteGroupCommand, model, expectedMessage, expectedModel);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void execute_invalidIndexUnfilteredList_throwsCommandException() {"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Index outOfBoundIndex \u003d Index.fromOneBased(model.getFilteredGroupList().size() + 1);"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        DeleteGroupCommand deleteGroupCommand \u003d new DeleteGroupCommand(outOfBoundIndex);"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertCommandFailure(deleteGroupCommand, model, Messages.MESSAGE_INVALID_GROUP_DISPLAYED_INDEX);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void execute_validIndexFilteredList_success() {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        showGroupAtIndex(model, targetIndex);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Group groupToDelete \u003d model.getFilteredGroupList().get(targetIndex.getZeroBased());"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        DeleteGroupCommand deleteGroupCommand \u003d new DeleteGroupCommand(targetIndex);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        String expectedMessage \u003d String.format(DeleteGroupCommand.MESSAGE_DELETE_GROUP_SUCCESS, groupToDelete);"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Model expectedModel \u003d new ModelManager(model.getAddressBook(), new UserPrefs());"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        expectedModel.deleteGroup(groupToDelete);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        showNoGroup(expectedModel);"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertCommandSuccess(deleteGroupCommand, model, expectedMessage, expectedModel);"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void execute_invalidIndexFilteredList_throwsCommandException() {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        showGroupAtIndex(model, targetIndex);"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Index outOfBounds \u003d Index.fromOneBased(2);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertTrue(outOfBounds.getZeroBased() \u003c model.getAddressBook().getGroupList().size());"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        DeleteGroupCommand deleteGroupCommand \u003d new DeleteGroupCommand(outOfBounds);"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertCommandFailure(deleteGroupCommand, model, Messages.MESSAGE_INVALID_GROUP_DISPLAYED_INDEX);"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void equals() {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        DeleteGroupCommand deleteGroupCommand1 \u003d new DeleteGroupCommand(Index.fromZeroBased(0));"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        DeleteGroupCommand deleteGroupCommand2 \u003d new DeleteGroupCommand(Index.fromZeroBased(1));"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        //same values -\u003e returns true"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        DeleteGroupCommand deleteGroupCommand1Copy \u003d new DeleteGroupCommand(Index.fromZeroBased(0));"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertTrue(deleteGroupCommand1Copy.equals(deleteGroupCommand1));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        //same object -\u003e returns true"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertTrue(deleteGroupCommand1.equals(deleteGroupCommand1));"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        // different types -\u003e returns false"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertFalse(deleteGroupCommand1.equals(1));"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        // different groups -\u003e returns false"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertFalse(deleteGroupCommand1.equals(deleteGroupCommand2));"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        // null object -\u003e return false"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertFalse(deleteGroupCommand1.equals(null));"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    private void showNoGroup(Model model) {"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        model.updateFilteredGroupList(p -\u003e false);"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertTrue(model.getFilteredGroupList().isEmpty());"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 95,
         "author": {
           "gitId": "raivatshah"
         },
@@ -81537,7 +81833,7 @@
       }
     ],
     "authorContributionMap": {
-      "raivatshah": 27
+      "raivatshah": 95
     }
   },
   {
@@ -97736,70 +98032,70 @@
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "l2ejected"
+          "gitId": "raivatshah"
         },
-        "content": "import java.util.ArrayList;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "l2ejected"
         },
-        "content": ""
+        "content": "import java.util.ArrayList;"
       },
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "raivatshah"
+          "gitId": "l2ejected"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 9,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
         "author": {
           "gitId": "l2ejected"
         },
         "content": "import seedu.address.model.person.ActivityList;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 11,
         "author": {
           "gitId": "raivatshah"
         },
         "content": "import seedu.address.model.person.Name;"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 12,
         "author": {
           "gitId": "l2ejected"
         },
         "content": "import seedu.address.model.person.PlaceList;"
       },
       {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "raivatshah"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 13,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "public class GroupTest {"
+        "content": "import seedu.address.testutil.TypicalGroups;"
       },
       {
         "lineNumber": 14,
@@ -97813,38 +98109,101 @@
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    @Test"
+        "content": "public class GroupTest {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public void newGroupTest() {"
+        "content": ""
       },
       {
         "lineNumber": 17,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void newGroupTest() {"
+      },
+      {
+        "lineNumber": 19,
         "author": {
           "gitId": "l2ejected"
         },
         "content": "        assertEquals((new Group(new Name(\"John Doe\"), new PlaceList(new ArrayList\u003cString\u003e()),"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 20,
         "author": {
           "gitId": "l2ejected"
         },
         "content": "                new ActivityList(new ArrayList\u003cString\u003e()))).getName().fullName, \"John Doe\");"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 21,
         "author": {
           "gitId": "raivatshah"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 22,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void equals() {"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Group soc \u003d TypicalGroups.SOC;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        Group rc \u003d TypicalGroups.RC;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        assertFalse(soc.equals(rc));"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 29,
         "author": {
           "gitId": "raivatshah"
         },
@@ -97852,7 +98211,7 @@
       }
     ],
     "authorContributionMap": {
-      "raivatshah": 14,
+      "raivatshah": 23,
       "l2ejected": 6
     }
   },
@@ -107636,16 +107995,16 @@
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "l2ejected"
+          "gitId": "raivatshah"
         },
-        "content": "    public static final List\u003cString\u003e DEFAULT_PLACELIST \u003d new ArrayList\u003cString\u003e();"
+        "content": "    public static final List\u003cString\u003e DEFAULT_PLACELIST \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "l2ejected"
+          "gitId": "raivatshah"
         },
-        "content": "    public static final List\u003cString\u003e DEFAULT_ACTIVITYLIST \u003d new ArrayList\u003cString\u003e();"
+        "content": "    public static final List\u003cString\u003e DEFAULT_ACTIVITYLIST \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 24,
@@ -108377,8 +108736,1634 @@
       }
     ],
     "authorContributionMap": {
-      "raivatshah": 99,
-      "l2ejected": 28
+      "raivatshah": 101,
+      "l2ejected": 26
+    }
+  },
+  {
+    "path": "src/test/java/seedu/address/testutil/ModelStub.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "package seedu.address.testutil;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import java.util.function.Predicate;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import javafx.collections.ObservableList;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.commons.core.GuiSettings;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.Model;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.ReadOnlyAddressBook;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.ReadOnlyUserPrefs;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.event.Event;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.group.Group;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.person.EventDescriptor;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.person.Person;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.person.RecentEvent;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "import seedu.address.model.person.Time;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": " * A default model stub that have all of the methods failing."
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "public class ModelStub implements Model {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public ReadOnlyUserPrefs getUserPrefs() {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public GuiSettings getGuiSettings() {"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void updateFilteredGroupList(Predicate\u003cGroup\u003e predicate) {"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void updateFilteredEventList(Predicate\u003cEvent\u003e predicate) {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public ObservableList\u003cGroup\u003e getFilteredGroupList() {"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public ObservableList\u003cEvent\u003e getFilteredEventList() {"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public Path getAddressBookFilePath() {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void setAddressBookFilePath(Path addressBookFilePath) {"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void addPerson(Person person) {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void addEvent(Event event) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void setAddressBook(ReadOnlyAddressBook newData) {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public ReadOnlyAddressBook getAddressBook() {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean hasPerson(Person person) {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean hasGroup(Group group) {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean hasEvent(Event event) {"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean hasGroups(List\u003cGroup\u003e groups) {"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void addGroup(Group group) {"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean hasPersons(List\u003cPerson\u003e people) {"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public boolean hasEvents(List\u003cEvent\u003e events) {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        return false;"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void deletePerson(Person target) {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void deleteGroup(Group group) {"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void setPerson(Person target, Person editedPerson) {"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void setGroup(Group target, Group editedGroup) {"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 147,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 148,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public ObservableList\u003cPerson\u003e getFilteredPersonList() {"
+      },
+      {
+        "lineNumber": 149,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 150,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 151,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 152,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 153,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void updateFilteredPersonList(Predicate\u003cPerson\u003e predicate) {"
+      },
+      {
+        "lineNumber": 154,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 155,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 156,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 157,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 158,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void importCsvToAddressBook(List\u003cPerson\u003e importedPeople) {"
+      },
+      {
+        "lineNumber": 159,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 160,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 161,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 162,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 163,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void importCsvGroupsToAddressBook(List\u003cGroup\u003e importedGroup) {"
+      },
+      {
+        "lineNumber": 164,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 165,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 166,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 168,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void importCsvEventsToAddressBook(List\u003cEvent\u003e importedEvent) {"
+      },
+      {
+        "lineNumber": 169,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 170,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 171,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 172,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 173,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void showPlaceList(Person target) {"
+      },
+      {
+        "lineNumber": 174,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 175,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 176,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 177,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 178,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void showActivityList(Person target) {"
+      },
+      {
+        "lineNumber": 179,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 180,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 181,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 182,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 183,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void showRecentList(Person target) {"
+      },
+      {
+        "lineNumber": 184,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void showTime() {"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void suggestPerson() {"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void suggestPlace() {"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void suggestActivity() {"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void copyRecent(ObservableList\u003cRecentEvent\u003e list) {"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public void copyTime(ObservableList\u003cTime\u003e list) {"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public ObservableList\u003cEventDescriptor\u003e getFrequencyList() {"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public ObservableList\u003cRecentEvent\u003e getRecentList() {"
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 226,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 227,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 228,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    public ObservableList\u003cTime\u003e getTimeList() {"
+      },
+      {
+        "lineNumber": 229,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "        throw new AssertionError(\"This method should not be called.\");"
+      },
+      {
+        "lineNumber": 230,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 231,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "raivatshah": 231
     }
   },
   {
@@ -110944,150 +112929,157 @@
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static final Group SOC \u003d new GroupBuilder().withName(\"SoC Friends\").withId(1).withTime(\"1h 1m\").build();"
+        "content": "    public static final Group SOC \u003d new GroupBuilder()"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static final Group RC \u003d new GroupBuilder().withName(\"RC Friends\").withId(2).withTime(\"2h 2m\").build();"
+        "content": "            .withName(\"SoC Friends\").withId(1).withTime(\"1h 1m\").build();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static final Group NS \u003d new GroupBuilder().withName(\"NS Friends\").withId(3).withTime(\"0h 30m\").build();"
+        "content": "    public static final Group RC \u003d new GroupBuilder().withName(\"RC Friends\").withId(2).withTime(\"2h 2m\").build();"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "    public static final Group NS \u003d new GroupBuilder().withName(\"NS Friends\").withId(3).withTime(\"0h 30m\").build();"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    private TypicalGroups() {"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    }"
+        "content": "    private TypicalGroups() {"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "     * Returns an {@code AddressBook} with all the typical groups"
+        "content": "    /**"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "     */"
+        "content": "     * Returns an {@code AddressBook} with all the typical groups"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static AddressBook getTypicalAddressBook() {"
+        "content": "     */"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        AddressBook ab \u003d new AddressBook();"
+        "content": "    public static AddressBook getTypicalAddressBook() {"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        for (Group group : getTypicalGroups()) {"
+        "content": "        AddressBook ab \u003d new AddressBook();"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "            ab.addGroup(group);"
+        "content": "        for (Group group : getTypicalGroups()) {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        }"
+        "content": "            ab.addGroup(group);"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        return ab;"
+        "content": "        }"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    }"
+        "content": "        return ab;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    public static List\u003cGroup\u003e getTypicalGroups() {"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "        return new ArrayList\u003c\u003e(Arrays.asList(SOC, RC, NS));"
+        "content": "    public static List\u003cGroup\u003e getTypicalGroups() {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "raivatshah"
         },
-        "content": "    }"
+        "content": "        return new ArrayList\u003c\u003e(Arrays.asList(SOC, RC, NS));"
       },
       {
         "lineNumber": 35,
+        "author": {
+          "gitId": "raivatshah"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 36,
         "author": {
           "gitId": "raivatshah"
         },
@@ -111095,7 +113087,7 @@
       }
     ],
     "authorContributionMap": {
-      "raivatshah": 35
+      "raivatshah": 36
     }
   },
   {

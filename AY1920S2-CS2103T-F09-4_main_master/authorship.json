@@ -45320,142 +45320,142 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import java.io.IOException;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
           "gitId": "raniceyue"
         },
         "content": "import java.nio.file.Path;"
       },
       {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import java.util.NoSuchElementException;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import java.util.Optional;"
-      },
-      {
-        "lineNumber": 11,
+        "lineNumber": 8,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import java.util.function.Predicate;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 9,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 10,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import javafx.collections.ObservableList;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 11,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import javafx.collections.transformation.FilteredList;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 12,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.core.GuiSettings;"
       },
       {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import seedu.volant.commons.exceptions.DataConversionException;"
-      },
-      {
-        "lineNumber": 17,
+        "lineNumber": 13,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.logic.Page;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 14,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.model.Model;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 15,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.model.ReadOnlyUserPrefs;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 16,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.model.UserPrefs;"
       },
       {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import seedu.volant.commons.storage.Storage;"
-      },
-      {
-        "lineNumber": 22,
+        "lineNumber": 17,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.home.model.trip.Trip;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 18,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "import seedu.volant.itinerary.model.activity.Activity;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 19,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.itinerary.model.activity.util.DateTimeComparator;"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 20,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.trip.model.Itinerary;"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 21,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.trip.model.TripFeature;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": " * Handles in app memory when user is in an ITINERARY page."
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "public class ItineraryModelManager implements Model {"
       },
       {
         "lineNumber": 27,
@@ -45467,1146 +45467,1041 @@
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "vuhieunguyen"
         },
-        "content": "/**"
+        "content": "    private final Predicate\u003cActivity\u003e predicateShowAllActivities \u003d unused -\u003e true;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": " * Handles in app memory when user is in an ITINERARY page."
+        "content": "    private final Trip trip;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": " */"
+        "content": "    private final Itinerary itinerary;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "public class ItineraryModelManager implements Model {"
+        "content": "    private final UserPrefs userPrefs;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "    private final Page page \u003d ITINERARY;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "vuhieunguyen"
         },
-        "content": "    private final Predicate\u003cActivity\u003e predicateShowAllActivities \u003d unused -\u003e true;"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    private final Trip trip;"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    private final Itinerary itinerary;"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    private final UserPrefs userPrefs;"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    private final Page page \u003d ITINERARY;"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "vuhieunguyen"
-        },
         "content": "    private ActivityList activityList;"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 34,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    private final FilteredList\u003cActivity\u003e filteredActivities;"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 35,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 36,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 37,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     * Constructs an ItineraryModelManager that helps to keep track of in application memory."
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 38,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     * @param trip keeps track of trip that itinerary list is in from."
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 39,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 40,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "    public ItineraryModelManager(Trip trip, Itinerary itinerary, ReadOnlyUserPrefs userPrefs,"
+        "content": "    public ItineraryModelManager(Trip trip, ReadOnlyUserPrefs userPrefs) {"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 41,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "                                 Storage storage) {"
+        "content": "        requireAllNonNull(trip, userPrefs);"
       },
       {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        requireAllNonNull(trip, userPrefs, storage);"
-      },
-      {
-        "lineNumber": 48,
+        "lineNumber": 42,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 43,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        LOGGER.fine(\"You are now in the ITINERARY page of TRIP: \" + trip + \".\");"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 44,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 45,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        this.trip \u003d trip;"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 46,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "        this.itinerary \u003d itinerary;"
+        "content": "        this.itinerary \u003d trip.getTripFeatureList().getItinerary();"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 47,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        this.userPrefs \u003d new UserPrefs(userPrefs);"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 48,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        Optional\u003cReadOnlyActivityList\u003e activityListOptional;"
+        "content": "        this.activityList \u003d itinerary.getActivityList();"
       },
       {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            activityListOptional \u003d storage.readActivityList();"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            if (!activityListOptional.isPresent()) {"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "                this.activityList \u003d new ActivityList();"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            this.activityList \u003d new ActivityList(activityListOptional.get());"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        } catch (IOException | DataConversionException | NoSuchElementException e) {"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            this.activityList \u003d new ActivityList();"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 64,
+        "lineNumber": 49,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        this.filteredActivities \u003d new FilteredList\u003c\u003e(this.activityList.getActivityList());"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 50,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 51,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 52,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": ""
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 53,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dActivityList\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 54,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 55,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 56,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * Checks if activity list contains activity."
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 57,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * @param activity Activity to be checked."
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 58,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * @return True if activity list contains activity."
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 59,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 60,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    public boolean hasActivity(Activity activity) {"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 61,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        requireNonNull(activity);"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 62,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        return activityList.hasActivity(activity);"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 63,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 64,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 65,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 66,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * Checks if activity list has any activity who\u0027s time and date clashes with the activity"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 67,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * to be added."
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 68,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * @param activity Activity to be checked."
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 69,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * @return True if the activity to be added has a time and date clash with the current"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 70,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * activities in the itinerary."
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 71,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 72,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    public boolean hasTimeClash(Activity activity) {"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 73,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        requireNonNull(activity);"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 74,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        return activityList.hasTimeClash(activity);"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 75,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 76,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 77,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 78,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * Adds target activity to activity list"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 79,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * @param target Activity to be added"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 80,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 81,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    public void addActivity(Activity target) {"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 82,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        activityList.addActivity(target);"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 83,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "        updateFilteredActivityList(predicateShowAllActivities);"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 84,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 85,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": ""
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 86,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 87,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "     * Deletes target activity in the activity list"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 88,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "     * @param target Activity to be deleted"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 89,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 90,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    public void deleteActivity(Activity target) {"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 91,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "        activityList.removeActivity(target);"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 92,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "        updateFilteredActivityList(predicateShowAllActivities);"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 93,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 94,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": ""
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 95,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 96,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "     * Replaces target trip with editedTrip in the trip list within model."
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 97,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 98,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    public void setActivity(Activity target, Activity editedTrip) {"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 99,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "        requireAllNonNull(target, editedTrip);"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 100,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "        activityList.setActivities(target, editedTrip);"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 101,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 102,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": ""
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 103,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "    public Predicate\u003cActivity\u003e getPredicateShowAllActivities() {"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 104,
         "author": {
           "gitId": "vuhieunguyen"
         },
         "content": "        return predicateShowAllActivities;"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 105,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 106,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 107,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 108,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public Page getPage() {"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 109,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return page;"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 110,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 111,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 112,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public Trip getTrip() {"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 113,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return trip;"
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 114,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 115,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 116,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public TripFeature getItinerary() {"
       },
       {
-        "lineNumber": 132,
+        "lineNumber": 117,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return itinerary;"
       },
       {
-        "lineNumber": 133,
+        "lineNumber": 118,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 134,
+        "lineNumber": 119,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 135,
+        "lineNumber": 120,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public ActivityList getActivityList() {"
       },
       {
-        "lineNumber": 136,
+        "lineNumber": 121,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        return activityList;"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 122,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 123,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 124,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 125,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * Returns an unmodifiable view of the list of {@code Trip} backed by the internal list of"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 126,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * {@code versionedAddressBook}"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 127,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 128,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 129,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    public ObservableList\u003cActivity\u003e getFilteredActivityList() {"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 130,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        return filteredActivities.sorted(new DateTimeComparator());"
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 131,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 132,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 133,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 134,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * Updates the filtered Activity list according to the given predicate."
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 135,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 136,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    public void updateFilteredActivityList(Predicate\u003cActivity\u003e predicate) {"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 137,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        requireNonNull(predicate);"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 138,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        filteredActivities.setPredicate(predicate);"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 139,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 140,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 141,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d UserPrefs \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 142,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 143,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 144,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 145,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        requireNonNull(userPrefs);"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 146,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        this.userPrefs.resetData(userPrefs);"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 147,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 148,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 149,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 150,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public ReadOnlyUserPrefs getUserPrefs() {"
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 151,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return userPrefs;"
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 152,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 168,
+        "lineNumber": 153,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 154,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 155,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public GuiSettings getGuiSettings() {"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 156,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return userPrefs.getGuiSettings();"
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 157,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 158,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 159,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 160,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 161,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        requireNonNull(guiSettings);"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 162,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        userPrefs.setGuiSettings(guiSettings);"
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 163,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 164,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 165,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 166,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public Path getVolantFilePath() {"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 167,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return userPrefs.getVolantFilePath();"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 168,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 169,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 185,
+        "lineNumber": 170,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 186,
+        "lineNumber": 171,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public void setVolantFilePath(Path volantFilePath) {"
       },
       {
-        "lineNumber": 187,
+        "lineNumber": 172,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        requireNonNull(volantFilePath);"
       },
       {
-        "lineNumber": 188,
+        "lineNumber": 173,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        userPrefs.setVolantFilePath(volantFilePath);"
       },
       {
-        "lineNumber": 189,
+        "lineNumber": 174,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 175,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 191,
+        "lineNumber": 176,
         "author": {
           "gitId": "raniceyue"
         },
@@ -46615,8 +46510,8 @@
     ],
     "authorContributionMap": {
       "vuhieunguyen": 27,
-      "raniceyue": 91,
-      "zsoh97": 73
+      "raniceyue": 90,
+      "zsoh97": 59
     }
   },
   {
@@ -60838,128 +60733,128 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import java.io.IOException;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
           "gitId": "raniceyue"
         },
         "content": "import java.nio.file.Path;"
       },
       {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import java.util.NoSuchElementException;"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import java.util.Optional;"
-      },
-      {
-        "lineNumber": 11,
+        "lineNumber": 8,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "import java.util.function.Predicate;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 9,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 10,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "import javafx.collections.ObservableList;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 11,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "import javafx.collections.transformation.FilteredList;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 12,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.core.GuiSettings;"
       },
       {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import seedu.volant.commons.exceptions.DataConversionException;"
-      },
-      {
-        "lineNumber": 17,
+        "lineNumber": 13,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.logic.Page;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 14,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.model.Model;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 15,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.model.ReadOnlyUserPrefs;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 16,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.model.UserPrefs;"
       },
       {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import seedu.volant.commons.storage.Storage;"
-      },
-      {
-        "lineNumber": 22,
+        "lineNumber": 17,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.home.model.trip.Trip;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 18,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.journal.model.util.SortType;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 19,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.trip.model.Journal;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": " * Represents the in-memory model of the journal data."
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "public class JournalModelManager implements Model {"
       },
       {
         "lineNumber": 25,
@@ -60971,254 +60866,254 @@
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "grrrrnt"
         },
-        "content": "/**"
+        "content": "    private final Predicate\u003cEntry\u003e predicateShowAllEntries \u003d unused -\u003e true;"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": " * Represents the in-memory model of the journal data."
+        "content": "    private final Trip trip;"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": " */"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "public class JournalModelManager implements Model {"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "    private final Predicate\u003cEntry\u003e predicateShowAllEntries \u003d unused -\u003e true;"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    private final Trip trip;"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "raniceyue"
-        },
         "content": "    private final Journal journal;"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 29,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    private EntryList entryList;"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 30,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    private final UserPrefs userPrefs;"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 31,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    private final Page page \u003d JOURNAL;"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 32,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    private final FilteredList\u003cEntry\u003e filteredEntries;"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 33,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 34,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 35,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     * Initializes a JournalModelManager with the given tripList, trip, journal, and userPrefs."
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 36,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 37,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "    public JournalModelManager(Trip trip, Journal journal, ReadOnlyUserPrefs userPrefs,"
+        "content": "    public JournalModelManager(Trip trip, ReadOnlyUserPrefs userPrefs) {"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 38,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "                               Storage storage) {"
+        "content": "        requireAllNonNull(trip, userPrefs);"
       },
       {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        requireAllNonNull(trip, userPrefs, storage);"
-      },
-      {
-        "lineNumber": 45,
+        "lineNumber": 39,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 40,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        LOGGER.fine(\"You are now in the JOURNAL page of TRIP: \" + trip + \".\");"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 41,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 42,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        this.trip \u003d trip;"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 43,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "        this.journal \u003d journal;"
+        "content": "        this.journal \u003d trip.getTripFeatureList().getJournal();"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 44,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        this.userPrefs \u003d new UserPrefs(userPrefs);"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 45,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        Optional\u003cReadOnlyEntryList\u003e optionalEntryList;"
+        "content": "        this.entryList \u003d journal.getEntryList();"
       },
       {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            optionalEntryList \u003d storage.readEntryList();"
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            if (!optionalEntryList.isPresent()) {"
-      },
-      {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "                this.entryList \u003d new EntryList();"
-      },
-      {
-        "lineNumber": 56,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 57,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            this.entryList \u003d new EntryList(optionalEntryList.get());"
-      },
-      {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        } catch (IOException | DataConversionException | NoSuchElementException e) {"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            this.entryList \u003d new EntryList();"
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 61,
+        "lineNumber": 46,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "        this.filteredEntries \u003d new FilteredList\u003c\u003e(this.entryList.getEntryList());"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    public Page getPage() {"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        return page;"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    // TODO: Complete implementation of methods once implementation of Journal has been completed."
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    public Trip getTrip() {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        return trip;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    public Journal getJournal() {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        return journal;"
       },
       {
         "lineNumber": 62,
@@ -61239,439 +61134,439 @@
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    public Page getPage() {"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "        return page;"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    // TODO: Complete implementation of methods once implementation of Journal has been completed."
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    public Trip getTrip() {"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "        return trip;"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    public Journal getJournal() {"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "        return journal;"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "raniceyue"
-        },
         "content": "    public EntryList getEntryList() {"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 65,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        return this.entryList;"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 66,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 67,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 68,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 69,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     * Returns true if entry is within the entry list within model."
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 70,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 71,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    public boolean hasEntry(Entry entry) {"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 72,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "        // requireNonNull(entry);"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 73,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "        // return entryList.hasEntry(entry);"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 74,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "        return false;"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 75,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 76,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": ""
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 77,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 78,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     * Removes specified target {@code Entry} from entry list within model."
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 79,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 80,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    public void deleteEntry(Entry target) {"
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 81,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "        entryList.removeEntry(target);"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 82,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "        updateFilteredEntryList(predicateShowAllEntries);"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 83,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 84,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 85,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": ""
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 86,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 87,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     * Adds entry to entry list within model."
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 88,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 89,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    public void addEntry(Entry entry) {"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 90,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        this.entryList.addEntry(entry);"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 91,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "        updateFilteredEntryList(predicateShowAllEntries);"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 92,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 93,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": ""
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 94,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 95,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     * Edits specified target {@code Entry} from entry list to the specified values."
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 96,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     * If the field is set to NULL, it will be ignored."
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 97,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     * Only specified fields are edited."
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 98,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 99,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "    public void editEntry(Entry entry, Entry editedEntry) {"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 100,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "        this.entryList.setEntry(entry, editedEntry);"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 101,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "        updateFilteredEntryList(predicateShowAllEntries);"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 102,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 103,
         "author": {
           "gitId": "grrrrnt"
         },
         "content": ""
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 104,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 105,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "     * Sorts the EntryList based on given SortType"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 106,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 107,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "    public void sortEntries(SortType sortType) {"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 108,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "        entryList.sortEntries(sortType);"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 109,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "        updateFilteredEntryList(predicateShowAllEntries);"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 110,
         "author": {
           "gitId": "mikhailfaiz"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 111,
         "author": {
           "gitId": "mikhailfaiz"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "    public Predicate\u003cEntry\u003e getPredicateShowAllEntries() {"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "        return predicateShowAllEntries;"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Trip List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "     * Returns an unmodifiable view of the list of {@code Entry} backed by the internal list of"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "     * {@code versionedAddressBook}"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "    public ObservableList\u003cEntry\u003e getFilteredEntryList() {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "        return filteredEntries;"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "grrrrnt"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "grrrrnt"
         },
         "content": ""
       },
@@ -61680,535 +61575,430 @@
         "author": {
           "gitId": "grrrrnt"
         },
-        "content": "    public Predicate\u003cEntry\u003e getPredicateShowAllEntries() {"
+        "content": "    /**"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "grrrrnt"
         },
-        "content": "        return predicateShowAllEntries;"
+        "content": "     * Updates the filtered entry list according to the given predicate."
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "grrrrnt"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "grrrrnt"
         },
-        "content": ""
+        "content": "    public void updateFilteredEntryList(Predicate\u003cEntry\u003e predicate) {"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "grrrrnt"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Trip List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": "        requireNonNull(predicate);"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "grrrrnt"
         },
-        "content": ""
+        "content": "        filteredEntries.setPredicate(predicate);"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "grrrrnt"
         },
-        "content": "    /**"
+        "content": "    }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "grrrrnt"
         },
-        "content": "     * Returns an unmodifiable view of the list of {@code Entry} backed by the internal list of"
+        "content": ""
       },
       {
         "lineNumber": 135,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "     * {@code versionedAddressBook}"
-      },
-      {
-        "lineNumber": 136,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "    public ObservableList\u003cEntry\u003e getFilteredEntryList() {"
-      },
-      {
-        "lineNumber": 139,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "        return filteredEntries;"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 141,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 142,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 143,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "     * Updates the filtered entry list according to the given predicate."
-      },
-      {
-        "lineNumber": 144,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 145,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "    public void updateFilteredEntryList(Predicate\u003cEntry\u003e predicate) {"
-      },
-      {
-        "lineNumber": 146,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "        requireNonNull(predicate);"
-      },
-      {
-        "lineNumber": 147,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "        filteredEntries.setPredicate(predicate);"
-      },
-      {
-        "lineNumber": 148,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 149,
-        "author": {
-          "gitId": "grrrrnt"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 150,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 136,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public boolean equals(Object obj) {"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 137,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        // short circuit if same object"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 138,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        if (obj \u003d\u003d this) {"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 139,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            return true;"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 140,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 141,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 142,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        // instanceof handles nulls"
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 143,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        if (!(obj instanceof JournalModelManager)) {"
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 144,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            return false;"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 145,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 146,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 147,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        // state check"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 148,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        JournalModelManager other \u003d (JournalModelManager) obj;"
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 149,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        return trip.equals(other.trip)"
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 150,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs);"
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 151,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 152,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 168,
+        "lineNumber": 153,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d UserPrefs \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
-        "lineNumber": 169,
+        "lineNumber": 154,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 170,
+        "lineNumber": 155,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 171,
+        "lineNumber": 156,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
       },
       {
-        "lineNumber": 172,
+        "lineNumber": 157,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        requireNonNull(userPrefs);"
       },
       {
-        "lineNumber": 173,
+        "lineNumber": 158,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        this.userPrefs.resetData(userPrefs);"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 159,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 160,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 161,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 162,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public ReadOnlyUserPrefs getUserPrefs() {"
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 163,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return userPrefs;"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 164,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 165,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 166,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 167,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public GuiSettings getGuiSettings() {"
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 168,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return userPrefs.getGuiSettings();"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 169,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 185,
+        "lineNumber": 170,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 186,
+        "lineNumber": 171,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 187,
+        "lineNumber": 172,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
       },
       {
-        "lineNumber": 188,
+        "lineNumber": 173,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        requireNonNull(guiSettings);"
       },
       {
-        "lineNumber": 189,
+        "lineNumber": 174,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        userPrefs.setGuiSettings(guiSettings);"
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 175,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 191,
+        "lineNumber": 176,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 192,
+        "lineNumber": 177,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 193,
+        "lineNumber": 178,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public Path getVolantFilePath() {"
       },
       {
-        "lineNumber": 194,
+        "lineNumber": 179,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        return userPrefs.getVolantFilePath();"
       },
       {
-        "lineNumber": 195,
+        "lineNumber": 180,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 196,
+        "lineNumber": 181,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 197,
+        "lineNumber": 182,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 198,
+        "lineNumber": 183,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public void setVolantFilePath(Path volantFilePath) {"
       },
       {
-        "lineNumber": 199,
+        "lineNumber": 184,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        requireNonNull(volantFilePath);"
       },
       {
-        "lineNumber": 200,
+        "lineNumber": 185,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        userPrefs.setVolantFilePath(volantFilePath);"
       },
       {
-        "lineNumber": 201,
+        "lineNumber": 186,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 202,
+        "lineNumber": 187,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 203,
+        "lineNumber": 188,
         "author": {
           "gitId": "raniceyue"
         },
@@ -62216,8 +62006,8 @@
       }
     ],
     "authorContributionMap": {
-      "raniceyue": 110,
-      "zsoh97": 22,
+      "raniceyue": 109,
+      "zsoh97": 8,
       "mikhailfaiz": 10,
       "grrrrnt": 61
     }
@@ -69575,9 +69365,9 @@
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "        this.trip \u003d new Trip(trip.getName(), trip.getLocation(), trip.getDateRange());"
+        "content": "        this.trip \u003d trip;"
       },
       {
         "lineNumber": 34,
@@ -69987,8 +69777,8 @@
       }
     ],
     "authorContributionMap": {
-      "raniceyue": 89,
-      "zsoh97": 2
+      "raniceyue": 88,
+      "zsoh97": 3
     }
   },
   {
@@ -71748,394 +71538,394 @@
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "-"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": "import javafx.event.ActionEvent;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.event.ActionEvent;"
+        "content": "import javafx.fxml.FXML;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
-        "content": "import javafx.fxml.FXML;"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
-        },
         "content": "import javafx.scene.control.MenuItem;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 17,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import javafx.scene.control.ScrollPane;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
         "content": "import javafx.scene.control.TextInputControl;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
         "content": "import javafx.scene.input.KeyCombination;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
         "content": "import javafx.scene.input.KeyEvent;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import javafx.scene.layout.Region;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
         "content": "import javafx.scene.layout.StackPane;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
         "content": "import javafx.stage.Stage;"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.core.GuiSettings;"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.core.LogsCenter;"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import seedu.volant.commons.exceptions.DataConversionException;"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.logic.Logic;"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.logic.Page;"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.logic.commands.CommandResult;"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.logic.commands.RefreshCommandResult;"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.logic.commands.exceptions.CommandException;"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.logic.parser.exceptions.ParseException;"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.commons.model.UserPrefs;"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import seedu.volant.commons.util.SampleDataUtil;"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.home.logic.HomeLogicManager;"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.home.model.HomeModelManager;"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 37,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import seedu.volant.home.model.ReadOnlyTripList;"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 38,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.home.model.TripList;"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.home.model.trip.Trip;"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.itinerary.logic.ItineraryLogicManager;"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import seedu.volant.itinerary.model.ActivityList;"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.itinerary.model.ItineraryModelManager;"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import seedu.volant.itinerary.model.ReadOnlyActivityList;"
       },
       {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "import seedu.volant.itinerary.model.activity.Activity;"
-      },
-      {
-        "lineNumber": 46,
+        "lineNumber": 44,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.journal.logic.JournalLogicManager;"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 45,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import seedu.volant.journal.model.EntryList;"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 46,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.journal.model.JournalModelManager;"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 47,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import seedu.volant.journal.model.ReadOnlyEntryList;"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 48,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.trip.logic.TripLogicManager;"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 49,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.trip.model.Itinerary;"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 50,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.trip.model.Journal;"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 51,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.trip.model.TripFeature;"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 52,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "import seedu.volant.trip.model.TripFeatureList;"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 53,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.trip.model.TripModelManager;"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 54,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.ui.pages.home.HomeHelpWindow;"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 55,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.ui.pages.home.HomePage;"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 56,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.ui.pages.itinerary.ItineraryHelpWindow;"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 57,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.ui.pages.itinerary.ItineraryPage;"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 58,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.ui.pages.journal.JournalHelpWindow;"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 59,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.ui.pages.journal.JournalPage;"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 60,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.ui.pages.trip.TripHelpWindow;"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 61,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "import seedu.volant.ui.pages.trip.TripPage;"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
         "content": " * The Main Window. Provides the basic application layout containing"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
         "content": " * a menu bar and space where other JavaFX elements can be placed."
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
         "content": " */"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
         "content": "public class MainWindow extends UiPart\u003cStage\u003e {"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private static final String FXML \u003d \"MainWindow.fxml\";"
       },
       {
         "lineNumber": 70,
@@ -72149,7 +71939,7 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final String FXML \u003d \"MainWindow.fxml\";"
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
       },
       {
         "lineNumber": 72,
@@ -72163,84 +71953,84 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(getClass());"
+        "content": "    private Stage primaryStage;"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private Stage primaryStage;"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    private Logic logic;"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 75,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 76,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    // Initialize current page \u003d HOME when program starts"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 77,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    private Page currentPage \u003d HOME;"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 78,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
         "content": "    // Independent Ui parts residing in this Ui container"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 81,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    // mainPanel is where the context switching happens"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 82,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    private UiPart\u003cRegion\u003e mainPanel;"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private ResultDisplay resultDisplay;"
       },
       {
         "lineNumber": 85,
@@ -72252,854 +72042,854 @@
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "-"
+          "gitId": "raniceyue"
         },
-        "content": "    private ResultDisplay resultDisplay;"
+        "content": "    private HelpWindow helpWindow;"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 88,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "-"
         },
-        "content": "    private HelpWindow helpWindow;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private StackPane commandBoxPlaceholder;"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "    private StackPane commandBoxPlaceholder;"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    private MenuItem helpMenuItem;"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
-      },
-      {
-        "lineNumber": 94,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private MenuItem helpMenuItem;"
-      },
-      {
-        "lineNumber": 95,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 94,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @FXML"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 95,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    private MenuItem refreshMenuItem;"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 96,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 97,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @FXML"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 98,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    private ScrollPane scrollPane;"
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 99,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 100,
         "author": {
           "gitId": "-"
         },
         "content": "    @FXML"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 101,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    private StackPane mainPanelPlaceholder;"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 102,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 103,
         "author": {
           "gitId": "-"
         },
         "content": "    @FXML"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 104,
         "author": {
           "gitId": "-"
         },
         "content": "    private StackPane resultDisplayPlaceholder;"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 106,
         "author": {
           "gitId": "-"
         },
         "content": "    @FXML"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 107,
         "author": {
           "gitId": "-"
         },
         "content": "    private StackPane statusbarPlaceholder;"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 109,
         "author": {
           "gitId": "-"
         },
         "content": "    public MainWindow(Stage primaryStage, Logic logic) {"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 110,
         "author": {
           "gitId": "-"
         },
         "content": "        super(FXML, primaryStage);"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 111,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 112,
         "author": {
           "gitId": "-"
         },
         "content": "        // Set dependencies"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 113,
         "author": {
           "gitId": "-"
         },
         "content": "        this.primaryStage \u003d primaryStage;"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 114,
         "author": {
           "gitId": "-"
         },
         "content": "        this.logic \u003d logic;"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 115,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 116,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        primaryStage.setMaxHeight(794);"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 117,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 118,
         "author": {
           "gitId": "-"
         },
         "content": "        // Configure the UI"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
         "content": "        setWindowDefaultSize(logic.getGuiSettings());"
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 120,
         "author": {
           "gitId": "-"
         },
         "content": "        setAccelerators();"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 121,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 122,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        // Initialize with home help window"
       },
       {
-        "lineNumber": 125,
+        "lineNumber": 123,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        helpWindow \u003d new HomeHelpWindow();"
       },
       {
-        "lineNumber": 126,
+        "lineNumber": 124,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        scrollPane.setFitToWidth(true);"
       },
       {
-        "lineNumber": 127,
+        "lineNumber": 125,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 126,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 127,
         "author": {
           "gitId": "-"
         },
         "content": "    public Stage getPrimaryStage() {"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 128,
         "author": {
           "gitId": "-"
         },
         "content": "        return primaryStage;"
       },
       {
-        "lineNumber": 131,
+        "lineNumber": 129,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 132,
+        "lineNumber": 130,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 133,
+        "lineNumber": 131,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 134,
+        "lineNumber": 132,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     * Sets the key bindings for the application."
       },
       {
-        "lineNumber": 135,
+        "lineNumber": 133,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     * Note: When user is using key bindings, there will be no result display."
       },
       {
-        "lineNumber": 136,
+        "lineNumber": 134,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 135,
         "author": {
           "gitId": "-"
         },
         "content": "    private void setAccelerators() {"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 136,
         "author": {
           "gitId": "-"
         },
         "content": "        setAccelerator(helpMenuItem, KeyCombination.valueOf(\"F1\"));"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 137,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        setAccelerator(refreshMenuItem, KeyCombination.valueOf(\"F5\"));"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 138,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Sets the accelerator of a MenuItem."
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     * @param keyCombination the KeyCombination value of the accelerator"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Sets the accelerator of a MenuItem."
+        "content": "     */"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "-"
         },
-        "content": "     * @param keyCombination the KeyCombination value of the accelerator"
+        "content": "    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "        menuItem.setAccelerator(keyCombination);"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {"
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "-"
         },
-        "content": "        menuItem.setAccelerator(keyCombination);"
+        "content": "        /*"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "         * TODO: the code below can be removed once the bug reported here"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "-"
         },
-        "content": "        /*"
+        "content": "         * https://bugs.openjdk.java.net/browse/JDK-8131666"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "-"
         },
-        "content": "         * TODO: the code below can be removed once the bug reported here"
+        "content": "         * is fixed in later version of SDK."
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "-"
         },
-        "content": "         * https://bugs.openjdk.java.net/browse/JDK-8131666"
+        "content": "         *"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "-"
         },
-        "content": "         * is fixed in later version of SDK."
+        "content": "         * According to the bug report, TextInputControl (TextField, TextArea) will"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "-"
         },
-        "content": "         *"
+        "content": "         * consume function-key events. Because CommandBox contains a TextField, and"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "-"
         },
-        "content": "         * According to the bug report, TextInputControl (TextField, TextArea) will"
+        "content": "         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "-"
         },
-        "content": "         * consume function-key events. Because CommandBox contains a TextField, and"
+        "content": "         * not work when the focus is in them because the key event is consumed by"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "-"
         },
-        "content": "         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will"
+        "content": "         * the TextInputControl(s)."
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
-        "content": "         * not work when the focus is in them because the key event is consumed by"
+        "content": "         *"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
-        "content": "         * the TextInputControl(s)."
+        "content": "         * For now, we add following event filter to capture such key events and open"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
-        "content": "         *"
+        "content": "         * help window purposely so to support accelerators even when focus is"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "-"
         },
-        "content": "         * For now, we add following event filter to capture such key events and open"
+        "content": "         * in CommandBox or ResultDisplay."
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "-"
         },
-        "content": "         * help window purposely so to support accelerators even when focus is"
+        "content": "         */"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
-        "content": "         * in CommandBox or ResultDisplay."
+        "content": "        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -\u003e {"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "-"
         },
-        "content": "         */"
+        "content": "            if (event.getTarget() instanceof TextInputControl \u0026\u0026 keyCombination.match(event)) {"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "-"
         },
-        "content": "        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -\u003e {"
+        "content": "                menuItem.getOnAction().handle(new ActionEvent());"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "-"
         },
-        "content": "            if (event.getTarget() instanceof TextInputControl \u0026\u0026 keyCombination.match(event)) {"
+        "content": "                event.consume();"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "-"
         },
-        "content": "                menuItem.getOnAction().handle(new ActionEvent());"
+        "content": "            }"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "-"
         },
-        "content": "                event.consume();"
+        "content": "        });"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "-"
         },
-        "content": "            }"
+        "content": "    }"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "-"
         },
-        "content": "        });"
+        "content": ""
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Fills up all the placeholders of this window."
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Fills up all the placeholders of this window."
-      },
-      {
-        "lineNumber": 174,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 175,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    void fillInnerParts() {"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 174,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        HomeLogicManager t \u003d ((HomeLogicManager) logic);"
       },
       {
-        "lineNumber": 177,
+        "lineNumber": 175,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        mainPanel \u003d new HomePage(t.getFilteredTripList());"
       },
       {
-        "lineNumber": 178,
+        "lineNumber": 176,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
       },
       {
-        "lineNumber": 179,
+        "lineNumber": 177,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 180,
+        "lineNumber": 178,
         "author": {
           "gitId": "-"
         },
         "content": "        resultDisplay \u003d new ResultDisplay();"
       },
       {
-        "lineNumber": 181,
+        "lineNumber": 179,
         "author": {
           "gitId": "-"
         },
         "content": "        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
       },
       {
-        "lineNumber": 182,
+        "lineNumber": 180,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 183,
+        "lineNumber": 181,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getVolantFilePath());"
       },
       {
-        "lineNumber": 184,
+        "lineNumber": 182,
         "author": {
           "gitId": "-"
         },
         "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
       },
       {
-        "lineNumber": 185,
+        "lineNumber": 183,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 186,
+        "lineNumber": 184,
         "author": {
           "gitId": "-"
         },
         "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
       },
       {
-        "lineNumber": 187,
+        "lineNumber": 185,
         "author": {
           "gitId": "-"
         },
         "content": "        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
       },
       {
-        "lineNumber": 188,
+        "lineNumber": 186,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 189,
+        "lineNumber": 187,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        helpWindow \u003d new HomeHelpWindow();"
       },
       {
-        "lineNumber": 190,
+        "lineNumber": 188,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 191,
+        "lineNumber": 189,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 192,
+        "lineNumber": 190,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 193,
+        "lineNumber": 191,
         "author": {
           "gitId": "-"
         },
         "content": "     * Sets the default size based on {@code guiSettings}."
       },
       {
-        "lineNumber": 194,
+        "lineNumber": 192,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 195,
+        "lineNumber": 193,
         "author": {
           "gitId": "-"
         },
         "content": "    private void setWindowDefaultSize(GuiSettings guiSettings) {"
       },
       {
-        "lineNumber": 196,
+        "lineNumber": 194,
         "author": {
           "gitId": "-"
         },
         "content": "        primaryStage.setHeight(guiSettings.getWindowHeight());"
       },
       {
-        "lineNumber": 197,
+        "lineNumber": 195,
         "author": {
           "gitId": "-"
         },
         "content": "        primaryStage.setWidth(guiSettings.getWindowWidth());"
       },
       {
-        "lineNumber": 198,
+        "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
         "content": "        if (guiSettings.getWindowCoordinates() !\u003d null) {"
       },
       {
-        "lineNumber": 199,
+        "lineNumber": 197,
         "author": {
           "gitId": "-"
         },
         "content": "            primaryStage.setX(guiSettings.getWindowCoordinates().getX());"
       },
       {
-        "lineNumber": 200,
+        "lineNumber": 198,
         "author": {
           "gitId": "-"
         },
         "content": "            primaryStage.setY(guiSettings.getWindowCoordinates().getY());"
       },
       {
-        "lineNumber": 201,
+        "lineNumber": 199,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 202,
+        "lineNumber": 200,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 203,
+        "lineNumber": 201,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 204,
+        "lineNumber": 202,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    void show() {"
       },
       {
-        "lineNumber": 205,
+        "lineNumber": 203,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        primaryStage.show();"
       },
       {
-        "lineNumber": 206,
+        "lineNumber": 204,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 207,
+        "lineNumber": 205,
         "author": {
           "gitId": "zsoh97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    /** METHODS TO HANDLE CONTEXT SWITCHING **/"
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "raniceyue"
         },
         "content": ""
       },
@@ -73108,945 +72898,945 @@
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    /** METHODS TO HANDLE CONTEXT SWITCHING **/"
+        "content": "    public void setCurrentPage(Page page) {"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "        this.currentPage \u003d page;"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    public void setCurrentPage(Page page) {"
+        "content": "        if (currentPage \u003d\u003d HOME) {"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        this.currentPage \u003d page;"
+        "content": "            helpWindow \u003d new HomeHelpWindow();"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (currentPage \u003d\u003d HOME) {"
+        "content": "        }"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            helpWindow \u003d new HomeHelpWindow();"
+        "content": ""
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": "        if (currentPage \u003d\u003d TRIP) {"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            helpWindow \u003d new TripHelpWindow();"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (currentPage \u003d\u003d TRIP) {"
+        "content": "        }"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            helpWindow \u003d new TripHelpWindow();"
+        "content": ""
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": "        if (currentPage \u003d\u003d ITINERARY) {"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            helpWindow \u003d new ItineraryHelpWindow();"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (currentPage \u003d\u003d ITINERARY) {"
+        "content": "        }"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            helpWindow \u003d new ItineraryHelpWindow();"
+        "content": ""
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": "        if (currentPage \u003d\u003d JOURNAL) {"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            helpWindow \u003d new JournalHelpWindow();"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (currentPage \u003d\u003d JOURNAL) {"
+        "content": "        }"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            helpWindow \u003d new JournalHelpWindow();"
+        "content": "    }"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 227,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 228,
-        "author": {
-          "gitId": "raniceyue"
-        },
         "content": ""
       },
       {
-        "lineNumber": 229,
+        "lineNumber": 227,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 230,
+        "lineNumber": 228,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * Handles the result of the command \u0027back\u0027."
       },
       {
-        "lineNumber": 231,
+        "lineNumber": 229,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     * @param commandResult Contains list needed to populate the stage."
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 230,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 231,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    private void handleBack(CommandResult commandResult) {"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 232,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        if (currentPage \u003d\u003d TRIP) {"
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 233,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "            handleGoToHome(commandResult);"
+        "content": "            handleGoToHome();"
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 234,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            setCurrentPage(HOME);"
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 235,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 238,
+        "lineNumber": 236,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 239,
+        "lineNumber": 237,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        if (currentPage \u003d\u003d ITINERARY || currentPage \u003d\u003d JOURNAL) {"
       },
       {
-        "lineNumber": 240,
+        "lineNumber": 238,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "            handleGotoTrip(commandResult.getTrip());"
       },
       {
-        "lineNumber": 241,
+        "lineNumber": 239,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            setCurrentPage(TRIP);"
+      },
+      {
+        "lineNumber": 240,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 241,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": ""
+        "content": "     * Handles the result of the \u0027goto\u0027 command."
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "    /**"
+        "content": "     * @param commandResult Contains list needed to populate the stage."
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "     * Handles the result of the \u0027goto\u0027 command."
+        "content": "     */"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "     * @param commandResult Contains list needed to populate the stage."
+        "content": "    private void handleGoto(CommandResult commandResult) {"
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "     */"
+        "content": "        // Going from HOME page to TRIP page"
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "    private void handleGoto(CommandResult commandResult) {"
+        "content": "        if (currentPage \u003d\u003d HOME) {"
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        // Going from HOME page to TRIP page"
-      },
-      {
-        "lineNumber": 251,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        if (currentPage \u003d\u003d HOME) {"
-      },
-      {
-        "lineNumber": 252,
-        "author": {
-          "gitId": "zsoh97"
-        },
         "content": "            handleGotoTrip(commandResult.getTrip());"
       },
       {
-        "lineNumber": 253,
+        "lineNumber": 251,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            setCurrentPage(TRIP);"
       },
       {
-        "lineNumber": 254,
+        "lineNumber": 252,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 255,
+        "lineNumber": 253,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 256,
+        "lineNumber": 254,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        // Going from TRIP page to TRIP_FEATURE page"
       },
       {
-        "lineNumber": 257,
+        "lineNumber": 255,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        if (currentPage \u003d\u003d TRIP) {"
       },
       {
-        "lineNumber": 258,
+        "lineNumber": 256,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "            handleGoToTripFeature(commandResult.getTripFeature());"
       },
       {
-        "lineNumber": 259,
+        "lineNumber": 257,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            if (commandResult.getTripFeature() instanceof Itinerary) {"
       },
       {
-        "lineNumber": 260,
+        "lineNumber": 258,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "                setCurrentPage(ITINERARY);"
       },
       {
-        "lineNumber": 261,
+        "lineNumber": 259,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 262,
+        "lineNumber": 260,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            if (commandResult.getTripFeature() instanceof Journal) {"
       },
       {
-        "lineNumber": 263,
+        "lineNumber": 261,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "                setCurrentPage(JOURNAL);"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 262,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 263,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 264,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 265,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 266,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 269,
+        "lineNumber": 267,
         "author": {
           "gitId": "-"
         },
         "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
       },
       {
-        "lineNumber": 270,
+        "lineNumber": 268,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 271,
+        "lineNumber": 269,
         "author": {
           "gitId": "-"
         },
         "content": "    @FXML"
       },
       {
-        "lineNumber": 272,
+        "lineNumber": 270,
         "author": {
           "gitId": "-"
         },
         "content": "    public void handleHelp() {"
       },
       {
-        "lineNumber": 273,
+        "lineNumber": 271,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        if (!helpWindow.isShowing()) {"
       },
       {
-        "lineNumber": 274,
+        "lineNumber": 272,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            helpWindow.show();"
       },
       {
-        "lineNumber": 275,
+        "lineNumber": 273,
         "author": {
           "gitId": "-"
         },
         "content": "        } else {"
       },
       {
-        "lineNumber": 276,
+        "lineNumber": 274,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "            helpWindow.focus();"
       },
       {
-        "lineNumber": 277,
+        "lineNumber": 275,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 276,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 277,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "     * Closes the application."
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     */"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Closes the application."
+        "content": "    @FXML"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    private void handleExit() {"
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void handleExit() {"
+        "content": "            (int) primaryStage.getX(), (int) primaryStage.getY());"
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "-"
         },
-        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
-      },
-      {
-        "lineNumber": 286,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            (int) primaryStage.getX(), (int) primaryStage.getY());"
-      },
-      {
-        "lineNumber": 287,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        logic.setGuiSettings(guiSettings);"
       },
       {
-        "lineNumber": 288,
+        "lineNumber": 286,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        helpWindow.hide();"
       },
       {
-        "lineNumber": 289,
+        "lineNumber": 287,
         "author": {
           "gitId": "-"
         },
         "content": "        primaryStage.hide();"
       },
       {
-        "lineNumber": 290,
+        "lineNumber": 288,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 291,
+        "lineNumber": 289,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 292,
+        "lineNumber": 290,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    private void updateStatusBar() {"
       },
       {
-        "lineNumber": 293,
+        "lineNumber": 291,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getVolantFilePath());"
       },
       {
-        "lineNumber": 294,
+        "lineNumber": 292,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
       },
       {
-        "lineNumber": 295,
+        "lineNumber": 293,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 296,
+        "lineNumber": 294,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 297,
+        "lineNumber": 295,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 298,
+        "lineNumber": 296,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     * Handles command to go to a TRIP page from the HOME page or TRIP_FEATURE page."
       },
       {
-        "lineNumber": 299,
+        "lineNumber": 297,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     * @param trip to navigate to."
       },
       {
-        "lineNumber": 300,
+        "lineNumber": 298,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 301,
+        "lineNumber": 299,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    @FXML"
       },
       {
-        "lineNumber": 302,
+        "lineNumber": 300,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "    public void handleGotoTrip(Trip trip) {"
       },
       {
-        "lineNumber": 303,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        ActivityList activityList;"
-      },
-      {
-        "lineNumber": 304,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        EntryList entryList;"
-      },
-      {
-        "lineNumber": 305,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        try {"
-      },
-      {
-        "lineNumber": 306,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            logic.getStorage().setVolantFilePath(Paths.get(\"data\", trip.getName() + \"/itinerary.json\"));"
-      },
-      {
-        "lineNumber": 307,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            Optional\u003cReadOnlyActivityList\u003e activityListOptional \u003d logic.getStorage().readActivityList();"
-      },
-      {
-        "lineNumber": 308,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            activityList \u003d new ActivityList(activityListOptional.get());"
-      },
-      {
-        "lineNumber": 309,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 310,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            logic.getStorage().setVolantFilePath(Paths.get(\"data\", trip.getName() + \"/journal.json\"));"
-      },
-      {
-        "lineNumber": 311,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            Optional\u003cReadOnlyEntryList\u003e entryListOptional \u003d logic.getStorage().readEntryList();"
-      },
-      {
-        "lineNumber": 312,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            entryList \u003d new EntryList(entryListOptional.get());"
-      },
-      {
-        "lineNumber": 313,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        } catch (IOException | DataConversionException | NoSuchElementException e) {"
-      },
-      {
-        "lineNumber": 314,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            activityList \u003d new ActivityList();"
-      },
-      {
-        "lineNumber": 315,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            entryList \u003d new EntryList();"
-      },
-      {
-        "lineNumber": 316,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 317,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 318,
+        "lineNumber": 301,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        UserPrefs newUserPrefs \u003d new UserPrefs();"
       },
       {
-        "lineNumber": 319,
+        "lineNumber": 302,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        newUserPrefs.setVolantFilePath(Paths.get(\"data\", trip.getName().toString()));"
       },
       {
-        "lineNumber": 320,
+        "lineNumber": 303,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        fetchTripFeatures(trip);"
+      },
+      {
+        "lineNumber": 304,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        logic.getStorage().setVolantFilePath(Paths.get(\"data\", trip.getName().toString()));"
       },
       {
-        "lineNumber": 321,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        trip.setTripFeatureList(new TripFeatureList(new Itinerary(activityList), new Journal(entryList)));"
-      },
-      {
-        "lineNumber": 322,
+        "lineNumber": 305,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        logic \u003d new TripLogicManager(new TripModelManager(trip, newUserPrefs), logic.getStorage());"
       },
       {
-        "lineNumber": 323,
+        "lineNumber": 306,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 324,
+        "lineNumber": 307,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
         "content": "        mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display"
       },
       {
-        "lineNumber": 325,
+        "lineNumber": 308,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
         "content": "        mainPanel \u003d new TripPage(trip);"
       },
       {
-        "lineNumber": 326,
+        "lineNumber": 309,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
         "content": "        mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
       },
       {
-        "lineNumber": 327,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 328,
+        "lineNumber": 310,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        updateStatusBar();"
       },
       {
-        "lineNumber": 329,
+        "lineNumber": 311,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
         "content": "        setCurrentPage(TRIP);"
       },
       {
-        "lineNumber": 330,
+        "lineNumber": 312,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 331,
+        "lineNumber": 313,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 314,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 315,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "     * Updates trip with data of Journal and Itinerary features"
+      },
+      {
+        "lineNumber": 316,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "     * @param trip trip to be updated."
+      },
+      {
+        "lineNumber": 317,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 318,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "    private void fetchTripFeatures(Trip trip) {"
+      },
+      {
+        "lineNumber": 319,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        ActivityList activityList;"
+      },
+      {
+        "lineNumber": 320,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        EntryList entryList;"
+      },
+      {
+        "lineNumber": 321,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 322,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "            logic.getStorage().setVolantFilePath(Paths.get(\"data\", trip.getName() + \"/itinerary.json\"));"
+      },
+      {
+        "lineNumber": 323,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "            Optional\u003cReadOnlyActivityList\u003e activityListOptional \u003d logic.getStorage().readActivityList();"
+      },
+      {
+        "lineNumber": 324,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "            activityList \u003d new ActivityList(activityListOptional.get());"
+      },
+      {
+        "lineNumber": 325,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 332,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 333,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "     * Handles command to go to a TRIP_FEATURE page from TRIP page."
-      },
-      {
-        "lineNumber": 334,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 335,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    @FXML"
-      },
-      {
-        "lineNumber": 336,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    public void handleGoToTripFeature(TripFeature tripFeature) {"
-      },
-      {
-        "lineNumber": 337,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "        if (tripFeature instanceof Itinerary) {"
-      },
-      {
-        "lineNumber": 338,
+        "lineNumber": 326,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "            handleGoToItinerary(tripFeature);"
+        "content": "            logic.getStorage().setVolantFilePath(Paths.get(\"data\", trip.getName() + \"/journal.json\"));"
       },
       {
-        "lineNumber": 339,
+        "lineNumber": 327,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "            Optional\u003cReadOnlyEntryList\u003e entryListOptional \u003d logic.getStorage().readEntryList();"
+      },
+      {
+        "lineNumber": 328,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "            entryList \u003d new EntryList(entryListOptional.get());"
+      },
+      {
+        "lineNumber": 329,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        } catch (IOException | DataConversionException | NoSuchElementException e) {"
+      },
+      {
+        "lineNumber": 330,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "            activityList \u003d new ActivityList();"
+      },
+      {
+        "lineNumber": 331,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "            entryList \u003d new EntryList();"
+      },
+      {
+        "lineNumber": 332,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 340,
+        "lineNumber": 333,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        trip.setTripFeatureList(new TripFeatureList(new Itinerary(activityList), new Journal(entryList)));"
+      },
+      {
+        "lineNumber": 334,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 335,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
+        "lineNumber": 336,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 337,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "     * Handles command to go to a TRIP_FEATURE page from TRIP page."
+      },
+      {
+        "lineNumber": 338,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 339,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 340,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    public void handleGoToTripFeature(TripFeature tripFeature) {"
+      },
+      {
         "lineNumber": 341,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "raniceyue"
         },
-        "content": "        if (tripFeature instanceof Journal) {"
+        "content": "        if (tripFeature instanceof Itinerary) {"
       },
       {
         "lineNumber": 342,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "            handleGoToJournal(tripFeature);"
+        "content": "            handleGoToItinerary();"
       },
       {
         "lineNumber": 343,
@@ -74058,282 +73848,282 @@
       {
         "lineNumber": 344,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "raniceyue"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 345,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": ""
+        "content": "        if (tripFeature instanceof Journal) {"
       },
       {
         "lineNumber": 346,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "    /**"
+        "content": "            handleGoToJournal();"
       },
       {
         "lineNumber": 347,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "     * Handles command to go to Itinerary from a Trip page"
+        "content": "        }"
       },
       {
         "lineNumber": 348,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "     */"
+        "content": "    }"
       },
       {
         "lineNumber": 349,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "raniceyue"
         },
-        "content": "    @FXML"
+        "content": ""
       },
       {
         "lineNumber": 350,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "    public void handleGoToItinerary(TripFeature tripFeature) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 351,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        TripLogicManager t \u003d ((TripLogicManager) logic);"
+        "content": "     * Handles command to go to Itinerary from a Trip page"
       },
       {
         "lineNumber": 352,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        UserPrefs newUserPrefs \u003d new UserPrefs();"
+        "content": "     */"
       },
       {
         "lineNumber": 353,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        newUserPrefs.setVolantFilePath(Paths.get(\"data\", t.getTrip().getName()"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 354,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "            + \"/itinerary.json\"));"
+        "content": "    public void handleGoToItinerary() {"
       },
       {
         "lineNumber": 355,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 356,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        logic.getStorage().setVolantFilePath(Paths.get(\"data\", t.getTrip().getName()"
-      },
-      {
-        "lineNumber": 357,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            + \"/itinerary.json\"));"
-      },
-      {
-        "lineNumber": 358,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 359,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        ItineraryModelManager itineraryModelManager \u003d new ItineraryModelManager(t.getTrip(),"
-      },
-      {
-        "lineNumber": 360,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "                (Itinerary) tripFeature, newUserPrefs, logic.getStorage());"
-      },
-      {
-        "lineNumber": 361,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 362,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        logic \u003d new ItineraryLogicManager(itineraryModelManager, logic.getStorage());"
-      },
-      {
-        "lineNumber": 363,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 364,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "        mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display"
-      },
-      {
-        "lineNumber": 365,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        ObservableList\u003cActivity\u003e activityObservableList \u003d itineraryModelManager.getFilteredActivityList();"
-      },
-      {
-        "lineNumber": 366,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        mainPanel \u003d new ItineraryPage(activityObservableList);"
-      },
-      {
-        "lineNumber": 367,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "        mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
-      },
-      {
-        "lineNumber": 368,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        updateStatusBar();"
-      },
-      {
-        "lineNumber": 369,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "        setCurrentPage(ITINERARY);"
-      },
-      {
-        "lineNumber": 370,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 371,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 372,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 373,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "     * Handles command to go to Journal page from Trip page."
-      },
-      {
-        "lineNumber": 374,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 375,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "    @FXML"
-      },
-      {
-        "lineNumber": 376,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "    public void handleGoToJournal(TripFeature tripFeature) {"
-      },
-      {
-        "lineNumber": 377,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        TripLogicManager t \u003d ((TripLogicManager) logic);"
       },
       {
-        "lineNumber": 378,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 379,
+        "lineNumber": 356,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        UserPrefs newUserPrefs \u003d new UserPrefs();"
       },
       {
-        "lineNumber": 380,
+        "lineNumber": 357,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        newUserPrefs.setVolantFilePath(Paths.get(\"data\", t.getTrip().getName()"
       },
       {
-        "lineNumber": 381,
+        "lineNumber": 358,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "            + \"/journal.json\"));"
+        "content": "            + \"/itinerary.json\"));"
       },
       {
-        "lineNumber": 382,
+        "lineNumber": 359,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 383,
+        "lineNumber": 360,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        logic.getStorage().setVolantFilePath(Paths.get(\"data\", t.getTrip().getName()"
+      },
+      {
+        "lineNumber": 361,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "            + \"/itinerary.json\"));"
+      },
+      {
+        "lineNumber": 362,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 363,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        ItineraryModelManager itineraryModelManager \u003d new ItineraryModelManager(t.getTrip(),"
+      },
+      {
+        "lineNumber": 364,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "                newUserPrefs);"
+      },
+      {
+        "lineNumber": 365,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 366,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        logic \u003d new ItineraryLogicManager(itineraryModelManager, logic.getStorage());"
+      },
+      {
+        "lineNumber": 367,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 368,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display"
+      },
+      {
+        "lineNumber": 369,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        mainPanel \u003d new ItineraryPage(itineraryModelManager.getFilteredActivityList());"
+      },
+      {
+        "lineNumber": 370,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
+      },
+      {
+        "lineNumber": 371,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        updateStatusBar();"
+      },
+      {
+        "lineNumber": 372,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        setCurrentPage(ITINERARY);"
+      },
+      {
+        "lineNumber": 373,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 374,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 375,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 376,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "     * Handles command to go to Journal page from Trip page."
+      },
+      {
+        "lineNumber": 377,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 378,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "    @FXML"
+      },
+      {
+        "lineNumber": 379,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "    public void handleGoToJournal() {"
+      },
+      {
+        "lineNumber": 380,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        TripLogicManager t \u003d ((TripLogicManager) logic);"
+      },
+      {
+        "lineNumber": 381,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 382,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        UserPrefs newUserPrefs \u003d new UserPrefs();"
+      },
+      {
+        "lineNumber": 383,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        newUserPrefs.setVolantFilePath(Paths.get(\"data\", t.getTrip().getName()"
       },
       {
         "lineNumber": 384,
@@ -74354,14 +74144,14 @@
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        JournalModelManager journalModelManager \u003d new JournalModelManager(t.getTrip(),"
+        "content": "        logic.getStorage().setVolantFilePath(Paths.get(\"data\", t.getTrip().getName()"
       },
       {
         "lineNumber": 387,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "                (Journal) tripFeature, newUserPrefs, logic.getStorage());"
+        "content": "            + \"/journal.json\"));"
       },
       {
         "lineNumber": 388,
@@ -74375,168 +74165,168 @@
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        logic \u003d new JournalLogicManager(journalModelManager, logic.getStorage());"
+        "content": "        JournalModelManager journalModelManager \u003d new JournalModelManager(t.getTrip(),"
       },
       {
         "lineNumber": 390,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": ""
+        "content": "                newUserPrefs);"
       },
       {
         "lineNumber": 391,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display"
+        "content": ""
       },
       {
         "lineNumber": 392,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        mainPanel \u003d new JournalPage(journalModelManager.getFilteredEntryList());"
+        "content": "        logic \u003d new JournalLogicManager(journalModelManager, logic.getStorage());"
       },
       {
         "lineNumber": 393,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
+        "content": ""
       },
       {
         "lineNumber": 394,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "raniceyue"
         },
-        "content": "        updateStatusBar();"
+        "content": "        mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display"
       },
       {
         "lineNumber": 395,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "        setCurrentPage(JOURNAL);"
+        "content": "        mainPanel \u003d new JournalPage(journalModelManager.getFilteredEntryList());"
       },
       {
         "lineNumber": 396,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    }"
+        "content": "        mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
       },
       {
         "lineNumber": 397,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        updateStatusBar();"
+      },
+      {
+        "lineNumber": 398,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        setCurrentPage(JOURNAL);"
+      },
+      {
+        "lineNumber": 399,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 400,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
-        "lineNumber": 398,
+        "lineNumber": 401,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "    private ReadOnlyTripList getTripList() {"
       },
       {
-        "lineNumber": 399,
+        "lineNumber": 402,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        Optional\u003cReadOnlyTripList\u003e tripListOptional;"
       },
       {
-        "lineNumber": 400,
+        "lineNumber": 403,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        ReadOnlyTripList tripList;"
       },
       {
-        "lineNumber": 401,
+        "lineNumber": 404,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 402,
+        "lineNumber": 405,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "            tripListOptional \u003d logic.getStorage().readTripList();"
       },
       {
-        "lineNumber": 403,
+        "lineNumber": 406,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "            if (!tripListOptional.isPresent()) {"
       },
       {
-        "lineNumber": 404,
+        "lineNumber": 407,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "                logger.info(\"Data file not found. Will be starting with a sample trip list.\");"
       },
       {
-        "lineNumber": 405,
+        "lineNumber": 408,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 406,
+        "lineNumber": 409,
         "author": {
           "gitId": "zsoh97"
         },
         "content": ""
       },
       {
-        "lineNumber": 407,
+        "lineNumber": 410,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "            tripList \u003d tripListOptional.orElseGet(SampleDataUtil::getSampleTripList);"
       },
       {
-        "lineNumber": 408,
+        "lineNumber": 411,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        } catch (DataConversionException e) {"
       },
       {
-        "lineNumber": 409,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            logger.warning(\"Data file not in the correct format. Will be starting with an empty trip list.\");"
-      },
-      {
-        "lineNumber": 410,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "            tripList \u003d new TripList();"
-      },
-      {
-        "lineNumber": 411,
-        "author": {
-          "gitId": "zsoh97"
-        },
-        "content": "        } catch (IOException e) {"
-      },
-      {
         "lineNumber": 412,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "            logger.warning(\"Problem while reading from the file. Will be starting with an empty trip list.\");"
+        "content": "            logger.warning(\"Data file not in the correct format. Will be starting with an empty trip list.\");"
       },
       {
         "lineNumber": 413,
@@ -74550,752 +74340,773 @@
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        }"
+        "content": "        } catch (IOException e) {"
       },
       {
         "lineNumber": 415,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        return tripList;"
+        "content": "            logger.warning(\"Problem while reading from the file. Will be starting with an empty trip list.\");"
       },
       {
         "lineNumber": 416,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "    }"
+        "content": "            tripList \u003d new TripList();"
       },
       {
         "lineNumber": 417,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 418,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "    /**"
+        "content": "        return tripList;"
       },
       {
         "lineNumber": 419,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "     * Handles command to go to HOME page from any page."
+        "content": "    }"
       },
       {
         "lineNumber": 420,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 421,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    @FXML"
+        "content": "    /**"
       },
       {
         "lineNumber": 422,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "raniceyue"
         },
-        "content": "    public void handleGoToHome(CommandResult commandResult) {"
+        "content": "     * Handles command to go to HOME page from any page."
       },
       {
         "lineNumber": 423,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "raniceyue"
         },
-        "content": "        UserPrefs newUserPrefs \u003d new UserPrefs();"
+        "content": "     */"
       },
       {
         "lineNumber": 424,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "raniceyue"
         },
-        "content": "        newUserPrefs.setVolantFilePath(Paths.get(\"data\", \"volant.json\"));"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 425,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        logic.getStorage().setVolantFilePath(Paths.get(\"data\", \"volant.json\"));"
+        "content": "    public void handleGoToHome() {"
       },
       {
         "lineNumber": 426,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        HomeModelManager homeModelManager \u003d new HomeModelManager(getTripList(), newUserPrefs);"
+        "content": "        UserPrefs newUserPrefs \u003d new UserPrefs();"
       },
       {
         "lineNumber": 427,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        logic \u003d new HomeLogicManager(homeModelManager, logic.getStorage());"
+        "content": "        newUserPrefs.setVolantFilePath(Paths.get(\"data\", \"volant.json\"));"
       },
       {
         "lineNumber": 428,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": ""
+        "content": "        logic.getStorage().setVolantFilePath(Paths.get(\"data\", \"volant.json\"));"
       },
       {
         "lineNumber": 429,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "        mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display"
+        "content": "        HomeModelManager homeModelManager \u003d new HomeModelManager(getTripList(), newUserPrefs);"
       },
       {
         "lineNumber": 430,
         "author": {
           "gitId": "zsoh97"
         },
-        "content": "        mainPanel \u003d new HomePage(homeModelManager.getFilteredTripList());"
+        "content": "        logic \u003d new HomeLogicManager(homeModelManager, logic.getStorage());"
       },
       {
         "lineNumber": 431,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
+        "content": ""
       },
       {
         "lineNumber": 432,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot()); // Remove GUI nodes from prev. display"
+      },
+      {
+        "lineNumber": 433,
+        "author": {
+          "gitId": "zsoh97"
+        },
+        "content": "        mainPanel \u003d new HomePage(homeModelManager.getFilteredTripList());"
+      },
+      {
+        "lineNumber": 434,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": "        mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
+      },
+      {
+        "lineNumber": 435,
         "author": {
           "gitId": "zsoh97"
         },
         "content": "        updateStatusBar();"
       },
       {
-        "lineNumber": 433,
+        "lineNumber": 436,
         "author": {
           "gitId": "raniceyue"
         },
         "content": "        setCurrentPage(HOME);"
       },
       {
-        "lineNumber": 434,
+        "lineNumber": 437,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 435,
+        "lineNumber": 438,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 436,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 437,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "     * Handles refreshing a page."
-      },
-      {
-        "lineNumber": 438,
-        "author": {
-          "gitId": "raniceyue"
-        },
-        "content": "     */"
       },
       {
         "lineNumber": 439,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    @FXML"
+        "content": "    /**"
       },
       {
         "lineNumber": 440,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    private void handleRefresh() throws CommandException, ParseException {"
+        "content": "     * Handles refreshing a page."
       },
       {
         "lineNumber": 441,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (currentPage \u003d\u003d HOME) {"
+        "content": "     */"
       },
       {
         "lineNumber": 442,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            HomeModelManager currentModel \u003d ((HomeLogicManager) logic).getModel();"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 443,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            currentModel.updateFilteredTripList(currentModel.getPredicateShowAllTrips());"
+        "content": "    private void handleRefresh() throws CommandException, ParseException {"
       },
       {
         "lineNumber": 444,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot());"
+        "content": "        if (currentPage \u003d\u003d HOME) {"
       },
       {
         "lineNumber": 445,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            mainPanel \u003d new HomePage(currentModel.getFilteredTripList());"
+        "content": "            HomeModelManager currentModel \u003d ((HomeLogicManager) logic).getModel();"
       },
       {
         "lineNumber": 446,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
+        "content": "            currentModel.updateFilteredTripList(currentModel.getPredicateShowAllTrips());"
       },
       {
         "lineNumber": 447,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": "            mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot());"
       },
       {
         "lineNumber": 448,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            mainPanel \u003d new HomePage(currentModel.getFilteredTripList());"
       },
       {
         "lineNumber": 449,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (currentPage \u003d\u003d ITINERARY) {"
+        "content": "            mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
       },
       {
         "lineNumber": 450,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            ItineraryModelManager currentModel \u003d ((ItineraryLogicManager) logic).getModel();"
+        "content": "        }"
       },
       {
         "lineNumber": 451,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            mainPanelPlaceholder.getChildren().remove(mainPanel.getRoot());"
+        "content": ""
       },
       {
         "lineNumber": 452,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            mainPanel \u003d new ItineraryPage(currentModel.getActivityList().getActivityList());"
+        "content": "        if (currentPage \u003d\u003d ITINERARY) {"
       },
       {
         "lineNumber": 453,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
+        "content": "            ItineraryModelManager currentModel \u003d ((ItineraryLogicManager) logic).getModel();"
       },
       {
         "lineNumber": 454,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": "            mainPanelPlaceholder.getChildren().remove(mainPanel.getRoot());"
       },
       {
         "lineNumber": 455,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            mainPanel \u003d new ItineraryPage(currentModel.getActivityList().getActivityList());"
       },
       {
         "lineNumber": 456,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (currentPage \u003d\u003d JOURNAL) {"
+        "content": "            mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
       },
       {
         "lineNumber": 457,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            // Upon refreshing journal page, revert journal page to sorting by NEW"
+        "content": "        }"
       },
       {
         "lineNumber": 458,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            executeCommand(\"sort NEW\");"
+        "content": ""
       },
       {
         "lineNumber": 459,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": "        if (currentPage \u003d\u003d JOURNAL) {"
       },
       {
         "lineNumber": 460,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    }"
+        "content": "            // Upon refreshing journal page, revert journal page to sorting by NEW"
       },
       {
         "lineNumber": 461,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            executeCommand(\"sort NEW\");"
       },
       {
         "lineNumber": 462,
         "author": {
-          "gitId": "-"
+          "gitId": "raniceyue"
         },
-        "content": "    /**"
+        "content": "        }"
       },
       {
         "lineNumber": 463,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "     * Handles the result of the command to manage the stage."
+        "content": "    }"
       },
       {
         "lineNumber": 464,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "     * @param commandResult Contains the result to be handled."
+        "content": ""
       },
       {
         "lineNumber": 465,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 466,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    private void handleResult(CommandResult commandResult) throws CommandException, ParseException {"
+        "content": "     * Handles the result of the command to manage the stage."
       },
       {
         "lineNumber": 467,
         "author": {
-          "gitId": "-"
+          "gitId": "raniceyue"
         },
-        "content": "        if (commandResult.isShowHelp()) {"
+        "content": "     * @param commandResult Contains the result to be handled."
       },
       {
         "lineNumber": 468,
         "author": {
           "gitId": "-"
         },
-        "content": "            handleHelp();"
+        "content": "     */"
       },
       {
         "lineNumber": 469,
         "author": {
-          "gitId": "-"
+          "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": "    private void handleResult(CommandResult commandResult) throws CommandException, ParseException {"
       },
       {
         "lineNumber": 470,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        if (commandResult.isShowHelp()) {"
       },
       {
         "lineNumber": 471,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (commandResult.isExit()) {"
+        "content": "            handleHelp();"
       },
       {
         "lineNumber": 472,
         "author": {
           "gitId": "-"
         },
-        "content": "            handleExit();"
+        "content": "        }"
       },
       {
         "lineNumber": 473,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 474,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        if (commandResult.isExit()) {"
       },
       {
         "lineNumber": 475,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "-"
         },
-        "content": "        if (commandResult.isGoto()) {"
+        "content": "            handleExit();"
       },
       {
         "lineNumber": 476,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "-"
         },
-        "content": "            handleGoto(commandResult);"
+        "content": "        }"
       },
       {
         "lineNumber": 477,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "-"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 478,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "        if (commandResult.isGoto()) {"
       },
       {
         "lineNumber": 479,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (commandResult.isBack()) {"
+        "content": "            handleGoto(commandResult);"
       },
       {
         "lineNumber": 480,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            handleBack(commandResult);"
+        "content": "        }"
       },
       {
         "lineNumber": 481,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 482,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "        if (commandResult.isBack()) {"
       },
       {
         "lineNumber": 483,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        if (commandResult.isHome()) {"
+        "content": "            handleBack(commandResult);"
       },
       {
         "lineNumber": 484,
         "author": {
-          "gitId": "zsoh97"
+          "gitId": "raniceyue"
         },
-        "content": "            handleGoToHome(commandResult);"
+        "content": "        }"
       },
       {
         "lineNumber": 485,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 486,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "        if (commandResult.isHome()) {"
       },
       {
         "lineNumber": 487,
         "author": {
-          "gitId": "raniceyue"
+          "gitId": "zsoh97"
         },
-        "content": "        if (commandResult instanceof RefreshCommandResult) {"
+        "content": "            handleGoToHome();"
       },
       {
         "lineNumber": 488,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            handleRefresh();"
+        "content": "        }"
       },
       {
         "lineNumber": 489,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 490,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    }"
+        "content": "        if (commandResult instanceof RefreshCommandResult) {"
       },
       {
         "lineNumber": 491,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            handleRefresh();"
       },
       {
         "lineNumber": 492,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    /**"
+        "content": "        }"
       },
       {
         "lineNumber": 493,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "     * Executes the command and returns the result."
+        "content": "    }"
       },
       {
         "lineNumber": 494,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "     * @see Logic#execute(String)"
+        "content": ""
       },
       {
         "lineNumber": 495,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "     */"
+        "content": "    /**"
       },
       {
         "lineNumber": 496,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
+        "content": "     * Executes the command and returns the result."
       },
       {
         "lineNumber": 497,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "        try {"
+        "content": "     * @see Logic#execute(String)"
       },
       {
         "lineNumber": 498,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
+        "content": "     */"
       },
       {
         "lineNumber": 499,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
+        "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
       },
       {
         "lineNumber": 500,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
+        "content": "        try {"
       },
       {
         "lineNumber": 501,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
       },
       {
         "lineNumber": 502,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            /*If the command is something that alters the trip list, page will be refreshed after execution*/"
+        "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 503,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            if (currentPage \u003d\u003d HOME) {"
+        "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
       },
       {
         "lineNumber": 504,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "                HomeModelManager currentModel \u003d ((HomeLogicManager) logic).getModel();"
+        "content": ""
       },
       {
         "lineNumber": 505,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "                mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot());"
+        "content": "            /*If the command is something that alters the trip list, page will be refreshed after execution*/"
       },
       {
         "lineNumber": 506,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "                mainPanel \u003d new HomePage(currentModel.getFilteredTripList());"
+        "content": "            if (currentPage \u003d\u003d HOME) {"
       },
       {
         "lineNumber": 507,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "                mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
+        "content": "                HomeModelManager currentModel \u003d ((HomeLogicManager) logic).getModel();"
       },
       {
         "lineNumber": 508,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            }"
+        "content": "                mainPanelPlaceholder.getChildren().removeAll(mainPanel.getRoot());"
       },
       {
         "lineNumber": 509,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "                mainPanel \u003d new HomePage(currentModel.getFilteredTripList());"
       },
       {
         "lineNumber": 510,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": "            handleResult(commandResult);"
+        "content": "                mainPanelPlaceholder.getChildren().add(mainPanel.getRoot());"
       },
       {
         "lineNumber": 511,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            }"
       },
       {
         "lineNumber": 512,
         "author": {
-          "gitId": "-"
+          "gitId": "raniceyue"
         },
-        "content": "            return commandResult;"
+        "content": ""
       },
       {
         "lineNumber": 513,
         "author": {
           "gitId": "raniceyue"
         },
-        "content": ""
+        "content": "            handleResult(commandResult);"
       },
       {
         "lineNumber": 514,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        } catch (CommandException | ParseException e) {"
-      },
-      {
-        "lineNumber": 515,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            logger.info(\"Invalid command: \" + commandText);"
-      },
-      {
-        "lineNumber": 516,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
-      },
-      {
-        "lineNumber": 517,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "            throw e;"
-      },
-      {
-        "lineNumber": 518,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 519,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 520,
         "author": {
           "gitId": "raniceyue"
         },
         "content": ""
       },
       {
+        "lineNumber": 515,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            return commandResult;"
+      },
+      {
+        "lineNumber": 516,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 517,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (CommandException | ParseException e) {"
+      },
+      {
+        "lineNumber": 518,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            logger.info(\"Invalid command: \" + commandText);"
+      },
+      {
+        "lineNumber": 519,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
+      },
+      {
+        "lineNumber": 520,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw e;"
+      },
+      {
         "lineNumber": 521,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 522,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 523,
+        "author": {
+          "gitId": "raniceyue"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 524,
         "author": {
           "gitId": "-"
         },
@@ -75303,8 +75114,8 @@
       }
     ],
     "authorContributionMap": {
-      "raniceyue": 222,
-      "zsoh97": 140,
+      "raniceyue": 215,
+      "zsoh97": 150,
       "-": 159
     }
   },

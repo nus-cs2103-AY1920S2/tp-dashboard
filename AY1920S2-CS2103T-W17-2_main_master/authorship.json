@@ -21895,14 +21895,14 @@
         "author": {
           "gitId": "kevinputera"
         },
-        "content": "        if (correctedItems.equals(List.of(uncorrected))) {"
+        "content": "        if (correctedItems.size() \u003d\u003d 1 \u0026\u0026 correctedItems.get(0).equals(uncorrected)) {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "kevinputera"
         },
-        "content": "            return new CorrectionResult\u003c\u003e(CorrectionStatus.UNCHANGED, List.of(uncorrected));"
+        "content": "            return new CorrectionResult\u003c\u003e(CorrectionStatus.UNCHANGED, correctedItems);"
       },
       {
         "lineNumber": 98,
@@ -23828,14 +23828,14 @@
         "author": {
           "gitId": "kevinputera"
         },
-        "content": "        if (correctedItems.equals(List.of(uncorrected))) {"
+        "content": "        if (correctedItems.size() \u003d\u003d 1 \u0026\u0026 correctedItems.get(0).equalsIgnoreCase(uncorrected)) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "kevinputera"
         },
-        "content": "            return new CorrectionResult\u003c\u003e(CorrectionStatus.UNCHANGED, List.of(uncorrected));"
+        "content": "            return new CorrectionResult\u003c\u003e(CorrectionStatus.UNCHANGED, correctedItems);"
       },
       {
         "lineNumber": 72,
@@ -29187,7 +29187,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    private static final String RESPONSE_MESSAGE_CANNOT_DELETE_NOTE \u003d \"Cannot delete \\\"%s\\\". Invalid path.\";"
+        "content": "    private static final String ERROR_MESSAGE_CANNOT_DELETE_NOTE \u003d \"Cannot delete \\\"%s\\\" as it is an invalid path\";"
       },
       {
         "lineNumber": 27,
@@ -29453,7 +29453,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            model.setResponseText(String.format(RESPONSE_MESSAGE_CANNOT_DELETE_NOTE, title));"
+        "content": "            model.setResponseText(String.format(ERROR_MESSAGE_CANNOT_DELETE_NOTE, title));"
       },
       {
         "lineNumber": 65,
@@ -29843,7 +29843,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    private static final String ERROR_MESSAGE \u003d \"\\\"%s\\\" is an invalid command format. \""
+        "content": "    private static final String ERROR_MESSAGE_INVALID_COMMAND \u003d \"\\\"%s\\\" is an invalid command format. \""
       },
       {
         "lineNumber": 13,
@@ -29920,7 +29920,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        model.setResponseText(String.format(ERROR_MESSAGE, userInput));"
+        "content": "        model.setResponseText(String.format(ERROR_MESSAGE_INVALID_COMMAND, userInput));"
       },
       {
         "lineNumber": 24,
@@ -30367,84 +30367,84 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import static com.notably.logic.parser.CliSyntax.PREFIX_BODY;"
+        "content": "import static com.notably.logic.parser.CliSyntax.PREFIX_JUMP;"
       },
       {
         "lineNumber": 4,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import static com.notably.logic.parser.CliSyntax.PREFIX_JUMP;"
+        "content": "import static com.notably.logic.parser.CliSyntax.PREFIX_TITLE;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import static com.notably.logic.parser.CliSyntax.PREFIX_TITLE;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": ""
+        "content": "import java.util.Optional;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import java.util.Optional;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": ""
+        "content": "import com.notably.logic.commands.suggestion.SuggestionCommand;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import com.notably.logic.commands.suggestion.SuggestionCommand;"
+        "content": "import com.notably.logic.parser.ArgumentMultimap;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import com.notably.logic.parser.ArgumentMultimap;"
+        "content": "import com.notably.logic.parser.ArgumentTokenizer;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import com.notably.logic.parser.ArgumentTokenizer;"
+        "content": "import com.notably.logic.parser.ParserUtil;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import com.notably.logic.parser.ParserUtil;"
+        "content": "import com.notably.logic.parser.exceptions.ParseException;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import com.notably.logic.parser.exceptions.ParseException;"
+        "content": "import com.notably.model.Model;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "import com.notably.model.Model;"
+        "content": "import com.notably.model.block.Title;"
       },
       {
         "lineNumber": 15,
@@ -30521,248 +30521,325 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": ""
+        "content": "    private static final String ERROR_MESSAGE_INVALID_COMMAND \u003d \"\\\"%s\\\" is an invalid creation format. \""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    private Model model;"
+        "content": "            + \"The correct format is \\\"new -t TITLE [-o]\\\"\";"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": ""
+        "content": "    private static final String ERROR_MESSAGE_INVALID_TITLE \u003d \"Title \\\"%s\\\" is invalid. \""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    public NewSuggestionCommandParser(Model model) {"
+        "content": "            + \"Titles should only contain alphanumeric characters and symbols except - and /\";"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        this.model \u003d model;"
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    }"
+        "content": "    private Model model;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "     * Parses input and displays the appropriate response text."
+        "content": "    public NewSuggestionCommandParser(Model model) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "     * @param userInput ."
+        "content": "        this.model \u003d model;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "     * @return List of command to execute."
+        "content": "    }"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "     * @throws ParseException when input is invalid."
+        "content": "    /**"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "     */"
+        "content": "     * Parses input and displays the appropriate response text."
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    public Optional\u003cSuggestionCommand\u003e parse(String userInput) {"
+        "content": "     * @param userInput ."
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        ArgumentMultimap argMultimap \u003d"
+        "content": "     * @return List of command to execute."
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "                ArgumentTokenizer.tokenize(userInput, PREFIX_TITLE, PREFIX_BODY, PREFIX_JUMP);"
+        "content": "     * @throws ParseException when input is invalid."
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": ""
+        "content": "     */"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        String title;"
+        "content": "    public Optional\u003cSuggestionCommand\u003e parse(String userInput) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_TITLE)"
+        "content": "        ArgumentMultimap argMultimap \u003d"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
+        "content": "                ArgumentTokenizer.tokenize(userInput, PREFIX_TITLE, PREFIX_JUMP);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            title \u003d userInput.trim();"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        } else {"
+        "content": "        if (userInput.isBlank()) {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            title \u003d argMultimap.getValue(PREFIX_TITLE).get();"
+        "content": "            model.setResponseText(RESPONSE_MESSAGE);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        }"
+        "content": "            return Optional.empty();"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        if (title.isBlank()) {"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            model.setResponseText(RESPONSE_MESSAGE);"
+        "content": "        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_TITLE)"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        } else if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_JUMP)) { // If user does NOT type \"-o\""
+        "content": "                || !argMultimap.getPreamble().isEmpty()) {"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            model.setResponseText(String.format(RESPONSE_MESSAGE_WITH_TITLE, title));"
+        "content": "            model.setResponseText(String.format(ERROR_MESSAGE_INVALID_COMMAND, model.getInput()));"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        } else {"
+        "content": "            return Optional.empty();"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            model.setResponseText(String.format(RESPONSE_MESSAGE_WITH_TITLE_AND_OPEN, title));"
+        "content": "        }"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": ""
+        "content": "        String title \u003d argMultimap.getValue(PREFIX_TITLE).get();"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "        return Optional.empty();"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": ""
+        "content": "        if (!Title.isValidTitle(title) \u0026\u0026 !title.isBlank()) {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    }"
+        "content": "            model.setResponseText(String.format(ERROR_MESSAGE_INVALID_TITLE, title));"
       },
       {
         "lineNumber": 60,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        } else if (title.isBlank()) {"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            model.setResponseText(RESPONSE_MESSAGE);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        } else if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_JUMP)) { // If user does NOT type \"-o\""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            model.setResponseText(String.format(RESPONSE_MESSAGE_WITH_TITLE, title));"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        } else {"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "            model.setResponseText(String.format(RESPONSE_MESSAGE_WITH_TITLE_AND_OPEN, title));"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "johannagwan"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
         "author": {
           "gitId": "johannagwan"
         },
@@ -30770,7 +30847,7 @@
       }
     ],
     "authorContributionMap": {
-      "johannagwan": 60
+      "johannagwan": 71
     }
   },
   {
@@ -30957,7 +31034,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    private static final String RESPONSE_MESSAGE_CANNOT_OPEN_NOTE \u003d \"Open delete \\\"%s\\\". Invalid path.\";"
+        "content": "    private static final String ERROR_MESSAGE_CANNOT_OPEN_NOTE \u003d \"Cannot open \\\"%s\\\" as it is an invalid path\";"
       },
       {
         "lineNumber": 27,
@@ -31223,7 +31300,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            model.setResponseText(String.format(RESPONSE_MESSAGE_CANNOT_OPEN_NOTE, title));"
+        "content": "            model.setResponseText(String.format(ERROR_MESSAGE_CANNOT_OPEN_NOTE, title));"
       },
       {
         "lineNumber": 65,
@@ -31832,7 +31909,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    private static final String ERROR_MESSAGE \u003d \"\\\"%s\\\" is an invalid command format. \""
+        "content": "    private static final String ERROR_MESSAGE_INVALID_COMMAND \u003d \"\\\"%s\\\" is an invalid command format. \""
       },
       {
         "lineNumber": 37,
@@ -32056,7 +32133,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            model.setResponseText(String.format(ERROR_MESSAGE, userInput));"
+        "content": "            model.setResponseText(String.format(ERROR_MESSAGE_INVALID_COMMAND, userInput));"
       },
       {
         "lineNumber": 69,
@@ -32105,7 +32182,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "            model.setResponseText(String.format(ERROR_MESSAGE, userInput));"
+        "content": "            model.setResponseText(String.format(ERROR_MESSAGE_INVALID_COMMAND, userInput));"
       },
       {
         "lineNumber": 76,
@@ -66683,7 +66760,7 @@
         "author": {
           "gitId": "kevinputera"
         },
-        "content": "        final AbsolutePath uncorrectedInput \u003d AbsolutePath.fromString(\"/Y2S2/CS2106\");"
+        "content": "        final AbsolutePath uncorrectedInput \u003d AbsolutePath.fromString(\"/Y2s2/cs2106\");"
       },
       {
         "lineNumber": 77,
@@ -66697,7 +66774,7 @@
         "author": {
           "gitId": "kevinputera"
         },
-        "content": "        final List\u003cAbsolutePath\u003e expectedCorrectedItems \u003d List.of(uncorrectedInput);"
+        "content": "        final List\u003cAbsolutePath\u003e expectedCorrectedItems \u003d List.of(TypicalBlockModel.PATH_TO_CS2106);"
       },
       {
         "lineNumber": 79,
@@ -67322,7 +67399,7 @@
         "author": {
           "gitId": "kevinputera"
         },
-        "content": "        final String uncorrectedInput \u003d \"help\";"
+        "content": "        final String uncorrectedInput \u003d \"hELP\";"
       },
       {
         "lineNumber": 63,
@@ -70745,7 +70822,7 @@
         "author": {
           "gitId": "johannagwan"
         },
-        "content": "    private static final String RESPONSE_MESSAGE_CANNOT_DELETE_NOTE \u003d \"Cannot delete \\\"%s\\\". Invalid path.\";"
+        "content": "    private static final String ERROR_MESSAGE_CANNOT_DELETE_NOTE \u003d \"Cannot delete \\\"%s\\\". Invalid path.\";"
       },
       {
         "lineNumber": 48,

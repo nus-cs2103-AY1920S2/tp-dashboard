@@ -10162,285 +10162,278 @@
       {
         "lineNumber": 134,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "            final int max \u003d j \u003e Integer.MAX_VALUE - threshold ? n : Math.min("
+        "content": "            final int max \u003d j \u003e Integer.MAX_VALUE - threshold ? n : Math.min(n, j + threshold);"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    n, j + threshold);"
+        "content": ""
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "            // the stripe may lead off of the table if s and t are of different"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            // the stripe may lead off of the table if s and t are of different"
+        "content": "            // sizes"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            // sizes"
+        "content": "            if (min \u003e max) {"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            if (min \u003e max) {"
+        "content": "                return -1;"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                return -1;"
+        "content": "            }"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "            // ignore entry left of leftmost"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            // ignore entry left of leftmost"
+        "content": "            if (min \u003e 1) {"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            if (min \u003e 1) {"
+        "content": "                d[min - 1] \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                d[min - 1] \u003d Integer.MAX_VALUE;"
+        "content": "            }"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "            // iterates through [min, max] in s"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            // iterates through [min, max] in s"
+        "content": "            for (int i \u003d min; i \u003c\u003d max; i++) {"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            for (int i \u003d min; i \u003c\u003d max; i++) {"
+        "content": "                if (left.charAt(i - 1) \u003d\u003d rightJ) {"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                if (left.charAt(i - 1) \u003d\u003d rightJ) {"
+        "content": "                    // diagonally left and up"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    // diagonally left and up"
+        "content": "                    d[i] \u003d p[i - 1];"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    d[i] \u003d p[i - 1];"
+        "content": "                } else {"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                } else {"
+        "content": "                    // 1 + minimum of cell to the left, to the top, diagonally"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    // 1 + minimum of cell to the left, to the top, diagonally"
+        "content": "                    // left and up"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    // left and up"
+        "content": "                    d[i] \u003d 1 + Math.min(Math.min(d[i - 1], p[i]), p[i - 1]);"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    d[i] \u003d 1 + Math.min(Math.min(d[i - 1], p[i]), p[i - 1]);"
+        "content": "                }"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                }"
+        "content": "            }"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            }"
+        "content": ""
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "            // copy current distance counts to \u0027previous row\u0027 distance counts"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            // copy current distance counts to \u0027previous row\u0027 distance counts"
+        "content": "            tempD \u003d p;"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            tempD \u003d p;"
+        "content": "            p \u003d d;"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            p \u003d d;"
+        "content": "            d \u003d tempD;"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            d \u003d tempD;"
+        "content": "        }"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "        // if p[n] is greater than the threshold, there\u0027s no guarantee on it"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        // if p[n] is greater than the threshold, there\u0027s no guarantee on it"
+        "content": "        // being the correct"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        // being the correct"
+        "content": "        // distance"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        // distance"
+        "content": "        if (p[n] \u003c\u003d threshold) {"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        if (p[n] \u003c\u003d threshold) {"
+        "content": "            return p[n];"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            return p[n];"
+        "content": "        }"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        }"
+        "content": "        return -1;"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        return -1;"
-      },
-      {
-        "lineNumber": 173,
-        "author": {
-          "gitId": "BransonNg"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 173,
         "author": {
           "gitId": "-"
         },
@@ -10448,7 +10441,8 @@
       }
     ],
     "authorContributionMap": {
-      "BransonNg": 123,
+      "artlee06": 1,
+      "BransonNg": 121,
       "-": 51
     }
   },
@@ -22611,79 +22605,79 @@
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "BransonNg"
-        },
-        "content": "import java.util.Arrays;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "BransonNg"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 7,
-        "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.commons.core.Messages;"
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.Model;"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 7,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "import seedu.address.model.task.NameContainsKeywordsPredicate;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 10,
         "author": {
           "gitId": "Hardoh"
         },
         "content": " * Finds and lists all tasks in task list whose name contains any of the argument keywords. Keyword"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 11,
         "author": {
           "gitId": "Hardoh"
         },
         "content": " * matching is case insensitive."
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": " */"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": "public class FindCommand extends Command {"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
       },
       {
         "lineNumber": 16,
@@ -22695,72 +22689,72 @@
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "-"
-        },
-        "content": "    public static final String COMMAND_WORD \u003d \"find\";"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 19,
-        "author": {
           "gitId": "BransonNg"
         },
         "content": "    public static final String MESSAGE_USAGE \u003d"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 18,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "            COMMAND_WORD"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 19,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                    + \": Finds all tasks whose names contain any of \""
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 20,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                    + \"the specified keywords (case-insensitive) and displays them.\\n\""
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": "                    + \"Parameters: KEYWORD [MORE_KEYWORDS]...\\n\""
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 22,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                    + \"Example: \""
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 23,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                    + COMMAND_WORD"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 24,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                    + \" alice bob charlie\";"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private final NameContainsKeywordsPredicate predicate;"
       },
       {
         "lineNumber": 27,
@@ -22774,157 +22768,143 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    private final NameContainsKeywordsPredicate predicate;"
+        "content": "    public FindCommand(NameContainsKeywordsPredicate predicate) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        this.predicate \u003d predicate;"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "    public FindCommand(NameContainsKeywordsPredicate predicate) {"
+        "content": "    }"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "        this.predicate \u003d predicate;"
+        "content": ""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    @Override"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public CommandResult execute(Model model) {"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        requireNonNull(model);"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 35,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "        model.updateFilteredTaskList(predicate);"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
         "content": "        return new CommandResult("
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 37,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                String.format("
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 38,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                        Messages.MESSAGE_TASKS_LISTED_OVERVIEW,"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 39,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "                        model.getFilteredTaskList().size()));"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
         "content": "    public boolean equals(Object other) {"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
         "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
         "content": "                || (other instanceof FindCommand // instanceof handles nulls"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
         "content": "                        \u0026\u0026 predicate.equals(((FindCommand) other).predicate)); // state check"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
@@ -22933,7 +22913,7 @@
     ],
     "authorContributionMap": {
       "Hardoh": 5,
-      "BransonNg": 11,
+      "BransonNg": 9,
       "-": 34
     }
   },
@@ -30119,19 +30099,33 @@
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords))); // also need to provide a sorting"
+        "content": "        return new FindCommand("
       },
       {
         "lineNumber": 29,
+        "author": {
+          "gitId": "artlee06"
+        },
+        "content": "                new NameContainsKeywordsPredicate("
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "artlee06"
+        },
+        "content": "                        Arrays.asList(nameKeywords))); // also need to provide a sorting"
+      },
+      {
+        "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
@@ -30140,7 +30134,8 @@
     ],
     "authorContributionMap": {
       "Hardoh": 1,
-      "BransonNg": 5,
+      "artlee06": 3,
+      "BransonNg": 4,
       "-": 24
     }
   },
@@ -35435,737 +35430,737 @@
       {
         "lineNumber": 155,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "        filteredTasks.setPredicate(predicate); // predicate should now be applied and evaluate to true for certain threshold"
+        "content": "        filteredTasks.setPredicate("
       },
       {
         "lineNumber": 156,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "        if (predicate instanceof NameContainsKeywordsPredicate) {"
+        "content": "                predicate); // predicate should now be applied and evaluate to true for certain"
       },
       {
         "lineNumber": 157,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "            System.out.println(\"list called??\");"
+        "content": "                            // threshold"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            NameContainsKeywordsPredicate namePredicate \u003d (NameContainsKeywordsPredicate) predicate;"
+        "content": "        if (predicate instanceof NameContainsKeywordsPredicate) {"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            Comparator\u003cTask\u003e comparator \u003d new Comparator\u003c\u003e() {"
+        "content": "            System.out.println(\"list called??\");"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                @Override"
+        "content": "            NameContainsKeywordsPredicate namePredicate \u003d (NameContainsKeywordsPredicate) predicate;"
       },
       {
         "lineNumber": 161,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "                public int compare(Task task1, Task task2) {"
+        "content": "            Comparator\u003cTask\u003e comparator \u003d"
       },
       {
         "lineNumber": 162,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "                    namePredicate.test(task1);"
+        "content": "                    new Comparator\u003c\u003e() {"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    int score1 \u003d namePredicate.getScore();"
+        "content": "                        @Override"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    namePredicate.test(task2);"
+        "content": "                        public int compare(Task task1, Task task2) {"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    int score2 \u003d namePredicate.getScore();"
+        "content": "                            namePredicate.test(task1);"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                    return score1 \u003c score2 ? -1 : 1;"
+        "content": "                            int score1 \u003d namePredicate.getScore();"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                }"
+        "content": "                            namePredicate.test(task2);"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            };"
+        "content": "                            int score2 \u003d namePredicate.getScore();"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            this.taskList.sort(comparator);"
+        "content": "                            return score1 \u003c score2 ? -1 : 1;"
       },
       {
         "lineNumber": 170,
         "author": {
-          "gitId": "-"
+          "gitId": "BransonNg"
         },
-        "content": "        }"
+        "content": "                        }"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "    }"
+        "content": "                    };"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "            this.taskList.sort(comparator);"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "    public void setComparator(Comparator\u003cTask\u003e[] comparators) {"
+        "content": ""
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        requireNonNull(comparators);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        this.comparators \u003d comparators;"
+        "content": "    public void setComparator(Comparator\u003cTask\u003e[] comparators) {"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        this.sortList();"
+        "content": "        requireNonNull(comparators);"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "    }"
+        "content": "        this.comparators \u003d comparators;"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "        this.sortList();"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "    public void sortList() {"
+        "content": ""
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        for (int i \u003d this.comparators.length - 1; i \u003e\u003d 0; i--) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            this.taskList.sort(comparators[i]);"
+        "content": "    public void sortList() {"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        }"
+        "content": "        for (int i \u003d this.comparators.length - 1; i \u003e\u003d 0; i--) {"
       },
       {
         "lineNumber": 186,
         "author": {
-          "gitId": "-"
+          "gitId": "BransonNg"
         },
-        "content": "    }"
+        "content": "            this.taskList.sort(comparators[i]);"
       },
       {
         "lineNumber": 187,
         "author": {
-          "gitId": "-"
+          "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": ""
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "-"
         },
-        "content": "        // short circuit if same object"
+        "content": "    @Override"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": "    public boolean equals(Object obj) {"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "-"
         },
-        "content": "            return true;"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "        if (obj \u003d\u003d this) {"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return true;"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "-"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "        }"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!(obj instanceof ModelManager)) {"
+        "content": ""
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "-"
         },
-        "content": "            return false;"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            return false;"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "-"
         },
-        "content": "        // state check"
+        "content": "        }"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelManager other \u003d (ModelManager) obj;"
+        "content": ""
       },
       {
         "lineNumber": 202,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "-"
         },
-        "content": "        return taskList.equals(other.taskList)"
+        "content": "        // state check"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "-"
         },
-        "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
+        "content": "        ModelManager other \u003d (ModelManager) obj;"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                \u0026\u0026 filteredTasks.equals(other.filteredTasks);"
+        "content": "        return taskList.equals(other.taskList)"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "                \u0026\u0026 filteredTasks.equals(other.filteredTasks);"
       },
       {
         "lineNumber": 207,
         "author": {
-          "gitId": "Permas-Teo"
+          "gitId": "-"
         },
-        "content": "    // \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Pet Manager"
+        "content": "    }"
       },
       {
         "lineNumber": 208,
         "author": {
-          "gitId": "Permas-Teo"
+          "gitId": "BransonNg"
         },
         "content": ""
       },
       {
         "lineNumber": 209,
         "author": {
-          "gitId": "FyonnOh"
+          "gitId": "Permas-Teo"
         },
-        "content": "    @Override"
+        "content": "    // \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Pet Manager"
       },
       {
         "lineNumber": 210,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "Permas-Teo"
         },
-        "content": "    public ReadOnlyPet getPet() {"
+        "content": ""
       },
       {
         "lineNumber": 211,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "FyonnOh"
         },
-        "content": "        return pet;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "    }"
+        "content": "    public ReadOnlyPet getPet() {"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": ""
+        "content": "        return pet;"
       },
       {
         "lineNumber": 214,
         "author": {
-          "gitId": "FyonnOh"
+          "gitId": "BransonNg"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 215,
         "author": {
-          "gitId": "FyonnOh"
+          "gitId": "BransonNg"
         },
-        "content": "    public PetManager getPetManager() {"
+        "content": ""
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "FyonnOh"
         },
-        "content": "        return petManager;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 217,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "FyonnOh"
         },
-        "content": "    }"
+        "content": "    public PetManager getPetManager() {"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "FyonnOh"
         },
-        "content": ""
+        "content": "        return petManager;"
       },
       {
         "lineNumber": 219,
         "author": {
-          "gitId": "Permas-Teo"
+          "gitId": "BransonNg"
         },
-        "content": "    @Override"
+        "content": "    }"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "FyonnOh"
         },
-        "content": "    public void setPetName(String name) {"
+        "content": ""
       },
       {
         "lineNumber": 221,
+        "author": {
+          "gitId": "Permas-Teo"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "FyonnOh"
+        },
+        "content": "    public void setPetName(String name) {"
+      },
+      {
+        "lineNumber": 223,
         "author": {
           "gitId": "FyonnOh"
         },
         "content": "        this.pet.setName(name);"
       },
       {
-        "lineNumber": 222,
+        "lineNumber": 224,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 223,
+        "lineNumber": 225,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 224,
-        "author": {
-          "gitId": "FyonnOh"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 225,
-        "author": {
-          "gitId": "FyonnOh"
-        },
-        "content": "    public void setPetManager(PetManager petManager) {"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "FyonnOh"
         },
-        "content": "        this.petManager \u003d petManager;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "FyonnOh"
         },
-        "content": "        this.petManager.setPet(this.pet);"
+        "content": "    public void setPetManager(PetManager petManager) {"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "FyonnOh"
         },
-        "content": "    }"
+        "content": "        this.petManager \u003d petManager;"
       },
       {
         "lineNumber": 229,
+        "author": {
+          "gitId": "FyonnOh"
+        },
+        "content": "        this.petManager.setPet(this.pet);"
+      },
+      {
+        "lineNumber": 230,
+        "author": {
+          "gitId": "FyonnOh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 231,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "    // \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Pomodoro Manager"
       },
       {
-        "lineNumber": 230,
+        "lineNumber": 232,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": ""
       },
       {
-        "lineNumber": 231,
+        "lineNumber": 233,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    public ReadOnlyPomodoro getPomodoro() {"
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 234,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        return pomodoro;"
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 235,
         "author": {
           "gitId": "FyonnOh"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 236,
         "author": {
           "gitId": "FyonnOh"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 235,
-        "author": {
-          "gitId": "Permas-Teo"
-        },
-        "content": "    public void setPomodoroTask(Task task) {"
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "Permas-Teo"
-        },
-        "content": "        this.pomodoro.setTask(task);"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "Permas-Teo"
         },
-        "content": "    }"
+        "content": "    public void setPomodoroTask(Task task) {"
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "Permas-Teo"
         },
-        "content": ""
+        "content": "        this.pomodoro.setTask(task);"
       },
       {
         "lineNumber": 239,
         "author": {
-          "gitId": "Hardoh"
+          "gitId": "Permas-Teo"
         },
-        "content": "    public Task getPomodoroTask() {"
+        "content": "    }"
       },
       {
         "lineNumber": 240,
         "author": {
-          "gitId": "Hardoh"
+          "gitId": "Permas-Teo"
         },
-        "content": "        return this.pomodoro.getRunningTask();"
+        "content": ""
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    }"
+        "content": "    public Task getPomodoroTask() {"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": ""
+        "content": "        return this.pomodoro.getRunningTask();"
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    public void setPomodoroRestTime(float restTimeInMin) {"
+        "content": "    }"
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "        this.pomodoro.setRestTime(Float.toString(restTimeInMin));"
+        "content": ""
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    }"
+        "content": "    public void setPomodoroRestTime(float restTimeInMin) {"
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": ""
+        "content": "        this.pomodoro.setRestTime(Float.toString(restTimeInMin));"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    public void setPomodoroDefaultTime(float defaultTimeInMin) {"
+        "content": "    }"
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "        this.pomodoro.setDefaultTime(Float.toString(defaultTimeInMin));"
+        "content": ""
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    }"
+        "content": "    public void setPomodoroDefaultTime(float defaultTimeInMin) {"
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": ""
+        "content": "        this.pomodoro.setDefaultTime(Float.toString(defaultTimeInMin));"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    public void setPomodoroManager(PomodoroManager pomodoroManager) {"
+        "content": "    }"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "        this.pomodoroManager \u003d pomodoroManager;"
+        "content": ""
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    }"
+        "content": "    public void setPomodoroManager(PomodoroManager pomodoroManager) {"
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": ""
+        "content": "        this.pomodoroManager \u003d pomodoroManager;"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    public PomodoroManager getPomodoroManager() {"
+        "content": "    }"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "        return pomodoroManager;"
+        "content": ""
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    }"
+        "content": "    public PomodoroManager getPomodoroManager() {"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": ""
+        "content": "        return pomodoroManager;"
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    // \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Statistics Manager"
+        "content": "    }"
       },
       {
         "lineNumber": 260,
@@ -36179,108 +36174,122 @@
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    public Statistics getStatistics() {"
+        "content": "    // \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Statistics Manager"
       },
       {
         "lineNumber": 262,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "        return statistics;"
+        "content": ""
       },
       {
         "lineNumber": 263,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    }"
+        "content": "    public Statistics getStatistics() {"
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": ""
+        "content": "        return statistics;"
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    public void updateDataDatesStatistics() {"
+        "content": "    }"
       },
       {
         "lineNumber": 266,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "        statistics.updateDataDates();"
+        "content": ""
       },
       {
         "lineNumber": 267,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": "    }"
+        "content": "    public void updateDataDatesStatistics() {"
       },
       {
         "lineNumber": 268,
         "author": {
           "gitId": "Hardoh"
         },
-        "content": ""
+        "content": "        statistics.updateDataDates();"
       },
       {
         "lineNumber": 269,
+        "author": {
+          "gitId": "Hardoh"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 270,
+        "author": {
+          "gitId": "Hardoh"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 271,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "    public void updatesDayDataStatistics(DayData dayData) {"
       },
       {
-        "lineNumber": 270,
+        "lineNumber": 272,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "        statistics.updatesDayData(dayData);"
       },
       {
-        "lineNumber": 271,
+        "lineNumber": 273,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 272,
+        "lineNumber": 274,
         "author": {
           "gitId": "BransonNg"
         },
         "content": ""
       },
       {
-        "lineNumber": 273,
+        "lineNumber": 275,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "    public DayData getDayDataFromDate(Date date) {"
       },
       {
-        "lineNumber": 274,
+        "lineNumber": 276,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "        return statistics.getDayDataFromDate(date);"
       },
       {
-        "lineNumber": 275,
+        "lineNumber": 277,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 276,
+        "lineNumber": 278,
         "author": {
           "gitId": "-"
         },
@@ -36290,9 +36299,10 @@
     "authorContributionMap": {
       "FyonnOh": 19,
       "Hardoh": 46,
-      "BransonNg": 81,
+      "artlee06": 5,
+      "BransonNg": 79,
       "Permas-Teo": 22,
-      "-": 108
+      "-": 107
     }
   },
   {
@@ -47695,198 +47705,198 @@
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "import seedu.address.commons.util.StringUtil;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
-        "content": "import seedu.address.commons.util.StringUtil;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 8,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "/** Tests that a {@code Task}\u0027s {@code Name} matches any of the keywords given. */"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 9,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "public class NameContainsKeywordsPredicate implements Predicate\u003cTask\u003e {"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 10,
         "author": {
           "gitId": "-"
         },
         "content": "    private final List\u003cString\u003e keywords;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 11,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    private final int threshold \u003d 3;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    private int score \u003d Integer.MAX_VALUE;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
         "content": "    public NameContainsKeywordsPredicate(List\u003cString\u003e keywords) {"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
         "content": "        this.keywords \u003d keywords;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    public int getScore() {"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        return this.score;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "BransonNg"
         },
         "content": ""
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    public boolean test(Task task) { // change test to return an int value as the edit distance"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        if (keywords.size() \u003d\u003d 0) {"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "            return false;"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "BransonNg"
         },
         "content": ""
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        this.score \u003d Integer.MAX_VALUE;"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        String joinnedKeywords \u003d String.join(\" \", keywords);"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        String[] splitTaskName \u003d task.getName().fullName.split(\"\\\\s+\");"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        for (int i \u003d 0; i \u003c splitTaskName.length; i ++) {"
+        "content": "        for (int i \u003d 0; i \u003c splitTaskName.length; i++) {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "artlee06"
+        },
+        "content": "            String joinnedPhrase \u003d"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "            String joinnedPhrase \u003d String.join(\" \",  Arrays.copyOfRange(splitTaskName, i, i + keywords.size()));"
+        "content": "                    String.join(\" \", Arrays.copyOfRange(splitTaskName, i, i + keywords.size()));"
       },
       {
         "lineNumber": 34,
@@ -47935,14 +47945,14 @@
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        for (String key: keywords) {"
+        "content": "        for (String key : keywords) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "            for (String name: splitTaskName) {"
+        "content": "            for (String name : splitTaskName) {"
       },
       {
         "lineNumber": 42,
@@ -48087,7 +48097,8 @@
     ],
     "authorContributionMap": {
       "Hardoh": 3,
-      "BransonNg": 38,
+      "artlee06": 2,
+      "BransonNg": 36,
       "-": 20
     }
   },
@@ -52166,7 +52177,7 @@
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "        return new Task[] {TASK1, TASK2, TASK3,TASK4,TASK5,TASK6,TASK7 };"
+        "content": "        return new Task[] {TASK1, TASK2, TASK3, TASK4, TASK5, TASK6, TASK7};"
       },
       {
         "lineNumber": 61,
@@ -88115,33 +88126,26 @@
       {
         "lineNumber": 138,
         "author": {
-          "gitId": "BransonNg"
+          "gitId": "artlee06"
         },
-        "content": "        model.updateFilteredTaskList("
+        "content": "        model.updateFilteredTaskList(new NameContainsKeywordsPredicate(Arrays.asList(name)));"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                new NameContainsKeywordsPredicate(Arrays.asList(name)));"
-      },
-      {
-        "lineNumber": 140,
-        "author": {
-          "gitId": "BransonNg"
-        },
         "content": "        assertEquals(task, model.getFilteredTaskList().get(0));"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 140,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 141,
         "author": {
           "gitId": "-"
         },
@@ -88151,8 +88155,8 @@
     "authorContributionMap": {
       "Hardoh": 15,
       "FyonnOh": 1,
-      "artlee06": 4,
-      "BransonNg": 23,
+      "artlee06": 5,
+      "BransonNg": 21,
       "Permas-Teo": 34,
       "-": 65
     }
@@ -92239,607 +92243,600 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "BransonNg"
-        },
-        "content": "import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
           "gitId": "-"
         },
         "content": "import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 8,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "import static seedu.address.testutil.TypicalTasks.FEED_CAT;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 9,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "import static seedu.address.testutil.TypicalTasks.RUN;"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 10,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "import static seedu.address.testutil.TypicalTasks.TUTORIAL_1;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 11,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": "import java.util.Arrays;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
         "content": "import java.util.Collections;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
         "content": "import org.junit.jupiter.api.Test;"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.Model;"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.ModelManager;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "import seedu.address.model.Pet;"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "import seedu.address.model.Pomodoro;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "import seedu.address.model.Statistics;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.UserPrefs;"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "import seedu.address.model.task.NameContainsKeywordsPredicate;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "/** Contains integration tests (interaction with the Model) for {@code FindCommand}. */"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
         "content": "public class FindCommandTest {"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    private Model model \u003d"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "            new ModelManager("
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Permas-Teo"
+        },
+        "content": "                    getTypicalTaskList(),"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "Permas-Teo"
         },
-        "content": "                    getTypicalTaskList(),"
+        "content": "                    new Pet(),"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "Permas-Teo"
         },
-        "content": "                    new Pet(),"
+        "content": "                    new Pomodoro(),"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "Permas-Teo"
         },
-        "content": "                    new Pomodoro(),"
+        "content": "                    new Statistics(),"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "Permas-Teo"
         },
-        "content": "                    new Statistics(),"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "Permas-Teo"
-        },
         "content": "                    new UserPrefs());"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    private Model expectedModel \u003d"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "            new ModelManager("
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                    getTypicalTaskList(),"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                    new Pet(),"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 37,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                    new Pomodoro(),"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 38,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                    new Statistics(),"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                    new UserPrefs());"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    public void equals() {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void equals() {"
+        "content": "        NameContainsKeywordsPredicate firstPredicate \u003d"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate firstPredicate \u003d"
+        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"first\"));"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"first\"));"
+        "content": "        NameContainsKeywordsPredicate secondPredicate \u003d"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": "        NameContainsKeywordsPredicate secondPredicate \u003d"
+        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"second\"));"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "                new NameContainsKeywordsPredicate(Collections.singletonList(\"second\"));"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        FindCommand findFirstCommand \u003d new FindCommand(firstPredicate);"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "        FindCommand findFirstCommand \u003d new FindCommand(firstPredicate);"
+        "content": "        FindCommand findSecondCommand \u003d new FindCommand(secondPredicate);"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "        FindCommand findSecondCommand \u003d new FindCommand(secondPredicate);"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // same object -\u003e returns true"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": "        // same object -\u003e returns true"
+        "content": "        assertTrue(findFirstCommand.equals(findFirstCommand));"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(findFirstCommand.equals(findFirstCommand));"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // same values -\u003e returns true"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "-"
         },
-        "content": "        // same values -\u003e returns true"
+        "content": "        FindCommand findFirstCommandCopy \u003d new FindCommand(firstPredicate);"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": "        FindCommand findFirstCommandCopy \u003d new FindCommand(firstPredicate);"
+        "content": "        assertTrue(findFirstCommand.equals(findFirstCommandCopy));"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertTrue(findFirstCommand.equals(findFirstCommandCopy));"
+        "content": ""
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // different types -\u003e returns false"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "-"
         },
-        "content": "        // different types -\u003e returns false"
+        "content": "        assertFalse(findFirstCommand.equals(1));"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(findFirstCommand.equals(1));"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        // null -\u003e returns false"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "        // null -\u003e returns false"
+        "content": "        assertFalse(findFirstCommand.equals(null));"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertFalse(findFirstCommand.equals(null));"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        // different task -\u003e returns false"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
         "content": "        assertFalse(findFirstCommand.equals(findSecondCommand));"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    @Test"
       },
       {
-        "lineNumber": 70,
+        "lineNumber": 69,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "    public void execute_zeroKeywords_noTaskFound() {"
       },
       {
-        "lineNumber": 71,
+        "lineNumber": 70,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        String expectedMessage \u003d String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 0);"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
         "content": "        NameContainsKeywordsPredicate predicate \u003d preparePredicate(\" \");"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
         "content": "        FindCommand command \u003d new FindCommand(predicate);"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 73,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "        expectedModel.updateFilteredTaskList(predicate);"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
         "content": "        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 75,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "        assertEquals(Collections.emptyList(), model.getFilteredTaskList());"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    @Test"
       },
       {
-        "lineNumber": 80,
+        "lineNumber": 79,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "    public void execute_multipleKeywords_multipleTaskFound() {"
       },
       {
-        "lineNumber": 81,
+        "lineNumber": 80,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        String expectedMessage \u003d String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 3);"
       },
       {
-        "lineNumber": 82,
+        "lineNumber": 81,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "        NameContainsKeywordsPredicate predicate \u003d preparePredicate(\"mum tells me to\");"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
         "content": "        FindCommand command \u003d new FindCommand(predicate);"
       },
       {
-        "lineNumber": 84,
+        "lineNumber": 83,
         "author": {
           "gitId": "Hardoh"
         },
         "content": "        expectedModel.updateFilteredTaskList(predicate);"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
         "content": "        assertCommandSuccess(command, model, expectedMessage, expectedModel);"
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 85,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        assertEquals(Arrays.asList(RUN, FEED_CAT, TUTORIAL_1), model.getFilteredTaskList());"
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 87,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 88,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "    /** Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}. */"
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 89,
         "author": {
           "gitId": "-"
         },
         "content": "    private NameContainsKeywordsPredicate preparePredicate(String userInput) {"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
         "content": "        return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split(\"\\\\s+\")));"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 92,
         "author": {
           "gitId": "-"
         },
@@ -92848,7 +92845,7 @@
     ],
     "authorContributionMap": {
       "Hardoh": 6,
-      "BransonNg": 13,
+      "BransonNg": 12,
       "Permas-Teo": 17,
       "-": 57
     }
@@ -92883,325 +92880,311 @@
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "BransonNg"
-        },
-        "content": "import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "BransonNg"
-        },
         "content": "import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;"
       },
       {
-        "lineNumber": 7,
+        "lineNumber": 5,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 6,
         "author": {
           "gitId": "-"
         },
         "content": "import org.junit.jupiter.api.BeforeEach;"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
         "content": "import org.junit.jupiter.api.Test;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.Model;"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.ModelManager;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 10,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "import seedu.address.model.Pet;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 11,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "import seedu.address.model.Pomodoro;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 12,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "import seedu.address.model.Statistics;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
         "content": "import seedu.address.model.UserPrefs;"
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 15,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "/** Contains integration tests (interaction with the Model) and unit tests for ListCommand. */"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
         "content": "public class ListCommandTest {"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 17,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
         "content": "    private Model model;"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
         "content": "    private Model expectedModel;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
         "content": "    @BeforeEach"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
         "content": "    public void setUp() {"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 23,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        model \u003d"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 24,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                new ModelManager("
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 25,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                        getTypicalTaskList(),"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 26,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "                        new Pet(),"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "BransonNg"
+        },
+        "content": "                        new Pomodoro(),"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "Permas-Teo"
+        },
+        "content": "                        new Statistics(),"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "BransonNg"
         },
-        "content": "                        new Pomodoro(),"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "Permas-Teo"
-        },
-        "content": "                        new Statistics(),"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "BransonNg"
-        },
         "content": "                        new UserPrefs()); // Should we shift these to ModelManager"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 30,
         "author": {
           "gitId": "BransonNg"
         },
         "content": "        expectedModel \u003d"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 31,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                new ModelManager("
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 32,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                        model.getTaskList(),"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 33,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                        new Pet(),"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 34,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                        new Pomodoro(),"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 35,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                        new Statistics(),"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 36,
         "author": {
           "gitId": "Permas-Teo"
         },
         "content": "                        new UserPrefs());"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public void execute_listIsNotFiltered_showsSameList() {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void execute_listIsNotFiltered_showsSameList() {"
+        "content": "    }"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);"
+        "content": ""
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public void execute_listIsFiltered_showsEverything() {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void execute_listIsFiltered_showsEverything() {"
-      },
-      {
-        "lineNumber": 48,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);"
-      },
-      {
-        "lineNumber": 49,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
@@ -93209,7 +93192,7 @@
       }
     ],
     "authorContributionMap": {
-      "BransonNg": 13,
+      "BransonNg": 11,
       "Permas-Teo": 8,
       "-": 29
     }

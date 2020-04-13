@@ -517,9 +517,9 @@
       {
         "lineNumber": 74,
         "author": {
-          "gitId": "shenghaoc"
+          "gitId": "tianqi77"
         },
-        "content": "    archiveName \u003d \u0027petstorehelper.jar\u0027"
+        "content": "    archiveName \u003d \u0027[CS2103-W15-4][PetStoreHelper].jar\u0027"
       },
       {
         "lineNumber": 75,
@@ -1112,7 +1112,8 @@
     ],
     "authorContributionMap": {
       "limdylan": 5,
-      "shenghaoc": 3,
+      "tianqi77": 1,
+      "shenghaoc": 2,
       "-": 150
     }
   },
@@ -2034,7 +2035,7 @@
         "author": {
           "gitId": "shenghaoc"
         },
-        "content": "    public static final Version VERSION \u003d new Version(1, 3, 3, true);"
+        "content": "    public static final Version VERSION \u003d new Version(1, 4, 0, false);"
       },
       {
         "lineNumber": 40,
@@ -33446,346 +33447,6 @@
     }
   },
   {
-    "path": "src/main/java/clzzz/helper/model/PetListChangeListener.java",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "shenghaoc"
-        },
-        "content": "package clzzz.helper.model;"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "import java.util.List;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "shenghaoc"
-        },
-        "content": "import clzzz.helper.model.pet.Pet;"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "shenghaoc"
-        },
-        "content": "import clzzz.helper.model.slot.Slot;"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "shenghaoc"
-        },
-        "content": "import javafx.collections.ListChangeListener;"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": " * Listener class to look out for changes in the pet list and use to modify schedule correspondingly"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": " */"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "public abstract class PetListChangeListener implements ListChangeListener\u003cPet\u003e {"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "    public void onChanged (Change\u003c? extends Pet\u003e petChange) {"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "        List\u003c? extends Pet\u003e removedPets;"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "        List\u003c? extends Pet\u003e addedPets;"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "        while (petChange.next()) {"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "            removedPets \u003d petChange.getRemoved();"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "            addedPets \u003d petChange.getAddedSubList();"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "            if (removedPets.size() \u003e 0 \u0026\u0026 addedPets.size() \u003e 0) {"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "                for (int i \u003d 0; i \u003c removedPets.size(); i++) {"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "                    updateSlotsDueToPetEdit(removedPets.get(i), addedPets.get(i));"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "            } else if (removedPets.size() \u003e 0) {"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "                for (Pet removedPet : removedPets) {"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "                    removeExcessSlot(removedPet);"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "                }"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "            }"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "limdylan"
-        },
-        "content": "    protected Slot petReplacedSlot(Slot slot, Pet newPet) {"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "limdylan"
-        },
-        "content": "        return slot.replacePetWith(newPet);"
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "     * To be filled up with methods accessible from UniquePetList to update the slots list"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "     * @param removed the pet that was removed on pet list change. We assume that only 1 pet is deleted at a time."
-      },
-      {
-        "lineNumber": 42,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "     * @param added the pet that was added on pet list change. We assume that only 1 pet is added at a time."
-      },
-      {
-        "lineNumber": 43,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 44,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "    protected abstract void updateSlotsDueToPetEdit(Pet removed, Pet added);"
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 46,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "    protected abstract void removeExcessSlot(Pet removed);"
-      },
-      {
-        "lineNumber": 47,
-        "author": {
-          "gitId": "umaikaze"
-        },
-        "content": "}"
-      }
-    ],
-    "authorContributionMap": {
-      "umaikaze": 41,
-      "limdylan": 2,
-      "shenghaoc": 4
-    }
-  },
-  {
     "path": "src/main/java/clzzz/helper/model/PetTracker.java",
     "fileType": "functional-code",
     "lines": [
@@ -37149,10 +36810,290 @@
           "gitId": "Zhu-Ruicong"
         },
         "content": "}"
+      },
+      {
+        "lineNumber": 258,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": " * Listener class to look out for changes in the pet list and use to modify schedule correspondingly"
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 262,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "abstract class PetListChangeListener implements ListChangeListener\u003cPet\u003e {"
+      },
+      {
+        "lineNumber": 263,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "    public void onChanged (Change\u003c? extends Pet\u003e petChange) {"
+      },
+      {
+        "lineNumber": 266,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "        List\u003c? extends Pet\u003e removedPets;"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "        List\u003c? extends Pet\u003e addedPets;"
+      },
+      {
+        "lineNumber": 268,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 269,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "        while (petChange.next()) {"
+      },
+      {
+        "lineNumber": 270,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "            removedPets \u003d petChange.getRemoved();"
+      },
+      {
+        "lineNumber": 271,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "            addedPets \u003d petChange.getAddedSubList();"
+      },
+      {
+        "lineNumber": 272,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 273,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "            if (removedPets.size() \u003e 0 \u0026\u0026 addedPets.size() \u003e 0) {"
+      },
+      {
+        "lineNumber": 274,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "                for (int i \u003d 0; i \u003c removedPets.size(); i++) {"
+      },
+      {
+        "lineNumber": 275,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "                    updateSlotsDueToPetEdit(removedPets.get(i), addedPets.get(i));"
+      },
+      {
+        "lineNumber": 276,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 277,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "            } else if (removedPets.size() \u003e 0) {"
+      },
+      {
+        "lineNumber": 278,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "                for (Pet removedPet : removedPets) {"
+      },
+      {
+        "lineNumber": 279,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "                    removeExcessSlot(removedPet);"
+      },
+      {
+        "lineNumber": 280,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "                }"
+      },
+      {
+        "lineNumber": 281,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "            }"
+      },
+      {
+        "lineNumber": 282,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 283,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 284,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 285,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "    protected Slot petReplacedSlot(Slot slot, Pet newPet) {"
+      },
+      {
+        "lineNumber": 286,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "        return slot.replacePetWith(newPet);"
+      },
+      {
+        "lineNumber": 287,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 288,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 289,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 290,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "     * To be filled up with methods accessible from UniquePetList to update the slots list"
+      },
+      {
+        "lineNumber": 291,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "     * @param removed the pet that was removed on pet list change. We assume that only 1 pet is deleted at a time."
+      },
+      {
+        "lineNumber": 292,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "     * @param added the pet that was added on pet list change. We assume that only 1 pet is added at a time."
+      },
+      {
+        "lineNumber": 293,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 294,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "    protected abstract void updateSlotsDueToPetEdit(Pet removed, Pet added);"
+      },
+      {
+        "lineNumber": 295,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 296,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "    protected abstract void removeExcessSlot(Pet removed);"
+      },
+      {
+        "lineNumber": 297,
+        "author": {
+          "gitId": "umaikaze"
+        },
+        "content": "}"
       }
     ],
     "authorContributionMap": {
-      "umaikaze": 55,
+      "umaikaze": 95,
       "limdylan": 16,
       "Zhu-Ruicong": 175,
       "shenghaoc": 11
@@ -40082,7 +40023,7 @@
         "author": {
           "gitId": "Zhu-Ruicong"
         },
-        "content": "        internalList.setAll(new FoodCollectionList(pets).internalList);"
+        "content": "        internalList.setAll(new FoodCollectionList(pets).asUnmodifiableObservableList());"
       },
       {
         "lineNumber": 88,
@@ -58762,63 +58703,63 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            handleChangeDisplay(commandResult.getDisplaySystemType());"
+        "content": "            if (commandResult.isExit()) {"
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "-"
+          "gitId": "limdylan"
         },
-        "content": ""
+        "content": "                handleExit();"
       },
       {
         "lineNumber": 214,
         "author": {
-          "gitId": "-"
+          "gitId": "limdylan"
         },
-        "content": "            if (commandResult.isShowHelp()) {"
+        "content": "            }"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "-"
         },
-        "content": "                handleHelp();"
+        "content": ""
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "-"
         },
-        "content": "            }"
+        "content": "            if (commandResult.isShowHelp()) {"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "                handleHelp();"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "-"
         },
-        "content": "            if (commandResult.isExit()) {"
+        "content": "            }"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "-"
         },
-        "content": "                handleExit();"
+        "content": ""
       },
       {
         "lineNumber": 220,
         "author": {
-          "gitId": "-"
+          "gitId": "limdylan"
         },
-        "content": "            }"
+        "content": "            handleChangeDisplay(commandResult.getDisplaySystemType());"
       },
       {
         "lineNumber": 221,
@@ -58886,11 +58827,11 @@
     ],
     "authorContributionMap": {
       "umaikaze": 6,
-      "limdylan": 42,
+      "limdylan": 45,
       "tianqi77": 13,
       "Zhu-Ruicong": 1,
       "shenghaoc": 11,
-      "-": 156
+      "-": 153
     }
   },
   {
@@ -65744,70 +65685,70 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            if (h.size() \u003d\u003d 0 || h.overlaps(currSlot)) {"
+        "content": "            if (h.size() \u003e 0 \u0026\u0026 !h.overlaps(currSlot)) {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "                h.add(currSlot);"
+        "content": "                flushOutHolding(earliestTime, rowIndex, h, slotIndex);"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "                continue;"
+        "content": "                if (h.sameDay(currSlot)) {"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            }"
+        "content": "                    flushOutBuffer(earliestTime, rowIndex, h.end(), currSlot.getTime());"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            flushOutHolding(earliestTime, rowIndex, h, slotIndex);"
+        "content": "                } else {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            if (h.sameDay(currSlot)) {"
+        "content": "                    rowIndex++;"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "                flushOutBuffer(earliestTime, rowIndex, h.end(), currSlot.getTime());"
+        "content": "                    flushOutDate(rowIndex, currSlot.getDate());"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "                h.reset();"
+        "content": "                    flushOutBuffer(earliestTime, rowIndex, earliestTime, currSlot.getTime());"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "                h.add(currSlot);"
+        "content": "                }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "                continue;"
+        "content": "                h.reset();"
       },
       {
         "lineNumber": 96,
@@ -65821,574 +65762,574 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            h.reset();"
+        "content": "            h.add(currSlot);"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            rowIndex++;"
+        "content": "        }"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            flushOutDate(rowIndex, currSlot.getDate());"
+        "content": "        flushOutHolding(earliestTime, rowIndex, h, allSlots.size());"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            flushOutBuffer(earliestTime, rowIndex, earliestTime, currSlot.getTime());"
+        "content": "    }"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            h.add(currSlot);"
+        "content": ""
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        }"
+        "content": "    /**"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        flushOutHolding(earliestTime, rowIndex, h, allSlots.size());"
+        "content": "     * Clears the previously constructed calendar."
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "    private void clearAll() {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    /**"
+        "content": "        gridPane.getChildren().clear();"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     * Clears the previously constructed calendar."
+        "content": "        gridPane.getRowConstraints().clear();"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     */"
+        "content": "        gridPane.getColumnConstraints().clear();"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private void clearAll() {"
+        "content": "    }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        gridPane.getChildren().clear();"
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        gridPane.getRowConstraints().clear();"
+        "content": "    /**"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        gridPane.getColumnConstraints().clear();"
+        "content": "     * Flushes out and renders a {@code CalendarBuffer}."
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "    private void flushOutBuffer(LocalTime earliestTime, int rowIndex,"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    /**"
+        "content": "            LocalTime bufferStartTime, LocalTime bufferEndTime) {"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     * Flushes out and renders a {@code CalendarBuffer}."
+        "content": "        if (!bufferEndTime.isAfter(bufferStartTime)) {"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     */"
+        "content": "            return;"
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private void flushOutBuffer(LocalTime earliestTime, int rowIndex,"
+        "content": "        }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            LocalTime bufferStartTime, LocalTime bufferEndTime) {"
+        "content": "        int colIndex \u003d getColIndex(earliestTime, bufferStartTime);"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        if (!bufferEndTime.isAfter(bufferStartTime)) {"
+        "content": "        int colSpan \u003d getColSpan(bufferStartTime, bufferEndTime);"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            return;"
+        "content": "        CalendarBuffer calendarBuffer \u003d new CalendarBuffer(bufferStartTime, bufferEndTime);"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        }"
+        "content": "        gridPane.add(calendarBuffer.getRoot(), colIndex, rowIndex, colSpan, 1);"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int colIndex \u003d getColIndex(earliestTime, bufferStartTime);"
+        "content": "    }"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int colSpan \u003d getColSpan(bufferStartTime, bufferEndTime);"
+        "content": ""
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        CalendarBuffer calendarBuffer \u003d new CalendarBuffer(bufferStartTime, bufferEndTime);"
+        "content": "    /**"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        gridPane.add(calendarBuffer.getRoot(), colIndex, rowIndex, colSpan, 1);"
+        "content": "     * Flushes out and renders a {@code CalendarDate}."
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "    private void flushOutDate(int rowIndex, LocalDate date) {"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    /**"
+        "content": "        int colIndex \u003d 0;"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     * Flushes out and renders a {@code CalendarDate}."
+        "content": "        int colSpan \u003d getColSpan(CalendarDate.DURATION);"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     */"
+        "content": "        CalendarDate calendarDate \u003d new CalendarDate(date);"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private void flushOutDate(int rowIndex, LocalDate date) {"
+        "content": "        gridPane.add(calendarDate.getRoot(), colIndex, rowIndex, colSpan, 1);"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int colIndex \u003d 0;"
+        "content": "    }"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int colSpan \u003d getColSpan(CalendarDate.DURATION);"
+        "content": ""
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        CalendarDate calendarDate \u003d new CalendarDate(date);"
+        "content": "    /**"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        gridPane.add(calendarDate.getRoot(), colIndex, rowIndex, colSpan, 1);"
+        "content": "     * Flushes out and renders all slots in holding."
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "    private void flushOutHolding(LocalTime earliestTime, int rowIndex, Holding h, int lastDisplayedIndex) {"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    /**"
+        "content": "        if (h.size() \u003d\u003d 1) {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     * Flushes out and renders all slots in holding."
+        "content": "            flushOutHoldingSingle(earliestTime, rowIndex, h.slots.get(0), lastDisplayedIndex);"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     */"
+        "content": "        } else {"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private void flushOutHolding(LocalTime earliestTime, int rowIndex, Holding h, int lastDisplayedIndex) {"
+        "content": "            flushOutHoldingMultiple(earliestTime, rowIndex, h, lastDisplayedIndex);"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        if (h.size() \u003d\u003d 1) {"
+        "content": "        }"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            flushOutHoldingSingle(earliestTime, rowIndex, h.slots.get(0), lastDisplayedIndex);"
+        "content": "    }"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        } else {"
+        "content": ""
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            flushOutHoldingMultiple(earliestTime, rowIndex, h, lastDisplayedIndex);"
+        "content": "    /**"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        }"
+        "content": "     * Flushes out and renders a {@code CalendarSlot}."
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "    private void flushOutHoldingSingle(LocalTime earliestTime, int rowIndex, Slot slot, int lastDisplayedIndex) {"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    /**"
+        "content": "        int colIndex \u003d getColIndex(earliestTime, slot.getTime());"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     * Flushes out and renders a {@code CalendarSlot}."
+        "content": "        int colSpan \u003d getColSpan(slot.getDuration());"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     */"
+        "content": "        CalendarSlot calendarSlot \u003d new CalendarSlot(slot, lastDisplayedIndex);"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private void flushOutHoldingSingle(LocalTime earliestTime, int rowIndex, Slot slot, int lastDisplayedIndex) {"
+        "content": "        Tooltip.install(calendarSlot.getRoot(), calendarSlot.createTooltip());"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int colIndex \u003d getColIndex(earliestTime, slot.getTime());"
+        "content": "        gridPane.add(calendarSlot.getRoot(), colIndex, rowIndex, colSpan, 1);"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int colSpan \u003d getColSpan(slot.getDuration());"
+        "content": "    }"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        CalendarSlot calendarSlot \u003d new CalendarSlot(slot, lastDisplayedIndex);"
+        "content": ""
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        Tooltip.install(calendarSlot.getRoot(), calendarSlot.createTooltip());"
+        "content": "    /**"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        gridPane.add(calendarSlot.getRoot(), colIndex, rowIndex, colSpan, 1);"
+        "content": "     * Flushes out and renders a {@code CalendarConflict}."
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "    private void flushOutHoldingMultiple(LocalTime earliestTime, int rowIndex, Holding h, int lastDisplayedIndex) {"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    /**"
+        "content": "        int colIndex \u003d getColIndex(earliestTime, h.start());"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     * Flushes out and renders a {@code CalendarConflict}."
+        "content": "        int colSpan \u003d getColSpan(h.start(), h.end());"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     */"
+        "content": "        CalendarConflict calendarConflict \u003d new CalendarConflict(h.all(), h.start(), h.end(), lastDisplayedIndex);"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private void flushOutHoldingMultiple(LocalTime earliestTime, int rowIndex, Holding h, int lastDisplayedIndex) {"
+        "content": "        Tooltip.install(calendarConflict.getRoot(), calendarConflict.createTooltip());"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int colIndex \u003d getColIndex(earliestTime, h.start());"
+        "content": "        gridPane.add(calendarConflict.getRoot(), colIndex, rowIndex, colSpan, 1);"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int colSpan \u003d getColSpan(h.start(), h.end());"
+        "content": "    }"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        CalendarConflict calendarConflict \u003d new CalendarConflict(h.all(), h.start(), h.end(), lastDisplayedIndex);"
+        "content": ""
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        Tooltip.install(calendarConflict.getRoot(), calendarConflict.createTooltip());"
+        "content": "    private int getColIndex(LocalTime earliestTime, LocalTime slotTime) {"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        gridPane.add(calendarConflict.getRoot(), colIndex, rowIndex, colSpan, 1);"
+        "content": "        assert slotTime.isBefore(earliestTime) : \"Given slot time is earlier than the earliest time!\";"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    }"
+        "content": "        int delta \u003d 0;"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "        if (earliestTime.isBefore(slotTime)) {"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private int getColIndex(LocalTime earliestTime, LocalTime slotTime) {"
+        "content": "            delta \u003d Math.toIntExact(SlotDuration.between(earliestTime, slotTime).toMinutes());"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        assert slotTime.isBefore(earliestTime) : \"Given slot time is earlier than the earliest time!\";"
+        "content": "        }"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int delta \u003d 0;"
+        "content": "        return CalendarDate.getWidth() + delta;"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        if (earliestTime.isBefore(slotTime)) {"
+        "content": "    }"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            delta \u003d Math.toIntExact(SlotDuration.between(earliestTime, slotTime).toMinutes());"
+        "content": ""
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        }"
+        "content": "    private int getColSpan(SlotDuration duration) {"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        return CalendarDate.getWidth() + delta;"
+        "content": "        return Math.toIntExact(duration.toMinutes());"
       },
       {
         "lineNumber": 179,
@@ -66409,14 +66350,14 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private int getColSpan(SlotDuration duration) {"
+        "content": "    private int getColSpan(LocalTime startTime, LocalTime endTime) {"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        return Math.toIntExact(duration.toMinutes());"
+        "content": "        return getColSpan(SlotDuration.between(startTime, endTime));"
       },
       {
         "lineNumber": 183,
@@ -66437,168 +66378,168 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private int getColSpan(LocalTime startTime, LocalTime endTime) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        return getColSpan(SlotDuration.between(startTime, endTime));"
+        "content": "     * Encapsulates the list of all currently conflicted slots in holding."
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    }"
+        "content": "     */"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "    private class Holding {"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    /**"
+        "content": "        private List\u003cSlot\u003e slots \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     * Encapsulates the list of all currently conflicted slots in holding."
+        "content": "        private LocalTime startTime \u003d LocalTime.MAX;"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "     */"
+        "content": "        private LocalTime endTime \u003d LocalTime.MIN;"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "    private class Holding {"
+        "content": ""
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        private List\u003cSlot\u003e slots \u003d new ArrayList\u003c\u003e();"
+        "content": "        Holding() {}"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        private LocalTime startTime \u003d LocalTime.MAX;"
+        "content": ""
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        private LocalTime endTime \u003d LocalTime.MIN;"
+        "content": "        void add(Slot slot) {"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "            slots.add(slot);"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        Holding() {}"
+        "content": "            startTime \u003d startTime.isBefore(slot.getTime()) ? startTime : slot.getTime();"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "            endTime \u003d endTime.isAfter(slot.getEndTime()) ? endTime : slot.getEndTime();"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        void add(Slot slot) {"
+        "content": "        }"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            slots.add(slot);"
+        "content": ""
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            startTime \u003d startTime.isBefore(slot.getTime()) ? startTime : slot.getTime();"
+        "content": "        void reset() {"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            endTime \u003d endTime.isAfter(slot.getEndTime()) ? endTime : slot.getEndTime();"
+        "content": "            slots \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        }"
+        "content": "            startTime \u003d LocalTime.MAX;"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "            endTime \u003d LocalTime.MIN;"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        void reset() {"
+        "content": "        }"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            slots \u003d new ArrayList\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            startTime \u003d LocalTime.MAX;"
+        "content": "        boolean overlaps(Slot slot) {"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            endTime \u003d LocalTime.MIN;"
+        "content": "            return slots.stream().anyMatch(s -\u003e slot.isInConflictWith(s));"
       },
       {
         "lineNumber": 209,
@@ -66619,14 +66560,14 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        boolean overlaps(Slot slot) {"
+        "content": "        boolean sameDay(Slot slot) {"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            return slots.stream().anyMatch(s -\u003e slot.isInConflictWith(s));"
+        "content": "            return slots.get(0).isSameDate(slot);"
       },
       {
         "lineNumber": 213,
@@ -66647,14 +66588,14 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        boolean sameDay(Slot slot) {"
+        "content": "        int size() {"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            return slots.get(0).isSameDate(slot);"
+        "content": "            return slots.size();"
       },
       {
         "lineNumber": 217,
@@ -66675,14 +66616,14 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        int size() {"
+        "content": "        List\u003cSlot\u003e all() {"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            return slots.size();"
+        "content": "            return slots;"
       },
       {
         "lineNumber": 221,
@@ -66703,14 +66644,14 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        List\u003cSlot\u003e all() {"
+        "content": "        LocalTime start() {"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            return slots;"
+        "content": "            return startTime;"
       },
       {
         "lineNumber": 225,
@@ -66731,14 +66672,14 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        LocalTime start() {"
+        "content": "        LocalTime end() {"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            return startTime;"
+        "content": "            return endTime;"
       },
       {
         "lineNumber": 229,
@@ -66759,66 +66700,38 @@
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        LocalTime end() {"
+        "content": "        @Override"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "            return endTime;"
+        "content": "        public String toString() {"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        }"
+        "content": "            return slots.toString();"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "limdylan"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "limdylan"
         },
-        "content": "        @Override"
-      },
-      {
-        "lineNumber": 236,
-        "author": {
-          "gitId": "limdylan"
-        },
-        "content": "        public String toString() {"
-      },
-      {
-        "lineNumber": 237,
-        "author": {
-          "gitId": "limdylan"
-        },
-        "content": "            return slots.toString();"
-      },
-      {
-        "lineNumber": 238,
-        "author": {
-          "gitId": "limdylan"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 239,
-        "author": {
-          "gitId": "limdylan"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 240,
+        "lineNumber": 236,
         "author": {
           "gitId": "limdylan"
         },
@@ -66826,7 +66739,7 @@
       }
     ],
     "authorContributionMap": {
-      "limdylan": 237,
+      "limdylan": 233,
       "shenghaoc": 3
     }
   },

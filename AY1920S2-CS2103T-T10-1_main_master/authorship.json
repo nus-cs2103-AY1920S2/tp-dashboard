@@ -11023,31 +11023,38 @@
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "    public ObservableList\u003cQuote\u003e getFilteredQuoteList() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        return model.getFilteredQuoteList();"
+        "content": "    public ObservableList\u003cQuote\u003e getFilteredQuoteList() {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "    }"
+        "content": "        return model.getFilteredQuoteList();"
       },
       {
         "lineNumber": 109,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 110,
         "author": {
           "gitId": "tharshita"
         },
         "content": ""
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 111,
         "author": {
           "gitId": "-"
         },
@@ -11059,7 +11066,7 @@
       "tharshita": 17,
       "-": 55,
       "beatricetay": 23,
-      "YuuTon9": 6
+      "YuuTon9": 7
     }
   },
   {
@@ -21249,7 +21256,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final Index[] targetIndex;"
+        "content": "    private final Index[] targetIndexes;"
       },
       {
         "lineNumber": 35,
@@ -21270,14 +21277,14 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    public DeleteCommand(Index[] targetIndex) {"
+        "content": "    public DeleteCommand(Index[] targetIndexes) {"
       },
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "-"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.targetIndex \u003d targetIndex;"
+        "content": "        this.targetIndexes \u003d targetIndexes;"
       },
       {
         "lineNumber": 39,
@@ -21347,7 +21354,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        if (!canDeleteTargetRecipes(lastShownList.size(), targetIndex)) {"
+        "content": "        if (!canDeleteTargetRecipes(lastShownList.size(), targetIndexes)) {"
       },
       {
         "lineNumber": 49,
@@ -21375,14 +21382,14 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        for (int i \u003d 0; i \u003c targetIndex.length; i++) {"
+        "content": "        for (int i \u003d 0; i \u003c targetIndexes.length; i++) {"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            Index indexAfterEachDeletion \u003d Index.fromZeroBased(targetIndex[i].getZeroBased() - i);"
+        "content": "            Index indexAfterEachDeletion \u003d Index.fromZeroBased(targetIndexes[i].getZeroBased() - i);"
       },
       {
         "lineNumber": 54,
@@ -21599,21 +21606,21 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private boolean canDeleteTargetRecipes(int lastShownListSize, Index[] targetIndex) {"
+        "content": "    private boolean canDeleteTargetRecipes(int lastShownListSize, Index[] targetIndexes) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        for (int i \u003d targetIndex.length - 1; i \u003e\u003d 0; i--) {"
+        "content": "        for (int i \u003d targetIndexes.length - 1; i \u003e\u003d 0; i--) {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            if (targetIndex[i].getOneBased() \u003e lastShownListSize) {"
+        "content": "            if (targetIndexes[i].getOneBased() \u003e lastShownListSize) {"
       },
       {
         "lineNumber": 87,
@@ -21690,7 +21697,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                \u0026\u0026 Arrays.equals(targetIndex, ((DeleteCommand) other).targetIndex)); // state check"
+        "content": "                \u0026\u0026 Arrays.equals(targetIndexes, ((DeleteCommand) other).targetIndexes)); // state check"
       },
       {
         "lineNumber": 98,
@@ -21708,9 +21715,9 @@
       }
     ],
     "authorContributionMap": {
-      "pekchinsiongbrian": 49,
+      "pekchinsiongbrian": 50,
       "tharshita": 6,
-      "-": 31,
+      "-": 30,
       "beatricetay": 13
     }
   },
@@ -21742,513 +21749,513 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "beatricetay"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "import static seedu.recipe.logic.commands.recipe.EditCommand.createEditedRecipe;"
+        "content": "import static seedu.recipe.logic.commands.recipe.EditCommand.EditRecipeDescriptor;"
       },
       {
         "lineNumber": 5,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "beatricetay"
         },
-        "content": "import static seedu.recipe.model.Model.PREDICATE_SHOW_ALL_PLANNED_RECIPES;"
+        "content": "import static seedu.recipe.logic.commands.recipe.EditCommand.createEditedRecipe;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import static seedu.recipe.model.Model.PREDICATE_SHOW_ALL_RECIPES;"
+        "content": "import static seedu.recipe.model.Model.PREDICATE_SHOW_ALL_PLANNED_RECIPES;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "import static seedu.recipe.model.Model.PREDICATE_SHOW_ALL_RECIPES;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import java.util.HashSet;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import java.util.List;"
+        "content": "import java.util.HashSet;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import java.util.Set;"
+        "content": "import java.util.List;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "import java.util.Set;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import seedu.recipe.commons.core.Messages;"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import seedu.recipe.commons.core.index.Index;"
+        "content": "import seedu.recipe.commons.core.Messages;"
       },
       {
         "lineNumber": 14,
         "author": {
-          "gitId": "beatricetay"
+          "gitId": "tharshita"
         },
-        "content": "import seedu.recipe.logic.commands.Command;"
+        "content": "import seedu.recipe.commons.core.index.Index;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "import seedu.recipe.logic.commands.CommandResult;"
+        "content": "import seedu.recipe.logic.commands.Command;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "import seedu.recipe.logic.commands.CommandType;"
+        "content": "import seedu.recipe.logic.commands.CommandResult;"
       },
       {
         "lineNumber": 17,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "beatricetay"
         },
-        "content": "import seedu.recipe.logic.commands.exceptions.CommandException;"
+        "content": "import seedu.recipe.logic.commands.CommandType;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import seedu.recipe.model.Model;"
+        "content": "import seedu.recipe.logic.commands.exceptions.CommandException;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import seedu.recipe.model.goal.Goal;"
+        "content": "import seedu.recipe.model.Model;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import seedu.recipe.model.recipe.Recipe;"
+        "content": "import seedu.recipe.model.goal.Goal;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "import seedu.recipe.ui.tab.Tab;"
+        "content": "import seedu.recipe.model.recipe.Recipe;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "import seedu.recipe.ui.tab.Tab;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "tharshita"
         },
-        "content": " * Deletes an exists goal from a recipe."
+        "content": "/**"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "tharshita"
         },
-        "content": " */"
+        "content": " * Deletes an exists goal from a recipe."
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "public class DeleteGoalCommand extends Command {"
+        "content": " */"
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"deletegoal\";"
+        "content": "public class DeleteGoalCommand extends Command {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"deletegoal\";"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Deletes a goal from an existing recipe in the \""
+        "content": ""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            + \"recipe book.\\n\""
+        "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Deletes a goal from an existing recipe in the \""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            + \"Parameters: [INDEX of recipe] [goal name]\\n\""
+        "content": "            + \"recipe book.\\n\""
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            + \"Example: \" + COMMAND_WORD + \" 1 Herbivore\";"
+        "content": "            + \"Parameters: [INDEX of recipe] [goal name]\\n\""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "            + \"Example: \" + COMMAND_WORD + \" 1 Herbivore\";"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    public static final String MESSAGE_DELETE_GOAL_SUCCESS \u003d \"Successfully deleted goal from %1$s!\";"
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    public static final String MESSAGE_INVALID_GOAL_NAME \u003d \"Invalid goal name! \""
+        "content": "    public static final String MESSAGE_DELETE_GOAL_SUCCESS \u003d \"Successfully deleted goal from %1$s!\";"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            + \"Ensure that the capitalization of goals are the same.\";"
+        "content": "    public static final String MESSAGE_INVALID_GOAL_NAME \u003d \"Invalid goal name! \""
       },
       {
         "lineNumber": 37,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "            + \"Ensure that the capitalization of goals are the same.\";"
+      },
+      {
+        "lineNumber": 38,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "    public static final String MESSAGE_INVALID_GOAL \u003d \"Attempting to remove a non-existent goal.\";"
       },
       {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "tharshita"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 39,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private final Tab recipesTab \u003d Tab.RECIPES;"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private final Index index;"
+        "content": "    private final Tab recipesTab \u003d Tab.RECIPES;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private final String goal;"
+        "content": "    private final Index index;"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private final CommandType commandType;"
+        "content": "    private final String goal;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "    private final CommandType commandType;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     * @param index of the recipe in the filtered recipe list to edit."
+        "content": "    /**"
       },
       {
         "lineNumber": 46,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "     * @param index of the recipe in the filtered recipe list to edit."
+      },
+      {
+        "lineNumber": 47,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "     * @param goal is the name of goal user wishes to remove from recipe."
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 48,
         "author": {
           "gitId": "tharshita"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 49,
         "author": {
           "gitId": "tharshita"
         },
         "content": "    public DeleteGoalCommand(Index index, String goal) {"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 50,
         "author": {
           "gitId": "tharshita"
         },
         "content": "        this.index \u003d index;"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 51,
         "author": {
           "gitId": "tharshita"
         },
         "content": "        this.goal \u003d goal;"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 52,
         "author": {
           "gitId": "tharshita"
         },
         "content": "        this.commandType \u003d CommandType.MAIN;"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 53,
         "author": {
           "gitId": "tharshita"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "tharshita"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 54,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        requireNonNull(model);"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        List\u003cRecipe\u003e lastShownList \u003d model.getFilteredRecipeList();"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "        List\u003cRecipe\u003e lastShownList \u003d model.getFilteredRecipeList();"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        if (index.getZeroBased() \u003e\u003d lastShownList.size()) {"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);"
+        "content": "        if (index.getZeroBased() \u003e\u003d lastShownList.size()) {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        }"
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        EditCommand.EditRecipeDescriptor editRecipeDescriptor \u003d new EditCommand.EditRecipeDescriptor();"
+        "content": ""
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "        Recipe recipeToEdit \u003d lastShownList.get(index.getZeroBased());"
+        "content": "        EditRecipeDescriptor editRecipeDescriptor \u003d new EditRecipeDescriptor();"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "        Recipe recipeToEdit \u003d lastShownList.get(index.getZeroBased());"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        Set\u003cGoal\u003e updatedGoalsList \u003d new HashSet\u003c\u003e(recipeToEdit.getGoals());"
+        "content": ""
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        if (!Goal.isValidGoalName(this.goal)) {"
+        "content": "        Set\u003cGoal\u003e updatedGoalsList \u003d new HashSet\u003c\u003e(recipeToEdit.getGoals());"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            throw new CommandException(MESSAGE_INVALID_GOAL_NAME);"
+        "content": "        if (!Goal.isValidGoalName(this.goal)) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        }"
+        "content": "            throw new CommandException(MESSAGE_INVALID_GOAL_NAME);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        Goal currGoal \u003d new Goal(this.goal);"
+        "content": "        }"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        if (updatedGoalsList.contains(currGoal)) {"
+        "content": "        Goal currGoal \u003d new Goal(this.goal);"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            updatedGoalsList.remove(currGoal);"
+        "content": "        if (updatedGoalsList.contains(currGoal)) {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        } else {"
+        "content": "            updatedGoalsList.remove(currGoal);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            throw new CommandException(MESSAGE_INVALID_GOAL);"
+        "content": "        } else {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        }"
+        "content": "            throw new CommandException(MESSAGE_INVALID_GOAL);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 77,
@@ -22399,8 +22406,8 @@
       }
     ],
     "authorContributionMap": {
-      "pekchinsiongbrian": 1,
-      "tharshita": 88,
+      "pekchinsiongbrian": 3,
+      "tharshita": 86,
       "beatricetay": 8
     }
   },
@@ -30624,7 +30631,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final Index[] targetIndex;"
+        "content": "    private final Index[] targetIndexes;"
       },
       {
         "lineNumber": 38,
@@ -30645,14 +30652,14 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    public FavouriteCommand(Index[] targetIndex) {"
+        "content": "    public FavouriteCommand(Index[] targetIndexes) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.targetIndex \u003d targetIndex;"
+        "content": "        this.targetIndexes \u003d targetIndexes;"
       },
       {
         "lineNumber": 42,
@@ -30729,7 +30736,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        if (!canFavouriteTargetRecipes(lastShownList.size(), targetIndex)) {"
+        "content": "        if (!canFavouriteTargetRecipes(lastShownList.size(), targetIndexes)) {"
       },
       {
         "lineNumber": 53,
@@ -30757,7 +30764,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        for (Index index : targetIndex) {"
+        "content": "        for (Index index : targetIndexes) {"
       },
       {
         "lineNumber": 57,
@@ -31086,21 +31093,21 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private boolean canFavouriteTargetRecipes(int lastShownListSize, Index[] targetIndex) {"
+        "content": "    private boolean canFavouriteTargetRecipes(int lastShownListSize, Index[] targetIndexes) {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        for (int i \u003d targetIndex.length - 1; i \u003e\u003d 0; i--) {"
+        "content": "        for (int i \u003d targetIndexes.length - 1; i \u003e\u003d 0; i--) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            if (targetIndex[i].getOneBased() \u003e lastShownListSize) {"
+        "content": "            if (targetIndexes[i].getOneBased() \u003e lastShownListSize) {"
       },
       {
         "lineNumber": 106,
@@ -31177,7 +31184,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                \u0026\u0026 Arrays.equals(targetIndex, ((FavouriteCommand) other).targetIndex)); // state check"
+        "content": "                \u0026\u0026 Arrays.equals(targetIndexes, ((FavouriteCommand) other).targetIndexes)); // state check"
       },
       {
         "lineNumber": 117,
@@ -32031,7 +32038,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final Index[] targetIndex;"
+        "content": "    private final Index[] targetIndexes;"
       },
       {
         "lineNumber": 38,
@@ -32052,14 +32059,14 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    public UnfavouriteCommand(Index[] targetIndex) {"
+        "content": "    public UnfavouriteCommand(Index[] targetIndexes) {"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.targetIndex \u003d targetIndex;"
+        "content": "        this.targetIndexes \u003d targetIndexes;"
       },
       {
         "lineNumber": 42,
@@ -32136,7 +32143,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        if (!canUnfavouriteTargetRecipes(lastShownList.size(), targetIndex)) {"
+        "content": "        if (!canUnfavouriteTargetRecipes(lastShownList.size(), targetIndexes)) {"
       },
       {
         "lineNumber": 53,
@@ -32164,7 +32171,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        for (Index index : targetIndex) {"
+        "content": "        for (Index index : targetIndexes) {"
       },
       {
         "lineNumber": 57,
@@ -32500,21 +32507,21 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private boolean canUnfavouriteTargetRecipes(int lastShownListSize, Index[] targetIndex) {"
+        "content": "    private boolean canUnfavouriteTargetRecipes(int lastShownListSize, Index[] targetIndexes) {"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        for (int i \u003d targetIndex.length - 1; i \u003e\u003d 0; i--) {"
+        "content": "        for (int i \u003d targetIndexes.length - 1; i \u003e\u003d 0; i--) {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            if (targetIndex[i].getOneBased() \u003e lastShownListSize) {"
+        "content": "            if (targetIndexes[i].getOneBased() \u003e lastShownListSize) {"
       },
       {
         "lineNumber": 107,
@@ -32591,7 +32598,7 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                \u0026\u0026 Arrays.equals(targetIndex, ((UnfavouriteCommand) other).targetIndex)); // state check"
+        "content": "                \u0026\u0026 Arrays.equals(targetIndexes, ((UnfavouriteCommand) other).targetIndexes)); // state check"
       },
       {
         "lineNumber": 118,
@@ -36762,14 +36769,14 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            Index[] index \u003d ParserUtil.parseMultipleIndex(args);"
+        "content": "            Index[] indexes \u003d ParserUtil.parseMultipleIndex(args);"
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "-"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "            return new DeleteCommand(index);"
+        "content": "            return new DeleteCommand(indexes);"
       },
       {
         "lineNumber": 23,
@@ -36822,8 +36829,8 @@
       }
     ],
     "authorContributionMap": {
-      "pekchinsiongbrian": 1,
-      "-": 23,
+      "pekchinsiongbrian": 2,
+      "-": 22,
       "beatricetay": 5
     }
   },
@@ -41441,14 +41448,14 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            Index[] index \u003d ParserUtil.parseMultipleIndex(args);"
+        "content": "            Index[] indexes \u003d ParserUtil.parseMultipleIndex(args);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            return new FavouriteCommand(index);"
+        "content": "            return new FavouriteCommand(indexes);"
       },
       {
         "lineNumber": 23,
@@ -49432,14 +49439,14 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            Index[] index \u003d ParserUtil.parseMultipleIndex(args);"
+        "content": "            Index[] indexes \u003d ParserUtil.parseMultipleIndex(args);"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            return new UnfavouriteCommand(index);"
+        "content": "            return new UnfavouriteCommand(indexes);"
       },
       {
         "lineNumber": 23,
@@ -55316,1601 +55323,1594 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "beatricetay"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "import seedu.recipe.model.recipe.RecipeBook;"
+        "content": "import seedu.recipe.ui.tab.Tab;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "import seedu.recipe.ui.tab.Tab;"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "/**"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "/**"
+        "content": " * Maintains different versions (states) of RecipeBooks, PlannedBooks, and CookedRecordBooks in a list."
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": " * Maintains different versions (states) of RecipeBooks, PlannedBooks, and CookedRecordBooks in a list."
+        "content": " */"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": " */"
+        "content": "public class MultipleBookStateManager {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "public class MultipleBookStateManager extends RecipeBook {"
+        "content": ""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    private final ArrayList\u003cReadOnlyRecipeBook\u003e recipeBookStateList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final ArrayList\u003cReadOnlyRecipeBook\u003e recipeBookStateList \u003d new ArrayList\u003c\u003e();"
+        "content": "    private final ArrayList\u003cReadOnlyPlannedBook\u003e plannedBookStateList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final ArrayList\u003cReadOnlyPlannedBook\u003e plannedBookStateList \u003d new ArrayList\u003c\u003e();"
+        "content": "    private final ArrayList\u003cReadOnlyCookedRecordBook\u003e cookedRecordBookStateList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final ArrayList\u003cReadOnlyCookedRecordBook\u003e cookedRecordBookStateList \u003d new ArrayList\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    private final Stack\u003cCommandType\u003e commandsToUndo \u003d new Stack\u003c\u003e();"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final Stack\u003cCommandType\u003e commandsToUndo \u003d new Stack\u003c\u003e();"
+        "content": "    private final Stack\u003cCommandType\u003e commandsToRedo \u003d new Stack\u003c\u003e();"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final Stack\u003cCommandType\u003e commandsToRedo \u003d new Stack\u003c\u003e();"
+        "content": "    private final Stack\u003cTab\u003e tabsToUndo \u003d new Stack\u003c\u003e();"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final Stack\u003cTab\u003e tabsToUndo \u003d new Stack\u003c\u003e();"
+        "content": "    private final Stack\u003cTab\u003e tabsToRedo \u003d new Stack\u003c\u003e();"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private final Stack\u003cTab\u003e tabsToRedo \u003d new Stack\u003c\u003e();"
+        "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    private int recipeBookStatePointer;"
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private int recipeBookStatePointer;"
+        "content": "    private int plannedBookStatePointer;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private int plannedBookStatePointer;"
+        "content": "    private int cookedRecordBookStatePointer;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private int cookedRecordBookStatePointer;"
+        "content": ""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    public MultipleBookStateManager(ReadOnlyRecipeBook recipeBook, ReadOnlyPlannedBook plannedBook,"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    public MultipleBookStateManager(ReadOnlyRecipeBook recipeBook, ReadOnlyPlannedBook plannedBook,"
+        "content": "                                    ReadOnlyCookedRecordBook cookedRecordBook) {"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                                    ReadOnlyCookedRecordBook cookedRecordBook) {"
+        "content": "        this.recipeBookStateList.add(recipeBook);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.recipeBookStateList.add(recipeBook);"
+        "content": "        this.plannedBookStateList.add(plannedBook);"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.plannedBookStateList.add(plannedBook);"
+        "content": "        this.cookedRecordBookStateList.add(cookedRecordBook);"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.cookedRecordBookStateList.add(cookedRecordBook);"
+        "content": "        this.recipeBookStatePointer \u003d 0;"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.recipeBookStatePointer \u003d 0;"
+        "content": "        this.plannedBookStatePointer \u003d 0;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.plannedBookStatePointer \u003d 0;"
+        "content": "        this.cookedRecordBookStatePointer \u003d 0;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        this.cookedRecordBookStatePointer \u003d 0;"
+        "content": "    }"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Checks if it is possible to undo. Returns true if there is at least {@code numberOfUndo} older states"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Checks if it is possible to undo. Returns true if there is at least {@code numberOfUndo} older states"
+        "content": "     * of the RecipeBook (relative to the current state) stored in the list."
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * of the RecipeBook (relative to the current state) stored in the list."
+        "content": "     */"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    boolean canUndo(int numberOfUndo) {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    boolean canUndo(int numberOfUndo) {"
+        "content": "        assert numberOfUndo \u003e\u003d 0;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        assert numberOfUndo \u003e\u003d 0;"
+        "content": "        if (numberOfUndo \u003e 0) {"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        if (numberOfUndo \u003e 0) {"
+        "content": "            return numberOfUndo \u003c\u003d commandsToUndo.size();"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            return numberOfUndo \u003c\u003d commandsToUndo.size();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        } else {"
+        "content": "            return !commandsToUndo.empty();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            return !commandsToUndo.empty();"
+        "content": "        }"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Checks if it is possible to redo. Returns true if there is are at least {@code numberOfRedo} newer states"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Checks if it is possible to redo. Returns true if there is are at least {@code numberOfRedo} newer states"
+        "content": "     * of the RecipeBook (relative to the current state) stored in the list."
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * of the RecipeBook (relative to the current state) stored in the list."
+        "content": "     */"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    boolean canRedo(int numberOfRedo) {"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    boolean canRedo(int numberOfRedo) {"
+        "content": "        assert numberOfRedo \u003e\u003d 0;"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        assert numberOfRedo \u003e\u003d 0;"
+        "content": "        if (numberOfRedo \u003e 0) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        if (numberOfRedo \u003e 0) {"
+        "content": "            return numberOfRedo \u003c\u003d commandsToRedo.size();"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            return numberOfRedo \u003c\u003d commandsToRedo.size();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        } else {"
+        "content": "            return !commandsToRedo.empty();"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            return !commandsToRedo.empty();"
+        "content": "        }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Removes redundant states before a user commits a book."
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Removes redundant states before a user commits a book."
+        "content": "     */"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    private void removeRedundantStates() {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    private void removeRedundantStates() {"
+        "content": "        while (recipeBookStateList.size() - 1 \u003e recipeBookStatePointer"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        while (recipeBookStateList.size() - 1 \u003e recipeBookStatePointer"
+        "content": "                || plannedBookStateList.size() - 1 \u003e plannedBookStatePointer"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                || plannedBookStateList.size() - 1 \u003e plannedBookStatePointer"
+        "content": "                || cookedRecordBookStateList.size() - 1 \u003e cookedRecordBookStatePointer) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                || cookedRecordBookStateList.size() - 1 \u003e cookedRecordBookStatePointer) {"
+        "content": "            assert !commandsToRedo.empty();"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            assert !commandsToRedo.empty();"
+        "content": "            CommandType redoCommandType \u003d commandsToRedo.pop();"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            CommandType redoCommandType \u003d commandsToRedo.pop();"
+        "content": "            tabsToRedo.pop();"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            tabsToRedo.pop();"
+        "content": "            switch (redoCommandType) {"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            switch (redoCommandType) {"
+        "content": "            case MAIN_LONE:"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case MAIN_LONE:"
+        "content": "                recipeBookStateList.remove(recipeBookStateList.size() - 1);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                recipeBookStateList.remove(recipeBookStateList.size() - 1);"
+        "content": "                break;"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case MAIN:"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case MAIN:"
+        "content": "                recipeBookStateList.remove(recipeBookStateList.size() - 1);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                recipeBookStateList.remove(recipeBookStateList.size() - 1);"
+        "content": "                plannedBookStateList.remove(plannedBookStateList.size() - 1);"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                plannedBookStateList.remove(plannedBookStateList.size() - 1);"
+        "content": "                break;"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case PLAN:"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case PLAN:"
+        "content": "                plannedBookStateList.remove(plannedBookStateList.size() - 1);"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                plannedBookStateList.remove(plannedBookStateList.size() - 1);"
+        "content": "                break;"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case GOALS:"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case GOALS:"
+        "content": "                cookedRecordBookStateList.remove(cookedRecordBookStateList.size() - 1);"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                cookedRecordBookStateList.remove(cookedRecordBookStateList.size() - 1);"
+        "content": "                break;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            default:"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            default:"
+        "content": "                break;"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            }"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            }"
+        "content": "        }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Commits only the recipe book as changes were only made to it."
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Commits only the recipe book as changes were only made to it."
+        "content": "     */"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    void commitRecipeBook(ReadOnlyRecipeBook recipeBook, CommandType commandType, Tab tab) {"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    void commitRecipeBook(ReadOnlyRecipeBook recipeBook, CommandType commandType, Tab tab) {"
+        "content": "        commandsToUndo.push(commandType); // CommandType.MAIN_LONE"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        commandsToUndo.push(commandType); // CommandType.MAIN_LONE"
+        "content": "        tabsToUndo.push(tab);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        tabsToUndo.push(tab);"
+        "content": "        removeRedundantStates();"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        removeRedundantStates();"
+        "content": "        recipeBookStateList.add(recipeBook);"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        recipeBookStateList.add(recipeBook);"
+        "content": "        recipeBookStatePointer++;"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        recipeBookStatePointer++;"
+        "content": "    }"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Commits both the recipe book and planned book as there are changes made to both of them."
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Commits both the recipe book and planned book as there are changes made to both of them."
+        "content": "     */"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    void commitRecipeAndPlannedBook(ReadOnlyRecipeBook recipeBook, ReadOnlyPlannedBook plannedBook,"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    void commitRecipeAndPlannedBook(ReadOnlyRecipeBook recipeBook, ReadOnlyPlannedBook plannedBook,"
+        "content": "                                           CommandType commandType, Tab tab) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                                           CommandType commandType, Tab tab) {"
+        "content": "        commandsToUndo.push(commandType); // CommandType.MAIN"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        commandsToUndo.push(commandType); // CommandType.MAIN"
+        "content": "        tabsToUndo.push(tab);"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        tabsToUndo.push(tab);"
+        "content": "        removeRedundantStates();"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        removeRedundantStates();"
+        "content": "        recipeBookStateList.add(recipeBook);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        recipeBookStateList.add(recipeBook);"
+        "content": "        recipeBookStatePointer++;"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        recipeBookStatePointer++;"
+        "content": "        plannedBookStateList.add(plannedBook);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        plannedBookStateList.add(plannedBook);"
+        "content": "        plannedBookStatePointer++;"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        plannedBookStatePointer++;"
+        "content": "    }"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Commits only the planned book as changes were only made to it."
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Commits only the planned book as changes were only made to it."
+        "content": "     */"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    void commitPlannedBook(ReadOnlyPlannedBook plannedBook, CommandType commandType, Tab tab) {"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    void commitPlannedBook(ReadOnlyPlannedBook plannedBook, CommandType commandType, Tab tab) {"
+        "content": "        commandsToUndo.push(commandType); // CommandType.PLAN"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        commandsToUndo.push(commandType); // CommandType.PLAN"
+        "content": "        tabsToUndo.push(tab);"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        tabsToUndo.push(tab);"
+        "content": "        removeRedundantStates();"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        removeRedundantStates();"
+        "content": "        plannedBookStateList.add(plannedBook);"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        plannedBookStateList.add(plannedBook);"
+        "content": "        plannedBookStatePointer++;"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        plannedBookStatePointer++;"
+        "content": "    }"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Commits only the cooked record book as changes were only made to it."
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Commits only the cooked record book as changes were only made to it."
+        "content": "     */"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    void commitCookedRecordBook(ReadOnlyCookedRecordBook cookedRecordBook, CommandType commandType, Tab tab) {"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    void commitCookedRecordBook(ReadOnlyCookedRecordBook cookedRecordBook, CommandType commandType, Tab tab) {"
+        "content": "        commandsToUndo.push(commandType); // CommandType.GOALS"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        commandsToUndo.push(commandType); // CommandType.GOALS"
+        "content": "        tabsToUndo.push(tab);"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        tabsToUndo.push(tab);"
+        "content": "        removeRedundantStates();"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        removeRedundantStates();"
+        "content": "        cookedRecordBookStateList.add(cookedRecordBook);"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        cookedRecordBookStateList.add(cookedRecordBook);"
+        "content": "        cookedRecordBookStatePointer++;"
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        cookedRecordBookStatePointer++;"
+        "content": "    }"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Reverts the books back by {@code numberOfUndo} states."
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Reverts the books back by {@code numberOfUndo} states."
+        "content": "     */"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    Tab undo(int numberOfUndo, Model model) {"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    Tab undo(int numberOfUndo, Model model) {"
+        "content": "        assert numberOfUndo \u003e\u003d 0;"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        assert numberOfUndo \u003e\u003d 0;"
+        "content": "        int undoCounter \u003d numberOfUndo;"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        int undoCounter \u003d numberOfUndo;"
+        "content": "        if (numberOfUndo \u003d\u003d 0) {"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        if (numberOfUndo \u003d\u003d 0) {"
+        "content": "            undoCounter \u003d commandsToUndo.size();"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            undoCounter \u003d commandsToUndo.size();"
+        "content": "        }"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        }"
+        "content": "        Tab toSwitch \u003d null;"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        Tab toSwitch \u003d null;"
+        "content": "        while (undoCounter \u003e 0) {"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        while (undoCounter \u003e 0) {"
+        "content": "            assert recipeBookStatePointer \u003e 0 \u0026\u0026 recipeBookStatePointer \u003c\u003d recipeBookStateList.size() - 1;"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            assert recipeBookStatePointer \u003e 0 \u0026\u0026 recipeBookStatePointer \u003c\u003d recipeBookStateList.size() - 1;"
+        "content": "            assert plannedBookStatePointer \u003e 0 \u0026\u0026 plannedBookStatePointer \u003c\u003d plannedBookStateList.size() - 1;"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            assert plannedBookStatePointer \u003e 0 \u0026\u0026 plannedBookStatePointer \u003c\u003d plannedBookStateList.size() - 1;"
+        "content": ""
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "            CommandType commandType \u003d commandsToUndo.pop();"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            CommandType commandType \u003d commandsToUndo.pop();"
+        "content": "            commandsToRedo.push(commandType);"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            commandsToRedo.push(commandType);"
+        "content": ""
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "            toSwitch \u003d tabsToUndo.pop();"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            toSwitch \u003d tabsToUndo.pop();"
+        "content": "            tabsToRedo.push(toSwitch);"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            tabsToRedo.push(toSwitch);"
+        "content": ""
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "            switch (commandType) {"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            switch (commandType) {"
+        "content": "            case MAIN_LONE:"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case MAIN_LONE:"
+        "content": "                recipeBookStatePointer--;"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                recipeBookStatePointer--;"
+        "content": "                break;"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case MAIN:"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case MAIN:"
+        "content": "                recipeBookStatePointer--;"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                recipeBookStatePointer--;"
+        "content": "                plannedBookStatePointer--;"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                plannedBookStatePointer--;"
+        "content": "                break;"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case PLAN:"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case PLAN:"
+        "content": "                plannedBookStatePointer--;"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                plannedBookStatePointer--;"
+        "content": "                break;"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case GOALS:"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case GOALS:"
+        "content": "                cookedRecordBookStatePointer--;"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                cookedRecordBookStatePointer--;"
+        "content": "                break;"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            default:"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            default:"
+        "content": "                break;"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            }"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            }"
+        "content": "            undoCounter--;"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            undoCounter--;"
+        "content": "        }"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        }"
+        "content": "        model.setRecipeBook(recipeBookStateList.get(recipeBookStatePointer));"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        model.setRecipeBook(recipeBookStateList.get(recipeBookStatePointer));"
+        "content": "        model.setPlannedBook(plannedBookStateList.get(plannedBookStatePointer));"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        model.setPlannedBook(plannedBookStateList.get(plannedBookStatePointer));"
+        "content": "        model.setCookedRecordBook(cookedRecordBookStateList.get(cookedRecordBookStatePointer));"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        model.setCookedRecordBook(cookedRecordBookStateList.get(cookedRecordBookStatePointer));"
+        "content": ""
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "        assert toSwitch !\u003d null;"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        assert toSwitch !\u003d null;"
+        "content": "        return toSwitch;"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        return toSwitch;"
+        "content": "    }"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    /**"
+        "content": "     * Fast forwards the books by {@code numberOfRedo} states."
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     * Fast forwards the books by {@code numberOfRedo} states."
+        "content": "     */"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "    Tab redo(int numberOfRedo, Model model) {"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    Tab redo(int numberOfRedo, Model model) {"
+        "content": "        assert numberOfRedo \u003e\u003d 0;"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        assert numberOfRedo \u003e\u003d 0;"
+        "content": "        int redoCounter \u003d numberOfRedo;"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        int redoCounter \u003d numberOfRedo;"
+        "content": "        if (numberOfRedo \u003d\u003d 0) {"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        if (numberOfRedo \u003d\u003d 0) {"
+        "content": "            redoCounter \u003d commandsToRedo.size();"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            redoCounter \u003d commandsToRedo.size();"
+        "content": "        }"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        }"
+        "content": "        Tab toSwitch \u003d null;"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        Tab toSwitch \u003d null;"
+        "content": "        while (redoCounter \u003e 0) {"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        while (redoCounter \u003e 0) {"
+        "content": "            assert recipeBookStatePointer \u003e 0 \u0026\u0026 recipeBookStatePointer \u003c\u003d recipeBookStateList.size() - 1;"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            assert recipeBookStatePointer \u003e 0 \u0026\u0026 recipeBookStatePointer \u003c\u003d recipeBookStateList.size() - 1;"
+        "content": "            assert plannedBookStatePointer \u003e 0 \u0026\u0026 plannedBookStatePointer \u003c\u003d plannedBookStateList.size() - 1;"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            assert plannedBookStatePointer \u003e 0 \u0026\u0026 plannedBookStatePointer \u003c\u003d plannedBookStateList.size() - 1;"
+        "content": ""
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "            CommandType commandType \u003d commandsToRedo.pop();"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            CommandType commandType \u003d commandsToRedo.pop();"
+        "content": "            commandsToUndo.push(commandType);"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            commandsToUndo.push(commandType);"
+        "content": ""
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "            toSwitch \u003d tabsToRedo.pop();"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            toSwitch \u003d tabsToRedo.pop();"
+        "content": "            tabsToUndo.push(toSwitch);"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            tabsToUndo.push(toSwitch);"
+        "content": ""
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "            switch (commandType) {"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            switch (commandType) {"
+        "content": "            case MAIN_LONE:"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case MAIN_LONE:"
+        "content": "                recipeBookStatePointer++;"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                recipeBookStatePointer++;"
+        "content": "                break;"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case MAIN:"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case MAIN:"
+        "content": "                recipeBookStatePointer++;"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                recipeBookStatePointer++;"
+        "content": "                plannedBookStatePointer++;"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                plannedBookStatePointer++;"
+        "content": "                break;"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case PLAN:"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case PLAN:"
+        "content": "                plannedBookStatePointer++;"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                plannedBookStatePointer++;"
+        "content": "                break;"
       },
       {
         "lineNumber": 218,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            case GOALS:"
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            case GOALS:"
+        "content": "                cookedRecordBookStatePointer++;"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                cookedRecordBookStatePointer++;"
+        "content": "                break;"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            default:"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            default:"
+        "content": "                break;"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "                break;"
+        "content": "            }"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            }"
+        "content": "            redoCounter--;"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            redoCounter--;"
+        "content": "        }"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        }"
+        "content": "        model.setRecipeBook(recipeBookStateList.get(recipeBookStatePointer));"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        model.setRecipeBook(recipeBookStateList.get(recipeBookStatePointer));"
+        "content": "        model.setPlannedBook(plannedBookStateList.get(plannedBookStatePointer));"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        model.setPlannedBook(plannedBookStateList.get(plannedBookStatePointer));"
+        "content": "        model.setCookedRecordBook(cookedRecordBookStateList.get(cookedRecordBookStatePointer));"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        model.setCookedRecordBook(cookedRecordBookStateList.get(cookedRecordBookStatePointer));"
+        "content": ""
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": ""
+        "content": "        assert toSwitch !\u003d null;"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        assert toSwitch !\u003d null;"
+        "content": "        return toSwitch;"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        return toSwitch;"
+        "content": "    }"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 234,
-        "author": {
-          "gitId": "pekchinsiongbrian"
-        },
         "content": ""
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 234,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
@@ -56918,8 +56918,7 @@
       }
     ],
     "authorContributionMap": {
-      "pekchinsiongbrian": 234,
-      "beatricetay": 1
+      "pekchinsiongbrian": 234
     }
   },
   {
@@ -71808,306 +71807,271 @@
       {
         "lineNumber": 208,
         "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        // debug purposes todo delete string debugging later"
-      },
-      {
-        "lineNumber": 209,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        /*System.out.print(\"my: \" + grains + \", other: \" + otherRecipe.getGrains()"
-      },
-      {
-        "lineNumber": 210,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                + \"my: \" + vegetables + \", other: \" + otherRecipe.getVegetables()"
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                + \"my: \" + proteins + \", other: \" + otherRecipe.getProteins()"
-      },
-      {
-        "lineNumber": 212,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                + \"my: \" + others + \", other: \" + otherRecipe.getOthers());*/"
-      },
-      {
-        "lineNumber": 213,
-        "author": {
           "gitId": "tharshita"
         },
         "content": "        return otherRecipe.getName().equals(getName())"
       },
       {
-        "lineNumber": 214,
+        "lineNumber": 209,
         "author": {
           "gitId": "tharshita"
         },
         "content": "                \u0026\u0026 otherRecipe.getTime().equals(getTime())"
       },
       {
-        "lineNumber": 215,
+        "lineNumber": 210,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "                \u0026\u0026 otherRecipe.getGrains().equals(getGrains())"
       },
       {
-        "lineNumber": 216,
+        "lineNumber": 211,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "                \u0026\u0026 otherRecipe.getVegetables().equals(getVegetables())"
       },
       {
-        "lineNumber": 217,
+        "lineNumber": 212,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "                \u0026\u0026 otherRecipe.getProteins().equals(getProteins())"
       },
       {
-        "lineNumber": 218,
+        "lineNumber": 213,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "                \u0026\u0026 otherRecipe.getFruits().equals(getFruits())"
       },
       {
-        "lineNumber": 219,
+        "lineNumber": 214,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "                \u0026\u0026 otherRecipe.getOthers().equals(getOthers())"
       },
       {
-        "lineNumber": 220,
+        "lineNumber": 215,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "                \u0026\u0026 otherRecipe.getSteps().equals(getSteps())"
       },
       {
-        "lineNumber": 221,
+        "lineNumber": 216,
         "author": {
           "gitId": "tharshita"
         },
         "content": "                \u0026\u0026 otherRecipe.getGoals().equals(getGoals());"
       },
       {
-        "lineNumber": 222,
+        "lineNumber": 217,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 223,
+        "lineNumber": 218,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 224,
+        "lineNumber": 219,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 225,
+        "lineNumber": 220,
         "author": {
           "gitId": "-"
         },
         "content": "    public int hashCode() {"
       },
       {
-        "lineNumber": 226,
+        "lineNumber": 221,
         "author": {
           "gitId": "-"
         },
         "content": "        // use this method for custom fields hashing instead of implementing your own"
       },
       {
-        "lineNumber": 227,
+        "lineNumber": 222,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "        return Objects.hash(name, time, grains, vegetables, proteins, fruits, others, steps, goals);"
       },
       {
-        "lineNumber": 228,
+        "lineNumber": 223,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 229,
+        "lineNumber": 224,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 230,
+        "lineNumber": 225,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 231,
+        "lineNumber": 226,
         "author": {
           "gitId": "-"
         },
         "content": "    public String toString() {"
       },
       {
-        "lineNumber": 232,
+        "lineNumber": 227,
         "author": {
           "gitId": "-"
         },
         "content": "        final StringBuilder builder \u003d new StringBuilder();"
       },
       {
-        "lineNumber": 233,
+        "lineNumber": 228,
         "author": {
           "gitId": "-"
         },
         "content": "        builder.append(getName())"
       },
       {
-        "lineNumber": 234,
+        "lineNumber": 229,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "                .append(\"\\nTime: \")"
       },
       {
-        "lineNumber": 235,
+        "lineNumber": 230,
         "author": {
           "gitId": "tharshita"
         },
         "content": "                .append(getTime())"
       },
       {
-        "lineNumber": 236,
+        "lineNumber": 231,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "                .append(\" mins\")"
       },
       {
-        "lineNumber": 237,
+        "lineNumber": 232,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "                .append(\"\\nIngredients: \");"
       },
       {
-        "lineNumber": 238,
+        "lineNumber": 233,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "        getGrains().forEach(grain -\u003e builder.append(grain).append(\", \"));"
       },
       {
-        "lineNumber": 239,
+        "lineNumber": 234,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "        getVegetables().forEach(vegetable -\u003e builder.append(vegetable).append(\", \"));"
       },
       {
-        "lineNumber": 240,
+        "lineNumber": 235,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "        getProteins().forEach(protein -\u003e builder.append(protein).append(\", \"));"
       },
       {
-        "lineNumber": 241,
+        "lineNumber": 236,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "        getFruits().forEach(fruit -\u003e builder.append(fruit).append(\", \"));"
       },
       {
-        "lineNumber": 242,
+        "lineNumber": 237,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "        getOthers().forEach(other -\u003e builder.append(other).append(\", \"));"
       },
       {
-        "lineNumber": 243,
+        "lineNumber": 238,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "        builder.delete(builder.length() - 2, builder.length());"
       },
       {
-        "lineNumber": 244,
+        "lineNumber": 239,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "        builder.append(\"\\nSteps: \")"
       },
       {
-        "lineNumber": 245,
+        "lineNumber": 240,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "                .append(getSteps())"
       },
       {
-        "lineNumber": 246,
+        "lineNumber": 241,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "                .append(\"\\nGoals: \");"
       },
       {
-        "lineNumber": 247,
+        "lineNumber": 242,
         "author": {
           "gitId": "tharshita"
         },
         "content": "        getGoals().forEach(builder::append);"
       },
       {
-        "lineNumber": 248,
+        "lineNumber": 243,
         "author": {
           "gitId": "-"
         },
         "content": "        return builder.toString();"
       },
       {
-        "lineNumber": 249,
+        "lineNumber": 244,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 250,
+        "lineNumber": 245,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 251,
+        "lineNumber": 246,
         "author": {
           "gitId": "-"
         },
@@ -72118,7 +72082,7 @@
       "pekchinsiongbrian": 36,
       "tharshita": 65,
       "-": 69,
-      "beatricetay": 81
+      "beatricetay": 76
     }
   },
   {
@@ -98409,381 +98373,360 @@
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        //System.out.println(quote.getContent());"
+        "content": "        Random rand \u003d new Random();"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        Random rand \u003d new Random();"
+        "content": "        int randomInt \u003d rand.nextInt(quotes.size());"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        //System.out.print(quotes.size());"
+        "content": "        this.quote \u003d quotes.get(randomInt);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        int randomInt \u003d rand.nextInt(quotes.size());"
+        "content": "        Streak streak \u003d new Streak(records, today);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        this.quote \u003d quotes.get(randomInt);"
+        "content": "        this.streak \u003d streak;"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        Streak streak \u003d new Streak(records, today);"
+        "content": "        this.streak.updateStreak();"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        this.streak \u003d streak;"
+        "content": ""
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        this.streak.updateStreak();"
+        "content": "        dayHeader.setText(today.getDayOfWeek() + \": \" + today.toString());"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": ""
+        "content": "        dayHeader.setStyle(weekStyleHeader);"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        dayHeader.setText(today.getDayOfWeek() + \": \" + today.toString());"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        dayHeader.setStyle(weekStyleHeader);"
+        "content": "        BorderPane border \u003d new BorderPane();"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        System.out.println(records.size());"
+        "content": "        scoreTitle.setText(\"Streak:\");"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": ""
+        "content": "        scoreTitle.setStyle(styleScoreHeader);"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        BorderPane border \u003d new BorderPane();"
+        "content": "        records.addListener((ListChangeListener\u003cRecord\u003e) record -\u003e {"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        scoreTitle.setText(\"Streak:\");"
+        "content": "            while (record.next()) {"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        scoreTitle.setStyle(styleScoreHeader);"
+        "content": "                this.streak.updateStreak();"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        records.addListener((ListChangeListener\u003cRecord\u003e) record -\u003e {"
+        "content": "                highScore.setText(\"Highest Streak: \" + this.streak.getHighStreak());"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "            while (record.next()) {"
+        "content": "                currScore.setText(\"Current Streak: \" + this.streak.getCurrStreak());"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "                this.streak.updateStreak();"
+        "content": "            }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "                highScore.setText(\"Highest Streak: \" + this.streak.getHighStreak());"
+        "content": "        });"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "                currScore.setText(\"Current Streak: \" + this.streak.getCurrStreak());"
+        "content": "        currScore.setText(\"Current Streak: \" + this.streak.getCurrStreak());"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "            }"
+        "content": "        currScore.setStyle(styleHeader);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        });"
+        "content": "        currScore.setWrapText(true);"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        currScore.setText(\"Current Streak: \" + this.streak.getCurrStreak());"
+        "content": "        highScore.setText(\"Highest Streak: \" + this.streak.getHighStreak());"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        currScore.setStyle(styleHeader);"
+        "content": "        highScore.setStyle(styleHeader);"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        currScore.setWrapText(true);"
+        "content": "        highScore.setWrapText(true);"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        highScore.setText(\"Highest Streak: \" + this.streak.getHighStreak());"
+        "content": ""
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        highScore.setStyle(styleHeader);"
+        "content": "        contentTitle.setText(\"Quote of the Day:\");"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        highScore.setWrapText(true);"
+        "content": "        contentTitle.setStyle(styleScoreHeader);"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": ""
+        "content": "        content.setText(quote.getContent());"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        contentTitle.setText(\"Quote of the Day:\");"
+        "content": "        content.setStyle(textStyle);"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        contentTitle.setStyle(styleScoreHeader);"
+        "content": "        content.setWrapText(true);"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        content.setText(quote.getContent());"
+        "content": ""
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        content.setStyle(textStyle);"
+        "content": "    }"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        content.setWrapText(true);"
+        "content": ""
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "    }"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": ""
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "    @Override"
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "            return true;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        // short circuit if same object"
+        "content": "        }"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": ""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "            return true;"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        }"
+        "content": "        if (!(other instanceof AchievementCard)) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": ""
+        "content": "            return false;"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "        }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        if (!(other instanceof AchievementCard)) {"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "            return false;"
+        "content": "        // state check"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        }"
+        "content": "        AchievementCard card \u003d (AchievementCard) other;"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": ""
+        "content": "        return content.getText().equals(card.content.getText());"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        // state check"
-      },
-      {
-        "lineNumber": 116,
-        "author": {
-          "gitId": "YuuTon9"
-        },
-        "content": "        AchievementCard card \u003d (AchievementCard) other;"
-      },
-      {
-        "lineNumber": 117,
-        "author": {
-          "gitId": "YuuTon9"
-        },
-        "content": "        return content.getText().equals(card.content.getText());"
-      },
-      {
-        "lineNumber": 118,
-        "author": {
-          "gitId": "YuuTon9"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 116,
         "author": {
           "gitId": "YuuTon9"
         },
@@ -98791,7 +98734,7 @@
       }
     ],
     "authorContributionMap": {
-      "YuuTon9": 119
+      "YuuTon9": 116
     }
   },
   {
@@ -102848,1137 +102791,1130 @@
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        //TODO set storage parameter instead of hardcode"
+        "content": "        ObservableList\u003cQuote\u003e quoteList \u003d logic.getFilteredQuoteList();"
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        ObservableList\u003cQuote\u003e quoteList \u003d logic.getFilteredQuoteList();"
+        "content": "        achievementsListPanel \u003d new AchievementCard(quoteList, cookedList);"
       },
       {
         "lineNumber": 154,
         "author": {
-          "gitId": "YuuTon9"
+          "gitId": "tharshita"
         },
-        "content": "        achievementsListPanel \u003d new AchievementCard(quoteList, cookedList);"
+        "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "        mainTabPanel \u003d new MainTabPanel(recipeListPanel, planningListPanel, cookedListPanel, achievementsListPanel);"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        mainTabPanel \u003d new MainTabPanel(recipeListPanel, planningListPanel, cookedListPanel, achievementsListPanel);"
+        "content": "        mainTabPanelPlaceholder.getChildren().add(mainTabPanel.getRoot());"
       },
       {
         "lineNumber": 157,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "-"
         },
-        "content": "        mainTabPanelPlaceholder.getChildren().add(mainTabPanel.getRoot());"
+        "content": ""
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        resultDisplay \u003d new ResultDisplay();"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "-"
         },
-        "content": "        resultDisplay \u003d new ResultDisplay();"
+        "content": "        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "-"
         },
-        "content": "        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());"
-      },
-      {
-        "lineNumber": 161,
-        "author": {
-          "gitId": "-"
-        },
         "content": ""
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 161,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
         "content": "        StatusBarFooter statusBarFooter \u003d new StatusBarFooter(logic.getRecipeBookFilePath());"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
         "content": "        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());"
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 163,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 164,
         "author": {
           "gitId": "-"
         },
         "content": "        CommandBox commandBox \u003d new CommandBox(this::executeCommand);"
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 165,
         "author": {
           "gitId": "-"
         },
         "content": "        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());"
       },
       {
-        "lineNumber": 167,
+        "lineNumber": 166,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 167,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     * Sets the default size based on {@code guiSettings}."
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Sets the default size based on {@code guiSettings}."
+        "content": "     */"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    private void setWindowDefaultSize(GuiSettings guiSettings) {"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void setWindowDefaultSize(GuiSettings guiSettings) {"
+        "content": "        primaryStage.setHeight(guiSettings.getWindowHeight());"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "-"
         },
-        "content": "        primaryStage.setHeight(guiSettings.getWindowHeight());"
+        "content": "        primaryStage.setWidth(guiSettings.getWindowWidth());"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "-"
         },
-        "content": "        primaryStage.setWidth(guiSettings.getWindowWidth());"
+        "content": "        if (guiSettings.getWindowCoordinates() !\u003d null) {"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (guiSettings.getWindowCoordinates() !\u003d null) {"
+        "content": "            primaryStage.setX(guiSettings.getWindowCoordinates().getX());"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "-"
         },
-        "content": "            primaryStage.setX(guiSettings.getWindowCoordinates().getX());"
+        "content": "            primaryStage.setY(guiSettings.getWindowCoordinates().getY());"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "-"
         },
-        "content": "            primaryStage.setY(guiSettings.getWindowCoordinates().getY());"
+        "content": "        }"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Opens the help window or focuses on it if it\u0027s already opened."
+        "content": "     */"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "    public void handleHelp() {"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void handleHelp() {"
+        "content": "        if (!helpWindow.isShowing()) {"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!helpWindow.isShowing()) {"
+        "content": "            helpWindow.show();"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "-"
         },
-        "content": "            helpWindow.show();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "-"
         },
-        "content": "        } else {"
+        "content": "            helpWindow.focus();"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "-"
         },
-        "content": "            helpWindow.focus();"
+        "content": "        }"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 192,
         "author": {
-          "gitId": "-"
+          "gitId": "beatricetay"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "    /**"
+        "content": "     * Opens the grocery list window"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "     * Opens the grocery list window"
+        "content": "     */"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "     */"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "    @FXML"
+        "content": "    public void handleGroceryList() {"
       },
       {
         "lineNumber": 197,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "    public void handleGroceryList() {"
+        "content": "        groceryListWindow.setGroceryListMessage(logic.getGroceryList());"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "        groceryListWindow.setGroceryListMessage(logic.getGroceryList());"
+        "content": "        if (!groceryListWindow.isShowing()) {"
       },
       {
         "lineNumber": 199,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "        if (!groceryListWindow.isShowing()) {"
+        "content": "            groceryListWindow.show();"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "            groceryListWindow.show();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 201,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "        } else {"
+        "content": "            groceryListWindow.focus();"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "            groceryListWindow.focus();"
+        "content": "        }"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "        }"
+        "content": "    }"
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 205,
-        "author": {
-          "gitId": "beatricetay"
-        },
         "content": ""
       },
       {
-        "lineNumber": 206,
+        "lineNumber": 205,
         "author": {
           "gitId": "-"
         },
         "content": "    void show() {"
       },
       {
-        "lineNumber": 207,
+        "lineNumber": 206,
         "author": {
           "gitId": "-"
         },
         "content": "        primaryStage.show();"
       },
       {
-        "lineNumber": 208,
+        "lineNumber": 207,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     * Closes the application."
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Closes the application."
+        "content": "     */"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "-"
         },
-        "content": "     */"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "-"
         },
-        "content": "    @FXML"
+        "content": "    private void handleExit() {"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "-"
         },
-        "content": "    private void handleExit() {"
+        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "-"
         },
-        "content": "        GuiSettings guiSettings \u003d new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),"
+        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "-"
         },
-        "content": "                (int) primaryStage.getX(), (int) primaryStage.getY());"
+        "content": "        logic.setGuiSettings(guiSettings);"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "-"
         },
-        "content": "        logic.setGuiSettings(guiSettings);"
-      },
-      {
-        "lineNumber": 218,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        helpWindow.hide();"
       },
       {
-        "lineNumber": 219,
+        "lineNumber": 218,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "        groceryListWindow.hide();"
       },
       {
-        "lineNumber": 220,
+        "lineNumber": 219,
         "author": {
           "gitId": "-"
         },
         "content": "        primaryStage.hide();"
       },
       {
-        "lineNumber": 221,
+        "lineNumber": 220,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 222,
+        "lineNumber": 221,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 223,
+        "lineNumber": 222,
         "author": {
           "gitId": "tharshita"
         },
         "content": "    public RecipeListPanel getRecipeListPanel() {"
       },
       {
-        "lineNumber": 224,
+        "lineNumber": 223,
         "author": {
           "gitId": "tharshita"
         },
         "content": "        return recipeListPanel;"
       },
       {
-        "lineNumber": 225,
+        "lineNumber": 224,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 226,
+        "lineNumber": 225,
         "author": {
           "gitId": "-"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 226,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "    /**"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    /**"
+        "content": "     * Switches of tab depending on {@code tab}."
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     * Switches of tab depending on {@code tab}."
+        "content": "     */"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     */"
+        "content": "    @FXML"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    @FXML"
+        "content": "    private void handleSwitchTab(Tab tab) {"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private void handleSwitchTab(Tab tab) {"
+        "content": "        switch (tab) {"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        switch (tab) {"
+        "content": "        case RECIPES:"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        case RECIPES:"
+        "content": "            showRecipesTab();"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            showRecipesTab();"
+        "content": "            break;"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            break;"
+        "content": "        case PLANNING:"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        case PLANNING:"
+        "content": "            showPlanningTab();"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            showPlanningTab();"
+        "content": "            break;"
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            break;"
+        "content": "        case GOALS:"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        case GOALS:"
+        "content": "            showGoalsTab();"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            showGoalsTab();"
+        "content": "            break;"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            break;"
+        "content": "        case ACHIEVEMENTS:"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        case ACHIEVEMENTS:"
+        "content": "            showAchievementsTab();"
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            showAchievementsTab();"
+        "content": "            break;"
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            break;"
-      },
-      {
-        "lineNumber": 245,
-        "author": {
-          "gitId": "tharshita"
-        },
         "content": "        default:"
       },
       {
-        "lineNumber": 246,
+        "lineNumber": 245,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "            break; //todo throw exception"
       },
       {
-        "lineNumber": 247,
+        "lineNumber": 246,
         "author": {
           "gitId": "tharshita"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 249,
         "author": {
-          "gitId": "-"
+          "gitId": "tharshita"
         },
         "content": ""
       },
       {
         "lineNumber": 250,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     * Executes the command and returns the result."
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Executes the command and returns the result."
-      },
-      {
-        "lineNumber": 253,
-        "author": {
-          "gitId": "-"
-        },
         "content": "     *"
       },
       {
-        "lineNumber": 254,
+        "lineNumber": 253,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "     * @see seedu.recipe.logic.Logic#execute(String)"
       },
       {
-        "lineNumber": 255,
+        "lineNumber": 254,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 256,
+        "lineNumber": 255,
         "author": {
           "gitId": "-"
         },
         "content": "    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {"
       },
       {
-        "lineNumber": 257,
+        "lineNumber": 256,
         "author": {
           "gitId": "-"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 258,
+        "lineNumber": 257,
         "author": {
           "gitId": "-"
         },
         "content": "            CommandResult commandResult \u003d logic.execute(commandText);"
       },
       {
-        "lineNumber": 259,
+        "lineNumber": 258,
         "author": {
           "gitId": "-"
         },
         "content": "            logger.info(\"Result: \" + commandResult.getFeedbackToUser());"
       },
       {
-        "lineNumber": 260,
+        "lineNumber": 259,
         "author": {
           "gitId": "-"
         },
         "content": "            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());"
       },
       {
-        "lineNumber": 261,
+        "lineNumber": 260,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 262,
+        "lineNumber": 261,
         "author": {
           "gitId": "-"
         },
         "content": "            if (commandResult.isShowHelp()) {"
       },
       {
-        "lineNumber": 263,
+        "lineNumber": 262,
         "author": {
           "gitId": "-"
         },
         "content": "                handleHelp();"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 263,
         "author": {
           "gitId": "-"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 264,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 265,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "            if (commandResult.isShowGroceryList()) {"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 266,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "                handleGroceryList();"
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 267,
         "author": {
           "gitId": "beatricetay"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 269,
+        "lineNumber": 268,
         "author": {
           "gitId": "beatricetay"
         },
         "content": ""
       },
       {
-        "lineNumber": 270,
+        "lineNumber": 269,
         "author": {
           "gitId": "tharshita"
         },
         "content": "            if (commandResult.isSwitchTab()) {"
       },
       {
-        "lineNumber": 271,
+        "lineNumber": 270,
         "author": {
           "gitId": "tharshita"
         },
         "content": "                handleSwitchTab(commandResult.getTab());"
       },
       {
-        "lineNumber": 272,
+        "lineNumber": 271,
         "author": {
           "gitId": "tharshita"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 273,
+        "lineNumber": 272,
         "author": {
           "gitId": "tharshita"
         },
         "content": ""
       },
       {
-        "lineNumber": 274,
+        "lineNumber": 273,
         "author": {
           "gitId": "-"
         },
         "content": "            if (commandResult.isExit()) {"
       },
       {
-        "lineNumber": 275,
+        "lineNumber": 274,
         "author": {
           "gitId": "-"
         },
         "content": "                handleExit();"
       },
       {
-        "lineNumber": 276,
+        "lineNumber": 275,
         "author": {
           "gitId": "-"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 277,
+        "lineNumber": 276,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 278,
+        "lineNumber": 277,
         "author": {
           "gitId": "-"
         },
         "content": "            return commandResult;"
       },
       {
-        "lineNumber": 279,
+        "lineNumber": 278,
         "author": {
           "gitId": "-"
         },
         "content": "        } catch (CommandException | ParseException e) {"
       },
       {
-        "lineNumber": 280,
+        "lineNumber": 279,
         "author": {
           "gitId": "-"
         },
         "content": "            logger.info(\"Invalid command: \" + commandText);"
       },
       {
-        "lineNumber": 281,
+        "lineNumber": 280,
         "author": {
           "gitId": "-"
         },
         "content": "            resultDisplay.setFeedbackToUser(e.getMessage());"
       },
       {
-        "lineNumber": 282,
+        "lineNumber": 281,
         "author": {
           "gitId": "-"
         },
         "content": "            throw e;"
       },
       {
-        "lineNumber": 283,
+        "lineNumber": 282,
         "author": {
           "gitId": "-"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 284,
+        "lineNumber": 283,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 285,
+        "lineNumber": 284,
         "author": {
           "gitId": "tharshita"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 285,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "    /**"
       },
       {
         "lineNumber": 286,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    /**"
+        "content": "     * Switch to recipes tab."
       },
       {
         "lineNumber": 287,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     * Switch to recipes tab."
+        "content": "     */"
       },
       {
         "lineNumber": 288,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     */"
+        "content": "    private void showRecipesTab() {"
       },
       {
         "lineNumber": 289,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private void showRecipesTab() {"
+        "content": "        mainTabPanel.switchToRecipesTab();"
       },
       {
         "lineNumber": 290,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        mainTabPanel.switchToRecipesTab();"
+        "content": "    }"
       },
       {
         "lineNumber": 291,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 292,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 293,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    /**"
+        "content": "     * Switch to planning tab."
       },
       {
         "lineNumber": 294,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     * Switch to planning tab."
+        "content": "     */"
       },
       {
         "lineNumber": 295,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     */"
+        "content": "    private void showPlanningTab() {"
       },
       {
         "lineNumber": 296,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private void showPlanningTab() {"
+        "content": "        mainTabPanel.switchToPlanningTab();"
       },
       {
         "lineNumber": 297,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        mainTabPanel.switchToPlanningTab();"
+        "content": "    }"
       },
       {
         "lineNumber": 298,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 299,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 300,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    /**"
+        "content": "     * Switch to goals tab."
       },
       {
         "lineNumber": 301,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     * Switch to goals tab."
+        "content": "     */"
       },
       {
         "lineNumber": 302,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     */"
+        "content": "    private void showGoalsTab() {"
       },
       {
         "lineNumber": 303,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private void showGoalsTab() {"
+        "content": "        mainTabPanel.switchToGoalsTab();"
       },
       {
         "lineNumber": 304,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        mainTabPanel.switchToGoalsTab();"
+        "content": "        cookedListPanel.setChart(goalsCountList);"
       },
       {
         "lineNumber": 305,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        cookedListPanel.setChart(goalsCountList);"
+        "content": "    }"
       },
       {
         "lineNumber": 306,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 307,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 308,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    /**"
+        "content": "     * Switch to achievements tab."
       },
       {
         "lineNumber": 309,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     * Switch to achievements tab."
+        "content": "     */"
       },
       {
         "lineNumber": 310,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     */"
+        "content": "    private void showAchievementsTab() {"
       },
       {
         "lineNumber": 311,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private void showAchievementsTab() {"
+        "content": "        mainTabPanel.switchToAchievementsTab();"
       },
       {
         "lineNumber": 312,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        mainTabPanel.switchToAchievementsTab();"
-      },
-      {
-        "lineNumber": 313,
-        "author": {
-          "gitId": "tharshita"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 314,
+        "lineNumber": 313,
         "author": {
           "gitId": "-"
         },
@@ -103990,7 +103926,7 @@
       "tharshita": 85,
       "-": 181,
       "beatricetay": 40,
-      "YuuTon9": 7
+      "YuuTon9": 6
     }
   },
   {
@@ -120153,9 +120089,9 @@
       {
         "lineNumber": 166,
         "author": {
-          "gitId": "beatricetay"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "            // throw new AssertionError(\"This method should not be called.\");"
+        "content": "            throw new AssertionError(\"This method should not be called.\");"
       },
       {
         "lineNumber": 167,
@@ -121308,7 +121244,7 @@
       {
         "lineNumber": 331,
         "author": {
-          "gitId": "-"
+          "gitId": "pekchinsiongbrian"
         },
         "content": "        @Override"
       },
@@ -121317,70 +121253,70 @@
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "        public ReadOnlyRecipeBook getRecipeBook() {"
+        "content": "        public void commitBook(CommandType commandType, Tab tab) {"
       },
       {
         "lineNumber": 333,
         "author": {
           "gitId": "pekchinsiongbrian"
         },
-        "content": "            return new RecipeBook();"
+        "content": "            requireNonNull(commandType);"
       },
       {
         "lineNumber": 334,
         "author": {
-          "gitId": "-"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "        }"
+        "content": "            requireNonNull(tab);"
       },
       {
         "lineNumber": 335,
         "author": {
-          "gitId": "-"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 336,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "pekchinsiongbrian"
         },
         "content": ""
       },
       {
         "lineNumber": 337,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "-"
         },
-        "content": "    /**"
+        "content": "        @Override"
       },
       {
         "lineNumber": 338,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "     * A Model stub that contains a single record."
+        "content": "        public ReadOnlyRecipeBook getRecipeBook() {"
       },
       {
         "lineNumber": 339,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "pekchinsiongbrian"
         },
-        "content": "     */"
+        "content": "            return new RecipeBook();"
       },
       {
         "lineNumber": 340,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "-"
         },
-        "content": "    private class ModelStubWithRecord extends ModelStub {"
+        "content": "        }"
       },
       {
         "lineNumber": 341,
         "author": {
-          "gitId": "tharshita"
+          "gitId": "-"
         },
-        "content": "        private final Record record;"
+        "content": "    }"
       },
       {
         "lineNumber": 342,
@@ -121394,49 +121330,49 @@
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        ModelStubWithRecord(Record record) {"
+        "content": "    /**"
       },
       {
         "lineNumber": 344,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            requireNonNull(record);"
+        "content": "     * A Model stub that contains a single record."
       },
       {
         "lineNumber": 345,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            this.record \u003d record;"
+        "content": "     */"
       },
       {
         "lineNumber": 346,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        }"
+        "content": "    private class ModelStubWithRecord extends ModelStub {"
       },
       {
         "lineNumber": 347,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "        private final Record record;"
       },
       {
         "lineNumber": 348,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        @Override"
+        "content": ""
       },
       {
         "lineNumber": 349,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        public boolean hasRecord(Record record) {"
+        "content": "        ModelStubWithRecord(Record record) {"
       },
       {
         "lineNumber": 350,
@@ -121450,7 +121386,7 @@
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            return this.record.isSameRecord(record);"
+        "content": "            this.record \u003d record;"
       },
       {
         "lineNumber": 352,
@@ -121464,49 +121400,49 @@
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 354,
         "author": {
           "gitId": "tharshita"
         },
-        "content": ""
+        "content": "        @Override"
       },
       {
         "lineNumber": 355,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    /**"
+        "content": "        public boolean hasRecord(Record record) {"
       },
       {
         "lineNumber": 356,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     * A Model stub that always accept the record being added."
+        "content": "            requireNonNull(record);"
       },
       {
         "lineNumber": 357,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "     */"
+        "content": "            return this.record.isSameRecord(record);"
       },
       {
         "lineNumber": 358,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    private class ModelStubAcceptingRecordAdded extends ModelStub {"
+        "content": "        }"
       },
       {
         "lineNumber": 359,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        final ArrayList\u003cRecord\u003e recordsAdded \u003d new ArrayList\u003c\u003e();"
+        "content": "    }"
       },
       {
         "lineNumber": 360,
@@ -121520,35 +121456,35 @@
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        @Override"
+        "content": "    /**"
       },
       {
         "lineNumber": 362,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        public boolean hasRecord(Record record) {"
+        "content": "     * A Model stub that always accept the record being added."
       },
       {
         "lineNumber": 363,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            requireNonNull(record);"
+        "content": "     */"
       },
       {
         "lineNumber": 364,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            return recordsAdded.stream().anyMatch(record::isSameRecord);"
+        "content": "    private class ModelStubAcceptingRecordAdded extends ModelStub {"
       },
       {
         "lineNumber": 365,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        }"
+        "content": "        final ArrayList\u003cRecord\u003e recordsAdded \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 366,
@@ -121569,7 +121505,7 @@
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        public void addRecord(Record record) {"
+        "content": "        public boolean hasRecord(Record record) {"
       },
       {
         "lineNumber": 369,
@@ -121583,7 +121519,7 @@
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            recordsAdded.add(record);"
+        "content": "            return recordsAdded.stream().anyMatch(record::isSameRecord);"
       },
       {
         "lineNumber": 371,
@@ -121611,31 +121547,73 @@
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        public ReadOnlyCookedRecordBook getRecordBook() {"
+        "content": "        public void addRecord(Record record) {"
       },
       {
         "lineNumber": 375,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "            return new CookedRecordBook();"
+        "content": "            requireNonNull(record);"
       },
       {
         "lineNumber": 376,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "        }"
+        "content": "            recordsAdded.add(record);"
       },
       {
         "lineNumber": 377,
         "author": {
           "gitId": "tharshita"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 378,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 379,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "        @Override"
+      },
+      {
+        "lineNumber": 380,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "        public ReadOnlyCookedRecordBook getRecordBook() {"
+      },
+      {
+        "lineNumber": 381,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "            return new CookedRecordBook();"
+      },
+      {
+        "lineNumber": 382,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 383,
+        "author": {
+          "gitId": "tharshita"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 384,
         "author": {
           "gitId": "-"
         },
@@ -121643,10 +121621,10 @@
       }
     ],
     "authorContributionMap": {
-      "pekchinsiongbrian": 37,
+      "pekchinsiongbrian": 44,
       "tharshita": 127,
       "-": 130,
-      "beatricetay": 63,
+      "beatricetay": 62,
       "YuuTon9": 21
     }
   },

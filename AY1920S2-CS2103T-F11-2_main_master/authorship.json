@@ -21023,35 +21023,35 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static final String MESSAGE_SUCCESS \u003d \"Succesfully exported this client\u0027s exercises to \\\"%s\\\".\\n\""
+        "content": "    public static final String MESSAGE_SUCCESS \u003d \"Succesfully exported this client\u0027s exercises to \\\"%s\\\".\\n\" + String"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            + String.format(\"Please check your /%s directory.\", DEFAULT_EXPORTS_DIRECTORY);"
+        "content": "            .format(\"Please check your /%s folder, which should be located in the same directory as FitBiz.jar.\","
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "                    DEFAULT_EXPORTS_DIRECTORY);"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static final String MESSAGE_FAILED \u003d \"Failed to export this client\u0027s exercises. \""
+        "content": ""
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            + \"Please try again.\";"
+        "content": "    public static final String MESSAGE_FAILED \u003d \"Failed to export this client\u0027s exercises. Please try again.\";"
       },
       {
         "lineNumber": 32,
@@ -21086,206 +21086,199 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static final String MESSAGE_NO_EXERCISES \u003d"
+        "content": "    public static final String MESSAGE_NO_EXERCISES \u003d \"This client currently does not have any exercises to export.\";"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            \"This client currently does not have any exercises to export.\";"
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Override"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "        requireNonNull(model);"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        requireNonNull(model);"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        if (!model.hasClientInView()) {"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        if (!model.hasClientInView()) {"
+        "content": "            throw new CommandException(MESSAGE_CLIENT_NOT_IN_VIEW);"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            throw new CommandException(MESSAGE_CLIENT_NOT_IN_VIEW);"
+        "content": "        }"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        Client clientInView \u003d model.getClientInView();"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        Client clientInView \u003d model.getClientInView();"
+        "content": ""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        List\u003cExercise\u003e exercises \u003d clientInView.getExerciseList().asUnmodifiableObservableList();"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        List\u003cExercise\u003e exercises \u003d clientInView.getExerciseList().asUnmodifiableObservableList();"
+        "content": ""
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        if (exercises.isEmpty()) {"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        if (exercises.isEmpty()) {"
+        "content": "            throw new CommandException(MESSAGE_NO_EXERCISES);"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            throw new CommandException(MESSAGE_NO_EXERCISES);"
+        "content": "        }"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        String fileName \u003d clientInView.getName().fullName + CSV_FILE_EXTENSION;"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        String fileName \u003d clientInView.getName().fullName + CSV_FILE_EXTENSION;"
+        "content": ""
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        try {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        try {"
+        "content": "            ExportUtil.exportExercisesAsCsv(exercises, fileName);"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            ExportUtil.exportExercisesAsCsv(exercises, fileName);"
+        "content": "        } catch (IOException ex) {"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        } catch (IOException ex) {"
+        "content": "            throw new CommandException(MESSAGE_FAILED);"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            throw new CommandException(MESSAGE_FAILED);"
+        "content": "        }"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, fileName));"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, fileName));"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "AaronCQL"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
           "gitId": "AaronCQL"
         },
@@ -21293,7 +21286,7 @@
       }
     ],
     "authorContributionMap": {
-      "AaronCQL": 65
+      "AaronCQL": 64
     }
   },
   {
@@ -22898,101 +22891,108 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public static final String USER_GUIDE_URL \u003d \"https://ay1920s2-cs2103t-f11-2.github.io/main/UserGuide.html\";"
+        "content": "    public static final String USER_GUIDE_URL \u003d"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "            \"https://ay1920s2-cs2103t-f11-2.github.io/main/UserGuide.html#view-help-code-help-code\";"
       },
       {
         "lineNumber": 12,
         "author": {
-          "gitId": "-"
+          "gitId": "AaronCQL"
         },
-        "content": "    public static final String COMMAND_WORD \u003d \"help\";"
+        "content": ""
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    public static final String COMMAND_WORD \u003d \"help\";"
       },
       {
         "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
         "author": {
           "gitId": "AaronCQL"
         },
         "content": "    public static final String MESSAGE_USAGE \u003d COMMAND_WORD + \": Redirects to FitBiz user guide\";"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 16,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "AaronCQL"
-        },
-        "content": "    public static final String SHOWING_HELP_MESSAGE \u003d \"You should have been redirected to the FitBiz user guide\""
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            + \" website. If not, please visit the following URL:\\n\""
+        "content": "    public static final String SHOWING_HELP_MESSAGE \u003d \"You should have been redirected to the FitBiz user guide\""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "            + USER_GUIDE_URL;"
+        "content": "            + \" website. If not, please visit the following URL:\\n\""
       },
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "-"
+          "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "            + USER_GUIDE_URL;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "-"
         },
-        "content": "    public CommandResult execute(Model model) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "-"
         },
-        "content": "        return new CommandResult(SHOWING_HELP_MESSAGE, true, false);"
+        "content": "    public CommandResult execute(Model model) {"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        return new CommandResult(SHOWING_HELP_MESSAGE, true, false);"
       },
       {
         "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 25,
         "author": {
           "gitId": "-"
         },
@@ -23000,7 +23000,7 @@
       }
     ],
     "authorContributionMap": {
-      "AaronCQL": 6,
+      "AaronCQL": 7,
       "-": 18
     }
   },
@@ -23575,243 +23575,271 @@
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "tohkerwei"
+          "gitId": "Dban1"
         },
-        "content": "    @Override"
+        "content": "    /**"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "tohkerwei"
+          "gitId": "Dban1"
         },
-        "content": "    public CommandResult execute(Model model) throws CommandException {"
+        "content": "     * @author @Dban1"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        requireNonNull(model);"
+        "content": "     */"
       },
       {
         "lineNumber": 58,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        List\u003cClient\u003e lastShownList \u003d model.getFilteredClientList();"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        if (index.getZeroBased() \u003e\u003d lastShownList.size()) {"
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);"
-      },
-      {
-        "lineNumber": 62,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        Client clientToEdit \u003d lastShownList.get(index.getZeroBased());"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "tohkerwei"
-        },
-        "content": "        ScheduleList newScheduleList \u003d new ScheduleList();"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "tohkerwei"
-        },
-        "content": "        newScheduleList.setSchedule(toAdd);"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "tohkerwei"
-        },
-        "content": "        Client editedClient \u003d new Client(clientToEdit.getName(), clientToEdit.getGender(), clientToEdit.getPhone(),"
-      },
-      {
-        "lineNumber": 68,
-        "author": {
-          "gitId": "tohkerwei"
-        },
-        "content": "                clientToEdit.getEmail(), clientToEdit.getAddress(), clientToEdit.getTags(), clientToEdit.getBirthday(),"
-      },
-      {
-        "lineNumber": 69,
-        "author": {
-          "gitId": "tohkerwei"
-        },
-        "content": "                clientToEdit.getCurrentWeight(), clientToEdit.getTargetWeight(), clientToEdit.getHeight(),"
-      },
-      {
-        "lineNumber": 70,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "                clientToEdit.getRemark(), clientToEdit.getSports(), clientToEdit.getExerciseList(),"
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "ziyingli"
-        },
-        "content": "                clientToEdit.getPersonalBest(), newScheduleList);"
-      },
-      {
-        "lineNumber": 72,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        model.setClient(clientToEdit, editedClient);"
-      },
-      {
-        "lineNumber": 73,
-        "author": {
-          "gitId": "tohkerwei"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 74,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        // if toAdd is empty, meaning the schedule has been cleared"
-      },
-      {
-        "lineNumber": 75,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        if (toAdd.isEmpty()) {"
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "            return new CommandResult(String.format(MESSAGE_CLEARED, editedClient.getName().fullName));"
-      },
-      {
-        "lineNumber": 77,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 78,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, editedClient.getName().fullName,"
-      },
-      {
-        "lineNumber": 79,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "                editedClient.getScheduleList().toString()));"
-      },
-      {
-        "lineNumber": 80,
-        "author": {
-          "gitId": "tohkerwei"
-        },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 81,
-        "author": {
-          "gitId": "tohkerwei"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 82,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 83,
+        "lineNumber": 59,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    public CommandResult execute(Model model) throws CommandException {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        requireNonNull(model);"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        List\u003cClient\u003e lastShownList \u003d model.getFilteredClientList();"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        if (index.getZeroBased() \u003e\u003d lastShownList.size()) {"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        Client clientToEdit \u003d lastShownList.get(index.getZeroBased());"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "        ScheduleList newScheduleList \u003d new ScheduleList();"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "        newScheduleList.setSchedule(toAdd);"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "        Client editedClient \u003d new Client(clientToEdit.getName(), clientToEdit.getGender(), clientToEdit.getPhone(),"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "                clientToEdit.getEmail(), clientToEdit.getAddress(), clientToEdit.getTags(), clientToEdit.getBirthday(),"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "                clientToEdit.getCurrentWeight(), clientToEdit.getTargetWeight(), clientToEdit.getHeight(),"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "                clientToEdit.getRemark(), clientToEdit.getSports(), clientToEdit.getExerciseList(),"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "ziyingli"
+        },
+        "content": "                clientToEdit.getPersonalBest(), newScheduleList);"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        model.setClient(clientToEdit, editedClient);"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        // if toAdd is empty, meaning the schedule has been cleared"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        if (toAdd.isEmpty()) {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "            assert(toAdd.size() \u003d\u003d 0);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "            return new CommandResult(String.format(MESSAGE_CLEARED, editedClient.getName().fullName));"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, editedClient.getName().fullName,"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "                editedClient.getScheduleList().toString()));"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "    }"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "                || (other instanceof ScheduleCommand // instance of handles nulls"
+        "content": ""
       },
       {
         "lineNumber": 86,
         "author": {
-          "gitId": "Dban1"
+          "gitId": "tohkerwei"
         },
-        "content": "                \u0026\u0026 toAdd.equals(((ScheduleCommand) other).toAdd)"
+        "content": "    @Override"
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "Dban1"
+          "gitId": "tohkerwei"
         },
-        "content": "                \u0026\u0026 index.equals(((ScheduleCommand) other).index));"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "    }"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 89,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "                || (other instanceof ScheduleCommand // instance of handles nulls"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "                \u0026\u0026 toAdd.equals(((ScheduleCommand) other).toAdd)"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "                \u0026\u0026 index.equals(((ScheduleCommand) other).index));"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 93,
         "author": {
           "gitId": "tohkerwei"
         },
@@ -23821,7 +23849,7 @@
     "authorContributionMap": {
       "ziyingli": 1,
       "tohkerwei": 47,
-      "Dban1": 37,
+      "Dban1": 41,
       "AaronCQL": 4
     }
   },
@@ -34108,7 +34136,7 @@
         "author": {
           "gitId": "Dban1"
         },
-        "content": "     * @author Dban1"
+        "content": "     * @author @Dban1"
       },
       {
         "lineNumber": 34,
@@ -34190,502 +34218,509 @@
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "tohkerwei"
+          "gitId": "Dban1"
         },
-        "content": "     * Parses the given {@code String} of arguments in the context of the ScheduleCommand"
+        "content": "     * @author @Dban1"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "     * and returns a ScheduleCommand object for execution."
+        "content": "     * Parses the given {@code String} of arguments in the context of the ScheduleCommand"
       },
       {
         "lineNumber": 47,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "     * and returns a ScheduleCommand object for execution."
+      },
+      {
+        "lineNumber": 48,
         "author": {
           "gitId": "Dban1"
         },
         "content": "     *"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 49,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "     * @throws ParseException if the user input does not conform the expected format"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 50,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 51,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "    public ScheduleCommand parse(String args) throws ParseException {"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 52,
         "author": {
           "gitId": "Dban1"
         },
         "content": "        ArgumentMultimap argMultimap \u003d ArgumentTokenizer.tokenize(args, PREFIX_SCHEDULE);"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 53,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "        Index index;"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 54,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 54,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        if (argMultimap.getPreamble().isEmpty()"
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                || !argMultimap.getValue(PREFIX_SCHEDULE).isPresent()) {"
+        "content": "        if (argMultimap.getPreamble().isEmpty()"
       },
       {
         "lineNumber": 56,
         "author": {
-          "gitId": "tohkerwei"
+          "gitId": "Dban1"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ScheduleCommand.MESSAGE_USAGE));"
+        "content": "                || !argMultimap.getValue(PREFIX_SCHEDULE).isPresent()) {"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "        }"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ScheduleCommand.MESSAGE_USAGE));"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 59,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
         "author": {
           "gitId": "Dban1"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 61,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "            index \u003d ParserUtil.parseIndex(argMultimap.getPreamble());"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 62,
         "author": {
           "gitId": "Dban1"
         },
         "content": "        } catch (ParseException pe) {"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 63,
         "author": {
           "gitId": "Dban1"
         },
         "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ScheduleCommand.MESSAGE_USAGE), pe);"
       },
       {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": "        }"
-      },
-      {
         "lineNumber": 64,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        // Creates an ArrayList of HashMap, each HashMap contains 3 input attributes day, start time, end time."
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        ArrayList\u003cHashMap\u003cString, String\u003e\u003e processedInput \u003d ParserUtil.parseRawScheduleInput("
+        "content": "        // Creates an ArrayList of HashMap, each HashMap contains 3 input attributes day, start time, end time."
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                argMultimap.getAllValues(PREFIX_SCHEDULE));"
+        "content": "        ArrayList\u003cHashMap\u003cString, String\u003e\u003e processedInput \u003d ParserUtil.parseRawScheduleInput("
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "                argMultimap.getAllValues(PREFIX_SCHEDULE));"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        // Process the input attributes into their respective ArrayList\u003cString\u003e"
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        ArrayList\u003cString\u003e dayStringList \u003d new ArrayList\u003c\u003e();"
+        "content": "        // Process the input attributes into their respective ArrayList\u003cString\u003e"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        ArrayList\u003cString\u003e startListString \u003d new ArrayList\u003c\u003e();"
+        "content": "        ArrayList\u003cString\u003e dayStringList \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        ArrayList\u003cString\u003e endListString \u003d new ArrayList\u003c\u003e();"
+        "content": "        ArrayList\u003cString\u003e startListString \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "        ArrayList\u003cString\u003e endListString \u003d new ArrayList\u003c\u003e();"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        for (HashMap\u003cString, String\u003e h: processedInput) {"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            dayStringList.add(h.get(\"day\"));"
+        "content": "        for (HashMap\u003cString, String\u003e h: processedInput) {"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            startListString.add(h.get(\"start\"));"
+        "content": "            dayStringList.add(h.get(\"day\"));"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            endListString.add(h.get(\"end\"));"
+        "content": "            startListString.add(h.get(\"start\"));"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        }"
+        "content": "            endListString.add(h.get(\"end\"));"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        // Passes in the respective ArrayList\u003cString\u003e for the input attributes to their parser functions to obtain"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        // their respective ArrayLists."
+        "content": "        // Passes in the respective ArrayList\u003cString\u003e for the input attributes to their parser functions to obtain"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        ArrayList\u003cDay\u003e dayList \u003d ParserUtil.parseDay(dayStringList);"
+        "content": "        // their respective ArrayLists."
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        ArrayList\u003cStartTime\u003e startTimeList \u003d ParserUtil.parseStartTime(startListString);"
+        "content": "        ArrayList\u003cDay\u003e dayList \u003d ParserUtil.parseDay(dayStringList);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        ArrayList\u003cEndTime\u003e endTimeList \u003d ParserUtil.parseEndTime(endListString);"
+        "content": "        ArrayList\u003cStartTime\u003e startTimeList \u003d ParserUtil.parseStartTime(startListString);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "        ArrayList\u003cEndTime\u003e endTimeList \u003d ParserUtil.parseEndTime(endListString);"
       },
       {
         "lineNumber": 86,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "        ArrayList\u003cSchedule\u003e scheduleList \u003d new ArrayList\u003c\u003e();"
       },
       {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "Dban1"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 88,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        // Checks if there are the same number of arguments for Day, StartTime and EndTime."
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        if (dayList.size() !\u003d startTimeList.size() || dayList.size() !\u003d endTimeList.size()) {"
+        "content": "        // Checks if there are the same number of arguments for Day, StartTime and EndTime."
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            String invalidCountMsg \u003d String.format(ScheduleCommand.MESSAGE_INVALID_ARG_COUNT, dayList.size(),"
+        "content": "        if (dayList.size() !\u003d startTimeList.size() || dayList.size() !\u003d endTimeList.size()) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                    startTimeList.size(), endTimeList.size());"
+        "content": "            String invalidCountMsg \u003d String.format(ScheduleCommand.MESSAGE_INVALID_ARG_COUNT, dayList.size(),"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, invalidCountMsg));"
+        "content": "                    startTimeList.size(), endTimeList.size());"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        }"
+        "content": "            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, invalidCountMsg));"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        // Checks for overlapping schedules."
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        TreeSet\u003cSchedule\u003e scheduleSet \u003d new TreeSet\u003c\u003e();"
+        "content": "        // Checks for overlapping schedules."
       },
       {
         "lineNumber": 97,
         "author": {
-          "gitId": "tohkerwei"
+          "gitId": "Dban1"
         },
-        "content": "        for (int i \u003d 0; i \u003c dayList.size(); i++) {"
+        "content": "        TreeSet\u003cSchedule\u003e scheduleSet \u003d new TreeSet\u003c\u003e();"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "            Day day \u003d dayList.get(i);"
+        "content": "        for (int i \u003d 0; i \u003c dayList.size(); i++) {"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "            StartTime startTime \u003d startTimeList.get(i);"
+        "content": "            Day day \u003d dayList.get(i);"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "            EndTime endTime \u003d endTimeList.get(i);"
+        "content": "            StartTime startTime \u003d startTimeList.get(i);"
       },
       {
         "lineNumber": 101,
         "author": {
-          "gitId": "Dban1"
+          "gitId": "tohkerwei"
         },
-        "content": "            Schedule schedule;"
+        "content": "            EndTime endTime \u003d endTimeList.get(i);"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            try {"
+        "content": "            Schedule schedule;"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                schedule \u003d new Schedule(day, startTime, endTime);"
+        "content": "            try {"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            } catch (IllegalArgumentException iae) {"
+        "content": "                schedule \u003d new Schedule(day, startTime, endTime);"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                throw new ParseException(Schedule.MESSAGE_CONSTRAINTS);"
+        "content": "            } catch (IllegalArgumentException iae) {"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            }"
+        "content": "                throw new ParseException(Schedule.MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            if (!checkIfOverlaps(schedule, scheduleSet)) {"
+        "content": "            }"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
+        "content": "            if (!checkIfOverlaps(schedule, scheduleSet)) {"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                        ScheduleCommand.MESSAGE_CONTAINS_DUPLICATES));"
+        "content": "                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            }"
+        "content": "                        ScheduleCommand.MESSAGE_CONTAINS_DUPLICATES));"
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "tohkerwei"
+          "gitId": "Dban1"
         },
-        "content": "            scheduleList.add(schedule);"
+        "content": "            }"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "        }"
+        "content": "            scheduleList.add(schedule);"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "        return new ScheduleCommand(index, scheduleList);"
+        "content": ""
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "    }"
+        "content": "        return new ScheduleCommand(index, scheduleList);"
       },
       {
         "lineNumber": 116,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 117,
         "author": {
           "gitId": "tohkerwei"
         },
@@ -34694,7 +34729,7 @@
     ],
     "authorContributionMap": {
       "tohkerwei": 43,
-      "Dban1": 73
+      "Dban1": 74
     }
   },
   {
@@ -57977,7 +58012,7 @@
         "author": {
           "gitId": "Dban1"
         },
-        "content": "     * @author Dban1"
+        "content": "     * @author @Dban1"
       },
       {
         "lineNumber": 31,
@@ -59107,7 +59142,7 @@
         "author": {
           "gitId": "Dban1"
         },
-        "content": "     * @author Dban1"
+        "content": "     * @author @Dban1"
       },
       {
         "lineNumber": 35,
@@ -59541,203 +59576,203 @@
         "author": {
           "gitId": "Dban1"
         },
-        "content": "     * @return"
+        "content": "     * @author @Dban1"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "     * @author Dban1"
+        "content": "     * Returns a clone of Schedule."
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "     * Returns a clone of Schedule."
+        "content": "     */"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "     */"
+        "content": "    @Override"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    @Override"
+        "content": "    public Schedule clone() {"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    public Schedule clone() {"
+        "content": "        Day clonedDay \u003d this.day.clone();"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        Day clonedDay \u003d this.day.clone();"
+        "content": "        StartTime clonedStartTime \u003d this.startTime.clone();"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        StartTime clonedStartTime \u003d this.startTime.clone();"
+        "content": "        EndTime clonedEndTime \u003d this.endTime.clone();"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        EndTime clonedEndTime \u003d this.endTime.clone();"
+        "content": "        String clonedClientName \u003d this.clientName;"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        String clonedClientName \u003d this.clientName;"
+        "content": ""
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "        Schedule clonedSchedule \u003d new Schedule(clonedDay, clonedStartTime, clonedEndTime);"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        Schedule clonedSchedule \u003d new Schedule(clonedDay, clonedStartTime, clonedEndTime);"
+        "content": "        clonedSchedule.assignClientName(clonedClientName);"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        clonedSchedule.assignClientName(clonedClientName);"
+        "content": ""
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "        return clonedSchedule;"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        return clonedSchedule;"
+        "content": "    }"
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 113,
-        "author": {
-          "gitId": "Dban1"
-        },
         "content": "    /**"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 113,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "     * Returns true if both schedule have the same attribute values"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 114,
         "author": {
           "gitId": "Dban1"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 115,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 116,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "    public boolean equals(Object other) {"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 117,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "        if (other \u003d\u003d this) {"
       },
       {
-        "lineNumber": 119,
+        "lineNumber": 118,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "            return true;"
       },
       {
-        "lineNumber": 120,
+        "lineNumber": 119,
         "author": {
           "gitId": "Dban1"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 121,
+        "lineNumber": 120,
         "author": {
           "gitId": "Dban1"
         },
         "content": ""
       },
       {
-        "lineNumber": 122,
+        "lineNumber": 121,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "        if (!(other instanceof Schedule)) {"
       },
       {
-        "lineNumber": 123,
+        "lineNumber": 122,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "            return false;"
       },
       {
-        "lineNumber": 124,
+        "lineNumber": 123,
         "author": {
           "gitId": "Dban1"
         },
         "content": "        }"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": ""
       },
       {
         "lineNumber": 125,
@@ -59749,418 +59784,432 @@
       {
         "lineNumber": 126,
         "author": {
-          "gitId": "Dban1"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 127,
-        "author": {
           "gitId": "tohkerwei"
         },
         "content": "        Schedule otherSchedule \u003d (Schedule) other;"
       },
       {
-        "lineNumber": 128,
+        "lineNumber": 127,
         "author": {
           "gitId": "Dban1"
         },
         "content": "        int otherSt \u003d otherSchedule.getStartTime().getDirectTimeInt();"
       },
       {
-        "lineNumber": 129,
+        "lineNumber": 128,
         "author": {
           "gitId": "Dban1"
         },
         "content": "        int otherEt \u003d otherSchedule.getEndTime().getDirectTimeInt();"
       },
       {
-        "lineNumber": 130,
+        "lineNumber": 129,
         "author": {
           "gitId": "Dban1"
         },
         "content": "        int thisSt \u003d this.getStartTime().getDirectTimeInt();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        int thisEt \u003d this.getEndTime().getDirectTimeInt();"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        int thisEt \u003d this.getEndTime().getDirectTimeInt();"
+        "content": ""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 133,
-        "author": {
-          "gitId": "Dban1"
-        },
         "content": "        // Checks if there are overlaps between 2 schedules."
       },
       {
-        "lineNumber": 134,
+        "lineNumber": 133,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "        return otherSchedule.getDay().equals(getDay())"
       },
       {
-        "lineNumber": 135,
+        "lineNumber": 134,
         "author": {
           "gitId": "Dban1"
         },
         "content": "                \u0026\u0026 (thisSt \u003d\u003d otherSt)"
       },
       {
-        "lineNumber": 136,
+        "lineNumber": 135,
         "author": {
           "gitId": "Dban1"
         },
         "content": "                \u0026\u0026 (thisEt \u003d\u003d otherEt);"
       },
       {
-        "lineNumber": 137,
+        "lineNumber": 136,
         "author": {
           "gitId": "tohkerwei"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "tohkerwei"
+        },
+        "content": ""
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "    @Override"
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "    public int hashCode() {"
+        "content": "        // use this method for custom fields hashing instead of implementing your own"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "        // use this method for custom fields hashing instead of implementing your own"
+        "content": "        return Objects.hash(day, startTime, endTime);"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "        return Objects.hash(day, startTime, endTime);"
+        "content": "    }"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "    @Override"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "    public String toString() {"
+        "content": "        final StringBuilder builder \u003d new StringBuilder();"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "        final StringBuilder builder \u003d new StringBuilder();"
+        "content": "        builder.append(getDay())"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "        builder.append(getDay())"
+        "content": "                .append(\" Time: \")"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "                .append(\" Time: \")"
+        "content": "                .append(getStartTime())"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "                .append(getStartTime())"
+        "content": "                .append(\" - \")"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "                .append(\" - \")"
+        "content": "                .append(getEndTime());"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "tohkerwei"
         },
-        "content": "                .append(getEndTime());"
+        "content": "        return builder.toString();"
       },
       {
         "lineNumber": 153,
         "author": {
-          "gitId": "tohkerwei"
+          "gitId": "Dban1"
         },
-        "content": "        return builder.toString();"
+        "content": "    }"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "    public String getTimeFrame() {"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    public String getTimeFrame() {"
+        "content": "        String timeFrame \u003d getStartTime().toString() + \" - \" + getEndTime().toString();"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        String timeFrame \u003d getStartTime().toString() + \" - \" + getEndTime().toString();"
+        "content": "        return timeFrame;"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        return timeFrame;"
+        "content": "    }"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    @Override"
+        "content": "     * @author @Dban1"
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    public int compareTo(Schedule other) {"
+        "content": "     */"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        Schedule otherSchedule \u003d other;"
+        "content": "    @Override"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        int otherSt \u003d other.getStartTime().getDirectTimeInt();"
+        "content": "    public int compareTo(Schedule other) {"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        int otherEt \u003d other.getEndTime().getDirectTimeInt();"
+        "content": "        Schedule otherSchedule \u003d other;"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        int thisSt \u003d this.getStartTime().getDirectTimeInt();"
+        "content": "        int otherSt \u003d other.getStartTime().getDirectTimeInt();"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        int thisEt \u003d this.getEndTime().getDirectTimeInt();"
+        "content": "        int otherEt \u003d other.getEndTime().getDirectTimeInt();"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        // Checks if there are overlaps between 2 schedules."
+        "content": "        int thisSt \u003d this.getStartTime().getDirectTimeInt();"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        if (otherSchedule.getDay().equals(getDay())) {"
+        "content": "        int thisEt \u003d this.getEndTime().getDirectTimeInt();"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            if (((otherSt \u003c thisSt) \u0026\u0026 (otherEt \u003c thisSt)) || (otherSt \u003e thisEt)) {"
+        "content": "        // Checks if there are overlaps between 2 schedules."
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                return otherSt - thisSt;"
+        "content": "        if (otherSchedule.getDay().equals(getDay())) {"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            } else {"
+        "content": "            if (((otherSt \u003c thisSt) \u0026\u0026 (otherEt \u003c thisSt)) || (otherSt \u003e thisEt)) {"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                return 0;"
+        "content": "                return otherSt - thisSt;"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            }"
+        "content": "            } else {"
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        } else {"
+        "content": "                return 0;"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            DayEnum.Weekday otherWeekday \u003d otherSchedule.getDay().getDayEnum();"
+        "content": "            }"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            DayEnum.Weekday thisWeekday \u003d this.getDay().getDayEnum();"
+        "content": "        } else {"
       },
       {
         "lineNumber": 178,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "            return otherWeekday.compareTo(thisWeekday);"
+        "content": "            DayEnum.Weekday otherWeekday \u003d otherSchedule.getDay().getDayEnum();"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        }"
+        "content": "            DayEnum.Weekday thisWeekday \u003d this.getDay().getDayEnum();"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    }"
+        "content": "            return otherWeekday.compareTo(thisWeekday);"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    public String getClientName() {"
+        "content": "    }"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        return this.clientName;"
+        "content": ""
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    }"
+        "content": "    public String getClientName() {"
       },
       {
         "lineNumber": 185,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "        return this.clientName;"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "Dban1"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 187,
         "author": {
           "gitId": "Dban1"
         },
@@ -60169,7 +60218,7 @@
     ],
     "authorContributionMap": {
       "tohkerwei": 61,
-      "Dban1": 124
+      "Dban1": 126
     }
   },
   {
@@ -60202,119 +60251,119 @@
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "import java.util.Comparator;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "import javafx.collections.FXCollections;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": "import javafx.collections.FXCollections;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "Dban1"
         },
-        "content": " * Contains a sorted list of Schedule for the day."
+        "content": "/**"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "Dban1"
         },
-        "content": " *"
+        "content": " * Contains a sorted list of Schedule for the day."
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "Dban1"
         },
-        "content": " * @author @Dban1"
+        "content": " *"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "Dban1"
         },
-        "content": " */"
+        "content": " * @author @Dban1"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "public class ScheduleDay {"
+        "content": " */"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    private final ArrayList\u003cSchedule\u003e scheduleList;"
+        "content": "public class ScheduleDay {"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    private final String dayName;"
+        "content": "    private final ArrayList\u003cSchedule\u003e scheduleList;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "Dban1"
         },
-        "content": ""
+        "content": "    private final String dayName;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "    public ScheduleDay(ArrayList\u003cSchedule\u003e scheduleList, String dayName) {"
+        "content": ""
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        this.scheduleList \u003d scheduleList;"
+        "content": "    public ScheduleDay(ArrayList\u003cSchedule\u003e scheduleList, String dayName) {"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "        this.scheduleList.sort((o1, o2) -\u003e"
+        "content": "        this.scheduleList \u003d scheduleList;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "Dban1"
         },
-        "content": "                o1.getStartTime().getDirectTimeInt() - o2.getStartTime().getDirectTimeInt());"
+        "content": "        this.scheduleList.sort(Comparator.comparingInt(o -\u003e o.getStartTime().getDirectTimeInt()));"
       },
       {
         "lineNumber": 21,
@@ -67655,16 +67704,16 @@
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "AaronCQL"
+          "gitId": "Yonggiee"
         },
-        "content": "        Optional\u003cJsonSerializableFitBiz\u003e jsonFitBiz \u003d JsonUtil.readJsonFile("
+        "content": "        Optional\u003cJsonSerializableFitBizStorage\u003e jsonFitBiz \u003d JsonUtil.readJsonFile("
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "                filePath, JsonSerializableFitBiz.class);"
+        "content": "                filePath, JsonSerializableFitBizStorage.class);"
       },
       {
         "lineNumber": 50,
@@ -67860,7 +67909,7 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "        JsonUtil.saveJsonFile(new JsonSerializableFitBiz(fitBiz), filePath);"
+        "content": "        JsonUtil.saveJsonFile(new JsonSerializableFitBizStorage(fitBiz), filePath);"
       },
       {
         "lineNumber": 78,
@@ -67885,13 +67934,13 @@
       }
     ],
     "authorContributionMap": {
-      "Yonggiee": 11,
-      "AaronCQL": 9,
+      "Yonggiee": 12,
+      "AaronCQL": 8,
       "-": 60
     }
   },
   {
-    "path": "src/main/java/seedu/address/storage/JsonSerializableFitBiz.java",
+    "path": "src/main/java/seedu/address/storage/JsonSerializableFitBizStorage.java",
     "fileType": "functional-code",
     "lines": [
       {
@@ -68032,7 +68081,7 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "class JsonSerializableFitBiz {"
+        "content": "class JsonSerializableFitBizStorage {"
       },
       {
         "lineNumber": 21,
@@ -68081,7 +68130,7 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "     * Constructs a {@code JsonSerializableFitBiz} with the given clients."
+        "content": "     * Constructs a {@code JsonSerializableFitBizStorage} with the given clients."
       },
       {
         "lineNumber": 28,
@@ -68102,7 +68151,7 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "    public JsonSerializableFitBiz(@JsonProperty(\"clients\") List\u003cJsonAdaptedClient\u003e clients) {"
+        "content": "    public JsonSerializableFitBizStorage(@JsonProperty(\"clients\") List\u003cJsonAdaptedClient\u003e clients) {"
       },
       {
         "lineNumber": 31,
@@ -68151,7 +68200,7 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "     * @param source future changes to this will not affect the created {@code JsonSerializableFitBiz}."
+        "content": "     * @param source future changes to this will not affect the created {@code JsonSerializableFitBizStorage}."
       },
       {
         "lineNumber": 38,
@@ -68163,9 +68212,9 @@
       {
         "lineNumber": 39,
         "author": {
-          "gitId": "AaronCQL"
+          "gitId": "Yonggiee"
         },
-        "content": "    public JsonSerializableFitBiz(ReadOnlyFitBiz source) {"
+        "content": "    public JsonSerializableFitBizStorage(ReadOnlyFitBiz source) {"
       },
       {
         "lineNumber": 40,
@@ -68316,9 +68365,9 @@
       }
     ],
     "authorContributionMap": {
-      "Yonggiee": 11,
+      "Yonggiee": 12,
       "Dban1": 8,
-      "AaronCQL": 5,
+      "AaronCQL": 4,
       "-": 36
     }
   },
@@ -85023,504 +85072,504 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import seedu.address.logic.commands.ExportCommand;"
+        "content": "import seedu.address.logic.commands.ClearCommand;"
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import seedu.address.logic.commands.FilterCommand;"
+        "content": "import seedu.address.logic.commands.DeleteCommand;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import seedu.address.logic.commands.GraphCommand;"
+        "content": "import seedu.address.logic.commands.DeleteExerciseCommand;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "import seedu.address.logic.commands.ScheduleCommand;"
+        "content": "import seedu.address.logic.commands.EditCommand;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "import seedu.address.logic.commands.EditExerciseCommand;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "public class AutocompleteTest {"
+        "content": "import seedu.address.logic.commands.ExitCommand;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "import seedu.address.logic.commands.ExportCommand;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Ambiguous commands"
+        "content": "import seedu.address.logic.commands.FilterCommand;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String AC_COMMAND \u003d \"a\";"
+        "content": "import seedu.address.logic.commands.FindCommand;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int AC_CURRENT_CARET_POSITION \u003d 1;"
+        "content": "import seedu.address.logic.commands.GraphCommand;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int AC_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
+        "content": "import seedu.address.logic.commands.HelpCommand;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String AC_FEEDBACK_TO_SET \u003d Autocomplete.FEEDBACK_MULTIPLE_COMMANDS + \"[add-e, add-c]\";"
+        "content": "import seedu.address.logic.commands.ListCommand;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String AC_COMMAND_TO_SET \u003d \"add-\";"
+        "content": "import seedu.address.logic.commands.ScheduleCommand;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "import seedu.address.logic.commands.ViewCommand;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Invalid commands"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String IC_COMMAND \u003d \"FitBiz!!\";"
+        "content": "public class AutocompleteTest {"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int IC_CURRENT_CARET_POSITION \u003d 8;"
+        "content": ""
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final Integer IC_CARET_POSITION_TO_SET \u003d null;"
+        "content": "    // Unambiguous command: \"add-c\""
       },
       {
         "lineNumber": 27,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String IC_FEEDBACK_TO_SET \u003d Autocomplete.FEEDBACK_NO_COMMANDS;"
+        "content": "    private static final String ADD_COMMAND \u003d \"add-c\";"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String IC_COMMAND_TO_SET \u003d null;"
+        "content": "    private static final int ADD_CURRENT_CARET_POSITION \u003d 5;"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int ADD_CARET_POSITION_TO_SET \u003d 8; // index right after the \"/\" in \"n/\""
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Unambiguous command: \"add-c\""
+        "content": "    private static final String ADD_FEEDBACK_TO_SET \u003d AddCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String ADD_COMMAND \u003d \"add-c\";"
+        "content": "    private static final String ADD_COMMAND_TO_SET \u003d \"add-c n/ p/ e/ a/ g/ b/ cw/ tw/ h/ r/ s/ t/\";"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int ADD_CURRENT_CARET_POSITION \u003d 5;"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int ADD_CARET_POSITION_TO_SET \u003d 8; // index right after the \"/\" in \"n/\""
+        "content": "    // Unambiguous command: \"add-e\""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String ADD_FEEDBACK_TO_SET \u003d AddCommand.MESSAGE_USAGE;"
+        "content": "    private static final String ADD_EXERCISE_COMMAND \u003d \"add-e\";"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String ADD_COMMAND_TO_SET \u003d \"add-c n/ p/ e/ a/ g/ b/ cw/ tw/ h/ r/ s/ t/\";"
+        "content": "    private static final int ADD_EXERCISE_CURRENT_CARET_POSITION \u003d 5;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int ADD_EXERCISE_CARET_POSITION_TO_SET \u003d 8; // index right after the \"/\" in \"n/\""
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Unambiguous command: \"add-e\""
+        "content": "    private static final String ADD_EXERCISE_FEEDBACK_TO_SET \u003d AddExerciseCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String ADD_EXERCISE_COMMAND \u003d \"add-e\";"
+        "content": "    private static final String ADD_EXERCISE_COMMAND_TO_SET \u003d \"add-e n/ d/ reps/ ew/ sets/\";"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int ADD_EXERCISE_CURRENT_CARET_POSITION \u003d 5;"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int ADD_EXERCISE_CARET_POSITION_TO_SET \u003d 8; // index right after the \"/\" in \"n/\""
+        "content": "    // Unambiguous command: \"clear\""
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String ADD_EXERCISE_FEEDBACK_TO_SET \u003d AddExerciseCommand.MESSAGE_USAGE;"
+        "content": "    private static final String CLEAR_COMMAND \u003d \"clear\";"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String ADD_EXERCISE_COMMAND_TO_SET \u003d \"add-e n/ d/ reps/ ew/ sets/\";"
+        "content": "    private static final int CLEAR_CURRENT_CARET_POSITION \u003d 5;"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int CLEAR_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Unambiguous command: \"filter-c\""
+        "content": "    private static final String CLEAR_FEEDBACK_TO_SET \u003d ClearCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 45,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String FILTER_COMMAND \u003d \"filt\";"
+        "content": "    private static final String CLEAR_COMMAND_TO_SET \u003d \"clear\";"
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int FILTER_CURRENT_CARET_POSITION \u003d 4;"
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int FILTER_CARET_POSITION_TO_SET \u003d 11; // index right after the \"/\" in \"t/\""
+        "content": "    // Unambiguous command: \"delete-c\""
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String FILTER_FEEDBACK_TO_SET \u003d FilterCommand.MESSAGE_USAGE;"
+        "content": "    private static final String DELETE_COMMAND \u003d \"delete-c\";"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String FILTER_COMMAND_TO_SET \u003d \"filter-c t/ s/\";"
+        "content": "    private static final int DELETE_CURRENT_CARET_POSITION \u003d 8;"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int DELETE_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Unambiguous command: \"graph\""
+        "content": "    private static final String DELETE_FEEDBACK_TO_SET \u003d DeleteCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String GRAPH_COMMAND \u003d \"gra\";"
+        "content": "    private static final String DELETE_COMMAND_TO_SET \u003d \"delete-c \"; // extra preamble white space"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int GRAPH_CURRENT_CARET_POSITION \u003d 3;"
+        "content": ""
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int GRAPH_CARET_POSITION_TO_SET \u003d 8; // index right after the \"/\" in \"n/\""
+        "content": "    // Unambiguous command: \"delete-e\""
       },
       {
         "lineNumber": 55,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String GRAPH_FEEDBACK_TO_SET \u003d GraphCommand.MESSAGE_USAGE;"
+        "content": "    private static final String DELETE_EXERCISE_COMMAND \u003d \"delete-e\";"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String GRAPH_COMMAND_TO_SET \u003d \"graph n/ a/ sd/ ed/\";"
+        "content": "    private static final int DELETE_EXERCISE_CURRENT_CARET_POSITION \u003d 8;"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int DELETE_EXERCISE_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 58,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Unambiguous command: \"export\""
+        "content": "    private static final String DELETE_EXERCISE_FEEDBACK_TO_SET \u003d DeleteExerciseCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 59,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String EXPORT_COMMAND \u003d \"exp\";"
+        "content": "    private static final String DELETE_EXERCISE_COMMAND_TO_SET \u003d \"delete-e \"; // extra preamble white space"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int EXPORT_CURRENT_CARET_POSITION \u003d 3;"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int EXPORT_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
+        "content": "    // Unambiguous command: \"edit-c\""
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String EXPORT_FEEDBACK_TO_SET \u003d ExportCommand.MESSAGE_USAGE;"
+        "content": "    private static final String EDIT_COMMAND \u003d \"edit-c\";"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String EXPORT_COMMAND_TO_SET \u003d \"export\";"
+        "content": "    private static final int EDIT_CURRENT_CARET_POSITION \u003d 6;"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int EDIT_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Unambiguous command: \"schedule\""
+        "content": "    private static final String EDIT_FEEDBACK_TO_SET \u003d EditCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String SCHEDULE_COMMAND \u003d \"sch\";"
+        "content": "    private static final String EDIT_COMMAND_TO_SET \u003d \"edit-c \"; // extra preamble white space"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int SCHEDULE_CURRENT_CARET_POSITION \u003d 3;"
+        "content": ""
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int SCHEDULE_CARET_POSITION_TO_SET \u003d 9; // index just after first white space"
+        "content": "    // Unambiguous command: \"edit-e\""
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String SCHEDULE_FEEDBACK_TO_SET \u003d ScheduleCommand.MESSAGE_USAGE;"
+        "content": "    private static final String EDIT_EXERCISE_COMMAND \u003d \"edit-e\";"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String SCHEDULE_COMMAND_TO_SET \u003d \"schedule  sch/\";"
+        "content": "    private static final int EDIT_EXERCISE_CURRENT_CARET_POSITION \u003d 6;"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int EDIT_EXERCISE_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Using tab while command is completed to go to next prefix for \"graph\""
+        "content": "    private static final String EDIT_EXERCISE_FEEDBACK_TO_SET \u003d EditExerciseCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int GRAPH_FIRST_PREFIX_INDEX \u003d 8;"
+        "content": "    private static final String EDIT_EXERCISE_COMMAND_TO_SET \u003d \"edit-e \"; // extra preamble white space"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int GRAPH_SECOND_PREFIX_INDEX \u003d 11;"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int GRAPH_THIRD_PREFIX_INDEX \u003d 15;"
+        "content": "    // Unambiguous command: \"exit\""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int GRAPH_LAST_PREFIX_INDEX \u003d 19;"
+        "content": "    private static final String EXIT_COMMAND \u003d \"exi\";"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int EXIT_CURRENT_CARET_POSITION \u003d 3;"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    // Using tab while command is completed to go to next prefix for \"export\""
+        "content": "    private static final int EXIT_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final String EXPORT_COMMAND_WITHOUT_PREFIX \u003d \"export random things\";"
+        "content": "    private static final String EXIT_FEEDBACK_TO_SET \u003d ExitCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private static final int EXPORT_COMMAND_WITHOUT_PREFIX_INDEX \u003d 12;"
+        "content": "    private static final String EXIT_COMMAND_TO_SET \u003d \"exit\";"
       },
       {
         "lineNumber": 81,
@@ -85534,287 +85583,287 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    private Autocomplete autoComplete \u003d new Autocomplete();"
+        "content": "    // Unambiguous command: \"export\""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final String EXPORT_COMMAND \u003d \"exp\";"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "    private static final int EXPORT_CURRENT_CARET_POSITION \u003d 3;"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_ambiguousCommand_returnsCorrectAutoCompleteResult() {"
+        "content": "    private static final int EXPORT_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult result \u003d autoComplete.execute(AC_COMMAND, AC_CURRENT_CARET_POSITION);"
+        "content": "    private static final String EXPORT_FEEDBACK_TO_SET \u003d ExportCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final String EXPORT_COMMAND_TO_SET \u003d \"export\";"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToSet(), AC_COMMAND_TO_SET);"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getCaretPositionToSet(), AC_CARET_POSITION_TO_SET);"
+        "content": "    // Unambiguous command: \"filter-c\""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToFeedback(), AC_FEEDBACK_TO_SET);"
+        "content": "    private static final String FILTER_COMMAND \u003d \"filt\";"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    private static final int FILTER_CURRENT_CARET_POSITION \u003d 4;"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int FILTER_CARET_POSITION_TO_SET \u003d 11; // index right after the \"/\" in \"t/\""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "    private static final String FILTER_FEEDBACK_TO_SET \u003d FilterCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_invalidCommand_returnsCorrectAutoCompleteResult() {"
+        "content": "    private static final String FILTER_COMMAND_TO_SET \u003d \"filter-c t/ s/\";"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult result \u003d autoComplete.execute(IC_COMMAND, IC_CURRENT_CARET_POSITION);"
+        "content": ""
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    // Unambiguous command: \"find-c\""
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToSet(), IC_COMMAND_TO_SET);"
+        "content": "    private static final String FIND_COMMAND \u003d \"fin\";"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getCaretPositionToSet(), IC_CARET_POSITION_TO_SET);"
+        "content": "    private static final int FIND_CURRENT_CARET_POSITION \u003d 3;"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToFeedback(), IC_FEEDBACK_TO_SET);"
+        "content": "    private static final int FIND_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    private static final String FIND_FEEDBACK_TO_SET \u003d FindCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final String FIND_COMMAND_TO_SET \u003d \"find-c \"; // extra preamble white space"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_addCommand_returnsCorrectAutoCompleteResult() {"
+        "content": "    // Unambiguous command: \"graph\""
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult result \u003d autoComplete.execute(ADD_COMMAND, ADD_CURRENT_CARET_POSITION);"
+        "content": "    private static final String GRAPH_COMMAND \u003d \"gra\";"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int GRAPH_CURRENT_CARET_POSITION \u003d 3;"
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToSet(), ADD_COMMAND_TO_SET);"
+        "content": "    private static final int GRAPH_CARET_POSITION_TO_SET \u003d 8; // index right after the \"/\" in \"n/\""
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getCaretPositionToSet(), ADD_CARET_POSITION_TO_SET);"
+        "content": "    private static final String GRAPH_FEEDBACK_TO_SET \u003d GraphCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToFeedback(), ADD_FEEDBACK_TO_SET);"
+        "content": "    private static final String GRAPH_COMMAND_TO_SET \u003d \"graph n/ a/ sd/ ed/\";"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    // Unambiguous command: \"help\""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "    private static final String HELP_COMMAND \u003d \"hel\";"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_addExerciseCommand_returnsCorrectAutoCompleteResult() {"
+        "content": "    private static final int HELP_CURRENT_CARET_POSITION \u003d 3;"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult result \u003d autoComplete.execute(ADD_EXERCISE_COMMAND, ADD_EXERCISE_CURRENT_CARET_POSITION);"
+        "content": "    private static final int HELP_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final String HELP_FEEDBACK_TO_SET \u003d HelpCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToSet(), ADD_EXERCISE_COMMAND_TO_SET);"
+        "content": "    private static final String HELP_COMMAND_TO_SET \u003d \"help\";"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getCaretPositionToSet(), ADD_EXERCISE_CARET_POSITION_TO_SET);"
+        "content": ""
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToFeedback(), ADD_EXERCISE_FEEDBACK_TO_SET);"
+        "content": "    // Unambiguous command: \"list-c\""
       },
       {
         "lineNumber": 118,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    private static final String LIST_COMMAND \u003d \"lis\";"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int LIST_CURRENT_CARET_POSITION \u003d 3;"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "    private static final int LIST_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_filterCommand_returnsCorrectAutoCompleteResult() {"
+        "content": "    private static final String LIST_FEEDBACK_TO_SET \u003d ListCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult result \u003d autoComplete.execute(FILTER_COMMAND, FILTER_CURRENT_CARET_POSITION);"
+        "content": "    private static final String LIST_COMMAND_TO_SET \u003d \"list-c\";"
       },
       {
         "lineNumber": 123,
@@ -85828,91 +85877,91 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToSet(), FILTER_COMMAND_TO_SET);"
+        "content": "    // Unambiguous command: \"schedule\""
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getCaretPositionToSet(), FILTER_CARET_POSITION_TO_SET);"
+        "content": "    private static final String SCHEDULE_COMMAND \u003d \"sch\";"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToFeedback(), FILTER_FEEDBACK_TO_SET);"
+        "content": "    private static final int SCHEDULE_CURRENT_CARET_POSITION \u003d 3;"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    private static final int SCHEDULE_CARET_POSITION_TO_SET \u003d 9; // index just after first white space"
       },
       {
         "lineNumber": 128,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final String SCHEDULE_FEEDBACK_TO_SET \u003d ScheduleCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "    private static final String SCHEDULE_COMMAND_TO_SET \u003d \"schedule  sch/\"; // extra preamble white space"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_exportCommand_returnsCorrectAutoCompleteResult() {"
+        "content": ""
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult result \u003d autoComplete.execute(EXPORT_COMMAND, EXPORT_CURRENT_CARET_POSITION);"
+        "content": "    // Unambiguous command: \"view-c\""
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final String VIEW_COMMAND \u003d \"vie\";"
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToSet(), EXPORT_COMMAND_TO_SET);"
+        "content": "    private static final int VIEW_CURRENT_CARET_POSITION \u003d 3;"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getCaretPositionToSet(), EXPORT_CARET_POSITION_TO_SET);"
+        "content": "    private static final int VIEW_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE; // index just after first white space"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToFeedback(), EXPORT_FEEDBACK_TO_SET);"
+        "content": "    private static final String VIEW_FEEDBACK_TO_SET \u003d ViewCommand.MESSAGE_USAGE;"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    private static final String VIEW_COMMAND_TO_SET \u003d \"view-c \"; // extra preamble white space"
       },
       {
         "lineNumber": 137,
@@ -85926,175 +85975,175 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "    // Ambiguous commands"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_graphCommand_returnsCorrectAutoCompleteResult() {"
+        "content": "    private static final String AC_COMMAND \u003d \"a\";"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult result \u003d autoComplete.execute(GRAPH_COMMAND, GRAPH_CURRENT_CARET_POSITION);"
+        "content": "    private static final int AC_CURRENT_CARET_POSITION \u003d 1;"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int AC_CARET_POSITION_TO_SET \u003d Integer.MAX_VALUE;"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToSet(), GRAPH_COMMAND_TO_SET);"
+        "content": "    private static final String AC_FEEDBACK_TO_SET \u003d Autocomplete.FEEDBACK_MULTIPLE_COMMANDS + \"[add-e, add-c]\";"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getCaretPositionToSet(), GRAPH_CARET_POSITION_TO_SET);"
+        "content": "    private static final String AC_COMMAND_TO_SET \u003d \"add-\";"
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToFeedback(), GRAPH_FEEDBACK_TO_SET);"
+        "content": ""
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    // Invalid commands"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final String IC_COMMAND \u003d \"FitBiz!!\";"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "    private static final int IC_CURRENT_CARET_POSITION \u003d 8;"
       },
       {
         "lineNumber": 148,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_scheduleCommand_returnsCorrectAutoCompleteResult() {"
+        "content": "    private static final Integer IC_CARET_POSITION_TO_SET \u003d null;"
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult result \u003d autoComplete.execute(SCHEDULE_COMMAND, SCHEDULE_CURRENT_CARET_POSITION);"
+        "content": "    private static final String IC_FEEDBACK_TO_SET \u003d Autocomplete.FEEDBACK_NO_COMMANDS;"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final String IC_COMMAND_TO_SET \u003d null;"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToSet(), SCHEDULE_COMMAND_TO_SET);"
+        "content": ""
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getCaretPositionToSet(), SCHEDULE_CARET_POSITION_TO_SET);"
+        "content": "    // Using tab while command is completed to go to next prefix for \"graph\""
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(result.getTextToFeedback(), SCHEDULE_FEEDBACK_TO_SET);"
+        "content": "    private static final int GRAPH_FIRST_PREFIX_INDEX \u003d 8;"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "    private static final int GRAPH_SECOND_PREFIX_INDEX \u003d 11;"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int GRAPH_THIRD_PREFIX_INDEX \u003d 15;"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": "    private static final int GRAPH_LAST_PREFIX_INDEX \u003d 19;"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_graphCommandAlreadyCompleted_returnsCorrectCaretPositions() {"
+        "content": ""
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult firstResult \u003d autoComplete.execute(GRAPH_COMMAND, GRAPH_CURRENT_CARET_POSITION);"
+        "content": "    // Using tab when command has white spaces and no \"/\" prefixes"
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(firstResult.getCaretPositionToSet(), GRAPH_FIRST_PREFIX_INDEX);"
+        "content": "    private static final String WHITE_SPACES_WITHOUT_PREFIX \u003d \"export random things\";"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    private static final int WHITE_SPACES_WITHOUT_PREFIX_INDEX \u003d 20;"
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult secondResult \u003d autoComplete.execute(GRAPH_COMMAND_TO_SET, GRAPH_FIRST_PREFIX_INDEX);"
+        "content": ""
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(secondResult.getCaretPositionToSet(), GRAPH_SECOND_PREFIX_INDEX);"
+        "content": "    private Autocomplete autoComplete \u003d new Autocomplete();"
       },
       {
         "lineNumber": 163,
@@ -86108,35 +86157,35 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult thirdResult \u003d autoComplete.execute(GRAPH_COMMAND_TO_SET, GRAPH_SECOND_PREFIX_INDEX);"
+        "content": "    // \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d START OF FITBIZ COMMAND TESTS"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(thirdResult.getCaretPositionToSet(), GRAPH_THIRD_PREFIX_INDEX);"
+        "content": ""
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    @Test"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult lastResult \u003d autoComplete.execute(GRAPH_COMMAND_TO_SET, GRAPH_THIRD_PREFIX_INDEX);"
+        "content": "    public void execute_addCommand_returnsCorrectAutocompleteResult() {"
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(lastResult.getCaretPositionToSet(), GRAPH_LAST_PREFIX_INDEX);"
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(ADD_COMMAND, ADD_CURRENT_CARET_POSITION);"
       },
       {
         "lineNumber": 169,
@@ -86150,56 +86199,56 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult wrapAroundResult \u003d autoComplete.execute(GRAPH_COMMAND_TO_SET, GRAPH_LAST_PREFIX_INDEX);"
+        "content": "        assertEquals(ADD_COMMAND_TO_SET, result.getTextToSet());"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(wrapAroundResult.getCaretPositionToSet(), GRAPH_FIRST_PREFIX_INDEX);"
+        "content": "        assertEquals(ADD_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    }"
+        "content": "        assertEquals(ADD_FEEDBACK_TO_SET, result.getTextToFeedback());"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 174,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    @Test"
+        "content": ""
       },
       {
         "lineNumber": 175,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "    public void execute_exportCommandAlreadyCompleted_returnsCorrectCaretPositions() {"
+        "content": "    @Test"
       },
       {
         "lineNumber": 176,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult firstResult \u003d autoComplete.execute(EXPORT_COMMAND, EXPORT_CURRENT_CARET_POSITION);"
+        "content": "    public void execute_addExerciseCommand_returnsCorrectAutocompleteResult() {"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(firstResult.getCaretPositionToSet(), EXPORT_CARET_POSITION_TO_SET);"
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(ADD_EXERCISE_COMMAND, ADD_EXERCISE_CURRENT_CARET_POSITION);"
       },
       {
         "lineNumber": 178,
@@ -86213,21 +86262,21 @@
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        AutocompleteResult secondResult \u003d autoComplete.execute(EXPORT_COMMAND_WITHOUT_PREFIX,"
+        "content": "        assertEquals(ADD_EXERCISE_COMMAND_TO_SET, result.getTextToSet());"
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "                EXPORT_COMMAND_WITHOUT_PREFIX_INDEX);"
+        "content": "        assertEquals(ADD_EXERCISE_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "AaronCQL"
         },
-        "content": "        assertEquals(secondResult.getCaretPositionToSet(), null);"
+        "content": "        assertEquals(ADD_EXERCISE_FEEDBACK_TO_SET, result.getTextToFeedback());"
       },
       {
         "lineNumber": 182,
@@ -86248,11 +86297,1236 @@
         "author": {
           "gitId": "AaronCQL"
         },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 185,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_clearCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 186,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(CLEAR_COMMAND, CLEAR_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 187,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 188,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(CLEAR_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 189,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(CLEAR_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 190,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(CLEAR_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 191,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 192,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 193,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 194,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_deleteCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 195,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(DELETE_COMMAND, DELETE_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 196,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 197,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(DELETE_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 198,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(DELETE_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 199,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(DELETE_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 200,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 201,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 202,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 203,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_deleteExerciseCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 204,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(DELETE_EXERCISE_COMMAND,"
+      },
+      {
+        "lineNumber": 205,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                DELETE_EXERCISE_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 206,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 207,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(DELETE_EXERCISE_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 208,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(DELETE_EXERCISE_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 209,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(DELETE_EXERCISE_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 210,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 211,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 212,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 213,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_editCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 214,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(EDIT_COMMAND, EDIT_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 215,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 216,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EDIT_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 217,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EDIT_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 218,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EDIT_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 219,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 220,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 221,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 222,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_editExerciseCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 223,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(EDIT_EXERCISE_COMMAND, EDIT_EXERCISE_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 224,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 225,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EDIT_EXERCISE_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 226,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EDIT_EXERCISE_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 227,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EDIT_EXERCISE_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 228,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 229,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 230,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 231,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_exitCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 232,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(EXIT_COMMAND, EXIT_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 233,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 234,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EXIT_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 235,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EXIT_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 236,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EXIT_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 237,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 238,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 239,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 240,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_exportCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 241,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(EXPORT_COMMAND, EXPORT_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 242,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 243,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EXPORT_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 244,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EXPORT_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 245,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(EXPORT_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 246,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 247,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 248,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 249,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_filterCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 250,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(FILTER_COMMAND, FILTER_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 251,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 252,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(FILTER_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 253,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(FILTER_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 254,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(FILTER_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 255,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 256,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 257,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 258,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_findCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 259,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(FIND_COMMAND, FIND_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 260,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 261,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(FIND_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 262,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(FIND_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 263,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(FIND_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 264,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 265,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 266,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 267,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_graphCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 268,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(GRAPH_COMMAND, GRAPH_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 269,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 270,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(GRAPH_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 271,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(GRAPH_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 272,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(GRAPH_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 273,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 274,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 275,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 276,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_helpCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 277,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(HELP_COMMAND, HELP_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 278,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 279,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(HELP_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 280,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(HELP_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 281,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(HELP_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 282,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 283,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 284,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 285,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_listCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 286,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(LIST_COMMAND, LIST_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 287,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 288,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(LIST_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 289,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(LIST_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 290,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(LIST_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 291,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 292,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 293,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 294,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_scheduleCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 295,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(SCHEDULE_COMMAND, SCHEDULE_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 296,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 297,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(SCHEDULE_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 298,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(SCHEDULE_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 299,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(SCHEDULE_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 300,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 301,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 302,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 303,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_viewCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 304,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(VIEW_COMMAND, VIEW_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 305,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 306,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(VIEW_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 307,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(VIEW_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 308,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(VIEW_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 309,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 310,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 311,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    // \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d END OF FITBIZ COMMAND TESTS"
+      },
+      {
+        "lineNumber": 312,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 313,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 314,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_ambiguousCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 315,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(AC_COMMAND, AC_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 316,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 317,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(AC_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 318,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(AC_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 319,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(AC_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 320,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 321,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 322,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 323,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_invalidCommand_returnsCorrectAutocompleteResult() {"
+      },
+      {
+        "lineNumber": 324,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(IC_COMMAND, IC_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 325,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 326,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(IC_COMMAND_TO_SET, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 327,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(IC_CARET_POSITION_TO_SET, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 328,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(IC_FEEDBACK_TO_SET, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 329,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 330,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 331,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 332,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_graphCommandAlreadyCompleted_returnsCorrectCaretPositions() {"
+      },
+      {
+        "lineNumber": 333,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult firstResult \u003d autoComplete.execute(GRAPH_COMMAND, GRAPH_CURRENT_CARET_POSITION);"
+      },
+      {
+        "lineNumber": 334,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(GRAPH_FIRST_PREFIX_INDEX, firstResult.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 335,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 336,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult secondResult \u003d autoComplete.execute(GRAPH_COMMAND_TO_SET, GRAPH_FIRST_PREFIX_INDEX);"
+      },
+      {
+        "lineNumber": 337,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(GRAPH_SECOND_PREFIX_INDEX, secondResult.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 338,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 339,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult thirdResult \u003d autoComplete.execute(GRAPH_COMMAND_TO_SET, GRAPH_SECOND_PREFIX_INDEX);"
+      },
+      {
+        "lineNumber": 340,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(GRAPH_THIRD_PREFIX_INDEX, thirdResult.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 341,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 342,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult lastResult \u003d autoComplete.execute(GRAPH_COMMAND_TO_SET, GRAPH_THIRD_PREFIX_INDEX);"
+      },
+      {
+        "lineNumber": 343,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(GRAPH_LAST_PREFIX_INDEX, lastResult.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 344,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 345,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult wrapAroundResult \u003d autoComplete.execute(GRAPH_COMMAND_TO_SET, GRAPH_LAST_PREFIX_INDEX);"
+      },
+      {
+        "lineNumber": 346,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(GRAPH_FIRST_PREFIX_INDEX, wrapAroundResult.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 347,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 348,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 349,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 350,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    public void execute_exportCommandAlreadyCompleted_returnsAllNullResults() {"
+      },
+      {
+        "lineNumber": 351,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        AutocompleteResult result \u003d autoComplete.execute(WHITE_SPACES_WITHOUT_PREFIX,"
+      },
+      {
+        "lineNumber": 352,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "                WHITE_SPACES_WITHOUT_PREFIX_INDEX);"
+      },
+      {
+        "lineNumber": 353,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 354,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(null, result.getTextToSet());"
+      },
+      {
+        "lineNumber": 355,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(null, result.getCaretPositionToSet());"
+      },
+      {
+        "lineNumber": 356,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "        assertEquals(null, result.getTextToFeedback());"
+      },
+      {
+        "lineNumber": 357,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 358,
+        "author": {
+          "gitId": "AaronCQL"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 359,
+        "author": {
+          "gitId": "AaronCQL"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "AaronCQL": 184
+      "AaronCQL": 359
     }
   },
   {
@@ -126793,7 +128067,7 @@
     }
   },
   {
-    "path": "src/test/java/seedu/address/storage/JsonSerializableFitBizTest.java",
+    "path": "src/test/java/seedu/address/storage/JsonSerializableFitBizStorageTest.java",
     "fileType": "test-code",
     "lines": [
       {
@@ -126906,7 +128180,7 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "public class JsonSerializableFitBizTest {"
+        "content": "public class JsonSerializableFitBizStorageTest {"
       },
       {
         "lineNumber": 17,
@@ -126920,7 +128194,7 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "    private static final Path TEST_DATA_FOLDER \u003d Paths.get(\"src\", \"test\", \"data\", \"JsonSerializableFitBizTest\");"
+        "content": "    private static final Path TEST_DATA_FOLDER \u003d Paths.get(\"src\", \"test\", \"data\", \"JsonSerializableFitBizStorageTest\");"
       },
       {
         "lineNumber": 19,
@@ -126969,14 +128243,14 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "        JsonSerializableFitBiz dataFromFile \u003d JsonUtil.readJsonFile(TYPICAL_CLIENTS_FILE,"
+        "content": "        JsonSerializableFitBizStorage dataFromFile \u003d JsonUtil.readJsonFile(TYPICAL_CLIENTS_FILE,"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "                JsonSerializableFitBiz.class).get();"
+        "content": "                JsonSerializableFitBizStorage.class).get();"
       },
       {
         "lineNumber": 27,
@@ -127032,14 +128306,14 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "        JsonSerializableFitBiz dataFromFile \u003d JsonUtil.readJsonFile(INVALID_CLIENT_FILE,"
+        "content": "        JsonSerializableFitBizStorage dataFromFile \u003d JsonUtil.readJsonFile(INVALID_CLIENT_FILE,"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "                JsonSerializableFitBiz.class).get();"
+        "content": "                JsonSerializableFitBizStorage.class).get();"
       },
       {
         "lineNumber": 36,
@@ -127081,21 +128355,21 @@
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "        JsonSerializableFitBiz dataFromFile \u003d JsonUtil.readJsonFile(DUPLICATE_CLIENT_FILE,"
+        "content": "        JsonSerializableFitBizStorage dataFromFile \u003d JsonUtil.readJsonFile(DUPLICATE_CLIENT_FILE,"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "                JsonSerializableFitBiz.class).get();"
+        "content": "                JsonSerializableFitBizStorage.class).get();"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "Yonggiee"
         },
-        "content": "        assertThrows(IllegalValueException.class, JsonSerializableFitBiz.MESSAGE_DUPLICATE_CLIENT,"
+        "content": "        assertThrows(IllegalValueException.class, JsonSerializableFitBizStorage.MESSAGE_DUPLICATE_CLIENT,"
       },
       {
         "lineNumber": 44,

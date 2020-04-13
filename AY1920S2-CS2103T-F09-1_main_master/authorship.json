@@ -17384,7 +17384,7 @@
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        if (Usage.isUsageGreaterThanLimit(currentUsage, editedCoupon.getLimit())) {"
+        "content": "        if (currentUsage.isGreaterThanLimit(editedCoupon.getLimit())) {"
       },
       {
         "lineNumber": 113,
@@ -21712,292 +21712,313 @@
       {
         "lineNumber": 57,
         "author": {
-          "gitId": "Denise-Ng"
+          "gitId": "nelsontky"
         },
-        "content": "            model.updateFilteredCouponList(Model.PREDICATE_SHOW_ALL_USED_COUPONS);"
+        "content": "            // Put non-archived at the top first"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "Denise-Ng"
+          "gitId": "nelsontky"
         },
-        "content": "            view \u003d Views.USED;"
+        "content": "            model.sortCoupons(Model.COMPARATOR_NON_ARCHIVED_FIRST);"
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "Denise-Ng"
+          "gitId": "nelsontky"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, view.getView()));"
+        "content": "            model.updateFilteredCouponList(Model.PREDICATE_SHOW_ALL_USED_COUPONS);"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    }"
+        "content": "            view \u003d Views.USED;"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    @Override"
+        "content": "        return new CommandResult(String.format(MESSAGE_SUCCESS, view.getView()));"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        // short circuit if same object"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "            return true;"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        }"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "            return true;"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        if (!(other instanceof ListCommand)) {"
+        "content": "        }"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "            return false;"
+        "content": ""
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        }"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "        if (!(other instanceof ListCommand)) {"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        // state check"
+        "content": "            return false;"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        ListCommand e \u003d (ListCommand) other;"
+        "content": "        }"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        return prefixToList.equals((e).prefixToList);"
+        "content": ""
       },
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "-"
+          "gitId": "Denise-Ng"
         },
-        "content": "    }"
+        "content": "        // state check"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "        ListCommand e \u003d (ListCommand) other;"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    /**"
+        "content": "        return prefixToList.equals((e).prefixToList);"
       },
       {
         "lineNumber": 81,
         "author": {
-          "gitId": "Denise-Ng"
+          "gitId": "-"
         },
-        "content": "     * Views available in list command."
+        "content": "    }"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "     */"
+        "content": ""
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    private enum Views {"
+        "content": "    /**"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        ACTIVE (\"active\"),"
+        "content": "     * Views available in list command."
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        ARCHIVED (\"archived\"),"
+        "content": "     */"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        USED (\"used\");"
+        "content": "    private enum Views {"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "        ACTIVE (\"active\"),"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        private final String view;"
+        "content": "        ARCHIVED (\"archived\"),"
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "        USED (\"used\");"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        Views(String view) {"
+        "content": ""
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "            this.view \u003d view;"
+        "content": "        private final String view;"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "        Views(String view) {"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        private String getView() {"
+        "content": "            this.view \u003d view;"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "            return this.view;"
+        "content": "        }"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        }"
+        "content": ""
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    }"
+        "content": "        private String getView() {"
       },
       {
         "lineNumber": 98,
+        "author": {
+          "gitId": "Denise-Ng"
+        },
+        "content": "            return this.view;"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "Denise-Ng"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "Denise-Ng"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 101,
         "author": {
           "gitId": "-"
         },
@@ -22008,7 +22029,7 @@
       "Denise-Ng": 71,
       "ChesterSim": 7,
       "alcen": 3,
-      "nelsontky": 1,
+      "nelsontky": 4,
       "-": 16
     }
   },
@@ -25135,84 +25156,84 @@
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        if (prefixToSortBy.equals(PREFIX_NAME)) {"
+        "content": "        assert prefixToSortBy.equals(PREFIX_NAME)"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "            model.sortCoupons(NAME_COMPARATOR);"
+        "content": "                || prefixToSortBy.equals(PREFIX_EXPIRY_DATE)"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        } else if (prefixToSortBy.equals(PREFIX_EXPIRY_DATE)) {"
+        "content": "                || prefixToSortBy.equals(PREFIX_REMIND)"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "            model.sortCoupons(EXPIRY_COMPARATOR);"
+        "content": "                : \"Invalid prefixes should have been filtered out in SortCommandParser!\";"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        } else if (prefixToSortBy.equals(PREFIX_REMIND)) {"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "            model.sortCoupons(REMINDER_COMPARATOR);"
+        "content": "        if (prefixToSortBy.equals(PREFIX_NAME)) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        } else {"
+        "content": "            model.sortCoupons(NAME_COMPARATOR);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "            assert false : \"Invalid prefixes should have been filtered out in SortCommandParser!\";"
+        "content": "        } else if (prefixToSortBy.equals(PREFIX_EXPIRY_DATE)) {"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        }"
+        "content": "            model.sortCoupons(EXPIRY_COMPARATOR);"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "        } else if (prefixToSortBy.equals(PREFIX_REMIND)) {"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        // Put non-archived at the top."
+        "content": "            model.sortCoupons(REMINDER_COMPARATOR);"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "ChesterSim"
+          "gitId": "nelsontky"
         },
-        "content": "        model.sortCoupons(Model.COMPARATOR_NON_ARCHIVED_FIRST);"
+        "content": "        }"
       },
       {
         "lineNumber": 73,
@@ -25226,143 +25247,164 @@
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        return new CommandResult("
+        "content": "        // Put non-archived at the top."
       },
       {
         "lineNumber": 75,
         "author": {
-          "gitId": "nelsontky"
+          "gitId": "ChesterSim"
         },
-        "content": "                String.format(MESSAGE_SUCCESS, prefixToSortBy.toString())"
+        "content": "        model.sortCoupons(Model.COMPARATOR_NON_ARCHIVED_FIRST);"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        );"
+        "content": ""
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        return new CommandResult("
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "                String.format(MESSAGE_SUCCESS, prefixToSortBy.toString())"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": "        );"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "    }"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        // short circuit if same object"
+        "content": ""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        if (other \u003d\u003d this) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "            return true;"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        }"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "        if (other \u003d\u003d this) {"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        // instanceof handles nulls"
+        "content": "            return true;"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        if (!(other instanceof SortCommand)) {"
+        "content": "        }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "            return false;"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        }"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "        if (!(other instanceof SortCommand)) {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        // state check"
+        "content": "            return false;"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        return prefixToSortBy.equals(((SortCommand) other).prefixToSortBy);"
+        "content": "        }"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 94,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": "        // state check"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": "        return prefixToSortBy.equals(((SortCommand) other).prefixToSortBy);"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 97,
         "author": {
           "gitId": "nelsontky"
         },
@@ -25371,7 +25413,7 @@
     ],
     "authorContributionMap": {
       "ChesterSim": 10,
-      "nelsontky": 84
+      "nelsontky": 87
     }
   },
   {
@@ -27051,145 +27093,131 @@
       {
         "lineNumber": 135,
         "author": {
-          "gitId": "alcen"
+          "gitId": "ChesterSim"
         },
-        "content": "    private static Coupon createUsedCouponPercentageValue(Coupon couponToBeUsed,"
+        "content": "    private static Coupon createUsedCouponPercentageValue(Coupon couponToBeUsed, MonetaryAmount originalAmount) {"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "alcen"
         },
-        "content": "                                                          MonetaryAmount originalAmount) {"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "ChesterSim"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 138,
-        "author": {
-          "gitId": "alcen"
-        },
         "content": "        PureMonetarySavings newTotalSavings \u003d SavingsConversionUtil"
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 137,
         "author": {
           "gitId": "alcen"
         },
         "content": "                .convertToPure(couponToBeUsed.getSavingsForEachUse(), originalAmount);"
       },
       {
-        "lineNumber": 140,
+        "lineNumber": 138,
         "author": {
           "gitId": "alcen"
         },
         "content": "        return couponToBeUsed.addToTotalSavings(LocalDate.now(), newTotalSavings)"
       },
       {
-        "lineNumber": 141,
+        "lineNumber": 139,
         "author": {
           "gitId": "alcen"
         },
         "content": "                .increaseUsageByOne();"
       },
       {
-        "lineNumber": 142,
+        "lineNumber": 140,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 143,
+        "lineNumber": 141,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": ""
       },
       {
-        "lineNumber": 144,
+        "lineNumber": 142,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 145,
+        "lineNumber": 143,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "     * Creates and returns a {@code Coupon} with an increase in usage by one."
       },
       {
-        "lineNumber": 146,
+        "lineNumber": 144,
         "author": {
           "gitId": "alcen"
         },
         "content": "     * Also adds to the total savings for the current date."
       },
       {
-        "lineNumber": 147,
+        "lineNumber": 145,
         "author": {
           "gitId": "alcen"
         },
         "content": "     * To be used for a Coupon with concrete MonetaryAmount savings."
       },
       {
-        "lineNumber": 148,
+        "lineNumber": 146,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 149,
+        "lineNumber": 147,
         "author": {
           "gitId": "alcen"
         },
         "content": "    private static Coupon createUsedCouponMonetaryValue(Coupon couponToBeUsed) {"
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 148,
         "author": {
           "gitId": "alcen"
         },
         "content": "        PureMonetarySavings newTotalSavings \u003d SavingsConversionUtil"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 149,
         "author": {
           "gitId": "alcen"
         },
         "content": "                .convertToPure(couponToBeUsed.getSavingsForEachUse());"
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 150,
         "author": {
           "gitId": "alcen"
         },
         "content": "        return couponToBeUsed.addToTotalSavings(LocalDate.now(), newTotalSavings)"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 151,
         "author": {
           "gitId": "alcen"
         },
         "content": "                .increaseUsageByOne();"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 152,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 153,
         "author": {
           "gitId": "ChesterSim"
         },
@@ -27198,7 +27226,7 @@
     ],
     "authorContributionMap": {
       "ChesterSim": 125,
-      "alcen": 29,
+      "alcen": 27,
       "nelsontky": 1
     }
   },
@@ -44122,434 +44150,434 @@
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        commitCouponStash(commandText);"
+        "content": "        sortCoupons(null);"
       },
       {
         "lineNumber": 156,
         "author": {
-          "gitId": "-"
+          "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        commitCouponStash(commandText);"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 158,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 159,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 160,
         "author": {
           "gitId": "nelsontky"
         },
         "content": "    public void setCoupon(Coupon target, Coupon editedCoupon, String commandText) {"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 161,
         "author": {
           "gitId": "alcen"
         },
         "content": "        requireAllNonNull(target, editedCoupon);"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 162,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 163,
         "author": {
           "gitId": "alcen"
         },
         "content": "        couponStash.setCoupon(target, editedCoupon);"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 164,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "        updateFilteredCouponList(PREDICATE_SHOW_ALL_ACTIVE_COUPONS);"
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 165,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": "        sortCoupons(null);"
+      },
+      {
+        "lineNumber": 166,
         "author": {
           "gitId": "nelsontky"
         },
         "content": "        commitCouponStash(commandText);"
       },
       {
-        "lineNumber": 165,
+        "lineNumber": 167,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 166,
+        "lineNumber": 168,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 167,
-        "author": {
-          "gitId": "nelsontky"
-        },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 168,
-        "author": {
-          "gitId": "nelsontky"
-        },
-        "content": "    public void sortCoupons(Comparator\u003cCoupon\u003e cmp) {"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        requireNonNull(cmp);"
+        "content": "    @Override"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        sortedCoupons.setComparator(cmp);"
+        "content": "    public void sortCoupons(Comparator\u003cCoupon\u003e cmp) {"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        sortedCoupons.setComparator(cmp);"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 173,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 174,
         "author": {
           "gitId": "alcen"
         },
         "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Filtered Coupon List Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
-        "lineNumber": 174,
+        "lineNumber": 175,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 176,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
-      },
-      {
-        "lineNumber": 176,
-        "author": {
-          "gitId": "alcen"
-        },
-        "content": "     * Returns an unmodifiable view of the list of {@code Coupon} backed by the internal list of"
       },
       {
         "lineNumber": 177,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * {@code versionedCouponStash}"
+        "content": "     * Returns an unmodifiable view of the list of {@code Coupon} backed by the internal list of"
       },
       {
         "lineNumber": 178,
         "author": {
-          "gitId": "-"
+          "gitId": "alcen"
         },
-        "content": "     */"
+        "content": "     * {@code versionedCouponStash}"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 180,
         "author": {
-          "gitId": "alcen"
+          "gitId": "-"
         },
-        "content": "    public ObservableList\u003cCoupon\u003e getFilteredCouponList() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        return filteredCoupons;"
+        "content": "    public ObservableList\u003cCoupon\u003e getFilteredCouponList() {"
       },
       {
         "lineNumber": 182,
         "author": {
-          "gitId": "-"
+          "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        return filteredCoupons;"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 184,
         "author": {
-          "gitId": "alcen"
+          "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * Returns every single Coupon present in Coupon Stash."
+        "content": "    /**"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     *"
+        "content": "     * Returns every single Coupon present in Coupon Stash."
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     * @return An ObservableList (unmodifiable view) of all Coupons"
+        "content": "     *"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     *         in the Coupon Stash, whether displayed or not"
+        "content": "     * @return An ObservableList (unmodifiable view) of all Coupons"
       },
       {
         "lineNumber": 189,
         "author": {
           "gitId": "alcen"
         },
-        "content": "     */"
+        "content": "     *         in the Coupon Stash, whether displayed or not"
       },
       {
         "lineNumber": 190,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 191,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    public ObservableList\u003cCoupon\u003e getAllCouponList() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "alcen"
         },
-        "content": "        return couponStash.getCouponList();"
+        "content": "    public ObservableList\u003cCoupon\u003e getAllCouponList() {"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "alcen"
         },
-        "content": "    }"
+        "content": "        return couponStash.getCouponList();"
       },
       {
         "lineNumber": 194,
         "author": {
           "gitId": "alcen"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 195,
+        "author": {
+          "gitId": "alcen"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 196,
+        "lineNumber": 197,
         "author": {
           "gitId": "alcen"
         },
         "content": "    public void updateFilteredCouponList(Predicate\u003c? super Coupon\u003e predicate) {"
       },
       {
-        "lineNumber": 197,
+        "lineNumber": 198,
         "author": {
           "gitId": "-"
         },
         "content": "        requireNonNull(predicate);"
       },
       {
-        "lineNumber": 198,
+        "lineNumber": 199,
         "author": {
           "gitId": "alcen"
         },
         "content": "        filteredCoupons.setPredicate(predicate);"
       },
       {
-        "lineNumber": 199,
+        "lineNumber": 200,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 200,
+        "lineNumber": 201,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 201,
-        "author": {
-          "gitId": "Denise-Ng"
-        },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d MonthView of Calendar Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 202,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d MonthView of Calendar Accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 204,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "     * Returns an unmodifiable MonthView of the Calendar."
+        "content": "    /**"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "     */"
+        "content": "     * Returns an unmodifiable MonthView of the Calendar."
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    public ObservableMonthView getMonthView() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 208,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        return monthView;"
+        "content": "    public ObservableMonthView getMonthView() {"
       },
       {
         "lineNumber": 209,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    }"
+        "content": "        return monthView;"
       },
       {
         "lineNumber": 210,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 211,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    public void updateMonthView(String yearMonth) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 213,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        requireNonNull(monthView);"
+        "content": "    public void updateMonthView(String yearMonth) {"
       },
       {
         "lineNumber": 214,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "        monthView.setValue(yearMonth);"
+        "content": "        requireNonNull(monthView);"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": "    }"
+        "content": "        monthView.setValue(yearMonth);"
       },
       {
         "lineNumber": 216,
         "author": {
           "gitId": "Denise-Ng"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 217,
@@ -44561,355 +44589,362 @@
       {
         "lineNumber": 218,
         "author": {
-          "gitId": "nelsontky"
+          "gitId": "Denise-Ng"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Undo/Redo functionality \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": ""
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Undo/Redo functionality \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public void commitCouponStash(String commandText) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        history.commitState(couponStash.copy(), commandText);"
+        "content": "    public void commitCouponStash(String commandText) {"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        history.commitState(couponStash.copy(), commandText);"
       },
       {
         "lineNumber": 223,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 224,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public String undoCouponStash() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 226,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        couponStash.resetData(history.undo());"
+        "content": "    public String undoCouponStash() {"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        return history.getNextCommandText();"
+        "content": "        couponStash.resetData(history.undo());"
       },
       {
         "lineNumber": 228,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        return history.getNextCommandText();"
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public String redoCouponStash() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        String nextCommand \u003d history.getNextCommandText();"
+        "content": "    public String redoCouponStash() {"
       },
       {
         "lineNumber": 233,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        couponStash.resetData(history.redo());"
+        "content": "        String nextCommand \u003d history.getNextCommandText();"
       },
       {
         "lineNumber": 234,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        return nextCommand;"
+        "content": "        couponStash.resetData(history.redo());"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        return nextCommand;"
       },
       {
         "lineNumber": 236,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 238,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public boolean canUndoCouponStash() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        return history.canUndo();"
+        "content": "    public boolean canUndoCouponStash() {"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        return history.canUndo();"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 243,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public boolean canRedoCouponStash() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        return history.canRedo();"
+        "content": "    public boolean canRedoCouponStash() {"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        return history.canRedo();"
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d End of Undo/Redo functionality \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": ""
       },
       {
         "lineNumber": 248,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d End of Undo/Redo functionality \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 249,
         "author": {
-          "gitId": "-"
+          "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "-"
         },
-        "content": "        // short circuit if same object"
+        "content": "    public boolean equals(Object obj) {"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 253,
         "author": {
           "gitId": "-"
         },
-        "content": "            return true;"
+        "content": "        if (obj \u003d\u003d this) {"
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 255,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 256,
         "author": {
           "gitId": "-"
         },
-        "content": "        // instanceof handles nulls"
+        "content": ""
       },
       {
         "lineNumber": 257,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!(obj instanceof ModelManager)) {"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "-"
         },
-        "content": "            return false;"
+        "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return false;"
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 261,
         "author": {
           "gitId": "-"
         },
-        "content": "        // state check"
+        "content": ""
       },
       {
         "lineNumber": 262,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelManager other \u003d (ModelManager) obj;"
+        "content": "        // state check"
       },
       {
         "lineNumber": 263,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        ModelManager other \u003d (ModelManager) obj;"
+      },
+      {
+        "lineNumber": 264,
         "author": {
           "gitId": "alcen"
         },
         "content": "        return couponStash.equals(other.couponStash)"
       },
       {
-        "lineNumber": 264,
+        "lineNumber": 265,
         "author": {
           "gitId": "-"
         },
         "content": "                \u0026\u0026 userPrefs.equals(other.userPrefs)"
       },
       {
-        "lineNumber": 265,
+        "lineNumber": 266,
         "author": {
           "gitId": "alcen"
         },
         "content": "                \u0026\u0026 filteredCoupons.equals(other.filteredCoupons);"
       },
       {
-        "lineNumber": 266,
+        "lineNumber": 267,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 268,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 269,
         "author": {
           "gitId": "-"
         },
@@ -44921,7 +44956,7 @@
       "ChesterSim": 3,
       "alcen": 85,
       "KEVVVINN": 1,
-      "nelsontky": 56,
+      "nelsontky": 57,
       "-": 103
     }
   },
@@ -52443,7 +52478,7 @@
       {
         "lineNumber": 44,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
         "content": "    /**"
       },
@@ -52452,19 +52487,19 @@
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "     * Returns the remind date as a LocalDate."
+        "content": "     * Returns true if the {@RemindDate} is today."
       },
       {
         "lineNumber": 46,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "     * @return Remind Date as a LocalDate"
+        "content": "     * @return True if remind date is today"
       },
       {
         "lineNumber": 47,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
         "content": "     */"
       },
@@ -52473,26 +52508,26 @@
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public LocalDate getDate() {"
+        "content": "    public boolean isToday() {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "        return this.date;"
+        "content": "        return date.equals(LocalDate.now());"
       },
       {
         "lineNumber": 50,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
         "content": "    }"
       },
       {
         "lineNumber": 51,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
         "content": ""
       },
@@ -52501,185 +52536,241 @@
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": "     * Returns the remind date as a LocalDate."
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public String toString() {"
+        "content": "     * @return Remind Date as a LocalDate"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "nelsontky"
+          "gitId": "KEVVVINN"
         },
-        "content": "        return value;"
+        "content": "     */"
       },
       {
         "lineNumber": 56,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": "    public LocalDate getDate() {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": "        return this.date;"
+      },
+      {
+        "lineNumber": 58,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 59,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": ""
       },
       {
-        "lineNumber": 58,
-        "author": {
-          "gitId": "nelsontky"
-        },
-        "content": "    /**"
-      },
-      {
-        "lineNumber": 59,
-        "author": {
-          "gitId": "nelsontky"
-        },
-        "content": "     * Make a new copy of current RemindDate"
-      },
-      {
         "lineNumber": 60,
         "author": {
-          "gitId": "nelsontky"
+          "gitId": "KEVVVINN"
         },
-        "content": "     *"
+        "content": ""
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "     * @return a copy of the current RemindDate"
+        "content": "    @Override"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "     */"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "    public RemindDate copy() {"
+        "content": "        return value;"
       },
       {
         "lineNumber": 64,
         "author": {
-          "gitId": "nelsontky"
+          "gitId": "KEVVVINN"
         },
-        "content": "        return new RemindDate(value);"
+        "content": "    }"
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 67,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
-        "content": "    @Override"
+        "content": "     * Make a new copy of current RemindDate"
       },
       {
         "lineNumber": 68,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "     *"
       },
       {
         "lineNumber": 69,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
-        "content": "        return other \u003d\u003d this // short circuit if same object"
+        "content": "     * @return a copy of the current RemindDate"
       },
       {
         "lineNumber": 70,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
-        "content": "                || (other instanceof RemindDate// instanceof handles nulls"
+        "content": "     */"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "nelsontky"
         },
-        "content": "                \u0026\u0026 date.equals(((RemindDate) other).date)); // state check"
+        "content": "    public RemindDate copy() {"
       },
       {
         "lineNumber": 72,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "nelsontky"
         },
-        "content": "    }"
+        "content": "        return new RemindDate(value);"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "    public int hashCode() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "        return value.hashCode();"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "    }"
+        "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
         "lineNumber": 78,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": "                || (other instanceof RemindDate// instanceof handles nulls"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": "                \u0026\u0026 date.equals(((RemindDate) other).date)); // state check"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": "    public int hashCode() {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": "        return value.hashCode();"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 86,
         "author": {
           "gitId": "KEVVVINN"
         },
@@ -52688,7 +52779,7 @@
     ],
     "authorContributionMap": {
       "KEVVVINN": 40,
-      "nelsontky": 38
+      "nelsontky": 46
     }
   },
   {
@@ -54547,7 +54638,7 @@
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     * @param usage The usage of the coupon."
+        "content": "     * @param limit Limit of the coupon to compare to."
       },
       {
         "lineNumber": 68,
@@ -54561,262 +54652,255 @@
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    public static boolean isUsageGreaterThanLimit(Usage usage, Limit limit) {"
+        "content": "    public boolean isGreaterThanLimit(Limit limit) {"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        int currentUsage \u003d usage.value;"
+        "content": "        int usageLimit \u003d limit.value;"
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        int usageLimit \u003d limit.value;"
+        "content": "        return value \u003e usageLimit;"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        return currentUsage \u003e usageLimit;"
+        "content": "    }"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    /**"
+        "content": "     * Returns new {@code Usage} with an increase of 1 in value."
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     * Returns new {@code Usage} with an increase of 1 in value."
+        "content": "     */"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     */"
+        "content": "    public Usage increaseUsageByOne() {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    public Usage increaseUsageByOne() {"
+        "content": "        return increaseUsage(1);"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        return increaseUsage(1);"
+        "content": "    }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    /**"
+        "content": "     * Returns new {@code Usage} with an increase of {@code numberOfTimes} in value."
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     * Returns new {@code Usage} with an increase of {@code numberOfTimes} in value."
+        "content": "     */"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     */"
+        "content": "    public Usage increaseUsage(int numberOfTimes) {"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    public Usage increaseUsage(int numberOfTimes) {"
+        "content": "        int finalValue \u003d numberOfTimes + value;"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        int finalValue \u003d numberOfTimes + value;"
+        "content": "        return new Usage(finalValue);"
       },
       {
         "lineNumber": 87,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        return new Usage(finalValue);"
+        "content": "    }"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 89,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    @Override"
+        "content": "    public String toString() {"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    public String toString() {"
+        "content": "        return String.valueOf(value);"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        return String.valueOf(value);"
+        "content": "    }"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    @Override"
+        "content": "    public boolean equals(Object other) {"
       },
       {
         "lineNumber": 96,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    public boolean equals(Object other) {"
+        "content": "        return other \u003d\u003d this"
       },
       {
         "lineNumber": 97,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        return other \u003d\u003d this"
+        "content": "                || (other instanceof Usage"
       },
       {
         "lineNumber": 98,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "                || (other instanceof Usage"
+        "content": "                \u0026\u0026 value \u003d\u003d ((Usage) other).value);"
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "                \u0026\u0026 value \u003d\u003d ((Usage) other).value);"
+        "content": "    }"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    @Override"
+        "content": "    public int hashCode() {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    public int hashCode() {"
+        "content": "        return value;"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        return value;"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "ChesterSim"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 105,
         "author": {
           "gitId": "ChesterSim"
         },
@@ -54824,7 +54908,7 @@
       }
     ],
     "authorContributionMap": {
-      "ChesterSim": 106
+      "ChesterSim": 105
     }
   },
   {
@@ -86157,773 +86241,759 @@
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "import java.time.LocalDate;"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "ChesterSim"
-        },
         "content": "import java.util.List;"
       },
       {
-        "lineNumber": 5,
+        "lineNumber": 4,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "import java.util.logging.Logger;"
       },
       {
-        "lineNumber": 6,
+        "lineNumber": 5,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "import java.util.stream.Collectors;"
       },
       {
-        "lineNumber": 7,
+        "lineNumber": 6,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": ""
       },
       {
-        "lineNumber": 8,
+        "lineNumber": 7,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "import csdev.couponstash.commons.core.LogsCenter;"
       },
       {
-        "lineNumber": 9,
+        "lineNumber": 8,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "import csdev.couponstash.logic.commands.SortCommand;"
       },
       {
-        "lineNumber": 10,
+        "lineNumber": 9,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "import csdev.couponstash.model.coupon.Coupon;"
       },
       {
-        "lineNumber": 11,
+        "lineNumber": 10,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "import javafx.fxml.FXML;"
       },
       {
-        "lineNumber": 12,
+        "lineNumber": 11,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "import javafx.scene.Scene;"
       },
       {
-        "lineNumber": 13,
+        "lineNumber": 12,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "import javafx.scene.control.Label;"
       },
       {
-        "lineNumber": 14,
+        "lineNumber": 13,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "import javafx.stage.Stage;"
       },
       {
-        "lineNumber": 15,
+        "lineNumber": 14,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": ""
       },
       {
-        "lineNumber": 16,
+        "lineNumber": 15,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "/**"
       },
       {
-        "lineNumber": 17,
+        "lineNumber": 16,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": " * Controller for a help page"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 17,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": " */"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 18,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "public class RemindWindow extends UiPart\u003cStage\u003e {"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": ""
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "nelsontky"
         },
         "content": "    public static final String REMIND_MESSAGE \u003d \"Remember to use these coupon(s) before they expire!\\n\";"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    public static final String EXIT_MESSAGE \u003d \"[Press Ctrl + Q to exit]\";"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    public static final int MAX_DISPLAY_REMIND_COUPONS \u003d 6;"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": ""
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "    private static final Logger logger \u003d LogsCenter.getLogger(RemindWindow.class);"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "    private static final String FXML \u003d \"RemindWindow.fxml\";"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": ""
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    private final Stage root;"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    private final List\u003cCoupon\u003e coupons;"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": "    @FXML"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "    @FXML"
+        "content": "    private Label remindMessage;"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "    private Label remindMessage;"
+        "content": ""
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "KEVVVINN"
+          "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    @FXML"
+        "content": "    private Label remindCoupons;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    private Label remindCoupons;"
+        "content": ""
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    @FXML"
+        "content": "    private Label exitMessage;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    private Label exitMessage;"
+        "content": ""
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    @FXML"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    @FXML"
+        "content": "    private Scene scene;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    private Scene scene;"
+        "content": ""
       },
       {
         "lineNumber": 42,
         "author": {
-          "gitId": "ChesterSim"
+          "gitId": "KEVVVINN"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 43,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "    /**"
+        "content": "     * Creates a new RemindWindow."
       },
       {
         "lineNumber": 44,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": "     * Creates a new RemindWindow."
-      },
-      {
-        "lineNumber": 45,
-        "author": {
-          "gitId": "KEVVVINN"
-        },
         "content": "     */"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 45,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    public RemindWindow(List\u003cCoupon\u003e coupons) {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "        this(new Stage(), coupons);"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 47,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "ChesterSim"
+        },
+        "content": ""
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    /**"
+        "content": "     * Creates a new RemindWindow with the {@code coupons} that are to be reminded."
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     * Creates a new RemindWindow with the {@code coupons} that are to be reminded."
+        "content": "     */"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 53,
-        "author": {
-          "gitId": "ChesterSim"
-        },
         "content": "    public RemindWindow(Stage root, List\u003cCoupon\u003e coupons) {"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 53,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "        super(FXML, root);"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 54,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "        this.coupons \u003d filterRemindCoupons(coupons);"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "        this.root \u003d root;"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 56,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": ""
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "        UiUtil.setExitAccelerator(root, scene, logger, \"Remind Window\");"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "KEVVVINN"
+        },
+        "content": ""
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "KEVVVINN"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 61,
-        "author": {
-          "gitId": "KEVVVINN"
-        },
         "content": "    /**"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "     * Filters the coupons that have reminders today."
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "     */"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "nelsontky"
+        },
+        "content": "    private static List\u003cCoupon\u003e filterRemindCoupons(List\u003cCoupon\u003e coupons) {"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    private List\u003cCoupon\u003e filterRemindCoupons(List\u003cCoupon\u003e coupons) {"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        LocalDate today \u003d LocalDate.now();"
+        "content": "        return coupons.stream()"
       },
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "ChesterSim"
+          "gitId": "nelsontky"
         },
-        "content": ""
+        "content": "                .filter(coupon -\u003e coupon.getRemindDate().isToday())"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        return coupons.stream()"
+        "content": "                .sorted(SortCommand.REMINDER_COMPARATOR)"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "                .filter(coupon -\u003e coupon.getRemindDate().getDate().equals(today))"
+        "content": "                .collect(Collectors.toList());"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "                .sorted(SortCommand.REMINDER_COMPARATOR)"
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "                .collect(Collectors.toList());"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    }"
+        "content": "    /**"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "     * Constructs the string that includes coupons that are to be reminded today,"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    /**"
+        "content": "     * limited to the {@code MAX_DISPLAY_REMIND_COUPONS} number of coupons."
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     * Constructs the string that includes coupons that are to be reminded today,"
+        "content": "     * This method will check all coupon\u0027s remind date against today\u0027s."
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     * limited to the {@code MAX_DISPLAY_REMIND_COUPONS} number of coupons."
+        "content": "     */"
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     * This method will check all coupon\u0027s remind date against today\u0027s."
+        "content": "    private String constructRemindCoupons() {"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "     */"
+        "content": "        int index \u003d 1;"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "    private String constructRemindCoupons() {"
+        "content": "        String remindMessage \u003d \"\";"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        int index \u003d 1;"
+        "content": ""
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        String remindMessage \u003d \"\";"
+        "content": "        for (Coupon coupon : coupons) {"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": ""
+        "content": "            remindMessage +\u003d index + \". \""
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "ChesterSim"
         },
-        "content": "        for (Coupon coupon : coupons) {"
-      },
-      {
-        "lineNumber": 83,
-        "author": {
-          "gitId": "ChesterSim"
-        },
-        "content": "            remindMessage +\u003d index + \". \""
-      },
-      {
-        "lineNumber": 84,
-        "author": {
-          "gitId": "ChesterSim"
-        },
         "content": "                    + coupon.getName().toString()"
       },
       {
-        "lineNumber": 85,
+        "lineNumber": 83,
         "author": {
           "gitId": "nelsontky"
         },
         "content": "                    + \" (Starts on \" + coupon.getStartDate().toString() + \")\""
       },
       {
-        "lineNumber": 86,
+        "lineNumber": 84,
         "author": {
           "gitId": "nelsontky"
         },
         "content": "                    + \" (Expires on \" + coupon.getExpiryDate().toString() + \")\""
       },
       {
-        "lineNumber": 87,
+        "lineNumber": 85,
         "author": {
           "gitId": "nelsontky"
         },
         "content": "                    + \"\\n\";"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 86,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            index++;"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 87,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": ""
       },
       {
-        "lineNumber": 90,
+        "lineNumber": 88,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            if (index \u003e MAX_DISPLAY_REMIND_COUPONS) {"
       },
       {
-        "lineNumber": 91,
+        "lineNumber": 89,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "                remindMessage +\u003d \"...and more! (Tip: Sort the list by remind dates!)\\n\";"
       },
       {
-        "lineNumber": 92,
+        "lineNumber": 90,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "                break;"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 91,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            }"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 92,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 93,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": ""
       },
       {
-        "lineNumber": 96,
+        "lineNumber": 94,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "        return remindMessage;"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 95,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 96,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": ""
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 97,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    /** Opens and displays the RemindWindow if there are any"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 98,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "     *  coupons that need to be reminded of."
       },
       {
-        "lineNumber": 101,
+        "lineNumber": 99,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 102,
+        "lineNumber": 100,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "    public void showIfAny() {"
       },
       {
-        "lineNumber": 103,
+        "lineNumber": 101,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "        if (coupons.size() \u003e 0) {"
       },
       {
-        "lineNumber": 104,
+        "lineNumber": 102,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            remindMessage.setText(REMIND_MESSAGE);"
       },
       {
-        "lineNumber": 105,
+        "lineNumber": 103,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            String remindCouponsString \u003d constructRemindCoupons();"
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 104,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            remindCoupons.setText(remindCouponsString);"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 105,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            exitMessage.setText(EXIT_MESSAGE);"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 106,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": ""
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 107,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            logger.info(\"Remind Window is opening\");"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 108,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "            root.show();"
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 109,
         "author": {
           "gitId": "ChesterSim"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 110,
         "author": {
           "gitId": "KEVVVINN"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 111,
         "author": {
           "gitId": "ChesterSim"
         },
@@ -86931,9 +87001,9 @@
       }
     ],
     "authorContributionMap": {
-      "ChesterSim": 75,
+      "ChesterSim": 71,
       "KEVVVINN": 34,
-      "nelsontky": 4
+      "nelsontky": 6
     }
   },
   {
@@ -139009,21 +139079,21 @@
       {
         "lineNumber": 7,
         "author": {
-          "gitId": "-"
+          "gitId": "alcen"
         },
         "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "alcen"
         },
         "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
       },
       {
         "lineNumber": 9,
         "author": {
-          "gitId": "-"
+          "gitId": "alcen"
         },
         "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
@@ -139632,9 +139702,9 @@
       {
         "lineNumber": 96,
         "author": {
-          "gitId": "-"
+          "gitId": "nelsontky"
         },
-        "content": "    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {"
+        "content": "    public void getFilteredCouponList_modifyList_throwsUnsupportedOperationException() {"
       },
       {
         "lineNumber": 97,
@@ -139667,9 +139737,9 @@
       {
         "lineNumber": 101,
         "author": {
-          "gitId": "ChesterSim"
+          "gitId": "nelsontky"
         },
-        "content": "    public void getFilteredPersonList_archiveExpiredCoupons_returnsTrue() {"
+        "content": "    public void getFilteredCouponList_archiveExpiredCoupons_returnsTrue() {"
       },
       {
         "lineNumber": 102,
@@ -139730,14 +139800,14 @@
       {
         "lineNumber": 110,
         "author": {
-          "gitId": "-"
+          "gitId": "ChesterSim"
         },
         "content": "    }"
       },
       {
         "lineNumber": 111,
         "author": {
-          "gitId": "-"
+          "gitId": "ChesterSim"
         },
         "content": ""
       },
@@ -140002,11 +140072,11 @@
       }
     ],
     "authorContributionMap": {
-      "ChesterSim": 19,
+      "ChesterSim": 20,
       "Denise-Ng": 2,
-      "alcen": 28,
-      "nelsontky": 1,
-      "-": 98
+      "alcen": 31,
+      "nelsontky": 3,
+      "-": 92
     }
   },
   {

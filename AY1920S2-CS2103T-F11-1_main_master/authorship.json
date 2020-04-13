@@ -73145,7 +73145,7 @@
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "     * Presents similar food suggestions to user depending on their input"
+        "content": "     * Presents similar food suggestions to user depending on their input."
       },
       {
         "lineNumber": 313,
@@ -73159,150 +73159,143 @@
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "     * @see Logic#getSimilarFood(String)"
+        "content": "     */"
       },
       {
         "lineNumber": 315,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "     */"
+        "content": "    private void getSuggestions(String text) {"
       },
       {
         "lineNumber": 316,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "    private void getSuggestions(String text) {"
+        "content": "        String foodName \u003d text.substring(text.indexOf(\"n/\") + 2);"
       },
       {
         "lineNumber": 317,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "        String foodName \u003d text.substring(text.indexOf(\"n/\") + 2);"
+        "content": "        if (!foodName.isEmpty()) {"
       },
       {
         "lineNumber": 318,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "        if (!foodName.isEmpty()) {"
+        "content": "            List\u003cFood\u003e similarFood \u003d logic.getSimilarFood(foodName);"
       },
       {
         "lineNumber": 319,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "            List\u003cFood\u003e similarFood \u003d logic.getSimilarFood(foodName);"
+        "content": "            String s \u003d similarFood.stream()"
       },
       {
         "lineNumber": 320,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "            String s \u003d similarFood.stream()"
+        "content": "                            .map(Food::getName)"
       },
       {
         "lineNumber": 321,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "                            .map(Food::getName)"
+        "content": "                            .map(Name::toString)"
       },
       {
         "lineNumber": 322,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "                            .map(Name::toString)"
+        "content": "                            .sorted(Comparator.naturalOrder())"
       },
       {
         "lineNumber": 323,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "                            .sorted(Comparator.naturalOrder())"
+        "content": "                            .collect(Collectors.joining(\"\\n\"));"
       },
       {
         "lineNumber": 324,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "                            .collect(Collectors.joining(\"\\n\"));"
+        "content": "            if (!similarFood.isEmpty()) {"
       },
       {
         "lineNumber": 325,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "            if (!similarFood.isEmpty()) {"
+        "content": "                resultDisplay.setFeedbackToUser(\"Here are some Food items with similar names in your Food Record: \\n\""
       },
       {
         "lineNumber": 326,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "                resultDisplay.setFeedbackToUser(\"Here are some Food items with similar names in your Food Record: \\n\""
+        "content": "                        + s);"
       },
       {
         "lineNumber": 327,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "                        + s);"
+        "content": "            } else {"
       },
       {
         "lineNumber": 328,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "            } else {"
+        "content": "                resultDisplay.setFeedbackToUser(\"It seems like there is no similar Food item in your Food Record\");"
       },
       {
         "lineNumber": 329,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "                resultDisplay.setFeedbackToUser(\"It seems like there is no similar Food item in your Food Record\");"
+        "content": "            }"
       },
       {
         "lineNumber": 330,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "            }"
+        "content": "        } else {"
       },
       {
         "lineNumber": 331,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "        } else {"
+        "content": "            resultDisplay.setFeedbackToUser(\"\");"
       },
       {
         "lineNumber": 332,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "            resultDisplay.setFeedbackToUser(\"\");"
+        "content": "        }"
       },
       {
         "lineNumber": 333,
         "author": {
           "gitId": "jeremylow97"
         },
-        "content": "        }"
-      },
-      {
-        "lineNumber": 334,
-        "author": {
-          "gitId": "jeremylow97"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 335,
+        "lineNumber": 334,
         "author": {
           "gitId": "-"
         },
@@ -73313,7 +73306,7 @@
       "J-Dan23": 31,
       "buddhavineeth": 75,
       "ray-97": 10,
-      "jeremylow97": 39,
+      "jeremylow97": 38,
       "eugenetyc": 6,
       "-": 174
     }

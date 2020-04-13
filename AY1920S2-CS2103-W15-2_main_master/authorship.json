@@ -10072,752 +10072,745 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String FILE_OPS_ERROR_MESSAGE \u003d \"Could not save data to file: \";"
+        "content": "    private final Logger logger \u003d LogsCenter.getLogger(LogicManager.class);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": "    private final Logger logger \u003d LogsCenter.getLogger(LogicManager.class);"
+        "content": "    private final Model model;"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    private final Model model;"
-      },
-      {
-        "lineNumber": 35,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    private final Storage storage;"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    private final PreSessionParser preSessionParser;"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    private final InterviewParser interviewParser;"
       },
       {
-        "lineNumber": 38,
+        "lineNumber": 37,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    private final NormalParser normalParser;"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
         "content": "    public LogicManager(Model model, Storage storage) {"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
         "content": "        this.model \u003d model;"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "-"
         },
         "content": "        this.storage \u003d storage;"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        preSessionParser \u003d new PreSessionParser();"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        interviewParser \u003d new InterviewParser();"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 44,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        normalParser \u003d new NormalParser();"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 48,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    public CommandResult execute(String commandText) throws CommandException, ParseException {"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": "    public CommandResult execute(String commandText) throws CommandException, ParseException {"
+        "content": "        logger.info(\"----------------[USER COMMAND][\" + commandText + \"]\");"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "        logger.info(\"----------------[USER COMMAND][\" + commandText + \"]\");"
+        "content": ""
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 52,
-        "author": {
-          "gitId": "-"
-        },
         "content": "        CommandResult commandResult;"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 52,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        Command command;"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 53,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        switch (model.getAppPhase()) {"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 54,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        case PRE_SESSION:"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            command \u003d preSessionParser.parseCommand(commandText);"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 56,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        case NORMAL:"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            command \u003d normalParser.parseCommand(commandText);"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        case INTERVIEW:"
       },
       {
-        "lineNumber": 62,
+        "lineNumber": 61,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            command \u003d interviewParser.parseCommand(commandText);"
       },
       {
-        "lineNumber": 63,
+        "lineNumber": 62,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            break;"
       },
       {
-        "lineNumber": 64,
+        "lineNumber": 63,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        default:"
       },
       {
-        "lineNumber": 65,
+        "lineNumber": 64,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            throw new IllegalArgumentException(\"Impossible enum case\");"
       },
       {
-        "lineNumber": 66,
+        "lineNumber": 65,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 67,
+        "lineNumber": 66,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        commandResult \u003d command.execute(model, storage);"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
         "content": "        return commandResult;"
       },
       {
-        "lineNumber": 69,
+        "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 71,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    @Override"
       },
       {
-        "lineNumber": 72,
+        "lineNumber": 71,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public ObservableList\u003cAttribute\u003e getAttributeListView() {"
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 72,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return model.getAttributeListView();"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 73,
         "author": {
           "gitId": "bscrow"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "bscrow"
+        },
+        "content": ""
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 76,
-        "author": {
-          "gitId": "bscrow"
-        },
         "content": "    @Override"
       },
       {
-        "lineNumber": 77,
+        "lineNumber": 76,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public ObservableList\u003cQuestion\u003e getQuestionListView() {"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 77,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return model.getQuestionListView();"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 78,
         "author": {
           "gitId": "bscrow"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "bscrow"
+        },
+        "content": ""
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    @Override"
+        "content": "    public ObservableList\u003cMetric\u003e getMetricListView() {"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    public ObservableList\u003cMetric\u003e getMetricListView() {"
+        "content": "        return model.getMetricListView();"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "        return model.getMetricListView();"
+        "content": "    }"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    @Override"
-      },
-      {
-        "lineNumber": 87,
-        "author": {
-          "gitId": "bscrow"
-        },
         "content": "    public Interviewee getCurrentInterviewee() {"
       },
       {
-        "lineNumber": 88,
+        "lineNumber": 87,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return model.getCurrentInterviewee();"
       },
       {
-        "lineNumber": 89,
+        "lineNumber": 88,
         "author": {
           "gitId": "bscrow"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "bscrow"
+        },
+        "content": ""
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    @Override"
+        "content": "    public void setCurrentInterviewee(Interviewee interviewee) {"
       },
       {
         "lineNumber": 92,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    public void setCurrentInterviewee(Interviewee interviewee) {"
+        "content": "        model.setCurrentInterviewee(interviewee);"
       },
       {
         "lineNumber": 93,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "        model.setCurrentInterviewee(interviewee);"
+        "content": "    }"
       },
       {
         "lineNumber": 94,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 95,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "bscrow"
-        },
         "content": "    @Override"
       },
       {
-        "lineNumber": 97,
+        "lineNumber": 96,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public ObservableList\u003cInterviewee\u003e getIntervieweeListView() {"
       },
       {
-        "lineNumber": 98,
+        "lineNumber": 97,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return model.getIntervieweeListView();"
       },
       {
-        "lineNumber": 99,
+        "lineNumber": 98,
         "author": {
           "gitId": "bscrow"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 100,
+        "lineNumber": 99,
         "author": {
           "gitId": "bscrow"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "mario7lorenzo"
+        },
+        "content": "    @Override"
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "    @Override"
+        "content": "    public ObservableList\u003cIntervieweeToScore\u003e getBestNIntervieweesView() {"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "    public ObservableList\u003cIntervieweeToScore\u003e getBestNIntervieweesView() {"
+        "content": "        return model.getBestNInterviewees();"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "        return model.getBestNInterviewees();"
+        "content": "    }"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "    }"
-      },
-      {
-        "lineNumber": 105,
-        "author": {
-          "gitId": "mario7lorenzo"
-        },
         "content": ""
       },
       {
-        "lineNumber": 106,
+        "lineNumber": 105,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 107,
+        "lineNumber": 106,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public Path getSessionsDirectory() {"
       },
       {
-        "lineNumber": 108,
+        "lineNumber": 107,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return model.getSessionsDirectory();"
       },
       {
-        "lineNumber": 109,
+        "lineNumber": 108,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 110,
+        "lineNumber": 109,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 111,
+        "lineNumber": 110,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 112,
+        "lineNumber": 111,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "     * Returns all the available sessions in the user prefs\u0027 sessions directory."
       },
       {
-        "lineNumber": 113,
+        "lineNumber": 112,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 114,
+        "lineNumber": 113,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 115,
+        "lineNumber": 114,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public List\u003cFile\u003e getAvailableSessions() throws IOException {"
       },
       {
-        "lineNumber": 116,
+        "lineNumber": 115,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return storage.readSessions(model.getUserPrefs());"
       },
       {
-        "lineNumber": 117,
+        "lineNumber": 116,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 118,
+        "lineNumber": 117,
         "author": {
           "gitId": "CornCobs"
         },
         "content": ""
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "bscrow"
+        },
+        "content": "    @Override"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    @Override"
+        "content": "    public Optional\u003cPath\u003e getCurrentSession() {"
       },
       {
         "lineNumber": 120,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    public Optional\u003cPath\u003e getCurrentSession() {"
+        "content": "        return model.getCurrentSession();"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "        return model.getCurrentSession();"
+        "content": "    }"
       },
       {
         "lineNumber": 122,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 124,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    @Override"
+        "content": "    public boolean isFinalisedInterviewProperties() {"
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    public boolean isFinalisedInterviewProperties() {"
+        "content": "        return model.isFinalisedInterviewProperties();"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "        return model.isFinalisedInterviewProperties();"
+        "content": "    }"
       },
       {
         "lineNumber": 127,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "bscrow"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    public GuiSettings getGuiSettings() {"
       },
       {
         "lineNumber": 130,
         "author": {
           "gitId": "-"
         },
-        "content": "    public GuiSettings getGuiSettings() {"
+        "content": "        return model.getGuiSettings();"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "-"
         },
-        "content": "        return model.getGuiSettings();"
+        "content": "    }"
       },
       {
         "lineNumber": 132,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    @Override"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
+        "content": "        model.setGuiSettings(guiSettings);"
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "-"
         },
-        "content": "        model.setGuiSettings(guiSettings);"
-      },
-      {
-        "lineNumber": 137,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 138,
+        "lineNumber": 137,
         "author": {
           "gitId": "weiichengg"
         },
         "content": ""
       },
       {
-        "lineNumber": 139,
+        "lineNumber": 138,
         "author": {
           "gitId": "-"
         },
@@ -10829,7 +10822,7 @@
       "bscrow": 33,
       "CornCobs": 57,
       "weiichengg": 2,
-      "-": 42
+      "-": 41
     }
   },
   {
@@ -10958,306 +10951,299 @@
       {
         "lineNumber": 18,
         "author": {
-          "gitId": "weiichengg"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 19,
-        "author": {
           "gitId": "agnesnatasya"
         },
         "content": "public class AddAttributeCommand extends Command {"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 19,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    public static final String COMMAND_WORD \u003d \"attribute\";"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 20,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    public static final boolean DESIRED_MODEL_FINALIZED_STATE \u003d false;"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 21,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    public static final String MESSAGE_SUCCESS \u003d \"New attribute added: %1$s\";"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    public static final String MESSAGE_FORMAT \u003d \"add \" + COMMAND_WORD + \" \u003cattribute\u003e\";"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 23,
         "author": {
           "gitId": "agnesnatasya"
         },
         "content": "    public static final String MESSAGE_FUNCTION \u003d \": Adds an attribute to the Attribute list.\\n\";"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 24,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    public static final String MESSAGE_USAGE \u003d MESSAGE_FORMAT"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 25,
         "author": {
           "gitId": "agnesnatasya"
         },
         "content": "            + MESSAGE_FUNCTION"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 26,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "            + \"Example: add \" + COMMAND_WORD + \" leadership\";"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 27,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": ""
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 28,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    private final String toAdd;"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 29,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": ""
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 30,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 31,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "     * Creates an AddAttributeCommand to add the specified {@code Attribute}"
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 32,
         "author": {
           "gitId": "weiichengg"
         },
         "content": "     * Subsequently, save the corresponding attributeList to the storage."
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 33,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 34,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    public AddAttributeCommand(String attribute) {"
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 35,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "        toAdd \u003d attribute;"
       },
       {
-        "lineNumber": 37,
+        "lineNumber": 36,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "mario7lorenzo"
+        },
+        "content": ""
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": ""
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "mario7lorenzo"
-        },
         "content": "    @Override"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 39,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public CommandResult execute(Model model, Storage storage) throws CommandException {"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 40,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "        requireNonNull(model);"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 41,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        ModelUtil.validateFinalisation(model, DESIRED_MODEL_FINALIZED_STATE);"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 42,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        AttributeList attributes \u003d model.getAttributeList();"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 43,
         "author": {
           "gitId": "CornCobs"
         },
         "content": ""
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 44,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        try {"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 45,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            attributes.add(toAdd);"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 46,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        } catch (IllegalValueException e) {"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 47,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "            throw new CommandException(e.getMessage());"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 48,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 49,
         "author": {
           "gitId": "weiichengg"
         },
         "content": "        saveAttributes(model, storage);"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 50,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return new ToggleCommandResult(String.format(MESSAGE_SUCCESS, toAdd), ToggleView.ATTRIBUTE);"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 51,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 52,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": ""
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 53,
         "author": {
           "gitId": "weiichengg"
         },
         "content": ""
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 54,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 56,
+        "lineNumber": 55,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    public boolean equals(Object other) {"
       },
       {
-        "lineNumber": 57,
+        "lineNumber": 56,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "        return other \u003d\u003d this // short circuit if same object"
       },
       {
-        "lineNumber": 58,
+        "lineNumber": 57,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "                || (other instanceof AddAttributeCommand // instanceof handles nulls"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 58,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "                \u0026\u0026 toAdd.equals(((AddAttributeCommand) other).toAdd));"
       },
       {
-        "lineNumber": 60,
+        "lineNumber": 59,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 61,
+        "lineNumber": 60,
         "author": {
           "gitId": "mario7lorenzo"
         },
@@ -11268,7 +11254,7 @@
       "mario7lorenzo": 36,
       "CornCobs": 16,
       "agnesnatasya": 3,
-      "weiichengg": 6
+      "weiichengg": 5
     }
   },
   {
@@ -19176,11 +19162,46 @@
         "author": {
           "gitId": "CornCobs"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return super.equals(other) \u0026\u0026 other instanceof ExitCommandResult;"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "CornCobs"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "CornCobs": 19
+      "CornCobs": 24
     }
   },
   {
@@ -23249,11 +23270,46 @@
         "author": {
           "gitId": "CornCobs"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return super.equals(other) \u0026\u0026 other instanceof HelpCommandResult;"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "CornCobs"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "CornCobs": 18
+      "CornCobs": 23
     }
   },
   {
@@ -25859,6 +25915,55 @@
       {
         "lineNumber": 40,
         "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return super.equals(other)"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 other instanceof NavigationCommandResult"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 index \u003d\u003d ((NavigationCommandResult) other).index;"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
           "gitId": "agnesnatasya"
         },
         "content": "}"
@@ -25866,7 +25971,7 @@
     ],
     "authorContributionMap": {
       "agnesnatasya": 29,
-      "CornCobs": 11
+      "CornCobs": 18
     }
   },
   {
@@ -28170,11 +28275,60 @@
         "author": {
           "gitId": "CornCobs"
         },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean equals(Object other) {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return super.equals(other)"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 other instanceof ToggleCommandResult"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 toggleView \u003d\u003d ((ToggleCommandResult) other).toggleView;"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "CornCobs"
+        },
         "content": "}"
       }
     ],
     "authorContributionMap": {
-      "CornCobs": 25
+      "CornCobs": 32
     }
   },
   {
@@ -44830,635 +44984,635 @@
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import java.util.Optional;"
+        "content": "import java.util.Objects;"
       },
       {
         "lineNumber": 8,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "import java.util.logging.Logger;"
+        "content": "import java.util.Optional;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import java.util.logging.Logger;"
       },
       {
         "lineNumber": 10,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "import hirelah.commons.core.GuiSettings;"
+        "content": ""
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.commons.core.LogsCenter;"
+        "content": "import hirelah.commons.core.GuiSettings;"
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.AppPhase;"
+        "content": "import hirelah.commons.core.LogsCenter;"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.Attribute;"
+        "content": "import hirelah.model.hirelah.AppPhase;"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.AttributeList;"
+        "content": "import hirelah.model.hirelah.Attribute;"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.Interviewee;"
+        "content": "import hirelah.model.hirelah.AttributeList;"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.IntervieweeList;"
+        "content": "import hirelah.model.hirelah.Interviewee;"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.IntervieweeToScore;"
+        "content": "import hirelah.model.hirelah.IntervieweeList;"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.Metric;"
+        "content": "import hirelah.model.hirelah.IntervieweeToScore;"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.MetricList;"
+        "content": "import hirelah.model.hirelah.Metric;"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.Question;"
+        "content": "import hirelah.model.hirelah.MetricList;"
       },
       {
         "lineNumber": 21,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.QuestionList;"
+        "content": "import hirelah.model.hirelah.Question;"
       },
       {
         "lineNumber": 22,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.Transcript;"
+        "content": "import hirelah.model.hirelah.QuestionList;"
       },
       {
         "lineNumber": 23,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.hirelah.exceptions.IllegalActionException;"
+        "content": "import hirelah.model.hirelah.Transcript;"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "agnesnatasya"
+          "gitId": "CornCobs"
         },
-        "content": "import javafx.collections.FXCollections;"
+        "content": "import hirelah.model.hirelah.exceptions.IllegalActionException;"
       },
       {
         "lineNumber": 25,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "import javafx.collections.ObservableList;"
+        "content": "import javafx.collections.FXCollections;"
       },
       {
         "lineNumber": 26,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": ""
+        "content": "import javafx.collections.ObservableList;"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "agnesnatasya"
         },
-        "content": "/**"
+        "content": ""
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "-"
         },
-        "content": " * Represents the in-memory model of the address book data."
+        "content": "/**"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": " * Represents the in-memory model of the address book data."
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "-"
         },
-        "content": "public class ModelManager implements Model {"
+        "content": " */"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "-"
         },
-        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(ModelManager.class);"
+        "content": "public class ModelManager implements Model {"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": ""
+        "content": "    private static final Logger logger \u003d LogsCenter.getLogger(ModelManager.class);"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private Path session;"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private boolean finalisedInterviewProperties;"
+        "content": "    private Path session;"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private AppPhase appPhase;"
+        "content": "    private boolean finalisedInterviewProperties;"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private Interviewee currentInterviewee;"
+        "content": "    private AppPhase appPhase;"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private IntervieweeList intervieweeList;"
+        "content": "    private Interviewee currentInterviewee;"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private AttributeList attributeList;"
+        "content": "    private IntervieweeList intervieweeList;"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private QuestionList questionList;"
+        "content": "    private AttributeList attributeList;"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private MetricList metricList;"
+        "content": "    private QuestionList questionList;"
       },
       {
         "lineNumber": 41,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    private UserPrefs userPrefs;"
+        "content": "    private MetricList metricList;"
       },
       {
         "lineNumber": 42,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    private UserPrefs userPrefs;"
+      },
+      {
+        "lineNumber": 43,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "    private ObservableList\u003cIntervieweeToScore\u003e bestNIntervieweeList;"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 44,
         "author": {
           "gitId": "-"
         },
         "content": "    /**"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 45,
         "author": {
           "gitId": "-"
         },
         "content": "     * Initializes a ModelManager with the given addressBook and userPrefs."
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 46,
         "author": {
           "gitId": "-"
         },
         "content": "     */"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 47,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public ModelManager(ReadOnlyUserPrefs userPrefs) {"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 48,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        requireAllNonNull(userPrefs);"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 50,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        logger.fine(\"Initializing with user prefs \" + userPrefs);"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 51,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "        this.appPhase \u003d AppPhase.PRE_SESSION;"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "        this.appPhase \u003d AppPhase.PRE_SESSION;"
       },
       {
         "lineNumber": 53,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
         "content": "        this.userPrefs \u003d new UserPrefs(userPrefs);"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 55,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        this.bestNIntervieweeList \u003d FXCollections.observableArrayList();"
       },
       {
-        "lineNumber": 55,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "    public ModelManager() {"
+        "content": ""
       },
       {
         "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public ModelManager() {"
+      },
+      {
+        "lineNumber": 59,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        this(new UserPrefs());"
       },
       {
-        "lineNumber": 59,
+        "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 60,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 61,
         "author": {
-          "gitId": "weiichengg"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 62,
         "author": {
-          "gitId": "-"
+          "gitId": "weiichengg"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d UserPrefs \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": ""
       },
       {
         "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d UserPrefs \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 64,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 65,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 66,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(userPrefs);"
+        "content": "    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {"
       },
       {
         "lineNumber": 67,
         "author": {
           "gitId": "-"
         },
-        "content": "        this.userPrefs.resetData(userPrefs);"
+        "content": "        requireNonNull(userPrefs);"
       },
       {
         "lineNumber": 68,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        this.userPrefs.resetData(userPrefs);"
       },
       {
         "lineNumber": 69,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 70,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 71,
         "author": {
           "gitId": "-"
         },
-        "content": "    public ReadOnlyUserPrefs getUserPrefs() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 72,
         "author": {
           "gitId": "-"
         },
-        "content": "        return userPrefs;"
+        "content": "    public ReadOnlyUserPrefs getUserPrefs() {"
       },
       {
         "lineNumber": 73,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        return userPrefs;"
       },
       {
         "lineNumber": 74,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 75,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 76,
         "author": {
           "gitId": "-"
         },
-        "content": "    public GuiSettings getGuiSettings() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 77,
         "author": {
           "gitId": "-"
         },
-        "content": "        return userPrefs.getGuiSettings();"
+        "content": "    public GuiSettings getGuiSettings() {"
       },
       {
         "lineNumber": 78,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        return userPrefs.getGuiSettings();"
       },
       {
         "lineNumber": 79,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 80,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 81,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 82,
         "author": {
           "gitId": "-"
         },
-        "content": "        requireNonNull(guiSettings);"
+        "content": "    public void setGuiSettings(GuiSettings guiSettings) {"
       },
       {
         "lineNumber": 83,
         "author": {
           "gitId": "-"
         },
-        "content": "        userPrefs.setGuiSettings(guiSettings);"
+        "content": "        requireNonNull(guiSettings);"
       },
       {
         "lineNumber": 84,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        userPrefs.setGuiSettings(guiSettings);"
       },
       {
         "lineNumber": 85,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 86,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 87,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "    public Path getSessionsDirectory() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 88,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return userPrefs.getSessionsDirectory();"
+        "content": "    public Path getSessionsDirectory() {"
       },
       {
         "lineNumber": 89,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return userPrefs.getSessionsDirectory();"
       },
       {
         "lineNumber": 90,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 91,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 92,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 93,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public void setSessionsDirectory(Path addressBookFilePath) {"
       },
       {
-        "lineNumber": 93,
+        "lineNumber": 94,
         "author": {
           "gitId": "-"
         },
         "content": "        requireNonNull(addressBookFilePath);"
       },
       {
-        "lineNumber": 94,
+        "lineNumber": 95,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        userPrefs.setSessionsDirectory(addressBookFilePath);"
       },
       {
-        "lineNumber": 95,
+        "lineNumber": 96,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 96,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
         "lineNumber": 97,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -45467,644 +45621,644 @@
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d App state setters/getters \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": ""
       },
       {
         "lineNumber": 99,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d App state setters/getters \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 100,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 101,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public Optional\u003cPath\u003e getCurrentSession() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 102,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return Optional.ofNullable(session);"
+        "content": "    public Optional\u003cPath\u003e getCurrentSession() {"
       },
       {
         "lineNumber": 103,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return Optional.ofNullable(session);"
       },
       {
         "lineNumber": 104,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 105,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 106,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public void setCurrentSession(Path session) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 107,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        this.session \u003d session;"
+        "content": "    public void setCurrentSession(Path session) {"
       },
       {
         "lineNumber": 108,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        this.session \u003d session;"
       },
       {
         "lineNumber": 109,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 110,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 111,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public Path closeSession() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 112,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        Path closedSession \u003d this.session;"
+        "content": "    public Path closeSession() {"
       },
       {
         "lineNumber": 113,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        setCurrentSession(null);"
+        "content": "        Path closedSession \u003d this.session;"
       },
       {
         "lineNumber": 114,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        setAppPhase(AppPhase.PRE_SESSION);"
+        "content": "        setCurrentSession(null);"
       },
       {
         "lineNumber": 115,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        finalisedInterviewProperties \u003d false;"
+        "content": "        setAppPhase(AppPhase.PRE_SESSION);"
       },
       {
         "lineNumber": 116,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return closedSession;"
+        "content": "        finalisedInterviewProperties \u003d false;"
       },
       {
         "lineNumber": 117,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return closedSession;"
       },
       {
         "lineNumber": 118,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 119,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 120,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "    public void setAppPhase(AppPhase phase) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 121,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        this.appPhase \u003d phase;"
+        "content": "    public void setAppPhase(AppPhase phase) {"
       },
       {
         "lineNumber": 122,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        this.appPhase \u003d phase;"
       },
       {
         "lineNumber": 123,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 124,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 125,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     * Returns the current mode of the App"
+        "content": "    /**"
       },
       {
         "lineNumber": 126,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     */"
+        "content": "     * Returns the current mode of the App"
       },
       {
         "lineNumber": 127,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 128,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "    public AppPhase getAppPhase() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 129,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return appPhase;"
+        "content": "    public AppPhase getAppPhase() {"
       },
       {
         "lineNumber": 130,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return appPhase;"
       },
       {
         "lineNumber": 131,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 132,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 133,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     * Sets the interviewee currently in focus, either when viewing his/her transcript or"
+        "content": "    /**"
       },
       {
         "lineNumber": 134,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     * when interviewing him/her."
+        "content": "     * Sets the interviewee currently in focus, either when viewing his/her transcript or"
       },
       {
         "lineNumber": 135,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     *"
+        "content": "     * when interviewing him/her."
       },
       {
         "lineNumber": 136,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     * @param interviewee the interviewee in focus."
+        "content": "     *"
       },
       {
         "lineNumber": 137,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     */"
+        "content": "     * @param interviewee the interviewee in focus."
       },
       {
         "lineNumber": 138,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 139,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public void setCurrentInterviewee(Interviewee interviewee) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 140,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        this.currentInterviewee \u003d interviewee;"
+        "content": "    public void setCurrentInterviewee(Interviewee interviewee) {"
       },
       {
         "lineNumber": 141,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        this.currentInterviewee \u003d interviewee;"
       },
       {
         "lineNumber": 142,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 143,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 144,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public Interviewee getCurrentInterviewee() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 145,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return currentInterviewee;"
+        "content": "    public Interviewee getCurrentInterviewee() {"
       },
       {
         "lineNumber": 146,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return currentInterviewee;"
       },
       {
         "lineNumber": 147,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 148,
         "author": {
-          "gitId": "agnesnatasya"
+          "gitId": "CornCobs"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 149,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "     * Checks whether there is an interviewee currently in focus"
+        "content": "    /**"
       },
       {
         "lineNumber": 150,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "     *"
+        "content": "     * Checks whether there is an interviewee currently in focus"
       },
       {
         "lineNumber": 151,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "     * @return boolean whether there is an interviewee in focus."
+        "content": "     *"
       },
       {
         "lineNumber": 152,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "     */"
+        "content": "     * @return boolean whether there is an interviewee in focus."
       },
       {
         "lineNumber": 153,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 154,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "    public boolean hasCurrentInterviewee() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 155,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "        return !(this.currentInterviewee \u003d\u003d null);"
+        "content": "    public boolean hasCurrentInterviewee() {"
       },
       {
         "lineNumber": 156,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": "    }"
+        "content": "        return !(this.currentInterviewee \u003d\u003d null);"
       },
       {
         "lineNumber": 157,
         "author": {
           "gitId": "agnesnatasya"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 158,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "agnesnatasya"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 159,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     * A utility to get the Transcript of the current Interviewee (guaranteed to exist)."
+        "content": "    /**"
       },
       {
         "lineNumber": 160,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     * Do not use when there is no interviewee."
+        "content": "     * A utility to get the Transcript of the current Interviewee (guaranteed to exist)."
       },
       {
         "lineNumber": 161,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "     */"
+        "content": "     * Do not use when there is no interviewee."
       },
       {
         "lineNumber": 162,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 163,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public Transcript getCurrentTranscript() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 164,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return currentInterviewee.getTranscript().get();"
+        "content": "    public Transcript getCurrentTranscript() {"
       },
       {
         "lineNumber": 165,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return currentInterviewee.getTranscript().get();"
       },
       {
         "lineNumber": 166,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 167,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 168,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public void startInterview(Interviewee interviewee) throws IllegalActionException {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 169,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        if (interviewee.isInterviewed()) {"
+        "content": "    public void startInterview(Interviewee interviewee) throws IllegalActionException {"
       },
       {
         "lineNumber": 170,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "            throw new IllegalActionException(\"Interviewee has been interviewed already!\");"
+        "content": "        if (interviewee.isInterviewed()) {"
       },
       {
         "lineNumber": 171,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        }"
+        "content": "            throw new IllegalActionException(\"Interviewee has been interviewed already!\");"
       },
       {
         "lineNumber": 172,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        setCurrentInterviewee(interviewee);"
+        "content": "        }"
       },
       {
         "lineNumber": 173,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        if (currentInterviewee.getTranscript().isEmpty()) {"
+        "content": "        setCurrentInterviewee(interviewee);"
       },
       {
         "lineNumber": 174,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        if (currentInterviewee.getTranscript().isEmpty()) {"
+      },
+      {
+        "lineNumber": 175,
         "author": {
           "gitId": "bscrow"
         },
         "content": "            currentInterviewee.setTranscript(new Transcript(questionList, attributeList));"
       },
       {
-        "lineNumber": 175,
+        "lineNumber": 176,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        }"
       },
       {
-        "lineNumber": 176,
+        "lineNumber": 177,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        setAppPhase(AppPhase.INTERVIEW);"
       },
       {
-        "lineNumber": 177,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 178,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 179,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 180,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public void endInterview() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 181,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        Transcript transcript \u003d getCurrentTranscript();"
+        "content": "    public void endInterview() {"
       },
       {
         "lineNumber": 182,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        currentInterviewee.setTranscript(null);"
+        "content": "        Transcript transcript \u003d getCurrentTranscript();"
       },
       {
         "lineNumber": 183,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        currentInterviewee.setTranscript(transcript);"
+        "content": "        currentInterviewee.setTranscript(null);"
       },
       {
         "lineNumber": 184,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        setCurrentInterviewee(null);"
+        "content": "        currentInterviewee.setTranscript(transcript);"
       },
       {
         "lineNumber": 185,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        setAppPhase(AppPhase.NORMAL);"
+        "content": "        setCurrentInterviewee(null);"
       },
       {
         "lineNumber": 186,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        setAppPhase(AppPhase.NORMAL);"
       },
       {
         "lineNumber": 187,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 188,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Observable accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
+        "content": ""
       },
       {
         "lineNumber": 189,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Observable accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 190,
@@ -46116,698 +46270,754 @@
       {
         "lineNumber": 191,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 192,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public ObservableList\u003cAttribute\u003e getAttributeListView() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 193,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return attributeList.getObservableList();"
+        "content": "    public ObservableList\u003cAttribute\u003e getAttributeListView() {"
       },
       {
         "lineNumber": 194,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return attributeList.getObservableList();"
       },
       {
         "lineNumber": 195,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 196,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 197,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "    public ObservableList\u003cQuestion\u003e getQuestionListView() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 198,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return questionList.getObservableList();"
+        "content": "    public ObservableList\u003cQuestion\u003e getQuestionListView() {"
       },
       {
         "lineNumber": 199,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return questionList.getObservableList();"
       },
       {
         "lineNumber": 200,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 201,
         "author": {
-          "gitId": "bscrow"
+          "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 202,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "bscrow"
         },
-        "content": "    public ObservableList\u003cInterviewee\u003e getIntervieweeListView() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 203,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return intervieweeList.getObservableList();"
+        "content": "    public ObservableList\u003cInterviewee\u003e getIntervieweeListView() {"
       },
       {
         "lineNumber": 204,
         "author": {
-          "gitId": "bscrow"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return intervieweeList.getObservableList();"
       },
       {
         "lineNumber": 205,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 206,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 207,
         "author": {
           "gitId": "bscrow"
         },
-        "content": "    public ObservableList\u003cMetric\u003e getMetricListView() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 208,
+        "author": {
+          "gitId": "bscrow"
+        },
+        "content": "    public ObservableList\u003cMetric\u003e getMetricListView() {"
+      },
+      {
+        "lineNumber": 209,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return metricList.getObservableList();"
       },
       {
-        "lineNumber": 209,
+        "lineNumber": 210,
         "author": {
           "gitId": "bscrow"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 210,
+        "lineNumber": 211,
         "author": {
           "gitId": "bscrow"
         },
         "content": ""
-      },
-      {
-        "lineNumber": 211,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Model component accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 212,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    //\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Model component accessors \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d"
       },
       {
         "lineNumber": 213,
         "author": {
-          "gitId": "bscrow"
+          "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 214,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "bscrow"
         },
-        "content": "    public IntervieweeList getIntervieweeList() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 215,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return intervieweeList;"
+        "content": "    public IntervieweeList getIntervieweeList() {"
       },
       {
         "lineNumber": 216,
         "author": {
-          "gitId": "bscrow"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return intervieweeList;"
       },
       {
         "lineNumber": 217,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 218,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "bscrow"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 219,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public void setIntervieweeList(IntervieweeList intervieweeList) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 220,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        this.intervieweeList \u003d intervieweeList;"
+        "content": "    public void setIntervieweeList(IntervieweeList intervieweeList) {"
       },
       {
         "lineNumber": 221,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        this.intervieweeList \u003d intervieweeList;"
       },
       {
         "lineNumber": 222,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 223,
         "author": {
-          "gitId": "bscrow"
+          "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 224,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "bscrow"
         },
-        "content": "    public AttributeList getAttributeList() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 225,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return attributeList;"
+        "content": "    public AttributeList getAttributeList() {"
       },
       {
         "lineNumber": 226,
         "author": {
-          "gitId": "bscrow"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return attributeList;"
       },
       {
         "lineNumber": 227,
         "author": {
           "gitId": "bscrow"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 228,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "bscrow"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 229,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public void setAttributeList(AttributeList attributeList) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 230,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        this.attributeList \u003d attributeList;"
+        "content": "    public void setAttributeList(AttributeList attributeList) {"
       },
       {
         "lineNumber": 231,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        this.attributeList \u003d attributeList;"
       },
       {
         "lineNumber": 232,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 233,
         "author": {
-          "gitId": "mario7lorenzo"
+          "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 234,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "mario7lorenzo"
         },
-        "content": "    public QuestionList getQuestionList() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 235,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        return questionList;"
+        "content": "    public QuestionList getQuestionList() {"
       },
       {
         "lineNumber": 236,
         "author": {
-          "gitId": "mario7lorenzo"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        return questionList;"
       },
       {
         "lineNumber": 237,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 238,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "mario7lorenzo"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 239,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public void setQuestionList(QuestionList questionList) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 240,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        this.questionList \u003d questionList;"
+        "content": "    public void setQuestionList(QuestionList questionList) {"
       },
       {
         "lineNumber": 241,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        this.questionList \u003d questionList;"
       },
       {
         "lineNumber": 242,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 243,
         "author": {
-          "gitId": "mario7lorenzo"
+          "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 244,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "    public MetricList getMetricList() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 245,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "        return metricList;"
+        "content": "    public MetricList getMetricList() {"
       },
       {
         "lineNumber": 246,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "    }"
+        "content": "        return metricList;"
       },
       {
         "lineNumber": 247,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 248,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "mario7lorenzo"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 249,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    public void setMetricList(MetricList metricList) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 250,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        this.metricList \u003d metricList;"
+        "content": "    public void setMetricList(MetricList metricList) {"
       },
       {
         "lineNumber": 251,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        this.metricList \u003d metricList;"
       },
       {
         "lineNumber": 252,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 253,
         "author": {
-          "gitId": "mario7lorenzo"
+          "gitId": "CornCobs"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 254,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "    public ObservableList\u003cIntervieweeToScore\u003e getBestNInterviewees() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 255,
+        "author": {
+          "gitId": "mario7lorenzo"
+        },
+        "content": "    public ObservableList\u003cIntervieweeToScore\u003e getBestNInterviewees() {"
+      },
+      {
+        "lineNumber": 256,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "        return bestNIntervieweeList;"
       },
       {
-        "lineNumber": 256,
-        "author": {
-          "gitId": "mario7lorenzo"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 257,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 258,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "    /**"
+        "content": ""
       },
       {
         "lineNumber": 259,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "     * Finalizes the questions and attributes so they do not change between interviews."
+        "content": "    /**"
       },
       {
         "lineNumber": 260,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "     */"
+        "content": "     * Finalizes the questions and attributes so they do not change between interviews."
       },
       {
         "lineNumber": 261,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "mario7lorenzo"
         },
-        "content": "    @Override"
+        "content": "     */"
       },
       {
         "lineNumber": 262,
         "author": {
-          "gitId": "mario7lorenzo"
+          "gitId": "CornCobs"
         },
-        "content": "    public void finaliseInterviewProperties() {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 263,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "        this.finalisedInterviewProperties \u003d true;"
+        "content": "    public void finaliseInterviewProperties() {"
       },
       {
         "lineNumber": 264,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": "    }"
+        "content": "        this.finalisedInterviewProperties \u003d true;"
       },
       {
         "lineNumber": 265,
         "author": {
           "gitId": "mario7lorenzo"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 266,
+        "author": {
+          "gitId": "mario7lorenzo"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 267,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    /** Checks whether the questions and attributes has been finalised */"
       },
       {
-        "lineNumber": 267,
+        "lineNumber": 268,
         "author": {
           "gitId": "-"
         },
         "content": "    @Override"
       },
       {
-        "lineNumber": 268,
+        "lineNumber": 269,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "    public boolean isFinalisedInterviewProperties() {"
       },
       {
-        "lineNumber": 269,
+        "lineNumber": 270,
         "author": {
           "gitId": "mario7lorenzo"
         },
         "content": "        return this.finalisedInterviewProperties;"
       },
       {
-        "lineNumber": 270,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    }"
-      },
-      {
         "lineNumber": 271,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 272,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Override"
+        "content": ""
       },
       {
         "lineNumber": 273,
         "author": {
           "gitId": "-"
         },
-        "content": "    public boolean equals(Object obj) {"
+        "content": "    @Override"
       },
       {
         "lineNumber": 274,
         "author": {
           "gitId": "-"
         },
-        "content": "        // short circuit if same object"
+        "content": "    public boolean equals(Object obj) {"
       },
       {
         "lineNumber": 275,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (obj \u003d\u003d this) {"
+        "content": "        // short circuit if same object"
       },
       {
         "lineNumber": 276,
         "author": {
           "gitId": "-"
         },
-        "content": "            return true;"
+        "content": "        if (obj \u003d\u003d this) {"
       },
       {
         "lineNumber": 277,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return true;"
       },
       {
         "lineNumber": 278,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 279,
         "author": {
           "gitId": "-"
         },
-        "content": "        // instanceof handles nulls"
+        "content": ""
       },
       {
         "lineNumber": 280,
         "author": {
           "gitId": "-"
         },
-        "content": "        if (!(obj instanceof ModelManager)) {"
+        "content": "        // instanceof handles nulls"
       },
       {
         "lineNumber": 281,
         "author": {
           "gitId": "-"
         },
-        "content": "            return false;"
+        "content": "        if (!(obj instanceof ModelManager)) {"
       },
       {
         "lineNumber": 282,
         "author": {
           "gitId": "-"
         },
-        "content": "        }"
+        "content": "            return false;"
       },
       {
         "lineNumber": 283,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        }"
       },
       {
         "lineNumber": 284,
         "author": {
           "gitId": "-"
         },
-        "content": "        // state check"
+        "content": ""
       },
       {
         "lineNumber": 285,
         "author": {
           "gitId": "-"
         },
-        "content": "        ModelManager other \u003d (ModelManager) obj;"
+        "content": "        // state check"
       },
       {
         "lineNumber": 286,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "        return userPrefs.equals(other.userPrefs);"
+        "content": "        ModelManager other \u003d (ModelManager) obj;"
       },
       {
         "lineNumber": 287,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return userPrefs.equals(other.userPrefs)"
+      },
+      {
+        "lineNumber": 288,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 Objects.equals(session, other.session)"
+      },
+      {
+        "lineNumber": 289,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 Objects.equals(appPhase, other.appPhase)"
+      },
+      {
+        "lineNumber": 290,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 finalisedInterviewProperties \u003d\u003d other.finalisedInterviewProperties"
+      },
+      {
+        "lineNumber": 291,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 Objects.equals(currentInterviewee, other.currentInterviewee)"
+      },
+      {
+        "lineNumber": 292,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 Objects.equals(intervieweeList, other.intervieweeList)"
+      },
+      {
+        "lineNumber": 293,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 Objects.equals(attributeList, other.attributeList)"
+      },
+      {
+        "lineNumber": 294,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 Objects.equals(questionList, other.questionList)"
+      },
+      {
+        "lineNumber": 295,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 Objects.equals(metricList, other.metricList)"
+      },
+      {
+        "lineNumber": 296,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                \u0026\u0026 bestNIntervieweeList.equals(other.bestNIntervieweeList);"
+      },
+      {
+        "lineNumber": 297,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 288,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 289,
-        "author": {
-          "gitId": "weiichengg"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 290,
+        "lineNumber": 298,
         "author": {
           "gitId": "-"
         },
@@ -46817,10 +47027,10 @@
     "authorContributionMap": {
       "mario7lorenzo": 21,
       "bscrow": 14,
-      "CornCobs": 153,
+      "CornCobs": 163,
       "agnesnatasya": 14,
-      "weiichengg": 2,
-      "-": 86
+      "weiichengg": 1,
+      "-": 85
     }
   },
   {
@@ -90658,6 +90868,358 @@
     }
   },
   {
+    "path": "src/test/java/hirelah/logic/commands/AddAttributeCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "package hirelah.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import static hirelah.logic.commands.CommandTestUtil.assertCommandSuccess;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import static hirelah.logic.commands.CommandTestUtility.VALID_ATTRIBUTE_INTEGRITY;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import static hirelah.logic.commands.CommandTestUtility.VALID_ATTRIBUTE_TEAM_WORK;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertNotEquals;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.commons.exceptions.IllegalValueException;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.Model;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.ModelManager;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.AttributeList;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "class AddAttributeCommandTest {"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    void execute_validAttribute_success() throws IllegalValueException {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        StorageStub storage \u003d new StorageStub();"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Model actual \u003d new ModelManager();"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        actual.setAttributeList(new AttributeList());"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        AttributeList expectedAttributeList \u003d new AttributeList();"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        expectedAttributeList.add(VALID_ATTRIBUTE_INTEGRITY);"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Model expected \u003d new ModelManager();"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        expected.setAttributeList(expectedAttributeList);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        AddAttributeCommand command \u003d new AddAttributeCommand(VALID_ATTRIBUTE_INTEGRITY);"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        CommandResult expectedCommandResult \u003d"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                new ToggleCommandResult(String.format(AddAttributeCommand.MESSAGE_SUCCESS, VALID_ATTRIBUTE_INTEGRITY),"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                        ToggleView.ATTRIBUTE);"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertCommandSuccess(command, actual, expectedCommandResult, expected, storage,"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                storage::isAttributesSaved);"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    void equals_differentAttribute_false() {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        AddAttributeCommand a1 \u003d new AddAttributeCommand(VALID_ATTRIBUTE_TEAM_WORK);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        AddAttributeCommand a2 \u003d new AddAttributeCommand(VALID_ATTRIBUTE_INTEGRITY);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertNotEquals(a1, a2);"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    void equals_sameAttribute_true() {"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        AddAttributeCommand a1 \u003d new AddAttributeCommand(VALID_ATTRIBUTE_TEAM_WORK);"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        AddAttributeCommand a2 \u003d new AddAttributeCommand(VALID_ATTRIBUTE_TEAM_WORK);"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertEquals(a1, a2);"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "CornCobs": 49
+    }
+  },
+  {
     "path": "src/test/java/hirelah/logic/commands/CommandResultTest.java",
     "fileType": "test-code",
     "lines": [
@@ -90884,91 +91446,91 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.logic.commands.exceptions.CommandException;"
+        "content": ""
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.model.Model;"
+        "content": "import java.util.function.BooleanSupplier;"
       },
       {
         "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.logic.commands.exceptions.CommandException;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.Model;"
+      },
+      {
+        "lineNumber": 10,
         "author": {
           "gitId": "CornCobs"
         },
         "content": "import hirelah.storage.Storage;"
       },
       {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "/**"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "-"
-        },
-        "content": " * Contains helper methods for testing commands."
-      },
-      {
         "lineNumber": 11,
         "author": {
           "gitId": "-"
         },
-        "content": " */"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "-"
         },
-        "content": "public class CommandTestUtil {"
+        "content": "/**"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": " * Contains helper methods for testing commands."
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_NAME_AMY \u003d \"Amy Bee\";"
+        "content": " */"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "-"
         },
-        "content": "    public static final String VALID_NAME_BOB \u003d \"Bob Choo\";"
+        "content": "public class CommandTestUtil {"
       },
       {
         "lineNumber": 16,
         "author": {
-          "gitId": "agnesnatasya"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -90977,35 +91539,35 @@
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    /**"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "-"
         },
-        "content": "     * Executes the given {@code command}, confirms that \u003cbr\u003e"
+        "content": "     * - the returned {@link CommandResult} matches {@code expectedCommandResult} \u003cbr\u003e"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "-"
         },
-        "content": "     * - the returned {@link CommandResult} matches {@code expectedCommandResult} \u003cbr\u003e"
+        "content": "     * - the {@code actualModel} matches {@code expectedModel}"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "     * - the {@code actualModel} matches {@code expectedModel}"
+        "content": "     * - the required components are saved"
       },
       {
         "lineNumber": 22,
@@ -91026,7 +91588,7 @@
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "            Model expectedModel, Storage storage) {"
+        "content": "                                            Model expectedModel, Storage storage, BooleanSupplier... savedComponents) {"
       },
       {
         "lineNumber": 25,
@@ -91059,110 +91621,61 @@
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "        } catch (CommandException ce) {"
+        "content": "            for (BooleanSupplier saved : savedComponents) {"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "            throw new AssertionError(\"Execution of command should not fail.\", ce);"
+        "content": "                assertTrue(saved.getAsBoolean());"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "        }"
+        "content": "            }"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "        } catch (CommandException ce) {"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "            throw new AssertionError(\"Execution of command should not fail.\", ce);"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "-"
         },
-        "content": "    /**"
+        "content": "        }"
       },
       {
         "lineNumber": 35,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model, Storage)}"
-      },
-      {
-        "lineNumber": 36,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     * that takes a string {@code expectedMessage}."
-      },
-      {
-        "lineNumber": 37,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "     */"
-      },
-      {
-        "lineNumber": 38,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,"
-      },
-      {
-        "lineNumber": 39,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "            Model expectedModel, Storage storage) {"
-      },
-      {
-        "lineNumber": 40,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        CommandResult expectedCommandResult \u003d new CommandResult(expectedMessage);"
-      },
-      {
-        "lineNumber": 41,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel, storage);"
-      },
-      {
-        "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
         "content": "    }"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
@@ -91170,9 +91683,8 @@
       }
     ],
     "authorContributionMap": {
-      "CornCobs": 9,
-      "agnesnatasya": 1,
-      "-": 34
+      "CornCobs": 13,
+      "-": 24
     }
   },
   {
@@ -91737,6 +92249,1037 @@
       "mario7lorenzo": 17,
       "CornCobs": 2,
       "agnesnatasya": 60
+    }
+  },
+  {
+    "path": "src/test/java/hirelah/logic/commands/StorageStub.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "package hirelah.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import java.io.File;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import java.util.Optional;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.commons.exceptions.DataConversionException;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.Model;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.ReadOnlyUserPrefs;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.UserPrefs;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.AttributeList;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.Interviewee;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.IntervieweeList;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.MetricList;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.QuestionList;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.storage.Storage;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": " * A stub to be used to test if Command classes save the correct components"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "public class StorageStub implements Storage {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    private boolean intervieweesSaved;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    private boolean attributesSaved;"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    private boolean questionsSaved;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    private boolean metricsSaved;"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    private int transcriptSaved; // int to indicate which interviewee id, 0 if not saved"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    private boolean modelSaved;"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean isIntervieweesSaved() {"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return intervieweesSaved;"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean isAttributesSaved() {"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return attributesSaved;"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean isQuestionsSaved() {"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return questionsSaved;"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean isMetricsSaved() {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return metricsSaved;"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public int getTranscriptSaved() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return transcriptSaved;"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public boolean isModelSaved() {"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return modelSaved;"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public List\u003cFile\u003e readSessions(ReadOnlyUserPrefs userPrefs) throws IOException {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void loadSession(Model model, Path session) throws DataConversionException {"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void saveInterviewee(IntervieweeList source) throws IOException {"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        intervieweesSaved \u003d true;"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Optional\u003cIntervieweeList\u003e readInterviewee(QuestionList questionList,"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                                                     AttributeList attributeList,"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "                                                     Boolean initialModel) throws DataConversionException {"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void saveAttribute(AttributeList source) throws IOException {"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        attributesSaved \u003d true;"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Optional\u003cAttributeList\u003e readAttribute() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Optional\u003cAttributeList\u003e readAttribute(Path session) throws DataConversionException {"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void saveQuestion(QuestionList source) throws IOException {"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        questionsSaved \u003d true;"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Optional\u003cQuestionList\u003e readQuestion() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Optional\u003cQuestionList\u003e readQuestion(Path session) throws DataConversionException {"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void saveMetric(MetricList source) throws IOException {"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        metricsSaved \u003d true;"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Optional\u003cMetricList\u003e readMetric() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void saveTranscript(Interviewee source) throws IOException {"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        transcriptSaved \u003d source.getId();"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 121,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 122,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 123,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void saveModel(Boolean model) throws IOException {"
+      },
+      {
+        "lineNumber": 124,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        modelSaved \u003d true;"
+      },
+      {
+        "lineNumber": 125,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 126,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 127,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 128,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Optional\u003cBoolean\u003e readModel() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 129,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 130,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 131,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 132,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 133,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Path getUserPrefsFilePath() {"
+      },
+      {
+        "lineNumber": 134,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return null;"
+      },
+      {
+        "lineNumber": 135,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 136,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 137,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 138,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public Optional\u003cUserPrefs\u003e readUserPrefs() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 139,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        return Optional.empty();"
+      },
+      {
+        "lineNumber": 140,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 141,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 142,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Override"
+      },
+      {
+        "lineNumber": 143,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException {"
+      },
+      {
+        "lineNumber": 144,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 145,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 146,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "CornCobs": 146
     }
   },
   {
@@ -103025,44 +104568,44 @@
       {
         "lineNumber": 4,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
       },
       {
         "lineNumber": 6,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "import java.nio.file.Path;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "-"
         },
-        "content": "import java.nio.file.Paths;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "import java.nio.file.Path;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "-"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": "import java.nio.file.Paths;"
       },
       {
         "lineNumber": 10,
@@ -103074,9 +104617,9 @@
       {
         "lineNumber": 11,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "import hirelah.commons.core.GuiSettings;"
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 12,
@@ -103088,86 +104631,86 @@
       {
         "lineNumber": 13,
         "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.commons.core.GuiSettings;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.commons.exceptions.IllegalValueException;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.AppPhase;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.AttributeList;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.Interviewee;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.QuestionList;"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.Transcript;"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "import hirelah.model.hirelah.exceptions.IllegalActionException;"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 22,
+        "author": {
           "gitId": "-"
         },
         "content": "public class ModelManagerTest {"
       },
       {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    private ModelManager modelManager \u003d new ModelManager();"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "-"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "    public void constructor() {"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertEquals(new UserPrefs(), modelManager.getUserPrefs());"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        assertEquals(new GuiSettings(), modelManager.getGuiSettings());"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "        //assertEquals(new IntervieweeList(), modelManager.getIntervieweeList()); TODO: override equals on model classes"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "        //assertEquals(new AttributeList(), modelManager.getAttributeList());"
-      },
-      {
         "lineNumber": 23,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "        //assertEquals(new QuestionList(), modelManager.getQuestionList());"
+        "content": ""
       },
       {
         "lineNumber": 24,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    private ModelManager modelManager \u003d new ModelManager();"
       },
       {
         "lineNumber": 25,
@@ -103179,121 +104722,121 @@
       {
         "lineNumber": 26,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    @Test"
+        "content": "    /** Starts a typical session. */"
       },
       {
         "lineNumber": 27,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    public void setUserPrefs_nullUserPrefs_throwsNullPointerException() {"
+        "content": "    private void startSession() {"
       },
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e modelManager.setUserPrefs(null));"
+        "content": "        modelManager.setCurrentSession(Paths.get(\"session\"));"
       },
       {
         "lineNumber": 29,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        modelManager.setQuestionList(new QuestionList());"
       },
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "        modelManager.setAttributeList(new AttributeList());"
       },
       {
         "lineNumber": 31,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    @Test"
+        "content": "        modelManager.setAppPhase(AppPhase.NORMAL);"
       },
       {
         "lineNumber": 32,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    public void setUserPrefs_validUserPrefs_copiesUserPrefs() {"
+        "content": "    }"
       },
       {
         "lineNumber": 33,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "        UserPrefs userPrefs \u003d new UserPrefs();"
+        "content": ""
       },
       {
         "lineNumber": 34,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "        userPrefs.setSessionsDirectory(Paths.get(\"hirelah/file/path\"));"
+        "content": "    @Test"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "-"
         },
-        "content": "        userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));"
+        "content": "    public void constructor() {"
       },
       {
         "lineNumber": 36,
         "author": {
           "gitId": "-"
         },
-        "content": "        modelManager.setUserPrefs(userPrefs);"
+        "content": "        assertEquals(new UserPrefs(), modelManager.getUserPrefs());"
       },
       {
         "lineNumber": 37,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(userPrefs, modelManager.getUserPrefs());"
+        "content": "        assertEquals(new GuiSettings(), modelManager.getGuiSettings());"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "    }"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "-"
         },
-        "content": "        // Modifying userPrefs should not modify modelManager\u0027s userPrefs"
+        "content": ""
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "-"
         },
-        "content": "        UserPrefs oldUserPrefs \u003d new UserPrefs(userPrefs);"
+        "content": "    @Test"
       },
       {
         "lineNumber": 41,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "        userPrefs.setSessionsDirectory(Paths.get(\"new/hirelah/file/path\"));"
+        "content": "    public void setUserPrefs_nullUserPrefs_throwsNullPointerException() {"
       },
       {
         "lineNumber": 42,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(oldUserPrefs, modelManager.getUserPrefs());"
+        "content": "        assertThrows(NullPointerException.class, () -\u003e modelManager.setUserPrefs(null));"
       },
       {
         "lineNumber": 43,
@@ -103321,164 +104864,500 @@
         "author": {
           "gitId": "-"
         },
-        "content": "    public void setGuiSettings_nullGuiSettings_throwsNullPointerException() {"
+        "content": "    public void setUserPrefs_validUserPrefs_copiesUserPrefs() {"
       },
       {
         "lineNumber": 47,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e modelManager.setGuiSettings(null));"
+        "content": "        UserPrefs userPrefs \u003d new UserPrefs();"
       },
       {
         "lineNumber": 48,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        userPrefs.setSessionsDirectory(Paths.get(\"hirelah/file/path\"));"
       },
       {
         "lineNumber": 49,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));"
       },
       {
         "lineNumber": 50,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "        modelManager.setUserPrefs(userPrefs);"
       },
       {
         "lineNumber": 51,
         "author": {
           "gitId": "-"
         },
-        "content": "    public void setGuiSettings_validGuiSettings_setsGuiSettings() {"
+        "content": "        assertEquals(userPrefs, modelManager.getUserPrefs());"
       },
       {
         "lineNumber": 52,
         "author": {
           "gitId": "-"
         },
-        "content": "        GuiSettings guiSettings \u003d new GuiSettings(1, 2, 3, 4);"
+        "content": ""
       },
       {
         "lineNumber": 53,
         "author": {
           "gitId": "-"
         },
-        "content": "        modelManager.setGuiSettings(guiSettings);"
+        "content": "        // Modifying userPrefs should not modify modelManager\u0027s userPrefs"
       },
       {
         "lineNumber": 54,
         "author": {
           "gitId": "-"
         },
-        "content": "        assertEquals(guiSettings, modelManager.getGuiSettings());"
+        "content": "        UserPrefs oldUserPrefs \u003d new UserPrefs(userPrefs);"
       },
       {
         "lineNumber": 55,
         "author": {
-          "gitId": "-"
+          "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        userPrefs.setSessionsDirectory(Paths.get(\"new/hirelah/file/path\"));"
       },
       {
         "lineNumber": 56,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertEquals(oldUserPrefs, modelManager.getUserPrefs());"
       },
       {
         "lineNumber": 57,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
+        "content": "    }"
       },
       {
         "lineNumber": 58,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "    public void setSessionsDirectory_nullPath_throwsNullPointerException() {"
+        "content": ""
       },
       {
         "lineNumber": 59,
         "author": {
-          "gitId": "CornCobs"
+          "gitId": "-"
         },
-        "content": "        assertThrows(NullPointerException.class, () -\u003e modelManager.setSessionsDirectory(null));"
+        "content": "    @Test"
       },
       {
         "lineNumber": 60,
         "author": {
           "gitId": "-"
         },
-        "content": "    }"
+        "content": "    public void setGuiSettings_nullGuiSettings_throwsNullPointerException() {"
       },
       {
         "lineNumber": 61,
         "author": {
           "gitId": "-"
         },
-        "content": ""
+        "content": "        assertThrows(NullPointerException.class, () -\u003e modelManager.setGuiSettings(null));"
       },
       {
         "lineNumber": 62,
         "author": {
           "gitId": "-"
         },
-        "content": "    @Test"
-      },
-      {
-        "lineNumber": 63,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "    public void setSessionsDirectory_validPath_setsSessionsDirectory() {"
-      },
-      {
-        "lineNumber": 64,
-        "author": {
-          "gitId": "-"
-        },
-        "content": "        Path path \u003d Paths.get(\"address/book/file/path\");"
-      },
-      {
-        "lineNumber": 65,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "        modelManager.setSessionsDirectory(path);"
-      },
-      {
-        "lineNumber": 66,
-        "author": {
-          "gitId": "CornCobs"
-        },
-        "content": "        assertEquals(path, modelManager.getSessionsDirectory());"
-      },
-      {
-        "lineNumber": 67,
-        "author": {
-          "gitId": "-"
-        },
         "content": "    }"
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 63,
         "author": {
           "gitId": "-"
         },
         "content": ""
       },
       {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void setGuiSettings_validGuiSettings_setsGuiSettings() {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        GuiSettings guiSettings \u003d new GuiSettings(1, 2, 3, 4);"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        modelManager.setGuiSettings(guiSettings);"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(guiSettings, modelManager.getGuiSettings());"
+      },
+      {
         "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void setSessionsDirectory_nullPath_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e modelManager.setSessionsDirectory(null));"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void setSessionsDirectory_validPath_setsSessionsDirectory() {"
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Path path \u003d Paths.get(\"hirelah/file/path\");"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        modelManager.setSessionsDirectory(path);"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertEquals(path, modelManager.getSessionsDirectory());"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void closeSession_preSessionState() {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        startSession();"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        modelManager.finaliseInterviewProperties();"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        modelManager.closeSession();"
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertFalse(modelManager.isFinalisedInterviewProperties());"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertFalse(modelManager.getCurrentSession().isPresent());"
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertEquals(AppPhase.PRE_SESSION, modelManager.getAppPhase());"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void getCurrentTranscript_noInterviewee_exceptionThrown() {"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        startSession();"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e modelManager.getCurrentTranscript());"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void startInterview_interviewed_exceptionThrown() throws IllegalValueException {"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        startSession();"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Interviewee interviewee \u003d new Interviewee(\"Bob\", 1);"
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        interviewee.setTranscript(new Transcript(new QuestionList(), new AttributeList()));"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        interviewee.getTranscript().get().complete();"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertThrows(IllegalActionException.class, () -\u003e modelManager.startInterview(interviewee));"
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    public void startInterview_notInterviewed_interviewPhaseAndTranscriptPresent()"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "            throws IllegalValueException, IllegalActionException {"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        startSession();"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Interviewee interviewee \u003d new Interviewee(\"Bob\", 1);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        modelManager.startInterview(interviewee);"
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertEquals(AppPhase.INTERVIEW, modelManager.getAppPhase());"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertDoesNotThrow(() -\u003e modelManager.getCurrentTranscript());"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 117,
         "author": {
           "gitId": "-"
         },
@@ -103486,8 +105365,8 @@
       }
     ],
     "authorContributionMap": {
-      "CornCobs": 13,
-      "-": 56
+      "CornCobs": 62,
+      "-": 55
     }
   },
   {
@@ -105736,119 +107615,119 @@
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
       },
       {
         "lineNumber": 5,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import static org.junit.jupiter.api.Assertions.fail;"
+        "content": "import static org.junit.jupiter.api.Assertions.assertTrue;"
       },
       {
         "lineNumber": 6,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "import static org.junit.jupiter.api.Assertions.fail;"
       },
       {
         "lineNumber": 7,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import org.junit.jupiter.api.Test;"
+        "content": ""
       },
       {
         "lineNumber": 8,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "import org.junit.jupiter.api.Test;"
       },
       {
         "lineNumber": 9,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "import hirelah.commons.exceptions.IllegalValueException;"
+        "content": ""
       },
       {
         "lineNumber": 10,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "import hirelah.commons.exceptions.IllegalValueException;"
       },
       {
         "lineNumber": 11,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "class IntervieweeTest {"
+        "content": ""
       },
       {
         "lineNumber": 12,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "class IntervieweeTest {"
       },
       {
         "lineNumber": 13,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Test"
+        "content": "    private Transcript transcriptCompleted \u003d new Transcript(new QuestionList(), new AttributeList());"
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    void constructor_invalidName_exceptionThrown() {"
+        "content": "    private Transcript transcriptNotCompleted \u003d new Transcript(new QuestionList(), new AttributeList());"
       },
       {
         "lineNumber": 15,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        try {"
+        "content": "    {"
       },
       {
         "lineNumber": 16,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "            Interviewee i \u003d new Interviewee(\"12345\", 4); // test numeric name"
+        "content": "        transcriptCompleted.complete();"
       },
       {
         "lineNumber": 17,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "            fail();"
+        "content": "    }"
       },
       {
         "lineNumber": 18,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        } catch (IllegalValueException e) {"
+        "content": ""
       },
       {
         "lineNumber": 19,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "            assertEquals(Interviewee.MESSAGE_CONSTRAINTS, e.getMessage());"
+        "content": "    @Test"
       },
       {
         "lineNumber": 20,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        }"
+        "content": "    void constructor_invalidName_exceptionThrown() {"
       },
       {
         "lineNumber": 21,
@@ -105862,7 +107741,7 @@
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "            Interviewee i \u003d new Interviewee(\"\", 4); // test empty string name"
+        "content": "            Interviewee i \u003d new Interviewee(\"12345\", 4); // test numeric name"
       },
       {
         "lineNumber": 23,
@@ -105897,66 +107776,241 @@
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "        try {"
       },
       {
         "lineNumber": 28,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "            Interviewee i \u003d new Interviewee(\"\", 4); // test empty string name"
       },
       {
         "lineNumber": 29,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": ""
+        "content": "            fail();"
       },
       {
         "lineNumber": 30,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    @Test"
+        "content": "        } catch (IllegalValueException e) {"
       },
       {
         "lineNumber": 31,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    void setAlias_validIdentifier_hasAlias() throws IllegalValueException {"
+        "content": "            assertEquals(Interviewee.MESSAGE_CONSTRAINTS, e.getMessage());"
       },
       {
         "lineNumber": 32,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        Interviewee i \u003d new Interviewee(\"Bob\", 4);"
+        "content": "        }"
       },
       {
         "lineNumber": 33,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        i.setAlias(\"Bo\");"
+        "content": "    }"
       },
       {
         "lineNumber": 34,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "        assertTrue(i.getAlias().isPresent());"
+        "content": ""
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "CornCobs"
         },
-        "content": "    }"
+        "content": "    @Test"
       },
       {
         "lineNumber": 36,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    void setAlias_validIdentifier_hasAlias() throws IllegalValueException {"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Interviewee i \u003d new Interviewee(\"Bob\", 4);"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        i.setAlias(\"Bo\");"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertTrue(i.getAlias().isPresent());"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    void isInterviewed_notStarted_false() throws IllegalValueException {"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Interviewee i \u003d new Interviewee(\"Bob\", 4);"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertFalse(i.isInterviewed());"
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    void isInterviewed_startedNotComplete_false() throws IllegalValueException {"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Interviewee i \u003d new Interviewee(\"Bob\", 4);"
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        i.setTranscript(transcriptNotCompleted);"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertFalse(i.isInterviewed());"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    void isInterviewed_complete_true() throws IllegalValueException {"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        Interviewee i \u003d new Interviewee(\"Bob\", 4);"
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        i.setTranscript(transcriptCompleted);"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "        assertTrue(i.isInterviewed());"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "CornCobs"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 61,
         "author": {
           "gitId": "CornCobs"
         },
@@ -105964,7 +108018,7 @@
       }
     ],
     "authorContributionMap": {
-      "CornCobs": 36
+      "CornCobs": 61
     }
   },
   {
@@ -108727,6 +110781,856 @@
       "bscrow": 4,
       "CornCobs": 25,
       "agnesnatasya": 19
+    }
+  },
+  {
+    "path": "src/test/java/hirelah/storage/JsonUserPrefsStorageTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "package hirelah.storage;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "import static hirelah.testutil.Assert.assertThrows;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertEquals;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import static org.junit.jupiter.api.Assertions.assertFalse;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.io.IOException;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.nio.file.Path;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.nio.file.Paths;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import java.util.Optional;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "import org.junit.jupiter.api.io.TempDir;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "import hirelah.commons.core.GuiSettings;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "import hirelah.commons.exceptions.DataConversionException;"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "import hirelah.model.UserPrefs;"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "public class JsonUserPrefsStorageTest {"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private static final Path TEST_DATA_FOLDER \u003d Paths.get(\"src\", \"test\", \"data\", \"JsonUserPrefsStorageTest\");"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @TempDir"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public Path testFolder;"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void readUserPrefs_nullFilePath_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e {"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "            readUserPrefs(null);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "        });"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "    private Path addToTestDataPathIfNotNull(String userPrefsFileInTestDataFolder) {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "        return userPrefsFileInTestDataFolder !\u003d null"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "                ? TEST_DATA_FOLDER.resolve(userPrefsFileInTestDataFolder)"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "weiichengg"
+        },
+        "content": "                : null;"
+      },
+      {
+        "lineNumber": 36,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 37,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private Optional\u003cUserPrefs\u003e readUserPrefs(String userPrefsFileInTestDataFolder) throws DataConversionException {"
+      },
+      {
+        "lineNumber": 38,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        Path prefsFilePath \u003d addToTestDataPathIfNotNull(userPrefsFileInTestDataFolder);"
+      },
+      {
+        "lineNumber": 39,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return new JsonUserPrefsStorage(prefsFilePath).readUserPrefs(prefsFilePath);"
+      },
+      {
+        "lineNumber": 40,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 41,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void readUserPrefs_missingFile_emptyResult() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertFalse(readUserPrefs(\"NonExistentFile.json\").isPresent());"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 46,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 47,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void readUserPrefs_notJsonFormat_exceptionThrown() {"
+      },
+      {
+        "lineNumber": 48,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertThrows(DataConversionException.class, () -\u003e readUserPrefs(\"NotJsonFormatUserPrefs.json\"));"
+      },
+      {
+        "lineNumber": 49,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 50,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 51,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 52,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void readUserPrefs_fileInOrder_successfullyRead() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 53,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        UserPrefs expected \u003d getTypicalUserPrefs();"
+      },
+      {
+        "lineNumber": 54,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        UserPrefs actual \u003d readUserPrefs(\"TypicalUserPref.json\").get();"
+      },
+      {
+        "lineNumber": 55,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(expected, actual);"
+      },
+      {
+        "lineNumber": 56,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 57,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 58,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 59,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void readUserPrefs_valuesMissingFromFile_defaultValuesUsed() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 60,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        UserPrefs actual \u003d readUserPrefs(\"EmptyUserPrefs.json\").get();"
+      },
+      {
+        "lineNumber": 61,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(new UserPrefs(), actual);"
+      },
+      {
+        "lineNumber": 62,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 63,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 64,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 65,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void readUserPrefs_extraValuesInFile_extraValuesIgnored() throws DataConversionException {"
+      },
+      {
+        "lineNumber": 66,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        UserPrefs expected \u003d getTypicalUserPrefs();"
+      },
+      {
+        "lineNumber": 67,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        UserPrefs actual \u003d readUserPrefs(\"ExtraValuesUserPref.json\").get();"
+      },
+      {
+        "lineNumber": 68,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 69,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(expected, actual);"
+      },
+      {
+        "lineNumber": 70,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 71,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 72,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private UserPrefs getTypicalUserPrefs() {"
+      },
+      {
+        "lineNumber": 73,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        UserPrefs userPrefs \u003d new UserPrefs();"
+      },
+      {
+        "lineNumber": 74,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        userPrefs.setGuiSettings(new GuiSettings(1000, 500, 300, 100));"
+      },
+      {
+        "lineNumber": 75,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        return userPrefs;"
+      },
+      {
+        "lineNumber": 76,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 77,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 78,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 79,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void savePrefs_nullPrefs_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 80,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e saveUserPrefs(null, \"SomeFile.json\"));"
+      },
+      {
+        "lineNumber": 81,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 82,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 83,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 84,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void saveUserPrefs_nullFilePath_throwsNullPointerException() {"
+      },
+      {
+        "lineNumber": 85,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertThrows(NullPointerException.class, () -\u003e saveUserPrefs(new UserPrefs(), null));"
+      },
+      {
+        "lineNumber": 86,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 87,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 88,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 89,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     * Saves {@code userPrefs} at the specified {@code prefsFileInTestDataFolder} filepath."
+      },
+      {
+        "lineNumber": 90,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 91,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    private void saveUserPrefs(UserPrefs userPrefs, String prefsFileInTestDataFolder) {"
+      },
+      {
+        "lineNumber": 92,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        try {"
+      },
+      {
+        "lineNumber": 93,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            new JsonUserPrefsStorage(addToTestDataPathIfNotNull(prefsFileInTestDataFolder))"
+      },
+      {
+        "lineNumber": 94,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "                    .saveUserPrefs(userPrefs);"
+      },
+      {
+        "lineNumber": 95,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        } catch (IOException ioe) {"
+      },
+      {
+        "lineNumber": 96,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "            throw new AssertionError(\"There should not be an error writing to the file\", ioe);"
+      },
+      {
+        "lineNumber": 97,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 98,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 99,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 100,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 101,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    public void saveUserPrefs_allInOrder_success() throws DataConversionException, IOException {"
+      },
+      {
+        "lineNumber": 102,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 103,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        UserPrefs original \u003d new UserPrefs();"
+      },
+      {
+        "lineNumber": 104,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        original.setGuiSettings(new GuiSettings(1200, 200, 0, 2));"
+      },
+      {
+        "lineNumber": 105,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 106,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        Path pefsFilePath \u003d testFolder.resolve(\"TempPrefs.json\");"
+      },
+      {
+        "lineNumber": 107,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        JsonUserPrefsStorage jsonUserPrefsStorage \u003d new JsonUserPrefsStorage(pefsFilePath);"
+      },
+      {
+        "lineNumber": 108,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 109,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        //Try writing when the file doesn\u0027t exist"
+      },
+      {
+        "lineNumber": 110,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        jsonUserPrefsStorage.saveUserPrefs(original);"
+      },
+      {
+        "lineNumber": 111,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        UserPrefs readBack \u003d jsonUserPrefsStorage.readUserPrefs().get();"
+      },
+      {
+        "lineNumber": 112,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(original, readBack);"
+      },
+      {
+        "lineNumber": 113,
+        "author": {
+          "gitId": "-"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 114,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        //Try saving when the file exists"
+      },
+      {
+        "lineNumber": 115,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        original.setGuiSettings(new GuiSettings(5, 5, 5, 5));"
+      },
+      {
+        "lineNumber": 116,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        jsonUserPrefsStorage.saveUserPrefs(original);"
+      },
+      {
+        "lineNumber": 117,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        readBack \u003d jsonUserPrefsStorage.readUserPrefs().get();"
+      },
+      {
+        "lineNumber": 118,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "        assertEquals(original, readBack);"
+      },
+      {
+        "lineNumber": 119,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 120,
+        "author": {
+          "gitId": "-"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "weiichengg": 13,
+      "-": 107
     }
   },
   {

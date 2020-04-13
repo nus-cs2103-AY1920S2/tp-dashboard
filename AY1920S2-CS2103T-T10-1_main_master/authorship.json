@@ -13632,7 +13632,7 @@
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "    private Quote quote;"
+        "content": "    private String quote;"
       },
       {
         "lineNumber": 26,
@@ -13653,7 +13653,7 @@
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        this.quote \u003d new Quote(new Content(quote));"
+        "content": "        this.quote \u003d quote;"
       },
       {
         "lineNumber": 29,
@@ -13695,14 +13695,14 @@
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        if (model.hasQuote(quote)) {"
+        "content": "        if (!Content.isValidContent(this.quote)) {"
       },
       {
         "lineNumber": 35,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "            throw new CommandException(MESSAGE_DUPLICATE_RECORD);"
+        "content": "            throw new CommandException(Content.MESSAGE_CONSTRAINTS);"
       },
       {
         "lineNumber": 36,
@@ -13716,31 +13716,59 @@
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        //add record to internal list and update goals tally for each record added"
+        "content": "        Quote newQuote \u003d new Quote(new Content(quote));"
       },
       {
         "lineNumber": 38,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        model.addQuote(quote);"
+        "content": "        if (model.hasQuote(newQuote)) {"
       },
       {
         "lineNumber": 39,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
+        "content": "            throw new CommandException(MESSAGE_DUPLICATE_RECORD);"
       },
       {
         "lineNumber": 40,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "    }"
+        "content": "        }"
       },
       {
         "lineNumber": 41,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        //add record to internal list and update goals tally for each record added"
+      },
+      {
+        "lineNumber": 42,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        model.addQuote(newQuote);"
+      },
+      {
+        "lineNumber": 43,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        return new CommandResult(MESSAGE_SUCCESS);"
+      },
+      {
+        "lineNumber": 44,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 45,
         "author": {
           "gitId": "YuuTon9"
         },
@@ -13748,7 +13776,7 @@
       }
     ],
     "authorContributionMap": {
-      "YuuTon9": 41
+      "YuuTon9": 45
     }
   },
   {
@@ -58506,14 +58534,14 @@
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "            \"Names should only contain alphanumeric characters, spaces, or special characters from \""
+        "content": "            \"Invalid quote ! Quote should only contain alphanumeric characters, spaces, or special characters from \""
       },
       {
         "lineNumber": 14,
         "author": {
           "gitId": "YuuTon9"
         },
-        "content": "                    + \"this set {\u0026, %, (, ), -, /, \u0027, ,}. The name should also not be blank.\";"
+        "content": "                    + \"this set {\u0026, %, (, ), -, /, \u0027, , !,}. The name should also not be blank.\";"
       },
       {
         "lineNumber": 15,
@@ -107449,7 +107477,7 @@
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "    private static final String FXML \u003d \"GroceryListWindow.fxml\";"
+        "content": "    private static final String FXML \u003d \"plan/GroceryListWindow.fxml\";"
       },
       {
         "lineNumber": 24,
@@ -108228,7 +108256,7 @@
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "    private static final String FXML \u003d \"PlanningListCard.fxml\";"
+        "content": "    private static final String FXML \u003d \"plan/PlanningListCard.fxml\";"
       },
       {
         "lineNumber": 20,
@@ -108637,7 +108665,7 @@
         "author": {
           "gitId": "beatricetay"
         },
-        "content": "    private static final String FXML \u003d \"PlanningListPanel.fxml\";"
+        "content": "    private static final String FXML \u003d \"plan/PlanningListPanel.fxml\";"
       },
       {
         "lineNumber": 22,
@@ -109695,253 +109723,6 @@
     ],
     "authorContributionMap": {
       "tharshita": 33
-    }
-  },
-  {
-    "path": "src/main/resources/view/GroceryListWindow.fxml",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.geometry.Insets?\u003e"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.control.Button?\u003e"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.control.Label?\u003e"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.control.ScrollPane?\u003e"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.Scene?\u003e"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.stage.Stage?\u003e"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.image.Image?\u003e"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003cfx:root resizable\u003d\"false\" title\u003d\"Grocery List\" type\u003d\"javafx.stage.Stage\" xmlns\u003d\"http://javafx.com/javafx/11\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "    \u003cicons\u003e"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        \u003cImage url\u003d\"@/images/grocery.png\" /\u003e"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "    \u003c/icons\u003e"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "    \u003cscene\u003e"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        \u003cScene\u003e"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "            \u003cVBox alignment\u003d\"CENTER\"\u003e"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                \u003cchildren\u003e"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                    \u003cScrollPane fx:id\u003d\"scrollPane\"\u003e"
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                        \u003cLabel fx:id\u003d\"groceryList\" text\u003d\"Label\" /\u003e"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                    \u003c/ScrollPane\u003e"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                    \u003cButton fx:id\u003d\"copyButton\" mnemonicParsing\u003d\"false\" onAction\u003d\"#copyGroceryList\" text\u003d\"Copy\" /\u003e"
-      },
-      {
-        "lineNumber": 24,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                \u003c/children\u003e"
-      },
-      {
-        "lineNumber": 25,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                \u003copaqueInsets\u003e"
-      },
-      {
-        "lineNumber": 26,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                    \u003cInsets bottom\u003d\"10.0\" left\u003d\"5.0\" right\u003d\"10.0\" top\u003d\"5.0\" /\u003e"
-      },
-      {
-        "lineNumber": 27,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                \u003c/opaqueInsets\u003e"
-      },
-      {
-        "lineNumber": 28,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                \u003cpadding\u003e"
-      },
-      {
-        "lineNumber": 29,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                    \u003cInsets bottom\u003d\"10.0\" left\u003d\"5.0\" right\u003d\"10.0\" top\u003d\"5.0\" /\u003e"
-      },
-      {
-        "lineNumber": 30,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                \u003c/padding\u003e"
-      },
-      {
-        "lineNumber": 31,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "            \u003c/VBox\u003e"
-      },
-      {
-        "lineNumber": 32,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        \u003c/Scene\u003e"
-      },
-      {
-        "lineNumber": 33,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "    \u003c/scene\u003e"
-      },
-      {
-        "lineNumber": 34,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c/fx:root\u003e"
-      }
-    ],
-    "authorContributionMap": {
-      "beatricetay": 34
     }
   },
   {
@@ -111081,255 +110862,6 @@
     }
   },
   {
-    "path": "src/main/resources/view/PlanningListCard.fxml",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.geometry.Insets?\u003e"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.control.Label?\u003e"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.layout.ColumnConstraints?\u003e"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.layout.GridPane?\u003e"
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.layout.HBox?\u003e"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003cHBox xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
-      },
-      {
-        "lineNumber": 11,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "    \u003cGridPane HBox.hgrow\u003d\"ALWAYS\"\u003e"
-      },
-      {
-        "lineNumber": 12,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        \u003ccolumnConstraints\u003e"
-      },
-      {
-        "lineNumber": 13,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10\" prefWidth\u003d\"150\" /\u003e"
-      },
-      {
-        "lineNumber": 14,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        \u003c/columnConstraints\u003e"
-      },
-      {
-        "lineNumber": 15,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        \u003cVBox fx:id\u003d\"plannedBox\"  alignment\u003d\"CENTER_LEFT\" minHeight\u003d\"105\" GridPane.columnIndex\u003d\"0\"\u003e"
-      },
-      {
-        "lineNumber": 16,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "            \u003cpadding\u003e"
-      },
-      {
-        "lineNumber": 17,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "                \u003cInsets top\u003d\"5\" right\u003d\"5\" bottom\u003d\"5\" left\u003d\"15\" /\u003e"
-      },
-      {
-        "lineNumber": 18,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "            \u003c/padding\u003e"
-      },
-      {
-        "lineNumber": 19,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "            \u003cLabel fx:id\u003d\"date\" styleClass\u003d\"cell_big_label\"/\u003e"
-      },
-      {
-        "lineNumber": 20,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 21,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "        \u003c/VBox\u003e"
-      },
-      {
-        "lineNumber": 22,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "    \u003c/GridPane\u003e"
-      },
-      {
-        "lineNumber": 23,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c/HBox\u003e"
-      }
-    ],
-    "authorContributionMap": {
-      "beatricetay": 23
-    }
-  },
-  {
-    "path": "src/main/resources/view/PlanningListPanel.fxml",
-    "fileType": "functional-code",
-    "lines": [
-      {
-        "lineNumber": 1,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
-      },
-      {
-        "lineNumber": 2,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 3,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.control.Label?\u003e"
-      },
-      {
-        "lineNumber": 4,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.control.ListView?\u003e"
-      },
-      {
-        "lineNumber": 5,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
-      },
-      {
-        "lineNumber": 6,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": ""
-      },
-      {
-        "lineNumber": 7,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003cVBox xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
-      },
-      {
-        "lineNumber": 8,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "    \u003cLabel fx:id\u003d\"title\" styleClass\u003d\"cell_big_label\"/\u003e"
-      },
-      {
-        "lineNumber": 9,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "    \u003cListView fx:id\u003d\"planningListView\" VBox.vgrow\u003d\"ALWAYS\"/\u003e"
-      },
-      {
-        "lineNumber": 10,
-        "author": {
-          "gitId": "beatricetay"
-        },
-        "content": "\u003c/VBox\u003e"
-      }
-    ],
-    "authorContributionMap": {
-      "beatricetay": 10
-    }
-  },
-  {
     "path": "src/main/resources/view/RecipeListCard.fxml",
     "fileType": "functional-code",
     "lines": [
@@ -111804,6 +111336,502 @@
     "authorContributionMap": {
       "tharshita": 1,
       "-": 7
+    }
+  },
+  {
+    "path": "src/main/resources/view/plan/GroceryListWindow.fxml",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.geometry.Insets?\u003e"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.control.Button?\u003e"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.control.Label?\u003e"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.control.ScrollPane?\u003e"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.Scene?\u003e"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.stage.Stage?\u003e"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.image.Image?\u003e"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003cfx:root resizable\u003d\"false\" title\u003d\"Grocery List\" type\u003d\"javafx.stage.Stage\" xmlns\u003d\"http://javafx.com/javafx/11\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "    \u003cicons\u003e"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "        \u003cImage url\u003d\"@/images/grocery.png\" /\u003e"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "    \u003c/icons\u003e"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "    \u003cscene\u003e"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "        \u003cScene\u003e"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "            \u003cVBox alignment\u003d\"CENTER\"\u003e"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                \u003cchildren\u003e"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                    \u003cScrollPane fx:id\u003d\"scrollPane\"\u003e"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                        \u003cLabel fx:id\u003d\"groceryList\" text\u003d\"Label\" /\u003e"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                    \u003c/ScrollPane\u003e"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                    \u003cButton fx:id\u003d\"copyButton\" mnemonicParsing\u003d\"false\" onAction\u003d\"#copyGroceryList\" text\u003d\"Copy\" /\u003e"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                \u003c/children\u003e"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                \u003copaqueInsets\u003e"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                    \u003cInsets bottom\u003d\"10.0\" left\u003d\"5.0\" right\u003d\"10.0\" top\u003d\"5.0\" /\u003e"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                \u003c/opaqueInsets\u003e"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                \u003cpadding\u003e"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                    \u003cInsets bottom\u003d\"10.0\" left\u003d\"5.0\" right\u003d\"10.0\" top\u003d\"5.0\" /\u003e"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                \u003c/padding\u003e"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "            \u003c/VBox\u003e"
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "        \u003c/Scene\u003e"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "    \u003c/scene\u003e"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c/fx:root\u003e"
+      }
+    ],
+    "authorContributionMap": {
+      "beatricetay": 34
+    }
+  },
+  {
+    "path": "src/main/resources/view/plan/PlanningListCard.fxml",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.geometry.Insets?\u003e"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.control.Label?\u003e"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.layout.ColumnConstraints?\u003e"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.layout.GridPane?\u003e"
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.layout.HBox?\u003e"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003cHBox xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "    \u003cGridPane HBox.hgrow\u003d\"ALWAYS\"\u003e"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "        \u003ccolumnConstraints\u003e"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "            \u003cColumnConstraints hgrow\u003d\"SOMETIMES\" minWidth\u003d\"10\" prefWidth\u003d\"150\" /\u003e"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "        \u003c/columnConstraints\u003e"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "        \u003cVBox fx:id\u003d\"plannedBox\"  alignment\u003d\"CENTER_LEFT\" minHeight\u003d\"105\" GridPane.columnIndex\u003d\"0\"\u003e"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "            \u003cpadding\u003e"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "                \u003cInsets top\u003d\"5\" right\u003d\"5\" bottom\u003d\"5\" left\u003d\"15\" /\u003e"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "            \u003c/padding\u003e"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "            \u003cLabel fx:id\u003d\"date\" styleClass\u003d\"cell_big_label\"/\u003e"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "        \u003c/VBox\u003e"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "    \u003c/GridPane\u003e"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c/HBox\u003e"
+      }
+    ],
+    "authorContributionMap": {
+      "beatricetay": 23
+    }
+  },
+  {
+    "path": "src/main/resources/view/plan/PlanningListPanel.fxml",
+    "fileType": "functional-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.control.Label?\u003e"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.control.ListView?\u003e"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c?import javafx.scene.layout.VBox?\u003e"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003cVBox xmlns\u003d\"http://javafx.com/javafx/8\" xmlns:fx\u003d\"http://javafx.com/fxml/1\"\u003e"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "    \u003cLabel fx:id\u003d\"title\" styleClass\u003d\"cell_big_label\"/\u003e"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "    \u003cListView fx:id\u003d\"planningListView\" VBox.vgrow\u003d\"ALWAYS\"/\u003e"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "beatricetay"
+        },
+        "content": "\u003c/VBox\u003e"
+      }
+    ],
+    "authorContributionMap": {
+      "beatricetay": 10
     }
   },
   {
@@ -137590,6 +137618,246 @@
     "authorContributionMap": {
       "tharshita": 14,
       "beatricetay": 7
+    }
+  },
+  {
+    "path": "src/test/java/seedu/recipe/logic/commands/QuoteCommandTest.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "package seedu.recipe.logic.commands;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import static seedu.recipe.logic.commands.CommandTestUtil.assertCommandFailure;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import static seedu.recipe.testutil.TypicalQuote.QUOTE_1;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import static seedu.recipe.testutil.TypicalQuote.getTypicalQuoteBook;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import org.junit.jupiter.api.Test;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.Model;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.ModelManager;"
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.UserPrefs;"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.achievement.Quote;"
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.cooked.CookedRecordBook;"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.plan.PlannedBook;"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.recipe.RecipeBook;"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "public class QuoteCommandTest {"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    private Model model \u003d new ModelManager(new RecipeBook(), new UserPrefs(),"
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "            new CookedRecordBook(), new PlannedBook(), getTypicalQuoteBook());"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    private Model expectedModel \u003d new ModelManager(new RecipeBook(), new UserPrefs(),"
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "            new CookedRecordBook(), new PlannedBook(), getTypicalQuoteBook());"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    @Test"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    public void execute_messageDuplicate_throwsCommandException() {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        Quote duplicateQuote \u003d QUOTE_1;"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        QuoteCommand quoteCommand \u003d new QuoteCommand(duplicateQuote.getContent());"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        assertCommandFailure(quoteCommand, model, QuoteCommand.MESSAGE_DUPLICATE_RECORD);"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "YuuTon9": 33
     }
   },
   {
@@ -170538,6 +170806,260 @@
     ],
     "authorContributionMap": {
       "beatricetay": 46
+    }
+  },
+  {
+    "path": "src/test/java/seedu/recipe/testutil/TypicalQuote.java",
+    "fileType": "test-code",
+    "lines": [
+      {
+        "lineNumber": 1,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "package seedu.recipe.testutil;"
+      },
+      {
+        "lineNumber": 2,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 3,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import java.util.ArrayList;"
+      },
+      {
+        "lineNumber": 4,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import java.util.Arrays;"
+      },
+      {
+        "lineNumber": 5,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import java.util.List;"
+      },
+      {
+        "lineNumber": 6,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 7,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.achievement.Content;"
+      },
+      {
+        "lineNumber": 8,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.achievement.Quote;"
+      },
+      {
+        "lineNumber": 9,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "import seedu.recipe.model.achievement.QuoteBook;"
+      },
+      {
+        "lineNumber": 10,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 11,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "/**"
+      },
+      {
+        "lineNumber": 12,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": " * A utility class containing a list of {@code Quote} objects to be used in tests."
+      },
+      {
+        "lineNumber": 13,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": " */"
+      },
+      {
+        "lineNumber": 14,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "public class TypicalQuote {"
+      },
+      {
+        "lineNumber": 15,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    public static final Quote QUOTE_1 \u003d new Quote(new Content(\"QUOTE 1\"));"
+      },
+      {
+        "lineNumber": 16,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    public static final Quote QUOTE_2 \u003d new Quote(new Content(\"QUOTE 2\"));"
+      },
+      {
+        "lineNumber": 17,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    public static final Quote QUOTE_3 \u003d new Quote(new Content(\"QUOTE 3\"));"
+      },
+      {
+        "lineNumber": 18,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    public static final Quote QUOTE_4 \u003d new Quote(new Content(\"QUOTE 4\"));"
+      },
+      {
+        "lineNumber": 19,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 20,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    /**"
+      },
+      {
+        "lineNumber": 21,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "     * Returns an {@code QuoteBook} with all the typical recipes."
+      },
+      {
+        "lineNumber": 22,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "     */"
+      },
+      {
+        "lineNumber": 23,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    public static QuoteBook getTypicalQuoteBook() {"
+      },
+      {
+        "lineNumber": 24,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        QuoteBook qb \u003d new QuoteBook();"
+      },
+      {
+        "lineNumber": 25,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        for (Quote quote : getTypicalQuotes()) {"
+      },
+      {
+        "lineNumber": 26,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "            qb.addQuote(quote);"
+      },
+      {
+        "lineNumber": 27,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        }"
+      },
+      {
+        "lineNumber": 28,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        return qb;"
+      },
+      {
+        "lineNumber": 29,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 30,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 31,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": ""
+      },
+      {
+        "lineNumber": 32,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    public static List\u003cQuote\u003e getTypicalQuotes() {"
+      },
+      {
+        "lineNumber": 33,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "        return new ArrayList\u003c\u003e(Arrays.asList(QUOTE_1, QUOTE_2, QUOTE_3, QUOTE_4));"
+      },
+      {
+        "lineNumber": 34,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "    }"
+      },
+      {
+        "lineNumber": 35,
+        "author": {
+          "gitId": "YuuTon9"
+        },
+        "content": "}"
+      }
+    ],
+    "authorContributionMap": {
+      "YuuTon9": 35
     }
   },
   {
